@@ -372,6 +372,8 @@ public abstract class JdbcServicesSupport implements BaseServices
    * 	                       以下为查询方法
    **************************************************************/
 	/**
+	 * 
+	 * 不定条件查询
 	 * @param sql
 	 * 				select aab102,aab103,aab104,aab105
 	 * 				  from ab01
@@ -437,49 +439,6 @@ public abstract class JdbcServicesSupport implements BaseServices
 	 */
 	protected final List<Map<String,String>> queryForList(final String sql)throws Exception
 	{
-//		//定义JDBC接口变量
-//		PreparedStatement pstm=null;
-//		ResultSet rs=null;
-//		try
-//		{
-//			//编译SQL
-//			pstm=DBUtils.prepareStatement(sql.toString());
-//			//执行SQL
-//			rs=pstm.executeQuery();
-//			//获取结果集描述对象
-//			ResultSetMetaData rsmd=rs.getMetaData();
-//			//计算查询的列数
-//			int count=rsmd.getColumnCount();
-//			//计算安全的初始容量
-//			int initSize=((int)(count/0.75))+1;
-//			
-//			//定义装载查询结果的List容器对象
-//			List<Map<String,String>> rows=new ArrayList<>();
-//			//定义装载当前行数据的Map容器变量
-//			Map<String,String> ins=null;
-//			
-//			//循环控制rs指针的滚动
-//			while(rs.next())
-//			{
-//				//实例化当前行数据容器
-//				ins = new HashMap<>();
-//				
-//				//循环当前行所有列
-//				for(int i=1;i<=count;i++)
-//				{
-//					//列级映射
-//					ins.put(rsmd.getColumnLabel(i).toLowerCase(), rs.getString(i));
-//				}
-//				//将当前行数据放入List
-//				rows.add(ins);
-//			}
-//			return rows;
-//		}
-//		finally
-//		{
-//			DBUtils.close(rs);
-//			DBUtils.close(pstm);
-//		}
 		return this.queryForList(sql, null);
 	}
 	
@@ -517,7 +476,15 @@ public abstract class JdbcServicesSupport implements BaseServices
 	
 	
 	
-	protected final Map<String,String> executeSelectById(final String sql,final int Id) throws Exception
+	
+	/**
+	 * 单一实例查询(通过id查询)
+	 * @param sql
+	 * @param Id
+	 * @return
+	 * @throws Exception
+	 */
+	protected final Map<String,String> queryForMap(final String sql,final int Id) throws Exception
 	{
 
 		PreparedStatement pstm = null;
@@ -551,6 +518,13 @@ public abstract class JdbcServicesSupport implements BaseServices
 		
 	}
 	
+	/**
+	 * 多条件查询一个实例
+	 * @param sql
+	 * @param args
+	 * @return
+	 * @throws Exception
+	 */
 	protected final Map<String,String> queryForMap(final String sql,final Object...args)throws Exception
 	{
 		
