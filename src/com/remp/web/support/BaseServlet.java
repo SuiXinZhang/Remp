@@ -23,10 +23,9 @@ public class BaseServlet extends HttpServlet {
 			String uri = request.getRequestURI();
 			int index = uri.lastIndexOf("/");
 			String baseName= uri.substring(index+1).replace(".html", "");
-			String packageName = "com.remp.web.impl.";
+			String packageName = "com.remp.web.impl."+baseName.substring(0,2)+".";
 			String firstName = baseName.substring(0,1).toUpperCase()+baseName.substring(1);
-			System.out.println(packageName+firstName+"Servlet");
-			
+			System.out.println(firstName);
 			BaseController controller = (BaseController)Class.forName(packageName+firstName+"Servlet").newInstance();
 			
 			controller.setMapDto(this.creatDto(request));
@@ -89,8 +88,6 @@ public class BaseServlet extends HttpServlet {
 				dto.put(entry.getKey(), value);
 			}
 		}
-		System.out.println(dto);
 		return dto;
-		
 	}
 }
