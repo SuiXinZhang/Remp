@@ -28,6 +28,7 @@ public class DBUtils
 		}
 	}
 	
+	
 	private static Connection getConnection()throws Exception
 	{
 		Connection conn = threadLocal.get();

@@ -61,6 +61,11 @@ public abstract class JdbcServicesSupport implements BaseServices
 	    * 	                       以下为多表级联与混合事务的实现方式
 	    **************************************************************/
 		
+	/**
+	 * 执行事务
+	 * @return
+	 * @throws Exception
+	 */
 	protected final boolean executeTransaction()throws Exception
 		{
 			
@@ -212,24 +217,23 @@ public abstract class JdbcServicesSupport implements BaseServices
 	    *  以下为单一表事务更新方法
 	    **************************************************************/
 		
-		/**
-		 * 多状态修改
-		 * <
-		 *   update table
-		 *     set col1=?,col2=?,col3=?...coln=?
-		 *   where id=?
-		 *   例如:给一批员工上调职级并同时加薪
-		 *   update ac01 
-		 *       set aac111=aac111+?,aac112=? 
-		 *     where aac101=?
-		 * >
-		 * @param sql
-		 * @param stateList
-		 * @param idlist
-		 * @return
-		 * @throws Exception
-		 */
-	
+	/**
+ 		 * 多状态修改
+	 * <
+	 *   update table
+	 *     set col1=?,col2=?,col3=?...coln=?
+	 *   where id=?
+	 *   例如:给一批员工上调职级并同时加薪
+	 *   update ac01 
+	 *       set aac111=aac111+?,aac112=? 
+	 *     where aac101=?
+	 * >
+	 * @param sql
+	 * @param stateList
+	 * @param idlist
+	 * @return
+	 * @throws Exception
+	 */
 	protected final boolean batchUpdate(final String sql,final Object stateList[],Object...idlist)throws Exception
 	{
 		PreparedStatement pstm = null;
@@ -368,7 +372,6 @@ public abstract class JdbcServicesSupport implements BaseServices
    * 	                       以下为查询方法
    **************************************************************/
 	/**
-	 * 
 	 * @param sql
 	 * 				select aab102,aab103,aab104,aab105
 	 * 				  from ab01
