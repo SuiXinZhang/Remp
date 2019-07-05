@@ -23,7 +23,7 @@ public class BaseServlet extends HttpServlet {
 			String uri = request.getRequestURI();
 			int index = uri.lastIndexOf("/");
 			String baseName= uri.substring(index+1).replace(".html", "");
-			String packageName = "com.neusoft.web.impl.";
+			String packageName = "com.remp.web.impl.";
 			String firstName = baseName.substring(0,1).toUpperCase()+baseName.substring(1);
 			System.out.println(packageName+firstName+"Servlet");
 			
