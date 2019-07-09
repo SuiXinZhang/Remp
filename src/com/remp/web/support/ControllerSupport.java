@@ -46,7 +46,6 @@ public abstract class ControllerSupport implements BaseController {
 		Map<String,String> ins = this.services.findById();
 		if(ins!=null)
 		{
-			System.out.println(ins);
 			this.saveAttribute("ins", ins);
 		}
 		else
@@ -110,6 +109,7 @@ public abstract class ControllerSupport implements BaseController {
 	 */
 	private boolean executeUpdateMethod(String methodName)throws Exception
 	{
+		System.out.println(methodName);
 		Method method = this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
 		return (boolean)method.invoke(services);

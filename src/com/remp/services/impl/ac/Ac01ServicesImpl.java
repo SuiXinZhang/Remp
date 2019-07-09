@@ -2,7 +2,10 @@ package com.remp.services.impl.ac;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFDataFormat;
@@ -31,6 +34,135 @@ import com.remp.services.JdbcServicesSupport;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
+	
+	private boolean deleteById() throws Exception
+	{
+		String sql = "delete from ac01 where aac101 =?";
+		return this.executeUpdate(sql, this.get("aac101"))>0;
+	}
+	
+	@Override
+	public Map<String, String> findById() throws Exception 
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("select x.aac102,x.aac103,x.aac104,x.aac105,x.aac106,")
+				.append("		x.aac107,x.aac108,x.aac109,x.aac110,x.aaa201,")
+				.append("       x.aaa402")
+				.append("  from ac01 x")
+				.append(" where x.aac101 = ?");
+		
+		Object[] args = 
+			{
+					this.get("aac101")
+			};
+		
+		return this.queryForMap(sql.toString(), args);
+	}
+	
+	private boolean modifyClue()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("update ac01 a")
+    			.append("   set a.aac102=?,a.aac103=?,a.aac104=?,a.aac105=?,a.aac106=?,")
+    			.append("       a.aac107=?,a.aac108=?,a.aac109=?,a.aac110=?,a.aaa201=?")
+    			.append(" where a.aac101=?");
+		Object[] args=
+			{
+					this.get("aac102"),
+					this.get("aac103"),
+					this.get("aac104"),
+					this.get("aac105"),
+					this.get("aac106"),
+					this.get("aac107"),
+					this.get("aac108"),
+					this.get("aac109"),
+					this.get("aac110"),
+					this.get("aaa201"),
+					this.get("aac101")
+			};
+		
+		return this.executeUpdate(sql.toString(), args)>0;
+	}
+	
+	private boolean addClue()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("insert into ac01(aac102,aac103,aac104,aac105,aac106,")
+				.append("				  aac107,aac108,aac109,aac110,aaa201)")
+				.append("			values (?,?,?,?,?,")
+				.append("					?,?,?,?,?)")
+				;
+		
+		Object args[] = {
+				this.get("aac102"),
+				this.get("aac103"),
+				this.get("aac104"),
+				this.get("aac105"),
+				this.get("aac106"),
+				
+				this.get("aac107"),
+				this.get("aac108"),
+				this.get("aac109"),
+				this.get("aac110"),
+
+				this.get("aaa201")
+		};
+		return this.executeUpdate(sql.toString(), args) >0;
+	}
+	
+	@Override
+	public List<Map<String,String>> query()throws Exception
+	{
+		List<Object> args = new ArrayList<>();
+				
+			Object aac109 = this.get("qaac109");
+			Object aac103 = this.get("qaac103");
+			Object aac105 = this.get("qaac105");
+			Object aac104 = this.get("qaac104");
+			Object baac102 = this.get("baac102");
+			Object eaac102 = this.get("eaac102");
+		
+		StringBuilder sql = new StringBuilder()
+				.append("select x.aac101,x.aac102,x.aac103,x.aac104,x.aac105,")
+				.append("		x.aac106,x.aac107,x.aac109")
+				.append("  from ac01 x")
+				.append(" where true ");
+				
+		
+		if(this.isNotNull(aac105))
+		{
+			sql.append(" and aac105 like ?");
+			args.add("%" +aac105+"%");
+		}
+		if(this.isNotNull(aac103))
+		{
+			sql.append(" and aac103 = ?");
+			args.add(aac103);
+		}
+		if(this.isNotNull(aac104))
+		{
+			sql.append(" and aac104 = ?");
+			args.add(aac104);
+		}
+		if(this.isNotNull(aac109))
+		{
+			sql.append(" and aac109 = ?");
+			args.add(aac109);
+		}
+		if(this.isNotNull(baac102))
+		{
+			sql.append(" and aac102 >= ?");
+			args.add(baac102);
+		}
+		if(this.isNotNull(eaac102))
+		{
+			sql.append(" and aac102 <= ?");
+			args.add(eaac102);
+		}
+		List<Map<String, String>> rr =this.queryForList(sql.toString(),args.toArray());
+		return rr;
+	}
+	
 	public boolean insertBatch(InputStream is,String suffix) throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
