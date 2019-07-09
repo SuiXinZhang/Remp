@@ -211,14 +211,39 @@ public abstract class JdbcServicesSupport implements BaseServices
 		pmdList.add(pmd);
 	}
 	
-	
+	/**
+	 * 为事务添加单一表批处理 (二维)
+	 * <
+	 *   delete from table where id=?
+	 *   update table set col1=? where id=?
+	 *   update table set col1=?,col2=?,col3=?.... where id=?
+	 * >
+	 * @param sql      ----  执行的SQL语句
+	 * @param args     ----  参数列表
+	 * @throws Exception
+	 */
+	protected final void appendDoubleSql(final String sql,final String args[][])throws Exception
+	{
+		System.out.println(args.length);
+		PreparedStatement pstm = null;
+		for(int i = 0;i< args.length;i++)
+		{
+			pstm = DBUtils.prepareStatement(sql);
+			for(int j = 0 ;j < args[i].length;j++)
+			{
+				pstm.setObject(j+1, args[i][j]);
+			}
+			PstmMetaData pmd = new PstmMetaData(pstm, false);
+			pmdList.add(pmd);
+		}
+	}
 	
 	   /**************************************************************
 	    *  以下为单一表事务更新方法
 	    **************************************************************/
 		
 	/**
- 		 * 多状态修改
+ 	 * 多状态修改
 	 * <
 	 *   update table
 	 *     set col1=?,col2=?,col3=?...coln=?
