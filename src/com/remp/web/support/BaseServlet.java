@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("*.html")
-public class BaseServlet extends HttpServlet {
+public class BaseServlet extends HttpServlet 
+{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

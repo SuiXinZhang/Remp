@@ -46,6 +46,7 @@ public abstract class ControllerSupport implements BaseController {
 		Map<String,String> ins = this.services.findById();
 		if(ins!=null)
 		{
+			System.out.println(ins);
 			this.saveAttribute("ins", ins);
 		}
 		else

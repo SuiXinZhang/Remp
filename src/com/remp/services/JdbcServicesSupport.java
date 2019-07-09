@@ -43,16 +43,14 @@ public abstract class JdbcServicesSupport implements BaseServices
 		
 	protected final String[] getIdList(String key)
 		{
-			Object aab101 = dto.get(key);
-			System.out.println(key+"222"+dto);
-			//String idL[] = null;
-			if(aab101 instanceof java.lang.String[])
+			Object idList = dto.get(key);
+			if(idList instanceof java.lang.String[])
 			{
-				return (String[])aab101;
-			}else
+				return (String[])idList;
+			}
+			else
 			{
-				System.out.println("111"+aab101);
-				return new String[]{aab101.toString()};
+				return new String[]{idList.toString()};
 			}
 			
 		}
