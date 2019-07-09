@@ -21,6 +21,7 @@ public class BaseServlet extends HttpServlet {
 		try
 		{
 			String uri = request.getRequestURI();
+			System.out.println(uri);
 			int index = uri.lastIndexOf("/");
 			String baseName= uri.substring(index+1).replace(".html", "");
 			String packageName = "com.remp.web.impl."+baseName.substring(0,2)+".";
