@@ -136,7 +136,14 @@ public class DBUtils
 	}
 	
 	
-	
+	public static void main(String[] args) {
+		try {
+			System.out.println(getConnection());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 }
