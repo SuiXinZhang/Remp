@@ -21,7 +21,7 @@ tr {
 	function modify(id)
 	{
 		var vform = document.getElementById("action");
-		vform.action = "<%=path %>/ae/ae01findById.html?aae101="+id;
+		vform.action = "<%=path %>/ae/ae02findById.html?aae201="+id;
 		vform.submit();
 	}
 </script>
@@ -31,27 +31,24 @@ tr {
 
 <br>
 	<br> ${msg }
-	<form id="action" action="<%=path %>/ae01/ae01query.html" method="post">
+	<form id="action" action="<%=path %>/ae/ae02query.html" method="post">
 		<table border="1" align="center" width="80%">
 			<caption>
-				合同管理
+				贷款管理
 				<hr width="160">
 			</caption>
 			<tr>
 				<td>办理状态</td>
-				<td><e:select value="未办理:0,已办理:1" name="qaae104" defval="0"/></td>
-			</tr>
-			<tr>
+				<td><e:select value="银行未放款:01,银行已放款:02" name="qaae218" defval="01"/></td>
 				<td>客户姓名</td>
-				<td><e:text name="qaad702" /></td>
+				<td><e:text name="qaae202" /></td>
 				<td>房间名称</td>
-				<td><e:text name="qaaa803" /><e:submit name="next" value="查询"/></td>
+				<td><e:text name="qaae204" /><e:submit name="next" value="查询"/></td>
 			</tr>
 		</table>
 		<table border="1" align="center" width="80%">
 			<tr>
-				<td><input type="checkbox" name="modList" value="${ins.aab101 }"
-									onclick='onSelect(this.checked)'/></td>
+				<td></td>
 				<td>序号</td>
 				<td>客户</td>
 				<td>房间</td>
@@ -59,29 +56,26 @@ tr {
 				<td>承诺办理</td>
 				<td>承诺完成</td>
 				<td>当前进程</td>
-				<td>完成时间</td>
 				<td></td>
 			</tr>
 			<c:choose>
 				<c:when test="${rows!=null}">
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<tr>
-							<td><input type="checkbox" name="IdList" value="${ins.aae101 }"
+							<td><input type="checkbox" name="IdList" value="${ins.aae201 }"
 									onclick='onSelect(this.checked)'/></td>
 							<td>${vs.count}</td>
-							<td>${ins.aad702 }</td>
-							<td>${ins.aaa803 }</td>
-							<td>${ins.aac407 }</td>
-							<td>${ins.aae102 }</td>
-							<td>${ins.aae103 }</td>
-							<td>${ins.snaae104 }</td>
-							<td>${ins.aae105 }</td>
-							<td><a href="#" onclick='modify(${ins.aae101})'>录入备案日期</a></td>
+							<td>${ins.aae202 }</td>
+							<td>${ins.aae204 }</td>
+							<td>${ins.aae203 }</td>
+							<td>${ins.aae214 }</td>
+							<td>${ins.aae215 }</td>
+							<td>${ins.snaae218 }</td>
+							<td><a href="#" onclick='modify(${ins.aae201})'>录入备案日期</a></td>
 						</tr>
 					</c:forEach>
 					<c:forEach begin="${fn:length(rows)+1}" end="25">
 						<tr>
-							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -106,7 +100,6 @@ tr {
 							<td></td>
 							<td></td>
 							<td></td>
-							<td></td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
@@ -116,9 +109,9 @@ tr {
 			<tr colspan="2" align="center">
 				<td>
 					<input name="next" type="submit" value="添加"
-						formaction="<%=path %>/ae/ae01add.jsp">
-					<input id="mod" type="submit" value="批量修改" disabled="disabled" 
-						formaction="<%=path %>/ae/ae01mod.jsp">
+						formaction="<%=path %>/ae/ae02add.jsp">
+					<input id="mod" type="submit" value="批量办理" disabled="disabled" 
+						formaction="<%=path %>/ae/ae02mod.jsp">
 				</td>
 			</tr>
 		</table>
