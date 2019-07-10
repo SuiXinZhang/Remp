@@ -31,9 +31,15 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.commons.collections4.ListValuedMap;
 
 import com.remp.services.JdbcServicesSupport;
+import com.remp.system.tools.Tools;
 
 public class Ac01ServicesImpl extends JdbcServicesSupport 
 {
+	private boolean delete() throws Exception
+	{
+		String sql = "delete from ac01 where aac101 = ?";
+		return this.batchUpdate(sql, this.getIdList("idlist"));
+	}
 	
 	private boolean deleteById() throws Exception
 	{
@@ -47,7 +53,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aac102,x.aac103,x.aac104,x.aac105,x.aac106,")
 				.append("		x.aac107,x.aac108,x.aac109,x.aac110,x.aaa201,")
-				.append("       x.aaa402")
+				.append("       x.aaa402,x.aac111")
 				.append("  from ac01 x")
 				.append(" where x.aac101 = ?");
 		
@@ -86,11 +92,13 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	
 	private boolean addClue()throws Exception
 	{
+		Object aac101 = Tools.getSequence("aac101");
+		this.put("aac101", aac101);
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ac01(aac102,aac103,aac104,aac105,aac106,")
-				.append("				  aac107,aac108,aac109,aac110,aaa201)")
+				.append("				  aac107,aac108,aac109,aac110,aaa201,aac101)")
 				.append("			values (?,?,?,?,?,")
-				.append("					?,?,?,?,?)")
+				.append("					?,?,?,?,?,?)")
 				;
 		
 		Object args[] = {
@@ -105,7 +113,8 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 				this.get("aac109"),
 				this.get("aac110"),
 
-				this.get("aaa201")
+				this.get("aaa201"),
+				aac101
 		};
 		return this.executeUpdate(sql.toString(), args) >0;
 	}
@@ -119,12 +128,13 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 			Object aac103 = this.get("qaac103");
 			Object aac105 = this.get("qaac105");
 			Object aac104 = this.get("qaac104");
+			Object aac111 = this.get("qaac111");
 			Object baac102 = this.get("baac102");
 			Object eaac102 = this.get("eaac102");
-		
+			
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aac101,x.aac102,x.aac103,x.aac104,x.aac105,")
-				.append("		x.aac106,x.aac107,x.aac109")
+				.append("		x.aac106,x.aac107,x.aac109,x.aac111")
 				.append("  from ac01 x")
 				.append(" where true ");
 				
@@ -149,6 +159,11 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 			sql.append(" and aac109 = ?");
 			args.add(aac109);
 		}
+		if(this.isNotNull(aac111))
+		{
+			sql.append(" and aac111 = ?");
+			args.add(aac111);
+		}
 		if(this.isNotNull(baac102))
 		{
 			sql.append(" and aac102 >= ?");
@@ -168,10 +183,10 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ac01(aaa201,aac102,aac103,aac104,aac105,")
 				.append("				  aac106,aac107,aac108,aac109,aac110,")
-				.append("				  aaa402)")
+				.append("				  aac111,aaa402)")
 				.append("	 values (?,?,?,?,?,")
 				.append("			?,?,?,?,?,")
-				.append("			?)");
+				.append("			?,?)");
 
 		
 		try 

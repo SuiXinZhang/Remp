@@ -29,9 +29,9 @@ public class Tools {
 	 * @return  String number="yyyy"+4Î»Á÷Ë®Âë
 	 * @throws Exception
 	 */
-	public static String getEmpNumber()throws Exception
+	public static String getEmpNumber(String key)throws Exception
 	{
-		return Tools.getCurrentYear()+Tools.getFormatNumber("E");
+		return Tools.getCurrentYear()+Tools.getFormatNumber(key);
 	}
 	
 	private static final String baseCode1="0000";
