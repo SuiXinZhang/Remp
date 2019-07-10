@@ -1,11 +1,12 @@
 package com.remp.web.impl.ab;
 
-public class Ab01AddServlet extends PlanControllerSupport {
+public class Ab01ModifyServlet extends PlanControllerSupport {
 
 	@Override
 	public String execute() throws Exception 
 	{
-		this.update("addPlan", "Ìí¼Ó");
+		this.update("modifyPlan", "ÐÞ¸Ä");
 		return "ab/ab01Add";
 	}
+
 }

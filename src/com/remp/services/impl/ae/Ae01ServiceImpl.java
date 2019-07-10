@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.remp.services.JdbcServicesSupport;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class Ae01ServiceImpl extends JdbcServicesSupport
 {
@@ -26,7 +25,7 @@ public class Ae01ServiceImpl extends JdbcServicesSupport
 		Object qaad702 = this.get("qaad702");
 		Object qaaa803 = this.get("qaaa803");
 		StringBuilder sql = new StringBuilder()
-				.append("select e.aae101,d.aad702,a.aaa804,c.aac407,e.aae102,")
+				.append("select e.aae101,d.aad702,a.aaa803,c.aac407,e.aae102,")
 				.append("       e.aae103,s.fvalue as snaae104,e.aae105")
 				.append("       from aa08 a,ac04 c,ad07 d,ae01 e,syscode s")
 				.append("       where true")
@@ -119,11 +118,6 @@ public class Ae01ServiceImpl extends JdbcServicesSupport
 				this.get("aae110")
 			};
 		String idlist[] = this.getIdList("IdList");
-		System.out.println(this.get("aae104"));
-		System.out.println(this.get("aae105"));
-		System.out.println(this.get("aae107"));
-		System.out.println(this.get("aae109"));
-		System.out.println(this.get("aae110"));
 		for(String id:idlist)
 		{
 			System.out.println(id);

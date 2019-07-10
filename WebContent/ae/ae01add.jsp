@@ -76,10 +76,10 @@ msg {
 			<tr>
 				<td colspan="2" align="center">
 					<input type="submit" value="${empty param.aae101?'添加':'修改' }"
-						formaction="<%=path%>/${empty param.aae101?'ae01Add.html?aad701=1':'ae01Modify.html'}">
-					<input type="submit" value="返回"
-						formaction="<%=path%>/queryEmp.html"
-						formnovalidate="formnovalidate" ></td>
+						formaction="<%=path%>/ae/${empty param.aae101?'ae01Add.html?aad701=1':'ae01Modify.html'}">
+					<%-- <input type="submit" value="返回"
+						formaction="<%=path%>/ae/queryEmp.html"
+						formnovalidate="formnovalidate" ></td> --%>
 			</tr>
 		</table>
 		<input type="hidden" name="aae101" value="${param.aae101 }">

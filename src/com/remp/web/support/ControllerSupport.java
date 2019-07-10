@@ -41,6 +41,19 @@ public abstract class ControllerSupport implements BaseController {
 		}	
 	}
 	
+	protected final void saveInfo(String methodName)throws Exception
+	{
+		Map<String, String> ins = this.executeGetInfoMethod(methodName);
+		if(ins!=null)
+		{
+			this.saveAttribute("ins", ins);
+		}
+		else
+		{
+			this.saveAttribute("msg", "提示:该数据已删除或禁止访问");
+		}
+	}
+	
 	protected final void savePageInstance() throws Exception
 	{
 		Map<String,String> ins = this.services.findById();
@@ -115,6 +128,14 @@ public abstract class ControllerSupport implements BaseController {
 		return (boolean)method.invoke(services);
 	}
 	
+	private Map<String, String> executeGetInfoMethod(String methodName)throws Exception
+	{
+		System.out.println(methodName);
+		Method method = this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		return (Map<String, String>)method.invoke(services);
+	}
+	
 	/*****************************************
 	 * 	        数据输入流
 	 *****************************************/
@@ -141,4 +162,13 @@ public abstract class ControllerSupport implements BaseController {
 		this.attribute.put(key, value);
 	}
 
+	/**
+	 * 用于查找网页录入值在数据库中是否有记录
+	 * @return
+	 * @throws Exception
+	 */
+	protected final boolean contract(String methodName)throws Exception
+	{
+		return this.executeUpdateMethod(methodName);
+	}
 }
