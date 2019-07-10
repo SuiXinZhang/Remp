@@ -5,7 +5,7 @@
 <%String path=request.getContextPath(); %>
 <html>
 <head>
-<title>新增销售计划</title>
+<title>新增营销方案</title>
 <style type="text/css">
   td{
       height:30px;
@@ -39,9 +39,9 @@ ${msg }
 			</caption>
 			
 			<tr>
-				<td>项目名称</td>
+				<td>方案名称</td>
 				<td>
-					<e:text name="aab102" required="true" autofocus="true" defval="${ins.aab102 }"/>
+					<e:text name="aab302" required="true" autofocus="true" defval="${ins.aab102 }"/>
 				</td>
 			</tr>
 			<tr>

@@ -26,15 +26,15 @@
 	
 	function onEdit(vaab101)
 	{
-		var vform = docunment.getElementById("myform");
-		vform.action="<%=path%>/findByIdPlan.html?aab101="+vaab101;
-		vform.submit();
+		var vform = document.getElementById("myform");
+	  	 vform.action="<%=path%>/ab01FindById.html?aab101="+vaab101;
+	  	 vform.submit();
 	}
 	
 	function onDel(vaab101)
     {
   	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/delByIdPlan.html?aab101="+vaab101;
+  	 vform.action="<%=path%>/ab01DelById.html?aab101="+vaab101;
   	 vform.submit();
     }
 
@@ -93,7 +93,7 @@
 	  					${vs.count }
 	  				</td>
 	  				<td>
-	  					<a href="#" onclick="onEdit('${ins.aab101 }')">${ins.aab102 }</a>
+	  					<a href="#" onclick="onEdit('${ins.aab101}')">${ins.aab102 }</a>
 	  				</td>
 	  				<td>${ins.aab103 }</td>
 				    <td>${ins.aab105 }</td>
@@ -148,9 +148,9 @@
 		    <td align="center">
 		       <input type="submit" name="next" value="²éÑ¯">
 		       <input type="submit" name="next" value="Ìí¼Ó" 
-		              formaction="<%=path%>/ab01Add.jsp">
+		              formaction="<%=path%>/ab/ab01Add.jsp">
 		       <input type="submit" id="del" name="next" value="É¾³ý" 
-		              formaction="<%=path%>/delEmp.html"  disabled="disabled">
+		              formaction="<%=path%>/ab01DelPlan.html"  disabled="disabled">
 		    </td>
 		  </tr>
 		</table>

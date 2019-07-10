@@ -1,13 +1,13 @@
 package com.remp.web.impl.ab;
 
-public class Ab01QueryServlet extends PlanControllerSupport 
+public class Ab02QueryServlet extends DetailedControllerSupport 
 {
 
 	@Override
 	public String execute() throws Exception 
 	{
 		this.savePageDate();
-		return "ab/ab01Query";
+		return "ab/ab02Edit";
 	}
 
 }
