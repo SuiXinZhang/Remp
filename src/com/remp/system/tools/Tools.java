@@ -220,4 +220,65 @@ public class Tools {
 		
 		
 	}
+	
+	/**
+	 * 获取房间排号,项目排号以及实际排号
+	 * @param key
+	 * @return
+	 * @throws Exception
+	 */
+	public static String getOrderNum(String key)throws Exception
+	{
+		int lastNumber = Tools.getNumberForOrder(key);
+		int size = String.valueOf(lastNumber).length();
+		
+		return baseCode1.substring(size)+lastNumber;
+	}
+	
+	/**
+	 * 获取预约排号
+	 * @param key
+	 * @return
+	 * @throws Exception
+	 */
+	public static int getNumberForOrder(String key)throws Exception
+	{
+		PreparedStatement pstm1 = null;
+		PreparedStatement pstm2 = null;
+		ResultSet rs = null;
+		try 
+		{
+			String sql1 = "select a.pkvalue from sequence a where pkname=?";
+			pstm1 = DBUtils.prepareStatement(sql1);
+			pstm1.setObject(1, key);
+			rs = pstm1.executeQuery();
+			int currentVal=0;
+			StringBuilder sql2 = new StringBuilder();
+			if(rs.next())
+			{
+				currentVal=rs.getInt(1);
+				sql2.append("update sequence")
+				    .append("   set pkvalue=?")
+				    .append(" where date_format(sdate,'%Y')=date_format(current_date,'%Y')")
+				    .append("   and pkname=?");
+			}
+			else 
+			{
+				sql2.append("insert into sequence(pkvalue,pkname,sdate)")
+				    .append("              values(?,?,current_date)");
+			}
+			pstm2 = DBUtils.prepareStatement(sql2.toString());
+			pstm2.setObject(1, ++currentVal);
+			pstm2.setObject(2, key);
+			pstm2.executeUpdate();
+			return currentVal;
+		}
+		finally 
+		{
+			rs.close();
+			pstm1.close();
+			pstm2.close();
+		}
+		
+	}
 }

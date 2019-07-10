@@ -162,4 +162,13 @@ public abstract class ControllerSupport implements BaseController {
 		this.attribute.put(key, value);
 	}
 
+	/**
+	 * 用于查找网页录入值在数据库中是否有记录
+	 * @return
+	 * @throws Exception
+	 */
+	protected final boolean contract(String methodName)throws Exception
+	{
+		return this.executeUpdateMethod(methodName);
+	}
 }
