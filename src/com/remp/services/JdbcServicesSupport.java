@@ -222,18 +222,28 @@ public abstract class JdbcServicesSupport implements BaseServices
 	 */
 	protected final void appendDoubleSql(final String sql,final String args[][])throws Exception
 	{
-		System.out.println(args.length);
-		PreparedStatement pstm = null;
-		for(int i = 0;i< args.length;i++)
+//		System.out.println(args.length);
+//		PreparedStatement pstm = null;
+//		for(int i = 0;i< args.length;i++)
+//		{
+//			pstm = DBUtils.prepareStatement(sql);
+//			for(int j = 0 ;j < args[i].length;j++)
+//			{
+//				pstm.setObject(j+1, args[i][j]);
+//			}
+//			PstmMetaData pmd = new PstmMetaData(pstm, false);
+//			pmdList.add(pmd);
+//		}
+		PreparedStatement pstm = DBUtils.prepareStatement(sql);
+		for(int i = 0;i<args.length;i++)
 		{
-			pstm = DBUtils.prepareStatement(sql);
-			for(int j = 0 ;j < args[i].length;j++)
+			for(int j = 0;j<args[i].length;j++)
 			{
 				pstm.setObject(j+1, args[i][j]);
 			}
-			PstmMetaData pmd = new PstmMetaData(pstm, false);
-			pmdList.add(pmd);
+			pstm.addBatch();
 		}
+		regPstmObject(pstm);
 	}
 	
 	   /**************************************************************
