@@ -12,7 +12,11 @@ import jdk.internal.org.objectweb.asm.tree.IntInsnNode;
 
 public class Ab01ServicesImpl extends JdbcServicesSupport 
 {
-	
+	/**
+	 * 批量删除
+	 * @return
+	 * @throws Exception
+	 */
 	private boolean batchDelete()throws Exception
 	{
 		String sql = "delete from ab01 where aab101=?";
@@ -162,7 +166,11 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 	}
 
 
-
+	/**
+	 * 添加销售计划表对应的明细表并初始化
+	 * @param typeNum
+	 * @throws Exception
+	 */
 	private void addDetail(int typeNum) throws Exception
 	{
 		StringBuilder sql = new StringBuilder()

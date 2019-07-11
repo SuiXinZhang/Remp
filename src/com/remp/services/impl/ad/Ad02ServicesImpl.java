@@ -17,7 +17,7 @@ public class Ad02ServicesImpl extends JdbcServicesSupport
 				this.get("aad202"),
 				this.get("aad203")
 		};
-		String sql2 = "delete from ad01 where aad101=?";
+		String sql2 = "update ad01 set aad116='1' where aad101=?";
 		this.executeUpdate(sql1.toString(), args);
 		this.appendSql(sql2, this.get("aad101"));
 		return this.executeTransaction();

@@ -29,7 +29,7 @@ ${msg}
 	  </tr>
 	  <tr>
 	  <td>房间号</td>
-	  <td><e:text required="true" name="aad302" defval="${param.aaa803 }"/></td>
+	  <td><e:text required="true" name="aad302" defval="${ins.aaa803 }"/></td>
 	  </tr>
 	  <tr>
 	  <td>项目排号</td>
@@ -51,6 +51,8 @@ ${msg}
 	<table border="1" width="95%" align="center">
 	  <tr>
 	    <td align="center">
+	       <input type="submit" name="next" value="验证"
+	       formaction="<%=path%>/ad/ad03customerCon.html">
 	       <input type="submit" name="next" value="确认"
 	       formaction="<%=path%>/ad/ad03addconfirm.html">
 	       <input type="submit" name="next" value="返回"
@@ -60,6 +62,7 @@ ${msg}
 	  </tr>
 	</table>
 	<input type="hidden" name="aaa801" value="${param.aaa801 }">
+	<input type="hidden" name="aac401" value="${ins.aac401 }">
 </form>
 </body>
 </html>

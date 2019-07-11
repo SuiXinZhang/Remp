@@ -167,8 +167,17 @@ public abstract class ControllerSupport implements BaseController {
 	 * @return
 	 * @throws Exception
 	 */
-	protected final boolean contract(String methodName)throws Exception
+	protected final Map<String, String> contract(String methodName)throws Exception
 	{
-		return this.executeUpdateMethod(methodName);
+		Map<String, String> ins = this.executeGetInfoMethod(methodName);
+		if(ins!=null)
+		{
+			this.saveAttribute("ins", ins);
+		}
+		else
+		{
+			this.saveAttribute("msg", "提示:该数据已删除或禁止访问");
+		}
+		return ins;
 	}
 }

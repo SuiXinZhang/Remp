@@ -57,6 +57,7 @@ ${msg }
 	  	<td>应收预约金</td>
 	  	<td>实收预约金</td>
 	  	<td>备注</td>
+	  	<td>预约状态</td>
 	  	<td></td>
 	  </tr>
 	  <c:choose>
@@ -75,6 +76,7 @@ ${msg }
 				    <td>${ins.aad111 }</td>
 				    <td>${ins.aad113 }</td>
 				    <td>${ins.aad115 }</td>
+				    <td>${ins.saad116 }</td>
 				    <td><a href="#" onclick="onDel('${ins.aad101}')">作废</a></td>
 				  </tr>
 		      </c:forEach>
@@ -93,12 +95,14 @@ ${msg }
 			            <td></td>
 			            <td></td>
 			            <td></td>
+			            <td></td>
 			          </tr>
 		      </c:forEach>
 	     </c:when>
 	     <c:otherwise>
 	        <c:forEach begin="1" step="1" end="15">
 	           <tr>
+	             <td></td>
 	             <td></td>
 	             <td></td>
 	             <td></td>
