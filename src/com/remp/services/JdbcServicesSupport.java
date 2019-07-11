@@ -569,6 +569,7 @@ public abstract class JdbcServicesSupport implements BaseServices
 			{
 				pstm.setObject(index++,param);
 			}
+			System.out.println(pstm);
 			rs = pstm.executeQuery();
 			Map<String,String> map = null;
 			if(rs.next())

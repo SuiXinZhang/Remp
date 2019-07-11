@@ -1,0 +1,11 @@
+package com.remp.web.impl.ac;
+
+public class Ac04DelByIdServlet extends Ac04ControllerSupport {
+	@Override
+	public String execute() throws Exception 
+	{
+		this.update("deleteById", "客户信息删除");
+		this.savePageDataForDelete();
+		return "ac/clientManage";
+	}
+}

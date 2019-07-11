@@ -77,7 +77,7 @@ ${msg}
 <tr>
 	<td>客户潜在跟进价值评估</td>
 	<td>
-	<e:select name="aac206" required="true" value="差:01,中等:02,良:03,优:045" defval="${ins.aac206 }"/>
+	<e:select name="aac206" required="true" value="差:01,中等:02,良:03,优:04" defval="${ins.aac206 }"/>
 	</td>
 </tr>
 

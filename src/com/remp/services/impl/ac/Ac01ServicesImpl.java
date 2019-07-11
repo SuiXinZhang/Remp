@@ -181,12 +181,12 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 	public boolean insertBatch(InputStream is,String suffix) throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("insert into ac01(aaa201,aac102,aac103,aac104,aac105,")
-				.append("				  aac106,aac107,aac108,aac109,aac110,")
-				.append("				  aac111,aaa402)")
+				.append("insert into ac01(aac101,aaa201,aac102,aac103,aac104,")
+				.append("				  aac105,aac106,aac107,aac108,aac109,")
+				.append("				  aac110,aac111,aaa402)")
 				.append("	 values (?,?,?,?,?,")
 				.append("			?,?,?,?,?,")
-				.append("			?,?)");
+				.append("			?,?,?)");
 
 		
 		try 
@@ -210,10 +210,11 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 					int columns = sheet.getRow(0).getLastCellNum();
 					if(row != null)
 					{
-						args[i-1] = new String[columns];
-						for(int j =0;j<columns;j++)
+						args[i-1] = new String[columns+1];
+						args[i-1][0] = String.valueOf(Tools.getSequence("aac101"));
+						for(int j =1;j<columns+1;j++)
 						{
-							Cell cell = row.getCell(j);
+							Cell cell = row.getCell(j-1);
 							if(cell != null)
 							{
 								if(cell.getCellType() == CellType.STRING)
