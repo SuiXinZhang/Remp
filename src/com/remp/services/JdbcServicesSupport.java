@@ -621,4 +621,40 @@ public abstract class JdbcServicesSupport implements BaseServices
 			DBUtils.close(pstm);
 		}
 	}
+	
+	/**
+	 * 单一条件查询,通过名字
+	 * @param sql
+	 * @param name
+	 * @return
+	 * @throws Exception
+	 */
+	protected final boolean queryForName(final String sql,final Object...args)throws Exception
+	{
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		try 
+		{
+			pstm = DBUtils.prepareStatement(sql);
+			int index=1;
+			for(Object param:args)
+			{
+				pstm.setObject(index++, param);
+			}
+			rs = pstm.executeQuery();
+			if(rs.next())
+			{
+				return true;
+			}
+			else 
+			{
+				return false;
+			}
+		} 
+		finally 
+		{
+			rs.close();
+			pstm.close();
+		}
+	}
 }

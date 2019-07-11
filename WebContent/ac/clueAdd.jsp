@@ -102,14 +102,18 @@ ${msg}
        <input type="submit" name="next" value="${empty param.aac101?'添加':'修改'}"
         formaction="<%=path %>/ac/${empty param.aac101?'ac01Add.html':'ac01Modify.html' }">
        <input type="submit" name="next" value="返回" 
-       formaction="<%=path %>/ac/clueManage.html" formnovalidate="formnovalidate">
+       formaction="<%=path %>/ac/ac01Query.html" formnovalidate="formnovalidate">
      </td>
    </tr>
 </table>
+
+<!-- 保存默认项目名,后期从session中得到 -->
 <input name="aaa201" value="1" type="hidden"/>
+
+
 <input type="hidden" name="aac101" value="${param.aac101 }">
 <!--<input type="hidden" name="qaac102" value="{param. }">  -->
-
+<e:hidden name="qaac111"/>
 <e:hidden name="qaac109"/>
 <e:hidden name="qaac103"/>
 <e:hidden name="qaac105"/>

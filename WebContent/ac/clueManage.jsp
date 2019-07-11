@@ -33,6 +33,12 @@ function onDel(vaac101)
 	myform.action = "<%=path%>/ac01DelById.html?aac101=" + vaac101;
 	myform.submit();
 }
+function onOpportunities(vaac101)
+{
+	var myform = document.getElementById("myform");
+	myform.action = "<%=path%>/ac04ChangeOpport.html?tag=1&aac101=" + vaac101;
+	myform.submit();
+}
 </script>
 <body>
 	<br>
@@ -57,9 +63,12 @@ function onDel(vaac101)
 				<td>来访方式</td>
 				<td><e:select  value="电话:电话,走访:走访" name="qaac103" header="true"/></td>
 				<td>更进级别</td>
-				<td><e:select value="1:1,2:2,3:3,4:4,5:5" name="qaac109"
-						header="true" /></td>
+				<td><e:select value="1:1,2:2,3:3,4:4,5:5" name="qaac109" header="true" /></td>
 			</tr>
+			<tr>
+				<td>是否已变更为销售机会</td>
+				<td><e:select value="是:1,否:2" name="qaac111" defval="2" header="true"/></td>
+				</tr>
 			<tr>
 				<td>来访日期[B]</td>
 				<td><e:date name="baac102" /></td>
@@ -78,6 +87,7 @@ function onDel(vaac101)
 				<td>来访方式</td>
 				<td>来访日期</td>
 				<td>跟进级别</td>
+				<td>销售机会状态</td>
 				<td></td>
 			</tr>
 			<!--
@@ -104,13 +114,16 @@ function onDel(vaac101)
 							<td>${ins.aac103 }</td>
 							<td>${ins.aac102 }</td>
 							<td>${ins.aac109 }</td>
+							<td>${ins.aac111 }</td>
 							<td>
 							<a href="#" onClick="onDel('${ins.aac101}')">删除</a>
+							<a href="#" onClick="onOpportunities('${ins.aac101}')">转销售机会</a>
 							</td>
 						</tr>
 					</c:forEach>
 					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
 						<tr>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -127,6 +140,7 @@ function onDel(vaac101)
 				<c:otherwise>
 					<c:forEach begin="1" end="15" step="1">
 						<tr>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>

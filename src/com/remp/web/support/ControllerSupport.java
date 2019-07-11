@@ -162,4 +162,22 @@ public abstract class ControllerSupport implements BaseController {
 		this.attribute.put(key, value);
 	}
 
+	/**
+	 * 用于查找网页录入值在数据库中是否有记录
+	 * @return
+	 * @throws Exception
+	 */
+	protected final Map<String, String> contract(String methodName)throws Exception
+	{
+		Map<String, String> ins = this.executeGetInfoMethod(methodName);
+		if(ins!=null)
+		{
+			this.saveAttribute("ins", ins);
+		}
+		else
+		{
+			this.saveAttribute("msg", "提示:该数据已删除或禁止访问");
+		}
+		return ins;
+	}
 }
