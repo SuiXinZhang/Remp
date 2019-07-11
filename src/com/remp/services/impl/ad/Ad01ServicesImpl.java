@@ -11,9 +11,11 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 	public List<Map<String, String>> query()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select aad101,aad102,aad103,aad104,aad105,")
-				.append("       aad109,aad110,aad111,aad113,aad115")
-				.append("  from ad01")
+				.append("select a.aad101,a.aad102,a.aad103,a.aad104,a.aad105,")
+				.append("       a.aad109,a.aad110,a.aad111,a.aad113,a.aad115,")
+				.append("       s.fvalue saad116")			
+				.append("  from ad01 a,syscode s")
+				.append(" where a.aad116=s.fcode and s.fname='aad116'")
 				;
 		return this.queryForList(sql.toString());
 	}
@@ -28,10 +30,12 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ad01(aad102,aad103,aad104,aad105,aad106,")
 				.append("                 aad107,aad108,aad109,aad110,aad111,")
-				.append("                aad112,aad113,aad114,aad115,aaa201)")
+				.append("                 aad112,aad113,aad114,aad115,aaa201,")
+				.append("                 aad116,aac401)")
 				.append("          values(?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
-				.append("                 ?,?,?,?,1)")
+				.append("                 ?,?,?,?,1,")
+				.append("                 0,?)")
 				;
 		Object args[]={
 				this.get("oaad102"),
@@ -48,17 +52,20 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 				this.get("oaad113"),
 				this.get("oaad114"),
 				this.get("oaad115"),
-				
+				this.get("oaac401")
 		};
 		System.out.println(args[0]);
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
 	
-	public boolean findByName()throws Exception
+	public Map<String, String> findByName()throws Exception
 	{
-		String sql = "select aac403 from ac04 where aac403=?";
-		Object aac403 = this.get("caac403");
-		return this.queryForName(sql, aac403);
+		String sql = "select aac401,aac403,aac407 from ac04 where aac403=? and aac407=?";
+		Object args[] ={
+				this.get("caac403"),
+				this.get("caac407")
+		};
+		return this.queryForMap(sql, args);
 	}
 
 	public Map<String, String> findById()throws Exception

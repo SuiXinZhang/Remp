@@ -629,14 +629,18 @@ public abstract class JdbcServicesSupport implements BaseServices
 	 * @return
 	 * @throws Exception
 	 */
-	protected final boolean queryForName(final String sql,final Object name)throws Exception
+	protected final boolean queryForName(final String sql,final Object...args)throws Exception
 	{
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 		try 
 		{
 			pstm = DBUtils.prepareStatement(sql);
-			pstm.setObject(1, name);
+			int index=1;
+			for(Object param:args)
+			{
+				pstm.setObject(index++, param);
+			}
 			rs = pstm.executeQuery();
 			if(rs.next())
 			{

@@ -25,12 +25,14 @@ ${msg }
     </caption>
 	<tr>
 		<td>项目名称</td>
-		<td><e:text required="true" readonly="true" name="oaad102" defval="${ins.aad102 }"/></td>
+		<td><e:text required="true" name="oaad102" defval="${ins.aad102 }"/></td>
 		<td>实际排号</td>
-		<td><e:text required="true" name="oaad104" defval="${ins.aad104 }"/></td>
+		<td><e:text name="oaad104" defval="${ins.aad104 }"/></td>
 	</tr>
+	<tr>
 		<td>客户名称</td>
-		<td><e:text required="true" readonly="true" name="oaad103" defval="${ins.aad103 }"/></td>
+		<td><e:text required="true" name="oaad103" defval="${ins.aac403 }"/></td>
+	</tr>
     <tr>
     	<td>预约日期</td>
     	<td><e:date required="true" name="oaad105" defval="${ins.aad105 }"/></td>
@@ -39,9 +41,9 @@ ${msg }
 	</tr>
 	<tr>
 		<td>项目排号</td>
-		<td><e:text required="true" name="oaad107" defval="${ins.aad107 }"/></td>
+		<td><e:text name="oaad107" defval="${ins.aad107 }"/></td>
 		<td>房间排号</td>
-		<td><e:text required="true" name="oaad108" defval="${ins.aad108 }"/></td>
+		<td><e:text name="oaad108" defval="${ins.aad108 }"/></td>
 	</tr>
 	<tr>
 		<td>房间</td>
@@ -64,7 +66,7 @@ ${msg }
 		<td>业务员</td>
 		<td><e:text required="true" name="oaad114" defval="${ins.aad114 }"/></td>
 		<td>备注</td>
-		<td><e:text name="oaad115" defval="${empty param.aad101?'':'已退号' }"/></td>
+		<td><e:text name="oaad115"/></td>
 	</tr>
 	<c:if test="${!empty param.aad101 }">
 	   <tr>
@@ -76,17 +78,19 @@ ${msg }
    </c:if>
 	<tr>
 		<td colspan="4" align="center">
-		<input type="submit" name="text" value="${empty param.aad101?'添加':'退号' }"
-		formaction="<%=path%>/ad/ad02addWithdrawOrder.html">
+		<input type="submit" name="text" value="添加">
 		<input type="submit" name="next" value="修改" 
               formaction="<%=path%>/ad/ad01modifyOrder.html">
-		<input type="submit" name="next" value="返回" 
+		<input type="submit" name="next" value="${empty param.aad101?'查看':'返回' }" 
               formaction="<%=path%>/ad/ad01queryOrder.html"
               formnovalidate="formnovalidate">
+        <input type="submit" name="text" value="退号" 
+              formaction="<%=path%>/ad/ad02addWithdrawOrder.html">
 		</td>
 	</tr>
 </table>
 <input type="hidden" name="aad101" value="${param.aad101 }">
+<input type="hidden" name="oaac401" value="${ins.aac401 }">
 </form>
 </body>
 </html>

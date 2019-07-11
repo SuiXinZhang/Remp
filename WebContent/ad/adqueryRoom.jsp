@@ -102,7 +102,7 @@ ${msg }
 	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				    <td><input type="hidden" name="aaa803" value="${ins.aaa803 }"></td>
+				    <td></td>
 				    <td>${vs.count }</td>
 				    <td>${ins.aaa803}</td>
 				    <td>${ins.aaa804 }</td>
@@ -152,9 +152,7 @@ ${msg }
 	        </c:forEach>
 	     </c:otherwise>
 	   </c:choose>
-	   
 	</table>
-	
 	<table border="1" width="95%" align="center">
 	  <tr>
 	    <td align="center">
