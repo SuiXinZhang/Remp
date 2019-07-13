@@ -99,7 +99,7 @@ public class Aa05ServicesImpl extends JdbcServicesSupport {
 	}
 	
 	/**
-	 * 删除项目
+	 * 删除户型
 	 * @return
 	 * @throws Exception
 	 */
