@@ -1,4 +1,4 @@
-<%@ page language="java"    pageEncoding="GBK"%>
+<%@ page language="java"    pageEncoding="GBK"  %>
 <%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -31,6 +31,12 @@ function onDel(vaac401)
 {
 	var myform = document.getElementById("myform");
 	myform.action = "<%=path%>/ac04DelById.html?aac401=" + vaac401;
+	myform.submit();
+}
+function onFollow(vaac401,vaac402,vaac403)
+{
+	var myform = document.getElementById("myform");
+	myform.action = "<%=path%>/ac/addFollow.jsp?aac401=" + vaac401+ "&aac402=" + vaac402 +"&aac403=" +vaac403;
 	myform.submit();
 }
 </script>
@@ -74,6 +80,7 @@ function onDel(vaac401)
 				<td>经济状况</td>
 				<td>邮箱</td>
 				<td></td>
+				<td></td>
 			</tr>
 			<!--
 				         注意事项
@@ -91,7 +98,7 @@ function onDel(vaac401)
 							</td>
 							<td>${vs.count }</td>
 							<td>
-							<a href="#" onclick = "onEdit('${ins.aac401 }')" >${ins.aac403 }</a>
+							<a href="#" onclick = "onEdit('${ins.aac401}')" >${ins.aac403 }</a>
 							</td>
 							<td>${ins.aac402 }</td>
 							<td>${ins.aac407 }</td>
@@ -102,6 +109,9 @@ function onDel(vaac401)
 							<td>${ins.aac408 }</td>
 							<td>
 							<a href="#" onClick="onDel('${ins.aac401}')">删除</a>
+							</td>
+							<td>
+							<a href="#" onClick="onFollow('${ins.aac401}','${ins.aac402 }','${ins.aac403 }')">添加跟进</a>
 							</td>
 						</tr>
 					</c:forEach>

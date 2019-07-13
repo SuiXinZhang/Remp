@@ -21,26 +21,33 @@ function onSelect(vstate)
 	var delB = document.getElementById("del");
 	delB.disabled = (count == 0);
 }
-function onEdit(vaac401)
+function onEdit(vaac301)
 {
 	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/ac04FindById.html?aac401=" + vaac401;
+	myform.action = "<%=path%>/ac03FindById.html?aac301=" + vaac301;
 	myform.submit();
 }
-function onDel(vaac401)
+function onDel(vaac301)
 {
 	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/ac04DelById.html?aac401=" + vaac401;
+	myform.action = "<%=path%>/ac03DelById.html?aac301=" + vaac301;
+	myform.submit();
+}
+function onBatchUpdate()
+{
+	
+	var myform = document.getElementById("myform");
+	myform.action = "<%=path%>/ac/ac03BatchUpdate.html";
 	myform.submit();
 }
 </script>
 <body>
 	<br>
 	<br>
-	<form action="<%=path%>/ac/ac04Query.html" id = "myform" method="post">
+	<form action="<%=path%>/ac/ac03Query.html" id = "myform" method="post">
 		<table border="1" align="center" width="95%">
 			<caption>
-				客户台账管理
+				客户跟进管理
 				<hr width="180px">
 			</caption>
 			<tr>
@@ -52,14 +59,23 @@ function onDel(vaac401)
 				<td>客户编号</td>
 				<td><e:text name="qaac402" /></td>
 			</tr>
+			<tr>
+				<td>跟进业务员</td>
+				<td><e:text name="qaac306" /></td>
+				<td>跟进业务员编号</td>
+				<td><e:text name="qaac307" /></td>
+			</tr>
 
 			<tr>
-				<td>邮箱</td>
-				<td><e:email  name="qaac405" /></td>
-				<td>联系电话</td>
-				<td><e:text  name="qaac407" /></td>
+				<td>跟进状态</td>
+				<td><e:select value="待跟进:01,已跟进:02,待再次跟进:03"  name="qaac304" /></td>
 			</tr>
-			
+			<tr>
+				<td>跟进时间[B]</td>
+				<td><e:date name="baac305" /></td>
+				<td>跟进时间[E]</td>
+				<td><e:date name="eaac305" /></td>
+			</tr>
 		</table>
 		<table border="1" align="center" width="95%">
 			<tr>
@@ -67,12 +83,11 @@ function onDel(vaac401)
 				<td>序号</td>
 				<td>客户名</td>
 				<td>客户编号</td>
-				<td>联系电话</td>
-				<td>性别</td>
-				<td>民族</td>
-				<td>职业</td>
-				<td>经济状况</td>
-				<td>邮箱</td>
+				<td>跟进内容</td>
+				<td>跟进状态</td>
+				<td>跟进时间</td>
+				<td>跟进业务员</td>
+				<td>跟进业务员编号</td>
 				<td></td>
 			</tr>
 			<!--
@@ -87,27 +102,25 @@ function onDel(vaac401)
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<tr>
 							<td>
-							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aac401 }" >
+							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aac301 }" >
 							</td>
 							<td>${vs.count }</td>
 							<td>
-							<a href="#" onclick = "onEdit('${ins.aac401 }')" >${ins.aac403 }</a>
+							<a href="#" onclick = "onEdit('${ins.aac301 }')" >${ins.aac403 }</a>
 							</td>
 							<td>${ins.aac402 }</td>
-							<td>${ins.aac407 }</td>
-							<td>${ins.aac404 }</td>
-							<td>${ins.aac406 }</td>
-							<td>${ins.aac413 }</td>
-							<td>${ins.aac410 }</td>
-							<td>${ins.aac408 }</td>
+							<td>${ins.aac303 }</td>
+							<td>${ins.cnaac304 }</td>
+							<td>${ins.aac305 }</td>
+							<td>${ins.aac306 }</td>
+							<td>${ins.aac307 }</td>
 							<td>
-							<a href="#" onClick="onDel('${ins.aac401}')">删除</a>
+							<a href="#" onClick="onDel('${ins.aac301}')">删除</a>
 							</td>
 						</tr>
 					</c:forEach>
 					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
 						<tr>
-							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -134,7 +147,6 @@ function onDel(vaac401)
 							<td></td>
 							<td></td>
 							<td></td>
-							<td></td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
@@ -144,10 +156,12 @@ function onDel(vaac401)
 		<table border="1" align="center" width="95%">
 			<tr>
 				<td align="center"><input type="submit" value="查询" name="next">
-					<input type="submit" value="添加" name="next"
-					formaction="<%=path %>/ac/addClient.jsp"> 
+					<input type="submit" value="添加" name="next" disabled="disabled"
+					formaction="<%=path %>/ac/addFollow.jsp"> 
+				
+					<input type="button" value="批量修改状态" onclick="onBatchUpdate()"  name="next1" id="update" >
 					<input type="submit" value="删除" name="next" disabled="disabled"
-					formaction="<%=path %>/ac/ac04Delete.html" id="del" ></td>
+					formaction="<%=path %>/ac/ac03Delete.html" id="del" ></td>
 			</tr>
 		</table>
 	</form>

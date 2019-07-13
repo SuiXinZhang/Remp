@@ -53,7 +53,10 @@ public abstract class ControllerSupport implements BaseController {
 			this.saveAttribute("msg", "提示:该数据已删除或禁止访问");
 		}
 	}
-	
+	/**
+	 * 通过ID查询添加/修改页面信息
+	 * @throws Exception
+	 */
 	protected final void savePageInstance() throws Exception
 	{
 		Map<String,String> ins = this.services.findById();
