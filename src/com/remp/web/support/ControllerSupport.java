@@ -53,6 +53,7 @@ public abstract class ControllerSupport implements BaseController {
 			this.saveAttribute("msg", "提示:该数据已删除或禁止访问");
 		}
 	}
+	
 	/**
 	 * 通过ID查询添加/修改页面信息
 	 * @throws Exception
@@ -84,6 +85,8 @@ public abstract class ControllerSupport implements BaseController {
 		String msg = this.executeUpdateMethod(utype)?"成功":"失败";
 		this.saveAttribute("msg",msgText + msg);
 	}
+	
+
 	
 	/**
 	 * 带有编号的消息提示的更新行为

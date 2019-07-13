@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.remp.services.JdbcServicesSupport;
+import com.remp.system.tools.Tools;
 
 /**
  * 此类用于操作团队部门表aa03
@@ -19,7 +20,7 @@ public class Aa03ServicesImpl extends JdbcServicesSupport {
 	public Map<String,String> findById()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-    			.append("select a.aaa302,a.aaa303,a.aaa304,a.aaa305")
+    			.append("select a.aaa301,a.aaa302,a.aaa303,a.aaa304,a.aaa305")
     			.append("  from aa03 a")
     			.append(" where a.aaa301=?")
     			;
@@ -31,7 +32,7 @@ public class Aa03ServicesImpl extends JdbcServicesSupport {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Map<String,String>> findChildTeam()throws Exception
+	public List<Map<String,String>> query()throws Exception
 	{
 		if(this.get("aaa301")==null)//没有父级团队,说明为查询1级团队
 		{
@@ -61,11 +62,15 @@ public class Aa03ServicesImpl extends JdbcServicesSupport {
 	 */
 	public boolean addTeam()throws Exception
 	{
+		int aaa301 = Tools.getSequence("aaa301");
+		this.put("aaa301", aaa301);
+		
 		StringBuilder sql=new StringBuilder()
-				.append("insert into aa03(aaa201,aaa302,aaa303,aaa304,aaa305)")
-				.append("		value(?,?,?,?,?)")
+				.append("insert into aa03(aaa301,aaa201,aaa302,aaa303,aaa304,aaa305)")
+				.append("		value(?,?,?,?,?,?)")
     			;
 		Object []args = {//默认创建顶级团队
+				aaa301,
 				this.get("aaa201"),
 				0,
 				this.get("aaa303"),
