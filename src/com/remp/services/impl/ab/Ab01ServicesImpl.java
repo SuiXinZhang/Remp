@@ -49,7 +49,7 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("update ab01 a")
 				.append("	set a.aab102=?,a.aab103=?,a.aab104=?,a.aab105=?,a.aab106=?,")
-				.append("			a.aab107=?,a.aab108=?,a.aab109=?,a.aab110=?")
+				.append("		a.aab107=?,a.aab108=?,a.aab109=?,a.aab110=?")
 				.append("	where a.aab101=?")
 				;
 		
@@ -77,9 +77,9 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 	private boolean addPlan()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("insert into ab01(aab102,aab103,aab104,aab105,aab106,")
+				.append("insert into ab01(aab102,aab103,aab105,aab106,")
 				.append("				  aab107,aab108,aab109,aab110)")
-				.append("		   values(?,?,?,?,?,")
+				.append("		   values(?,?,?,?,")
 				.append("		          ?,?,?,?);")
 				;
 		
@@ -87,7 +87,6 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 		Object args[]={
 				this.get("aab102"),
 				this.get("aab103"),
-				this.get("aab104"),
 				this.get("aab105"),
 				this.get("aab106"),
 				this.get("aab107"),
@@ -111,8 +110,8 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 		
 		//∂®“ÂSQL
 		StringBuilder sql = new StringBuilder()
-				.append("select aab101,aab102,aab103,aab104,aab105,")
-				.append("		aab106,aab107,aab108,aab109,aab110")
+				.append("select aab101,aab102,aab103,aab105,aab106,")
+				.append("		aab107,aab108,aab109,aab110")
 				.append("  from ab01")
 				.append(" where true")
 				;
@@ -145,8 +144,8 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 	public Map<String, String> findById() throws Exception 
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select aab102,aab103,aab104,aab105,aab106,")
-				.append("			 aab107,aab108,aab109,aab110")
+				.append("select aab102,aab103,aab105,aab106,aab107,")
+				.append("		aab108,aab109,aab110")
 				.append("		from ab01")
 				.append("    where aab101=?")
 				;

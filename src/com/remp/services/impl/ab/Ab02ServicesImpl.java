@@ -10,7 +10,7 @@ public class Ab02ServicesImpl extends JdbcServicesSupport
 {
 
 	/**
-	 * 不定条件查询
+	 * 查询计划明细表
 	 */
 	public List<Map<String, String>> query()throws Exception
 	{
@@ -19,10 +19,11 @@ public class Ab02ServicesImpl extends JdbcServicesSupport
 		
 		//定义SQL
 		StringBuilder sql = new StringBuilder()
-				.append("select aab101,aab202,aab203,aab204,aab205,")
-				.append("		aab206,aab207")
-				.append("  from ab02")
-				.append(" where aab101=?")
+				.append("select a.aab101,b.fvalue cnaab202,a.aab203,a.aab204,a.aab205,")
+				.append("			 a.aab206,a.aab207")
+				.append("  from ab02 a,syscode b")
+				.append(" where a.aab202=b.fcode and b.fname='aab202'")
+				.append("	 and a.aab101=?")
 				;
 		
 		//参数列表

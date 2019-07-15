@@ -20,7 +20,8 @@ ${msg }
 				</td>
 				<td>活动类型</td>
 				<td>
-					<e:text name="aab403" required="true" defval="${ins.aab403 }"/>
+					<e:select name="aab403" required="true" 
+					value="线下营销活动:01,网络营销活动:02,电视营销活动:03" defval="${ins.aab403 }"/>
 				</td>
 			</tr>
 			<tr>	
@@ -40,14 +41,16 @@ ${msg }
 				</td>
 			</tr>
 			<tr>
-			<td colspan="4" align="center">
-				<input type="submit" name="next" value="完成"
-				formaction="<%=path%>/ab04Edit.html?aab301=${param.aab301}">
-			</td>
-		</tr>
+				<td colspan="4" align="center">
+					<input type="submit" name="next" value="完成"
+					formaction="<%=path%>/ab04Edit.html">
+					<input type="submit" name="next" value="返回"
+					formaction="<%=path%>/ab03Query.html"
+					formnovalidate="formnovalidate">
+				</td>
+			</tr>
 		</table>
 		<input type="hidden" name="aab301" value="${param.aab301 }">
 	</form>
-
 </body>
 </html>

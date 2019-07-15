@@ -41,6 +41,19 @@ public abstract class ControllerSupport implements BaseController {
 		}	
 	}
 	
+	protected final void QueryInfo(String methodName)throws Exception
+	{
+		List<Map<String,String>> rows=this.executeQueryInfoMethod(methodName);
+		if(rows.size()>0)
+		{
+			this.saveAttribute("rows", rows);
+		}
+		else
+		{
+			this.saveAttribute("msg", "没有符合条件的数据!");
+		}	
+	}
+	
 	protected final void saveInfo(String methodName)throws Exception
 	{
 		Map<String, String> ins = this.executeGetInfoMethod(methodName);
@@ -134,6 +147,14 @@ public abstract class ControllerSupport implements BaseController {
 		Method method = this.services.getClass().getDeclaredMethod(methodName);
 		method.setAccessible(true);
 		return (Map<String, String>)method.invoke(services);
+	}
+	
+	private List<Map<String, String>> executeQueryInfoMethod(String methodName)throws Exception
+	{
+		System.out.println(methodName);
+		Method method = this.services.getClass().getDeclaredMethod(methodName);
+		method.setAccessible(true);
+		return (List<Map<String, String>>)method.invoke(services);
 	}
 	
 	/*****************************************

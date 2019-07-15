@@ -6,6 +6,7 @@ public class Ab04EditServlet extends Ab04ControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("edit", "²Ù×÷");
+		this.savePageInstance();
 		return "ab/ab04Edit";
 	}
 
