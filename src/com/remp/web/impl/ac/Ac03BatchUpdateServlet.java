@@ -6,7 +6,7 @@ public class Ac03BatchUpdateServlet extends Ac03ControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("batchUpdate", "批量更新跟进状态");
-		this.savePageInstance();
+		this.savePageDate();
 		return "ac/followManage";
 	}
 
