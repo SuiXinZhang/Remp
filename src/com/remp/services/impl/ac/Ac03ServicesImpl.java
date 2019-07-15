@@ -9,13 +9,25 @@ import com.remp.system.tools.Tools;
 
 public class Ac03ServicesImpl extends JdbcServicesSupport {
 	
+	private boolean modifyFollow() throws Exception
+	{
+		String sql = "update ac03 set aac306 = ? , aac307 = ? where aac301 = ?";
+		Object[] stateList = 
+		{
+				this.get("maac306"),
+				this.get("maac307")
+		};
+		System.out.println(this.get("maac306"));
+		System.out.println(this.get("maac307"));
+		return this.batchUpdate(sql, stateList, this.getIdList("idlist"));
+	}
 	
 	private boolean batchUpdate() throws Exception
 	{
 		System.out.println(this.getIdList("idlist"));
-		System.out.println(this.get("aac304"));
+		System.out.println(this.get("maac304"));
 		String sql = "update ac03 set aac304 = ? where aac301 = ?";
-		return this.batchUpdate(sql, this.get("aac304"),this.getIdList("idlist"));
+		return this.batchUpdate(sql, this.get("maac304"),this.getIdList("idlist"));
 	}
 	
 	private boolean modify() throws Exception
@@ -71,6 +83,7 @@ public class Ac03ServicesImpl extends JdbcServicesSupport {
 	private boolean delete() throws Exception
 	{
 		String sql  = "delete from ac03 where aac301 = ?";
+		System.out.println(this.getIdList("idlist"));
 		return this.batchUpdate(sql, this.getIdList("idlist"));
 	}
 	
@@ -84,7 +97,6 @@ public class Ac03ServicesImpl extends JdbcServicesSupport {
 		Object aac307 = this.get("qaac307");
 		Object baac305 = this.get("baac305");
 		Object eaac305 = this.get("eaac305");
-		
 		List<Object> args = new ArrayList<>();
 		
 		StringBuilder sql = new StringBuilder()

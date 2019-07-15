@@ -19,6 +19,10 @@ function onSelect(vstate)
 {
 	vstate?count++:count--;
 	var delB = document.getElementById("del");
+	var batchUpdateB = document.getElementById("update");
+	var modifyFollow = document.getElementById("modifyFollow");
+	modifyFollow.disabled = (count == 0);
+	batchUpdateB.disabled= (count ==0);
 	delB.disabled = (count == 0);
 }
 function onEdit(vaac301)
@@ -35,10 +39,46 @@ function onDel(vaac301)
 }
 function onBatchUpdate()
 {
-	
+	//formaction="<%=path%>/ac/ac03BatchUpdate.html"
 	var myform = document.getElementById("myform");
 	myform.action = "<%=path%>/ac/ac03BatchUpdate.html";
-	myform.submit();
+	var maac304 = document.getElementById("maac304");
+	console.log(maac304);
+	if(maac304.value != null)
+	{
+		myform.submit();
+	}
+	else 
+	{
+		alert("请选择修改后的跟进状态类型")
+	}
+}
+function onBatchUpdate2()
+{
+	var myform = document.getElementById("myform");
+	myform.action = "<%=path%>/ac/ac03ModifyFollow.html";
+	var maac306 = document.getElementById("maac306");
+	console.log(maac306);
+	var maac307 = document.getElementById("maac307");
+	console.log(maac307);
+	alert(maac307.value);
+	if(maac306.value != null)
+	{
+		if(maac307.value != null)
+		{
+			myform.submit();
+		}
+		else 
+		{
+			alert("添加业务员编号");
+		}
+	}
+	else 
+	{
+		alert("添加业务员名称");
+	}
+	
+	
 }
 </script>
 <body>
@@ -65,10 +105,17 @@ function onBatchUpdate()
 				<td>跟进业务员编号</td>
 				<td><e:text name="qaac307" /></td>
 			</tr>
-
+			<tr>
+				<td>添加跟进业务员</td>
+				<td><e:text name="maac306" id="maac306"/></td>
+				<td>跟进业务员编号</td>
+				<td><e:text name="maac307" id="maac307"/></td>
+			</tr>
 			<tr>
 				<td>跟进状态</td>
-				<td><e:select value="待跟进:01,已跟进:02,待再次跟进:03"  name="qaac304" /></td>
+				<td><e:select value="待跟进:01,已跟进:02,待再次跟进:03"  name="qaac304" header="true"/></td>
+				<td>修改后的跟进状态</td>
+				<td><e:select value="待跟进:01,已跟进:02,待再次跟进:03" id="maac304" name="maac304" header="true" /></td>
 			</tr>
 			<tr>
 				<td>跟进时间[B]</td>
@@ -158,13 +205,14 @@ function onBatchUpdate()
 				<td align="center"><input type="submit" value="查询" name="next">
 					<input type="submit" value="添加" name="next" disabled="disabled"
 					formaction="<%=path %>/ac/addFollow.jsp"> 
-				
-					<input type="button" value="批量修改状态" onclick="onBatchUpdate()"  name="next1" id="update" >
+					<input type="button" value="批量修改状态"  disabled="disabled" onclick="onBatchUpdate()"
+					  name="next1" id="update" >
+					  <input type="button" value="批量添加跟进业务员"  disabled="disabled" onclick="onBatchUpdate2()"
+					  name="next2" id="modifyFollow" >
 					<input type="submit" value="删除" name="next" disabled="disabled"
 					formaction="<%=path %>/ac/ac03Delete.html" id="del" ></td>
 			</tr>
 		</table>
 	</form>
-
 </body>
 </html>

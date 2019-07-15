@@ -13,9 +13,10 @@ tr
 	height: 25px;
 }
 </style>
+
 <script type="text/javascript">
 var count = 0;
-function onSelect(vstate)
+function onSelect2(vstate)
 {
 	vstate?count++:count--;
 	var delB = document.getElementById("del");
@@ -35,8 +36,11 @@ function onDel(vaac401)
 }
 function onFollow(vaac401,vaac402,vaac403)
 {
+	var aac403 = document.getElementById("vaac403");
+	aac403.value = vaac403;
+	console.log(aac403);
 	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/ac/addFollow.jsp?aac401=" + vaac401+ "&aac402=" + vaac402 +"&aac403=" +vaac403;
+	myform.action = "<%=path%>/ac/addFollow.jsp?aac401=" + vaac401+ "&aac402=" + vaac402 ;
 	myform.submit();
 }
 </script>
@@ -94,7 +98,7 @@ function onFollow(vaac401,vaac402,vaac403)
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<tr>
 							<td>
-							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aac401 }" >
+							<input type="checkbox" onclick="onSelect2(this.checked)" class="idlist"  name="idlist" value="${ins.aac401 }">
 							</td>
 							<td>${vs.count }</td>
 							<td>
@@ -160,7 +164,9 @@ function onFollow(vaac401,vaac402,vaac403)
 					formaction="<%=path %>/ac/ac04Delete.html" id="del" ></td>
 			</tr>
 		</table>
+		<input type="hidden" name="aac403"  id="vaac403" value = "">
 	</form>
 
 </body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 </html>
