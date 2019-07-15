@@ -67,6 +67,10 @@ public abstract class ControllerSupport implements BaseController {
 		}
 	}
 	
+	/**
+	 * 通过ID查询添加/修改页面信息
+	 * @throws Exception
+	 */
 	protected final void savePageInstance() throws Exception
 	{
 		Map<String,String> ins = this.services.findById();
@@ -94,6 +98,8 @@ public abstract class ControllerSupport implements BaseController {
 		String msg = this.executeUpdateMethod(utype)?"成功":"失败";
 		this.saveAttribute("msg",msgText + msg);
 	}
+	
+
 	
 	/**
 	 * 带有编号的消息提示的更新行为
