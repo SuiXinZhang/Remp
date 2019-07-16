@@ -143,7 +143,8 @@ function onDel(vaaa401)
 		
 		<input type="hidden" name="aaa301" value="${param.aaa301 }">
 		<input type="hidden" name="aaa201" value="1">
-		<input type="hidden" name="aaa405" value="${param.aaa302 }">
+		<input type="hidden" name="aaa601" value="${param.aaa601 }">
+		<input type="hidden" name="aaa602" value="${param.aaa708 }">
 	</form>
 
 </body>

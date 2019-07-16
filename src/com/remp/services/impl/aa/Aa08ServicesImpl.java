@@ -1,13 +1,14 @@
 package com.remp.services.impl.aa;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.remp.services.JdbcServicesSupport;
 
 /**
- * 房间信息表（单一实例查询，批量查询，批量不定条件查询，删除单一实例，批量删除，修改单一实例，批量修改，生成房间）
+ * 房间信息表（单一实例查询，批量不定条件查询，删除单一实例，批量删除，修改单一实例，批量修改）
  * @author Phoenix
  *
  */
@@ -18,35 +19,35 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 	public Map<String,String> findById()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-    			.append("select a.aaa802,a.aaa803,a.aaa804,a.aaa805,a.aaa806,")
-				.append("       a.aaa807,a.aaa808,a.aaa809,a.aaa810,a.aaa811,")
-				.append("       a.aaa812")
-    			.append("  from aa08 a")
-    			.append(" where a.aaa801=?")
-    			;
-	    return	this.queryForMap(sql.toString(), this.get("aaa801"));
-	}
-	
-	/**
-	 * 查询当前楼栋的所有房间
-	 * @return
-	 * @throws Exception
-	 */
-	public List<Map<String,String>> findAllRooms()throws Exception
-	{
-		StringBuilder sql=new StringBuilder()
-    			.append("select a.aaa801,a.aaa802,a.aaa803,a.aaa804,a.aaa805,")
+    			.append("select a.aaa801,a.aaa802,a.aaa803,a.aaa804,s1.fvalue cnaaa805,")
 				.append("       a.aaa806,a.aaa807,a.aaa808,a.aaa809,a.aaa810,")
-				.append("       a.aaa811,,a.aaa812")
-				.append("  from aa08 a")
-				.append("  where a.aaa701=?")
-				;
-
-		return this.queryForList(sql.toString(),this.get("aaa701"));
+				.append("       a.aaa811,a.aaa812")
+    			.append("  from aa08 a,syscode s1")
+    			.append(" where a.aaa801=? and a.aaa805 = s1.fcode and s1.fname = 'aaa805'")
+    			;
+	    Map<String,String> m = this.queryForMap(sql.toString(), this.get("aaa801"));
+	    
+	    //获取所有的户型类型用于用户修改
+		String sql2 = "select aaa502 from aa05";
+		List<Map<String,String>> l =this.queryForList(sql2);
+		StringBuilder aaa502 = new StringBuilder(); 
+		for(Map<String,String> tem:l) {
+			aaa502.append(tem.get("aaa502")+":"+tem.get("aaa502")+",");
+		}
+		//去掉最后一个逗号
+		int a = aaa502.lastIndexOf(",");
+		aaa502.delete(a, a);
+		
+		//将户型类型添加到m中
+		m.put("aaa502", aaa502.toString());
+		
+		return m;
+		
 	}
 	
+	
 	/**
-	 * 不定条件查询房间
+	 * 批量不定条件查询房间
 	 */
 	public List<Map<String,String>> query()throws Exception
 	{
@@ -68,13 +69,16 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 		
 		//定义SQL主体
 		StringBuilder sql=new StringBuilder()
-    			.append("select a.aaa801,a.aaa802,a.aaa803,a.aaa804,a.aaa805,")
+    			.append("select a.aaa801,a.aaa802,a.aaa803,a.aaa804,s1.fvalue cnaaa805,")
 				.append("       a.aaa806,a.aaa807,a.aaa808,a.aaa809,a.aaa810,")
-				.append("       a.aaa811,,a.aaa812")
-				.append("  from aa08 a")
+				.append("       a.aaa811,a.aaa812")
+				.append("  from aa08 a ,syscode s1")
+				.append("  where a.aaa701=? and a.aaa805 = s1.fcode and s1.fname = 'aaa805'")
 				;
 		
 		List<Object> param = new ArrayList<>();//真实的参数列表
+		param.add(this.get("aaa701"));
+		
 		//拼接查询语句,并将查询条件添加到参数列表中
 		if(this.isNotNull(aaa802))
 		{
@@ -147,15 +151,19 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 			param.add(eaaa811);
 		}
 		
+		sql.append(" order by a.aaa801");
+		
+		
 		return this.queryForList(sql.toString(), param.toArray());
 	}
+
 
 	/**
 	 * 删除单一实例
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean deleteById()throws Exception
+	public boolean delByIdRoom()throws Exception
 	{
 		String sql = "delete from aa08 where aaa801 = ?";
 		
@@ -187,22 +195,37 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 	 */
 	public boolean modifyRoom()throws Exception
 	{
+		StringBuilder sql2 = new StringBuilder()
+				.append("select a.aaa505,a.aaa506 ")
+				.append(" from aa05 a where a.aaa502 = ?");
+		Map<String, String> m=this.queryForMap(sql2.toString(), this.get("aaa807"));
+		
+		
 		StringBuilder sql=new StringBuilder()
-				.append("update aa08 set aaa804=?,aaa805=?,aaa806=?,aaa807=?,")
+				.append("update aa08 set aaa806=?,aaa807=?,")
 				.append("				 aaa808=?,aaa809=?,aaa810=?,aaa811=?,")
 				.append("   			 aaa812=?")
 				.append(" where aaa801=?")
     			;
+		
+		Object aaa809=null;
+		if(this.get("aaa808")!=null) 
+			aaa809 = Double.parseDouble((String)this.get("aaa808"))*Double.parseDouble((String)m.get("aaa505"));
+		else aaa809 = this.get("aaa808");
+		
+		Object aaa811 = null;
+		if(this.get("aaa810")!=null) 
+			aaa811 = Double.parseDouble((String)this.get("aaa810"))*Double.parseDouble((String)m.get("aaa506"));
+		else aaa811 = this.get("aaa810");
+		
 		Object tem[]= {
-				this.get("aaa804"),
-				this.get("aaa805"),
 				this.get("aaa806"),
 				this.get("aaa807"),
 				this.get("aaa808"),
-				
-				this.get("aaa809"),
+
+				aaa809,
 				this.get("aaa810"),
-				this.get("aaa811"),
+				aaa811,
 				this.get("aaa812"),
 
 				this.get("aaa801")
@@ -218,27 +241,52 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 	 */
 	public boolean modifyRooms()throws Exception
 	{
+		Map<String, String> m = null;
+		if(this.get("aaa807")!=null)
+		{
+			StringBuilder sql2 = new StringBuilder()
+					.append("select a.aaa505,a.aaa506 ")
+					.append(" from aa05 a where a.aaa502 = ?");
+			m=this.queryForMap(sql2.toString(), this.get("aaa807"));
+		}
+
+		
 		StringBuilder sql=new StringBuilder()
-				.append("update aa08 set aaa804=?,aaa805=?,aaa806=?,aaa807=?,")
+				.append("update aa08 set aaa805=?,aaa806=?,aaa807=?,")
 				.append("				 aaa808=?,aaa809=?,aaa810=?,aaa811=?,")
 				.append("   			 aaa812=?")
 				.append(" where aaa801=?")
     			;
+		Object aaa809 = null;
+		if(this.get("aaa808")!=null && m!=null) 
+			aaa809 = Double.parseDouble((String)this.get("aaa808"))*Double.parseDouble((String)m.get("aaa505"));
+		else aaa809 = null;
+		
+		Object aaa811;
+		if(this.get("aaa810")!=null && m!=null) 
+			aaa811 = Double.parseDouble((String)this.get("aaa810"))*Double.parseDouble((String)m.get("aaa506"));
+		else aaa811 = null;
+		
+		
 		Object stateList[]= {
-				this.get("aaa804"),
 				this.get("aaa805"),
 				this.get("aaa806"),
 				this.get("aaa807"),
 				this.get("aaa808"),
 				
-				this.get("aaa809"),
+				aaa809,
 				this.get("aaa810"),
-				this.get("aaa811"),
+				aaa811,
 				this.get("aaa812")
 		};
 		
-		//获取要删除的数据的id列表
-		String idlist[] = this.getIdList("idlist");
+		//获取要更新的数据的id列表
+		String idlist[] = this.getIdList("List");
+		System.out.println("idlist:");
+		for(String i:idlist)
+		{
+			System.out.println(i);
+		}
 		
 		return this.batchUpdate(sql.toString(), stateList, idlist);
 	}
