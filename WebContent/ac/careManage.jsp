@@ -5,7 +5,7 @@
 <% String path = request.getContextPath(); %>
 <html>
 <head>
-<title>typeManage</title>
+<title>Care Manage</title>
 </head>
 <style type="text/css">
 tr 
@@ -21,38 +21,71 @@ function onSelect(vstate)
 	var delB = document.getElementById("del");
 	delB.disabled = (count == 0);
 }
-function onEdit(vaaa501)
+function onEdit(vaac501)
 {
 	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/aa05FindById.html?aaa501=" + vaaa501;
+	myform.action = "<%=path%>/ac05FindById.html?aac501=" + vaac501;
 	myform.submit();
 }
-function onDel(vaaa501)
+function onDel(vaac601)
 {
 	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/aa05DelById.html?aaa501=" + vaaa501;
+	myform.action = "<%=path%>/ac05DelById.html?aac601=" + vaac601;
 	myform.submit();
 }
 </script>
 <body>
+<br>
 	<br>
-	<br>
-	<form action="<%=path%>/aa/aa05Query.html" id = "myform" method="post">
+	<form action="<%=path%>/ac/ac05Query.html" id = "myform" method="post">
 		<table border="1" align="center" width="95%">
 			<caption>
-			项目管理
-			<hr width:"160px">
+				客户关怀管理
+				<hr width="180px">
 			</caption>
+			<tr>
+				<td colspan="4">查询条件</td>
+			</tr>
+			<tr>
+				<td>客户名</td>
+				<td><e:text name="qaac403" /></td>
+				<td>客户编号</td>
+				<td><e:text name="qaac402" /></td>
+			</tr>
+			<tr>
+				<td>制定业务员</td>
+				<td><e:text name="qaac507" /></td>
+				<td>制定业务员编号</td>
+				<td><e:text name="qaac503" /></td>
+			</tr>
+			<tr>
+				<td>执行状态</td>
+				<td><e:select name="qaac504" value="未执行:01,已执行:02,已废弃:03" header="true" /></td>
+				<td>发送类型</td>
+				<td><e:radio name="qaac509" value="电话:1,邮箱:2" defval="2"   /></td>
+			</tr>
+			
+			<tr>
+				<td>制定时间[B]</td>
+				<td><input name="baac508" type="datetime-local" ></td>
+				<td>制定时间[E]</td>
+				<td><input name="eaac508" type="datetime-local" ></td>
+			</tr>
+		</table>
+		<table border="1" align="center" width="95%">
 			<tr>
 				<td></td>
 				<td>序号</td>
-				<td>户型编号</td>
-				<td>产品类型</td>
-				<td>房间结构</td>
-				<td>建筑面积</td>
-				<td>套内面积</td>
-				<td>户型平面图</td>
-				<td>备注</td>
+				<td>客户名</td>
+				<td>客户编号</td>
+				<td>消息主题</td>
+				<td>消息内容</td>
+				<td>执行状态</td>
+				<td>发送类型</td>
+				<td>发送时间</td>
+				<td>制定时间</td>
+				<td>制定业务员</td>
+				<td>制定业务员编号</td>
 				<td></td>
 			</tr>
 			<!--
@@ -67,25 +100,31 @@ function onDel(vaaa501)
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<tr>
 							<td>
-							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aaa501 }" >
+							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aac601 }" >
 							</td>
 							<td>${vs.count }</td>
 							<td>
-							<a href="#" onclick = "onEdit('${ins.aaa501 }')" >${ins.aaa502 }</a>
+							<a href="#" onclick = "onEdit('${ins.aac501 }')" >${ins.aac403 }</a>
 							</td>
-							<td>${ins.aaa503 }</td>
-							<td>${ins.aaa504 }</td>
-							<td>${ins.aaa505 }</td>
-							<td>${ins.aaa506 }</td>
-							<td>${ins.aaa507 }</td>
-							<td>${ins.aaa508 }</td>
+							<td>${ins.aac402 }</td>
+							<td>${ins.aac502 }</td>
+							<td>${ins.aac506 }</td>
+							<td>${ins.cnaac504 }</td>
+							<td>${ins.cnaac509 }</td>
+							<td>${ins.aac505 }</td>
+							<td>${ins.aac508 }</td>
+							<td>${ins.aac507 }</td>
+							<td>${ins.aac503 }</td>
 							<td>
-							<a href="#" onClick="onDel('${ins.aaa501}')">删除</a>
+							<a href="#" onClick="onDel('${ins.aac601}')">删除</a>
 							</td>
 						</tr>
 					</c:forEach>
 					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
 						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -112,6 +151,9 @@ function onDel(vaaa501)
 							<td></td>
 							<td></td>
 							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 					</c:forEach>
 				</c:otherwise>
@@ -122,16 +164,12 @@ function onDel(vaaa501)
 			<tr>
 				<td align="center">
 					<input type="submit" value="查询" name="next">
-					<input type="submit" value="添加" name="next"
-						formaction="<%=path %>/aa/typeAdd.jsp"> 
+					<input type="submit" value="添加" name="next" disabled="disabled"
+					formaction="<%=path %>/ac/clientCare.jsp"> 
 					<input type="submit" value="删除" name="next" disabled="disabled"
-						formaction="<%=path %>/aa/aa05Delete.html" id="del" >
-				</td>
+					formaction="<%=path %>/ac/ac05Delete.html" id="del" ></td>
 			</tr>
 		</table>
-		
-		<input type="hidden" name="aaa201" value="1">
 	</form>
-
 </body>
 </html>

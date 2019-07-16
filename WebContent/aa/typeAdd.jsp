@@ -33,7 +33,7 @@ ${msg}
 <tr>
 	<td>产品类型</td>
 	<td>
-	<e:text name="aaa503" required="true" autofocus="true" defval="${ins.aaa503 }"/>
+	<e:text name="aaa503" required="true" defval="${ins.aaa503 }"/>
 	</td>
 </tr>
 

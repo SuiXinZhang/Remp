@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.remp.services.JdbcServicesSupport;
+import com.remp.system.tools.Tools;
 
 /**
  * 此类用于操作付款方式及折扣表
@@ -20,8 +21,9 @@ public class Aa09ServicesImpl extends JdbcServicesSupport{
 	public Map<String,String> findById()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-    			.append("select a.aaa902,a.aaa903,a.aaa904,a.aaa905,a.aaa906,")
-    			.append("       a.aaa907,a.aaa908,a.aaa909,a.aaa910,a.aaa911")
+    			.append("select a.aaa901,a.aaa902,a.aaa903,a.aaa904,a.aaa905,")
+    			.append("       a.aaa906,a.aaa907,a.aaa908,a.aaa909,a.aaa910,")
+    			.append("       a.aaa911")
     			.append("  from aa09 a")
     			.append(" where a.aaa901=?")
     			;
@@ -33,7 +35,7 @@ public class Aa09ServicesImpl extends JdbcServicesSupport{
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Map<String,String>> findAllMethod()throws Exception
+	public List<Map<String,String>> query()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
 				.append("select a.aaa901,a.aaa902,a.aaa903,a.aaa904,a.aaa905,")
@@ -53,15 +55,20 @@ public class Aa09ServicesImpl extends JdbcServicesSupport{
 	 */
 	public boolean addMethod()throws Exception
 	{
+		int aaa901 = Tools.getSequence("aaa901");
+		this.put("aaa901", aaa901);
+		
 		StringBuilder sql=new StringBuilder()
-				.append("insert into aa09(aaa201,aaa902,aaa903,aaa904,aaa905,")
-				.append("				  aaa906,aaa907,aaa908,aaa909,aaa910,")
-				.append("				  aaa911)")
+				.append("insert into aa09(aaa901,aaa201,aaa902,aaa903,aaa904,")
+				.append("				  aaa905,aaa906,aaa907,aaa908,aaa909,")
+				.append("				  aaa910,aaa911)")
 				.append("		value(?,?,?,?,?,")
 				.append("			  ?,?,?,?,?,")
-				.append("			  ?)")
+				.append("			  ?,?)")
     			;
 		Object []args = {//默认创建顶级项目
+				aaa901,
+				
 				this.get("aaa201"),
 				this.get("aaa902"),
 				this.get("aaa903"),
@@ -117,12 +124,23 @@ public class Aa09ServicesImpl extends JdbcServicesSupport{
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean delByIdProject()throws Exception
+	public boolean delByIdMethod()throws Exception
 	{
 		String sql = "delete from aa09 where aaa901 = ?";
 		
 		Object id = this.get("aaa901");
 		
 		return this.executeUpdate(sql, id)>0;
+	}
+	
+	/**
+	 * 批量删除付款方式
+	 * @return
+	 * @throws Exception
+	 */
+	private boolean deleteMethods() throws Exception
+	{
+		String sql = "delete from aa09 where aaa901 = ?";
+		return this.batchUpdate(sql, this.getIdList("idlist"));
 	}
 }
