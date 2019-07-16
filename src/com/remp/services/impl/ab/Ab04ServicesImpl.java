@@ -6,15 +6,12 @@ import com.remp.services.JdbcServicesSupport;
 
 public class Ab04ServicesImpl extends JdbcServicesSupport 
 {
-	/**
-	 * 查询营销活动
-	 */
 	@Override
 	public Map<String, String> findById() throws Exception 
 	{
 		StringBuilder sql = new StringBuilder()
 				.append("select aab301,aab402,aab403,aab404,aab405,aab406")
-				.append("  from ab04 ")
+				.append("  from ab04")
 				.append(" where aab301=?")
 				;
 		return this.queryForMap(sql.toString(), this.get("aab301"));
@@ -58,6 +55,11 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 			this.get("aab405"),
 			this.get("aab406")
 		};
+		
+		//修改营销方案状态
+		String sql2 = "update ab03 set aab304='02' where aab301=?";
+		this.executeUpdate(sql2, this.get("aab301"));
+		
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
 	
@@ -82,6 +84,4 @@ public class Ab04ServicesImpl extends JdbcServicesSupport
 		};
 		return this.executeUpdate(sql.toString(), stateList)>0;
 	}
-	
-	
 }

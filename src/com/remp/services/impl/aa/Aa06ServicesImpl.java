@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.remp.services.JdbcServicesSupport;
+import com.remp.system.tools.Tools;
 
 /**
  * 此类用于操作区域信息表aa06
@@ -18,7 +19,7 @@ public class Aa06ServicesImpl extends JdbcServicesSupport {
 	public Map<String,String> findById()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-    			.append("select a.aaa602,a.aaa603,a.aaa604,a.aaa605,a.aaa606")
+    			.append("select a.aaa601,a.aaa602,a.aaa603,a.aaa604,a.aaa605")
     			.append("  from aa06 a")
     			.append(" where a.aaa601=?")
     			;
@@ -30,11 +31,10 @@ public class Aa06ServicesImpl extends JdbcServicesSupport {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Map<String,String>> findAllArea()throws Exception
+	public List<Map<String,String>> query()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("select a.aaa601,a.aaa602,a.aaa603,a.aaa604,a.aaa605,")
-				.append("       a.aaa606")
+				.append("select a.aaa601,a.aaa602,a.aaa603,a.aaa604,a.aaa605")
 				.append("  from aa06 a")
 				.append("  where a.aaa201=?")//查询区域且属于当前项目
 				;
@@ -49,20 +49,24 @@ public class Aa06ServicesImpl extends JdbcServicesSupport {
 	 */
 	public boolean addArea()throws Exception
 	{
+		
+		int aaa601 = Tools.getSequence("aaa601");
+		this.put("aaa601", aaa601);
+		
 		StringBuilder sql=new StringBuilder()
-				.append("insert into aa06(aaa201,aaa602,aaa603,aaa604,aaa605,")
-				.append("				  aaa606)")
+				.append("insert into aa06(aaa601,aaa201,aaa602,aaa603,aaa604,")
+				.append("				  aaa605)")
 				.append("		value(?,?,?,?,?,")
 				.append("			  ?)")
     			;
-		Object []args = {//默认创建顶级项目
+		Object []args = {
+				aaa601,
 				this.get("aaa201"),
 				this.get("aaa602"),
 				this.get("aaa603"),
 				this.get("aaa604"),
-				this.get("aaa605"),
 				
-				this.get("aaa606")
+				this.get("aaa605")
 			};
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
@@ -76,7 +80,7 @@ public class Aa06ServicesImpl extends JdbcServicesSupport {
 	public boolean modifyArea()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("update aa06 set aaa602=?,aaa603=?,aaa604=?,aaa605=?,aaa606=?")
+				.append("update aa06 set aaa602=?,aaa603=?,aaa604=?,aaa605=?")
 				.append(" where aaa601=?")
     			;
 		Object tem[]= {
@@ -84,7 +88,6 @@ public class Aa06ServicesImpl extends JdbcServicesSupport {
 				this.get("aaa603"),
 				this.get("aaa604"),
 				this.get("aaa605"),
-				this.get("aaa606"),
 				
 				this.get("aaa601") 
 		};
@@ -104,6 +107,17 @@ public class Aa06ServicesImpl extends JdbcServicesSupport {
 		Object id = this.get("aaa601");
 		
 		return this.executeUpdate(sql, id)>0;
+	}
+	
+	/**
+	 * 批量删除区域
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean deleteAreas()throws Exception
+	{
+		String sql = "delete from aa06 where aaa601 = ?";
+		return this.batchUpdate(sql, this.getIdList("idlist"));
 	}
 	
 }

@@ -5,7 +5,7 @@
 <%String path=request.getContextPath(); %>
 <html>
 <head>
-<title>新增营销方案</title>
+<title>营销方案</title>
 <style type="text/css">
   td{
       height:30px;
@@ -33,7 +33,6 @@ ${msg }
 		<table border="1" align="center" width="90%">
 			<caption>
 				${empty param.aab301?'新增':'修改' }
-				${empty param.aab301 }
 				营销方案
 				<hr width="160">
 			</caption>
@@ -76,14 +75,13 @@ ${msg }
 				<input type="submit" name="next" value="返回"
 				formaction="<%=path %>/ab/ab03Query.html"
 				formnovalidate="formnovalidate">
+				<%--
 				<input id="layer" type="submit" name="next" value="编辑营销活动"
-					formaction="ab04FindById.html?aab301=${param.aab301 }">	
+					formaction="<%=path %>/ab04FindById.html">	
+				 --%>
 		 	</td>
 		</table>
 		<input type="hidden" name="aab301" value="${param.aab301 }">
-	</form>
-	
-		</table>	
 	</form>
 </body>
 </html>

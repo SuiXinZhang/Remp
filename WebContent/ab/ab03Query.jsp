@@ -33,10 +33,24 @@
 	
 	function onDel(vaab301)
     {
-  	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/ab03DelById.html?aab301="+vaab301;
-  	 vform.submit();
+	  	 var vform = document.getElementById("myform");
+	  	 vform.action="<%=path%>/ab03DelById.html?aab301="+vaab301;
+	  	 vform.submit();
     }
+	
+	function onAct(vaab301)
+	{
+		var vform = document.getElementById("myform");
+		vform.action="<%=path%>/ab04FindById.html?aab301="+vaab301;
+		vform.submit();
+	}
+	
+	function onSum(vaab301)
+	{
+		var vform = document.getElementById("myform");
+		vform.action="<%=path%>/ab03FindSum.html?aab301="+vaab301;
+		vform.submit();
+	}
 
 </script>
 
@@ -76,6 +90,8 @@
 			  <td>制定人</td>
 			  <td>状态</td>
 			  <td></td>
+			  <td></td>
+			  <td></td>
 			</tr>
 	  
 	  <c:choose>
@@ -96,7 +112,13 @@
 				    <td>${ins.aab305 }</td>
 				    <td>${ins.aab303 }</td>
 				    <td>${ins.aab306 }</td>
-				    <td>${ins.aab304 }</td>
+				    <td>${ins.cnaab304 }</td>
+				    <td>
+				    	<a href="#" onclick="onAct('${ins.aab301}')">编辑营销活动</a>
+				    </td>
+				    <td>
+				    	<a href="#" onclick="onSum('${ins.aab301 }')">方案总结</a>
+				    </td>
 				    <td>
 				    	<a href="#" onclick="onDel('${ins.aab301}')">删除</a>
 				    </td>
@@ -106,6 +128,8 @@
 	  		<!-- 补充空行 -->
 	  		<c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
 			          <tr>
+			            <td></td>
+			            <td></td>
 			            <td></td>
 			            <td></td>
 			            <td></td>

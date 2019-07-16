@@ -30,7 +30,7 @@ ${msg }
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<tr>
 							<td>${vs.count }</td>
-							<td><input type="text" name="aab202List" value="${ins.aab202 }" readonly="true"></td>
+							<td><input type="text" name="aab202List" value="${ins.cnaab202 }" readonly="true"></td>
 							<td><input type="text" name="aab203List" value="${ins.aab203 }"></td>
 							<td><input type="text" name="aab204List" value="${ins.aab204 }"></td>
 							<td><input type="text" name="aab205List" value="${ins.aab205 }"></td>
@@ -41,6 +41,7 @@ ${msg }
 					<tr>
 						<td colspan="7" align="center">
 							<input type="submit" name="next" value="批量修改" formaction="<%=path %>/ab02Update.html?aab101=${param.aab101}">
+							<input type="submit" name="next" value="返回" formaction="<%=path %>/ab01FindById.html?aab101=${param.aab101}">
 						</td>
 					</tr>
 				</c:when>			

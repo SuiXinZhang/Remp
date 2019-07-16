@@ -5,7 +5,7 @@
 <%String path=request.getContextPath(); %>
 <html>
 <head>
-<title>新增销售计划</title>
+<title>编辑销售明细</title>
 <style type="text/css">
   td{
       height:30px;
@@ -33,7 +33,6 @@ ${msg }
 		<table border="1" align="center" width="90%">
 			<caption>
 				${empty param.aab101?'新增':'修改' }
-				${empty param.aab101 }
 				销售计划
 				<hr width="160">
 			</caption>
@@ -43,15 +42,9 @@ ${msg }
 				<td>
 					<e:text name="aab102" required="true" autofocus="true" defval="${ins.aab102 }"/>
 				</td>
-			</tr>
-			<tr>
-				<td>年份</td>
+				<td>制定日期</td>
 				<td>
 					<e:date name="aab103" required="true" defval="${ins.aab103 }"/>
-				</td>
-				<td>月份</td>
-				<td>
-					<e:date name="aab104" required="true" defval="${ins.aab104 }"/>
 				</td>
 			</tr>
 			<tr>
@@ -90,7 +83,7 @@ ${msg }
 				<input type="submit" name="next" value="${empty param.aab101?'添加':'修改' }" 
 				formaction="<%=path%>/${empty param.aab101?'ab01Add':'ab01Modify' }.html"/>
 				<input type="submit" name="next" value="返回"
-				formaction="<%=path %>/ab/ab01Query.html"
+				formaction="<%=path %>/ab01Query.html"
 				formnovalidate="formnovalidate">
 				<input id="layer" type="submit" name="next" value="编辑计划明细"
 					formaction="ab02Query.html">	

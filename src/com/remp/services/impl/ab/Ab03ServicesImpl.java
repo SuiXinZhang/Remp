@@ -11,6 +11,24 @@ import jdk.nashorn.internal.objects.annotations.Where;
 
 public class Ab03ServicesImpl extends JdbcServicesSupport
 {
+	public Map<String, String> findSum() throws Exception
+	{
+		String sql = "select aab309 from ab03 where aab301=?";
+		return this.queryForMap(sql, this.get("aab301"));
+	}
+	
+	/**
+	 * 编辑营销效果评估
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean updateSummary()throws Exception
+	{
+		String sql = "update ab03 set aab304='03',aab309=? where aab301=?";
+		Object args[] = {this.get("aab309"),this.get("aab301")};
+		return this.executeUpdate(sql, args)>0;
+	}
+	
 	/**
 	 * 修改营销方案
 	 * @return
@@ -96,9 +114,10 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		Object qaab306 = this.get("qaab306");
 		
 		StringBuilder sql = new StringBuilder()
-				.append("select aab301,aab302,aab303,aab304,aab305,aab306")
-				.append("  from ab03")
+				.append("select a.aab301,a.aab302,a.aab303,b.fvalue cnaab304,a.aab305,a.aab306")
+				.append("  from ab03 a,syscode b")
 				.append(" where true")
+				.append("	and b.fcode=a.aab304 and b.fname='aab304'")
 				;
 		
 		//参数列表
