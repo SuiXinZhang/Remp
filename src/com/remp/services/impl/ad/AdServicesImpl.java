@@ -22,12 +22,10 @@ public class AdServicesImpl extends JdbcServicesSupport{
 		Object aaa502 = this.get("qaaa502");    //户型
 		
 		StringBuilder sql = new StringBuilder()
-				.append("select x.aaa801,x.aaa803,x.aaa804,c.fvalue caaa805,a.fvalue caaa502,")
-				.append("       b.fvalue caaa504,s.aaa505,x.aaa808,x.aaa809")
-				.append("  from aa08 x,aa05 s,syscode a,syscode b,syscode c")
-				.append(" where x.aaa807=s.aaa502 and s.aaa502=a.fcode")
-				.append("   and a.fname='aaa502'  and s.aaa504=b.fcode")
-				.append("   and b.fname='aaa504'  and x.aaa805=c.fcode")
+				.append("select x.aaa801,x.aaa803,x.aaa804,c.fvalue caaa805,s.aaa502,")
+				.append("       s.aaa504,s.aaa505,x.aaa808,x.aaa809")
+				.append("  from aa08 x,aa05 s,syscode c")
+				.append(" where x.aaa807=s.aaa502 and x.aaa805=c.fcode")
 				.append("   and c.fname='aaa805'");
 		
 		//参数列表

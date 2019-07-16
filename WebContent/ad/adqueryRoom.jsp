@@ -68,11 +68,11 @@ ${msg }
 	  <tr>
 	    <td>户型</td>
 	    <td>
-	      <e:select name="qaaa502" value="A:01,B:02,C:03" header="true"/>
+	      <e:select name="qaaa502" value="A:A,B:B,C:C" header="true"/>
 	    </td>
 	    <td>房间结构</td>
 	    <td>
-	      <e:select name="qaaa504" value="两房两厅一卫:01,两房两厅两卫:02,三室一厅一卫:03" header="true" />
+	      <e:select name="qaaa504" value="两房两厅一卫:两房两厅一卫,两房两厅两卫:两房两厅两卫,三室一厅一卫:三室一厅一卫" header="true" />
 	    </td>
 	  </tr>
 	  <tr>
@@ -107,8 +107,8 @@ ${msg }
 				    <td>${ins.aaa803}</td>
 				    <td>${ins.aaa804 }</td>
 				    <td>${ins.caaa805 }</td>
-				    <td>${ins.caaa502 }</td>
-				    <td>${ins.caaa504 }</td>
+				    <td>${ins.aaa502 }</td>
+				    <td>${ins.aaa504 }</td>
 				    <td>${ins.aaa505 }</td>
 				    <td>${ins.aaa808 }</td>
 				    <td>${ins.aaa809 }</td>

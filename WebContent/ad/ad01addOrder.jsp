@@ -31,7 +31,7 @@ ${msg }
 	</tr>
 	<tr>
 		<td>客户名称</td>
-		<td><e:text required="true" name="oaad103" defval="${ins.aac403 }"/></td>
+		<td><e:text required="true" name="oaad103" defval="${ins.aad103 }"/></td>
 	</tr>
     <tr>
     	<td>预约日期</td>
@@ -86,6 +86,8 @@ ${msg }
               formnovalidate="formnovalidate">
         <input type="submit" name="text" value="退号" 
               formaction="<%=path%>/ad/ad02addWithdrawOrder.html">
+        <input type="submit" name="text" value="生成付款详情"
+         	  formaction="<%=path%>/af/af03otherTurnReceipt.html?add101=${param.aad101 }" formnovalidate="formnovalidate">
 		</td>
 	</tr>
 </table>

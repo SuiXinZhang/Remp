@@ -44,7 +44,7 @@ ${msg }
     </tr>
     <tr>
      <td>房间结构</td>
-     <td><e:text name="aaa504" required="true" defval="${ins.yaaa504 }"/></td>
+     <td><e:text name="aaa504" required="true" defval="${ins.aaa504 }"/></td>
      <td>房间状态</td>
      <td><e:text name="aaa805" required="true" defval="${ins.saaa805 }"/></td>
     </tr>
