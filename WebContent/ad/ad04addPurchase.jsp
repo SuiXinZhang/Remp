@@ -26,13 +26,15 @@ ${msg }
     <tr>
      <td colspan="4">
      <input type="hidden" name="aac401" value="${ins.aac401 }">
+     <input type="hidden" name="aad401" value="${param.aad401 }">
+     <input type="hidden" name="aad301" value="${ins.aad301 }">
      </td>
     </tr>
     <tr>
      <td>客户名称</td>
      <td><e:text name="aad402" required="true" defval="${ins.aad305 }"/></td>
      <td>联系电话</td>
-     <td><e:text name="aad421" required="true" defval="${ins.aad421 } "/></td>
+     <td><e:text name="aad421" required="true" defval="${ins.aac407 } "/></td>
     </tr>
     <tr>
      <td>房间</td>
@@ -112,11 +114,14 @@ ${msg }
     </tr>
     <tr>
 	    <td colspan="4" align="center">
-	       <input type="submit" name="next" value="添加">
+	       <input type="submit" name="next" value="${empty param.aad401?'添加':'修改'}"
+	              formaction="${empty param.aad401?'ad/ad04addPurchase':'ad/ad04modifyPurchase'}.html">
 	       <input type="submit" name="next" value="查看"
-	          formnovalidate="formnovalidate" formaction="ad/ad04queryPurchase.html">
-	       <input type="submit" name="next" value="返回" formaction="ad/ad03query.html"
+	          formnovalidate="formnovalidate" formaction="ad04queryPurchase.html">
+	       <input type="submit" name="next" value="返回" formaction="${empty param.aad401?'ad03query':'ad04queryPurchase'}.html"
 	         formnovalidate="formnovalidate">
+	       <input type="submit" name="next" value="转签约"
+	          formnovalidate="formnovalidate" formaction="ad07turnAgreement.html">
 	    </td>
 	</tr>
     </table>

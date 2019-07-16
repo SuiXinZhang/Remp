@@ -14,6 +14,7 @@
 	</style>
 </head>
 <body>
+${msg }
 <form action="<%=path %>/ad/ad02queryWithdrawOrder.html" method="post">
 	<table border="1" width="95%" align="center">
 	  <caption>

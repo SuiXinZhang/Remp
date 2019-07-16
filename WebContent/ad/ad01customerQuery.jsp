@@ -3,13 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%String path=request.getContextPath(); %>
-
 <html>
 <head>
-
 <title>¿Í»§Â¼Èë</title>
 </head>
 <body>
+${msg }
 <form action="<%=path%>/ad/ad01customerQuery.html" method="post">
 <table>
 	<tr>
