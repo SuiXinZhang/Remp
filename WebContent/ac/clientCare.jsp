@@ -42,29 +42,32 @@ function onEdit(vaac401)
 
 			<tr>
 				<td>业务员</td>
-				<td><e:text name="aac507" required="true"   /></td>
-			</tr>
-			<tr>
+				<td><e:text name="aac507" required="true" defval="${ins.aac507 }"  /></td>
 				<td>业务员编号</td>
-				<td><e:text name="aac503" required="true" /></td>
+				<td><e:text name="aac503" required="true" defval="${ins.aac503 }"/></td>
 			</tr>
 			
 			<tr>
 				<td>发送类型</td>
-				<td><e:radio name="aac509" value="待发送:01,已发送:02,已废弃:03" required="true"  /></td>
+				<td><e:radio name="aac509" value="电话:1,邮箱:2" required="true"  defval="${empty ins.aac501?'2':ins.aac509 }"/></td>
+				<td>消息主题</td>
+				<td><e:text name="aac502" required="true" defval="${ins.aac502 }" /></td>
 			</tr>
 
 			<tr>
 				<td>发送内容</td>
-				<td><e:textarea rows="10" cols="50" name="aac506"  /></td>
+				<td><e:textarea rows="10" cols="50" name="aac506" defval="${ins.aac506 }" /></td>
 			</tr>
-
+			
 			<tr>
 				<td>发送时间</td>
-				<td><e:date name="aac505" required="true"  /></td>
+				<td><input type="datetime-local" name="aac505" value="${ins.aac505 }"></td>
 			</tr>
 
-			
+			<c:if test="${!empty ins.aac501}">
+				<td>执行状态</td>
+				<td><e:radio name="aac504" value="未执行:01,已执行:02,已废弃:03" readonly="true" defval="${ins.aac504 }" /></td>
+			</c:if>
 			<tr>
 				<td colspan="2" align="center">
 				<input type="submit" name="next" value="${empty ins.aac501?'添加':'修改'}"
@@ -75,6 +78,9 @@ function onEdit(vaac401)
 		</table>
 		<input type="checkbox"  name="idlist" value="1" checked="checked">
 		<input type="checkbox"  name="idlist" value="4" checked="checked">
+		
+		
+		<c:if test="${empty ins.aac501 }">
 		<table border="1" align="center" width="95%">
 			<tr>
 				<td colspan="2">发送客户条件查询</td>
@@ -133,6 +139,7 @@ function onEdit(vaac401)
 				</c:otherwise>
 			</c:choose>
 		</table>
+		</c:if>
 	</form>
 </body>
 <script >
