@@ -5,62 +5,77 @@
 <%String path=request.getContextPath(); %>
 <html>
 <head>
-<title>退号查询</title>
+<title>Insert title here</title>
 	<style type="text/css">
-	tr 
-	{
-		height: 25px;
-	}
+	  td{
+	      height:30px;
+	  }
+	  msg{
+	     color:#FF0000
+	  }
 	</style>
+	<script type="text/javascript">
+    function onSelect(vaad801)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/ad/ad08findById.html?aad801="+vaad801;
+  	 vform.submit();
+    }
+    </script>
 </head>
 <body>
 ${msg }
-<form action="<%=path %>/ad/ad02queryWithdrawOrder.html" method="post">
+<form id="myform" action="<%=path %>/ad/ad08querysalesLog.html" method="post">
 	<table border="1" width="95%" align="center">
 	  <caption>
-	      	 退号记录
+	      	 销售日志查询
 	    <hr width="160">
 	  </caption>
 	  <tr>
-	    <td></td>
-	  	<td>序号</td>
-	  	<td>项目名称</td>
-	  	<td>客户名称</td>
-	  	<td>实际排号</td>
-	  	<td>预约日期</td>
-	  	<td>权益人</td>
-	  	<td>房间</td>
-	  	<td>应收预约金</td>
-	  	<td>实收预约金</td>
-	  	<td>退号日期</td>
-	  	<td>退号原因</td>
-	  	<td></td>
+	    <td colspan="4">查询条件</td>
 	  </tr>
-	  	<c:choose>
+	  <tr>
+	    <td>申请类型</td>
+	    <td>
+	      <e:date name="qaad815"/>
+	    </td>
+	  </tr>
+	</table>
+	<table border="1" width="95%" align="center">
+	  <tr>
+	    <td></td>
+	    <td>序号</td>
+	    <td>来电总数</td>
+	    <td>来访总数</td>
+	    <td>预约排号数</td>
+	    <td>小订套数</td>
+	    <td>认购套数</td>
+	    <td>签约套数</td>
+	    <td>广告分析</td>
+	    <td>业务表现</td>
+	    <td>填写人</td>
+	  </tr>
+	  <c:choose>
 	     <c:when test="${rows!=null }">
 	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
 				    <td></td>
 				    <td>${vs.count }</td>
-				    <td>${ins.aad102 }</td>
-				    <td>${ins.aad103 }</td>
-				    <td>${ins.aad104 }</td>
-				    <td>${ins.aad105 }</td>
-				    <td>${ins.aad109 }</td>
-				    <td>${ins.aad110 }</td>
-				    <td>${ins.aad111 }</td>
-				    <td>${ins.aad113 }</td>
-				    <td>${ins.aad202 }</td>
-				    <td>${ins.aad203 }</td>
-				    <td></td>
+				    <td>${ins.aad802}</td>
+				    <td>${ins.aad803 }</td>
+				    <td>${ins.aad804 }</td>
+				    <td>${ins.aad806 }</td>
+				    <td>${ins.aad807 }</td>
+				    <td>${ins.aad808 }</td>
+				    <td>${ins.aad812 }</td>
+				    <td>${ins.aad813 }</td>
+				    <td><a href="#" onclick="onSelect('${ins.aad801}')">修改</a></td>
 				  </tr>
 		      </c:forEach>
 		      <!-- 补充空行 -->
 		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
 			          <tr>
-			            <td></td>
-			            <td></td>
 			            <td></td>
 			            <td></td>
 			            <td></td>
@@ -89,21 +104,18 @@ ${msg }
 	             <td></td>
 	             <td></td>
 	             <td></td>
-	             <td></td>
 	           </tr>
 	        </c:forEach>
 	     </c:otherwise>
 	   </c:choose>
 	</table>
-    <table border="1" width="95%" align="center">
+	<table border="1" width="95%" align="center">
 	  <tr>
 	    <td align="center">
 	       <input type="submit" name="next" value="查询">
 	    </td>
 	  </tr>
 	</table>
-	<input type="hidden" name="aaa101" value="${param.aad101 }">
 </form>
-
 </body>
 </html>

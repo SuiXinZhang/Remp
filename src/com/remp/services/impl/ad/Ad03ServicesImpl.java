@@ -6,7 +6,11 @@ import com.remp.services.JdbcServicesSupport;
 
 public class Ad03ServicesImpl extends JdbcServicesSupport 
 {
-
+	/**
+	 * 添加看房记录
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean addConfirm()throws Exception
 	{
 		StringBuilder sql1 = new StringBuilder()
@@ -36,12 +40,19 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 		
 		return this.executeTransaction();
 	}
+	/**
+	 * 获取房号
+	 */
 	public Map<String, String> findById()throws Exception
 	{
 		String sql = "select aaa803 from aa08 where aaa801=?";
 		return this.queryForMap(sql, this.get("aaa801"));
 	}
-	
+	/**
+	 * 验证预约记录房间号,客户名称与项目排号是否与输入内容相符
+	 * @return
+	 * @throws Exception
+	 */
 	public Map<String, String> findByName()throws Exception
 	{
 		String sql = "select aac401 from ad01 where aad103=? and aad107=? and aad110=?";
@@ -52,6 +63,9 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 		};
 		return this.queryForMap(sql, args);
 	}
+	/**
+	 * 查询看房记录
+	 */
 	public List<Map<String,String>> query()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
@@ -64,7 +78,11 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 				;
 		return this.queryForList(sql.toString());
 	}
-	
+	/**
+	 * 取消看房,将房间状态更改为可选
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean cancelRoom()throws Exception
 	{
 		String sql="update aa08 set aaa805=? where aaa801=?";

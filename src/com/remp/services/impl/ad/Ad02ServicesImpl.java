@@ -7,6 +7,11 @@ import com.remp.services.JdbcServicesSupport;
 
 public class Ad02ServicesImpl extends JdbcServicesSupport 
 {
+	/**
+	 * 添加退号记录,并更改预约记录状态为作废
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean addwithdrawOrder()throws Exception
 	{
 		StringBuilder sql1 = new StringBuilder()
@@ -23,6 +28,9 @@ public class Ad02ServicesImpl extends JdbcServicesSupport
 		return this.executeTransaction();
 	}
 
+	/**
+	 * 查询退号记录
+	 */
 	public List<Map<String, String>> query()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
@@ -33,10 +41,5 @@ public class Ad02ServicesImpl extends JdbcServicesSupport
 				.append(" where b.aad101 = a.aad101")
 				;
 		return this.queryForList(sql.toString());
-	}
-	public boolean deleteById()throws Exception
-	{
-		String sql = "delete from ad01 where aad101=?";
-		return this.executeUpdate(sql, this.get("aad101"))>0;
 	}
 }

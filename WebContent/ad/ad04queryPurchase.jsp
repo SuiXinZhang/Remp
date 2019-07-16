@@ -20,9 +20,16 @@
   	 vform.action="<%=path%>/ad/ad04findByIdPurchase.html?aad401="+vaad401;
   	 vform.submit();
     }
+    function onDel(vaad401)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/ad/ad04deleteByIdPurchase.html?aad401="+vaad401;
+  	 vform.submit();
+    }
     </script>
 </head>
 <body>
+${msg }
 <form id="myform" action="<%=path %>/ad/ad04queryPurchase.html" method="post">
 	<table border="1" width="95%" align="center">
 	  <caption>
@@ -49,6 +56,7 @@
 	    <td>序号</td>
 	    <td>房间</td>
 	    <td>客户名称</td>
+	    <td>订单状态</td>
 	    <td>签署日期</td>
 	    <td>协议总价</td>
 	    <td>协议币种</td>
@@ -62,23 +70,24 @@
 	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				    <td></td>
+				    <td><input type="hidden" name="aad301" value="${ins.aad301 }"></td>
 				    <td>${vs.count }</td>
 				    <td>${ins.aad403}</td>
 				    <td><a href="#" onclick="onSelect('${ins.aad401}')">${ins.aad402 }</a></td>
+				    <td>${ins.aad422 }</td>
 				    <td>${ins.aad415 }</td>
 				    <td>${ins.aad410 }</td>
 				    <td>${ins.baad411 }</td>
 				    <td>${ins.aad419 }</td>
 				    <td>${ins.daad418 }</td>
 				    <td>${ins.caad404 }</td>
-				    <td></td>
-				    
+				    <td><a href="#" onclick="onDel('${ins.aad401}')">删除</a></td>
 				  </tr>
 		      </c:forEach>
 		      <!-- 补充空行 -->
 		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
 			          <tr>
+			            <td></td>
 			            <td></td>
 			            <td></td>
 			            <td></td>
@@ -96,6 +105,7 @@
 	     <c:otherwise>
 	        <c:forEach begin="1" step="1" end="15">
 	           <tr>
+	             <td></td>
 	             <td></td>
 	             <td></td>
 	             <td></td>
