@@ -59,7 +59,7 @@ public class AcServicesImpl extends JdbcServicesSupport {
 			{
 				args2.add(tmp2.get("aac408"));
 			}
-			MailTools.setMimeMessage(args1, args2);
+			MailTools.setMimeMessage(args1, args2.toArray());
 			//·¢ËÍÓÊ¼ş
 			//MailTools.send();
 		}

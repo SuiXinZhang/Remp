@@ -72,7 +72,7 @@ public class MailTools {
         transport.connect(senderAccount, senderPassword);
         //发送邮件，并发送到所有收件人地址，message.getAllRecipients() 获取到的是在创建邮件对象时添加的所有收件人, 抄送人, 密送人
         transport.sendMessage(msg,msg.getAllRecipients());
-         
+        
         //5、关闭邮件连接
         transport.close();
     }
@@ -93,7 +93,7 @@ public class MailTools {
      * @param recipientAddress
      * @throws Exception
      */
-    public static void setMimeMessage(Object objectContent[],List<Object> recipientAddress) throws Exception{
+    public static void setMimeMessage(Object objectContent[],Object[] recipientAddress) throws Exception{
         //1.创建一封邮件的实例对象
         msg = new MimeMessage(session);
         //2.设置发件人地址
@@ -104,10 +104,10 @@ public class MailTools {
          * MimeMessage.RecipientType.CC：抄送
          * MimeMessage.RecipientType.BCC：密送
          */
-        InternetAddress[] addresses = new InternetAddress[recipientAddress.size()];
-        for(int i=0;i<recipientAddress.size();i++)
+        InternetAddress[] addresses = new InternetAddress[recipientAddress.length];
+        for(int i=0;i<recipientAddress.length;i++)
         {
-        	addresses[i] = new InternetAddress((String)recipientAddress.get(i));
+        	addresses[i] = new InternetAddress((String)recipientAddress[i]);
         }
         msg.setRecipients(MimeMessage.RecipientType.TO,addresses);
         
