@@ -10,6 +10,23 @@
       height:30px;
   }
 </style>
+
+<script type="text/javascript">
+	window.onload=function()
+	{
+		var obj = document.getElementById("shenpi");
+		if(${empty param.aaf601})
+		{
+			obj.readOnly=true;
+		} 
+		else
+		{
+			obj.readOnly=false;	
+			obj.required=true;
+		}
+	}
+</script>
+
 </head>
 <body>
 ${msg}
@@ -18,7 +35,7 @@ ${msg}
 <form action="<%=path%>/af/af06Add.html" method="post">
 <table  border="1" align="center" width="45%">
     <caption>
-       银行贷款表${empty param.aaf601?'添加':'修改' }
+       银行贷款表${empty param.aaf601?'添加':'审核' }
       <hr width="160">
     </caption>
    <tr>
@@ -27,7 +44,7 @@ ${msg}
    <tr>
      <td>贷款银行*</td>
      <td>
-       <e:text name="aaf602" required="true" autofocus="true" defval="${ins.aaf602 }"/> 
+       <e:text name="aaf604" required="true" autofocus="true" defval="${ins.aaf604 }"/> 
      </td>
      <td>登记人*</td>
      <td>
@@ -37,7 +54,7 @@ ${msg}
    <tr>
     <td>放款单号</td>
    	 <td>
-       <e:text name="aaf604" defval="${ins.aaf604 }"/> 
+       <e:text name="aaf602" readonly="true" defval="${ins.aaf602 }"/> 
      </td>
      <td>放款日期*</td>
      <td>
@@ -45,13 +62,13 @@ ${msg}
      </td>
    </tr>
    <tr>
-	<td>审核人</td>
+	<td>项目名称</td>
+   	<td>
+   	  <e:text name="aaf612" defval="${ins.aaf612 }"/> 
+   	</td>
+   	<td>入账银行</td>
 	<td>
-	  <e:text name="aaf606" defval="${ins.aaf606 }"/> 
-	</td>
-	<td>审核日期</td>
-	<td>
-	  <e:date name="aaf607" defval="${ins.aaf607 }"/> 
+	  <e:text name="aaf610" defval="${ins.aaf610 }"/> 
 	</td>
    </tr>
    <tr>
@@ -64,26 +81,20 @@ ${msg}
 	  <e:text name="aaf609" defval="${ins.aaf609 }"/> 
 	</td>
    </tr>
+
    <tr>
-	<td>入账银行</td>
+   	<td>审核人</td>
 	<td>
-	  <e:text name="aaf610" defval="${ins.aaf610 }"/> 
+	  <e:text id="shenpi" name="aaf606" defval="${ins.aaf606 }"/> 
 	</td>
-	<td>入账日期</td>
-	<td>
-	  <e:text name="aaf611" defval="${ins.aaf611 }"/> 
-	</td>
-   </tr>
-   <tr>
-   	<td>项目名称</td>
-   	<td>
-   	  <e:text name="aaf612" defval="${ins.aaf612 }"/> 
-   	</td>
    </tr>
    <tr>
    		<td colspan="4" align="center">
-   			<input type="submit" name="next" value="${empty param.aaf601?'添加':'修改'}"
- 				formaction="<%=path %>/af/${empty param.aaf601?'af06Add':'af06Modify' }.html">
+   			<input type="submit" name="next" value="${empty param.aaf601?'添加':'审核'}"
+ 				formaction="<%=path %>/af/${empty param.aaf601?'af06Add':'af06Exam' }.html">
+ 			<input type="submit" name="next" value="返回"
+ 				formaction="<%=path %>/af/af06Query.html"
+ 				formnovalidate="formnovalidate">
    		</td>
    </tr>
 </table>

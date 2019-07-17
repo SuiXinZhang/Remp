@@ -33,8 +33,16 @@ function onDel(vaaa701)
 	myform.action = "<%=path%>/aa07DelById.html?aaa701=" + vaaa701;
 	myform.submit();
 }
-function onRoom(vaaa701)
+function onRoom(vaaa701,vaaa704,vaaa705,vaaa706)
 {
+	var louceng = document.getElementById("louceng");
+	var danyuan = document.getElementById("danyuan");
+	var huhao = document.getElementById("huhao");
+	
+	louceng.value = vaaa704;
+	danyuan.value = vaaa705;
+	huhao.value = vaaa706;
+	
 	var myform = document.getElementById("myform");
 	myform.action = "<%=path%>/aa08Query.html?aaa701=" + vaaa701;
 	myform.submit();
@@ -87,7 +95,7 @@ function onRoom(vaaa701)
 							<td>${ins.aaa706 }</td>
 							<td>${ins.aaa707 }</td>
 							<td>
-							<a href="#" onClick="onRoom('${ins.aaa701}')">房间管理</a>
+							<a href="#" onClick="onRoom('${ins.aaa701}','${ins.aaa704}','${ins.aaa705}','${ins.aaa706}')">房间管理</a>
 							</td>
 							<td>
 							<a href="#" onClick="onDel('${ins.aaa701}')">删除</a>
@@ -143,6 +151,10 @@ function onRoom(vaaa701)
 				</td>
 			</tr>
 		</table>
+		
+		<input type="hidden" id="louceng" name="louceng" value="">
+		<input type="hidden" id="danyuan" name="danyuan" value="">
+		<input type="hidden" id="huhao" name="huhao" value="">
 		
 		<input type="hidden" name="aaa601" value="${param.aaa601 }">
 		<input type="hidden" name="aaa201" value="1">
