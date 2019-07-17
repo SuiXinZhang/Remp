@@ -67,6 +67,10 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 		Object baaa811 = this.get("baaa811"); //套内总价下限
 		Object eaaa811 = this.get("eaaa811"); //套内总价上限
 		
+		Object qlouceng = this.get("qlouceng"); //楼层
+		Object qdanyuan = this.get("qdanyuan"); //单元
+		Object qhuhao = this.get("qhuhao"); //户号
+		
 		//定义SQL主体
 		StringBuilder sql=new StringBuilder()
     			.append("select a.aaa801,a.aaa802,a.aaa803,a.aaa804,s1.fvalue cnaaa805,")
@@ -149,6 +153,36 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 		{
 			sql.append(" and a.aaa811 <= ? ");
 			param.add(eaaa811);
+		}if(this.isNotNull(qlouceng))
+		{
+			String louceng = (String) qlouceng;
+			
+			int size = String.valueOf(qlouceng).length();
+			if(size<2) {
+				louceng = "0"+qlouceng;
+			}
+			sql.append(" and substring(a.aaa803,3,2) = ? ");
+			param.add(louceng);
+		}if(this.isNotNull(qdanyuan))
+		{
+			String danyuan = (String) qdanyuan;
+			
+			int size = String.valueOf(qdanyuan).length();
+			if(size<2) {
+				danyuan = "0"+qdanyuan;
+			}
+			sql.append(" and substring(a.aaa803,1,2) = ? ");
+			param.add(danyuan);
+		}if(this.isNotNull(qhuhao))
+		{
+			String huhao = (String) qhuhao;
+			
+			int size = String.valueOf(qhuhao).length();
+			if(size<2) {
+				huhao = "0"+qhuhao;
+			}
+			sql.append(" and substring(a.aaa803,5,2) = ? ");
+			param.add(huhao);
 		}
 		
 		sql.append(" order by a.aaa801");

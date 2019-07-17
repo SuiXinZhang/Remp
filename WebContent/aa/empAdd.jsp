@@ -40,7 +40,21 @@ ${msg}
 <tr>
 	<td>所属部门</td>
 	<td>
-	<e:text name="aaa405" required="true"  defval="${empty ins.aaa401?ins.aaa302:param.aaa405}" readonly="true"/>
+	<%
+		if(request.getAttribute("ins")!=null)
+		{
+	%>
+	 
+		<e:select value="${ins.allaaa302 }" name="upaaa301" required="true"  defval="${ins.aaa301}"/>
+	<%
+		}
+		else{
+	%>
+		<e:text name="aaa405" defval="${param.aaa405}" readonly="true"/>
+	<%
+		}
+	%>
+	
 	</td>
 </tr>
 
@@ -57,6 +71,13 @@ ${msg}
         <e:radio name="aaa407" value="男:男,女:女,不确定:不确定" required="true" defval="${empty param.aaa401?'男':ins.aaa407}"/>
      </td>
    </tr>
+   
+  <tr>
+	<td>生日</td>
+	<td>
+	<e:date name="aaa411" defval="${ins.aaa411 }"/>
+	</td>
+</tr>
 
 <tr>
 	<td>联系方式</td>
