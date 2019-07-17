@@ -83,27 +83,20 @@ public class Af07ServicesImpl extends JdbcServicesSupport
 			"欠债还钱         --思安地产"
 		};
 		
-		String idlist[] = this.getIdList("aaf701");
-		String sql = "select aaf704 from af07 where aaf701=?";
-		List<Object> recipientAddress = new ArrayList<>();
-		for(String param:idlist)
-		{
-			this.queryForMap(sql, param);
-			recipientAddress.add(param);
-		}
-		
-		
 		//获取收件对象
-//		String emailList[] = this.getIdList("emailList");
-//	
-//		List<Object> recipientAddress = new ArrayList<>();
-//		
-//		for(String param:emailList)
-//		{
-//			recipientAddress.add(param);
-//		}
+		String emailList[] = this.getIdList("emailList");
 		
-		MailTools.setMimeMessage(objectContent, recipientAddress);
+		
+		try
+		{
+			MailTools.setMimeMessage(objectContent, emailList);
+			MailTools.send();
+		} 
+		catch (Exception e) 
+		{
+			System.out.println(e);
+			return false;
+		}
 		
 		return true;
 	}

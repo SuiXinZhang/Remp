@@ -5,7 +5,7 @@
 <%String path=request.getContextPath(); %>
 <html>
 <head>
-<title>银行放款列表</title>
+<title>欠款用户列表</title>
 <style type="text/css">
 	tr
 	{
@@ -77,12 +77,12 @@
 			<tr>
 			  <td></td>
 			  <td>序号</td>
-			  <td>客户名称</td>
 			  <td>房间编号</td>
+			  <td>客户名称</td>
+			  <td>客户邮箱</td>
 			  <td>签署日期</td>
-			  <td>合同金额</td>
-			  <td>欠款金额</td>
-			  <td></td>
+			  <td>签署金额</td>
+			  <td>还款金额</td>
 			  <td></td>
 			</tr>
 	  
@@ -92,17 +92,15 @@
 	  		<c:forEach items="${rows }" var="ins" varStatus="vs">
 	  			<tr>
 	  				<td>
-	  					<input type="checkbox" name="idlist" value="${ins.aaf701 }"
+	  					<input type="checkbox" name="emailList" value="${ins.aaf704 }"
 	  						onclick="onSelect(this.checked)" >
 	  				</td>
 	  				<td>
 	  					${vs.count }
 	  				</td>
-	  				<td>${ins.aaf703 }</td>
 	  				<td>${ins.aaf702 }</td>
-	  				<td>
-	  					<input type="text" name="emailList" value="${ins.aaf704 }" readonly="true">
-	  				</td>
+	  				<td>${ins.aaf703 }</td>
+	  				<td>${ins.aaf704 }</td>
 	  				<td>${ins.aaf705 }</td>
 				    <td>${ins.aaf706 }</td>
 				    <td>${ins.aaf709 }</td>
@@ -154,7 +152,7 @@
 		              formaction="<%=path%>/af/af07Add.jsp">
 
 		       <input type="submit" id="del" name="next" value="邮件催款" 
-		              formaction="<%=path%>/af07Mail.html" disabled="disabled">
+		              formaction="<%=path%>/af/af07Mail.html" disabled="disabled">
 		    </td>
 		  </tr>
 		</table>
