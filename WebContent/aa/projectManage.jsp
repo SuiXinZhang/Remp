@@ -1,5 +1,5 @@
-<%@ page language="java"    pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <% String path = request.getContextPath(); %>
@@ -8,8 +8,7 @@
 <title>projectManage</title>
 </head>
 <style type="text/css">
-tr 
-{
+tr {
 	height: 25px;
 }
 </style>
@@ -37,11 +36,11 @@ function onDel(vaaa201)
 <body>
 	<br>
 	<br>
-	<form action="<%=path%>/aa/aa02Query.html" id = "myform" method="post">
+	<form action="<%=path%>/aa/aa02Query.html" id="myform" method="post">
 		<table border="1" align="center" width="95%">
 			<caption>
-			项目管理
-			<hr width:"160px">
+				项目管理
+				<hr width:"160px">
 			</caption>
 			<tr>
 				<td></td>
@@ -69,12 +68,10 @@ function onDel(vaaa201)
 				<c:when test="${rows!= null }">
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<tr>
-							<td>
-							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aaa201 }" >
-							</td>
+							<td><input type="checkbox" onclick="onSelect(this.checked)"
+								name="idlist" value="${ins.aaa201 }"></td>
 							<td>${vs.count }</td>
-							<td>
-							<a href="#" onclick = "onEdit('${ins.aaa201 }')" >${ins.aaa202 }</a>
+							<td><a href="#" onclick="onEdit('${ins.aaa201 }')">${ins.aaa202 }</a>
 							</td>
 							<td>${ins.aaa203 }</td>
 							<td>${ins.aaa204 }</td>
@@ -85,9 +82,7 @@ function onDel(vaaa201)
 							<td>${ins.aaa212 }</td>
 							<td>${ins.aaa213 }</td>
 							<td>${ins.aaa214 }</td>
-							<td>
-							<a href="#" onClick="onDel('${ins.aaa201}')">删除</a>
-							</td>
+							<td><a href="#" onClick="onDel('${ins.aaa201}')">删除</a></td>
 						</tr>
 					</c:forEach>
 					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
@@ -132,16 +127,13 @@ function onDel(vaaa201)
 
 		<table border="1" align="center" width="95%">
 			<tr>
-				<td align="center">
-					<input type="submit" value="查询" name="next">
-					<input type="submit" value="添加" name="next"
-						formaction="<%=path %>/aa/projectAdd.jsp"> 
-					<input type="submit" value="删除" name="next" disabled="disabled"
-						formaction="<%=path %>/aa/aa02DelById.html" id="del" >
+				<td align="center"><input type="submit" value="查询" name="next">
+					<input type="submit" value="添加" name="next" formaction="<%=path %>/aa/projectAdd.jsp"> 
+					<input type="submit" value="删除" name="next" disabled="disabled" formaction="<%=path %>/aa/aa02DelById.html" id="del">
 				</td>
 			</tr>
 		</table>
-		
+
 		<input type="hidden" name="aaa101" value="1">
 	</form>
 

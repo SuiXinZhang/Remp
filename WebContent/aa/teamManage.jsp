@@ -1,5 +1,5 @@
-<%@ page language="java"    pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <% String path = request.getContextPath(); %>
@@ -8,8 +8,7 @@
 <title>teamManage</title>
 </head>
 <style type="text/css">
-tr 
-{
+tr {
 	height: 25px;
 }
 </style>
@@ -49,11 +48,11 @@ function onEmp(vaaa301,vaaa302)
 <body>
 	<br>
 	<br>
-	<form action="<%=path%>/aa/aa03Query.html" id = "myform" method="post">
+	<form action="<%=path%>/aa/aa03Query.html" id="myform" method="post">
 		<table border="1" align="center" width="95%">
 			<caption>
-			部门管理
-			<hr width:"160px">
+				部门管理
+				<hr width:"160px">
 			</caption>
 			<tr>
 				<td></td>
@@ -74,20 +73,15 @@ function onEmp(vaaa301,vaaa302)
 				<c:when test="${rows!= null }">
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<tr>
-							<td>
-							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aaa301 }" >
-							</td>
+							<td><input type="checkbox" onclick="onSelect(this.checked)"
+								name="idlist" value="${ins.aaa301 }"></td>
 							<td>${vs.count }</td>
-							<td>
-							<a href="#" onclick = "onEdit('${ins.aaa301 }')" >${ins.aaa302 }</a>
+							<td><a href="#" onclick="onEdit('${ins.aaa301 }')">${ins.aaa302 }</a>
 							</td>
 							<td>${ins.aaa303 }</td>
-							<td>
-							<a href="#" onClick="onEmp('${ins.aaa301}','${ins.aaa302}')">员工管理</a>
-							</td>
-							<td>
-							<a href="#" onClick="onDel('${ins.aaa301}')">删除</a>
-							</td>
+							<td><a href="#"
+								onClick="onEmp('${ins.aaa301}','${ins.aaa302}')">员工管理</a></td>
+							<td><a href="#" onClick="onDel('${ins.aaa301}')">删除</a></td>
 						</tr>
 					</c:forEach>
 					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
@@ -118,17 +112,14 @@ function onEmp(vaaa301,vaaa302)
 
 		<table border="1" align="center" width="95%">
 			<tr>
-				<td align="center">
-					<input type="submit" value="查询" name="next">
-					<input type="submit" value="添加" name="next"
-						formaction="<%=path %>/aa/teamAdd.jsp"> 
-					<input type="submit" value="删除" name="next" disabled="disabled"
-						formaction="<%=path %>/aa/aa03Delete.html" id="del" >
+				<td align="center"><input type="submit" value="查询" name="next">
+					<input type="submit" value="添加" name="next" formaction="<%=path %>/aa/teamAdd.jsp"> 
+					<input type="submit" value="删除" name="next" disabled="disabled" formaction="<%=path %>/aa/aa03Delete.html" id="del">
 				</td>
 			</tr>
 		</table>
-		
-		<input type="hidden" name="aaa201" value="1">
+
+		<input type="hidden" name="aaa201" value="1"> 
 		<input type="hidden" id="aaa302" name="aaa302" value="">
 	</form>
 
