@@ -1,5 +1,5 @@
-<%@ page language="java"    pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <% String path = request.getContextPath(); %>
@@ -8,8 +8,7 @@
 <title>areaManage</title>
 </head>
 <style type="text/css">
-tr 
-{
+tr {
 	height: 25px;
 }
 </style>
@@ -33,8 +32,16 @@ function onDel(vaaa701)
 	myform.action = "<%=path%>/aa07DelById.html?aaa701=" + vaaa701;
 	myform.submit();
 }
-function onRoom(vaaa701)
+function onRoom(vaaa701,vaaa704,vaaa705,vaaa706)
 {
+	var louceng = document.getElementById("louceng");
+	var danyuan = document.getElementById("danyuan");
+	var huhao = document.getElementById("huhao");
+	
+	louceng.value = vaaa704;
+	danyuan.value = vaaa705;
+	huhao.value = vaaa706;
+	
 	var myform = document.getElementById("myform");
 	myform.action = "<%=path%>/aa08Query.html?aaa701=" + vaaa701;
 	myform.submit();
@@ -43,11 +50,11 @@ function onRoom(vaaa701)
 <body>
 	<br>
 	<br>
-	<form action="<%=path%>/aa/aa07Query.html" id = "myform" method="post">
+	<form action="<%=path%>/aa/aa07Query.html" id="myform" method="post">
 		<table border="1" align="center" width="95%">
 			<caption>
-			楼栋管理
-			<hr width:"160px">
+				楼栋管理
+				<hr width:"160px">
 			</caption>
 			<tr>
 				<td></td>
@@ -73,12 +80,10 @@ function onRoom(vaaa701)
 				<c:when test="${rows!= null }">
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<tr>
-							<td>
-							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aaa701 }" >
-							</td>
+							<td><input type="checkbox" onclick="onSelect(this.checked)"
+								name="idlist" value="${ins.aaa701 }"></td>
 							<td>${vs.count }</td>
-							<td>
-							<a href="#" onclick = "onEdit('${ins.aaa701 }')" >${ins.aaa702 }栋</a>
+							<td><a href="#" onclick="onEdit('${ins.aaa701 }')">${ins.aaa702 }栋</a>
 							</td>
 							<td>${ins.aaa708 }</td>
 							<td>${ins.aaa703 }</td>
@@ -86,12 +91,10 @@ function onRoom(vaaa701)
 							<td>${ins.aaa705 }</td>
 							<td>${ins.aaa706 }</td>
 							<td>${ins.aaa707 }</td>
-							<td>
-							<a href="#" onClick="onRoom('${ins.aaa701}')">房间管理</a>
+							<td><a href="#"
+								onClick="onRoom('${ins.aaa701}','${ins.aaa704}','${ins.aaa705}','${ins.aaa706}')">房间管理</a>
 							</td>
-							<td>
-							<a href="#" onClick="onDel('${ins.aaa701}')">删除</a>
-							</td>
+							<td><a href="#" onClick="onDel('${ins.aaa701}')">删除</a></td>
 						</tr>
 					</c:forEach>
 					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
@@ -132,20 +135,19 @@ function onRoom(vaaa701)
 
 		<table border="1" align="center" width="95%">
 			<tr>
-				<td align="center">
-					<input type="submit" value="查询" name="next">
-					<input type="submit" value="添加" name="next"
-						formaction="<%=path %>/aa/buildingAdd.jsp"> 
-					<input type="submit" value="删除" name="next" disabled="disabled"
-						formaction="<%=path %>/aa/aa07Delete.html" id="del" >
-					<input type="submit" value="返回" name="next" 
-					formaction="<%=path %>/aa/aa06Query.html" formnovalidate="formnovalidate" >
+				<td align="center"><input type="submit" value="查询" name="next">
+					<input type="submit" value="添加" name="next" formaction="<%=path %>/aa/buildingAdd.jsp"> 
+					<input type="submit" value="删除" name="next" disabled="disabled" formaction="<%=path %>/aa/aa07Delete.html" id="del"> 
+					<input type="submit" value="返回" name="next" formaction="<%=path %>/aa/aa06Query.html" formnovalidate="formnovalidate">
 				</td>
 			</tr>
 		</table>
-		
+
+		<input type="hidden" id="louceng" name="louceng" value=""> 
+		<input type="hidden" id="danyuan" name="danyuan" value=""> 
+		<input type="hidden" id="huhao" name="huhao" value=""> 
 		<input type="hidden" name="aaa601" value="${param.aaa601 }">
-		<input type="hidden" name="aaa201" value="1">
+		<input type="hidden" name="aaa201" value="1"> 
 		<input type="hidden" name="aaa708" value="${param.aaa602 }">
 	</form>
 

@@ -10,8 +10,12 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.tools.Tool;
 
 import com.remp.system.db.DBUtils;
+import com.sun.crypto.provider.RSACipher;
+
+import javafx.beans.binding.StringBinding;
 
 
 public class Tools {
@@ -280,5 +284,16 @@ public class Tools {
 			pstm2.close();
 		}
 		
+	}
+	
+	
+	/**
+	 * 获取银行放款流水号
+	 * @return
+	 * @throws Exception
+	 */
+	public static String getLoanNumber()throws Exception
+	{
+		return Tools.getCurrentYear()+Tools.getFormatNumber("aaf602");
 	}
 }

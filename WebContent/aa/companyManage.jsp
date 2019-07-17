@@ -1,5 +1,5 @@
-<%@ page language="java"  pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <% String path = request.getContextPath(); %>
@@ -8,8 +8,7 @@
 <title>公司管理</title>
 </head>
 <style type="text/css">
-tr 
-{
+tr {
 	height: 25px;
 }
 </style>
@@ -23,13 +22,13 @@ function onEdit(vaaa101)
 }
 </script>
 <body>
-	<form action = "" id = "myform" method = "post">
+	<form action="" id="myform" method="post">
 
-		<a href="#" onclick = "onEdit('1')" >思安</a>
-		<input type="submit" value="注册" formaction="<%=path %>/aa/companyAdd.jsp"> 
+		<a href="#" onclick="onEdit('1')">思安</a> 
+		<input type="submit" value="注册" formaction="<%=path %>/aa/companyAdd.jsp">
 
 
 	</form>
-	
+
 </body>
 </html>

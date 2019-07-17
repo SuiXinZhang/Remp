@@ -1,5 +1,5 @@
-<%@ page language="java"    pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <% String path = request.getContextPath(); %>
@@ -8,8 +8,7 @@
 <title>empManage</title>
 </head>
 <style type="text/css">
-tr 
-{
+tr {
 	height: 25px;
 }
 </style>
@@ -41,98 +40,83 @@ function onDel(vaaa801)
 <body>
 	<br>
 	<br>
-	<form action="<%=path%>/aa/aa08Query.html" id = "myform" method="post">
-	<!-- 查询条件区 -->
-	<table border="1" width="95%" align="center">
-	<caption>
-	房间管理
-	<hr width:"160px">
-	</caption>
-	  <tr>
-	    <td colspan="4">查询条件</td>
-	  </tr>
-	  <tr>
-	    <td>房间编码</td>
-	    <td>
-	      <e:text name="qaaa802"/>
-	    </td>
-	    <td>房间号</td>
-	    <td>
-	      <e:text name="qaaa803"/>
-	    </td>
-	  </tr>
-	  
-	  <tr>
-	    <td>状态</td>
-	    <td>
-	      <e:select value="等待:01,签约:02,已租:03" header="true" name="qaaa805"/>
-	    </td>
+	<form action="<%=path%>/aa/aa08Query.html" id="myform" method="post">
+		<!-- 查询条件区 -->
+		<table border="1" width="95%" align="center">
+			<caption>
+				房间管理
+				<hr width:"160px">
+			</caption>
+			<tr>
+				<td colspan="4">查询条件</td>
+			</tr>
+			<tr>
+				<td>房间编码</td>
+				<td><e:text name="qaaa802" /></td>
+				<td>房间号</td>
+				<td><e:text name="qaaa803" /></td>
+			</tr>
 
-	    <td>租售类型</td>
-	    <td>
-	      <e:select value="可租:可租,可售:可售,租售:租售" header="true"  name="qaaa806"  />
-	    </td>
-	  </tr>
-	  
-	  <tr>
-	    <td>户型编码</td>
-	    <td>
-	      <e:text name="qaaa807"/>
-	    </td>
-	  </tr>
-	  
-	  <tr>
-	    <td>建筑单价[B]</td>
-	    <td>
-	      <e:number name="baaa808" step="0.1"/>
-	    </td>
+			<tr>
+				<td>楼层</td>
+				<td><e:text name="qlouceng" /></td>
+				<td>单元</td>
+				<td><e:text name="qdanyuan" /></td>
+				<td>户号</td>
+				<td><e:text name="qhuhao" /></td>
+			</tr>
 
-	    <td>建筑单价[E]</td>
-	    <td>
-	      <e:number name="eaaa808" step="0.1"/>
-	    </td>
-	  </tr>
-	  
-	  <tr>
-	    <td>建筑总价[B]</td>
-	    <td>
-	      <e:number name="baaa809" step="0.1"/>
-	    </td>
+			<tr>
+				<td>状态</td>
+				<td><e:select value="等待:01,签约:02,已租:03" header="true"
+						name="qaaa805" /></td>
 
-	    <td>建筑总价[E]</td>
-	    <td>
-	      <e:number name="eaaa809" step="0.1"/>
-	    </td>
-	  </tr>
-	  
-	  <tr>
-	    <td>套内单价[B]</td>
-	    <td>
-	      <e:number name="baaa810" step="0.1"/>
-	    </td>
+				<td>租售类型</td>
+				<td><e:select value="可租:可租,可售:可售,租售:租售" header="true"
+						name="qaaa806" /></td>
+			</tr>
 
-	    <td>套内单价[E]</td>
-	    <td>
-	      <e:number name="eaaa810" step="0.1"/>
-	    </td>
-	  </tr>
-	  
-	  	  <tr>
-	    <td>套内总价[B]</td>
-	    <td>
-	      <e:number name="baaa811" step="0.1"/>
-	    </td>
+			<tr>
+				<td>户型编码</td>
+				<td><e:text name="qaaa807" /></td>
+			</tr>
 
-	    <td>套内总价[E]</td>
-	    <td>
-	      <e:number name="eaaa811" step="0.1"/>
-	    </td>
-	  </tr>
+			<tr>
+				<td>建筑单价[B]</td>
+				<td><e:number name="baaa808" step="0.1" /></td>
 
-	</table>
-	
-	
-	<!-- 数据迭代 -->
+				<td>建筑单价[E]</td>
+				<td><e:number name="eaaa808" step="0.1" /></td>
+			</tr>
+
+			<tr>
+				<td>建筑总价[B]</td>
+				<td><e:number name="baaa809" step="0.1" /></td>
+
+				<td>建筑总价[E]</td>
+				<td><e:number name="eaaa809" step="0.1" /></td>
+			</tr>
+
+			<tr>
+				<td>套内单价[B]</td>
+				<td><e:number name="baaa810" step="0.1" /></td>
+
+				<td>套内单价[E]</td>
+				<td><e:number name="eaaa810" step="0.1" /></td>
+			</tr>
+
+			<tr>
+				<td>套内总价[B]</td>
+				<td><e:number name="baaa811" step="0.1" /></td>
+
+				<td>套内总价[E]</td>
+				<td><e:number name="eaaa811" step="0.1" /></td>
+			</tr>
+
+		</table>
+
+
+		<!-- 数据迭代 -->
 		<table border="1" align="center" width="95%">
 
 			<tr>
@@ -162,12 +146,10 @@ function onDel(vaaa801)
 				<c:when test="${rows!= null }">
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<tr>
-							<td>
-							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aaa801 }" >
-							</td>
+							<td><input type="checkbox" onclick="onSelect(this.checked)"
+								name="idlist" value="${ins.aaa801 }"></td>
 							<td>${vs.count }</td>
-							<td>
-							<a href="#" onclick = "onEdit('${ins.aaa801 }')" >${ins.aaa803 }</a>
+							<td><a href="#" onclick="onEdit('${ins.aaa801 }')">${ins.aaa803 }</a>
 							</td>
 							<td>${ins.aaa802 }</td>
 							<td>${ins.aaa804 }</td>
@@ -179,9 +161,7 @@ function onDel(vaaa801)
 							<td>${empty ins.aaa810?'尚未设置':ins.aaa810  }</td>
 							<td>${empty ins.aaa811?'尚未设置':ins.aaa811  }</td>
 							<td>${ins.aaa812 }</td>
-							<td>
-							<a href="#" onClick="onDel('${ins.aaa801}')">删除</a>
-							</td>
+							<td><a href="#" onClick="onDel('${ins.aaa801}')">删除</a></td>
 						</tr>
 					</c:forEach>
 					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
@@ -228,21 +208,17 @@ function onDel(vaaa801)
 
 		<table border="1" align="center" width="95%">
 			<tr>
-				<td align="center">
-					<input type="submit" value="查询" name="next">	
-					<input type="submit" value="修改" name="next" disabled="disabled" 
-						formaction="<%=path %>/aa/roomsModify.jsp" id="modify" >
-					<input type="submit" value="删除" name="next" disabled="disabled" 
-						formaction="<%=path %>/aa/aa08Delete.html" id="del" >
-					<input type="submit" value="返回" name="next" 
-					formaction="<%=path %>/aa/aa07Query.html" formnovalidate="formnovalidate" >
+				<td align="center"><input type="submit" value="查询" name="next">
+					<input type="submit" value="修改" name="next" disabled="disabled" formaction="<%=path %>/aa/roomsModify.jsp" id="modify"> 
+					<input type="submit" value="删除" name="next" disabled="disabled" formaction="<%=path %>/aa/aa08Delete.html" id="del"> 
+					<input type="submit" value="返回" name="next" formaction="<%=path %>/aa/aa07Query.html" formnovalidate="formnovalidate">
 				</td>
 			</tr>
 		</table>
-		
-		<input type="hidden" name="aaa201" value="1">
-		<input type="hidden" name="aaa701" value="${param.aaa701 }">
-		<input type="hidden" name="aaa601" value="${param.aaa601 }">
+
+		<input type="hidden" name="aaa201" value="1"> 
+		<input type="hidden" name="aaa701" value="${param.aaa701 }"> 
+		<input type="hidden" name="aaa601" value="${param.aaa601 }"> 
 		<input type="hidden" name="aaa602" value="${param.aaa708 }">
 	</form>
 
