@@ -95,6 +95,7 @@ ${msg}
 <input type="hidden" name="aaa201" value="1">
 <input type="hidden" name="aaa301" value="${param.aaa301 }">
 <input type="hidden" name="aaa401" value="${ins.aaa401 }">
+<input type="hidden" name="aaa302" value="${param.aaa405 }">
 </form>
 </body>
 </html>

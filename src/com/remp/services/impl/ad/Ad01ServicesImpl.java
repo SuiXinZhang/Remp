@@ -8,6 +8,9 @@ import com.remp.system.tools.Tools;
 
 public class Ad01ServicesImpl extends JdbcServicesSupport 
 {
+	/**
+	 * 查询预约记录
+	 */
 	public List<Map<String, String>> query()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
@@ -19,6 +22,11 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 				;
 		return this.queryForList(sql.toString());
 	}
+	/**
+	 * 添加预约记录,其中所有排号都自动生成
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean addOrder()throws Exception
 	{
 		String aad108 = Tools.getOrderNum("aad108");
@@ -57,7 +65,11 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 		System.out.println(args[0]);
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
-	
+	/**
+	 * 在添加预约记录之前,验证客户是否有记录,若无则添加客户信息
+	 * @return
+	 * @throws Exception
+	 */
 	public Map<String, String> findByName()throws Exception
 	{
 		String sql = "select aac401,aac403,aac407 from ac04 where aac403=? and aac407=?";
@@ -68,6 +80,9 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 		return this.queryForMap(sql, args);
 	}
 
+	/**
+	 * 查看客户预约记录
+	 */
 	public Map<String, String> findById()throws Exception
 	{
 		StringBuilder sql= new StringBuilder()
@@ -79,12 +94,21 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 				;
 		return this.queryForMap(sql.toString(), this.get("aad101"));
 	}
+	/**
+	 * 删除预约记录
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean deleteById()throws Exception
 	{
 		String sql = "delete from ad01 where aad101=?";
 		return this.executeUpdate(sql, this.get("aad101"))>0;
 	}
-	
+	/**
+	 * 修改预约记录
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean modifyOrder()throws Exception
     {
     	StringBuilder sql=new StringBuilder()

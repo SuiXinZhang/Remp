@@ -33,6 +33,15 @@ function onDel(vaaa601)
 	myform.action = "<%=path%>/aa06DelById.html?aaa601=" + vaaa601;
 	myform.submit();
 }
+function onBuilding(vaaa601,vaaa602)
+{
+	var aaa602 = document.getElementById("aaa602");
+	aaa602.value=vaaa602;
+	
+	var myform = document.getElementById("myform");
+	myform.action = "<%=path%>/aa07Query.html?aaa601=" + vaaa601;
+	myform.submit();
+}
 </script>
 <body>
 	<br>
@@ -40,7 +49,7 @@ function onDel(vaaa601)
 	<form action="<%=path%>/aa/aa06Query.html" id = "myform" method="post">
 		<table border="1" align="center" width="95%">
 			<caption>
-			项目管理
+			区域管理
 			<hr width:"160px">
 			</caption>
 			<tr>
@@ -50,6 +59,7 @@ function onDel(vaaa601)
 				<td>地址</td>
 				<td>面积</td>
 				<td>备注</td>
+				<td>楼栋管理</td>
 				<td></td>
 			</tr>
 			<!--
@@ -74,12 +84,16 @@ function onDel(vaaa601)
 							<td>${ins.aaa604 }</td>
 							<td>${ins.aaa605 }</td>
 							<td>
+							<a href="#" onClick="onBuilding('${ins.aaa601}','${ins.aaa602}')">楼栋管理</a>
+							</td>
+							<td>
 							<a href="#" onClick="onDel('${ins.aaa601}')">删除</a>
 							</td>
 						</tr>
 					</c:forEach>
 					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
 						<tr>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -115,11 +129,14 @@ function onDel(vaaa601)
 						formaction="<%=path %>/aa/areaAdd.jsp"> 
 					<input type="submit" value="删除" name="next" disabled="disabled"
 						formaction="<%=path %>/aa/aa06Delete.html" id="del" >
+					<input type="submit" value="返回" name="next" 
+					formaction="<%=path %>/aa/aa02Query.html" formnovalidate="formnovalidate" >
 				</td>
 			</tr>
 		</table>
 		
 		<input type="hidden" name="aaa201" value="1">
+		<input type="hidden" id="aaa602" name="aaa602" value="">
 	</form>
 
 </body>

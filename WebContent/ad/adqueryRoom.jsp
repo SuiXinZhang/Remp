@@ -72,7 +72,7 @@ ${msg }
 	    </td>
 	    <td>房间结构</td>
 	    <td>
-	      <e:select name="qaaa504" value="两房两厅一卫:01,两房两厅两卫:02" header="true" />
+	      <e:select name="qaaa504" value="两房两厅一卫:01,两房两厅两卫:02,三室一厅一卫:03" header="true" />
 	    </td>
 	  </tr>
 	  <tr>

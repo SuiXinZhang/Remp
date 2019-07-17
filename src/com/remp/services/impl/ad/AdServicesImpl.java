@@ -8,6 +8,9 @@ import com.remp.services.JdbcServicesSupport;
 
 public class AdServicesImpl extends JdbcServicesSupport{
 
+	/**
+	 * 查询房源
+	 */
 	public List<Map<String, String>> query()throws Exception
 	{
 		Object baaa809 = this.get("baaa809");   //建筑总价[B]
