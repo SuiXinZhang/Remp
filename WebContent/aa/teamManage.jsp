@@ -52,7 +52,7 @@ function onEmp(vaaa301,vaaa302)
 	<form action="<%=path%>/aa/aa03Query.html" id = "myform" method="post">
 		<table border="1" align="center" width="95%">
 			<caption>
-			团队管理
+			部门管理
 			<hr width:"160px">
 			</caption>
 			<tr>
