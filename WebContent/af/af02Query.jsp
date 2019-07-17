@@ -14,40 +14,40 @@ tr
 }
 </style>
 <script>
-function onReceive(vaaf201,vaac202,vaac203,vaac204,vaac205,vaac206)
+function onReceive(vaaf201,vaaf202,vaaf203,vaaf204,vaaf205,vaaf206)
 {
-	onSetValue(vaac202,vaac203,vaac204,vaac205,vaac206);
+	onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206);
 	var myform = document.getElementById("myform");
 	myform.action = "<%=path%>/af/af02ReceiveNote.jsp?aaf201=" + vaaf201 ;
 	myform.submit();
 }
-function onWrite(vaaf201,vaac202,vaac203,vaac204,vaac205,vaac206)
+function onWrite(vaaf201,vaaf202,vaaf203,vaaf204,vaaf205,vaaf206)
 {
-	onSetValue(vaac202,vaac203,vaac204,vaac205,vaac206);
+	onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206);
 	var myform = document.getElementById("myform");
 	myform.action = "<%=path%>/af/af02WriteOffNote.jsp?aaf201=" + vaaf201 ;
 	myform.submit();
 }
-function onDiscard(vaaf201,vaac202,vaac203,vaac204,vaac205,vaac206)
+function onDiscard(vaaf201,vaaf202,vaaf203,vaaf204,vaaf205,vaaf206)
 {
-	onSetValue(vaac202,vaac203,vaac204,vaac205,vaac206);
+	onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206);
 	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/af/af02ReceiveNote.jsp?aaf201=" + vaaf201 ;
+	myform.action = "<%=path%>/af/af02DiscardNote.jsp?aaf201=" + vaaf201 ;
 	myform.submit();
 }
 
-function onSetValue(vaac202,vaac203,vaac204,vaac205,vaac206)
+function onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206)
 {
 	var aaf202 = document.getElementById("aaf202");
-	aac202.value = vaac202;
+	aaf202.value = vaaf202;
 	var aaf203 = document.getElementById("aaf203");
-	aac203.value = vaac203;
+	aaf203.value = vaaf203;
 	var aaf204 = document.getElementById("aaf204");
-	aac204.value = vaac204;
+	aaf204.value = vaaf204;
 	var aaf205 = document.getElementById("aaf205");
-	aac205.value = vaac205;
+	aaf205.value = vaaf205;
 	var aaf206 = document.getElementById("aaf206");
-	aac206.value = vaac206;
+	aaf206.value = vaaf206;
 }
 </script>
 <body>
@@ -72,6 +72,8 @@ function onSetValue(vaac202,vaac203,vaac204,vaac205,vaac206)
 				<td></td>
 				<td>票据前缀</td>
 				<td>票据状态</td>
+				<td>起始编号</td>
+				<td>截止编号</td>
 				<td>领用人</td>
 				<td>领用日期</td>
 				<td>开票金额</td>
@@ -92,22 +94,24 @@ function onSetValue(vaac202,vaac203,vaac204,vaac205,vaac206)
 						<tr>
 							<td>${vs.count }</td>
 							<td>${ins.aaf202 }</td>
-							<td>${ins.aaf207 }</td>
+							<td>${ins.cnaaf207 }</td>
+							<td>${ins.aaf203 }</td>
+							<td>${ins.aaf204 }</td>
 							<td>${ins.aaf205 }</td>
 							<td>${ins.aaf206 }</td>
-							<td>${ins.aac209 }</td>
-							<td>${ins.aac210 }</td>
+							<td>${ins.aaf209 }</td>
+							<td>${ins.aaf210 }</td>
 							<td>${ins.aaf211 }</td>
 							<td>
 							<!-- disabled="${!(ins.aaf207 == 2) }" -->
 							<input type="button" value="领用票据" name="next" 
-							onclick="onReceive(${ins.aaf201},${ins.aaf202},${ins.aaf203},${ins.aaf204},${ins.aaf205},${ins.aaf206})" 
+							onclick="onReceive('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')" 
 							formaction="<%=path %>/af/af02receiveNote.html" >
 							<input type="button" value="核销票据" name="next2" 
-		   				    onclick="onWrite(${ins.aaf201},${ins.aaf202},${ins.aaf203},${ins.aaf204},${ins.aaf205},${ins.aaf206})" 
+		   				    onclick="onWrite('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')" 
 							formaction="<%=path %>/af/af02writeOffNote.html" >
 							<input type="button" value="废弃票据" name="next3" 
-							onclick="onDiscard(${ins.aaf201},${ins.aaf202},${ins.aaf203},${ins.aaf204},${ins.aaf205},${ins.aaf206})" 
+							onclick="onDiscard('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')" 
 							formaction="<%=path %>/af/af02discardNote.html" >  
 							</td>
 						</tr>
@@ -123,12 +127,16 @@ function onSetValue(vaac202,vaac203,vaac204,vaac205,vaac206)
 							<td></td>
 							<td></td>
 							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
 					<c:forEach begin="1" end="15" step="1">
 						<tr>
+							<td></td>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>

@@ -17,7 +17,7 @@ tr
 <body>
 <br>
 <br>
-<form action = "<%=path%>/ac/af02discardNote.html" method = "post">
+<form action = "<%=path%>/ac/af02DiscardNote.html" method = "post">
 ${msg}
 <table border="1" align="center" width="45%">
 <caption>
@@ -26,7 +26,7 @@ ${msg}
 </caption>
 
 <tr>
-	<td>票据前缀</td>
+	<td>票据批次号</td>
 	<td>
 	<e:text name="aaf202" required="true" defval="${param.aaf202 }" readonly="true"/>
 	</td>
@@ -35,11 +35,11 @@ ${msg}
 <tr>
 	<td>起始编号</td>
 	<td>
-	<e:text name="aaf203" required="true" defval="${param.aaf203 }" readonly="true"/>
+	<e:text name="aaf203" required="true" defval="${param.aaf203 }" />
 	</td>
 	<td>截止编号</td>
 	<td>
-	<e:text name="aaf204" required="true" defval="${param.aaf204 }" readonly="true"/>
+	<e:text name="aaf204" required="true" defval="${param.aaf204 }" />
 	</td>
 </tr>
 
@@ -58,20 +58,23 @@ ${msg}
 	<td>
 	<e:radio value="开错:1,取消使用:2,丢失:3,其他:4" name="aaf208"  required="true" />
 	</td>
-	<td>详细原因</td>
+	<td>详细说明</td>
 	<td>
 	<e:text name="aaf212" required="true" />
 	</td>
 </tr>
    <tr>
      <td align="center">
-       <input type="submit" name="next" value="确定">
+       <input type="submit" name="next" value="确定作废">
      </td>
      <td align="center">
-       <input type="submit" name="next" value="返回">
+       <input type="submit" name="next" value="返回"
+       formaction="af02Query.html" formnovalidate="formnovalidate">
      </td>
    </tr>
 </table>
+<e:hidden name="aaf201" value="${param.aaf201 }"/>
+<input type="hidden" value="4" name="qaaf207"/>
 </form>
 </body>
 </html>
