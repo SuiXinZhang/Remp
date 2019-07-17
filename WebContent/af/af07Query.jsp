@@ -23,17 +23,17 @@
 		vdel.disabled=(count==0);
 	}
 	
-	function onEdit(vaaf601)
+	function onEdit(vaaf701)
 	{
 		var vform = document.getElementById("myform");
-	  	 vform.action="<%=path%>/af/af06FindById.html?aaf601="+vaaf601;
+	  	 vform.action="<%=path%>/af/af07FindById.html?aaf701="+vaaf701;
 	  	 vform.submit();
 	}
 	
-	function onDel(vaaf601)
+	function onDel(vaaf701)
     {
   	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/af/af06DelById.html?aaf601="+vaaf601;
+  	 vform.action="<%=path%>/af/af07DelById.html?aaf701="+vaaf701;
   	 vform.submit();
     }
 
@@ -42,7 +42,7 @@
 </head>
 <body>
 	${msg }
-	<form id="myform" action="<%=path%>/af/af06Query.html" method="post">
+	<form id="myform" action="<%=path%>/af/af07Query.html" method="post">
 	
 	<!------------------ 查询条件区---------------------->
 		<table border="1" align="center" width="95%">
@@ -51,13 +51,13 @@
 			<hr>
 		</caption>
 			<tr>
-				<td>项目名称</td>
+				<td>客户名称</td>
 				<td>
-					<e:text name="qaaf612"/>
+					<e:text name="qaaf703"/>
 				</td>
-				<td>贷款银行</td>
+				<td>房间编号</td>
 				<td>
-					<e:text name="qaaf604"/>
+					<e:text name="qaaf702"/>
 				</td>
 			</tr>
 			<tr>
@@ -70,10 +70,6 @@
 					<e:date name="edate"/>
 				</td>
 			</tr>
-			<tr>
-				<td>放款单号</td>
-				<td><e:text name="qaaf602"/></td>
-			</tr>
 		</table>
 		
 		<!-----------------数据迭代区 -------------------->
@@ -81,12 +77,12 @@
 			<tr>
 			  <td></td>
 			  <td>序号</td>
-			  <td>放款单号</td>
-			  <td>放款银行</td>
-			  <td>项目名称</td>
-			  <td>放款日期</td>
-			  <td>登记人</td>
-			  <td>审核人</td>
+			  <td>客户名称</td>
+			  <td>房间编号</td>
+			  <td>签署日期</td>
+			  <td>合同金额</td>
+			  <td>欠款金额</td>
+			  <td></td>
 			  <td></td>
 			</tr>
 	  
@@ -96,20 +92,22 @@
 	  		<c:forEach items="${rows }" var="ins" varStatus="vs">
 	  			<tr>
 	  				<td>
-	  					<input type="checkbox" name="idlist" value="${ins.aaf601 }"
+	  					<input type="checkbox" name="idlist" value="${ins.aaf701 }"
 	  						onclick="onSelect(this.checked)" >
 	  				</td>
 	  				<td>
 	  					${vs.count }
 	  				</td>
-	  				<td>${ins.aaf602 }</td>
-	  				<td>${ins.aaf604 }</td>
-	  				<td>${ins.aaf612 }</td>
-				    <td>${ins.aaf605 }</td>
-				    <td>${ins.aaf603 }</td>
-				    <td>${ins.aaf606 }</td>
+	  				<td>${ins.aaf703 }</td>
+	  				<td>${ins.aaf702 }</td>
+	  				<td>
+	  					<input type="text" name="emailList" value="${ins.aaf704 }" readonly="true">
+	  				</td>
+	  				<td>${ins.aaf705 }</td>
+				    <td>${ins.aaf706 }</td>
+				    <td>${ins.aaf709 }</td>
 				    <td>
-				    	<a href="#" onclick="onEdit('${ins.aaf601}')">审核</a>
+				    	<a href="#" onclick="onEdit('${ins.aaf701}')">已缴费</a>
 				    </td>
 	  			</tr>
 	  		</c:forEach>
@@ -153,11 +151,10 @@
 		    <td align="center">
 		       <input type="submit" name="next" value="查询">
 		       <input type="submit" name="next" value="添加" 
-		              formaction="<%=path%>/af/af06Add.jsp">
-		       <%-- 
-		       <input type="submit" id="del" name="next" value="审核" 
-		              formaction="<%=path%>/af06Modify.html"  disabled="disabled">
-		       --%>
+		              formaction="<%=path%>/af/af07Add.jsp">
+
+		       <input type="submit" id="del" name="next" value="邮件催款" 
+		              formaction="<%=path%>/af07Mail.html" disabled="disabled">
 		    </td>
 		  </tr>
 		</table>
