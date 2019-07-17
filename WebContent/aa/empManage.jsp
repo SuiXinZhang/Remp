@@ -39,11 +39,64 @@ function onDel(vaaa401)
 	<br>
 	<br>
 	<form action="<%=path%>/aa/aa04Query.html" id = "myform" method="post">
-		<table border="1" align="center" width="95%">
-			<caption>
+			<table border="1" width="95%" align="center">
+		<caption>
 			员工管理
 			<hr width:"160px">
-			</caption>
+		</caption>
+	  <tr>
+	    <td colspan="4">查询条件</td>
+	  </tr>
+	  <tr>
+
+	    <td>编号</td>
+	    <td>
+	      <e:text name="qaaa402"/>
+	    </td>
+	  </tr>
+	  
+	  	  <tr>
+	  	<td>姓名</td>
+	    <td>
+	      <e:text name="qaaa403"/>
+	    </td>
+	    <td>性别</td>
+	    <td>
+	      <e:text name="qaaa407"/>
+	    </td>
+	  </tr>
+	  
+	  <tr>
+
+	    <td>岗位</td>
+	    <td>
+	     <e:text name="qaaa404"/>
+	    </td>
+
+	    <td>民族</td>
+	    <td>
+	     <e:text name="qaaa406"/>
+	    </td>
+	  </tr>
+	  
+
+	  
+	  <tr>
+	    <td>生日[B]</td>
+	    <td>
+	      <e:date name="baaa411"/>
+	    </td>
+
+	    <td>生日[E]</td>
+	    <td>
+	      <e:date name="eaaa411"/>
+	    </td>
+	  </tr>
+
+	</table>
+		
+		<table border="1" align="center" width="95%">
+	
 			<tr>
 				<td></td>
 				<td>序号</td>
@@ -53,6 +106,7 @@ function onDel(vaaa401)
 				<td>所属部门</td>
 				<td>性别</td>
 				<td>民族</td>
+				<td>生日</td>
 				<td>联系方式</td>
 				<td>住址</td>
 				<td>备注</td>
@@ -81,6 +135,7 @@ function onDel(vaaa401)
 							<td>${ins.aaa405 }</td>
 							<td>${ins.aaa407 }</td>
 							<td>${ins.aaa406 }</td>
+							<td>${ins.aaa411 }</td>
 							<td>${ins.aaa408 }</td>
 							<td>${ins.aaa409 }</td>
 							<td>${ins.aaa410 }</td>
@@ -103,12 +158,14 @@ function onDel(vaaa401)
 							<td></td>
 							<td></td>
 							<td></td>
+							<td></td>
 						</tr>
 					</c:forEach>
 				</c:when>
 				<c:otherwise>
 					<c:forEach begin="1" end="15" step="1">
 						<tr>
+							<td></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -143,8 +200,7 @@ function onDel(vaaa401)
 		
 		<input type="hidden" name="aaa301" value="${param.aaa301 }">
 		<input type="hidden" name="aaa201" value="1">
-		<input type="hidden" name="aaa601" value="${param.aaa601 }">
-		<input type="hidden" name="aaa602" value="${param.aaa708 }">
+		<input type="hidden" name="aaa405" value="${param.aaa302 }">
 	</form>
 
 </body>

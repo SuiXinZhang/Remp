@@ -62,6 +62,21 @@ function onDel(vaaa801)
 	    </td>
 	  </tr>
 	  
+	 <tr>
+	    <td>Â¥²ã</td>
+	    <td>
+	      <e:text name="qlouceng"/>
+	    </td>
+	    <td>µ¥Ôª</td>
+	    <td>
+	      <e:text name="qdanyuan"/>
+	    </td>
+	   <td>»§ºÅ</td>
+	    <td>
+	      <e:text name="qhuhao"/>
+	    </td>
+	  </tr>
+	  
 	  <tr>
 	    <td>×´Ì¬</td>
 	    <td>
