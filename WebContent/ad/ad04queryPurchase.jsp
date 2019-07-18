@@ -26,6 +26,12 @@
   	 vform.action="<%=path%>/ad/ad04deleteByIdPurchase.html?aad401="+vaad401;
   	 vform.submit();
     }
+    function onReceipt(vaad401)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/af/af03turnReceipt.html?aad401="+vaad401;
+  	 vform.submit();
+    }
     </script>
 </head>
 <body>
@@ -64,6 +70,7 @@ ${msg }
 	    <td>订单类型</td>
 	    <td>付款方式</td>
 	    <td></td>
+	    <td></td>
 	  </tr>
 	  <c:choose>
 	     <c:when test="${rows!=null }">
@@ -82,11 +89,13 @@ ${msg }
 				    <td>${ins.daad418 }</td>
 				    <td>${ins.caad404 }</td>
 				    <td><a href="#" onclick="onDel('${ins.aad401}')">删除</a></td>
+				    <td><a href="#" onclick="onReceipt('${ins.aad401}')">生成付款详情</a></td>
 				  </tr>
 		      </c:forEach>
 		      <!-- 补充空行 -->
 		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
 			          <tr>
+			            <td></td>
 			            <td></td>
 			            <td></td>
 			            <td></td>
@@ -105,6 +114,7 @@ ${msg }
 	     <c:otherwise>
 	        <c:forEach begin="1" step="1" end="15">
 	           <tr>
+	             <td></td>
 	             <td></td>
 	             <td></td>
 	             <td></td>

@@ -42,7 +42,7 @@ ${msg }
     </tr>
     <tr>
      <td>房间结构</td>
-     <td><e:text name="aaa504" required="true" defval="${ins.yaaa504 }"/></td>
+     <td><e:text name="aaa504" required="true" defval="${ins.aaa504 }"/></td>
      <td>房间状态</td>
      <td><e:text name="aaa805" required="true" defval="${ins.saaa805 }"/></td>
     </tr>
@@ -122,6 +122,8 @@ ${msg }
 	         formnovalidate="formnovalidate">
 	       <input type="submit" name="next" value="转签约"
 	          formnovalidate="formnovalidate" formaction="ad07turnAgreement.html">
+	       <input type="submit" name="next" value="生成付款详情"
+	          formnovalidate="formnovalidate" formaction="<%=path %>/af/af03turnReceipt.html">
 	    </td>
 	</tr>
     </table>

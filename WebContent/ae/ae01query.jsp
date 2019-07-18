@@ -11,7 +11,7 @@
   <div class="layui-body">
     <div style="padding: 15px;">
 	    <form id="action" class="layui-form" action="<%=path %>/ae01/ae01query.html" method="post">
-	     <h1>合同管理</h1>
+	     <h1 align="center">合同管理</h1>
 	        <hr>
 	        <div class="layui-form-item" align="center">
 	        		<div class="layui-inline">
@@ -86,15 +86,6 @@
   </div>
 </div>
 <script >
-var count = 0;
-function onSelect(value)
-{
-	value?count++:count--;
-	if(count!=0)
-	{
-		${"mod"}.class="layui-btn";
-	}
-}
 function modify(id)
 {
 	var vform = document.getElementById("action");
@@ -103,7 +94,8 @@ function modify(id)
 }
 </script>
 <script>
-layui.use(['layer', 'form'], function(){
+layui.use(['layer', 'form','element'], function(){
+		var element = layui.element;
 	  var layer = layui.layer
 	  ,form = layui.form;
 	  var count=0;

@@ -31,6 +31,12 @@
   	 vform.action="<%=path%>/ad/ad06turnApply.html?aad701="+vaad701;
   	 vform.submit();
     }
+    function onReceipt(vaad701)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/af/af03otherTurnReceipt.html?aad701="+vaad701;
+  	 vform.submit();
+    }
     </script>
 </head>
 <body>
@@ -69,6 +75,7 @@ ${msg }
     <td>付款方式</td>
     <td></td>
     <td></td>
+    <td></td>
   </tr>
   <c:choose>
      <c:when test="${rows!=null }">
@@ -87,11 +94,13 @@ ${msg }
 			    <td>${ins.caad704 }</td>
 			    <td><a href="#" onclick="onCancel('${ins.aad701}')">作废</a></td>
 			    <td><a href="#" onclick="onChange('${ins.aad701}')">申请变更</a></td>
+			    <td><a href="#" onclick="onReceipt('${ins.aad401}')">生成付款详情</a></td>
 			  </tr>
 	      </c:forEach>
 	      <!-- 补充空行 -->
 	      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
 		          <tr>
+		            <td></td>
 		            <td></td>
 		            <td></td>
 		            <td></td>
@@ -110,6 +119,7 @@ ${msg }
      <c:otherwise>
         <c:forEach begin="1" step="1" end="15">
            <tr>
+             <td></td>
              <td></td>
              <td></td>
              <td></td>
