@@ -30,10 +30,10 @@
 							<c:forEach items="${rows }" var="ins" varStatus="vs">
 								<tr>
 									<td>
-									<input type="checkbox" lay-filter="check" name="idlist" value="${ins.aaa301 }">
+									<input type="checkbox" lay-filter="check" lay-skin="primary" name="idlist" value="${ins.aaa301 }">
 									</td>
 									<td>${vs.count }</td>
-									<td><a href="#" onclick="onEdit('${ins.aaa301 }')">${ins.aaa302 }</a>
+									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa301 }')">${ins.aaa302 }</a>
 									</td>
 									<td>${ins.aaa303 }</td>
 									<td><a href="#" style="color:blue" onClick="onEmp('${ins.aaa301}','${ins.aaa302}')">员工管理</a></td>

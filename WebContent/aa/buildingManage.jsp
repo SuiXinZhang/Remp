@@ -34,7 +34,7 @@
 						<c:when test="${rows!= null }">
 							<c:forEach items="${rows }" var="ins" varStatus="vs">
 								<tr>
-									<td><input type="checkbox" lay-filter="check" name="idlist" value="${ins.aaa601 }"></td>
+									<td><input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aaa601 }"></td>
 									<td>${vs.count }</td>
 									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa701 }')">${ins.aaa702 }¶°</a>
 									</td>
