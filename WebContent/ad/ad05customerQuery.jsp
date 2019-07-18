@@ -35,6 +35,7 @@ ${msg }
 	</td>
 	</tr>
 </table>
+<input type="hidden" name="aaa801" value="${param.aaa801 }">
 </form>
 </body>
 </html>
