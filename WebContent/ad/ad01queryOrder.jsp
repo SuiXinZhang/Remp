@@ -12,6 +12,20 @@
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
 	<form id="myform" lay-filter="myform" action="<%=path %>/ad/ad01queryOrder.html" method="post">
+	<div class="layui-form-item" align="center">
+			<div class="layui-inline">
+				<label class="layui-form-label">客户名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="qaad103" value="${param.qaad103 }" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">预约状态</label>
+				<div class="layui-input-inline">
+					<input type="text" name="qaad116" value="${param.qaad116 }" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+	</div>
 	<table class="layui-table" lay-even lay-skin="nob">
 	  <tr>
 	    <td></td>
@@ -44,7 +58,7 @@
 				    <td>${ins.aad111 }</td>
 				    <td>${ins.aad113 }</td>
 				    <td>${ins.aad115 }</td>
-				    <td>${ins.saad116 }</td>
+				    <td>${ins.aad116 }</td>
 				    <td><a href="#" onclick="onDel('${ins.aad101}')">作废</a></td>
 				  </tr>
 		      </c:forEach>
