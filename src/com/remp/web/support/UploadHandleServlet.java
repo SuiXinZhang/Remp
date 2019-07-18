@@ -67,6 +67,7 @@ public class UploadHandleServlet extends HttpServlet {
 			String name = part.getHeader("content-disposition");
 			System.out.println(name);
 			String suff = name.substring(name.indexOf(".")+1,name.length()-1);
+			//调用servces方法
 			msg = ac01ServicesImpl.insertBatch(part.getInputStream(),suff)?"批量插入成功!":"批量插入失败!";
 		} catch (Exception e) {
 			e.printStackTrace();
