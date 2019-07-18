@@ -11,8 +11,94 @@
   <div class="layui-body">
     <div style="padding: 15px;">
 	    <form id="myform" class="layui-form" action="<%=path%>/aa/aa08Query.html" method="post">
-	     <h1>楼栋管理</h1>
+	     <h1>房间管理</h1>
 	        <hr>
+	        	<div class="layui-form-item" align="center">
+	        		<div class="layui-inline">
+	                    <label class="layui-form-label">房间编码:</label>
+	                    <div class="layui-input-inline" style="width: 100px;">
+	                        <input type="text" value="${param.qaaa802 }"  name="qaaa802" autocomplete="off" class="layui-input">
+	                    </div>
+	                </div>
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">房间号:</label>
+	                    <div class="layui-input-inline" style="width: 100px;">
+       						<input type="text" value="${param.qdanyuan }" name="qdanyuan" placeholder="单元" autocomplete="off" class="layui-input">
+	                    </div>
+	                    <div class="layui-form-mid">-</div>
+	                    <div class="layui-input-inline" style="width: 100px;">
+	                        <input type="text" value="${param.qlouceng }"  name="qlouceng"  placeholder="楼层" autocomplete="off" class="layui-input">
+	                    </div>
+	                    <div class="layui-form-mid">-</div>
+	                    <div class="layui-input-inline" style="width: 100px;">
+       						<input type="text" value="${param.qhuhao }" name="qhuhao" placeholder="户号" autocomplete="off" class="layui-input">	                    
+	                    </div>
+	                </div>		                
+	       		</div>
+	       		<div class="layui-form-item" align="center">
+	       			<div class="layui-inline">
+	       				<label class="layui-form-label">房间状态:</label>
+	                    <div class="layui-input-inline" style="width: 105px;">
+	                    	<e:select value="等待:01,签约:02,已租:03" header="true" name="qaaa805" />
+	                    </div>
+	       			</div>
+	       			<div class="layui-inline">
+	       				<label class="layui-form-label">租售类型:</label>
+	                    <div class="layui-input-inline" style="width: 105px;">
+	                    	<e:select value="可租:可租,可售:可售,租售:租售" header="true" name="qaaa806" />
+	                    </div>
+	       			</div>
+	       			<div class="layui-inline">
+	       				<label class="layui-form-label">户型编码:</label>
+	                    <div class="layui-input-inline" style="width: 105px;">
+	                    	<e:select value="可租:可租,可售:可售,租售:租售" header="true" name="qaaa807" />
+	                    </div>
+	       			</div>
+	       		</div>
+	       		<div class="layui-form-item" align="center">
+	       			<div class="layui-inline">
+	                    <label class="layui-form-label">建筑单价:</label>
+	                    <div class="layui-input-inline" style="width: 100px;">
+       						<input type="number" value="${param.baaa808 }" step="0.01" name="baaa808" placeholder="B" autocomplete="off" class="layui-input">
+	                    </div>
+	                    <div class="layui-form-mid">-</div>
+	                    <div class="layui-input-inline" style="width: 100px;">
+       						<input type="number" value="${param.eaaa808 }" step="0.01" name="eaaa808" placeholder="E" autocomplete="off" class="layui-input">	                    
+	                    </div>
+	       			</div>
+	       			<div class="layui-inline">
+	                    <label class="layui-form-label">建筑总价:</label>
+	                    <div class="layui-input-inline" style="width: 100px;">
+       						<input type="number" value="${param.baaa809 }" step="0.01" name="baaa809" placeholder="B" autocomplete="off" class="layui-input">
+	                    </div>
+	                    <div class="layui-form-mid">-</div>
+	                    <div class="layui-input-inline" style="width: 100px;">
+       						<input type="number" value="${param.eaaa809 }" step="0.01" name="eaaa809" placeholder="E" autocomplete="off" class="layui-input">	                    
+	                    </div>
+	       			</div>
+	       		</div>
+	       		<div class="layui-form-item" align="center">
+	       			<div class="layui-inline">
+	                    <label class="layui-form-label">套内单价:</label>
+	                    <div class="layui-input-inline" style="width: 100px;">
+       						<input type="number" value="${param.baaa810 }" step="0.01" name="baaa810" placeholder="B" autocomplete="off" class="layui-input">
+	                    </div>
+	                    <div class="layui-form-mid">-</div>
+	                    <div class="layui-input-inline" style="width: 100px;">
+       						<input type="number" value="${param.eaaa810 }" step="0.01" name="eaaa810" placeholder="E" autocomplete="off" class="layui-input">	                    
+	                    </div>
+	       			</div>
+	       			<div class="layui-inline">
+	                    <label class="layui-form-label">套内总价:</label>
+	                    <div class="layui-input-inline" style="width: 100px;">
+       						<input type="number" value="${param.baaa811 }" step="0.01" name="baaa811" placeholder="B" autocomplete="off" class="layui-input">
+	                    </div>
+	                    <div class="layui-form-mid">-</div>
+	                    <div class="layui-input-inline" style="width: 100px;">
+       						<input type="number" value="${param.eaaa811 }" step="0.01" name="eaaa811" placeholder="E" autocomplete="off" class="layui-input">	                    
+	                    </div>
+	       			</div>
+	       		</div>
 		    <table class="layui-table">
 			    <thead>
 			        <tr>
@@ -37,9 +123,9 @@
 						<c:when test="${rows!= null }">
 							<c:forEach items="${rows }" var="ins" varStatus="vs">
 								<tr>
-									<td><input type="checkbox" lay-filter="check" name="idlist" value="${ins.aaa801 }"></td>
+									<td><input type="checkbox" lay-filter="check" lay-skin="primary" name="idlist" value="${ins.aaa801 }"></td>
 									<td>${vs.count }</td>
-									<td><a href="#" onclick="onEdit('${ins.aaa801 }')">${ins.aaa803 }</a>
+									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa801 }')">${ins.aaa803 }</a>
 									</td>
 									<td>${ins.aaa802 }</td>
 									<td>${ins.aaa804 }</td>
@@ -99,6 +185,7 @@
 			 <div class="layui-form-item" align="center">
 				<div class="layui-inline">
 				<td align="center">
+					<input type="submit" class="layui-btn" value="查询" name="next">
 					<input type="submit" class="layui-btn layui-btn-disabled" value="修改" name="next" disabled="disabled" formaction="<%=path %>/aa/roomsModify.jsp" id="modify"> 
 					<input type="submit" class="layui-btn layui-btn-disabled" value="删除" name="next" disabled="disabled" formaction="<%=path %>/aa/aa08Delete.html" id="del"> 
 					<input type="submit" class="layui-btn"  value="返回" name="next" formaction="<%=path %>/aa/aa07Query.html" formnovalidate="formnovalidate">
