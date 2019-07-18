@@ -16,7 +16,7 @@ tr
 <body>
 <br>
 <br>
-<form action = "<%=path%>/ac/af02receiveNote.html" method = "post">
+<form action = "<%=path%>/ac/af02ReceiveNote.html" method = "post">
 ${msg}
 <table border="1" align="center" width="45%">
 <caption>
@@ -25,7 +25,7 @@ ${msg}
 </caption>
 
 <tr>
-	<td>票据前缀</td>
+	<td>票据批次号</td>
 	<td>
 	<e:text name="aaf202" required="true" defval="${param.aaf202 }" readonly="true" />
 	</td>
@@ -54,14 +54,16 @@ ${msg}
 </tr>
    <tr>
      <td align="center">
-       <input type="submit" name="next" value="添加">
+       <input type="submit" name="next" value="领用">
      </td>
      <td align="center">
-       <input type="submit" name="next" value="返回">
+       <input type="submit" name="next" value="返回" 
+       formaction="af02Query.html" formnovalidate="formnovalidate">
      </td>
    </tr>
 </table>
 <e:hidden name="aaf201" value="${param.aaf201 }"/>
+<input type="hidden" name="qaaf207" value="2" />
 </form>
 </body>
 </html>
