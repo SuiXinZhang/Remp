@@ -19,14 +19,13 @@ public class Ad07ServicesImpl extends JdbcServicesSupport
 				.append("       x.aad406,x.aad407,x.aad408,x.aad409,x.aad410,")
 				.append("       x.aad411,x.aad412,x.aad413,x.aad414,x.aad415,")
 				.append("       x.aad416,x.aad417,x.aad418,x.aad419,x.aad420,")
-				.append("       d.aad301,d.aad302,d.aad305,y.fvalue yaaa504,s.fvalue saaa805,")
+				.append("       d.aad301,d.aad302,d.aad305,a.aaa504,s.fvalue saaa805,")
 				.append("       a.aaa505,a.aaa506,b.aaa808,b.aaa810,d.aac401,")
 				.append("       x.aad421,b.aaa801,x.aad401")
-				.append("  from ad04 x,aa05 a,aa08 b,ad03 d,syscode s,syscode y")
+				.append("  from ad04 x,aa05 a,aa08 b,ad03 d,syscode s")
 				.append(" where x.aad401=? and x.aac401=d.aac401")
 				.append("   and d.aaa801=b.aaa801 and b.aaa807=a.aaa502")
 				.append("   and b.aaa805=s.fcode  and s.fname='aaa805'")
-				.append("   and a.aaa504=y.fcode  and y.fname='aaa504'")
 				;
 		
 		return this.queryForMap(sql.toString(), this.get("aad401"));
@@ -127,13 +126,12 @@ public class Ad07ServicesImpl extends JdbcServicesSupport
 				.append("       x.aad705,x.aad706,x.aad707,x.aad708,x.aad709,")
 				.append("      x.aad710,x.aad711,x.aad712,x.aad713,x.aad714,")
 				.append("       x.aad715,x.aad716,x.aad717,x.aad718,x.aad719,")
-				.append("       x.aad720,x.aad721,x.aad722,y.fvalue yaaa504,s.fvalue saaa805,")
+				.append("       x.aad720,x.aad721,x.aad722,a.aaa504,s.fvalue saaa805,")
 				.append("       a.aaa505,a.aaa506,b.aaa808,b.aaa810")
-				.append("  from ad07 x,aa05 a,aa08 b,ac04 c,syscode s,syscode y")
+				.append("  from ad07 x,aa05 a,aa08 b,ac04 c,syscode s")
 				.append(" where x.aad701=? and x.aac401=c.aac401")
 				.append("   and x.aaa801=b.aaa801 and b.aaa807=a.aaa502")
 				.append("   and b.aaa805=s.fcode  and s.fname='aaa805'")
-				.append("   and a.aaa504=y.fcode  and y.fname='aaa504'")
 				;
 		return this.queryForMap(sql.toString(), this.get("aad701"));
 	}
