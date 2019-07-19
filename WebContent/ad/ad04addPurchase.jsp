@@ -18,7 +18,7 @@
 				<label class="layui-form-label">客户名称</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aad402" required lay-verify="true" value="${ins.aad305 }"
-					 autocomplete="off" class="layui-input">
+					 readonly="readonly" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
@@ -31,8 +31,9 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">房间号码</label>
 				<div class="layui-input-inline">
-					<input type="text" name="aad403" required lay-verify="true" value="${ins.aad302 }"
-					autocomplete="off" class="layui-input">
+					<input type="text" id="room" name="aad403" required lay-verify="true" value="${ins.aad302 }"
+					onclick="selectRoom()" readonly="readonly" class="layui-input">
+					<input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
 				</div>
 			</div>
 	</div>
@@ -41,21 +42,21 @@
 				<label class="layui-form-label">房间结构</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aaa504" required lay-verify="true" value="${ins.aaa504 }"
-					 autocomplete="off" class="layui-input">
+					readonly="readonly"  autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label">房间状态</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aaa805" required lay-verify="true" value="${ins.saaa805 }"
-							 autocomplete="off" class="layui-input">
+					readonly="readonly" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label">建筑面积</label>
 				<div class="layui-input-inline">
 					<input type="number" name="aaa505" required lay-verify="true" value="${ins.aaa505 }"
-					    step="0.01" autocomplete="off" class="layui-input">
+					 readonly="readonly" step="0.01" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 	</div>
@@ -64,21 +65,21 @@
 				<label class="layui-form-label">套内面积</label>
 				<div class="layui-input-inline">
 					<input type="number" step="0.01" name="aaa506" required lay-verify="true" value="${ins.aaa506 }"
-					 autocomplete="off" class="layui-input">
+					 readonly="readonly" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label">建筑单价</label>
 				<div class="layui-input-inline">
 					<input type="number" name="aaa808" required lay-verify="true" value="${ins.aaa808 }"
-						step="0.01"	autocomplete="off" class="layui-input">
+						step="0.01"	readonly="readonly" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label">套内单价</label>
 				<div class="layui-input-inline">
 					<input type="number" name="aaa810" required lay-verify="true" value="${ins.aaa810 }"
-					    step="0.01" autocomplete="off" class="layui-input">
+					    step="0.01" readonly="readonly" class="layui-input">
 				</div>
 			</div>
 	</div>
@@ -94,7 +95,8 @@
 				<label class="layui-form-label">付款方式</label>
 				<div class="layui-input-inline">
 					<select name="aad404">
-						<option value="01" selected>商业贷款</option>
+						<option value="">请选择</option>
+						<option value="01">商业贷款</option>
 						<option value="02">全款</option>
 					</select>
 				</div>
@@ -102,7 +104,7 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">折扣</label>
 				<div class="layui-input-inline">
-					<input type="number" name="aad405" required lay-verify="true"
+					<input type="number" name="aad405" 
 					    step="0.1" autocomplete="off" class="layui-input">
 				</div>
 			</div>
@@ -125,7 +127,7 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">折扣说明</label>
 				<div class="layui-input-inline">
-					<input type="text" name="aad408" required lay-verify="true" value="${ins.aad408 }"
+					<input type="text" name="aad408" value="${ins.aad408 }"
 					 autocomplete="off" class="layui-input">
 				</div>
 			</div>
@@ -226,13 +228,11 @@
     
 	<div class="layui-form-item" align="center">    
 	       <input type="submit" name="next" value="${empty param.aad401?'添加':'修改'}" class="layui-btn layui-btn-normal"
-	              formaction="${empty param.aad401?'ad/ad04addPurchase':'ad/ad04modifyPurchase'}.html">
+	              formaction="${empty param.aad401?'ad04addPurchase':'ad04modifyPurchase'}.html">
 	       <input type="submit" name="next" value="查看" class="layui-btn layui-btn-normal"
 	          formnovalidate="formnovalidate" formaction="ad04queryPurchase.html">
 	       <input type="submit" name="next" value="返回" formaction="${empty param.aad401?'ad03query':'ad04queryPurchase'}.html"
 	         formnovalidate="formnovalidate" class="layui-btn layui-btn-normal">
-	       <input type="submit" name="next" value="转签约" class="layui-btn layui-btn-normal"
-	          formnovalidate="formnovalidate" formaction="ad07turnAgreement.html">
 	       <input type="submit" name="next" value="生成付款详情" class="layui-btn layui-btn-normal"
 	          formnovalidate="formnovalidate" formaction="<%=path %>/af/af03turnReceipt.html">
 	</div>
@@ -255,7 +255,11 @@
 	  var element = layui.element;
 	  var layer = layui.layer
 	  ,form = layui.form;
-	  layer.msg('Hello World');
+	  if(${!empty msg})
+		{
+			layer.msg('${msg }');	  
+		}
+		});
 	  form.val('myform',{
 		  "aad420":"${ins.aad420}",
 		  "aad404":"${ins.aad404}",
@@ -275,6 +279,25 @@
 			elem: '#date2'  //指定元素
 			  });
 		});
+	function selectRoom(e)
+	{
+		layer.open({
+			 type: 2
+			,title: '房间选择'
+			,area:['800px', '500px']
+			,maxmin: true
+			,content: '<%=path%>/base/room.html'
+			,btn: ['确定','关闭'],
+			yes: function(index){
+				var res = window["layui-layer-iframe" + index].callbackdata();
+				//打印返回的值，看是否有我们想返回的值
+				console.log(res);
+				$("#room").attr("value",res[0])
+				$("#roomNo").attr("value",res[1])
+				layer.close(index);
+				}
+			});  
+	}
 </script>
 </body>
 </html>

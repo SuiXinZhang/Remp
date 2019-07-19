@@ -40,7 +40,6 @@
 	  	<td></td>
 	  	<td></td>
 	  	<td></td>
-	  	<td></td>
 	  </tr>
 	   <c:choose>
 	     <c:when test="${rows!=null }">
@@ -57,15 +56,13 @@
 				    <td>${ins.aad306 }</td>
 				    <td>${ins.aad307 }</td>
 				    <td><a href="#" onclick="onCancel('${ins.aaa801}')">取消选房</a></td>
-				    <td><a href="#" onclick="onSmallOrder('${ins.aaa801}')">转小订</a></td>
 				    <td><a href="#" onclick="onSubscribe('${ins.aad301}')">转认购</a></td>
-				    <td><a href="#" onclick="onSigning('${ins.aaa801}')">转签约</a></td>
+				    <td><a href="#" onclick="onSigning('${ins.aad301}')">转签约</a></td>
 				  </tr>
 		      </c:forEach>
 		      <!-- 补充空行 -->
 		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="6">
 			          <tr>
-			            <td></td>
 			            <td></td>
 			            <td></td>
 			            <td></td>
@@ -84,7 +81,6 @@
 	     <c:otherwise>
 	        <c:forEach begin="1" step="1" end="3">
 	           <tr>
-	             <td></td>
 	             <td></td>
 	             <td></td>
 	             <td></td>
@@ -137,16 +133,18 @@
   	 vform.action="<%=path%>/ad/ad03cancel.html?aaa801="+vaaa801;
   	 vform.submit();
     }
-	function onSmallOrder()
-	{}
 	function onSubscribe(vaad301)
 	{
 		var vform = document.getElementById("myform");
 	  	vform.action="<%=path%>/ad/ad04subscribePurchase.html?aad301="+vaad301;
 	  	vform.submit();
 	}
-	function onSigning()
-	{}
+	function onSigning(vaad301)
+	{
+		var vform = document.getElementById("myform");
+	  	vform.action="<%=path%>/ad/ad07roomTurn.html?aad301="+vaad301;
+	  	vform.submit();
+	}
 </script>
 </body>
 </html>
