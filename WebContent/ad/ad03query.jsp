@@ -1,44 +1,32 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%String path=request.getContextPath(); %>
+<%@include file="/base/taglib.jsp" %>
 <html>
 <head>
-<title>看房查询</title>
-	<style type="text/css">
-	tr 
-	{
-		height: 25px;
-	}
-	</style>
-	<script type="text/javascript">
-	function onCancel(vaaa801)
-    {
-  	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/ad/ad03cancel.html?aaa801="+vaaa801;
-  	 vform.submit();
-    }
-	function onSmallOrder()
-	{}
-	function onSubscribe(vaad301)
-	{
-		var vform = document.getElementById("myform");
-	  	vform.action="<%=path%>/ad/ad04subscribePurchase.html?aad301="+vaad301;
-	  	vform.submit();
-	}
-	function onSigning()
-	{}
-	</script>
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-<body>
-${msg } 
-<form id="myform" action="<%=path %>/ad/ad03query.html" method="post">
-	<table border="1" width="95%" align="center">
-	  <caption>
-	      	 看房记录
-	    <hr width="160">
-	  </caption>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/ad/menu.jsp"/>
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+    <form id="myform" class="layui-form" action="<%=path %>/ad/ad03query.html" method="post">
+    <div class="layui-form-item" align="center">
+			<div class="layui-inline">
+				<label class="layui-form-label">客户名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="qaad305" value="${param.qaad305 }" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">选房时间</label>
+				<div class="layui-input-inline">
+					<input type="text" id="date" name="qaad307" value="${param.qaad307 }" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+	</div>
+	<table class="layui-table" lay-even lay-skin="nob">
 	  <tr>
 	    <td></td>
 	  	<td>序号</td>
@@ -75,7 +63,7 @@ ${msg }
 				  </tr>
 		      </c:forEach>
 		      <!-- 补充空行 -->
-		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
+		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="6">
 			          <tr>
 			            <td></td>
 			            <td></td>
@@ -94,7 +82,7 @@ ${msg }
 		      </c:forEach>
 	     </c:when>
 	     <c:otherwise>
-	        <c:forEach begin="1" step="1" end="15">
+	        <c:forEach begin="1" step="1" end="3">
 	           <tr>
 	             <td></td>
 	             <td></td>
@@ -114,13 +102,51 @@ ${msg }
 	     </c:otherwise>
 	   </c:choose>
 	  </table>
-	  <table border="1" width="95%" align="center">
-	  <tr>
-	    <td align="center">
-	       <input type="submit" name="next" value="查询">
-	    </td>
-	  </tr>
-	  </table>
+	 <div class="layui-form-item" align="center">
+	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
+	 </div>
 </form>
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    ? layui.com - 底部固定区域
+  </div>
+</div>
+<script ></script>
+<script>
+//JavaScript代码区域
+	layui.use(['layer', 'form','element'], function(){
+	  var element = layui.element;
+	  var layer = layui.layer
+	  ,form = layui.form;
+	  layer.msg('Hello World');
+	});
+	layui.use('laydate', function(){
+		  var laydate = layui.laydate;
+		 
+		  //执行一个laydate实例
+		  laydate.render({
+		    elem: '#date'  //指定元素
+		  });
+	});
+	function onCancel(vaaa801)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/ad/ad03cancel.html?aaa801="+vaaa801;
+  	 vform.submit();
+    }
+	function onSmallOrder()
+	{}
+	function onSubscribe(vaad301)
+	{
+		var vform = document.getElementById("myform");
+	  	vform.action="<%=path%>/ad/ad04subscribePurchase.html?aad301="+vaad301;
+	  	vform.submit();
+	}
+	function onSigning()
+	{}
+</script>
 </body>
 </html>
