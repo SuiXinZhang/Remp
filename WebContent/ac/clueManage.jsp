@@ -1,108 +1,119 @@
-<%@ page language="java"    pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<% String path = request.getContextPath(); %>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/base/taglib.jsp" %>
+<!DOCTYPE html>
 <html>
 <head>
-<title>clueManage</title>
+	<link rel="stylesheet" type="text/css" href="/remp/static/css/ac/clueManageCss.css">
+	<meta name="renderer" content="webkit">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-<style type="text/css">
-tr 
-{
-	height: 25px;
-}
-</style>
-<script type="text/javascript">
-var count = 0;
-function onSelect(vstate)
-{
-	vstate?count++:count--;
-	var delB = document.getElementById("del");
-	delB.disabled = (count == 0);
-}
-function onEdit(vaac101)
-{
-	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/ac01FindById.html?aac101=" + vaac101;
-	myform.submit();
-}
-function onDel(vaac101)
-{
-	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/ac01DelById.html?aac101=" + vaac101;
-	myform.submit();
-}
-function onOpportunities(vaac101)
-{
-	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/ac04ChangeOpport.html?tag=1&aac101=" + vaac101;
-	myform.submit();
-}
-</script>
-<body>
-	<br>
-	<br>
-	<form action="<%=path%>/ac/ac01Query.html" id = "myform" method="post">
-		<table border="1" align="center" width="95%">
-			<caption>
-				线索管理
-				<hr width="180px">
-			</caption>
-			<tr>
-				<td colspan="4">查询条件</td>
-			</tr>
-			<tr>
-				<td>客户名</td>
-				<td><e:text name="qaac105" /></td>
-				<td>项目名称</td>
-				<td><e:text name="qaac104" /></td>
-			</tr>
+<body class="layui-layout-body" >
+<div class="layui-layout layui-layout-admin">
+  	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/ac/menu.jsp"/>
+  <div class="layui-body">
+   
+   <fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+   	<legend>线索管理</legend>
+   </fieldset> 	
+   
+<form action="<%=path%>/ac/ac01Query.html" class="layui-form" id = "myform" method="post">
+		
+			
+<div style="" align="center">
 
+
+<div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">客户名</label>
+      <div class="layui-input-inline">
+        <input type="tel" name="qaac105" value="${param.qaac105 }" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">项目名称</label>
+      <div class="layui-input-inline">
+        <input type="text" name="qaac104" value="${param.qaac104 }" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+ </div>
+ 
+<div class="layui-form-item" > 
+ <label class="layui-form-label">来访方式</label>
+    <div class="layui-input-inline ">
+      <input type="radio" name="qaac103" value=""  title="不限" checked="">
+      <input type="radio" name="qaac103" value="男" title="电话" >
+      <input type="radio" name="qaac103" value="女" title="走访">
+    </div>
+ </div>
+ 
+ 
+<div class="layui-form-item">
+ <div class="layui-inline">
+     <label class="layui-form-label">更进级别</label>
+    <div class="layui-input-inline">
+      <select name="qaac109">
+        <option value="" selected="">不限</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+	<div class="layui-form-item">
+	  <label class="layui-form-label" style="width:150px">是否为已转为销售机会</label>
+	    <div class="layui-input-block" style="width:150px">
+	      <select name="qaac111">
+	        <option value="">不限</option>
+	        <option value="2" selected="">否</option>
+	        <option value="1">是</option>
+	      </select>
+	    </div>
+	</div>
+
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">来访日期</label>
+      <div class="layui-input-inline" >
+        <input type="text" name="baac102" id="date" placeholder="开始:yyyy-MM-dd" lay-verify="date" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid">--</div>
+      <div class="layui-input-inline" >
+        <input type="text" name="eaac102" id="date1" placeholder="结束:yyyy-MM-dd" lay-verify="date" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<table id="idData"  lay-filter="demo">
+		<thead>
 			<tr>
-				<td>来访方式</td>
-				<td><e:select  value="电话:电话,走访:走访" name="qaac103" header="true"/></td>
-				<td>更进级别</td>
-				<td><e:select value="1:1,2:2,3:3,4:4,5:5" name="qaac109" header="true" /></td>
+				<td lay-data="{field:'checkbox1',width:50,type:'checkbox'}"></td>
+				<td lay-data="{field:'sort1',width:100}">序号</td>
+				<td lay-data="{field:'projectname'}">项目名称</td>
+				<td lay-data="{field:'username'}">客户名</td>
+				<td lay-data="{field:'userphone'}">客户联系电话</td>
+				<td lay-data="{field:'empname'}">业务员</td>
+				<td lay-data="{field:'username'}">来访方式</td>
+				<td lay-data="{field:'date',sort:true}">来访日期</td>
+				<td lay-data="{field:'grade',sort:true}">跟进级别</td>
+				<td lay-data="{field:'state'}">销售机会状态</td>
+				<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			</tr>
-			<tr>
-				<td>是否已变更为销售机会</td>
-				<td><e:select value="是:1,否:2" name="qaac111" defval="2" header="true"/></td>
-				</tr>
-			<tr>
-				<td>来访日期[B]</td>
-				<td><e:date name="baac102" /></td>
-				<td>来访日期[E]</td>
-				<td><e:date name="eaac102" /></td>
-			</tr>
-		</table>
-		<table border="1" align="center" width="95%">
-			<tr>
-				<td></td>
-				<td>序号</td>
-				<td>项目名称</td>
-				<td>客户名</td>
-				<td>客户联系电话</td>
-				<td>业务员</td>
-				<td>来访方式</td>
-				<td>来访日期</td>
-				<td>跟进级别</td>
-				<td>销售机会状态</td>
-				<td></td>
-			</tr>
-			<!--
-				         注意事项
-				    1.$及大括号的结束标记 }与双引号之间,不允许出现空格
-				    	即    }"   写在一起
-				    2.所有的属性之间至少要有一个空格,否则报错
-				    3.var 属性,相当于在页面定义变量名称,因此  ins不允许再用$ {  }
-				   -->
+		</thead>
+		<tbody>
 			<c:choose>
 				<c:when test="${rows!= null }">
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
-						<tr>
+						<tr >
 							<td>
-							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aac101 }" >
+							<input type="checkbox"  lay-skin="primary" onclick="onSelect(this.checked)" name="idlist" value="${ins.aac101 }" >
 							</td>
 							<td>${vs.count }</td>
 							<td>
@@ -116,46 +127,22 @@ function onOpportunities(vaac101)
 							<td>${ins.aac109 }</td>
 							<td>${ins.aac111 }</td>
 							<td>
-							<a href="#" onClick="onDel('${ins.aac101}')">删除</a>
-							<a href="#" onClick="onOpportunities('${ins.aac101}')">转销售机会</a>
+							
+							<a class="layui-btn layui-btn-xs" href="#" lay-event="edit('${ins.aac101}')" onClick="onDel('${ins.aac101}')">删除</a>
+							<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="onOpportunities('${ins.aac101}')" href="#" onClick="onOpportunities('${ins.aac101}')">转销售机会</a>
 							</td>
 						</tr>
 					</c:forEach>
-					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
 				</c:when>
-				<c:otherwise>
-					<c:forEach begin="1" end="15" step="1">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
+				
 			</c:choose>
-		</table>
+			</tbody>
+		</table>	  
+
+		
+
+<br><br><br>
+
 
 		<table border="1" align="center" width="95%">
 			<tr>
@@ -167,6 +154,89 @@ function onOpportunities(vaac101)
 			</tr>
 		</table>
 	</form>
+  </div>
+  
+ 
+
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+  </div>
+</div>
+
+<script>
+//JavaScript代码区域
+	layui.use(['element','form','laydate','layedit','table'], function(){
+	  var element = layui.element
+	  ,form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit
+	  ,laydate = layui.laydate
+	  ,table = layui.table;
+	  
+	  //日期
+	  laydate.render({
+	    elem: '#date'
+	  });
+	  laydate.render({
+	    elem: '#date1'
+	  });
+	  
+	//转换静态表格
+	  table.init('demo', {
+	    limit:10,
+	    page:true,
+	    toolbar:'default'
+	  }); 
+	
+	  form.val('form',{
+		  
+	  });
+	  
+	//监听行工具事件
+	  table.on('tool(demo)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+	    var data = obj.data //获得当前行数据
+	    ,layEvent = obj.event; //获得 lay-event 对应的值
+	    if(layEvent === 'detail'){
+	      layer.msg('查看操作');
+	    } else if(layEvent === 'del'){
+	      layer.confirm('真的删除行么', function(index){
+	        obj.del(); //删除对应行（tr）的DOM结构
+	        layer.close(index);
+	        //向服务端发送删除指令
+	      });
+	    } else if(layEvent === 'edit'){
+	      layer.msg('编辑操作');
+	    }
+	  });
+	  
+	  var count=0;
+	  
+	  form.on('checkbox(check)', function(data){
+          if(data.elem.checked==true){
+               	count++;
+               	if(count!=0){
+               		document.getElementById("mod").className="layui-btn";
+               	}else{
+               		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+               	}
+               	document.getElementById("mod").disabled=(count==0)
+               		
+          }else{
+        	  count--;
+       		  if(count!=0){
+       				document.getElementById("mod").className="layui-btn";
+       		  }else{
+             		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+              }
+       		  document.getElementById("mod").disabled=(count==0)
+          }
+      });
+
+});
+	  
+	
+</script>
 
 </body>
 </html>
