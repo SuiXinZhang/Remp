@@ -48,7 +48,7 @@
 		<div class="layui-inline">
 			<label class="layui-form-label">意向面积</label>
 				<div class="layui-input-inline">
-					<input type="text" name="aac208" value="${ins.aac208 }"
+					<input type="number" step="0.01" name="aac208" value="${ins.aac208 }"
 					 autocomplete="off" class="layui-input">
 				</div>
 		</div>
@@ -57,7 +57,7 @@
 		<div class="layui-inline">
 			<label class="layui-form-label">意向价格</label>
 				<div class="layui-input-inline">
-					<input type="text" name="aac209" required lay-verify="true" value="${ins.aac209 }"
+					<input type="number" step="0.01" name="aac209" required lay-verify="true" value="${ins.aac209 }"
 					 autocomplete="off" class="layui-input">
 				</div>
 		</div>

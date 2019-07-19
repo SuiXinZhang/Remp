@@ -1,127 +1,124 @@
-<%@ page language="java"    pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<% String path = request.getContextPath(); %>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/base/taglib.jsp" %>
 <html>
 <head>
-<title>Sell Opportunity Manage</title>
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-<style type="text/css">
-tr 
-{
-	height: 25px;
-}
-</style>
-<script type="text/javascript">
-var count = 0;
-function onSelect(vstate)
-{
-	vstate?count++:count--;
-	var delB = document.getElementById("del");
-	delB.disabled = (count == 0);
-}
-function onEdit(vaac201)
-{
-	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/ac02FindById.html?aac201=" + vaac201;
-	myform.submit();
-}
-function onDel(vaac201)
-{
-	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/ac02DelById.html?aac201=" + vaac201;
-	myform.submit();
-}
-function onload1()
-{
-	var showAac203 = document.getElementsByClassName("showAac203");
-	for(var i =0 ; i< showAac203.length;i++)
-	{
-		switch(showAac203[i].getAttribute("value"))
-		{
-		case "01":showAac203[i].innerHTML = "25%";break;
-		case "02":showAac203[i].innerHTML = "50%";break;
-		case "03":showAac203[i].innerHTML = "75%";break;
-		case "04":showAac203[i].innerHTML = "90%";break;
-		case "05":showAac203[i].innerHTML = "100%";break;
-		}
-	}
-	
-	var showAac206 = document.getElementsByClassName("showAac206");
-	for(var i =0 ; i< showAac206.length;i++)
-	{
-	switch(showAac206[i].getAttribute("value"))
-	{
-	case "01":showAac206[i].innerHTML = "差";break;
-	case "02":showAac206[i].innerHTML = "中等";break;
-	case "03":showAac206[i].innerHTML = "良";break;
-	case "04":showAac206[i].innerHTML = "优";break;
-	}
-	}
-	
-	var showAac207 = document.getElementsByClassName("showAac207");
-	for(var i =0 ; i< showAac207.length;i++)
-	{
-	switch(showAac207[i].getAttribute("value"))
-	{
-	case "01":showAac207[i].innerHTML = "两室一厅";break;
-	case "02":showAac207[i].innerHTML = "两室两厅";break;
-	case "03":showAac207[i].innerHTML = "三室两厅";break;
-	}
-	}
-}
-
-</script>
-<body >
-	<br>
-	<br>
-	<form action="<%=path%>/ac/ac02Query.html" id = "myform" method="post">
-		<table border="1" align="center" width="95%">
-			<caption>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/ac/menu.jsp"/>
+  <div class="layui-body">
+    	
+    <div style="padding: 15px;">
+    <form class="layui-form" lay-filter="myform" action="<%=path%>/ac/ac02Query.html" id="myform" method="post">
+		
 				销售机会管理
-				<hr width="180px">
-			</caption>
-			<tr>
-				<td colspan="4">查询条件</td>
-			</tr>
-			<tr>
-				<td>客户名</td>
-				<td><e:text name="qaac202" /></td>
-				<td>客户编号</td>
-				<td><e:text name="qaac402" /></td>
-			</tr>
-
-			<tr>
-				<td>意向房屋类型</td>
-				<td><e:select  value="两室一厅:01,两室两厅:02,三室两厅:03" name="qaac207" header="true"/></td>
-				<td>购买可能性</td>
-				<td><e:select value="25%:01,50%:02,75%:03,90%:04,100%:05" name="qaac203" header="true" /></td>
-			</tr>
-			<tr>
-				<td>客户潜在跟进价值评估</td>
-				<td><e:select value="差:01,中等:02,良:03,优:04" name="qaac206"  header="true"/></td>
-				</tr>
-			<tr>
-				<td>可能购买时间[B]</td>
-				<td><e:date name="baac204" /></td>
-				<td>可能购买时间[E]</td>
-				<td><e:date name="eaac204" /></td>
-			</tr>
-			<tr>
-				<td>意向价格[B]</td>
-				<td><e:number name="baac209" step="1000"/></td>
-				<td>意向价格[E]</td>
-				<td><e:number name="eaac209" step="1000"/></td>
-			</tr>
-			<tr>
-				<td>意向面积[B]</td>
-				<td><e:number name="baac208" step="1"/></td>
-				<td>意向面积[E]</td>
-				<td><e:number name="eaac208" step="1"/></td>
-			</tr>
-		</table>
-		<table border="1" align="center" width="95%">
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">客户名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="qaac202" value="${param.qaac202 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">客户编号</label>
+				<div class="layui-input-inline">
+					<input type="text" name="qaac402" value="${param.qaac402 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+	</div>
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">意向房屋类型</label>
+				<div class="layui-input-inline">
+					<select name="qaac207">
+						<option value="" selected>不限定</option>
+						<option value="01">两室一厅</option>
+						<option value="02">两室两厅</option>
+						<option value="03">三室两厅</option>
+					</select>
+				</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">购买可能性</label>
+				<div class="layui-input-inline">
+					<select name="qaac203">
+						<option value="" selected>不限定</option>
+						<option value="01">25%</option>
+						<option value="02">50%</option>
+						<option value="03">75%</option>
+						<option value="04">90%</option>
+						<option value="05">100%</option>
+					</select>
+				</div>
+		</div>
+	</div>
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">客户潜在跟进价值评估</label>
+				<div class="layui-input-inline">
+					<select name="qaac206">
+						<option value="" selected>不限定</option>
+						<option value="01">差</option>
+						<option value="02">中等</option>
+						<option value="03">良</option>
+						<option value="04">优</option>
+					</select>
+				</div>
+		</div>
+	</div>
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">可能购买时间[B]</label>
+				<div class="layui-input-inline">
+					<input type="text" id="date1" name="baac204" value="${param.baac204 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">可能购买时间[E]</label>
+				<div class="layui-input-inline">
+					<input type="text" id="date2" name="eaac204" value="${param.eaac204 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+	</div>
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">意向价格[B]</label>
+				<div class="layui-input-inline">
+					<input type="number" name="baac209" value="${param.baac209 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">意向价格[E]</label>
+				<div class="layui-input-inline">
+					<input type="number" name="eaac209" value="${param.eaac209 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+	</div>
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">意向面积[B]</label>
+				<div class="layui-input-inline">
+					<input type="number" name="baac208" value="${param.baac208 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">意向面积[E]</label>
+				<div class="layui-input-inline">
+					<input type="number" name="eaac208" value="${param.eaac208 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+	</div>
+	<table class="layui-table" lay-even lay-skin="nob">
 			<tr>
 				<td></td>
 				<td>序号</td>
@@ -147,7 +144,7 @@ function onload1()
 					<c:forEach items="${rows }" var="ins" varStatus="vs">
 						<tr >
 							<td>
-							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aac201 }" >
+							<input type="checkbox" onclick="onSelect(this.checked)" lay-skin="primary" name="idlist" value="${ins.aac201 }" >
 							</td>
 							<td>${vs.count }</td>
 							<td>
@@ -199,17 +196,96 @@ function onload1()
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
-		</table>
-
-		<table border="1" align="center" width="95%">
-			<tr>
-				<td align="center"><input type="submit" value="查询" name="next">
-					<input type="submit" value="删除" name="next" disabled="disabled"
-					formaction="<%=path %>/ac/ac02Delete.html" id="del" ></td>
-			</tr>
-		</table>
+	</table>
+	<div class="layui-form-item" align="center">
+		<input type="submit" value="查询" name="next" class="layui-btn layui-btn-normal">
+		<input type="submit" value="删除" name="next" class="layui-btn layui-btn-normal layui-btn-disabled"
+					formaction="<%=path %>/ac/ac02Delete.html" id="del" >
+	</div>
 	</form>
-
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+  </div>
+</div>
+<script>
+//JavaScript代码区域
+	layui.use(['layer', 'form','element'], function(){
+	  var layer = layui.layer
+	  ,form = layui.form;
+	  var element = layui.element();
+	  layer.msg('Hello World');
+	});
+	layui.use('laydate', function(){
+		  var laydate = layui.laydate;
+		 
+		  //执行一个laydate实例
+		  laydate.render({
+		    elem: '#date1'  //指定元素
+		  });
+		  laydate.render({
+			elem: '#date2'  //指定元素
+			  });
+		});
+	var count = 0;
+	function onSelect(vstate)
+	{
+		vstate?count++:count--;
+		var delB = document.getElementById("del");
+		delB.disabled = (count == 0);
+	}
+	function onEdit(vaac201)
+	{
+		var myform = document.getElementById("myform");
+		myform.action = "<%=path%>/ac02FindById.html?aac201=" + vaac201;
+		myform.submit();
+	}
+	function onDel(vaac201)
+	{
+		var myform = document.getElementById("myform");
+		myform.action = "<%=path%>/ac02DelById.html?aac201=" + vaac201;
+		myform.submit();
+	}
+	function onload1()
+	{
+		var showAac203 = document.getElementsByClassName("showAac203");
+		for(var i =0 ; i< showAac203.length;i++)
+		{
+			switch(showAac203[i].getAttribute("value"))
+			{
+			case "01":showAac203[i].innerHTML = "25%";break;
+			case "02":showAac203[i].innerHTML = "50%";break;
+			case "03":showAac203[i].innerHTML = "75%";break;
+			case "04":showAac203[i].innerHTML = "90%";break;
+			case "05":showAac203[i].innerHTML = "100%";break;
+			}
+		}
+		
+		var showAac206 = document.getElementsByClassName("showAac206");
+		for(var i =0 ; i< showAac206.length;i++)
+		{
+		switch(showAac206[i].getAttribute("value"))
+		{
+		case "01":showAac206[i].innerHTML = "差";break;
+		case "02":showAac206[i].innerHTML = "中等";break;
+		case "03":showAac206[i].innerHTML = "良";break;
+		case "04":showAac206[i].innerHTML = "优";break;
+		}
+		}
+		
+		var showAac207 = document.getElementsByClassName("showAac207");
+		for(var i =0 ; i< showAac207.length;i++)
+		{
+		switch(showAac207[i].getAttribute("value"))
+		{
+		case "01":showAac207[i].innerHTML = "两室一厅";break;
+		case "02":showAac207[i].innerHTML = "两室两厅";break;
+		case "03":showAac207[i].innerHTML = "三室两厅";break;
+		}
+		}
+	}
+</script>
 </body>
-<script type="text/javascript"> window.onload = onload1();</script>
 </html>
