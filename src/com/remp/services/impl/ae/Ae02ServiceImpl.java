@@ -26,11 +26,11 @@ public class Ae02ServiceImpl extends JdbcServicesSupport
 				.append("insert into ae02(aae202,aae203,aae204,aae205,aae206,")
 				.append("                 aae207,aae208,aae209,aae210,aae211,")
 				.append("                 aae212,aae213,aae214,aae215,aae216,")
-				.append("                 aae217,aae218)")
+				.append("                 aae217,aae218,aaa801)")
 				.append("          values(?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
-				.append("                 ?,?)")
+				.append("                 ?,?,?)")
 				;
 		Object args[] = new Object[]{
 				this.get("aae202"),
@@ -49,7 +49,8 @@ public class Ae02ServiceImpl extends JdbcServicesSupport
 				this.get("aae215"),
 				this.get("aae216"),
 				this.get("aae217"),
-				"01"
+				"01",
+				this.get("aaa801")
 		};
 		return this.executeUpdate(sql.toString(), args)>0;
 	}

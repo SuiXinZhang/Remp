@@ -108,7 +108,8 @@
   </div>
 </div>
 <script>
-layui.use(['layer', 'form'], function(){
+layui.use(['layer', 'form','element'], function(){
+	var element = layui.element;
 	  var layer = layui.layer
 	  ,form = layui.form;
 	  form.val('form',{
