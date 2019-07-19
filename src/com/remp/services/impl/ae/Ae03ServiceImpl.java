@@ -13,7 +13,7 @@ public class Ae03ServiceImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql = new StringBuilder()
 				.append("select e.aae301,e.aae302,e.aae303,e.aae304,e.aae305,")
-				.append("       e.aae306,e.aae307,e.aae308,e.aae311,a.aaa803,a.aaa801")
+				.append("       e.aae306,e.aae307,e.aae308,e.aae311,e.aae312,a.aaa801")
 				.append("   from ae03 as e,aa08 as a")
 				.append("   where aae301 = ? and a.aaa801 = e.aaa801")
 				;
@@ -24,9 +24,9 @@ public class Ae03ServiceImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ae03(aae302,aae303,aae304,aae305,aae306,")
-				.append("                 aae307,aae308,aae311,aaa801)")
+				.append("                 aae307,aae308,aae311,aae312,aaa801)")
 				.append("          values(?,?,?,?,?,")
-				.append("                 ?,?,?,?)")
+				.append("                 ?,?,?,?,?)")
 				;
 		Object args[] = new Object[]{
 				this.get("aae302"),
@@ -37,6 +37,7 @@ public class Ae03ServiceImpl extends JdbcServicesSupport
 				this.get("aae307"),
 				this.get("aae308"),
 				this.get("aae311"),
+				this.get("aae312"),
 				this.get("aaa801")
 		};
 		return this.executeUpdate(sql.toString(), args)>0;
@@ -59,7 +60,7 @@ public class Ae03ServiceImpl extends JdbcServicesSupport
 		}
 		if(isNotNull(qaae312))
 		{
-			sql.append("	and a.aae312 like ?");
+			sql.append("	and e.aae312 like ?");
 			paramList.add("%"+qaae312+"%");
 		}
 		sql.append("     and a.aaa801 = e.aaa801");
