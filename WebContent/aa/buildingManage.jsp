@@ -21,8 +21,8 @@
 			            <th>名称</th>
 			            <th>所属区域</th>
 			            <th>建筑性质</th>
-			            <th>楼层数</th>
 			            <th>单元数</th>
+			            <th>楼层数</th>
 			            <th>每层户数</th>
 			            <th>备注</th>
 			            <th></th>
@@ -40,8 +40,8 @@
 									</td>
 									<td>${ins.aaa708 }</td>
 									<td>${ins.aaa703 }</td>
-									<td>${ins.aaa704 }</td>
 									<td>${ins.aaa705 }</td>
+									<td>${ins.aaa704 }</td>
 									<td>${ins.aaa706 }</td>
 									<td>${ins.aaa707 }</td>
 									<td><a href="#" style="color:blue" onClick="onRoom('${ins.aaa701}')">房间管理</a></td>

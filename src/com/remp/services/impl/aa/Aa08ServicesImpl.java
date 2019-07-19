@@ -19,7 +19,7 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 	public Map<String,String> findById()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-    			.append("select a.aaa801,a.aaa802,a.aaa803,a.aaa804,s1.fvalue cnaaa805,")
+    			.append("select a.aaa801,a.aaa802,a.aaa803,a.aaa804,a.aaa805,s1.fvalue cnaaa805,")
 				.append("       a.aaa806,a.aaa807,a.aaa808,a.aaa809,a.aaa810,")
 				.append("       a.aaa811,a.aaa812")
     			.append("  from aa08 a,syscode s1")
@@ -45,6 +45,30 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 		
 	}
 	
+	/**
+	 * 查询aa05的户型
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<String,String> queryAa05ForSelect()throws Exception
+	{
+		Map<String,String> m = new HashMap<String,String>();
+		
+	    //获取所有的户型类型用于用户修改
+		String sql2 = "select aaa502 from aa05";
+		List<Map<String,String>> l =this.queryForList(sql2);
+		StringBuilder aaa502 = new StringBuilder(); 
+		for(Map<String,String> tem:l) {
+			aaa502.append(tem.get("aaa502")+":"+tem.get("aaa502")+",");
+		}
+		//去掉最后一个逗号
+		int a = aaa502.lastIndexOf(",");
+		aaa502.delete(a, a);
+		
+		//将户型类型添加到m中
+		m.put("aaa502", aaa502.toString());
+		return m;
+	}
 	
 	/**
 	 * 批量不定条件查询房间
@@ -236,7 +260,7 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 		
 		
 		StringBuilder sql=new StringBuilder()
-				.append("update aa08 set aaa806=?,aaa807=?,")
+				.append("update aa08 set aaa805=?,aaa806=?,aaa807=?,")
 				.append("				 aaa808=?,aaa809=?,aaa810=?,aaa811=?,")
 				.append("   			 aaa812=?")
 				.append(" where aaa801=?")
@@ -253,6 +277,7 @@ public class Aa08ServicesImpl extends JdbcServicesSupport {
 		else aaa811 = this.get("aaa810");
 		
 		Object tem[]= {
+				this.get("aaa805"),
 				this.get("aaa806"),
 				this.get("aaa807"),
 				this.get("aaa808"),

@@ -5,10 +5,10 @@
 		<ul class="layui-nav layui-nav-tree" lay-filter="test">
 			<li class="layui-nav-item"><a
 				href="/remp/aa/aa02Query.html?aaa101=1">项目信息管理</a></li>
-			<li class="layui-nav-item"><a href="/remp/aa/aa03Query.html?aaa201=1">部门员工管理</a></li>
-			<li class="layui-nav-item"><a href="/remp/aa/aa05Query.html?aaa201=1">项目户型管理</a></li>
-			<li class="layui-nav-item"><a href="/remp/aa/aa06Query.html?aaa201=1">区域房源管理</a></li>
-			<li class="layui-nav-item"><a href="/remp/aa/aa09Query.html?aaa201=1">付款方式管理</a></li>
+			<li class="layui-nav-item"><a href="/remp/aa/aa02Select.html?action=03&aaa101=1">部门员工管理</a></li>
+			<li class="layui-nav-item"><a href="/remp/aa/aa02Select.html?action=05&aaa101=1">项目户型管理</a></li>
+			<li class="layui-nav-item"><a href="/remp/aa/aa02Select.html?action=06&aaa101=1">区域房源管理</a></li>
+			<li class="layui-nav-item"><a href="/remp/aa/aa02Select.html?action=09&aaa101=1">付款方式管理</a></li>
 			<li class="layui-nav-item"><a href="">套打设置</a></li>
 		</ul>
 	</div>
