@@ -106,12 +106,6 @@ function onBatchUpdate2()
 				<td><e:text name="qaac307" /></td>
 			</tr>
 			<tr>
-				<td>添加跟进业务员</td>
-				<td><e:text name="maac306" id="maac306"/></td>
-				<td>跟进业务员编号</td>
-				<td><e:text name="maac307" id="maac307"/></td>
-			</tr>
-			<tr>
 				<td>跟进状态</td>
 				<td><e:select value="待跟进:01,已跟进:02,待再次跟进:03"  name="qaac304" header="true"/></td>
 				<td>修改后的跟进状态</td>
