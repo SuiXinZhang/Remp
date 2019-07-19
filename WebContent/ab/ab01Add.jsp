@@ -1,98 +1,139 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%String path=request.getContextPath(); %>
+<%@include file="/base/taglib.jsp" %>
 <html>
-<head>
-<title>编辑销售明细</title>
-<style type="text/css">
-  td{
-      height:30px;
-  }
-  msg{
-     color:#FF0000
-  }
-</style>
+	<head>
+		<jsp:include page="/base/head.jsp" />
+		
+		<style>
+			.layui-form-label{
+				width: 100px;
+			}
+			.layui-input-block{
+				margin-left: 130px;
+				min-height: 36px;
+			}
+		</style>
+		
+	</head>
+	<body class="layui-layout-body">
+		<div class="layui-layout layui-layout-admin">
+			<jsp:include page="/base/header.jsp" />
+			<jsp:include page="/ab/menu.jsp" />
+			<div class="layui-body">
+				<!-- 内容主体区域 -->
 
-<script type="text/javascript">
-	window.onload=function()
-	{
-		var obj = document.getElementById("layer");
-		if(${empty param.aab101})
-		{
-			obj.style.display = "none";
-		} 
-	}
-</script>
+				<div style="padding: 15px;">
+					<form action="<%=path%>/ab/ab01Add.html" class="layui-form" method="post">
+						<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+							<legend>${empty param.aab101?'新增':'修改' }销售计划</legend>
+						</fieldset>
 
-</head>
-<body>
-${msg }
-	<form action="<%=path%>/ab01Add.html" method="post">
-		<table border="1" align="center" width="90%">
-			<caption>
-				${empty param.aab101?'新增':'修改' }
-				销售计划
-				<hr width="160">
-			</caption>
-			
-			<tr>
-				<td>项目名称</td>
-				<td>
-					<e:text name="aab102" required="true" autofocus="true" defval="${ins.aab102 }"/>
-				</td>
-				<td>制定日期</td>
-				<td>
-					<e:date name="aab103" required="true" defval="${ins.aab103 }"/>
-				</td>
-			</tr>
-			<tr>
-				<td>计划销售面积</td>
-				<td>
-					<e:number step="1" name="aab105" required="true" defval="${ins.aab105 }"/>
-				</td>
-				<td>计划销售套数</td>
-				<td>
-					<e:number step="1" name="aab106" required="true" defval="${ins.aab106 }"/>
-				</td>
-			</tr>	
-			<tr>
-				<td>计划销售金额</td>
-				<td>
-					<e:number step="0.01" name="aab107" required="true" defval="${ins.aab107 }"/>
-				</td>
-				<td>计划销售均价</td>
-				<td>
-					<e:number step="0.01" name="aab108" required="true" defval="${ins.aab108 }"/>
-				</td>
-			</tr>
-			<tr>
-				<td>计划回款金额</td>
-				<td>
-					<e:number step="0.01" name="aab109" required="true" defval="${ins.aab109 }"/>
-				</td>
-			</tr>
-			<tr>
-				<td>备注</td>
-				<td>
-					<e:textarea rows="5" cols="45" name="aab110" defval="${ins.aab110 }"/>
-				</td>
-			</tr>	
-			<td colspan="4" align="center">
-				<input type="submit" name="next" value="${empty param.aab101?'添加':'修改' }" 
-				formaction="<%=path%>/${empty param.aab101?'ab01Add':'ab01Modify' }.html"/>
-				<input type="submit" name="next" value="返回"
-				formaction="<%=path %>/ab01Query.html"
-				formnovalidate="formnovalidate">
-				<input id="layer" type="submit" name="next" value="编辑计划明细"
-					formaction="ab02Query.html">	
-		 	</td>
-		</table>
-		<input type="hidden" name="aab101" value="${param.aab101 }">
-	</form>
-	
-		</table>	
-	</form>
-</body>
+						<div class="layui-form-item">
+							<label class="layui-form-label">项目名称</label>
+							<div class="layui-input-block">
+								<input type="text" name="aab102" required="true" autofocus="true" value="${ins.aab102 }" class="layui-input">
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">制定日期</label>
+								<div class="layui-input-inline">
+									<input type="text" name="aab103" required="true" value="${ins.aab103 }" class="layui-input" id="test29"
+									 placeholder="yyyy-MM-dd">
+								</div>
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">计划销售面积</label>
+							<div class="layui-input-block">
+								<input type="number" step="1" name="aab105" required="true" value="${ins.aab105 }" class="layui-input">
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">计划销售套数</label>
+							<div class="layui-input-block">
+								<input type="number" step="1" name="aab106" required="true" value="${ins.aab106 }" class="layui-input">
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">计划销售金额</label>
+							<div class="layui-input-block">
+								<input type="number" step="0.01" name="aab107" required="true" value="${ins.aab107 }" class="layui-input">
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">计划销售均价</label>
+							<div class="layui-input-block">
+								<input type="number" step="0.01" name="aab108" required="true" value="${ins.aab108 }" class="layui-input">
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">计划回款金额</label>
+							<div class="layui-input-block">
+								<input type="number" step="0.01" name="aab109" required="true" value="${ins.aab109 }" class="layui-input">
+							</div>
+						</div>
+
+						<div class="layui-form-item layui-form-text">
+							<label class="layui-form-label">备注</label>
+							<div class="layui-input-block">
+								<textarea placeholder="请输入内容" name="aab110" value="${ins.aab110 }" class="layui-textarea"></textarea>
+							</div>
+						</div>
+
+
+						<div class="layui-form-item" align="center">
+							<input type="submit" name="next" value="${empty param.aab101?'添加':'修改' }" formaction="<%=path%>/${empty param.aab101?'ab01Add':'ab01Modify' }.html"
+							 class="layui-btn" />
+							<input type="submit" name="next" value="返回" formaction="<%=path %>/ab/ab01Query.html" formnovalidate="formnovalidate"
+							 class="layui-btn">
+							<input id="layer" type="submit" name="next" value="编辑计划明细" formaction="<%=path %>/ab/ab02Query.html" class="layui-btn">
+						</div>
+						</table>
+						<input type="hidden" name="aab101" value="${param.aab101 }">
+					</form>
+				</div>
+
+			</div>
+
+			<div class="layui-footer">
+				<!-- 底部固定区域 -->
+				? layui.com - 底部固定区域
+			</div>
+		</div>
+		<script></script>
+		<script>
+			//JavaScript代码区域
+			layui.use(['layer', 'form'], function() {
+				var layer = layui.layer,
+					form = layui.form;
+
+				layer.msg('Hello World');
+			});
+
+			window.onload = function() {
+				var obj = document.getElementById("layer");
+				if ($ {
+						empty param.aab101
+					}) {
+					obj.style.display = "none";
+				}
+			}
+
+			layui.use('laydate', function() {
+				var laydate = layui.laydate;
+				//执行一个laydate实例
+				laydate.render({
+					elem: '#test29',
+					theme: 'molv'
+				});
+			});
+		</script>
+	</body>
 </html>
