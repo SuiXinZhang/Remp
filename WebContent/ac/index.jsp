@@ -33,7 +33,6 @@
 	  var layer = layui.layer
 	  ,form = layui.form;
 	  var element = layui.element();
-	  layer.msg('Hello World');
 	});
 </script>
 </body>
