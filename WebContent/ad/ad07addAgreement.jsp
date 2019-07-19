@@ -30,8 +30,9 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">房间号码</label>
 				<div class="layui-input-inline">
-					<input type="text" name="aad703" required lay-verify="true" value="${ins.aad403 }"
-					autocomplete="off" class="layui-input">
+					<input type="text" id="room" name="aad703" required lay-verify="true" value="${ins.aad403 }"
+					onclick="selectRoom()" readonly="readonly" class="layui-input">
+					<input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
 				</div>
 			</div>
 	</div>
@@ -231,7 +232,6 @@
 	       formaction="ad07queryAgreement.html" formnovalidate="formnovalidate">
 	</div>
     <input type="hidden" name="aac401" value="${ins.aac401 }">
-    <input type="hidden" name="aaa801" value="${ins.aaa801 }">
     <input type="hidden" name="aad701" value="${param.aad701 }">
     <input type="hidden" name="aad401" value="${ins.aad401 }">
 </form>
@@ -250,7 +250,11 @@
 	  var element = layui.element;
 	  var layer = layui.layer
 	  ,form = layui.form;
-	  layer.msg('Hello World');
+	  if(${!empty msg})
+		{
+			layer.msg('${msg }');	  
+		}
+		});
 	  form.val('myform',{
 		  "aad722":"${ins.aad420}",
 		  "aad704":"${ins.aad404}",
@@ -268,6 +272,25 @@
 			elem: '#date2'  //指定元素
 			  });
 		});
+	function selectRoom(e)
+	{
+		layer.open({
+			 type: 2
+			,title: '房间选择'
+			,area:['800px', '500px']
+			,maxmin: true
+			,content: '<%=path%>/base/room.html'
+			,btn: ['确定','关闭'],
+			yes: function(index){
+				var res = window["layui-layer-iframe" + index].callbackdata();
+				//打印返回的值，看是否有我们想返回的值
+				console.log(res);
+				$("#room").attr("value",res[0])
+				$("#roomNo").attr("value",res[1])
+				layer.close(index);
+				}
+			});  
+	}
 </script>
 </body>
 </html>

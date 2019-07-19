@@ -9,6 +9,19 @@ import com.remp.system.tools.Tools;
 
 public class Ad07ServicesImpl extends JdbcServicesSupport 
 {
+	public Map<String, String> roomTurn()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("select d.aad301,d.aad302,d.aad305,a.aaa504,s.fvalue saaa805,")
+				.append("       a.aaa505,a.aaa506,b.aaa808,b.aaa810,d.aac401,")
+				.append("       c.aac407,d.aaa801")
+				.append("  from aa05 a,aa08 b,ac04 c,ad03 d,syscode s")
+				.append(" where d.aad301=? and d.aaa801=b.aaa801")
+				.append("   and b.aaa807=a.aaa502 and b.aaa805=s.fcode")
+				.append("   and s.fname='aaa805'  and c.aac401=d.aac401")
+				;
+		return this.queryForMap(sql.toString(), this.get("aad301"));
+	}
 	/**
 	 * 从订单转签约
 	 */
