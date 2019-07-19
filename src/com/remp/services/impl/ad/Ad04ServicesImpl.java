@@ -14,14 +14,13 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 	public Map<String, String> findById()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select d.aad301,d.aad302,d.aad305,y.fvalue yaaa504,s.fvalue saaa805,")
+				.append("select d.aad301,d.aad302,d.aad305,a.aaa504,s.fvalue saaa805,")
 				.append("       a.aaa505,a.aaa506,b.aaa808,b.aaa810,d.aac401,")
 				.append("       c.aac407")
-				.append("  from aa05 a,aa08 b,ac04 c,ad03 d,syscode s,syscode y")
+				.append("  from aa05 a,aa08 b,ac04 c,ad03 d,syscode s")
 				.append(" where d.aad301=? and d.aaa801=b.aaa801")
 				.append("   and b.aaa807=a.aaa502 and b.aaa805=s.fcode")
-				.append("   and s.fname='aaa805'  and a.aaa504=y.fcode")
-				.append("   and y.fname='aaa504'  and c.aac401=d.aac401")
+				.append("   and s.fname='aaa805'  and c.aac401=d.aac401")
 				;
 		return this.queryForMap(sql.toString(), this.get("aad301"));
 	}
@@ -113,14 +112,13 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 				.append("       x.aad406,x.aad407,x.aad408,x.aad409,x.aad410,")
 				.append("       x.aad411,x.aad412,x.aad413,x.aad414,x.aad415,")
 				.append("       x.aad416,x.aad417,x.aad418,x.aad419,x.aad420,")
-				.append("       d.aad301,d.aad302,d.aad305,y.fvalue yaaa504,s.fvalue saaa805,")
+				.append("       d.aad301,d.aad302,d.aad305,a.aaa504,s.fvalue saaa805,")
 				.append("       a.aaa505,a.aaa506,b.aaa808,b.aaa810,d.aac401,")
 				.append("       c.aac407,d.aad301")
-				.append("  from ad04 x,aa05 a,aa08 b,ac04 c,ad03 d,syscode s,syscode y")
+				.append("  from ad04 x,aa05 a,aa08 b,ac04 c,ad03 d,syscode s")
 				.append(" where x.aad401=? and x.aac401=d.aac401")
 				.append("   and d.aaa801=b.aaa801 and b.aaa807=a.aaa502")
 				.append("   and b.aaa805=s.fcode  and s.fname='aaa805'")
-				.append("   and a.aaa504=y.fcode  and y.fname='aaa504'")
 				.append("   and d.aac401=c.aac401")
 				;
 		

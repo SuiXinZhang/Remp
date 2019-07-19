@@ -1,24 +1,119 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<% String path = request.getContextPath(); %>
+<%@include file="/../base/taglib.jsp" %>
 <html>
 <head>
-<title>areaManage</title>
+	<jsp:include page="/base/head.jsp"/>
 </head>
-<style type="text/css">
-tr {
-	height: 25px;
-}
-</style>
-<script type="text/javascript">
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/aa/menu.jsp"/>
+  <div class="layui-body">
+    <div style="padding: 15px;">
+	    <form id="myform" class="layui-form" action="<%=path%>/aa/aa07Query.html" method="post">
+	     <h1>楼栋管理</h1>
+	        <hr>
+		    <table class="layui-table">
+			    <thead>
+			        <tr>
+			        	<th></th>
+			            <th>序号</th>
+			            <th>名称</th>
+			            <th>所属区域</th>
+			            <th>建筑性质</th>
+			            <th>楼层数</th>
+			            <th>单元数</th>
+			            <th>每层户数</th>
+			            <th>备注</th>
+			            <th></th>
+			            <th></th>
+			        </tr>
+			    </thead>
+			    <tbody>
+					<c:choose>
+						<c:when test="${rows!= null }">
+							<c:forEach items="${rows }" var="ins" varStatus="vs">
+								<tr>
+									<td><input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aaa601 }"></td>
+									<td>${vs.count }</td>
+									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa701 }')">${ins.aaa702 }栋</a>
+									</td>
+									<td>${ins.aaa708 }</td>
+									<td>${ins.aaa703 }</td>
+									<td>${ins.aaa704 }</td>
+									<td>${ins.aaa705 }</td>
+									<td>${ins.aaa706 }</td>
+									<td>${ins.aaa707 }</td>
+									<td><a href="#" style="color:blue" onClick="onRoom('${ins.aaa701}')">房间管理</a></td>
+									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa701}')">删除</a></td>
+								</tr>
+							</c:forEach>
+							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<c:forEach begin="1" end="15" step="1">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+			    </tbody>
+			</table>
+			 <div class="layui-form-item" align="center">
+				<div class="layui-inline">
+				<td align="center">
+					<input type="submit" class="layui-btn" value="添加" name="next" formaction="<%=path %>/aa/buildingAdd.jsp"> 
+					<input type="submit" class="layui-btn layui-btn-disabled" value="删除" name="next" disabled="disabled" formaction="<%=path %>/aa/aa07Delete.html" id="del"> 
+					<input type="submit" class="layui-btn" value="返回" name="next" formaction="<%=path %>/aa/aa06Query.html" formnovalidate="formnovalidate">
+				</div>
+			</div>
+			
+
+		<input type="hidden" name="aaa601" value="${param.aaa601 }">
+		<input type="hidden" name="aaa201" value="1"> 
+		<input type="hidden" name="aaa708" value="${param.aaa602 }">		
+		</form>
+	</div>
+  </div>
+  
+  <div class="layui-footer">
+  </div>
+</div>
+
+<script>
 var count = 0;
 function onSelect(vstate)
 {
-	vstate?count++:count--;
-	var delB = document.getElementById("del");
-	delB.disabled = (count == 0);
+	value?count++:count--;
+	if(count!=0)
+	{
+		${"del"}.class="layui-btn";
+	}
 }
 function onEdit(vaaa701)
 {
@@ -32,124 +127,40 @@ function onDel(vaaa701)
 	myform.action = "<%=path%>/aa07DelById.html?aaa701=" + vaaa701;
 	myform.submit();
 }
-function onRoom(vaaa701,vaaa704,vaaa705,vaaa706)
+function onRoom(vaaa701)
 {
-	var louceng = document.getElementById("louceng");
-	var danyuan = document.getElementById("danyuan");
-	var huhao = document.getElementById("huhao");
-	
-	louceng.value = vaaa704;
-	danyuan.value = vaaa705;
-	huhao.value = vaaa706;
 	
 	var myform = document.getElementById("myform");
 	myform.action = "<%=path%>/aa08Query.html?aaa701=" + vaaa701;
 	myform.submit();
 }
 </script>
-<body>
-	<br>
-	<br>
-	<form action="<%=path%>/aa/aa07Query.html" id="myform" method="post">
-		<table border="1" align="center" width="95%">
-			<caption>
-				楼栋管理
-				<hr width:"160px">
-			</caption>
-			<tr>
-				<td></td>
-				<td>序号</td>
-				<td>名称</td>
-				<td>所属区域</td>
-				<td>建筑性质</td>
-				<td>楼层数</td>
-				<td>单元数</td>
-				<td>每层户数</td>
-				<td>备注</td>
-				<td>房间管理</td>
-				<td></td>
-			</tr>
-			<!--
-				         注意事项
-				    1.$及大括号的结束标记 }与双引号之间,不允许出现空格
-				    	即    }"   写在一起
-				    2.所有的属性之间至少要有一个空格,否则报错
-				    3.var 属性,相当于在页面定义变量名称,因此  ins不允许再用$ {  }
-				   -->
-			<c:choose>
-				<c:when test="${rows!= null }">
-					<c:forEach items="${rows }" var="ins" varStatus="vs">
-						<tr>
-							<td><input type="checkbox" onclick="onSelect(this.checked)"
-								name="idlist" value="${ins.aaa701 }"></td>
-							<td>${vs.count }</td>
-							<td><a href="#" onclick="onEdit('${ins.aaa701 }')">${ins.aaa702 }栋</a>
-							</td>
-							<td>${ins.aaa708 }</td>
-							<td>${ins.aaa703 }</td>
-							<td>${ins.aaa704 }</td>
-							<td>${ins.aaa705 }</td>
-							<td>${ins.aaa706 }</td>
-							<td>${ins.aaa707 }</td>
-							<td><a href="#"
-								onClick="onRoom('${ins.aaa701}','${ins.aaa704}','${ins.aaa705}','${ins.aaa706}')">房间管理</a>
-							</td>
-							<td><a href="#" onClick="onDel('${ins.aaa701}')">删除</a></td>
-						</tr>
-					</c:forEach>
-					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<c:forEach begin="1" end="15" step="1">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
-
-		<table border="1" align="center" width="95%">
-			<tr>
-				<td align="center"><input type="submit" value="查询" name="next">
-					<input type="submit" value="添加" name="next" formaction="<%=path %>/aa/buildingAdd.jsp"> 
-					<input type="submit" value="删除" name="next" disabled="disabled" formaction="<%=path %>/aa/aa07Delete.html" id="del"> 
-					<input type="submit" value="返回" name="next" formaction="<%=path %>/aa/aa06Query.html" formnovalidate="formnovalidate">
-				</td>
-			</tr>
-		</table>
-
-		<input type="hidden" id="louceng" name="louceng" value=""> 
-		<input type="hidden" id="danyuan" name="danyuan" value=""> 
-		<input type="hidden" id="huhao" name="huhao" value=""> 
-		<input type="hidden" name="aaa601" value="${param.aaa601 }">
-		<input type="hidden" name="aaa201" value="1"> 
-		<input type="hidden" name="aaa708" value="${param.aaa602 }">
-	</form>
-
+<script>
+layui.use(['layer', 'form','element'], function(){
+	  var layer = layui.layer;
+	  var element = layui.element;
+	  form = layui.form;
+	  var count=0;
+	  form.on('checkbox(check)', function(data){
+          if(data.elem.checked==true){
+               	count++;
+               	if(count!=0){
+               		document.getElementById("del").className="layui-btn";
+               	}else{
+               		document.getElementById("del").className="layui-btn layui-btn-disabled";
+               	}
+               	document.getElementById("del").disabled=(count==0)
+               		
+          }else{
+        	  count--;
+       		  if(count!=0){
+       				document.getElementById("del").className="layui-btn";
+       		  }else{
+             		document.getElementById("del").className="layui-btn layui-btn-disabled";
+             }
+       		document.getElementById("del").disabled=(count==0)
+          }
+      });
+	});
+</script>
 </body>
-</html>

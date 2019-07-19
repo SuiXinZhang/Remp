@@ -201,6 +201,7 @@ public abstract class ControllerSupport implements BaseController {
 		if(ins!=null)
 		{
 			this.saveAttribute("ins", ins);
+			this.saveAttribute("msg", "验证成功");
 		}
 		else
 		{

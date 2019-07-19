@@ -12,7 +12,7 @@
             <dd><a href="">超链接</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item"><a href="/remp/ae/ae01query.html">合同登记服务</a></li>
+        <li class="layui-nav-item"><a href="/remp/ae/ae01query.html?aaa201='1'">合同登记服务</a></li>
         <li class="layui-nav-item"><a href="/remp/ae/ae02query.html">贷款服务</a></li>
         <li class="layui-nav-item"><a href="/remp/ae/ae03query.html">入伙服务</a></li>
         <li class="layui-nav-item"><a href="/remp/ae/ae04query.html">产权服务</a></li>

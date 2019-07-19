@@ -11,7 +11,7 @@
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
- 	<form action="<%=path%>/ad/ad01customerQuery.html" method="post">
+    <form class="layui-form" action="<%=path%>/ad/ad05customerQuery.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">录入姓名</label>
@@ -36,10 +36,10 @@
 				</div>
 		</div>
 	</div>
-	
 	<div class="layui-form-item" align="center">
-		<input type="submit" name="next" class="layui-btn layui-btn-normal" value="下一步">
+	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
 	</div>
+<input type="hidden" name="aaa801" value="${param.aaa801 }">
 </form>
     </div>
   </div>
@@ -52,9 +52,11 @@
 <script ></script>
 <script>
 //JavaScript代码区域
-	layui.use('element', function(){
+	layui.use(['layer', 'form','element'], function(){
 	  var element = layui.element;
-	  
+	  var layer = layui.layer
+	  ,form = layui.form;
+	  layer.msg('Hello World');
 	});
 </script>
 </body>

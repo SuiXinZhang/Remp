@@ -1,89 +1,119 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%String path=request.getContextPath(); %>
-
+<%@include file="/base/taglib.jsp" %>
 <html>
 <head>
-<title>查询房间</title>
-	<style type="text/css">
-	tr 
-	{
-		height: 25px;
-	}
-    </style>
-    <script type="text/javascript">
-      var count=0;
-      
-      function onEdit(vaab101)
-      {
-    	 var vform = document.getElementById("myform");
-    	 vform.action="<%=path%>/findByIdEmp.html?aab101="+vaab101;
-    	 //alert(vform.action);
-    	 vform.submit();
-      }
-      
-      function onConfirm(vaaa801)
-      {
-    	 var vform = document.getElementById("myform");
-    	 vform.action='<%=path%>/ad/ad03confirm.html?aaa801='+vaaa801;
-    	 //alert(vform.action);
-    	 vform.submit();
-      } 
-      
-   </script>
+	<jsp:include   page="/base/head.jsp"/>
+	<script>
+	//JavaScript代码区域
+	layui.use(['layer', 'form','element'], function(){
+	  var element = layui.element;
+	  var layer = layui.layer
+	  ,form = layui.form;
+	  layer.msg('Hello World');
+	});
+	var count=0;
+    
+    function onEdit(vaab101)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/findByIdEmp.html?aab101="+vaab101;
+  	 //alert(vform.action);
+  	 vform.submit();
+    }
+    
+    function onConfirm(vaaa801)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action='<%=path%>/ad/ad03confirm.html?aaa801='+vaaa801;
+  	 //alert(vform.action);
+  	 vform.submit();
+    } 
+    function onReserve(vaaa801)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action='<%=path%>/ad/ad05turnReserve.html?aaa801='+vaaa801;
+  	 //alert(vform.action);
+  	 vform.submit();
+    } 
+	</script>
 </head>
-<body>
-${msg }
-	<form id="myform" action="<%=path %>/ad/adqueryRoom.html" method="post">
-	<table border="1" width="95%" align="center">
-	  <caption>
-	      	 房源查询
-	    <hr width="160">
-	  </caption>
-	  <tr>
-	    <td colspan="4">查询条件</td>
-	  </tr>
-	  <tr>
-	    <td>建筑总价[B]</td>
-	    <td>
-	      <e:text name="baaa809"/>
-	    </td>
-	    <td>建筑总价[E]</td>
-	    <td>
-	      <e:text name="eaaa809"/>
-	    </td>
-	  </tr>
-	  <tr>
-	    <td>建筑面积[B]</td>
-	    <td>
-	      <e:text name="baaa505"/>
-	    </td>
-	    <td>建筑面积[E]</td>
-	    <td>
-	      <e:text name="eaaa505"/>
-	    </td>
-	  </tr>
-	  <tr>
-	    <td>户型</td>
-	    <td>
-	      <e:select name="qaaa502" value="A:01,B:02,C:03" header="true"/>
-	    </td>
-	    <td>房间结构</td>
-	    <td>
-	      <e:select name="qaaa504" value="两房两厅一卫:01,两房两厅两卫:02,三室一厅一卫:03" header="true" />
-	    </td>
-	  </tr>
-	  <tr>
-	    <td>状态</td>
-	    <td>
-	      <e:select name="qaaa805" value="等待:01,已售:02,已租:03,已选:04" header="true"/>
-	    </td>
-	  </tr>
-	</table>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/ad/menu.jsp"/>
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+<form lay-filter="myform" id="myform" class="layui-form" action="<%=path %>/ad/adqueryRoom.html" method="post">
+    	<div class="layui-form-item" align="center">
+			<div class="layui-inline">
+				<label class="layui-form-label">建筑总价[B]</label>
+				<div class="layui-input-inline">
+					<input type="text" name="baaa809" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">建筑总价[E]</label>
+				<div class="layui-input-inline">
+					<input type="text" name="eaaa809" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item" align="center">
+			<div class="layui-inline">
+				<label class="layui-form-label">建筑面积[B]</label>
+				<div class="layui-input-inline">
+					<input type="text" name="baaa505" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">建筑面积[E]</label>
+				<div class="layui-input-inline">
+					<input type="text" name="eaaa505" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item" align="center">
+			<div class="layui-inline">
+				<label class="layui-form-label">户型</label>
+				<div class="layui-input-inline">
+					<select name="qaaa502">
+						<option value="">不限定</option>
+						<option value="A">A</option>
+ 						<option value="B">B</option>
+ 						<option value="C">C</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">房间结构</label>
+				<div class="layui-input-inline">
+					<select name="qaaa504">
+						<option value="">不限定</option>
+						<option value="两房两厅一卫">两房两厅一卫</option>
+ 						<option value="两房两厅两卫">两房两厅两卫</option>
+ 						<option value="三室一厅一卫">三室一厅一卫</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item" align="center">
+			<div class="layui-inline">
+				<label class="layui-form-label">状态</label>
+				<div class="layui-input-inline">
+					<select name="qaaa805">
+						<option value="">不限定</option>
+						<option value="01">等待</option>
+ 						<option value="02">已售</option>
+ 						<option value="03">已租</option>
+ 						<option value="04">已选</option>
+ 						<option value="05">预留</option>
+					</select>
+				</div>
+			</div>
+		</div>
 	<!-- 数据迭代区 -->
-	<table border="1" width="95%" align="center">
+	<table class="layui-table" lay-even lay-skin="nob">
 	  <tr>
 	    <td></td>
 	    <td>序号</td>
@@ -96,6 +126,7 @@ ${msg }
 	    <td>建筑单价</td>
 	    <td>建筑总价</td>
 	    <td></td>
+	    <td></td>
 	  </tr>
 	  <c:choose>
 	     <c:when test="${rows!=null }">
@@ -107,59 +138,28 @@ ${msg }
 				    <td>${ins.aaa803}</td>
 				    <td>${ins.aaa804 }</td>
 				    <td>${ins.caaa805 }</td>
-				    <td>${ins.caaa502 }</td>
-				    <td>${ins.caaa504 }</td>
+				    <td>${ins.aaa502 }</td>
+				    <td>${ins.aaa504 }</td>
 				    <td>${ins.aaa505 }</td>
 				    <td>${ins.aaa808 }</td>
 				    <td>${ins.aaa809 }</td>
-				    <td>
-				    <a href="#" onclick="onConfirm('${ins.aaa801}')">确认选房</a>
-				    </td>
-				    
+				    <td><a href="#" onclick="onConfirm('${ins.aaa801}')">确认选房</a></td>
+				    <td><a href="#" onclick="onReserve('${ins.aaa801}')">添加预留</a></td>
 				  </tr>
 		      </c:forEach>
-		      <!-- 补充空行 -->
-		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
-			          <tr>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			          </tr>
-		      </c:forEach>
-	     </c:when>
-	     <c:otherwise>
-	        <c:forEach begin="1" step="1" end="15">
-	           <tr>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	           </tr>
-	        </c:forEach>
-	     </c:otherwise>
+		      </c:when>
 	   </c:choose>
 	</table>
-	<table border="1" width="95%" align="center">
-	  <tr>
-	    <td align="center">
-	       <input type="submit" name="next" value="查询">
-	    </td>
-	  </tr>
-	</table>
+	<div class="layui-form-item" align="center">
+	       <input type="submit" name="next" class="layui-btn layui-btn-normal" value="查询">
+	</div>
 	</form>
+    </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    ? layui.com - 底部固定区域
+  </div>
+</div>
 </body>
 </html>

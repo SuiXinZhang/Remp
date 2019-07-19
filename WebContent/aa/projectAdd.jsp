@@ -36,7 +36,7 @@ tr {
 
 			<tr>
 				<td>开工日期</td>
-				<td><e:date name="aaa204" defval="${ins.aaa204 }" /></td>
+				<td><e:date name="aaa204" required="true" defval="${ins.aaa204 }" /></td>
 			</tr>
 
 			<tr>
@@ -46,7 +46,7 @@ tr {
 
 			<tr>
 				<td>开盘日期</td>
-				<td><e:date name="aaa206" defval="${ins.aaa206 }" /></td>
+				<td><e:date name="aaa206" required="true" defval="${ins.aaa206 }" /></td>
 			</tr>
 
 			<tr>

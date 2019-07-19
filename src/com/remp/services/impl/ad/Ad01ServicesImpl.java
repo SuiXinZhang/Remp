@@ -1,5 +1,6 @@
 package com.remp.services.impl.ad;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,14 +14,27 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 	 */
 	public List<Map<String, String>> query()throws Exception
 	{
+		Object qaad103 = this.get("qaad103");
+		Object qaad116 = this.get("qaad116");
 		StringBuilder sql = new StringBuilder()
 				.append("select a.aad101,a.aad102,a.aad103,a.aad104,a.aad105,")
 				.append("       a.aad109,a.aad110,a.aad111,a.aad113,a.aad115,")
-				.append("       s.fvalue saad116")			
-				.append("  from ad01 a,syscode s")
-				.append(" where a.aad116=s.fcode and s.fname='aad116'")
+				.append("       a.aad116")			
+				.append("  from ad01 a")
+				.append(" where true")
 				;
-		return this.queryForList(sql.toString());
+		List<Object> paramList = new ArrayList<>();
+		if (this.isNotNull(qaad103)) 
+		{
+			sql.append(" and a.aad103 like ?");
+			paramList.add("%"+qaad103+"%");
+		}
+		if (this.isNotNull(qaad116)) 
+		{
+			sql.append(" and a.aad116 like ?");
+			paramList.add("%"+qaad116+"%");
+		}
+		return this.queryForList(sql.toString(),paramList.toArray());
 	}
 	/**
 	 * 添加预约记录,其中所有排号都自动生成
@@ -43,7 +57,7 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 				.append("          values(?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
 				.append("                 ?,?,?,?,1,")
-				.append("                 0,?)")
+				.append("                 '预约中',?)")
 				;
 		Object args[]={
 				this.get("oaad102"),

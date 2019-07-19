@@ -11,18 +11,18 @@
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
-    <form id="myform" class="layui-form" action="<%=path %>/ad/ad03query.html" method="post">
-    <div class="layui-form-item" align="center">
+    <form id="myform" action="<%=path %>/ad/ad05query.html" method="post">
+	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">客户名称</label>
 				<div class="layui-input-inline">
-					<input type="text" name="qaad305" value="${param.qaad305 }" autocomplete="off" class="layui-input">
+					<input type="text" name="qaad508" value="${param.qaad508 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
-				<label class="layui-form-label">选房时间</label>
+				<label class="layui-form-label">房间号码</label>
 				<div class="layui-input-inline">
-					<input type="text" id="date" name="qaad307" value="${param.qaad307 }" autocomplete="off" class="layui-input">
+					<input type="text" name="qaad502" value="${param.qaad502 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 	</div>
@@ -30,44 +30,35 @@
 	  <tr>
 	    <td></td>
 	  	<td>序号</td>
-	  	<td>房间号</td>
-	  	<td>房间状态</td>
-	  	<td>选房单号</td>
-	  	<td>项目排号</td>
 	  	<td>客户名称</td>
-	  	<td>经办人</td>
-	  	<td>选房时间</td>
-	  	<td></td>
-	  	<td></td>
-	  	<td></td>
+	  	<td>房间</td>
+	  	<td>签署日期</td>
+	  	<td>失效日期</td>
+	  	<td>业务员</td>
+	  	<td>预留状态</td>
+	  	<td>备注</td>
 	  	<td></td>
 	  </tr>
-	   <c:choose>
+	  <c:choose>
 	     <c:when test="${rows!=null }">
 	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				    <td><input type="hidden" name="aac401" value="${ins.aac401 }"></td>
+				    <td></td>
 				    <td>${vs.count }</td>
-				    <td>${ins.aad302 }</td>
-				    <td>${ins.caaa805 }</td>
-				    <td>${ins.aad303 }</td>
-				    <td>${ins.aad304 }</td>
-				    <td>${ins.aad305 }</td>
-				    <td>${ins.aad306 }</td>
-				    <td>${ins.aad307 }</td>
-				    <td><a href="#" onclick="onCancel('${ins.aaa801}')">取消选房</a></td>
-				    <td><a href="#" onclick="onSmallOrder('${ins.aaa801}')">转小订</a></td>
-				    <td><a href="#" onclick="onSubscribe('${ins.aad301}')">转认购</a></td>
-				    <td><a href="#" onclick="onSigning('${ins.aaa801}')">转签约</a></td>
+				    <td><a href="#" onclick="onEdit('${ins.aad501}')">${ins.aad508 }</a></td>
+				    <td>${ins.aad502 }</td>
+				    <td>${ins.aad503 }</td>
+				    <td>${ins.aad504 }</td>
+				    <td>${ins.aad505 }</td>
+				    <td>${ins.aad507 }</td>
+				    <td>${ins.aad506 }</td>
+				    <td><a href="#" onclick="onCancel('${ins.aad501}')">取消预留</a></td>
 				  </tr>
 		      </c:forEach>
 		      <!-- 补充空行 -->
 		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="6">
 			          <tr>
-			            <td></td>
-			            <td></td>
-			            <td></td>
 			            <td></td>
 			            <td></td>
 			            <td></td>
@@ -93,18 +84,14 @@
 	             <td></td>
 	             <td></td>
 	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
 	           </tr>
 	        </c:forEach>
 	     </c:otherwise>
 	   </c:choose>
 	  </table>
-	 <div class="layui-form-item" align="center">
+	  <div class="layui-form-item" align="center">
 	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
-	 </div>
+	  </div>
 </form>
     </div>
   </div>
@@ -123,30 +110,18 @@
 	  ,form = layui.form;
 	  layer.msg('Hello World');
 	});
-	layui.use('laydate', function(){
-		  var laydate = layui.laydate;
-		 
-		  //执行一个laydate实例
-		  laydate.render({
-		    elem: '#date'  //指定元素
-		  });
-	});
-	function onCancel(vaaa801)
-    {
-  	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/ad/ad03cancel.html?aaa801="+vaaa801;
-  	 vform.submit();
-    }
-	function onSmallOrder()
-	{}
-	function onSubscribe(vaad301)
+	function onEdit(vaad501)
 	{
-		var vform = document.getElementById("myform");
-	  	vform.action="<%=path%>/ad/ad04subscribePurchase.html?aad301="+vaad301;
-	  	vform.submit();
+		 var vform = document.getElementById("myform");
+		 vform.action="<%=path%>/ad/ad05findById.html?aad501="+vaad501;
+		 vform.submit();
 	}
-	function onSigning()
-	{}
+	function onCancel(vaad501)
+	{
+		 var vform = document.getElementById("myform");
+		 vform.action="<%=path%>/ad/ad05cancelReserve.html?aad501="+vaad501;
+		 vform.submit();
+	}
 </script>
 </body>
 </html>
