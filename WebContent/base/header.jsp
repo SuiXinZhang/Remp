@@ -2,7 +2,7 @@
 <div class="layui-header">
     <div class="layui-logo">思安地产管理系统</div>
     <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="/remp/aa/index.jsp">项目准备</a></li>
+      <li class="layui-nav-item"><a href="/remp/aa/aa02Query.html?aaa101=1">项目准备</a></li>
       <li class="layui-nav-item"><a href="/remp/ab/index.jsp">市场营销</a></li>
       <li class="layui-nav-item"><a href="/remp/ac/index.jsp">客户管理</a></li>
       <li class="layui-nav-item"><a href="/remp/ad/index.jsp">交易管理</a></li>

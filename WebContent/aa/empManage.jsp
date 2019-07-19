@@ -16,45 +16,69 @@
 	        <hr>
 	        <div class="layui-form-item" align="center">
 	        		<div class="layui-inline">
-	                    <label class="layui-form-label">编号:</label>
-	                    <div class="layui-input-inline" style="width: 100px;" >
-							<input type="text" value="${param.qaaa402 }" name="qaaa402" autocomplete="off" class="layui-input">
-	                    </div>
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-flag" style="font-size: 15px; color: black;"></i>
+			    			编号
+			    		</label>
+				      	<div class="layui-input-block">
+				        	<input type="text" name="qaaa402" value="${param.qaaa402 }" autocomplete="off" class="layui-input"  style="width:120px;">
+			      		</div>
 	                </div>
+	                
 	                <div class="layui-inline">
-	                    <label class="layui-form-label">姓名:</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
-	                        <input type="text" value="${param.qaaa403 }" name="qaaa403" autocomplete="off" class="layui-input">
-	                    </div>
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-face-smile" style="font-size: 15px; color: black;"></i>
+			    			姓名
+			    		</label>
+				      	<div class="layui-input-block">
+				        	<input type="text" name="qaaa403" value="${param.qaaa403 }" autocomplete="off" class="layui-input"  style="width:120px;">
+			      		</div>
 	                </div>
+	                
 	                <div class="layui-inline">
-	                    <label class="layui-form-label">性别:</label>
-	                    <div class="layui-input-inline" style="width: 225px;">
-	                    	<e:select name="qaaa407"  value="男:男,女:女,不确定:不确定"  header="true"/>
-	                    </div>
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-senior" style="font-size: 15px; color: black;"></i>
+			    			岗位
+			    		</label>
+				      	<div class="layui-input-block">
+				        	<input type="text" name="qaaa404" value="${param.qaaa404 }" autocomplete="off" class="layui-input"  style="width:215px;">
+			      		</div>
 	                </div>
-	               	
+	                
+	        		     	
 	        </div>
 	        <div class="layui-form-item" align="center">
-	        		<div class="layui-inline">
-	                    <label class="layui-form-label">岗位:</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
-	                        <input type="text" name="qaaa404"  value="${param.qaaa404 }" autocomplete="off" class="layui-input">
-	                    </div>
-	                </div>
+
+					<div class="layui-inline">
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-rate-half" style="font-size: 15px; color: black;"></i>
+			    			性别
+			    		</label>
+				      	<div class="layui-input-block" style="width: 120px;">
+				        	<e:select name="qaaa407"  value="男:男,女:女,不确定:不确定"  header="true"/>
+			      		</div>
+	                </div>	
+	                
 	                <div class="layui-inline">
-	                    <label class="layui-form-label">民族:</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
-	                        <input type="text" name="qaaa406"  value="${param.qaaa406 }" autocomplete="off" class="layui-input">
-	                    </div>
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-user" style="font-size: 15px; color: black;"></i>
+			    			民族
+			    		</label>
+				      	<div class="layui-input-block">
+				        	<input type="text" name="qaaa406"  value="${param.qaaa406 }" autocomplete="off" class="layui-input"  style="width: 120px;">
+			      		</div>
 	                </div>
+
 	        		<div class="layui-inline">
-	                    <label class="layui-form-label">生日:</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
+	                    <label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-date" style="font-size: 15px; color: black;"></i>
+			    			生日
+			    		</label>
+	                    <div class="layui-input-inline" style="width: 90px;">
        						<input type="text" value="${param.baaa411 }" name="baaa411" id="date" lay-verify="date" placeholder="B" autocomplete="off" class="layui-input">
 	                    </div>
 	                    <div class="layui-form-mid">-</div>
-	                    <div class="layui-input-inline" style="width: 100px;">
+	                    <div class="layui-input-inline" style="width: 90px;">
        						<input type="text" value="${param.eaaa411 }" name="eaaa411" id="date1" lay-verify="date" placeholder="E" autocomplete="off" class="layui-input">	                    
 	                    </div>
 	                </div>	
@@ -200,9 +224,11 @@ layui.use(['layer', 'form','element', 'laydate'], function(){
 	  //日期
 	  laydate.render({
 	    elem: '#date'
+	    ,trigger: 'click'
 	  });
 	  laydate.render({
 	    elem: '#date1'
+	    ,trigger: 'click'
 	  })
 	  
 	  var count=0;
