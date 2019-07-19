@@ -38,7 +38,7 @@
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div style="padding: 150px;font-size: 16;">
-<form lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad01addOrder.html" method="post">
+	<form lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad01addOrder.html" method="post">
 
 	    <div class="layui-form-item" align="left">
 			<div class="layui-inline">

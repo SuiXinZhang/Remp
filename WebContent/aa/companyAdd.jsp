@@ -125,7 +125,7 @@
 						<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa101?'Ìí¼Ó':'ÐÞ¸Ä'}"
 							formaction="<%=path %>/aa/${empty param.aaa101?'aa01Add.html':'aa01Modify.html' }">
 						<input class="layui-btn layui-btn-warm" type="submit" value="·µ»Ø"
-						formaction="<%=path %>/aa/companyManage.jsp" formnovalidate="formnovalidate">
+						formaction="<%=path %>/aa/aa02Query.html" formnovalidate="formnovalidate">
 				</div>
 			</div>
 			
