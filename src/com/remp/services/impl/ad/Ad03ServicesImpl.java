@@ -1,4 +1,5 @@
 package com.remp.services.impl.ad;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -68,6 +69,8 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 	 */
 	public List<Map<String,String>> query()throws Exception
 	{
+		Object qaad305 = this.get("qaad305");
+		Object qaad307 = this.get("qaad307");
 		StringBuilder sql=new StringBuilder()
 				.append("select a.aad301,a.aad302,a.aad303,a.aad304,a.aad305,")
 				.append("       a.aad306,a.aad307,b.aaa801,c.fvalue caaa805,a.aac401")
@@ -76,7 +79,18 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 				.append("   and b.aaa805 = c.fcode")
 				.append("   and c.fname='aaa805'")
 				;
-		return this.queryForList(sql.toString());
+		List<Object> paramList = new ArrayList<>();
+		if (this.isNotNull(qaad305)) 
+		{
+			sql.append(" and a.aad305 like ?");
+			paramList.add(qaad305);
+		}
+		if (this.isNotNull(qaad307)) 
+		{
+			sql.append(" and a.aad307=?");
+			paramList.add(qaad307);
+		}
+		return this.queryForList(sql.toString(),paramList.toArray());
 	}
 	/**
 	 * 取消看房,将房间状态更改为可选

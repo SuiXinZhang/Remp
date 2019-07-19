@@ -1,5 +1,6 @@
 package com.remp.services.impl.ad;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class Ad02ServicesImpl extends JdbcServicesSupport
 				this.get("aad202"),
 				this.get("aad203")
 		};
-		String sql2 = "update ad01 set aad116='1' where aad101=?";
+		String sql2 = "update ad01 set aad116='ÒÑÍËºÅ' where aad101=?";
 		this.executeUpdate(sql1.toString(), args);
 		this.appendSql(sql2, this.get("aad101"));
 		return this.executeTransaction();
@@ -33,6 +34,8 @@ public class Ad02ServicesImpl extends JdbcServicesSupport
 	 */
 	public List<Map<String, String>> query()throws Exception
 	{
+		Object qaad103 = this.get("qaad103");
+		Object qaad202 = this.get("qaad202");
 		StringBuilder sql = new StringBuilder()
 				.append("select a.aad101,a.aad102,a.aad103,a.aad104,a.aad105,")
 				.append("       a.aad109,a.aad110,a.aad111,a.aad113,b.aad202,")
@@ -40,6 +43,18 @@ public class Ad02ServicesImpl extends JdbcServicesSupport
 				.append("  from ad01 a,ad02 b")
 				.append(" where b.aad101 = a.aad101")
 				;
-		return this.queryForList(sql.toString());
+		List<Object> paramList = new ArrayList<>();
+		if (this.isNotNull(qaad103)) 
+		{
+			sql.append(" and a.aad103 like ?");
+			paramList.add("%"+qaad103+"%");
+			
+		}
+		if (this.isNotNull(qaad202)) 
+		{
+			sql.append(" and b.aad202 = ?");
+			paramList.add(qaad202);
+		}
+		return this.queryForList(sql.toString(),paramList.toArray());
 	}
 }

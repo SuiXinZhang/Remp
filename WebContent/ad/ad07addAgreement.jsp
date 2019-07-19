@@ -1,138 +1,283 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%String path=request.getContextPath(); %>
-
+<%@include file="/base/taglib.jsp" %>
 <html>
 <head>
-<title>合同管理</title>
-	<style type="text/css">
-	  td{
-	      height:30px;
-	  }
-	  msg{
-	     color:#FF0000
-	  }
-	</style>
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-<body>
-${msg }
-<form action="<%=path %>/ad/ad07addAgreement.html" method="post">
-	<table  border="1" align="center" width="45%">
-	<caption>
-      	签订合同
-      <hr width="160">
-    </caption>
-    <tr>
-     <td colspan="4">
-     <input type="hidden" name="aac401" value="${ins.aac401 }">
-     <input type="hidden" name="aaa801" value="${ins.aaa801 }">
-     <input type="hidden" name="aad701" value="${param.aad701 }">
-     <input type="hidden" name="aad401" value="${ins.aad401 }">
-     </td>
-    </tr>
-    <tr>
-     <td>客户名称</td>
-     <td><e:text name="aad702" required="true" defval="${ins.aad402 }"/></td>
-     <td>联系电话</td>
-     <td><e:text name="aad721" required="true" defval="${ins.aad421 } "/></td>
-    </tr>
-    <tr>
-     <td>房间</td>
-     <td><e:text name="aad703" required="true" defval="${ins.aad403 }"/></td>
-    </tr>
-    <tr>
-     <td>房间结构</td>
-     <td><e:text name="aaa504" required="true" defval="${ins.yaaa504 }"/></td>
-     <td>房间状态</td>
-     <td><e:text name="aaa805" required="true" defval="${ins.saaa805 }"/></td>
-    </tr>
-    <tr>
-     <td>建筑面积</td>
-     <td><e:number step="0.01" name="aaa505" required="true" defval="${ins.aaa505 }"/></td>
-     <td>套内面积</td>
-     <td><e:number step="0.01" name="aaa506" required="true" defval="${ins.aaa506 }"/></td>
-    </tr>
-    <tr>
-     <td>建筑单价</td>
-     <td><e:number name="aaa808" step="0.01" required="true" defval="${ins.aaa808 }"/></td>
-     <td>套内单价</td>
-     <td><e:number name="aaa809" step="0.01" required="true" defval="${ins.aaa810 }"/></td>
-    </tr>
-    <tr>
-     <td>计价方式</td>
-     <td><e:radio name="aad722" value="按建筑面积:01,按套内面积:02" defval="${ins.aad420 }"/></td>
-    </tr>
-    <tr>
-     <td>付款方式</td>
-     <td><e:select name="aad704" required="true" value="商业贷款:01,全款:02" defval="${ins.aad404 }"/></td>
-     <td>折扣</td>
-     <td><e:number name="aad705" step="0.1" defval="${ins.aad405 }"/></td>
-    </tr>
-    <tr>
-     <td>建筑成交单价</td>
-     <td><e:number name="aad706" step="0.01" required="true" defval="${ins.aad406 }"/></td>
-     <td>套内成交单价</td>
-     <td><e:number name="aad707" step="0.01" required="true" defval="${ins.aad407 }"/></td>
-    </tr>
-    <tr>
-     <td>折扣说明</td>
-     <td><e:text name="aad708" defval="${ins.aad708 }"/></td>
-     <td>房间总价</td>
-     <td><e:number name="aad709" step="0.01" required="true" defval="${ins.aad409 }"/></td>
-    </tr>
-    <c:if test="${!empty param.aad701 }">
-	   <tr>
-	     <td>合同编号</td>
-	     <td>
-	       <e:text name="aad710"  readonly="true" defval="${ins.aad710 }"/> 
-	     </td>
-	   </tr>
-   </c:if>
-    <tr>
-     <td>合同总价(人民币)</td>
-     <td><e:number name="aad711" step="0.01" required="true" defval="${ins.aad410 }"/></td>
-    </tr>
-    <tr>
-     <td>合同币种</td>
-     <td><e:select name="aad712" required="true" value="人民币:01,美元:02,英镑:03,日元:04,欧元:05" defval="${ins.aad411 }"/></td>
-     <td>合同汇率</td>
-     <td><e:number name="aad713" step="0.01" defval="${ins.aad412 }"/></td>
-    </tr>
-    <tr>
-     <td>应收定金</td>
-     <td><e:number name="aad714" step="0.01" required="true" defval="${ins.aad413 }"/></td>
-     <td>合同总价</td>
-     <td><e:number name="aad715" step="0.01" required="true" defval="${ins.aad414 }"/></td>
-    </tr>
-    <tr>
-     <td>签署日期</td>
-     <td><e:date name="aad716" required="true" defval="${ins.aad415 }"/></td>
-     <td>交房日期</td>
-     <td><e:date name="aad717" required="true"/></td>
-    </tr>
-    <tr>
-     <td>推荐人</td>
-     <td><e:text name="aad718" defval="${ins.aad417 }"/></td>
-     <td>合同状态</td>
-     <td><e:select name="aad719" required="true" value="认购:01,小订:02,签约:03" defval="${ins.aad418 }"/></td>
-    </tr>
-    <tr>
-     <td>业务员</td>
-     <td><e:text name="aad720" defval="${ins.aad419 }"/></td>
-    </tr>
-    <tr>
-	    <td colspan="4" align="center">
-	       <input type="submit" name="next" value="${empty param.aad701?'添加':'修改'}"
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/ad/menu.jsp"/>
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+    <form lay-filter="myform" id="myform" class="layui-form" action="<%=path %>/ad/ad07addAgreement.html" method="post">
+	<div class="layui-form-item" align="left">
+			<div class="layui-inline">
+				<label class="layui-form-label">客户名称</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aad702" required lay-verify="true" value="${ins.aad402 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">联系电话</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aad721" required lay-verify="true" value="${ins.aad421 }"
+					autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">房间号码</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aad703" required lay-verify="true" value="${ins.aad403 }"
+					autocomplete="off" class="layui-input">
+				</div>
+			</div>
+	</div>
+    <div class="layui-form-item" align="left">
+			<div class="layui-inline">
+				<label class="layui-form-label">房间结构</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aaa504" required lay-verify="true" value="${ins.aaa504 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">房间状态</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aaa805" required lay-verify="true" value="${ins.saaa805 }"
+							 autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">建筑面积</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aaa505" required lay-verify="true" value="${ins.aaa505 }"
+					    step="0.01" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+	</div>
+	<div class="layui-form-item" align="left">
+			<div class="layui-inline">
+				<label class="layui-form-label">套内面积</label>
+				<div class="layui-input-inline">
+					<input type="number" step="0.01" name="aaa506" required lay-verify="true" value="${ins.aaa506 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">建筑单价</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aaa808" required lay-verify="true" value="${ins.aaa808 }"
+						step="0.01"	autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">套内单价</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aaa810" required lay-verify="true" value="${ins.aaa810 }"
+					    step="0.01" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+	</div>
+	<div class="layui-form-item" align="left">
+			<div class="layui-inline">
+				<label class="layui-form-label">计价方式</label>
+				<div class="layui-input-inline">
+					<input type="radio" name="aad722" value="01" title="按建筑面积" checked>
+					<input type="radio" name="aad722" value="02" title="按套内面积"> 
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">付款方式</label>
+				<div class="layui-input-inline">
+					<select name="aad704">
+						<option value="01" selected>商业贷款</option>
+						<option value="02">全款</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">折扣</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aad705" required lay-verify="true" value="${ins.aad405 }"
+					    step="0.1" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+	</div>
+	<div class="layui-form-item" align="left">
+			<div class="layui-inline">
+				<label class="layui-form-label">建筑成交单价</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aad706" required lay-verify="true" value="${ins.aad406 }"
+						step="0.01"	autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">套内成交单价</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aad707" required lay-verify="true" value="${ins.aad407 }"
+					    step="0.01" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">折扣说明</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aad708" required lay-verify="true" value="${ins.aad408 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+			</div>
+	</div>
+	<div class="layui-form-item" align="left">
+			<div class="layui-inline">
+				<label class="layui-form-label">房间总价</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aad709" required lay-verify="true" value="${ins.aad409 }"
+						step="0.01"	autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">合同总价(人民币)</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aad711" required lay-verify="true" value="${ins.aad410 }"
+					    step="0.01" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">合同币种</label>
+				<div class="layui-input-inline">
+					<select name="aad712">
+						<option value="01" selected>人民币</option>
+						<option value="02">美元</option>
+						<option value="03">英镑</option>
+						<option value="04">日元</option>
+						<option value="05">欧元</option>
+					</select>
+				</div>
+			</div>
+	</div>
+	<div class="layui-form-item" align="left">
+			<div class="layui-inline">
+				<label class="layui-form-label">合同汇率</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aad713" required lay-verify="true" value="${ins.aad412 }"
+						step="0.01"	autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">应收定金</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aad714" required lay-verify="true" value="${ins.aad413 }"
+					    step="0.01" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">合同总价</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aad715" required lay-verify="true" value="${ins.aad414 }"
+					    step="0.01" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+	</div>
+	<div class="layui-form-item" align="left">
+			<div class="layui-inline">
+				<label class="layui-form-label">签署日期</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aad716" id="date1" required lay-verify="true"
+					 autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">交房日期</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aad717" id="date2" required lay-verify="true"
+							 autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">推荐人</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aad718" required lay-verify="true" value="${ins.aad417 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+			</div>
+	</div>
+	<div class="layui-form-item" align="left">
+			<div class="layui-inline">
+				<label class="layui-form-label">合同状态</label>
+				<div class="layui-input-inline">
+					<select name="aad719">
+						<option value="01" selected>认购</option>
+						<option value="02">小订</option>
+						<option value="03">签约</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">业务员</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aad720" required lay-verify="true" 
+					 autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<c:if test="${!empty param.aad701 }">
+			<div class="layui-inline">
+				<label class="layui-form-label">合同编号</label>
+					<div class="layui-input-inline">
+						<input type="text" name="aad710" value="${ins.aad710 }"
+							 autocomplete="off" class="layui-input">
+					</div>
+				</div>
+			</c:if>
+	</div>
+    
+    <div class="layui-form-item" align="center">
+	       <input type="submit" name="next" value="${empty param.aad701?'添加':'修改'}" class="layui-btn layui-btn-normal"
 	              formaction="${empty param.aad701?'ad07addAgreement':'ad07modifyAgreement'}.html">
-	       <input type="submit" name="next" value="查看"
+	       <input type="submit" name="next" value="查看" class="layui-btn layui-btn-normal"
 	          formnovalidate="formnovalidate" formaction="ad/ad07queryAgreement.html">
-	       <input type="submit" name="next" value="返回" 
+	       <input type="submit" name="next" value="返回" class="layui-btn layui-btn-normal"
 	       formaction="ad07queryAgreement.html" formnovalidate="formnovalidate">
-	    </td>
-	</tr>
-    </table>
+	</div>
+    <input type="hidden" name="aac401" value="${ins.aac401 }">
+    <input type="hidden" name="aaa801" value="${ins.aaa801 }">
+    <input type="hidden" name="aad701" value="${param.aad701 }">
+    <input type="hidden" name="aad401" value="${ins.aad401 }">
 </form>
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    ? layui.com - 底部固定区域
+  </div>
+</div>
+<script ></script>
+<script>
+//JavaScript代码区域
+	layui.use(['layer', 'form','element'], function(){
+	  var element = layui.element;
+	  var layer = layui.layer
+	  ,form = layui.form;
+	  layer.msg('Hello World');
+	  form.val('myform',{
+		  "aad722":"${ins.aad420}",
+		  "aad704":"${ins.aad404}",
+		  "aad712":"${ins.aad411}",
+		  "aad719":"${ins.aad418}"
+	  });
+	});
+	layui.use('laydate', function(){
+		  var laydate = layui.laydate;
+		  //执行一个laydate实例
+		  laydate.render({
+		    elem: '#date1'  //指定元素
+		  });
+		  laydate.render({
+			elem: '#date2'  //指定元素
+			  });
+		});
+</script>
 </body>
 </html>

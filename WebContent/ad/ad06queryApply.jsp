@@ -1,48 +1,36 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%String path=request.getContextPath(); %>
+<%@include file="/base/taglib.jsp" %>
 <html>
 <head>
-<title>审批变更申请</title>
-	<style type="text/css">
-	tr 
-	{
-		height: 25px;
-	}
-    </style>
-    <script type="text/javascript">
-    function onSelect(vaad601)
-    {
-  	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/ad/ad06findByIdApply.html?aad601="+vaad601;
-  	 vform.submit();
-    }
-    </script>
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-<body>
-<form id="myform" action="<%=path %>/ad/ad06queryApply.html" method="post">
-	<table border="1" width="95%" align="center">
-	  <caption>
-	      	 变更申请查询
-	    <hr width="160">
-	  </caption>
-	  <tr>
-	    <td colspan="4">查询条件</td>
-	  </tr>
-	  <tr>
-	    <td>申请类型</td>
-	    <td>
-	      <e:select name="qaad602" value="换房:01,退房:02"/>
-	    </td>
-	    <td>申请人</td>
-	    <td>
-	      <e:text name="qaad605"/>
-	    </td>
-	  </tr>
-	</table>
-	<table border="1" width="95%" align="center">
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/ad/menu.jsp"/>
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+    <form id="myform" lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad06queryApply.html" method="post">
+	<div class="layui-form-item" align="center">
+			<div class="layui-inline">
+				<label class="layui-form-label">申请类型</label>
+				<div class="layui-input-inline">
+					<select name="qaad602">
+						<option value="" selected>不限定</option>
+						<option value="01">换房</option>
+						<option value="02">退房</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">申请人</label>
+				<div class="layui-input-inline">
+					<input type="text" name="qaad605" value="${param.qaad605 }" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+	</div>
+	<table class="layui-table" lay-even lay-skin="nob">
 	  <tr>
 	    <td></td>
 	    <td>序号</td>
@@ -73,7 +61,7 @@
 				  </tr>
 		      </c:forEach>
 		      <!-- 补充空行 -->
-		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
+		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="6">
 			          <tr>
 			            <td></td>
 			            <td></td>
@@ -89,7 +77,7 @@
 		      </c:forEach>
 	     </c:when>
 	     <c:otherwise>
-	        <c:forEach begin="1" step="1" end="15">
+	        <c:forEach begin="1" step="1" end="3">
 	           <tr>
 	             <td></td>
 	             <td></td>
@@ -106,13 +94,36 @@
 	     </c:otherwise>
 	   </c:choose>
 	</table>
-	<table border="1" width="95%" align="center">
-	  <tr>
-	    <td align="center">
-	       <input type="submit" name="next" value="查询">
-	    </td>
-	  </tr>
-	</table>
+	<div class="layui-form-item" align="center">
+	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
+	 </div>
 </form>
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    ? layui.com - 底部固定区域
+  </div>
+</div>
+<script ></script>
+<script>
+//JavaScript代码区域
+	layui.use(['layer', 'form','element'], function(){
+	  var element = layui.element;
+	  var layer = layui.layer
+	  ,form = layui.form;
+	  layer.msg('Hello World');
+	  form.val('myform',{
+		  "qaad602":"${param.qaad602}"
+	  });
+	});
+	function onSelect(vaad601)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/ad/ad06findByIdApply.html?aad601="+vaad601;
+  	 vform.submit();
+    }
+</script>
 </body>
 </html>

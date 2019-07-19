@@ -8,6 +8,7 @@
       <li class="layui-nav-item"><a href="/remp/ad/index.jsp">交易管理</a></li>
       <li class="layui-nav-item"><a href="/remp/ae/index.jsp">售后服务</a></li>
       <li class="layui-nav-item"><a href="/remp/af/index.jsp">财务管理</a></li>
+      <li class="layui-nav-item"><a href="javascript:;">公司信息管理</a></li>
       <!-- <li class="layui-nav-item">
         <a href="javascript:;">其它系统</a>
         <dl class="layui-nav-child">
