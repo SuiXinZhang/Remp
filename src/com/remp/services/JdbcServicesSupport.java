@@ -610,10 +610,11 @@ public abstract class JdbcServicesSupport implements BaseServices
 			rs = pstm.executeQuery();
 			rs.next();
 			String map = rs.getString(1)+":"+ rs.getString(2);
-			if(rs.next())
+			while(rs.next())
 			{
 				map=map+","+rs.getString(1)+":"+ rs.getString(2);
 			}
+			System.out.println(map);
 			return map;
 		}
 		finally
