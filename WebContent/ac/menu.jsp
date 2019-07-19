@@ -4,16 +4,32 @@
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-        <li class="layui-nav-item">
-          <a href="<%=path %>/ac/clueManage.jsp">线索管理</a>
+        <li class="layui-nav-item layui-nav-itemed"><a href="javascript:">线索管理</a>
+        	 <dl class="layui-nav-child">
+             	<dd><a href="clueAdd.jsp">&nbsp&nbsp&nbsp&nbsp添加线索</a></dd>
+             	<dd><a href="ClueManage.jsp">&nbsp&nbsp&nbsp&nbsp查询线索</a></dd>
+             </dl>
         </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;">销售机会管理</a>
+        <li class="layui-nav-item layui-nav-itemed"><a href="javascript:;">销售机会管理</a>
+        	 <dl class="layui-nav-child">
+             	<dd><a href="sellOpport.jsp">&nbsp&nbsp&nbsp&nbsp添加机会</a></dd>
+             	<dd><a href="sellOpportManage.jsp">&nbsp&nbsp&nbsp&nbsp查询机会</a></dd>
+             </dl>
         </li>
-        <li class="layui-nav-item"><a href="">客户跟进管理</a></li>
-        <li class="layui-nav-item"><a href="">客户台账管理</a></li>
-         <li class="layui-nav-item"><a href="">客户关怀</a></li>
-        <li class="layui-nav-item"><a href="">交互明细查询</a></li>
+        <li class="layui-nav-item layui-nav-itemed"><a href="javascript:">客户跟进管理</a>
+        	 <dl class="layui-nav-child">
+             	<dd><a href="addFollow.jsp">&nbsp&nbsp&nbsp&nbsp添加信息</a></dd>
+             	<dd><a href="followManage.jsp">&nbsp&nbsp&nbsp&nbsp查询信息</a></dd>
+             </dl>
+        </li>
+        <li class="layui-nav-item"><a href="javascript:">客户台账管理</a>
+        	 <dl class="layui-nav-child">
+             	<dd><a href="addClient.jsp">&nbsp&nbsp&nbsp&nbsp添加客户</a></dd>
+             	<dd><a href="ClientManage.jsp">&nbsp&nbsp&nbsp&nbsp查询客户</a></dd>
+             </dl>
+        </li>
+         <li class="layui-nav-item"><a href="javascript:">客户关怀</a></li>
+        <li class="layui-nav-item"><a href="javascript:">交互明细查询</a></li>
       </ul>
     </div>
   </div>

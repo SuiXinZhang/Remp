@@ -29,9 +29,11 @@
 	</div>
 	<script>
 //JavaScript´úÂëÇøÓò
-	layui.use('element', function(){
+	layui.use(['layer', 'form','element'], function(){
 	  var element = layui.element;
-	  
+	  var layer = layui.layer
+	  ,form = layui.form;
+	  layer.msg('Hello World');
 	});
 </script>
 </body>
