@@ -15,7 +15,7 @@
 		<jsp:include page="/ac/menu.jsp" />
 		<div class="layui-body">
 			<div class="layui-anim layui-anim-scale"
-				style="padding: 15px; margin: 50px 100px;">
+				style="padding: 15px; margin: 30px 80px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
 					<legend>线索管理</legend>
 					<form action="<%=path%>/ac/ac01Query.html" lay-filter="form"
@@ -27,9 +27,9 @@
 
 							<div class="layui-form-item">
 								<div class="layui-inline">
-									<label class="layui-form-label">客户名</label>
+									<label class="layui-form-label">客&ensp;户&ensp;名</label>
 									<div class="layui-input-inline">
-										<input type="tel" name="qaac105" value="${param.qaac105 }"
+										<input type="text" name="qaac105" value="${param.qaac105 }"
 											autocomplete="off" class="layui-input">
 									</div>
 								</div>
@@ -87,10 +87,10 @@
 								</div>
 							</div>
 
-							<div class="layui-form-item">
-							<div class="layui-inline">
+							<div class="layui-form-item" align="left">
+							<div class="layui-inline" style="padding-left:177px">
 								<label class="layui-form-label" style="width: 150px">转销售机会状态</label>
-								<div class="layui-input-inline" style="width: 150px">
+								<div class="layui-input-inline" >
 									<select name="qaac111">
 										<option value="">不限</option>
 										<option value="未转" selected="">未转</option>
@@ -98,10 +98,10 @@
 									</select>
 								</div>
 							</div>
-							<div class="layui-inline">
+							<div class="layui-inline" style="padding-left:240px">
 							<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
 									<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
-								</button>
+							</button>
 							</div>
 							
 							</div>
@@ -110,19 +110,19 @@
 						</div>
 
 						<div id="tableId" style="display: none">
-							<table id="idData" lay-filter="demo">
+							<table id="idData"  lay-filter="demo">
 								<thead>
 									<tr>
-										<td lay-data="{field:'checkbox1',width:50,type:'checkbox'}"></td>
-										<td lay-data="{field:'sort1',width:100}">序号</td>
-										<td lay-data="{field:'projectname'}">项目名称</td>
+										<td lay-data="{field:'check',width:50}"></td>
+										<td lay-data="{field:'sort1',width:60}">序号</td>
+										<td lay-data="{field:'projectname',width:125}">项目名称</td>
 										<td lay-data="{field:'username'}">客户名</td>
-										<td lay-data="{field:'userphone'}">客户联系电话</td>
+										<td lay-data="{field:'userphone'}">联系电话</td>
 										<td lay-data="{field:'empname'}">业务员</td>
-										<td lay-data="{field:'username'}">来访方式</td>
+										<td lay-data="{field:'style',width:88}">来访方式</td>
 										<td lay-data="{field:'date',sort:true,width:115}">来访日期</td>
-										<td lay-data="{field:'grade',sort:true}">跟进级别</td>
-										<td lay-data="{field:'state'}">销售机会状态</td>
+										<td lay-data="{field:'grade',sort:true,width:100}">跟进级别</td>
+										<td lay-data="{field:'state',width:120}">销售机会状态</td>
 										<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 									</tr>
 								</thead>
@@ -131,10 +131,9 @@
 										<c:when test="${rows!= null }">
 											<c:forEach items="${rows }" var="ins" varStatus="vs">
 												<tr>
-													<td><input type="checkbox" lay-skin="primary"
-														onclick="onSelect(this.checked)" name="idlist"
-														value="${ins.aac101 }"></td>
-													<td>${vs.count }</td>
+													<td>
+													<input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aac101 }" ></td>
+													<td>${vs.count } </td>
 													<td><a
 														href="<%=path%>/ac01FindById.html?aac101=${ins.aac101 }">${ins.aac104 }</a>
 													</td>
@@ -145,12 +144,13 @@
 													<td>${ins.aac102 }</td>
 													<td>${ins.aac109 }</td>
 													<td>${ins.aac111 }</td>
-													<td><a class="layui-btn layui-btn-xs " href="#"
+													<td>
+													<a class="layui-btn layui-btn-xs " href="#"
 														onClick="onOpportunities('${ins.aac101}')"><i
-															class="layui-icon layui-icon-edit"></i>转销售机会</a> <a
-														class="layui-btn layui-btn-xs layui-btn-danger" href="#"
-														onClick="onDel('${ins.aac101}')"><i
-															class="layui-icon layui-icon-delete"></i>删除</a></td>
+															class="layui-icon layui-icon-edit"></i>转销售机会</a> 
+														<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+														onClick="onDel('${ins.aac101}')">
+														<i class="layui-icon layui-icon-delete"></i>删除</a></td>
 												</tr>
 											</c:forEach>
 										</c:when>
@@ -165,17 +165,21 @@
 							<br>
 							<br>
 
-
-							<table border="1" align="center" width="95%">
-								<tr>
-									<td align="center"><input type="submit" value="查询"
-										name="next"> <input type="submit" value="添加"
-										name="next" formaction="<%=path%>/ac/clueAdd.jsp"> <input
-										type="submit" value="删除" name="next" disabled="disabled"
-										formaction="<%=path%>/ac/ac01Delete.html" id="del"></td>
-								</tr>
-							</table>
-
+							<div class="layui-form-item" align="center">
+							<div class="layui-inline">
+										<button class="layui-btn " 
+										formaction="<%=path%>/ac/clueAdd.jsp"  type="submit">
+										<i class="layui-icon layui-icon-add-1"></i>添加
+										</button>
+								</div>
+								<div class="layui-inline">
+										<button class="layui-btn layui-btn-disabled" disabled="disabled"
+										formaction="<%=path%>/ac/ac01Delete.html" id="mod" type="submit">
+										<i class="layui-icon layui-icon-delete"></i>删除
+										</button>
+								</div>
+								
+							</div>
 
 						</div>
 					</form>
@@ -183,9 +187,6 @@
 
 			</fieldset>
 		</div>
-
-
-
 
 
 		<div class="layui-footer">
@@ -209,19 +210,29 @@ function onDel(vaac101)
 function onOpportunities(vaac101)
 {
 	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>
-		/ac04ChangeOpport.html?tag=1&aac101="
-					+ vaac101;
-			myform.submit();
+	myform.action = "<%=path%>/ac04ChangeOpport.html?tag=1&aac101="+ vaac101;
+	myform.submit();
+}
+function getCheckBox(str)
+{
+	var ha =$(str).find(".layui-form-checkbox");
+	var list=[];
+	ha.each(function(){
+		if($(this).hasClass("layui-form-checked")){
+			list.push($(this).parent().parent().next().find("#idlist").val())
+		}
+	})
 }
 	</script>
 	<script>
 		//JavaScript代码区域
-		layui
-				.use(
-						[ 'element', 'form', 'laydate', 'layedit', 'table' ],
-						function() {
-							var element = layui.element, form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate, table = layui.table;
+		layui.use([ 'element', 'form', 'laydate', 'layedit', 'table' ],function() {
+							var element = layui.element
+							, form = layui.form
+							, layer = layui.layer
+							, layedit = layui.layedit
+							, laydate = layui.laydate
+							, table = layui.table;
 
 							//日期
 							laydate.render({
@@ -238,41 +249,42 @@ function onOpportunities(vaac101)
 								toolbar : true,
 								done : function(res, curr, count) {
 									$('#tableId').css('display', 'block');
+									
 								}
 							});
 
 							form.val('form', {
-								"qaac111" : "${param.qaac111 }"
+								"qaac111" : "${param.qaac111 }",
+								"qaac103" : "${param.qaac103 }",
+								"qaac109" : "${param.qaac109 }",
 							});
 
+							
+							
 							var count = 0;
 
-							form.on(
-											'checkbox(check)',
-											function(data) {
+							form.on('checkbox(check)',function(data) {
+												console.log(data);
 												if (data.elem.checked == true) {
+													
 													count++;
 													if (count != 0) {
-														document
-																.getElementById("mod").className = "layui-btn";
+														document.getElementById("mod").className = "layui-btn";
 													} else {
-														document
-																.getElementById("mod").className = "layui-btn layui-btn-disabled";
+														document.getElementById("mod").className = "layui-btn layui-btn-disabled";
 													}
-													document
-															.getElementById("mod").disabled = (count == 0)
-
+													document.getElementById("mod").disabled = (count == 0)
+													console.log(count);
 												} else {
+													
 													count--;
 													if (count != 0) {
-														document
-																.getElementById("mod").className = "layui-btn";
+														document.getElementById("mod").className = "layui-btn";
 													} else {
-														document
-																.getElementById("mod").className = "layui-btn layui-btn-disabled";
+														document.getElementById("mod").className = "layui-btn layui-btn-disabled";
 													}
-													document
-															.getElementById("mod").disabled = (count == 0)
+													document.getElementById("mod").disabled = (count == 0)
+													console.log(count);
 												}
 											});
 
