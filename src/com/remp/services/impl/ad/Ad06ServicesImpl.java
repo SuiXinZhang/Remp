@@ -76,12 +76,19 @@ public class Ad06ServicesImpl extends JdbcServicesSupport
 	}
 	public boolean examineApply()throws Exception
 	{
-		String sql = "update ad06 set aad608=current_date,aad603=?,aad607=? where aad601=?";
-		Object args[]={
+		String sql1 = "update ad06 set aad608=current_date,aad603=?,aad607=? where aad601=?";
+		Object args1[]={
 				"ÒÑÉóÅú",
 				"BOSS",
 				this.get("aad601")
 		};
-		return this.executeUpdate(sql, args)>0;
+		String sql2 = "update ad06 a,ad07 b set b.aad719=? where a.aad601=? and b.aad701=a.aad701";
+		Object args2[]={
+				"05",
+				this.get("aad601")
+		};
+		this.appendSql(sql1, args1);
+		this.appendSql(sql2, args2);
+		return this.executeTransaction();
 	}
 }

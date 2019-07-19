@@ -35,7 +35,7 @@ public class Aa01ServicesImpl extends JdbcServicesSupport {
 	public boolean modifyCompany()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-				.append("update aa01 set aaa102=?,aaa104=?,aaa105=?,aaa106=?,")
+				.append("update aa01 set aaa102=?,aaa103=?,aaa104=?,aaa105=?,aaa106=?,")
 				.append("				 aaa107=?,aaa108=?,aaa109=?")
 				.append(" where aaa101=?")
     			;

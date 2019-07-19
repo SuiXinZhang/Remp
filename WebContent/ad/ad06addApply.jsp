@@ -74,7 +74,6 @@
    <input type="hidden" name="aac401" value="${ins.aac401 }">
    <input type="hidden" name="aad601" value="${param.aad601 }">
    <input type="hidden" name="aad701" value="${param.aad701 }">
-   <input type="hidden" name="aad601" value="${param.aad601 }">
 </form>
     </div>
   </div>
