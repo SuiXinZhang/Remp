@@ -43,11 +43,13 @@ public class Ad08ServicesImpl extends JdbcServicesSupport
 				.append("select aad801,aad802,aad803,aad804,aad805,")
 				.append("       aad806,aad807,aad808,aad809,aad810,")
 				.append("       aad811,aad812,aad813,aad814,aad815")
-				.append(" from ad08");
+				.append("  from ad08")
+				.append(" where true")
+				;
 		List<Object> paramList = new ArrayList<>();
 		if(this.isNotNull(qaad815))
 		{
-			sql.append(" where aad815=?");
+			sql.append(" and aad815=?");
 			paramList.add(qaad815);
 		}
 		return this.queryForList(sql.toString(), paramList.toArray());

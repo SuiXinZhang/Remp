@@ -21,8 +21,8 @@
 			            <th>名称</th>
 			            <th>所属区域</th>
 			            <th>建筑性质</th>
-			            <th>楼层数</th>
 			            <th>单元数</th>
+			            <th>楼层数</th>
 			            <th>每层户数</th>
 			            <th>备注</th>
 			            <th></th>
@@ -34,14 +34,14 @@
 						<c:when test="${rows!= null }">
 							<c:forEach items="${rows }" var="ins" varStatus="vs">
 								<tr>
-									<td><input type="checkbox" lay-filter="check" name="idlist" value="${ins.aaa601 }"></td>
+									<td><input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aaa601 }"></td>
 									<td>${vs.count }</td>
 									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa701 }')">${ins.aaa702 }栋</a>
 									</td>
 									<td>${ins.aaa708 }</td>
 									<td>${ins.aaa703 }</td>
-									<td>${ins.aaa704 }</td>
 									<td>${ins.aaa705 }</td>
+									<td>${ins.aaa704 }</td>
 									<td>${ins.aaa706 }</td>
 									<td>${ins.aaa707 }</td>
 									<td><a href="#" style="color:blue" onClick="onRoom('${ins.aaa701}')">房间管理</a></td>

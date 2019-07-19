@@ -26,7 +26,8 @@ public class Aa02ServicesImpl extends JdbcServicesSupport {
     			.append("  from aa02 a")
     			.append(" where a.aaa201=?")
     			;
-	    return	this.queryForMap(sql.toString(), this.get("aaa201"));
+	    
+	    return this.queryForMap(sql.toString(), this.get("aaa201"));
 	}
 	
 	
@@ -38,7 +39,7 @@ public class Aa02ServicesImpl extends JdbcServicesSupport {
 	public List<Map<String,String>> query()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-    			.append("select a.aaa202,a.aaa203,a.aaa204,a.aaa205,a.aaa206,")
+    			.append("select a.aaa201,a.aaa202,a.aaa203,a.aaa204,a.aaa205,a.aaa206,")
     			.append("       a.aaa207,a.aaa208,a.aaa209,a.aaa210,a.aaa211,")
     			.append("       a.aaa212,a.aaa213,a.aaa214,a.aaa215,a.aaa216,")
     			.append("       a.aaa217,a.aaa201")
@@ -49,6 +50,16 @@ public class Aa02ServicesImpl extends JdbcServicesSupport {
 		return this.queryForList(sql.toString(),this.get("aaa101"));
 	}
 	
+	/**
+	 * 用于查询有哪些项目
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Map<String,String>> queryForSelect()throws Exception
+	{
+		String sql = "select a.aaa201,a.aaa202 from aa02 a  where a.aaa101=?";
+		return this.queryForList(sql.toString(),this.get("aaa101"));
+	}
 	
 	/**
 	 * 用于添加项目

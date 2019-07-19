@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/../base/taglib.jsp" %>
+<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
 <html>
 <head>
 	<jsp:include   page="/base/head.jsp"/>
@@ -13,6 +14,75 @@
 	    <form id="myform" class="layui-form" action="<%=path%>/aa/aa04Query.html" method="post">
 	     <h1>员工管理</h1>
 	        <hr>
+	        <div class="layui-form-item" align="center">
+	        		<div class="layui-inline">
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-flag" style="font-size: 15px; color: black;"></i>
+			    			编号
+			    		</label>
+				      	<div class="layui-input-block">
+				        	<input type="text" name="qaaa402" value="${param.qaaa402 }" autocomplete="off" class="layui-input"  style="width:120px;">
+			      		</div>
+	                </div>
+	                
+	                <div class="layui-inline">
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-face-smile" style="font-size: 15px; color: black;"></i>
+			    			姓名
+			    		</label>
+				      	<div class="layui-input-block">
+				        	<input type="text" name="qaaa403" value="${param.qaaa403 }" autocomplete="off" class="layui-input"  style="width:120px;">
+			      		</div>
+	                </div>
+	                
+	                <div class="layui-inline">
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-senior" style="font-size: 15px; color: black;"></i>
+			    			岗位
+			    		</label>
+				      	<div class="layui-input-block">
+				        	<input type="text" name="qaaa404" value="${param.qaaa404 }" autocomplete="off" class="layui-input"  style="width:215px;">
+			      		</div>
+	                </div>
+	                
+	        		     	
+	        </div>
+	        <div class="layui-form-item" align="center">
+
+					<div class="layui-inline">
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-rate-half" style="font-size: 15px; color: black;"></i>
+			    			性别
+			    		</label>
+				      	<div class="layui-input-block" style="width: 120px;">
+				        	<e:select name="qaaa407"  value="男:男,女:女,不确定:不确定"  header="true"/>
+			      		</div>
+	                </div>	
+	                
+	                <div class="layui-inline">
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-user" style="font-size: 15px; color: black;"></i>
+			    			民族
+			    		</label>
+				      	<div class="layui-input-block">
+				        	<input type="text" name="qaaa406"  value="${param.qaaa406 }" autocomplete="off" class="layui-input"  style="width: 120px;">
+			      		</div>
+	                </div>
+
+	        		<div class="layui-inline">
+	                    <label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-date" style="font-size: 15px; color: black;"></i>
+			    			生日
+			    		</label>
+	                    <div class="layui-input-inline" style="width: 90px;">
+       						<input type="text" value="${param.baaa411 }" name="baaa411" id="date" lay-verify="date" placeholder="B" autocomplete="off" class="layui-input">
+	                    </div>
+	                    <div class="layui-form-mid">-</div>
+	                    <div class="layui-input-inline" style="width: 90px;">
+       						<input type="text" value="${param.eaaa411 }" name="eaaa411" id="date1" lay-verify="date" placeholder="E" autocomplete="off" class="layui-input">	                    
+	                    </div>
+	                </div>	
+	        </div>
 		    <table class="layui-table">
 			    <thead>
 			        <tr>
@@ -37,10 +107,10 @@
 							<c:forEach items="${rows }" var="ins" varStatus="vs">
 								<tr>
 									<td>
-									<input type="checkbox" lay-filter="check" name="idlist" value="${ins.aaa401 }">
+									<input type="checkbox" lay-filter="check" lay-skin="primary" name="idlist" value="${ins.aaa401 }">
 									</td>
 									<td>${vs.count }</td>
-									<td><a href="#" onclick="onEdit('${ins.aaa401 }')">${ins.aaa403 }</a>
+									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa401 }')">${ins.aaa403 }</a>
 									</td>
 									<td>${ins.aaa402 }</td>
 									<td>${ins.aaa404 }</td>
@@ -145,10 +215,22 @@ function onDel(vaaa401)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
+layui.use(['layer', 'form','element', 'laydate'], function(){
 	  var layer = layui.layer;
 	  var element = layui.element;
+	  var laydate = layui.laydate;
 	  form = layui.form;
+	  
+	  //日期
+	  laydate.render({
+	    elem: '#date'
+	    ,trigger: 'click'
+	  });
+	  laydate.render({
+	    elem: '#date1'
+	    ,trigger: 'click'
+	  })
+	  
 	  var count=0;
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){

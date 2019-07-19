@@ -34,10 +34,10 @@
 							<c:forEach items="${rows }" var="ins" varStatus="vs">
 								<tr>
 									<td>
-									<input type="checkbox" lay-filter="check" name="idlist" value="${ins.aaa501 }">
+									<input type="checkbox" lay-filter="check" lay-skin="primary" name="idlist" value="${ins.aaa501 }">
 									</td>
 									<td>${vs.count }</td>
-									<td><a href="#" onclick="onEdit('${ins.aaa501 }')">${ins.aaa502 }</a>
+									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa501 }')">${ins.aaa502 }</a>
 									</td>
 									<td>${ins.aaa503 }</td>
 									<td>${ins.aaa504 }</td>

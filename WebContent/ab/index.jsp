@@ -11,6 +11,7 @@
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">内容主体区域</div>
+    
   </div>
   
   <div class="layui-footer">
@@ -21,10 +22,12 @@
 <script ></script>
 <script>
 //JavaScript代码区域
-	layui.use('element', function(){
-	  var element = layui.element;
-	  
-	});
+	layui.use(['layer', 'form'], function(){
+		  var layer = layui.layer
+		  ,form = layui.form;
+		  
+		  layer.msg('Hello World');
+		});
 </script>
 </body>
 </html>

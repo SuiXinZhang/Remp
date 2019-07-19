@@ -9,16 +9,14 @@
   	<jsp:include   page="/base/header.jsp"/>
 	<jsp:include   page="/ac/menu.jsp"/>
   <div class="layui-body">
-    <!-- 内容主体区域 -->
-    <div style="padding: 15px;">内容主体区域</div>
+    	
+    <div style="padding: 15px;">客户模块首页</div>
   </div>
   
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
   </div>
 </div>
-<script ></script>
 <script>
 //JavaScript代码区域
 	layui.use('element', function(){

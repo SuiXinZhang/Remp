@@ -159,7 +159,7 @@ public class Ac04ServicesImpl extends JdbcServicesSupport {
 			this.appendSql(sql1.toString(), args1);
 			
 			
-			String sql2 = "update ac01 set aac111='1' where aac101 = ?";
+			String sql2 = "update ac01 set aac111='ряв╙' where aac101 = ?";
 			Object args2 = this.get("aac101");
 			this.appendSql(sql2, args2);
 			
