@@ -22,9 +22,9 @@
 }
 </style>
 <div class="layui-header">
-    <div class="layui-logo" style="margin-top:7px;"><img src="../static/layui/images/logo.jpg"><a class="navbar-brand"><i>思安</i><span>地产管理</span></a></div>
+    <div class="layui-logo" style="margin-top:7px;"><img src="<%=path%>/static/layui/images/logo.jpg"><a class="navbar-brand"><i>思安</i><span>地产管理</span></a></div>
     <ul class="layui-nav  layui-layout-left">
-	      <li class="layui-nav-item"><a href="/remp/aa/aa02Query.html?aaa101=1">
+	      <li class="layui-nav-item"><a href="/remp/aa/index.jsp">
 	      		<i class="layui-icon layui-icon-release" style="padding-right:5px"></i>项目准备</a></li>
 	      <li class="layui-nav-item"><a href="/remp/ab/index.jsp">
 	      		<i class="layui-icon layui-icon-chart" style="padding-right:5px"></i>市场营销 </a></li>
