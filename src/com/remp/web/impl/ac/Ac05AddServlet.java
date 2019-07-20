@@ -6,8 +6,8 @@ public class Ac05AddServlet extends Ac05ControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("add", "客户关怀计划");
-		//this.savePageDate();
-		return "ac/clientCare";
+		this.savePageDate();
+		return "ac/careManage";
 	}
 
 }
