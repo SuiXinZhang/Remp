@@ -21,7 +21,7 @@
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
     
-    <form id="layer" action="<%=path%>/ab02Query.html" method="post" class="layui-form" >
+    <form id="layer" action="<%=path%>/ab/ab02Query.html" method="post" class="layui-form" >
 	
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
 			<legend>销售计划明细表</legend>

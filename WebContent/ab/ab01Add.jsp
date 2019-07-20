@@ -39,8 +39,7 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">制定日期</label>
 								<div class="layui-input-inline">
-									<input type="text" name="aab103" required="true" value="${ins.aab103 }" class="layui-input" id="test29"
-									 placeholder="yyyy-MM-dd">
+									<input type="text" name="aab103" required="true" value="${ins.aab103 }" class="layui-input" id="test29" placeholder="yyyy-MM-dd">
 								</div>
 							</div>
 						</div>
@@ -89,13 +88,12 @@
 
 
 						<div class="layui-form-item" align="center">
-							<input type="submit" name="next" value="${empty param.aab101?'添加':'修改' }" formaction="<%=path%>/${empty param.aab101?'ab01Add':'ab01Modify' }.html"
+							<input type="submit" name="next" value="${empty param.aab101?'添加':'修改' }" formaction="<%=path%>/${empty param.aab101?'ab/ab01Add':'ab/ab01Modify' }.html"
 							 class="layui-btn" />
 							<input type="submit" name="next" value="返回" formaction="<%=path %>/ab/ab01Query.html" formnovalidate="formnovalidate"
 							 class="layui-btn">
 							<input id="layer" type="submit" name="next" value="编辑计划明细" formaction="<%=path %>/ab/ab02Query.html" class="layui-btn">
 						</div>
-						</table>
 						<input type="hidden" name="aab101" value="${param.aab101 }">
 					</form>
 				</div>
@@ -107,7 +105,6 @@
 				? layui.com - 底部固定区域
 			</div>
 		</div>
-		<script></script>
 		<script>
 			//JavaScript代码区域
 			layui.use(['layer', 'form'], function() {
@@ -119,16 +116,16 @@
 
 			window.onload = function() {
 				var obj = document.getElementById("layer");
-				if ($ {
-						empty param.aab101
-					}) {
+				if ($ {empty param.aab101}) 
+				{
 					obj.style.display = "none";
 				}
 			}
-
+			
+			//日期模块
 			layui.use('laydate', function() {
 				var laydate = layui.laydate;
-				//执行一个laydate实例
+				//墨绿主题
 				laydate.render({
 					elem: '#test29',
 					theme: 'molv'

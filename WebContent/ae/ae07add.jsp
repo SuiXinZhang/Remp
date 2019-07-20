@@ -1,79 +1,127 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@include file="/../base/taglib.jsp" %>
 <html>
 <head>
-<title>面积补差服务</title>
-<%String path=request.getContextPath();%>
-<script type="text/javascript">
-	function mod(id)
-	{
-		var vform = document.getElementById("action");
-		vform.action = "<%=path %>/ae/ae05mod.html?aae401="+id;
-		vform.submit();
-	}
-</script>
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-<body>
-	<form action="" method="post">
-		<br> <br>
-		<table border="1" align="center" title="产权记录" width="45%">
-			<caption>
-				面积补差
-				<hr width="160">
-			</caption>
-			<tr>
-				<td>客户</td>
-				<td><e:text name="aae707" required="true"
-						defval="${ins.aae707 }" /></td>
-				<c:choose>
-					<c:when test="${empty param.aae701 }">
-						<td>房间号</td>
-						<td><e:select name="aaa801" value="${ins.list }"
-								required="true" /></td>
-					</c:when>
-					<c:otherwise>
-						<td>房间号</td>
-						<td><e:text name="aaa803" readonly="true"
-								value="${ins.aaa803 }" required="true" /> <e:hidden
-								name="aaa801" value="${ins.aaa801 }" /></td>
-					</c:otherwise>
-				</c:choose>
-			</tr>
-			<tr>
-				<td>合同面积</td>
-				<td>
-					<e:number step="0.01" name="aae702" defval="${ins.aae702 }"/>
-				</td>
-				<td>实际面积</td>
-				<td>
-					<e:number step="0.01" name="aae703" defval="${ins.aae703 }"/>
-				</td>
-			</tr>
-			<tr><td>合同价格</td>
-				<td>
-					<e:number step="0.01" name="aae708" defval="${ins.aae708 }"/>
-				</td>
-			</tr>
-			<tr>
-				<td>备注</td>
-				<td colspan="3"><e:textarea rows="5" cols="45" name="aae706"
-						defval="${ins.aae706 }" /></td>
-			</tr>
-			<tr>
-				<td colspan="4" align="center"><input type="submit"
-					value="${empty param.aae701?'添加':'修改' }"
-					formaction="<%=path%>/ae/${empty param.aae701?'ae07Add.html':'ae07Modify.html' }">
-					<input type="submit" value="返回"
-					formaction="<%=path%>/ae/ae07query.jsp"
-					formnovalidate="formnovalidate">
-				</td>
-			</tr>
-		</table>
-		<input type="hidden" name="aae401" value="${param.aae701 }">
-		<input type="hidden" name="aae411" value="${ins.aae411 }"> 
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<jsp:include   page="/base/header.jsp"/>
+	 <c:import url="/ae/menu.jsp">
+        <c:param name="menu" value="ae07"/>
+     </c:import>
+  <div class="layui-body">
+  <h1 align="center">面积补差记录</h1>
+    <div style="padding: 15px;">
+	    <form action="<%=path %>/ae04Add.html" lay-filter="form" class="layui-form"  method="post">
+	    <div align="center">
+		    <div class="layui-form-item">
+		    	<div class="layui-inline">
+			      	<label class="layui-form-label">客户</label>
+			      	<div class="layui-input-inline">
+			        	<input required="required" name="aae707" class="layui-input" type="text" value="${ins.aae707 }" >
+		      		</div>
+		    	</div>
+		      	<div class="layui-inline">
+		      		<label class="layui-form-label">房间</label>
+	                <div class="layui-input-inline" >
+	                	<input required="required" id="room" class="layui-input" type="text" name="aae709" value="${ins.aae709 }" onclick="selectRoom()" readonly="readonly">
+	                	<input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
+	                </div>
+	            </div>
+	    	</div>
+	    	<div class="layui-form-item">
+		    	<div class="layui-inline">
+			      	<label class="layui-form-label">合同面积</label>
+			      	<div class="layui-input-inline">
+			        	<input required="required" name="aae702" class="layui-input" step="0.01" type="number" value="${ins.aae702 }">
+		      		</div>
+		    	</div>
+			    <div class="layui-inline">
+			      	<label class="layui-form-label">实际面积</label>
+			      	<div class="layui-input-inline">
+				       <input required="required" name="aae703" class="layui-input" step="0.01" type="number" value="${ins.aae703 }">
+		      		</div>
+		    	</div>
+	    	</div>
+	    	<div class="layui-form-item">
+		    	<div class="layui-inline">
+			      	<label class="layui-form-label">合同价格</label>
+			      	<div class="layui-input-inline" >
+			        <input name="aae708" required="required" class="layui-input" step="0.01" type="number" value="${ins.aae708 }">
+		      		</div>
+		    	</div>
+	    	</div>
+	    	<div class="layui-form-item layui-form-text">
+		    	<div class="layui-inline">
+			      	<label class="layui-form-label">备注</label>
+			      	<div class="layui-input-inline" >
+			        <textarea cols="65"  name="aae706" class="layui-textarea" placeholder="请输入内容">${ins.aae706 }</textarea>
+		      		</div>
+		    	</div>
+	    	</div>
+	    	
+	    	<div class="layui-form-item">
+				<div class="layui-inline">
+						<input class="layui-btn" name="next" type="submit" value="${empty param.aae701?'添加':'修改' }"
+							formaction="<%=path%>/ae/${empty param.aae701?'ae07Add.html':'ae07Modify.html'}">
+						<input class="layui-btn" type="submit" value="返回"
+						formaction="<%=path%>/ae/ae07query.html" formnovalidate="formnovalidate" >
+				</div>
+			</div>
+		<input type="hidden" name="aae701" value="${param.aae701 }">
+		</div>
 	</form>
-	${msg}
+	</div>
+  </div>
+  
+  <div class="layui-footer">
+  </div>
+</div>
+
+<script>
+layui.use(['layer', 'form','element'], function(){
+	var element = layui.element;
+	var $ = layui.jquery;
+	var layer = layui.layer
+	,form = layui.form;
+	})
+	layui.use('laydate',function(){
+		 var laydate = layui.laydate;
+		  laydate.render({
+			  elem:'#date1'
+			 
+		  });
+		  laydate.render({
+			  elem:'#date2'
+			 
+		  });
+		  laydate.render({
+			  elem:'#date3'
+			 
+		  });
+	});
+</script>
+<script type="text/javascript">
+function selectRoom(e)
+{
+	layer.open({
+		 type: 2
+		,title: '房间选择'
+		,area:['800px', '500px']
+		,maxmin: true
+		,content: '<%=path%>/base/room.html'
+		,btn: ['确定','关闭'],
+		yes: function(index){
+			var res = window["layui-layer-iframe" + index].callbackdata();
+			//打印返回的值，看是否有我们想返回的值
+			console.log(res);
+			$("#room").attr("value",res[0])
+			$("#roomNo").attr("value",res[1])
+			layer.close(index);
+			}
+		});  
+}
+</script>
 </body>
 </html>
