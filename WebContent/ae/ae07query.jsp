@@ -7,7 +7,9 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
 	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ae/menu.jsp"/>
+	 <c:import url="/ae/menu.jsp">
+        <c:param name="menu" value="ae07"/>
+     </c:import>
   <div class="layui-body">
     <div style="padding: 15px;">
 	    <form id="action" lay-filter="form" class="layui-form" action="<%=path %>/ae/ae07query.html" method="post">
