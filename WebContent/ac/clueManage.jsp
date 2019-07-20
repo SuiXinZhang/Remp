@@ -113,7 +113,6 @@
 							<table id="idData"  lay-filter="demo">
 								<thead>
 									<tr>
-										<td lay-data="{field:'check',width:50}"></td>
 										<td lay-data="{field:'sort1',width:60}">序号</td>
 										<td lay-data="{field:'projectname',width:125}">项目名称</td>
 										<td lay-data="{field:'username'}">客户名</td>
@@ -131,12 +130,8 @@
 										<c:when test="${rows!= null }">
 											<c:forEach items="${rows }" var="ins" varStatus="vs">
 												<tr>
-													<td>
-													<input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aac101 }" ></td>
 													<td>${vs.count } </td>
-													<td><a
-														href="<%=path%>/ac01FindById.html?aac101=${ins.aac101 }">${ins.aac104 }</a>
-													</td>
+													<td>${ins.aac104 }</td>
 													<td>${ins.aac105 }</td>
 													<td>${ins.aac106 }</td>
 													<td>${ins.aac107 }</td>
@@ -145,12 +140,17 @@
 													<td>${ins.aac109 }</td>
 													<td>${ins.aac111 }</td>
 													<td>
-													<a class="layui-btn layui-btn-xs " href="#"
-														onClick="onOpportunities('${ins.aac101}')"><i
-															class="layui-icon layui-icon-edit"></i>转销售机会</a> 
-														<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
-														onClick="onDel('${ins.aac101}')">
-														<i class="layui-icon layui-icon-delete"></i>删除</a></td>
+													
+													<a class="layui-btn layui-btn-xs " 
+													href="<%=path%>/ac01FindById.html?aac101=${ins.aac101 }" >
+													<i class="layui-icon layui-icon-edit"></i>编辑
+													</a> 
+													
+													<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+														onClick="onOpportunities('${ins.aac101}')">
+														<i class="layui-icon layui-icon-release"></i>转销售机会
+													</a> 
+													</td>		
 												</tr>
 											</c:forEach>
 										</c:when>
@@ -172,13 +172,6 @@
 									<i class="layui-icon layui-icon-add-1"></i>添加
 									</button>
 							</div>
-							<div class="layui-inline">
-									<button class="layui-btn layui-btn-disabled" disabled="disabled"
-									formaction="<%=path%>/ac/ac01Delete.html" id="mod" type="submit">
-									<i class="layui-icon layui-icon-delete"></i>删除
-									</button>
-							</div>
-								
 							</div>
 
 						</div>
@@ -258,8 +251,6 @@ function getCheckBox(str)
 								"qaac109" : "${param.qaac109 }",
 							});
 
-							
-							
 							var count = 0;
 
 							form.on('checkbox(check)',function(data) {

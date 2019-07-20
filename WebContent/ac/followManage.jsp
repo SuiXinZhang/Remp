@@ -188,9 +188,12 @@
 //JavaScript´úÂëÇøÓò
 	layui.use(['layer', 'form','element'], function(){
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  var element = layui.element();
-	  layer.msg('Hello World');
+	  ,form = layui.form,
+	  element = layui.element;
+	  if("${msg }" != "")
+	  {
+		  layer.msg("${msg }");
+	  }
 	  form.val('myform',{
 		  "qaac304":"${param.qaac304}",
 		  "maac304":"${param.maac304}"

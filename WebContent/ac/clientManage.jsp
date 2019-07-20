@@ -1,18 +1,136 @@
-<%@ page language="java"    pageEncoding="GBK"  %>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<% String path = request.getContextPath(); %>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/base/taglib.jsp"%>
 <html>
 <head>
-<title>clientManage</title>
+	<jsp:include page="/base/head.jsp" />
 </head>
-<style type="text/css">
-tr 
-{
-	height: 25px;
-}
-</style>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<jsp:include page="/base/header.jsp" />
+		<jsp:include page="/ac/menu.jsp" />
+		
+		<div class="layui-body">
+			<div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>客户台账管理</legend>
+					<form action="<%=path%>/ac/ac04Query.html" lay-filter="form"
+						class="layui-form" id="myform" method="post">
+
+
+						<div align="center">
+
+
+							<div class="layui-form-item">
+								<div class="layui-inline">
+									<label class="layui-form-label">客&ensp;户&ensp;名</label>
+									<div class="layui-input-inline">
+										<input type="text" name="qaac403" value="${param.qaac403 }"
+											autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-inline">
+									<label class="layui-form-label">客户编号</label>
+									<div class="layui-input-inline">
+										<input type="text" name="qaac402" value="${param.qaac402 }"
+											autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+
+
+							<div class="layui-form-item">
+								<div class="layui-inline">
+									<label class="layui-form-label">联系电话</label>
+									<div class="layui-input-inline">
+										<input type="text" name="qaac405" value="${param.qaac405 }"
+											autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-inline" style="padding-left:240px">
+									<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
+											<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+									</button>
+								</div>
+							</div>
+
+					</div>
+
+
+				
+
+						<div id="tableId" style="display: none">
+							<table id="idData"  lay-filter="demo">
+								<thead>
+									<tr>
+										<td lay-data="{field:'check',width:50}"></td>
+										<td lay-data="{field:'sort1',width:60}">序号</td>
+										<td lay-data="{field:'username'}">客户名</td>
+										<td lay-data="{field:'projectname',width:125}">客户编号</td>
+										<td lay-data="{field:'userphone'}">联系电话</td>
+										<td lay-data="{field:'empname'}">性别</td>
+										<td lay-data="{field:'style',width:88}">民族</td>
+										<td lay-data="{field:'date',width:115}">职业</td>
+										<td lay-data="{field:'grade',width:100}">经济状况</td>
+										<td lay-data="{field:'state',width:120}">邮箱</td>
+										<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<c:choose>
+										<c:when test="${rows!= null }">
+											<c:forEach items="${rows }" var="ins" varStatus="vs">
+												<tr>
+													<td>
+													<input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aac401 }" ></td>
+													<td>${vs.count } </td>
+													<td>${ins.aac403 }</td>
+													<td>${ins.aac402 }</td>
+													<td>${ins.aac407 }</td>
+													<td>${ins.cnaac404 }</td>
+													<td>${ins.aac406 }</td>
+													<td>${ins.aac413 }</td>
+													<td>${ins.aac410 }</td>
+													<td>${ins.aac408 }</td>
+													<td>
+													
+													<a class="layui-btn layui-btn-xs " 
+													href="<%=path%>/ac04FindById.html?aac401=${ins.aac401 }" >
+													<i class="layui-icon layui-icon-edit"></i>编辑
+													</a> 
+													
+													<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+														onClick="onFollow('${ins.aac401}','${ins.aac402 }','${ins.aac403 }')">
+														<i class="layui-icon layui-icon-release"></i>添加跟进
+													</a> 
+													</td>		
+												</tr>
+											</c:forEach>
+										</c:when>
+
+									</c:choose>
+								</tbody>
+							</table>
+							<br>
+							<br>
+							<br>
+							<div class="layui-form-item" align="center">
+							<div class="layui-inline">
+									<button class="layui-btn " 
+									formaction="<%=path %>/ac/addClient.jsp"  type="submit">
+									<i class="layui-icon layui-icon-add-1"></i>添加
+									</button>
+							</div>
+							</div>
+
+						</div>
+					</form>
+			</div>
+
+			</fieldset>
+		</div>
+				
+		</div>
 
 <script type="text/javascript">
 var count = 0;
@@ -44,129 +162,25 @@ function onFollow(vaac401,vaac402,vaac403)
 	myform.submit();
 }
 </script>
-<body>
-	<br>
-	<br>
-	<form action="<%=path%>/ac/ac04Query.html" id = "myform" method="post">
-		<table border="1" align="center" width="95%">
-			<caption>
-				客户台账管理
-				<hr width="180px">
-			</caption>
-			<tr>
-				<td colspan="4">查询条件</td>
-			</tr>
-			<tr>
-				<td>客户名</td>
-				<td><e:text name="qaac403" /></td>
-				<td>客户编号</td>
-				<td><e:text name="qaac402" /></td>
-			</tr>
-
-			<tr>
-				<td>邮箱</td>
-				<td><e:email  name="qaac405" /></td>
-				<td>联系电话</td>
-				<td><e:text  name="qaac407" /></td>
-			</tr>
-			
-		</table>
-		<table border="1" align="center" width="95%">
-			<tr>
-				<td></td>
-				<td>序号</td>
-				<td>客户名</td>
-				<td>客户编号</td>
-				<td>联系电话</td>
-				<td>性别</td>
-				<td>民族</td>
-				<td>职业</td>
-				<td>经济状况</td>
-				<td>邮箱</td>
-				<td></td>
-				<td></td>
-			</tr>
-			<!--
-				         注意事项
-				    1.$及大括号的结束标记 }与双引号之间,不允许出现空格
-				    	即    }"   写在一起
-				    2.所有的属性之间至少要有一个空格,否则报错
-				    3.var 属性,相当于在页面定义变量名称,因此  ins不允许再用$ {  }
-				   -->
-			<c:choose>
-				<c:when test="${rows!= null }">
-					<c:forEach items="${rows }" var="ins" varStatus="vs">
-						<tr>
-							<td>
-							<input type="checkbox" onclick="onSelect2(this.checked)" class="idlist"  name="idlist" value="${ins.aac401 }">
-							</td>
-							<td>${vs.count }</td>
-							<td>
-							<a href="#" onclick = "onEdit('${ins.aac401}')" >${ins.aac403 }</a>
-							</td>
-							<td>${ins.aac402 }</td>
-							<td>${ins.aac407 }</td>
-							<td>${ins.aac404 }</td>
-							<td>${ins.aac406 }</td>
-							<td>${ins.aac413 }</td>
-							<td>${ins.aac410 }</td>
-							<td>${ins.aac408 }</td>
-							<td>
-							<a href="#" onClick="onDel('${ins.aac401}')">删除</a>
-							</td>
-							<td>
-							<a href="#" onClick="onFollow('${ins.aac401}','${ins.aac402 }','${ins.aac403 }')">添加跟进</a>
-							</td>
-						</tr>
-					</c:forEach>
-					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<c:forEach begin="1" end="15" step="1">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
-
-		<table border="1" align="center" width="95%">
-			<tr>
-				<td align="center"><input type="submit" value="查询" name="next">
-					<input type="submit" value="添加" name="next"
-					formaction="<%=path %>/ac/addClient.jsp"> 
-					<input type="submit" value="删除" name="next" disabled="disabled"
-					formaction="<%=path %>/ac/ac04Delete.html" id="del" ></td>
-			</tr>
-		</table>
-		<input type="hidden" name="aac403"  id="vaac403" value = "">
-	</form>
-
+<script>
+//JavaScript代码区域
+	layui.use(['layer', 'form','element','table'], function(){
+	  var layer = layui.layer
+	  ,form = layui.form
+	  ,element = layui.element
+	  ,table = layui.table;
+	  
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
+		
+	});
+</script>
 </body>
-<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 </html>

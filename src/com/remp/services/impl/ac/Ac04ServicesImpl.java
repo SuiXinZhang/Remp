@@ -99,15 +99,12 @@ public class Ac04ServicesImpl extends JdbcServicesSupport {
 		Object aac405 = this.get("qaac405");
 		Object aac407 = this.get("qaac407");
 		StringBuilder sql = new StringBuilder()
-				.append("select aac401,aac402,aac403,aac404,aac406")
+				.append("select aac401,aac402,aac403,b.fvalue as cnaac404,aac406")
 				.append("       aac407,aac408,aac410,aac413")
-				.append("  from ac04")
-				.append(" where true");
+				.append("  from ac04 a,syscode b,syscode c")
+				.append(" where a.aac404 = b.fcode and b.fname = 'aac404' ")
+				.append("   and a.aac");
 		List<Object> args = new ArrayList<>();
-		System.out.println("***********aac402"+ aac402);
-		System.out.println("***********aac403"+ aac403);
-		System.out.println("***********aac407"+ aac407);
-		System.out.println("***********aac405"+ aac405);
 		
 		if (this.isNotNull(aac403)) {
 			sql.append(" and aac403 like ?");
