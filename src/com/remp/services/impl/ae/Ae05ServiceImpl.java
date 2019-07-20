@@ -11,9 +11,9 @@ public class Ae05ServiceImpl extends JdbcServicesSupport
 	public List<Map<String, String>> query()throws Exception
 	{
 		Object qaae707 = this.get("qaae707");
-		Object qaaa803 = this.get("qaaa803");
+		Object qaae709 = this.get("qaae709");
 		StringBuilder sql = new StringBuilder()
-				.append("select d.aae707,c.aae501,c.aae502,c.aae503,c.aae504,c.aae505,a.aaa803")
+				.append("select d.aae707,c.aae501,c.aae502,c.aae503,c.aae504,c.aae505,d.aae709")
 				.append("			from ae05 c left join ae07 d on c.aae701 = d.aae701,aa08 a")
 				.append("           where true")
 				;
@@ -23,10 +23,10 @@ public class Ae05ServiceImpl extends JdbcServicesSupport
 			sql.append("	and d.aae707 like ?");
 			paramList.add("%"+qaae707+"%");
 		}
-		if(isNotNull(qaaa803))
+		if(isNotNull(qaae709))
 		{
-			sql.append("	and a.aaa803 like ?");
-			paramList.add("%"+qaaa803+"%");
+			sql.append("	and d.aae709 like ?");
+			paramList.add("%"+qaae709+"%");
 		}
 		sql.append("     and d.aaa801 = a.aaa801");
 		return this.queryForList(sql.toString(), paramList.toArray());
@@ -36,7 +36,7 @@ public class Ae05ServiceImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql = new StringBuilder()
 				.append("select d.aae707,c.aae501,c.aae502,c.aae503,c.aae504,")
-				.append("       c.aae505,c.aae506,a.aaa803,d.aae702,d.aae703")
+				.append("       c.aae505,c.aae506,d.aae709,d.aae702,d.aae703")
 				.append("			from ae05 c left join ae07 d on c.aae701 = d.aae701,aa08 a")
 				.append("           where c.aae501=? and d.aaa801=a.aaa801")
 				;

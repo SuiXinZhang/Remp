@@ -20,27 +20,29 @@
 				</div>
 			</div>
 			<div class="layui-inline">
-				<label class="layui-form-label">房间号码</label>
-				<div class="layui-input-inline">
-					<input id="room" type="text" required="required" name="aad302" value="${param.aad302 }" 
-					 onclick="selectRoom()" readonly="readonly" class="layui-input">
-					 <input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
-				</div>
+			<label class="layui-form-label">房间号码</label>
+			<div class="layui-input-inline">
+				<input type="text" id="room" name="aad302" required lay-verify="true" value="${param.aad302 }"
+				onclick="selectRoom()" readonly="readonly" class="layui-input">
+				<input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
 			</div>
+		</div>
+		</div>
+		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">项目排号</label>
 				<div class="layui-input-inline">
 					<input type="text" required="required" name="aad304" value="${param.aad304 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
-		</div>
-		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">客户名称</label>
 				<div class="layui-input-inline">
 					<input type="text" required="required" name="aad305" value="${param.aad305 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
+		</div>
+		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">经办人</label>
 				<div class="layui-input-inline">
@@ -63,7 +65,6 @@
 	       formaction="<%=path%>/ad/adqueryRoom.html"
 	          formnovalidate="formnovalidate">
 	    </div>
-	<input type="hidden" name="aaa801" value="${param.aaa801 }">
 	<input type="hidden" name="aac401" value="${ins.aac401 }">
 </form>
     </div>
@@ -74,17 +75,16 @@
     ? layui.com - 底部固定区域
   </div>
 </div>
-<script ></script>
-<script>
-//JavaScript代码区域
+<script >
+	//JavaScript代码区域
 	layui.use(['layer', 'form','element'], function(){
-	  var element = layui.element;
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  if(${!empty msg})
-	{
-		layer.msg('${msg }');	  
-	}
+	  ,form = layui.form
+	  ,element = layui.element;
+	  if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	});
 	layui.use('laydate', function(){
 		  var laydate = layui.laydate;
@@ -94,6 +94,8 @@
 		    elem: '#date'  //指定元素
 		  });
 	});
+</script>
+<script type="text/javascript">
 	function selectRoom(e)
 	{
 		layer.open({

@@ -15,9 +15,9 @@ public class Ae07ServiceImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ae07(aae702,aae703,aae704,aae705,")
-				.append("                 aae706,aae707,aae708,aaa801)")
+				.append("                 aae706,aae707,aae708,aaa801,aae709)")
 				.append("          values(?,?,?,?,")
-				.append("                 ?,?,?,?)")
+				.append("                 ?,?,?,?,?)")
 				;
 		double diff = (Double.valueOf((String) this.get("aae703"))-Double.valueOf((String)this.get("aae702")))/Double.valueOf((String)this.get("aae702"))*100;
 		Object args[] = new Object[]{
@@ -29,6 +29,7 @@ public class Ae07ServiceImpl extends JdbcServicesSupport
 				this.get("aae707"),
 				this.get("aae708"),
 				this.get("aaa801"),
+				this.get("aae709")
 		};
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
@@ -37,9 +38,9 @@ public class Ae07ServiceImpl extends JdbcServicesSupport
 	{
 		Object qaae704 = this.get("qaae704");
 		Object qaae707 = this.get("qaae707");
-		Object qaaa803 = this.get("qaaa803");
+		Object qaae709 = this.get("qaae709");
 		StringBuilder sql = new StringBuilder()
-				.append("select e.aae701,e.aae702,e.aae703,a.aaa803,a.aaa801,s.fvalue as snaae704,e.aae705,e.aae707,e.aae708")
+				.append("select e.aae701,e.aae702,e.aae703,e.aae709,a.aaa801,s.fvalue as snaae704,e.aae705,e.aae707,e.aae708")
 				.append("       from aa08 a,ae07 e,syscode s")
 				.append("       where e.aae704='01'")
 				;
@@ -49,10 +50,10 @@ public class Ae07ServiceImpl extends JdbcServicesSupport
 			sql.append("	and e.aae707 like ?");
 			paramList.add("%"+qaae707+"%");
 		}
-		if(isNotNull(qaaa803))
+		if(isNotNull(qaae709))
 		{
-			sql.append("	and a.aaa803 like ?");
-			paramList.add("%"+qaaa803+"%");
+			sql.append("	and e.aae709 like ?");
+			paramList.add("%"+qaae709+"%");
 		}
 		if(isNotNull(qaae704))
 		{
@@ -81,8 +82,8 @@ public class Ae07ServiceImpl extends JdbcServicesSupport
 		Map<String, String> map = this.queryForMap(sql1, this.get("aae701"));
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ae05(aae502,aae503,aae504,aae505,aae506,")
-				.append("                 aae701)")
-				.append("           values(?,?,?,?,?,?)")
+				.append("                 aae701,aae507)")
+				.append("           values(?,?,?,?,?,?,?)")
 				;
 		double aae502 = Double.valueOf(map.get("aae708"))*Double.valueOf(map.get("aae705"));
 		double aae503 = aae502;
@@ -96,7 +97,8 @@ public class Ae07ServiceImpl extends JdbcServicesSupport
 				aae504,
 				aae505,
 				aae506,
-				this.get("aae701")
+				this.get("aae701"),
+				"01"
 		};
 		String sql2 = "update ae07 set aae704 = '02' where aae701=?";
 		this.appendSql(sql.toString(), args);
@@ -111,8 +113,8 @@ public class Ae07ServiceImpl extends JdbcServicesSupport
 		String sql1 = "select aae705,aae708 from ae07 where aae701=?";
 		StringBuilder sql2 = new StringBuilder()
 				.append("insert into ae05(aae502,aae503,aae504,aae505,aae506,")
-				.append("                 aae701)")
-				.append("           values(?,?,?,?,?,?)")
+				.append("                 aae507,aae701)")
+				.append("           values(?,?,?,?,?,?,?)")
 				;
 		String sql3 = "update ae07 set aae704 = '02' where aae701=?";
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
@@ -130,6 +132,7 @@ public class Ae07ServiceImpl extends JdbcServicesSupport
 					aae504,
 					aae505,
 					aae506,
+					"01",
 					id
 			};
 			

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import com.remp.services.BaseServices;
 
 public abstract class ControllerSupport implements BaseController {
@@ -101,7 +103,6 @@ public abstract class ControllerSupport implements BaseController {
 		this.saveAttribute("msg",msgText + msg);
 	}
 	
-
 	
 	/**
 	 * 带有编号的消息提示的更新行为
@@ -209,5 +210,14 @@ public abstract class ControllerSupport implements BaseController {
 			this.saveAttribute("msg", "提示:该数据已删除或禁止访问");
 		}
 		return ins;
+	}
+	
+	/**
+	 * 设置session,暗线传递给service层
+	 */
+	@Override
+	public void setSession(HttpSession session) 
+	{
+		services.setSession(session);
 	}
 }

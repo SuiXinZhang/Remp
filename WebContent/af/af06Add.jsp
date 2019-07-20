@@ -1,17 +1,97 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%String path=request.getContextPath();%>
+<%@include file="/base/taglib.jsp"%>
 <html>
 <head>
-<title>Insert title here</title>
-<style type="text/css">
-  td{
-      height:30px;
-  }
-</style>
+	<jsp:include page="/base/head.jsp" />
+</head>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<jsp:include page="/base/header.jsp" />
+		<jsp:include page="/af/menu.jsp" />
+		<div class="layui-body">
+				<form class="layui-form" action="<%=path%>/af/af06Add.html" method="post">
+				
+					<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+						<legend>${empty param.aab601?'新增':'修改' }银行放款单</legend>
+					</fieldset>
+				
+					<div class="layui-form-item">
+						<label class="layui-form-label">贷款银行</label>
+						<div class="layui-input-block">
+							<input type="text" name="aaf604" required="true" autofocus="true" value="${ins.aaf604 }" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">登记人</label>
+						<div class="layui-input-block">
+							<input type="text" name="aaf603" required="true" value="${ins.aaf603 }" class="layui-input" >
+						</div>
+					</div>
 
-<script type="text/javascript">
+					<div class="layui-form-item">
+						<label class="layui-form-label">放款单号</label>
+						<div class="layui-input-block">
+							<input type="text" name="aaf602" readonly="true" value="${ins.aaf602 }" class="layui-input">
+						</div>
+					</div>
+				   	
+				   	<div class="layui-form-item">
+				   		<label class="layui-form-label">放款日期</label>
+				   		<div class="layui-input-inline">
+				   			<input type="text" name="aaf605" required="true" value="${ins.aaf605 }" 
+				   			class="layui-input" id="test29" placeholder="yyyy-MM-dd">
+				   		</div>
+				   	</div>
+					
+					<div class="layui-form-item">
+						<label class="layui-form-label">项目名称</label>
+						<div class="layui-input-block">
+							<input type="text" name="aaf612" required="true" value="${ins.aaf612 }" class="layui-input">
+						</div>
+					</div>
+					
+					<div class="layui-form-item">
+						<label class="layui-form-label">入账银行</label>
+						<div class="layui-input-block">
+							<input type="text" name="aaf610" required="true" value="${ins.aaf610 }" class="layui-input">
+						</div>
+					</div>
+					
+					<div class="layui-form-item">
+						<label class="layui-form-label">结算方式</label>
+						<div class="layui-input-block">
+							<input type="text" name="aaf608" required="true" value="${ins.aaf608 }" class="layui-input">
+						</div>
+					</div>
+					
+					<div class="layui-form-item">
+						<label class="layui-form-label">结算单号</label>
+						<div class="layui-input-block">
+							<input type="text" name="aaf609" readonly="true" value="${ins.aaf609 }" class="layui-input">
+						</div>
+					</div>
+					
+					<div class="layui-form-item">
+						<label class="layui-form-label">审核人</label>
+						<div class="layui-input-block">
+							<input type="text" id="shenpi" name="aaf606" value="${ins.aaf606 }" class="layui-input">
+						</div>
+					</div>
+					
+					<div class="layui-form-item" align="center">
+			   			<input type="submit" name="next" value="${empty param.aaf601?'添加':'审核'}"
+			 				formaction="<%=path %>/af/${empty param.aaf601?'af06Add':'af06Exam' }.html" class="layui-btn">
+			 			<input type="submit" name="next" value="返回"
+			 				formaction="<%=path %>/af/af06Query.html"
+			 				formnovalidate="formnovalidate" class="layui-btn">
+				 	</div>
+				</table>
+				<input type="hidden" name="aaf601" value="${param.aaf601 }">
+			</form>
+		</div>
+
+	</div>
+	<script type="text/javascript">
 	window.onload=function()
 	{
 		var obj = document.getElementById("shenpi");
@@ -25,80 +105,24 @@
 			obj.required=true;
 		}
 	}
+	</script>
+	<script>
+	//JavaScript代码区域
+	layui.use(['layer', 'form','element'], function(){
+	  var element = layui.element;
+	  var layer = layui.layer
+	  ,form = layui.form;
+	});
+	
+	//日期模块
+	layui.use('laydate', function() {
+		var laydate = layui.laydate;
+		//墨绿主题
+		laydate.render({
+			elem: '#test29',
+			theme: 'molv'
+		});
+	});
 </script>
-
-</head>
-<body>
-${msg}
-<br>
-<br>
-<form action="<%=path%>/af/af06Add.html" method="post">
-<table  border="1" align="center" width="45%">
-    <caption>
-       银行贷款表${empty param.aaf601?'添加':'审核' }
-      <hr width="160">
-    </caption>
-   <tr>
-     <td colspan="4" align="center">银行放款单</td>
-   </tr>
-   <tr>
-     <td>贷款银行*</td>
-     <td>
-       <e:text name="aaf604" required="true" autofocus="true" defval="${ins.aaf604 }"/> 
-     </td>
-     <td>登记人*</td>
-     <td>
-       <e:text name="aaf603" required="true" defval="${ins.aaf603 }"/> 
-     </td>
-   </tr>
-   <tr>
-    <td>放款单号</td>
-   	 <td>
-       <e:text name="aaf602" readonly="true" defval="${ins.aaf602 }"/> 
-     </td>
-     <td>放款日期*</td>
-     <td>
-       <e:date name="aaf605" required="true" defval="${ins.aaf605 }"/>
-     </td>
-   </tr>
-   <tr>
-	<td>项目名称</td>
-   	<td>
-   	  <e:text name="aaf612" defval="${ins.aaf612 }"/> 
-   	</td>
-   	<td>入账银行</td>
-	<td>
-	  <e:text name="aaf610" defval="${ins.aaf610 }"/> 
-	</td>
-   </tr>
-   <tr>
-	<td>结算方式</td>
-	<td>
-	  <e:text name="aaf608" defval="${ins.aaf608 }"/> 
-	</td>
-	<td>结算单号</td>
-	<td>
-	  <e:text name="aaf609" defval="${ins.aaf609 }"/> 
-	</td>
-   </tr>
-
-   <tr>
-   	<td>审核人</td>
-	<td>
-	  <e:text id="shenpi" name="aaf606" defval="${ins.aaf606 }"/> 
-	</td>
-   </tr>
-   <tr>
-   		<td colspan="4" align="center">
-   			<input type="submit" name="next" value="${empty param.aaf601?'添加':'审核'}"
- 				formaction="<%=path %>/af/${empty param.aaf601?'af06Add':'af06Exam' }.html">
- 			<input type="submit" name="next" value="返回"
- 				formaction="<%=path %>/af/af06Query.html"
- 				formnovalidate="formnovalidate">
-   		</td>
-   </tr>
-</table>
-<input type="hidden" name="aaf601" value="${param.aaf601 }">
-</form>
 </body>
 </html>

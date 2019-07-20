@@ -1,59 +1,88 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@include file="/../base/taglib.jsp" %>
 <html>
 <head>
-<title>面积补差服务</title>
-<%String path=request.getContextPath();%>
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-<body>
-	<form action="" method="post">
-		<br> <br>
-		<table border="1" align="center" title="产权记录" width="45%">
-			<caption>
-				面积补差明细
-				<hr width="160">
-			</caption>
-			<tr>
-				<td>客户</td>
-				<td><e:text name="aae502" required="true" readonly="true"
-						defval="${ins.aae707 }" /></td>
-				<td>房间号</td>
-				<td><e:text name="aaa803" readonly="true"
-						value="${ins.aaa803 }" required="true" /> 
-					<e:hidden name="aaa801" value="${ins.aaa801 }" /></td>
-				
-			</tr>
-			<tr>
-				<td>合同面积</td>
-				<td>
-					<e:number step="0.01" name="aae503" readonly="true" defval="${ins.aae702 }" />
-				</td>
-				<td>套内面积</td>
-				<td><e:number step="0.01" name="aae407" readonly="true" required="true"
-						defval="${ins.aae703 }" /></td>
-			</tr>
-			<tr>
-				<td>参差补差款</td>
-				<td><e:number step="0.01"  name="aae409" required="true"
-						defval="${ins.aae504 }" /></td>
-				<td>实际补差款</td>
-				<td><e:number step="0.01"  name="aae410" required="true"
-						defval="${ins.aae505 }" /></td>
-			</tr>
-			<tr>
-				<td colspan="4" align="center"><input type="submit"
-					value="修改"
-					formaction="<%=path%>/ae/ae05Modify.html">
-					<input type="submit" value="返回"
-					formaction="<%=path%>/ae/ae05query.jsp"
-					formnovalidate="formnovalidate">
-				</td>
-			</tr>
-		</table>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<jsp:include   page="/base/header.jsp"/>
+	 <c:import url="/ae/menu.jsp">
+        <c:param name="menu" value="ae07"/>
+     </c:import>
+  <div class="layui-body">
+  <h1 align="center">面积补差明细</h1>
+    <div style="padding: 15px;">
+	    <form action="<%=path %>/ae05Modify.html" lay-filter="form" class="layui-form"  method="post">
+	    <div align="center">
+		    <div class="layui-form-item">
+		    	<div class="layui-inline">
+			      	<label class="layui-form-label">客户</label>
+			      	<div class="layui-input-inline">
+			        	<input required="required" name="aae707" class="layui-input" type="text" value="${ins.aae707 }" readonly="readonly">
+		      		</div>
+		    	</div>
+			    <div class="layui-inline">
+			      	<label class="layui-form-label">房间</label>
+			      	<div class="layui-input-inline">
+			        	<input required="required" name="aae709" class="layui-input" type="text" value="${ins.aae709 }" readonly="readonly">
+		      		</div>
+		    	</div>
+	    	</div>
+	    	
+	    	<div class="layui-form-item">
+	    	 <div class="layui-inline">
+			      	<label class="layui-form-label">合同面积</label>
+			      	<div class="layui-input-inline">
+			        <input required="required" name="aae702" class="layui-input" value="${ins.aae702 }" type="number" step="0.01" readonly="readonly">
+		      		</div>
+		    	</div>
+		      	<div class="layui-inline">
+		      		<label class="layui-form-label">套内面积</label>
+	                <div class="layui-input-inline" >
+	                	<input required="required" class="layui-input" name="aae703" value="${ins.aae703 }" type="number" step="0.01" readonly="readonly">
+	                </div>
+	            </div>
+	    	</div>
+	    	<div class="layui-form-item">
+		    	<div class="layui-inline">
+			      	<label class="layui-form-label">参差补差款</label>
+			      	<div class="layui-input-inline">
+			        	<input required="required" name="aae504" class="layui-input" step="0.01" type="number" value="${ins.aae504 }" readonly="readonly">
+		      		</div>
+		    	</div>
+			    <div class="layui-inline">
+			      	<label class="layui-form-label">实际补差款</label>
+			      	<div class="layui-input-inline">
+				       <input required="required" name="aae505" class="layui-input" step="0.01" type="number" value="${ins.aae505 }">
+		      		</div>
+		    	</div>
+	    	</div>
+	    	<div class="layui-form-item">
+				<div class="layui-inline">
+						<input class="layui-btn" name="next" type="submit" value="修改"
+							formaction="<%=path%>/ae/ae05Modify.html">
+						<input class="layui-btn" type="submit" value="返回"
+						formaction="<%=path%>/ae/ae05query.html" formnovalidate="formnovalidate" >
+				</div>
+			</div>
 		<input type="hidden" name="aae501" value="${param.aae501 }">
+		</div>
 	</form>
-	${msg}
+	</div>
+  </div>
+  
+  <div class="layui-footer">
+  </div>
+</div>
+
+<script>
+layui.use(['layer', 'form','element'], function(){
+	var element = layui.element;
+	var $ = layui.jquery;
+	var layer = layui.layer
+	,form = layui.form;
+	})
+</script>
 </body>
 </html>

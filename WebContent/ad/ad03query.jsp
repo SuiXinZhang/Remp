@@ -23,6 +23,13 @@
 				<label class="layui-form-label">选房时间</label>
 				<div class="layui-input-inline">
 					<input type="text" id="date" name="qaad307" value="${param.qaad307 }" autocomplete="off" class="layui-input">
+
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">房间号码</label>
+				<div class="layui-input-inline">
+					<input type="text" name="qaad302" value="${param.qaad302 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 	</div>
@@ -114,10 +121,13 @@
 <script>
 //JavaScript代码区域
 	layui.use(['layer', 'form','element'], function(){
-	  var element = layui.element;
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  layer.msg('Hello World');
+      ,form = layui.form
+	  ,element = layui.element;
+	  if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	});
 	layui.use('laydate', function(){
 		  var laydate = layui.laydate;

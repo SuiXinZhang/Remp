@@ -11,7 +11,7 @@
   <div class="layui-body">
     <div style="padding: 15px;">
 	    <form id="myform" class="layui-form" action="<%=path%>/aa/aa09Query.html" method="post">
-	     <h1>项目户型管理</h1>
+	     <h1>付款方式管理</h1>
 	        <hr>
 		    <table class="layui-table">
 			    <thead>

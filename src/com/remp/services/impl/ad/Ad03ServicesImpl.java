@@ -56,13 +56,20 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 	 */
 	public Map<String, String> findByName()throws Exception
 	{
-		String sql = "select aac401 from ad01 where aad103=? and aad107=? and aad110=?";
+		StringBuilder sql = new StringBuilder()
+				.append("select aac401,aad116 ")
+				.append("  from ad01")
+				.append(" where aad103=? and aad107=? and aad108=? and aad110=?")
+				.append("   and aad116=? ") 
+				;
 		Object args[]={
 				this.get("aad305"),
 				this.get("aad304"),
-				this.get("aad302")
+				this.get("aad303"),
+				this.get("aad302"),
+				"已预约"
 		};
-		return this.queryForMap(sql, args);
+		return this.queryForMap(sql.toString(), args);
 	}
 	/**
 	 * 查询看房记录
@@ -71,6 +78,7 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 	{
 		Object qaad305 = this.get("qaad305");
 		Object qaad307 = this.get("qaad307");
+		Object qaad302 = this.get("qaad302");
 		StringBuilder sql=new StringBuilder()
 				.append("select a.aad301,a.aad302,a.aad303,a.aad304,a.aad305,")
 				.append("       a.aad306,a.aad307,b.aaa801,c.fvalue caaa805,a.aac401")
@@ -89,6 +97,11 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 		{
 			sql.append(" and a.aad307=?");
 			paramList.add(qaad307);
+		}
+		if (this.isNotNull(qaad302)) 
+		{
+			sql.append(" and a.aad302=?");
+			paramList.add(qaad302);
 		}
 		return this.queryForList(sql.toString(),paramList.toArray());
 	}

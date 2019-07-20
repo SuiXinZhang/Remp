@@ -1,104 +1,105 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@include file="/../base/taglib.jsp" %>
 <html>
 <head>
-<title>Insert title here</title>
-<style type="text/css">
-tr {
-	height: 25px
-}
-</style>
-<%String path = request.getContextPath(); %>
-<script type="text/javascript">
-	var count = 0;
-	function onSelect(value)
-	{
-		value?count++:count--;
-		document.getElementById("mod").disabled=(count==0);
-	}
-	function modify(id)
-	{
-		var vform = document.getElementById("action");
-		vform.action = "<%=path %>/ae/ae05findById.html?aae501="+id;
-		vform.submit();
-	}
-</script>
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-
-<body>
-
-	<br>
-	<br> ${msg }
-	<form id="action" action="<%=path %>/ae/ae05query.html" method="post">
-		<table border="1" align="center" width="80%">
-			<caption>
-				面积补差
-				<hr width="160">
-			</caption>
-			<tr>
-				<td>客户姓名</td>
-				<td><e:text name="qaae707" /></td>
-				<td>房间名称</td>
-				<td><e:text name="qaaa803" />
-					<e:submit name="next" value="查询" /></td>
-			</tr>
-		</table>
-		<table border="1" align="center" width="80%">
-			<tr>
-				<td>序号</td>
-				<td>客户</td>
-				<td>房间</td>
-				<td>房间补差款</td>
-				<td>附属房间补差款</td>
-				<td>参差补差款</td>
-				<td>实际补差款</td>
-				<td></td>
-			</tr>
-			<c:choose>
-				<c:when test="${rows!=null}">
-					<c:forEach items="${rows }" var="ins" varStatus="vs">
-						<tr>
-							<td>${vs.count}</td>
-							<td>${ins.aae707 }</td>
-							<td>${ins.aaa803 }</td>
-							<td>${ins.aae502 }</td>
-							<td>${ins.aae503 }</td>
-							<td>${ins.aae504 }</td>
-							<td>${ins.aae505 }</td>
-							<td><a href="#" onclick='modify(${ins.aae501})'>查看明细</a></td>
-						</tr>
-					</c:forEach>
-					<c:forEach begin="${fn:length(rows)+1}" end="25">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<c:forEach begin="1" end="25">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
-	</form>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<jsp:include   page="/base/header.jsp"/>
+	 <c:import url="/ae/menu.jsp">
+        <c:param name="menu" value="ae07"/>
+     </c:import>
+  <div class="layui-body">
+    <div style="padding: 15px;">
+	    <form id="action" lay-filter="form" class="layui-form" action="<%=path %>/ae/ae05query.html" method="post">
+	     <h1 align="center">面积补差</h1>
+	        <hr>
+	        <div class="layui-form-item" align="center">
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">客户姓名</label>
+	                    <div class="layui-input-inline" style="width: 200px;">
+	                        <input type="text" value="${param.qaae707 }" name="qaae707" autocomplete="off" class="layui-input">
+	                    </div>
+	                </div>
+	                <div class="layui-inline">
+	                    <label class="layui-form-label">房间名称</label>
+	                    <div class="layui-input-inline" style="width: 200px;">
+	                        <input type="text" value="${param.qaae709 }" name="qaae709" autocomplete="off" class="layui-input">
+	                    </div>
+	                </div>
+	                <input type="submit" class="layui-btn" data-type="reload" value="查询">
+	        </div>
+		    <table class="layui-table">
+			    <thead>
+			        <tr>
+			        	<td>序号</td>
+						<td>客户</td>
+						<td>房间</td>
+						<td>房间补差款</td>
+						<td>附属房间补差款</td>
+						<td>参差补差款</td>
+						<td>实际补差款</td>
+						<td></td>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    <c:forEach items="${rows }" var="ins" varStatus="vs">
+			        <tr>
+			        	<td>${vs.count}</td>
+						<td>${ins.aae707 }</td>
+						<td>${ins.aae709 }</td>
+						<td>${ins.aae502 }</td>
+						<td>${ins.aae503 }</td>
+						<td>${ins.aae504 }</td>
+						<td>${ins.aae505 }</td>
+						<td><a href="#" onclick='modify(${ins.aae501})'>查看明细</a></td>
+		        </tr>
+			    </c:forEach>
+			    </tbody>
+			</table>
+		</form>
+	</div>
+  </div>
+  
+  <div class="layui-footer">
+  </div>
+</div>
+<script >
+function modify(id)
+{
+	var vform = document.getElementById("action");
+	vform.action = "<%=path %>/ae/ae05findById.html?aae501="+id;
+	vform.submit();
+}
+</script>
+<script>
+layui.use(['layer', 'form','element'], function(){
+	var element = layui.element;
+	var layer = layui.layer
+	,form = layui.form;
+	var count=0;
+	 /* form.on('checkbox(check)', function(data){
+         if(data.elem.checked==true){
+              	count++;
+              	if(count!=0){
+              		document.getElementById("mod").className="layui-btn";
+              	}else{
+              		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+              	}
+              	document.getElementById("mod").disabled=(count==0)
+              		
+         }else{
+       	  count--;
+      		  if(count!=0){
+      				document.getElementById("mod").className="layui-btn";
+      		  }else{
+            		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+            }
+      		document.getElementById("mod").disabled=(count==0)
+         }
+     }); */
+	});
+</script>
 </body>
 </html>
