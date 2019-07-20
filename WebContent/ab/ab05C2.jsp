@@ -1,18 +1,16 @@
-<%@ page language="java"  pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<% String path=request.getContextPath(); %>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/base/taglib.jsp" %>
 <html>
 <head>
-    <title>ECharts</title>
-    <meta charset="utf-8">
-    <!-- 引入 ECharts 文件 -->
-    <script src="${pageContext.request.contextPath}/resource/echarts.js"></script>
+	<jsp:include   page="/base/head.jsp"/>
+	<script src="${pageContext.request.contextPath}/resource/echarts.js"></script>
 </head>
-
-<body>
-<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/ab/menu.jsp"/>
+  <div class="layui-body">
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div id="main" style="width: 600px;height:400px;"></div>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
@@ -88,10 +86,10 @@
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 </script>
-
-	<form action="<%=path %>/ab/ab05Query.jsp" method="post">
+    <div style="padding: 15px;">
+    		<form class="layui-form" action="<%=path %>/ab/ab05Query.jsp" method="post">
 	
-	<table border="1" width="95%" align="center">
+	<table class="layui-table" border="1" width="95%" align="center">
 			<tr>
 			  <td>序号</td>
 			  <td>时间</td>
@@ -119,12 +117,30 @@
 	  
 	  <tr>
 		<td colspan="5" align="center">
-			<input type="submit" name="next" value="返回">
+			<input type="submit" name="next" value="返回" class="layui-btn">
 		</td>
 	  </tr>
 	  
 	  </table>
 	</form>
-	
+    </div>
+    
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    ? layui.com - 底部固定区域
+  </div>
+</div>
+<script ></script>
+<script>
+//JavaScript代码区域
+	layui.use(['layer', 'form'], function(){
+		  var layer = layui.layer
+		  ,form = layui.form;
+		  
+		  layer.msg('Hello World');
+		});
+</script>
 </body>
 </html>

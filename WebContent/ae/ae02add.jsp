@@ -7,7 +7,9 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
 	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ae/menu.jsp"/>
+	 <c:import url="/ae/menu.jsp">
+        <c:param name="menu" value="ae02"/>
+     </c:import>
   <div class="layui-body">
   <h1 align="center">贷款记录</h1>
     <div style="padding: 15px;">
@@ -140,7 +142,7 @@
 		    	<div class="layui-inline">
 			      	<label class="layui-form-label">备注</label>
 			      	<div class="layui-input-inline" >
-			        <textarea cols="60" name="aae216" class="layui-textarea" placeholder="请输入内容">${ins.aae216 }</textarea>
+			        <textarea cols="66" name="aae216" class="layui-textarea" placeholder="请输入内容">${ins.aae216 }</textarea>
 		      		</div>
 		    	</div>
 	    	</div>

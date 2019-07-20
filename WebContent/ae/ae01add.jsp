@@ -7,7 +7,10 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
 	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ae/menu.jsp"/>
+	 <c:import url="/ae/menu.jsp">
+        <c:param name="menu" value="ae01"/>
+     </c:import>
+	<%-- <jsp:include   page="/ae/menu.jsp"/> --%>
   <div class="layui-body">
   <h1 align="center">合同备案</h1>
     <div style="padding: 15px;">
@@ -16,7 +19,7 @@
 		    <div class="layui-inline" >
 		        	<c:if test="${!empty param.aae101 }">
 						<label class="layui-form-label">合同编号</label>
-						<div class="layui-input-block">
+						<div class="layui-input-inline">
 		            		<input type="text" name="aad710" readonly="readonly" value="${ins.aad710 }" lay-verify="title" autocomplete="off" class="layui-input">
 		        		</div>
 					</c:if>
@@ -25,13 +28,13 @@
 	    <div class="layui-form-item" align="center">
 	    	<div class="layui-inline">
 		      	<label class="layui-form-label">承诺办理</label>
-		      	<div class="layui-input-block">
+		      	<div class="layui-input-inline">
 		        <input name="aae102" id="date1" class="layui-input" type="text" value="${ins.aae102 }" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
 	      		</div>
 	    	</div>
 		    <div class="layui-inline">
 		      	<label class="layui-form-label">承诺完成</label>
-		      	<div class="layui-input-block">
+		      	<div class="layui-input-inline">
 		        <input name="aae103" id="date2" class="layui-input" type="text" value="${ins.aae103 }" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
 	      		</div>
 	    	</div>
@@ -49,7 +52,7 @@
             </div>
 		    <div class="layui-inline">
 		      	<label class="layui-form-label">完成时间</label>
-		      	<div class="layui-input-block">
+		      	<div class="layui-input-inline">
 		        <input name="aae105" id="date3" class="layui-input" id="aae105" 
 		        value="${ins.aae105 }" type="text" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
 	      		</div>
@@ -58,13 +61,13 @@
     	<div class="layui-form-item" align="center">
 	    	<div class="layui-inline">
 		      	<label class="layui-form-label">建筑面积</label>
-		      	<div class="layui-input-block">
+		      	<div class="layui-input-inline">
 		        <input name="aae106" value="${ins.aae106 }" class="layui-input" type="number" autocomplete="off">
 	      		</div>
 	    	</div>
 		    <div class="layui-inline">
 		      	<label class="layui-form-label">业务员</label>
-		      	<div class="layui-input-block">
+		      	<div class="layui-input-inline">
 		        <input name="aae107" value="${ins.aae107 }" class="layui-input" type="text" autocomplete="off">
 	      		</div>
 	    	</div>
@@ -72,13 +75,13 @@
     	<div class="layui-form-item" align="center">
 	    	<div class="layui-inline">
 		      	<label class="layui-form-label">合同备案号</label>
-		      	<div class="layui-input-block">
+		      	<div class="layui-input-inline">
 		        <input name="aae108" class="layui-input" type="text" value="${ins.aae108 }" autocomplete="off">
 	      		</div>
 	    	</div>
 		    <div class="layui-inline">
 		      	<label class="layui-form-label">备案时间</label>
-		      	<div class="layui-input-block">
+		      	<div class="layui-input-inline">
 		        <input name="aae109" id="date4" class="layui-input" type="text" value="${ins.aae109 }" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
 	      		</div>
 	    	</div>
@@ -86,8 +89,8 @@
     	<div class="layui-form-item layui-form-text" align="center">
 	    	<div class="layui-inline">
 		      	<label class="layui-form-label">备注</label>
-		      	<div class="layui-input-block" >
-		        <textarea cols="60" name="aae110" class="layui-textarea" placeholder="请输入内容">${ins.aae110 }</textarea>
+		      	<div class="layui-input-inline" >
+		        <textarea cols="66" name="aae110" class="layui-textarea" placeholder="请输入内容">${ins.aae110 }</textarea>
 	      		</div>
 	    	</div>
     	</div>

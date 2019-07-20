@@ -81,7 +81,7 @@ public class Aa02ServicesImpl extends JdbcServicesSupport {
 				.append("			  ?,?)")
     			;
 		Object []args = {//默认创建顶级项目
-				aaa201,
+				this.get("aaa201"),
 				this.get("aaa101"),
 				this.get("aaa202"),
 				this.get("aaa203"),

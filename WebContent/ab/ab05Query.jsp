@@ -1,41 +1,79 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<% String path = request.getContextPath(); %>
+<%@include file="/base/taglib.jsp" %>
 <html>
-<head>
-<title>Insert title here</title>
-</head>
-<body>
-${msg }
-	<form action="<%=path %>/ab05Add.html" method="post">
-		<table border="1" align="center" width="90%">
-			<caption>
-				营销分析
-				<hr width="160">
-			</caption>
-			<tr>
-				<td>起始日期</td>
-				<td>
-					<e:date name="bdate" required="true"/>
-				</td>
-				<td>截止日期</td>
-				<td>
-					<e:date name="edate" required="true"/>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<input type="submit" name="next" value="来电来访分析"
-					formaction="<%=path %>/ab05QueryToC1.html"/>
-				</td>
-				<td colspan="2" align="center">
-					<input type="submit" name="next" value="销售签约分析"
-					formaction="<%=path %>/ab05QueryToC2.html"/>
-				</td>
-			</tr>
-		</table>
-	</form>
-</body>
+	<head>
+		<jsp:include page="/base/head.jsp" />
+	</head>
+	<body class="layui-layout-body">
+		<div class="layui-layout layui-layout-admin">
+			<jsp:include page="/base/header.jsp" />
+			<jsp:include page="/ab/menu.jsp" />
+			<div class="layui-body">
+				<!-- 内容主体区域 -->
+				<div style="padding: 15px;">
+
+					<form class="layui-form" lay-filter="myform" action="<%=path %>/ab/ab05Add.html" method="post">
+
+						<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+							<legend>营销分析</legend>
+						</fieldset>
+
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">起始时间</label>
+								<div class="layui-input-inline">
+									<input type="text" name="bdate" required="true" class="layui-input test-item" id="test29" placeholder="yyyy-MM-dd">
+								</div>
+							</div>
+							<div class="layui-inline">
+								<label class="layui-form-label">截止时间</label>
+								<div class="layui-input-inline">
+									<input type="text" name="edate" required="true" class="layui-input test-item" id="test30" placeholder="yyyy-MM-dd">
+								</div>
+							</div>
+						</div>
+
+						<div class="layui-form-item" align="center">
+							<input type="submit" name="next" value="来电来访与营销投入分析" formaction="<%=path %>/ab/ab05QueryToC1.html" class="layui-btn"/>
+							<input type="submit" name="next" value="销售签约与营销投入分析" formaction="<%=path %>/ab/ab05QueryToC2.html" class="layui-btn"/>
+						</div>
+					</form>
+
+				</div>
+
+			</div>
+
+			<div class="layui-footer">
+				<!-- 底部固定区域 -->
+				? layui.com - 底部固定区域
+			</div>
+		</div>
+		<script></script>
+		<script>
+			//JavaScript代码区域
+			layui.use(['layer', 'form'], function() {
+				var layer = layui.layer,
+					form = layui.form;
+
+				layer.msg('Hello World');
+			});
+			
+			//日期选择框
+			  layui.use('laydate', function() {
+			  	var laydate = layui.laydate;
+			  
+			  	laydate.render({
+			  		elem: '#test29',
+			  		theme: 'molv',
+					trigger: 'click'
+			  	});
+				
+				laydate.render({
+					elem: '#test30',
+					theme: 'molv',
+					trigger: 'click'
+				});
+			  });
+		</script>
+	</body>
 </html>

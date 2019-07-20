@@ -6,6 +6,7 @@ public class Ae07modServlet extends Ae07BaseSupport
 	public String execute() throws Exception
 	{
 		this.update("executeAll", "ÅúÁ¿Ö´ÐÐ");
+		this.savePageDate();
 		return "ae/ae07query";
 	}
 
