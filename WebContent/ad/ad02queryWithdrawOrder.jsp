@@ -118,10 +118,13 @@
 <script>
 //JavaScript´úÂëÇøÓò
 	layui.use(['layer', 'form','element'], function(){
-	  var element = layui.element;
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  layer.msg('Hello World');
+	  ,form = layui.form
+	  ,element = layui.element;
+	  if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	});
 	layui.use('laydate', function(){
 		  var laydate = layui.laydate;

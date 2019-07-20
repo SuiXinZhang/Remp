@@ -11,7 +11,7 @@
 		    <div class="layui-inline">
 		      	<label class="layui-form-label">项目</label>
 		      	<div class="layui-input-block">
-		      		<e:select id="prj" name="" value="${ins.prj },"/>
+		      		<e:select id="prj" name="" value="请选择: ,${ins.prj },"/>
 	      		</div>
 	    	</div>
     	</div>
@@ -54,6 +54,10 @@ window.onload=function(){
 	obj4.setAttribute('lay-filter', "room"); //setAttribute设置自定义属性
 }
 var callbackdata = function () {
+	if(rs[0]==null){
+		rs=['','']
+		return rs
+	}
 	return rs;
 }
 function renderForm() {
