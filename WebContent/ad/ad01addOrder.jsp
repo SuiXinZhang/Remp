@@ -8,9 +8,12 @@
 	//一般直接写在一个js文件中
 	layui.use(['layer', 'form','element'], function(){
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  var element = layui.element();
-	  layer.msg('Hello World');
+	  ,form = layui.form
+	  ,element = layui.element;
+	  if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	  form.val('myform',{
 		  "aad112":"${ins.aad112}",
 	  });
@@ -56,10 +59,10 @@
 	<jsp:include   page="/ad/menu.jsp"/>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 150px;font-size: 16;">
+    <div style="padding: 15px;">
 	<form lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad01addOrder.html" method="post">
 
-	    <div class="layui-form-item" align="left">
+	    <div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">项目名称</label>
 				<div class="layui-input-inline">
@@ -74,6 +77,8 @@
 							 autocomplete="off" class="layui-input">
 				</div>
 			</div>
+		</div>
+		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">预约日期</label>
 				<div class="layui-input-inline">
@@ -81,8 +86,6 @@
 					    id="date1" autocomplete="off" class="layui-input">
 				</div>
 			</div>
-		</div>
-		<div class="layui-form-item" align="left">
 			<div class="layui-inline">
 				<label class="layui-form-label">失效日期</label>
 				<div class="layui-input-inline">
@@ -90,6 +93,8 @@
 						id="date2" autocomplete="off" class="layui-input">
 				</div>
 			</div>
+		</div>
+		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">房间</label>
 				<div class="layui-input-inline">
@@ -106,7 +111,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="layui-form-item" align="left">
+		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">币种</label>
 				<div class="layui-input-inline">
@@ -126,6 +131,8 @@
 					 value="${ins.aad113 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
+		</div>
+		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">权益人</label>
 				<div class="layui-input-inline">
@@ -133,8 +140,6 @@
 							 autocomplete="off" class="layui-input">
 				</div>
 			</div>
-		</div>
-		<div class="layui-form-item" align="left">
 			<div class="layui-inline">
 				<label class="layui-form-label">业务员</label>
 				<div class="layui-input-inline">
@@ -142,29 +147,13 @@
 					 autocomplete="off" class="layui-input">
 				</div>
 			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label">备注</label>
-				<div class="layui-input-inline">
-					<input type="text" name="oaad115" required lay-verify="true" value="${ins.aad115 }"
-							 autocomplete="off" class="layui-input">
-				</div>
-			</div>
+		</div>
+		<div class="layui-form-item" align="center">
 			<c:if test="${!empty param.aad101 }">
-				<div class="layui-inline">
+			<div class="layui-inline">
 				<label class="layui-form-label">实际排号</label>
 					<div class="layui-input-inline">
 						<input type="text" name="oaad104" value="${ins.aad104 }"
-							 autocomplete="off" class="layui-input">
-					</div>
-				</div>
-			</c:if>
-		</div>
-		<div class="layui-form-item" align="left">
-			<c:if test="${!empty param.aad101 }">
-			<div class="layui-inline">
-				<label class="layui-form-label">项目排号</label>
-					<div class="layui-input-inline">
-						<input type="text" name="oaad107" value="${ins.aad107 }"
 							 autocomplete="off" class="layui-input">
 					</div>
 				</div>
@@ -174,17 +163,10 @@
 						<input type="text" name="oaad108" value="${ins.aad108 }"
 							 autocomplete="off" class="layui-input">
 					</div>
-			</div>
-				<div class="layui-inline">
-				<label class="layui-form-label">退号日期</label>
-					<div class="layui-input-inline">
-						<input type="text" id="date3" name="aad202" value="${ins.aad202 }"
-							 autocomplete="off" class="layui-input">
-					</div>
 				</div>
 			</c:if>
 		</div>
-		<div class="layui-form-item" align="left">
+		<div class="layui-form-item" align="center">
 			<c:if test="${!empty param.aad101 }">
 				<div class="layui-inline">
 				<label class="layui-form-label">退号原因</label>
@@ -193,8 +175,23 @@
 							 autocomplete="off" class="layui-input">
 					</div>
 				</div>
+				<div class="layui-inline">
+				<label class="layui-form-label">退号日期</label>
+					<div class="layui-input-inline">
+						<input type="text" id="date3" name="aad202" value="${ins.aad202 }"
+							 autocomplete="off" class="layui-input">
+					</div>
+				</div>
 			</c:if>
-		</div>
+	   </div>
+	   <div class="layui-form-item layui-form-text" align="center">
+			<div class="layui-inline">
+				<label class="layui-form-label">备注</label>
+				<div class="layui-input-inline">
+					<textarea cols="66" name="oaad115" class="layui-textarea" placeholder="请输入内容">${ins.oaad115 }</textarea>
+				</div>
+			</div>
+	   </div>
        <div class="layui-form-item" align="center">
        <input type="submit" name="next" value="${empty param.aad101?'添加':'修改'}" class="layui-btn layui-btn-normal"
               formaction="${empty param.aad101?'ad01addOrder':'ad01modifyOrder'}.html">
@@ -208,6 +205,8 @@
        </div>
 <input type="hidden" name="aad101" value="${param.aad101 }">
 <input type="hidden" name="oaac401" value="${ins.aac401 }">
+<input type="hidden" name="oaad107" value="${ins.aad107 }">
+							  
 </form>
     </div>
   </div>

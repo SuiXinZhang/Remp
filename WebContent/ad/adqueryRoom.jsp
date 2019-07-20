@@ -6,20 +6,17 @@
 	<script>
 	//JavaScript代码区域
 	layui.use(['layer', 'form','element'], function(){
-	  var element = layui.element;
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  layer.msg('Hello World');
+      ,form = layui.form
+	  ,element = layui.element;
+	  if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	});
+	</script>
+	<script type="text/javascript">
 	var count=0;
-    
-    function onEdit(vaab101)
-    {
-  	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/findByIdEmp.html?aab101="+vaab101;
-  	 //alert(vform.action);
-  	 vform.submit();
-    }
     
     function onConfirm(vaaa801)
     {
@@ -143,8 +140,16 @@
 				    <td>${ins.aaa505 }</td>
 				    <td>${ins.aaa808 }</td>
 				    <td>${ins.aaa809 }</td>
-				    <td><a href="#" onclick="onConfirm('${ins.aaa801}')">确认选房</a></td>
-				    <td><a href="#" onclick="onReserve('${ins.aaa801}')">添加预留</a></td>
+				    <c:choose>
+					    <c:when test="${ins.caaa805=='签约'||ins.caaa805=='已选'||ins.caaa805=='预留'}">
+					    <td><a href="#"  onclick="" style="color:grey">确认选房</a></td>
+					    <td><a href="#"  onclick="" style="color:grey">添加预留</a></td>
+					    </c:when>
+					    <c:otherwise>
+					    <td><a href="#" onclick="onConfirm('${ins.aaa801}')">确认选房</a></td>
+					    <td><a href="#" onclick="onReserve('${ins.aaa801}')">添加预留</a></td>
+					    </c:otherwise>
+				    </c:choose>
 				  </tr>
 		      </c:forEach>
 		      </c:when>
