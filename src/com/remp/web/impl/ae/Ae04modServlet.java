@@ -5,7 +5,8 @@ public class Ae04modServlet extends Ae04BaseSupport
 	@Override
 	public String execute() throws Exception
 	{
-		this.saveInfo("ae04mod");
-		return "ae/ae04Message";
+		this.update("ae04mod", "±¸°¸");
+		this.savePageInstance();
+		return "ae/ae04query";
 	}
 }

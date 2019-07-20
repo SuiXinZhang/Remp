@@ -27,13 +27,13 @@
 	                <div class="layui-inline">
 	                    <label class="layui-form-label">客户姓名</label>
 	                    <div class="layui-input-inline" style="width: 200px;">
-	                        <input type="text" value="${param.qaae204 }" name="qaad702" autocomplete="off" class="layui-input">
+	                        <input type="text" value="${param.qaae402 }" name="qaad702" autocomplete="off" class="layui-input">
 	                    </div>
 	                </div>
 	                <div class="layui-inline">
 	                    <label class="layui-form-label">房间名称</label>
 	                    <div class="layui-input-inline" style="width: 200px;">
-	                        <input type="text" name="qaaa803" value="${param.qaad803 }" autocomplete="off" class="layui-input">
+	                        <input type="text" name="qaae416" value="${param.qaae416 }" autocomplete="off" class="layui-input">
 	                    </div>
 	                </div>
 	                <input type="submit" class="layui-btn" data-type="reload" value="查询">

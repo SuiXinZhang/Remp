@@ -75,7 +75,7 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 				.append("select a.aad301,a.aad302,a.aad303,a.aad304,a.aad305,")
 				.append("       a.aad306,a.aad307,b.aaa801,c.fvalue caaa805,a.aac401")
 				.append("  from ad03 a,aa08 b,syscode c")
-				.append(" where a.aad302 = b.aaa803")
+				.append(" where a.aaa801 = b.aaa801")
 				.append("   and b.aaa805 = c.fcode")
 				.append("   and c.fname='aaa805'")
 				;

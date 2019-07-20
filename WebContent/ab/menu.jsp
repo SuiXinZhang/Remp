@@ -7,10 +7,10 @@
           <a href="ab01Query.jsp">销售计划</a>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;">营销方案</a>
+          <a href="ab03Query.jsp">营销方案</a>
         </li>
         <li class="layui-nav-item">
-        	<a href="">营销分析</a>
+        	<a href="ab05Query.jsp">营销分析</a>
         </li>
       </ul>
     </div>

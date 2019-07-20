@@ -60,6 +60,7 @@
 				    <td>${ins.caad404 }</td>
 				    <td><a href="#" onclick="onDel('${ins.aad401}')">删除</a></td>
 				    <td><a href="#" onclick="onReceipt('${ins.aad401}')">生成付款详情</a></td>
+				    <td><a href="#" onclick="onAgree('${ins.aad401}')">转签约</a></td>
 				  </tr>
 		      </c:forEach>
 		      <!-- 补充空行 -->
@@ -138,6 +139,12 @@
     {
   	 var vform = document.getElementById("myform");
   	 vform.action="<%=path%>/af/af03turnReceipt.html?aad401="+vaad401;
+  	 vform.submit();
+    }
+    function onAgree(vaad401)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/ad/ad07turnAgreement.html?aad401="+vaad401;
   	 vform.submit();
     }
 </script>
