@@ -1,9 +1,20 @@
 package com.remp.web.support;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.lang.reflect.Method;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 
 import com.remp.services.BaseServices;
 
@@ -101,7 +112,6 @@ public abstract class ControllerSupport implements BaseController {
 		this.saveAttribute("msg",msgText + msg);
 	}
 	
-
 	
 	/**
 	 * 带有编号的消息提示的更新行为

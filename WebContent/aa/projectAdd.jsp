@@ -12,14 +12,9 @@
     <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
    	<fieldset class="layui-elem-field">
  	<legend style="color:black"><h2>项目${empty param.aaa201?'添加':'修改' }</h2></legend>
-		<c:if test="${!empty msg }">
-   	    	<label class="layui-form-label"  style="font-size: 18px; color:#009688;width:300px;" >
-   			<i class="layui-icon layui-icon-set" style="font-size: 24px;"></i>
-   			${msg }
-   			</label>
-   		</c:if>
+
   		<div class="layui-field-box">
-	    <form action="" lay-filter="form" class="layui-form"  method="post">	
+	    <form action="" lay-filter="form" enctype="multipart/form-data" class="layui-form"  method="post">	
     	<!-- 表单提交区 -->	
 	    <div class="layui-form-item" align="center">
 	    	<div class="layui-inline">
@@ -181,40 +176,54 @@
 	    	</div>
 	    </div>
 	    
-	     <div class="layui-form-item" align="center">
-		    <div class="layui-inline">
-		      	<label class="layui-form-label">
+	     <div class="layui-form-item" align="left" style="padding-left:155px;">
+		    <div class="layui-inline" >
+		      	<label class="layui-form-label" >
 	    			<i class="layui-icon layui-icon-tree" style="font-size: 20px; color: black;"></i>
 	    			项目景观
 	    		</label>
-				<div class="layui-input-block">
-		        	<input type="text" name="aaa216" value="${ins.aaa216 }" autocomplete="off" class="layui-input"  style="width:250px;" >
+				<div class="layui-input-block" >
+						<button type="button" onclick="$('input[id=fileUpload]').click();" class="layui-btn layui-btn-normal">选择图片</button>
+						<input type="file" id="fileUpload"  name="fileaaa216" style="display:none">
+						
+						<button type="button" onclick="checkPic()" class="layui-btn">查看景观</button>
+						
+		        		<!--  <input type="text" name="aaa216" value="${ins.aaa216 }" autocomplete="off" class="layui-input"  style="width:250px;" >-->
 	      		</div>
 	    	</div>
-
-	    	<div class="layui-inline">
+    	</div>
+    	
+    	<div class="layui-form-item" align="center">
+    		<div class="layui-inline">
 	    		<label class="layui-form-label" >
-	    			<i class="layui-icon layui-icon-edit" style="font-size: 20px; color: black;"></i>
+	    			<i class="layui-icon layui-icon-edit"font-size: 20px; color: black;"></i>
 	    			添加备注
 	    		</label>
 		      	<div class="layui-input-block" >
-		      		<input type="text" name="aaa217" required="required" value="${ins.aaa217 }" autocomplete="off" class="layui-input"  style="width:250px;" >
+		      		<input type="text" name="aaa217" required="required" value="${ins.aaa217 }" autocomplete="off" class="layui-input"  style="width:630px;" >
 		        
 	      		</div>
 	    	</div>
     	</div>
 
-    	<div class="layui-form-item" align="center">
-				<div class="layui-inline">
-						<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa201?'添加':'修改'}"
-							formaction="<%=path %>/aa/${empty ins.aaa201?'aa02Add.html':'aa02Modify.html' }">
+    	<div class="layui-form-item" align="left" style="padding-left:450px">
+				<div class="layui-inline" >
+						<input class="layui-btn" id="upload" name="next" type="submit" value="${empty ins.aaa201?'添加':'修改'}"
+							formaction="<%=path %>/aa/${empty ins.aaa201?'Aa02FileUploadServlet':'Aa02FileModifyServlet' }">
 						<input class="layui-btn layui-btn-warm" type="submit" value="返回"
-						formaction="<%=path %>/aa/aa02Query.html" formnovalidate="formnovalidate">
+							formaction="<%=path %>/aa/aa02Query.html?aaa101=1" formnovalidate="formnovalidate">
+				</div>
+				<div class="layui-inline">
+					<c:if test="${!empty msg }">
+			   	    	<label class="layui-form-label"  style="font-size: 18px; color:#009688;width:300px;" >
+			   			<i class="layui-icon layui-icon-set" style="font-size: 24px;"></i>
+			   			${msg }
+			   			</label>
+			   		</c:if>
 				</div>
 			</div>
 			
 		<input type="hidden" name="aaa201" value="${ins.aaa201 }"> 
-		<input type="hidden" name="aaa101" value="1">
 	</form>
 	</div>
 	</fieldset>
@@ -223,6 +232,7 @@
 
 </div>
 <script>
+
 layui.use(['layer', 'form'], function(){
 	  var layer = layui.layer
 	  form = layui.form;
@@ -247,5 +257,20 @@ layui.use('laydate',function(){
 		  ,trigger: 'click'
 	  });
 });
+
+
+
+
+</script>
+<script type="text/javascript">
+var img = "<div style='text-align: center;'><img src='<%=path%>${ins.aaa216}' style=' position: absolute;    top: 0;    right: 0;    bottom: 0;    left: 0;    margin: auto;   width: 500px;  '/></div>"
+function checkPic(){
+	layer.open({
+		title: '项目景观'
+		,area: ['600px', '600px']
+	    ,content: img
+	});
+
+}
 </script>
 </body>

@@ -68,8 +68,7 @@ public class Aa02ServicesImpl extends JdbcServicesSupport {
 	 */
 	public boolean addProject()throws Exception
 	{
-		int aaa201 = Tools.getSequence("aaa201");
-		this.put("aaa201", aaa201);
+
 		
 		StringBuilder sql=new StringBuilder()
 				.append("insert into aa02(aaa201,aaa101,aaa202,aaa203,aaa204,aaa205,")
