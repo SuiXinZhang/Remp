@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import com.remp.system.db.DBUtils;
 
 public abstract class JdbcServicesSupport implements BaseServices
@@ -659,4 +661,21 @@ public abstract class JdbcServicesSupport implements BaseServices
 			pstm.close();
 		}
 	}
+	private HttpSession session;
+	@Override
+	public void setSession(HttpSession session) 
+	{
+		this.session = session;
+	}
+	
+	/**
+	 * …Ë÷√session Ù–‘
+	 * @param key
+	 * @param dto
+	 */
+	protected final void setSessionAttr(String key,Map<String, String> dto)
+	{
+		this.session.setAttribute(key, dto);
+	}
 }
+

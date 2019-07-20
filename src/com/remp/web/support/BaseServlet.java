@@ -32,7 +32,7 @@ public class BaseServlet extends HttpServlet
 			BaseController controller = (BaseController)Class.forName(packageName+firstName+"Servlet").newInstance();
 			
 			controller.setMapDto(this.creatDto(request));
-			
+			controller.setSession(request.getSession());
 			toPath = controller.execute();
 			
 			this.parseRequestAttribute(request, controller.getAttribute());
