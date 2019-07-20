@@ -15,89 +15,130 @@
 	        <hr>
 	        	<div class="layui-form-item" align="center">
 	        		<div class="layui-inline">
-	                    <label class="layui-form-label">房间编码:</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
-	                        <input type="text" value="${param.qaaa802 }"  name="qaaa802" autocomplete="off" class="layui-input">
-	                    </div>
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-flag" style="font-size: 15px; color: black;"></i>
+			    			房间编码
+			    		</label>
+				      	<div class="layui-input-block">
+				        	<input type="text" name="qaaa802" value="${param.qaaa802 }" autocomplete="off" class="layui-input"  style="width:95px;">
+			      		</div>
 	                </div>
+	                
+	               <div class="layui-inline">
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-templeate-1" style="font-size: 15px; color: black;"></i>
+			    			户型编码
+			    		</label>
+				      	<div class="layui-input-block" style="width: 100px;">
+				      		<e:select value="${ins.aaa502 }" name="qaaa807"  defval="${param.qaaa807 }" header="true"/>
+			      		</div>
+	                </div>  
+	                
+	        		<div class="layui-inline">
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-location" style="font-size: 15px; color: black;"></i>
+			    			房间号
+			    		</label>
+				      	<div class="layui-input-block">
+					        <div class="layui-input-inline" style="width: 50px;">
+		      					<input type="text" value="${param.qdanyuan }" name="qdanyuan" placeholder="单元" autocomplete="off" class="layui-input">
+		                    </div>
+		                    <div class="layui-form-mid">-</div>
+		                    <div class="layui-input-inline" style="width: 50px;">
+		                        <input type="text" value="${param.qlouceng }"  name="qlouceng"  placeholder="楼层" autocomplete="off" class="layui-input">
+		                    </div>
+		                    <div class="layui-form-mid">-</div>
+		                    <div class="layui-input-inline" style="width: 50px;">
+		      					<input type="text" value="${param.qhuhao }" name="qhuhao" placeholder="户号" autocomplete="off" class="layui-input">	                    
+		                    </div>
+			      		</div>
+	                </div>	
+	                
 	                <div class="layui-inline">
-	                    <label class="layui-form-label">房间号:</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
-       						<input type="text" value="${param.qdanyuan }" name="qdanyuan" placeholder="单元" autocomplete="off" class="layui-input">
-	                    </div>
-	                    <div class="layui-form-mid">-</div>
-	                    <div class="layui-input-inline" style="width: 100px;">
-	                        <input type="text" value="${param.qlouceng }"  name="qlouceng"  placeholder="楼层" autocomplete="off" class="layui-input">
-	                    </div>
-	                    <div class="layui-form-mid">-</div>
-	                    <div class="layui-input-inline" style="width: 100px;">
-       						<input type="text" value="${param.qhuhao }" name="qhuhao" placeholder="户号" autocomplete="off" class="layui-input">	                    
-	                    </div>
-	                </div>		                
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-engine" style="font-size: 15px; color: black;"></i>
+			    			房间状态
+			    		</label>
+				      	<div class="layui-input-block" style="width: 100px;">
+				        	<e:select value="等待:01,签约:02,已租:03" header="true" name="qaaa805" />
+			      		</div>
+	                </div>     
+	                
+	                <div class="layui-inline">
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-release" style="font-size: 15px; color: black;"></i>
+			    			租售类型
+			    		</label>
+				      	<div class="layui-input-block" style="width: 100px;">
+				        	<e:select value="可租:可租,可售:可售,租售:租售" header="true" name="qaaa806" />
+			      		</div>
+	                </div>             
 	       		</div>
+	       		
 	       		<div class="layui-form-item" align="center">
 	       			<div class="layui-inline">
-	       				<label class="layui-form-label">房间状态:</label>
-	                    <div class="layui-input-inline" style="width: 105px;">
-	                    	<e:select value="等待:01,签约:02,已租:03" header="true" name="qaaa805" />
-	                    </div>
-	       			</div>
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-rmb" style="font-size: 15px; color: black;"></i>
+			    			建筑单价
+			    		</label>
+				      	<div class="layui-input-block">
+					        <div class="layui-input-inline" style="width: 72px;">
+	       						<input type="number" value="${param.baaa808 }" step="0.01" name="baaa808" placeholder="B" autocomplete="off" class="layui-input">
+		                    </div>
+		                    <div class="layui-form-mid">-</div>
+		                    <div class="layui-input-inline" style="width: 72px;">
+	       						<input type="number" value="${param.eaaa808 }" step="0.01" name="eaaa808" placeholder="E" autocomplete="off" class="layui-input">	                    
+		                    </div>
+			      		</div>
+	                </div>  
+
 	       			<div class="layui-inline">
-	       				<label class="layui-form-label">租售类型:</label>
-	                    <div class="layui-input-inline" style="width: 105px;">
-	                    	<e:select value="可租:可租,可售:可售,租售:租售" header="true" name="qaaa806" />
-	                    </div>
-	       			</div>
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-rmb" style="font-size: 15px; color: black;"></i>
+			    			建筑总价
+			    		</label>
+				      	<div class="layui-input-block">
+					        <div class="layui-input-inline" style="width: 75px;">
+	       						<input type="number" value="${param.baaa809 }" step="0.01" name="baaa809" placeholder="B" autocomplete="off" class="layui-input">
+		                    </div>
+		                    <div class="layui-form-mid">-</div>
+		                    <div class="layui-input-inline" style="width: 75px;">
+	       						<input type="number" value="${param.eaaa809 }" step="0.01" name="eaaa809" placeholder="E" autocomplete="off" class="layui-input">	                    
+		                    </div>
+			      		</div>
+			      	</div>
+
 	       			<div class="layui-inline">
-	       				<label class="layui-form-label">户型编码:</label>
-	                    <div class="layui-input-inline" style="width: 105px;">
-	                    	<e:select value="可租:可租,可售:可售,租售:租售" header="true" name="qaaa807" />
-	                    </div>
-	       			</div>
-	       		</div>
-	       		<div class="layui-form-item" align="center">
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-rmb" style="font-size: 15px; color: black;"></i>
+			    			套内单价
+			    		</label>
+				      	<div class="layui-input-block">
+					        <div class="layui-input-inline" style="width: 75px;">
+	       						<input type="number" value="${param.baaa810 }" step="0.01" name="baaa810" placeholder="B" autocomplete="off" class="layui-input">
+		                    </div>
+		                    <div class="layui-form-mid">-</div>
+		                    <div class="layui-input-inline" style="width: 75px;">
+	       						<input type="number" value="${param.eaaa810 }" step="0.01" name="eaaa810" placeholder="E" autocomplete="off" class="layui-input">	                    
+		                    </div> 
+			      		</div>
+			      	</div>
+			      		
 	       			<div class="layui-inline">
-	                    <label class="layui-form-label">建筑单价:</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
-       						<input type="number" value="${param.baaa808 }" step="0.01" name="baaa808" placeholder="B" autocomplete="off" class="layui-input">
-	                    </div>
-	                    <div class="layui-form-mid">-</div>
-	                    <div class="layui-input-inline" style="width: 100px;">
-       						<input type="number" value="${param.eaaa808 }" step="0.01" name="eaaa808" placeholder="E" autocomplete="off" class="layui-input">	                    
-	                    </div>
-	       			</div>
-	       			<div class="layui-inline">
-	                    <label class="layui-form-label">建筑总价:</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
-       						<input type="number" value="${param.baaa809 }" step="0.01" name="baaa809" placeholder="B" autocomplete="off" class="layui-input">
-	                    </div>
-	                    <div class="layui-form-mid">-</div>
-	                    <div class="layui-input-inline" style="width: 100px;">
-       						<input type="number" value="${param.eaaa809 }" step="0.01" name="eaaa809" placeholder="E" autocomplete="off" class="layui-input">	                    
-	                    </div>
-	       			</div>
-	       		</div>
-	       		<div class="layui-form-item" align="center">
-	       			<div class="layui-inline">
-	                    <label class="layui-form-label">套内单价:</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
-       						<input type="number" value="${param.baaa810 }" step="0.01" name="baaa810" placeholder="B" autocomplete="off" class="layui-input">
-	                    </div>
-	                    <div class="layui-form-mid">-</div>
-	                    <div class="layui-input-inline" style="width: 100px;">
-       						<input type="number" value="${param.eaaa810 }" step="0.01" name="eaaa810" placeholder="E" autocomplete="off" class="layui-input">	                    
-	                    </div>
-	       			</div>
-	       			<div class="layui-inline">
-	                    <label class="layui-form-label">套内总价:</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
-       						<input type="number" value="${param.baaa811 }" step="0.01" name="baaa811" placeholder="B" autocomplete="off" class="layui-input">
-	                    </div>
-	                    <div class="layui-form-mid">-</div>
-	                    <div class="layui-input-inline" style="width: 100px;">
-       						<input type="number" value="${param.eaaa811 }" step="0.01" name="eaaa811" placeholder="E" autocomplete="off" class="layui-input">	                    
-	                    </div>
-	       			</div>
+	        			<label class="layui-form-label"  style="font-size: 15px;">
+			    			<i class="layui-icon layui-icon-rmb" style="font-size: 15px; color: black;"></i>
+			    			套内总价
+			    		</label>
+				      	<div class="layui-input-block">
+					        <div class="layui-input-inline" style="width: 75px;">
+	       						<input type="number" value="${param.baaa811 }" step="0.01" name="baaa811" placeholder="B" autocomplete="off" class="layui-input">
+		                    </div>
+		                    <div class="layui-form-mid">-</div>
+		                    <div class="layui-input-inline" style="width: 75px;">
+	       						<input type="number" value="${param.eaaa811 }" step="0.01" name="eaaa811" placeholder="E" autocomplete="off" class="layui-input">	                    
+		                    </div> 
+			      		</div>
+	                </div>	                
 	       		</div>
 		    <table class="layui-table">
 			    <thead>
@@ -184,9 +225,8 @@
 			</table>
 			 <div class="layui-form-item" align="center">
 				<div class="layui-inline">
-				<td align="center">
 					<input type="submit" class="layui-btn" value="查询" name="next">
-					<input type="submit" class="layui-btn layui-btn-disabled" value="修改" name="next" disabled="disabled" formaction="<%=path %>/aa/roomsModify.jsp" id="modify"> 
+					<input type="submit" class="layui-btn layui-btn-disabled" value="修改" name="next" disabled="disabled" formaction="<%=path %>/aa/aa08GotoModify.html" id="modify"> 
 					<input type="submit" class="layui-btn layui-btn-disabled" value="删除" name="next" disabled="disabled" formaction="<%=path %>/aa/aa08Delete.html" id="del"> 
 					<input type="submit" class="layui-btn"  value="返回" name="next" formaction="<%=path %>/aa/aa07Query.html" formnovalidate="formnovalidate">
 				</div>
@@ -237,22 +277,32 @@ layui.use(['layer', 'form','element'], function(){
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){
                	count++;
+               	var delB = document.getElementById("del");
+               	var modifyB = document.getElementById("modify");
                	if(count!=0){
-               		document.getElementById("del").className="layui-btn";
+               		delB.className="layui-btn";
+               		modifyB.className="layui-btn";
                	}else{
-               		document.getElementById("del").className="layui-btn layui-btn-disabled";
+               		delB.className="layui-btn layui-btn-disabled";
+               		modifyB.className="layui-btn layui-btn-disabled";
                	}
-               	document.getElementById("del").disabled=(count==0)
-               		
+               	delB.disabled=(count==0);
+               	modifyB.disabled=(count==0);
           }else{
         	  count--;
-       		  if(count!=0){
-       				document.getElementById("del").className="layui-btn";
-       		  }else{
-             		document.getElementById("del").className="layui-btn layui-btn-disabled";
-             }
-       		document.getElementById("del").disabled=(count==0)
+             	var delB = document.getElementById("del");
+               	var modifyB = document.getElementById("modify");
+               	if(count!=0){
+               		delB.className="layui-btn";
+               		modifyB.className="layui-btn";
+               	}else{
+               		delB.className="layui-btn layui-btn-disabled";
+               		modifyB.className="layui-btn layui-btn-disabled";
+               	}
+               	delB.disabled=(count==0);
+               	modifyB.disabled=(count==0);
           }
+
       });
 	});
 </script>

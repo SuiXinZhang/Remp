@@ -6,6 +6,6 @@ public class Ad07findByIdAgreementServlet extends Ad07ControllerSupport
 	public String execute() throws Exception 
 	{
 		this.saveInfo("findByIdAgreement");
-		return "ad/ad07addAgreement";
+		return "ad/ad07modifyAgreement";
 	}
 }

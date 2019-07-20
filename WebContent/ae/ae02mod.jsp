@@ -1,50 +1,97 @@
-<%@page import="java.util.Map"%>
 <%@ page language="java" pageEncoding="GBK"%>
-<%@taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@page import="java.util.Map"%>
+<%@include file="/../base/taglib.jsp" %>
 <html>
 <head>
-<title>Insert title here</title>
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-<body>
-	<form action="<%=request.getContextPath()%>/ae/ae02modifyList.html" method="post">
-	<table border="1" align="center" title="批量备案" width="45%">
-			<caption>
-				合同备案
-				<hr width="160">
-			</caption>
-			<tr>
-				<td>当前进程</td>
-				<td><e:select name="aae218" value="未办理:01,已办理:02" defval="01"/></td>
-			</tr>
-			<tr>
-				<td>完成时间</td>
-				<td><e:date name="aae602" required="true"/></td>
-			</tr>
-			<tr>
-				<td>业务员</td>
-				<td><e:text name="aae603" required="true"/></td>
-			</tr>
-			<tr>
-				<td>合同备案时间</td>
-				<td><e:date name="aae604" required="true"/></td>
-			</tr>
-			<tr>
-				<td>备注</td>
-				<td><e:textarea rows="5" cols="45" name="aae605"/></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<input type="submit" name="next" value="批量备案">
-			</tr>
-		</table>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/ae/menu.jsp"/>
+  <div class="layui-body">
+    <h1>贷款备案</h1>
+    <div style="padding: 15px;">
+    <form action="<%=path%>/ae/ae02modifyList.html" class="layui-form"  method="post">
+		 <div class="layui-form-item" align="center">
+		    <div class="layui-inline" >
+				<label class="layui-form-label">办理状态</label>
+				<div class="layui-input-block">
+            		<e:select name="aae218" value="未办理:01,已办理:02" defval="01"/>
+        		</div>
+		    </div>
+	     </div>
+	     <div class="layui-form-item" align="center">
+	    	<div class="layui-inline">
+		      	<label class="layui-form-label">完成时间</label>
+		      	<div class="layui-input-block">
+		        <input name="aae602" id="date1" class="layui-input" required="true" type="text" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
+	      		</div>
+	    	</div>
+	    </div>
+	    <div class="layui-form-item" align="center">
+	    	<div class="layui-inline">
+		      	<label class="layui-form-label">业务员</label>
+		      	<div class="layui-input-block">
+		        <input name="aae603" class="layui-input" required="true" type="text" >
+	      		</div>
+	    	</div>
+	    </div>
+	    <div class="layui-form-item" align="center">
+	    	<div class="layui-inline">
+		      	<label class="layui-form-label">备案时间</label>
+		      	<div class="layui-input-block">
+		        <input name="aae604" id="date2" class="layui-input" required="true" type="text" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
+	      		</div>
+	    	</div>
+	    </div>
+		<div class="layui-form-item" align="center">
+	    	<div class="layui-inline">
+		      	<label class="layui-form-label">备注</label>
+		      	<div class="layui-input-block">
+		        <textarea name="aae605" cols="60" class="layui-textarea" required="true" type="text">
+		        </textarea>
+	      		</div>
+	    	</div>
+	    </div>
+	     <div class="layui-form-item" align="center">
+				<div class="layui-inline">
+						<input class="layui-btn" name="next" type="submit" value="批量备案">
+						<input class="layui-btn" type="submit" value="返回"
+						formaction="<%=path%>/ae/ae02query.html" formnovalidate="formnovalidate" >
+				</div>
+			</div>
 		<%Map<String,String[]> map = request.getParameterMap();
 		String[] idList = map.get("IdList");%>
 		<c:forEach items="<%=idList %>" var="ins" >
 			<input type="hidden" name="IdList" value="${ins }">
 		</c:forEach>
+		
 	</form>
-	${msg }
+</div>
+  </div>
+  
+  <div class="layui-footer">
+  </div>
+</div>
+<script>
+//JavaScript代码区域
+layui.use(['layer', 'form','element'], function(){
+		var element = layui.element;
+	  	var layer = layui.layer
+	  	,form = layui.form;
+	});
+layui.use('laydate',function(){
+	 var laydate = layui.laydate;
+	  laydate.render({
+		  elem:'#date1'
+		 
+	  });
+	  laydate.render({
+		  elem:'#date2'
+		 
+	  });
+});
+</script>
 </body>
 </html>

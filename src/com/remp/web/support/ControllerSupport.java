@@ -45,6 +45,7 @@ public abstract class ControllerSupport implements BaseController {
 	protected final void QueryInfo(String methodName)throws Exception
 	{
 		List<Map<String,String>> rows=this.executeQueryInfoMethod(methodName);
+		System.out.println("rows.size:"+rows.size());
 		if(rows.size()>0)
 		{
 			this.saveAttribute("rows", rows);

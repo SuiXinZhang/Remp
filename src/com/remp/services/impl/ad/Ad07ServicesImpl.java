@@ -9,6 +9,19 @@ import com.remp.system.tools.Tools;
 
 public class Ad07ServicesImpl extends JdbcServicesSupport 
 {
+	public Map<String, String> roomTurn()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("select d.aad301,d.aad302,d.aad305,a.aaa504,s.fvalue saaa805,")
+				.append("       a.aaa505,a.aaa506,b.aaa808,b.aaa810,d.aac401,")
+				.append("       c.aac407,d.aaa801")
+				.append("  from aa05 a,aa08 b,ac04 c,ad03 d,syscode s")
+				.append(" where d.aad301=? and d.aaa801=b.aaa801")
+				.append("   and b.aaa807=a.aaa502 and b.aaa805=s.fcode")
+				.append("   and s.fname='aaa805'  and c.aac401=d.aac401")
+				;
+		return this.queryForMap(sql.toString(), this.get("aad301"));
+	}
 	/**
 	 * 从订单转签约
 	 */
@@ -69,7 +82,7 @@ public class Ad07ServicesImpl extends JdbcServicesSupport
 				this.get("aad716"),
 				this.get("aad717"),
 				this.get("aad718"),
-				this.get("aad719"),
+				"03",
 				this.get("aad720"),
 				this.get("aad721"),
 				this.get("aad722"),
@@ -124,7 +137,7 @@ public class Ad07ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aad701,x.aac401,x.aad702,x.aad703,x.aad704,")
 				.append("       x.aad705,x.aad706,x.aad707,x.aad708,x.aad709,")
-				.append("      x.aad710,x.aad711,x.aad712,x.aad713,x.aad714,")
+				.append("       x.aad710,x.aad711,x.aad712,x.aad713,x.aad714,")
 				.append("       x.aad715,x.aad716,x.aad717,x.aad718,x.aad719,")
 				.append("       x.aad720,x.aad721,x.aad722,a.aaa504,s.fvalue saaa805,")
 				.append("       a.aaa505,a.aaa506,b.aaa808,b.aaa810")
@@ -133,7 +146,54 @@ public class Ad07ServicesImpl extends JdbcServicesSupport
 				.append("   and x.aaa801=b.aaa801 and b.aaa807=a.aaa502")
 				.append("   and b.aaa805=s.fcode  and s.fname='aaa805'")
 				;
-		return this.queryForMap(sql.toString(), this.get("aad701"));
+		Map<String, String> ins = this.queryForMap(sql.toString(), this.get("aad701"));
+		if(ins.get("aad719").equals("05"))
+		{
+			String sql2 = "select a.aad601,a.aad603 from ad06 a,ad07 b where b.aad701=? and a.aad701=b.aad701";
+			Map<String, String> map = this.queryForMap(sql2, this.get("aad701"));
+			ins.put("aad601", map.get("aad601"));
+			ins.put("aad603", map.get("aad603"));
+			System.out.println(map);
+		}
+			return ins;
+	}
+	
+	public boolean modify()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("update ad07")
+				.append("   set aad702=?,aad703=?,aad704=?,aad705=?,aad706=?,")
+				.append("       aad707=?,aad708=?,aad709=?,aad710=?,aad711=?,")
+				.append("       aad712=?,aad713=?,aad714=?,aad715=?,aad716=?,")
+				.append("       aad717=?,aad718=?,aad719=?,aad720=?,aad721=?,")
+				.append("       aad722=?")
+				.append(" where aad701=?")
+				;
+		Object args[]={
+				this.get("aad702"),
+				this.get("aad703"),
+				this.get("aad704"),
+				this.get("aad705"),
+				this.get("aad706"),
+				this.get("aad707"),
+				this.get("aad708"),
+				this.get("aad709"),
+				this.get("aad710"),
+				this.get("aad711"),
+				this.get("aad712"),
+				this.get("aad713"),
+				this.get("aad714"),
+				this.get("aad715"),
+				this.get("aad716"),
+				this.get("aad717"),
+				this.get("aad718"),
+				"03",
+				this.get("aad720"),
+				this.get("aad721"),
+				this.get("aad722"),
+				this.get("aad701")
+		};
+		return this.executeUpdate(sql.toString(), args)>0;
 	}
 	/**
 	 * 作废合同

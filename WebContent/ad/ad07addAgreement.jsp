@@ -12,7 +12,7 @@
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
     <form lay-filter="myform" id="myform" class="layui-form" action="<%=path %>/ad/ad07addAgreement.html" method="post">
-	<div class="layui-form-item" align="left">
+	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">客户名称</label>
 				<div class="layui-input-inline">
@@ -30,12 +30,13 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">房间号码</label>
 				<div class="layui-input-inline">
-					<input type="text" name="aad703" required lay-verify="true" value="${ins.aad403 }"
-					autocomplete="off" class="layui-input">
+					<input type="text" id="room" name="aad703" required lay-verify="true" value="${ins.aad403 }"
+					onclick="selectRoom()" readonly="readonly" class="layui-input">
+					<input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
 				</div>
 			</div>
 	</div>
-    <div class="layui-form-item" align="left">
+    <div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">房间结构</label>
 				<div class="layui-input-inline">
@@ -58,7 +59,7 @@
 				</div>
 			</div>
 	</div>
-	<div class="layui-form-item" align="left">
+	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">套内面积</label>
 				<div class="layui-input-inline">
@@ -81,7 +82,7 @@
 				</div>
 			</div>
 	</div>
-	<div class="layui-form-item" align="left">
+	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">计价方式</label>
 				<div class="layui-input-inline">
@@ -106,7 +107,7 @@
 				</div>
 			</div>
 	</div>
-	<div class="layui-form-item" align="left">
+	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">建筑成交单价</label>
 				<div class="layui-input-inline">
@@ -129,7 +130,7 @@
 				</div>
 			</div>
 	</div>
-	<div class="layui-form-item" align="left">
+	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">房间总价</label>
 				<div class="layui-input-inline">
@@ -157,7 +158,7 @@
 				</div>
 			</div>
 	</div>
-	<div class="layui-form-item" align="left">
+	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">合同汇率</label>
 				<div class="layui-input-inline">
@@ -180,7 +181,7 @@
 				</div>
 			</div>
 	</div>
-	<div class="layui-form-item" align="left">
+	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">签署日期</label>
 				<div class="layui-input-inline">
@@ -203,17 +204,7 @@
 				</div>
 			</div>
 	</div>
-	<div class="layui-form-item" align="left">
-			<div class="layui-inline">
-				<label class="layui-form-label">合同状态</label>
-				<div class="layui-input-inline">
-					<select name="aad719">
-						<option value="01" selected>认购</option>
-						<option value="02">小订</option>
-						<option value="03">签约</option>
-					</select>
-				</div>
-			</div>
+	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">业务员</label>
 				<div class="layui-input-inline">
@@ -233,15 +224,14 @@
 	</div>
     
     <div class="layui-form-item" align="center">
-	       <input type="submit" name="next" value="${empty param.aad701?'添加':'修改'}" class="layui-btn layui-btn-normal"
-	              formaction="${empty param.aad701?'ad07addAgreement':'ad07modifyAgreement'}.html">
+	       <input type="submit" name="next" value="添加" class="layui-btn layui-btn-normal"
+	              formaction="ad07addAgreement.html">
 	       <input type="submit" name="next" value="查看" class="layui-btn layui-btn-normal"
 	          formnovalidate="formnovalidate" formaction="ad/ad07queryAgreement.html">
 	       <input type="submit" name="next" value="返回" class="layui-btn layui-btn-normal"
 	       formaction="ad07queryAgreement.html" formnovalidate="formnovalidate">
 	</div>
     <input type="hidden" name="aac401" value="${ins.aac401 }">
-    <input type="hidden" name="aaa801" value="${ins.aaa801 }">
     <input type="hidden" name="aad701" value="${param.aad701 }">
     <input type="hidden" name="aad401" value="${ins.aad401 }">
 </form>
@@ -260,7 +250,11 @@
 	  var element = layui.element;
 	  var layer = layui.layer
 	  ,form = layui.form;
-	  layer.msg('Hello World');
+	  if(${!empty msg})
+		{
+			layer.msg('${msg }');	  
+		}
+		});
 	  form.val('myform',{
 		  "aad722":"${ins.aad420}",
 		  "aad704":"${ins.aad404}",
@@ -278,6 +272,25 @@
 			elem: '#date2'  //指定元素
 			  });
 		});
+	function selectRoom(e)
+	{
+		layer.open({
+			 type: 2
+			,title: '房间选择'
+			,area:['800px', '500px']
+			,maxmin: true
+			,content: '<%=path%>/base/room.html'
+			,btn: ['确定','关闭'],
+			yes: function(index){
+				var res = window["layui-layer-iframe" + index].callbackdata();
+				//打印返回的值，看是否有我们想返回的值
+				console.log(res);
+				$("#room").attr("value",res[0])
+				$("#roomNo").attr("value",res[1])
+				layer.close(index);
+				}
+			});  
+	}
 </script>
 </body>
 </html>

@@ -10,7 +10,7 @@
 	<jsp:include   page="/ae/menu.jsp"/>
   <div class="layui-body">
     <div style="padding: 15px;">
-	    <form id="action" class="layui-form" action="<%=path %>/ae01/ae01query.html" method="post">
+	    <form id="action" lay-filter="form" class="layui-form" action="<%=path %>/ae01/ae01query.html" method="post">
 	     <h1 align="center">合同管理</h1>
 	        <hr>
 	        <div class="layui-form-item" align="center">
@@ -26,14 +26,14 @@
 	                </div>
 	                <div class="layui-inline">
 	                    <label class="layui-form-label">客户姓名</label>
-	                    <div class="layui-input-inline" style="width: 100px;">
-	                        <input type="text" name="qaad702" autocomplete="off" class="layui-input">
+	                    <div class="layui-input-inline" style="width: 200px;">
+	                        <input type="text" value="${param.qaae402 }" name="qaad702" autocomplete="off" class="layui-input">
 	                    </div>
 	                </div>
 	                <div class="layui-inline">
 	                    <label class="layui-form-label">房间名称</label>
 	                    <div class="layui-input-inline" style="width: 200px;">
-	                        <input type="text" name="qaaa803" autocomplete="off" class="layui-input">
+	                        <input type="text" name="qaae416" value="${param.qaae416 }" autocomplete="off" class="layui-input">
 	                    </div>
 	                </div>
 	                <input type="submit" class="layui-btn" data-type="reload" value="查询">
@@ -56,7 +56,7 @@
 			    <tbody>
 			    <c:forEach items="${rows }" var="ins" varStatus="vs">
 			        <tr>
-			        	<td><input type="checkbox" lay-filter="check" name="modList" value="${ins.aab101 }"/></td>
+			        	<td><input type="checkbox" lay-skin="primary" lay-filter="check" name="modList" value="${ins.aae101 }"/></td>
 			            <td>${vs.count}</td>
 			            <td>${ins.aad702 }</td>
 			            <td>${ins.aaa803 }</td>
@@ -99,6 +99,9 @@ layui.use(['layer', 'form','element'], function(){
 	  var layer = layui.layer
 	  ,form = layui.form;
 	  var count=0;
+	  form.val('form',{
+		  'qaae104':"${param.qaae104}",
+	  });
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){
                	count++;

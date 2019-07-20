@@ -28,7 +28,7 @@
 			            <th>建筑面积</th>
 			            <th>可售面积</th>
 			            <th>可售套数</th>
-			            <th></th>
+			            <th>操作</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -39,7 +39,7 @@
 									<td>
 									<input type="checkbox"  lay-filter="check" lay-skin="primary"  name="idlist" value="${ins.aaa201 }"></td>
 									<td>${vs.count }</td>
-									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa201 }')">${ins.aaa202 }</a>
+									<td><a href="#"  style="color:orange" onclick="onEdit('${ins.aaa201 }')">${ins.aaa202 }</a>
 									</td>
 									<td>${ins.aaa203 }</td>
 									<td>${ins.aaa204 }</td>
@@ -50,7 +50,9 @@
 									<td>${ins.aaa212 }</td>
 									<td>${ins.aaa213 }</td>
 									<td>${ins.aaa214 }</td>
-									<td><a href="#"  style="color:red" onClick="onDel('${ins.aaa201}')">删除</a></td>
+									<td>
+									<a href="#" style="color:red"  onClick="onDel('${ins.aaa201}')">删除</a>
+									</td>
 								</tr>
 							</c:forEach>
 							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
