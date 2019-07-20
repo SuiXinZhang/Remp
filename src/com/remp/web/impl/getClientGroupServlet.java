@@ -44,6 +44,7 @@ public class getClientGroupServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		String str = JSONObject.toJSONString(rows);
 		System.out.println(str);
+		//"\"date\":"+
 		response.getWriter().write(str);
 	}
 

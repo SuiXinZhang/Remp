@@ -167,17 +167,17 @@
 
 							<div class="layui-form-item" align="center">
 							<div class="layui-inline">
-										<button class="layui-btn " 
-										formaction="<%=path%>/ac/clueAdd.jsp"  type="submit">
-										<i class="layui-icon layui-icon-add-1"></i>Ìí¼Ó
-										</button>
-								</div>
-								<div class="layui-inline">
-										<button class="layui-btn layui-btn-disabled" disabled="disabled"
-										formaction="<%=path%>/ac/ac01Delete.html" id="mod" type="submit">
-										<i class="layui-icon layui-icon-delete"></i>É¾³ý
-										</button>
-								</div>
+									<button class="layui-btn " 
+									formaction="<%=path%>/ac/clueAdd.jsp"  type="submit">
+									<i class="layui-icon layui-icon-add-1"></i>Ìí¼Ó
+									</button>
+							</div>
+							<div class="layui-inline">
+									<button class="layui-btn layui-btn-disabled" disabled="disabled"
+									formaction="<%=path%>/ac/ac01Delete.html" id="mod" type="submit">
+									<i class="layui-icon layui-icon-delete"></i>É¾³ý
+									</button>
+							</div>
 								
 							</div>
 
@@ -249,7 +249,6 @@ function getCheckBox(str)
 								toolbar : true,
 								done : function(res, curr, count) {
 									$('#tableId').css('display', 'block');
-									
 								}
 							});
 
