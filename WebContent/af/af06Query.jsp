@@ -1,83 +1,62 @@
-<%@ page language="java"  pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%String path=request.getContextPath(); %>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/base/taglib.jsp"%>
 <html>
 <head>
-<title>银行放款列表</title>
-<style type="text/css">
-	tr
-	{
-		height: 25px;
-	}
-</style>
-
-<script type="text/javascript">
-
-	var count=0;
-	function onSelect(vstate)
-	{
-		vstate?count++:count--;
-		var vdel=document.getElementById("del");
-		vdel.disabled=(count==0);
-	}
-	
-	function onEdit(vaaf601)
-	{
-		var vform = document.getElementById("myform");
-	  	 vform.action="<%=path%>/af/af06FindById.html?aaf601="+vaaf601;
-	  	 vform.submit();
-	}
-	
-	function onDel(vaaf601)
-    {
-  	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/af/af06DelById.html?aaf601="+vaaf601;
-  	 vform.submit();
-    }
-
-</script>
-
+	<jsp:include page="/base/head.jsp" />
 </head>
-<body>
-	${msg }
-	<form id="myform" action="<%=path%>/af/af06Query.html" method="post">
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<jsp:include page="/base/header.jsp" />
+		<jsp:include page="/af/menu.jsp" />
+		<div class="layui-body">
+			<div style="padding: 15px;">
+			<form class="layui-form" id="myform" action="<%=path%>/af/af06Query.html" method="post">
 	
 	<!------------------ 查询条件区---------------------->
-		<table border="1" align="center" width="95%">
-		<caption>
-			查询条件
-			<hr>
-		</caption>
-			<tr>
-				<td>项目名称</td>
-				<td>
-					<e:text name="qaaf612"/>
-				</td>
-				<td>贷款银行</td>
-				<td>
-					<e:text name="qaaf604"/>
-				</td>
-			</tr>
-			<tr>
-				<td>起始日期</td>
-				<td>
-					<e:date name="bdate"/>
-				</td>
-				<td>截止日期</td>
-				<td>
-					<e:date name="edate"/>
-				</td>
-			</tr>
-			<tr>
-				<td>放款单号</td>
-				<td><e:text name="qaaf602"/></td>
-			</tr>
-		</table>
+				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+							<legend>银行批量放贷列表</legend>
+				</fieldset>
+				
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">项目名称</label>
+						<div class="layui-input-inline">
+							<input type="text" name="qaaf612" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">贷款银行</label>
+						<div class="layui-input-inline">
+							<input type="text" name="qaaf604" class="layui-input">
+						</div>
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">起始日期</label>
+						<div class="layui-input-inline">
+							<input type="text" name="bdate" class="layui-input" id="test29" placeholder="yyyy-MM-dd">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">截止日期</label>
+						<div class="layui-input-inline">
+							<input type="text" name="edate" class="layui-input" id="test30" placeholder="yyyy-MM-dd">
+						</div>
+					</div>
+				</div>
+				
+				<div class="layui-form-item">
+					<label class="layui-form-label">放款单号</label>
+					<div class="layui-input-inline">
+						<input type="text" name="qaaf602" class="layui-input">
+					</div>
+				</div>
+
 		
 		<!-----------------数据迭代区 -------------------->
-		<table border="1" width="95%" align="center">
+		<table class="layui-table" border="1" width="95%" align="center">
 			<tr>
 			  <td></td>
 			  <td>序号</td>
@@ -109,7 +88,7 @@
 				    <td>${ins.aaf603 }</td>
 				    <td>${ins.aaf606 }</td>
 				    <td>
-				    	<a href="#" onclick="onEdit('${ins.aaf601}')">审核</a>
+				    	<a href="#" onclick="onEdit('${ins.aaf601}')" class="layui-btn">审核</a>
 				    </td>
 	  			</tr>
 	  		</c:forEach>
@@ -148,19 +127,70 @@
 	  </table>
 	  
 	  	<!-- 功能按钮区 -->
-		<table border="1" width="95%" align="center">
-		  <tr>
-		    <td align="center">
-		       <input type="submit" name="next" value="查询">
+	  	<div class="layui-form-item" align="center">
+		       <input type="submit" name="next" value="查询" class="layui-btn">
 		       <input type="submit" name="next" value="添加" 
-		              formaction="<%=path%>/af/af06Add.jsp">
+		              formaction="<%=path%>/af/af06Add.jsp" class="layui-btn">
 		       <%-- 
 		       <input type="submit" id="del" name="next" value="审核" 
 		              formaction="<%=path%>/af06Modify.html"  disabled="disabled">
 		       --%>
-		    </td>
-		  </tr>
-		</table>
+		</div>
 	</form>
+			
+		</div>
+
+	</div>
+	
+	<script type="text/javascript">
+
+	var count=0;
+	function onSelect(vstate)
+	{
+		vstate?count++:count--;
+		var vdel=document.getElementById("del");
+		vdel.disabled=(count==0);
+	}
+	
+	function onEdit(vaaf601)
+	{
+		var vform = document.getElementById("myform");
+	  	 vform.action="<%=path%>/af/af06FindById.html?aaf601="+vaaf601;
+	  	 vform.submit();
+	}
+	
+	function onDel(vaaf601)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/af/af06DelById.html?aaf601="+vaaf601;
+  	 vform.submit();
+    }
+
+</script>
+	<script>
+//JavaScript代码区域
+	layui.use(['layer', 'form','element'], function(){
+	  var element = layui.element;
+	  var layer = layui.layer
+	  ,form = layui.form;
+	});
+	
+	//日期选择框
+	  layui.use('laydate', function() {
+	  	var laydate = layui.laydate;
+	  
+	  	laydate.render({
+	  		elem: '#test29',
+	  		theme: 'molv',
+			trigger: 'click'
+	  	});
+		
+		laydate.render({
+			elem: '#test30',
+			theme: 'molv',
+			trigger: 'click'
+		});
+	  });
+</script>
 </body>
 </html>

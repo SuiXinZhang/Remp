@@ -31,7 +31,6 @@
 		    <table class="layui-table">
 			    <thead>
 			        <tr>
-			        	<td></td>
 						<td>序号</td>
 						<td>客户</td>
 						<td>房间</td>
@@ -45,8 +44,6 @@
 			    <tbody>
 			    <c:forEach items="${rows }" var="ins" varStatus="vs">
 			        <tr>
-			        	<td><input type="checkbox" name="IdList" value="${ins.aae301 }"
-									onclick='onSelect(this.checked)'/></td>
 						<td>${vs.count}</td>
 						<td>${ins.aae302 }</td>
 						<td>${ins.aae312 }</td>

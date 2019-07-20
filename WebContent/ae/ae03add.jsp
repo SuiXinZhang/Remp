@@ -1,69 +1,155 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@include file="/../base/taglib.jsp" %>
 <html>
 <head>
-<title>入伙服务</title>
-<%String path=request.getContextPath();%>
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-<body>
-	<form action="" method="post">
-		<br> <br>
-		<table border="1" align="center" title="入伙记录" width="45%">
-			<caption>
-				入伙记录
-				<hr width="160">
-			</caption>
-			<tr>
-				<td>客户</td>
-				<td><e:text name="aae302" required="true" defval="${ins.aae302 }"/></td>
-				<td>联系电话</td>
-				<td><e:text name="aae303"  required="true" defval="${ins.aae303 }"/></td>
-			</tr>
-			<tr>
-			<c:choose>
-				<c:when test="${empty param.aae301 }" >
-					<td>房间号</td>
-					<td><e:select name="aaa801" value="${ins.list }" required="true" /></td>
-				</c:when>
-				<c:otherwise>
-					<td>房间号</td>
-					<td><e:text name="aaa803" readonly="true" value="${ins.aaa803 }" required="true" />
-					<e:hidden name="aaa801" value="${ins.aaa801 }"/></td>
-				</c:otherwise>
-			</c:choose>
-				<td>合同编号</td>
-				<td><e:text name="aae304" required="true" defval="${ins.aae304 }"/></td>
-			</tr>
-			<tr>
-				<td>交房日期</td>
-				<td><e:date name="aae305" required="true" defval="${ins.aae305 }"/></td>
-				<td>业务员</td>
-				<td colspan="3"><e:text name="aae306" required="true" defval="${ins.aae306 }"/></td>
-			</tr>
-			<tr>
-				<td>承诺办理时间</td>
-				<td><e:date name="aae307" required="true" defval="${ins.aae307 }"/></td>
-				<td>承诺完成时间</td>
-				<td><e:date name="aae308" required="true" defval="${ins.aae308 }"/></td>
-			</tr>
-			<tr>
-				<td>备注</td>
-				<td colspan="3"><e:textarea  rows="5" cols="45" name="aae311" defval="${ins.aae311 }"/></td>
-			</tr>
-			<tr>
-				<td colspan="4" align="center">
-					<input type="submit" value="${empty param.aae301?'添加':'修改' }"
-						formaction="<%=path%>/ae/${empty param.aae301?'ae03Add.html':'ae03Modify.html' }">
-					<input type="submit" value="返回"
-						formaction="<%=path%>/ae/ae03query.jsp" 
-						formnovalidate="formnovalidate">
-				</td>
-			</tr>
-		</table>
-		<input type="hidden" name="aae301" value="${param.aae301 }"> 
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/ae/menu.jsp"/>
+  <div class="layui-body">
+  <h1 align="center">入伙记录</h1>
+    <div style="padding: 15px;">
+	    <form action="<%=path %>/ae03Add.html" lay-filter="form" class="layui-form"  method="post">
+	    <div align="center">
+		    <div class="layui-form-item">
+		    	<div class="layui-inline">
+			      	<label class="layui-form-label">客户</label>
+			      	<div class="layui-input-inline">
+			        	<input required="required" name="aae302" class="layui-input" type="text" value="${ins.aae302 }" >
+		      		</div>
+		    	</div>
+			    <div class="layui-inline">
+			      	<label class="layui-form-label">联系电话</label>
+			      	<div class="layui-input-inline">
+			        <input required="required" name="aae303" class="layui-input" type="number" step="1" maxlength="15" value="${ins.aae303 }" >
+		      		</div>
+		    	</div>
+	    	</div>
+	    	
+	    	<div class="layui-form-item">
+	    	 <div class="layui-inline">
+			      	<label class="layui-form-label">合同编号</label>
+			      	<div class="layui-input-inline">
+			        <input required="required" name="aae304" class="layui-input" value="${ins.aae304 }" type="text">
+		      		</div>
+		    	</div>
+		      	<div class="layui-inline">
+		      		<label class="layui-form-label">房间</label>
+	                <div class="layui-input-inline" >
+	                	<input required="required" id="room" class="layui-input" type="text" name="aae312" value="${ins.aae312 }" onclick="selectRoom()" readonly="readonly">
+	                	<input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
+	                </div>
+	            </div>
+	    	</div>
+	    	<div class="layui-form-item">
+		    	<div class="layui-inline">
+			      	<label class="layui-form-label">交房日期</label>
+			      	<div class="layui-input-inline">
+			        <input id="date1" required="required" name="aae305" class="layui-input" type="text" value="${ins.aae305 }"
+			       		 placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
+		      		</div>
+		    	</div>
+			    <div class="layui-inline">
+			      	<label class="layui-form-label">业务员</label>
+			      	<div class="layui-input-inline">
+				       <input required="required" name="aae306" type="text" class="layui-input" value="${ins.aae306 }">
+		      		</div>
+		    	</div>
+	    	</div>
+	    	<div class="layui-form-item">
+		    	<div class="layui-inline">
+			      	<label class="layui-form-label">承诺办理</label>
+			      	<div class="layui-input-inline">
+			       		<input id="date2" required="required" name="aae307" class="layui-input" type="text" value="${ins.aae307 }"
+			       		 placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
+		      		</div>
+		    	</div>
+			    <div class="layui-inline">
+			      	<label class="layui-form-label">承诺完成</label>
+			      	<div class="layui-input-inline">
+				       <input id="date3" required="required" name="aae308" class="layui-input" type="text" value="${ins.aae308 }"
+			       		 placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
+		      		</div>
+		    	</div>
+	    	</div>
+	    	<div class="layui-form-item layui-form-text">
+		    	<div class="layui-inline">
+			      	<label class="layui-form-label">备注</label>
+			      	<div class="layui-input-inline" >
+			        <textarea cols="65" name="aae311" class="layui-textarea" placeholder="请输入内容">${ins.aae311 }</textarea>
+		      		</div>
+		    	</div>
+	    	</div>
+	    	
+	    	<div class="layui-form-item">
+				<div class="layui-inline">
+						<input class="layui-btn" name="next" type="submit" value="${empty param.aae301?'添加':'修改' }"
+							formaction="<%=path%>/ae/${empty param.aae301?'ae03Add.html':'ae03Modify.html'}">
+						<input class="layui-btn" type="submit" value="返回"
+						formaction="<%=path%>/ae/ae03query.html" formnovalidate="formnovalidate" >
+				</div>
+			</div>
+			<input type="hidden" name="aae301" value="${param.aae301 }"> 
+		</div>
 	</form>
-	${msg}
+	</div>
+  </div>
+  
+  <div class="layui-footer">
+  </div>
+</div>
+
+<script>
+layui.use(['layer', 'form','element'], function(){
+	var element = layui.element;
+	var $ = layui.jquery;
+	var layer = layui.layer
+	,form = layui.form;
+	  form.val('form',{
+		  'aae104':"${ins.aae104}",
+		  'aae209':"${ins.aae209}",
+		  'aae217':"${ins.aae217}",
+		  'aae210':"${ins.aae210}",
+	  });
+	})
+	layui.use('laydate',function(){
+		 var laydate = layui.laydate;
+		  laydate.render({
+			  elem:'#date1'
+			 
+		  });
+		  laydate.render({
+			  elem:'#date2'
+			 
+		  });
+		  laydate.render({
+			  elem:'#date3'
+			 
+		  });
+	});
+</script>
+<script type="text/javascript">
+function selectRoom(e)
+{
+	layer.open({
+		 type: 2
+		,title: '房间选择'
+		,area:['800px', '500px']
+		,maxmin: true
+		,content: '<%=path%>/base/room.html'
+		,btn: ['确定','关闭'],
+		yes: function(index){
+			var res = window["layui-layer-iframe" + index].callbackdata();
+			//打印返回的值，看是否有我们想返回的值
+			console.log(res);
+			$("#room").attr("value",res[0])
+			$("#roomNo").attr("value",res[1])
+			layer.close(index);
+			}
+		});  
+}
+</script>
 </body>
 </html>

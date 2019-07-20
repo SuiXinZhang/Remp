@@ -6,7 +6,7 @@ public class Ae04AddServlet extends Ae04BaseSupport
 	public String execute() throws Exception 
 	{
 		this.update("addAe04", "Ìí¼Ó");
-		return "ae04add";
+		return "ae/ae04add";
 	}
 
 }

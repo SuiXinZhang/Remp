@@ -16,7 +16,7 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("select d.aad301,d.aad302,d.aad305,a.aaa504,s.fvalue saaa805,")
 				.append("       a.aaa505,a.aaa506,b.aaa808,b.aaa810,d.aac401,")
-				.append("       c.aac407")
+				.append("       c.aac407,d.aaa801")
 				.append("  from aa05 a,aa08 b,ac04 c,ad03 d,syscode s")
 				.append(" where d.aad301=? and d.aaa801=b.aaa801")
 				.append("   and b.aaa807=a.aaa502 and b.aaa805=s.fcode")
@@ -36,12 +36,12 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 				.append("                 aad406,aad407,aad408,aad409,aad410,")
 				.append("                 aad411,aad412,aad413,aad414,aad415,")
 				.append("                 aad416,aad417,aad418,aad419,aad420,")
-				.append("                 aad421,aad422)")
+				.append("                 aad421,aad422,aaa801)")
 				.append("          values(?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
-				.append("                 ?,?)")
+				.append("                 ?,?,?)")
 				;
 		Object args[] = {
 				this.get("aac401"),
@@ -65,8 +65,10 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 				this.get("aad419"),
 				this.get("aad420"),
 				this.get("aad421"),
-				"Î´¼¤»î"
+				"Î´¼¤»î",
+				this.get("aaa801")
 		};
+		System.out.println(this.get("aaa801"));
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
 	/**

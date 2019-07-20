@@ -1,56 +1,105 @@
 <%@ page language="java" pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e" %>
-<%String path=request.getContextPath(); %>
+<%@include file="/base/taglib.jsp" %>
 <html>
 <head>
-<title>Insert title here</title>
+	<jsp:include   page="/base/head.jsp"/>
 </head>
-<body>
-${msg }
-	<form action="<%=path %>/ab04Edit.html" method="post">
-		<table border="1" align="center" width="90%">
-			<caption>
-				编辑营销活动
-				<hr>
-			</caption>
-			<tr>
-				<td>活动主题</td>
-				<td>
-					<e:text name="aab402" required="true" autofocus="true" defval="${ins.aab402 }"/>
-				</td>
-				<td>活动类型</td>
-				<td>
-					<e:select name="aab403" required="true" 
-					value="线下营销活动:01,网络营销活动:02,电视营销活动:03" defval="${ins.aab403 }"/>
-				</td>
-			</tr>
-			<tr>	
-				<td>活动时间</td>
-				<td>
-					<e:date name="aab404" required="true" defval="${ins.aab404 }"/>
-				</td>
-				<td>发生费用</td>
-				<td>
-					<e:number step="0.01" name="aab405" required="true" defval="${ins.aab405 }"/>
-				</td>
-			</tr>
-			<tr>
-				<td>活动描述</td>
-				<td>
-					<e:textarea rows="5" cols="45" name="aab406" defval="${ins.aab406 }"/>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4" align="center">
-					<input type="submit" name="next" value="完成"
-					formaction="<%=path%>/ab04Edit.html">
-					<input type="submit" name="next" value="返回"
-					formaction="<%=path%>/ab03Query.html"
-					formnovalidate="formnovalidate">
-				</td>
-			</tr>
-		</table>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  	<jsp:include   page="/base/header.jsp"/>
+	<jsp:include   page="/ab/menu.jsp"/>
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+    
+    	<form class="layui-form" lay-filter="myform" action="<%=path %>/ab/ab04Edit.html" method="post">
+		
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+			<legend>编辑营销活动</legend>
+		</fieldset>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">活动主题</label>
+			<div class="layui-input-block">
+				<input type="text" name="aab402" required="true" autofocus="true" value="${ins.aab402 }" class="layui-input">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">活动类型</label>
+			<div class="layui-input-block">
+				<select name="aab403" lay-verify="">
+					<option value="">请选择活动类型</option>
+					<option value="01">线下营销活动</option>
+					<option value="02">网络营销活动</option>
+					<option value="03">电视营销活动</option>
+				</select>
+			</div>
+		</div>
+			
+		<div class="layui-form-item">
+			<label class="layui-form-label">活动时间</label>
+			<div class="layui-input-inline">
+				<input type="text" name="aab404" required="true" value="${ins.aab404 }" class="layui-input" id="test29" placeholder="yyyy-MM-dd">
+			</div>
+		</div>
+		
+		<div class="layui-form-item">
+			<label class="layui-form-label">发生费用</label>
+			<div class="layui-input-block">
+				<input type="number" step="0.01" name="aab405" required="true" value="${ins.aab405 }" class="layui-input"/>
+			</div>
+		</div>
+		
+		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label">活动描述</label>
+			<div class="layui-input-block">
+				<textarea placeholder="请输入内容" name="aab406" value="${ins.aab406 }" class="layui-textarea"></textarea>
+			</div>
+		</div>
+
+		<div class="layui-form-item" align="center">
+			<input type="submit" name="next" value="完成"
+			formaction="<%=path%>/ab/ab04Edit.html" class="layui-btn">
+			<input type="submit" name="next" value="返回"
+			formaction="<%=path%>/ab/ab03Query.html"
+			formnovalidate="formnovalidate" class="layui-btn">
+		</div>
+				
 		<input type="hidden" name="aab301" value="${param.aab301 }">
 	</form>
+    
+    </div>
+    
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    ? layui.com - 底部固定区域
+  </div>
+</div>
+<script ></script>
+<script>
+//JavaScript代码区域
+	layui.use(['layer', 'form'], function(){
+		  var layer = layui.layer
+		  ,form = layui.form;
+		  
+		  layer.msg('Hello World');
+		  form.val('myform',{
+			"aab403":"${ins.aab403}"
+		  });
+		});
+		
+	//日期选择框
+	layui.use('laydate', function() {
+		var laydate = layui.laydate;
+		//墨绿主题
+		laydate.render({
+			elem: '#test29',
+			theme: 'molv',
+		});
+	});
+</script>
 </body>
 </html>

@@ -6,13 +6,16 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">票据管理</a>
         </li>
-        <li class="layui-nav-item">
-          <a href="javascript:;">预收款管理</a>
+        <li class="layui-nav-item"><a href="javascript:;">预收款管理</a>
+        	 <dl class="layui-nav-child">
+             	<dd><a href="af03add.jsp">&nbsp&nbsp&nbsp&nbsp收款详情</a></dd>
+             	<dd><a href="af03query.jsp">&nbsp&nbsp&nbsp&nbsp查询收款</a></dd>
+             </dl>
         </li>
         <li class="layui-nav-item"><a href="">楼款管理</a></li>
-        <li class="layui-nav-item"><a href="">银行批量放贷</a></li>
+        <li class="layui-nav-item"><a href="af06Query.jsp">银行批量放贷</a></li>
          <li class="layui-nav-item"><a href="">单据查询</a></li>
-        <li class="layui-nav-item"><a href="">催交欠款</a></li>
+        <li class="layui-nav-item"><a href="af07Query.jsp">催交欠款</a></li>
       </ul>
     </div>
   </div>
