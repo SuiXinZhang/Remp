@@ -220,9 +220,7 @@
 	</fieldset>
 	</div>
   </div>
-  
-  <div class="layui-footer">
-  </div>
+
 </div>
 <script>
 layui.use(['layer', 'form'], function(){
