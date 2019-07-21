@@ -18,6 +18,27 @@
 				style="padding: 15px; margin: 30px 80px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
 					<legend>线索管理</legend>
+					<form action="<%=request.getContextPath() %>/UploadHandleServlet" enctype="multipart/form-data" method="post">
+<!--      选择文件： <input type="file" name="excelfilename"><br>
+     <input type="submit" value="数据入库"/> -->
+     
+     <div class="layui-form-item" align="center">
+      	<div class="layui-inline" >
+      	<label class="layui-form-label" style="width:100px">
+	    <i class="layui-icon layui-icon-tree" style="font-size: 20px; color: black;"></i>
+	    Excel导入
+	    </label>
+	    </div>
+	    <div class="layui-inline" >
+			<button type="button" onclick="$('input[id=fileUpload]').click();" class="layui-btn layui-btn-normal">选择文件</button>
+			<input type="file" id="fileUpload"  name="excelfilename" style="display:none">
+	   	</div>
+	   	<div class="layui-inline" >
+			<button type="submit" class="layui-btn layui-btn-normal">导入数据</button>
+	   	</div>
+	  </div>
+	  
+</form>
 					<form action="<%=path%>/ac/ac01Query.html" lay-filter="form"
 						class="layui-form" id="myform" method="post">
 
@@ -173,9 +194,10 @@
 									</button>
 							</div>
 							</div>
-
 						</div>
 					</form>
+
+					
 			</div>
 
 			</fieldset>
@@ -186,8 +208,8 @@
 			<!-- 底部固定区域 -->
 		</div>
 	</div>
-	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript">
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
 function onEdit(vaac101)
 {
 	var myform = document.getElementById("myform");
@@ -226,6 +248,11 @@ function getCheckBox(str)
 							, layedit = layui.layedit
 							, laydate = layui.laydate
 							, table = layui.table;
+							
+							if("${msg }" != "")
+							  {
+								  layer.msg("${msg }");
+							  }
 
 							//日期
 							laydate.render({
@@ -250,36 +277,7 @@ function getCheckBox(str)
 								"qaac103" : "${param.qaac103 }",
 								"qaac109" : "${param.qaac109 }",
 							});
-
-							var count = 0;
-
-							form.on('checkbox(check)',function(data) {
-												console.log(data);
-												if (data.elem.checked == true) {
-													
-													count++;
-													if (count != 0) {
-														document.getElementById("mod").className = "layui-btn";
-													} else {
-														document.getElementById("mod").className = "layui-btn layui-btn-disabled";
-													}
-													document.getElementById("mod").disabled = (count == 0)
-													console.log(count);
-												} else {
-													
-													count--;
-													if (count != 0) {
-														document.getElementById("mod").className = "layui-btn";
-													} else {
-														document.getElementById("mod").className = "layui-btn layui-btn-disabled";
-													}
-													document.getElementById("mod").disabled = (count == 0)
-													console.log(count);
-												}
-											});
-
-						});
-	</script>
-
+		})
+</script>
 </body>
 </html>

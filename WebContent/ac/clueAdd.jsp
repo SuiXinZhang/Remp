@@ -131,15 +131,15 @@
     <div class="layui-inline">
 			<button class="layui-btn " name="next" type="submit"
 			formaction="<%=path %>/ac/${empty param.aac101?'ac01Add.html':'ac01Modify.html' }"  >
-			<c:if test="${empty param.aac101}">
+			<c:if test="${empty ins.aac101}">
 			<i class="layui-icon layui-icon-add-1"></i>添加
 			</c:if>
-			<c:if test="${!empty param.aac101}">
+			<c:if test="${!empty ins.aac101}">
 			<i class="layui-icon layui-icon-edit"></i>修改
 			</c:if>
 			</button>
 	</div>
-	<c:if test="${!empty param.aac101 }">
+	<c:if test="${!empty ins.aac101 }">
 	<div class="layui-inline">
 			<button class="layui-btn " name="next" type="submit" formnovalidate="formnovalidate"
 			formaction="<%=path %>/ac/ac01Query.html" >
@@ -193,6 +193,7 @@
 		  //执行一个laydate实例
 		  laydate.render({
 		    elem: '#date'  //指定元素
+		    ,trigger: 'click'
 		  });
 		});
 </script>

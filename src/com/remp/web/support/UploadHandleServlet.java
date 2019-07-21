@@ -74,7 +74,7 @@ public class UploadHandleServlet extends HttpServlet {
 			msg = "Õ¯¬Áπ ’œ!";
 		}
 		request.setAttribute("msg", msg);
-		request.getRequestDispatcher("test.jsp").forward(request, response);
+		request.getRequestDispatcher("ac/ac01Query.html").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

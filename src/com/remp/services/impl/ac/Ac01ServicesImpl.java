@@ -53,7 +53,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aac102,x.aac103,x.aac104,x.aac105,x.aac106,")
 				.append("		x.aac107,x.aac108,x.aac109,x.aac110,x.aaa201,")
-				.append("       x.aaa402,x.aac111")
+				.append("       x.aaa402,x.aac111,x.aac101")
 				.append("  from ac01 x")
 				.append(" where x.aac101 = ?");
 		
@@ -70,7 +70,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("update ac01 a")
     			.append("   set a.aac102=?,a.aac103=?,a.aac104=?,a.aac105=?,a.aac106=?,")
-    			.append("       a.aac107=?,a.aac108=?,a.aac109=?,a.aac110=?,a.aaa201=?")
+    			.append("       a.aac107=?,a.aac108=?,a.aac109=?,a.aac110=?,a.aaa201=?,aaa402=?")
     			.append(" where a.aac101=?");
 		Object[] args=
 			{
@@ -84,6 +84,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 					this.get("aac109"),
 					this.get("aac110"),
 					this.get("aaa201"),
+					this.get("aac402"),
 					this.get("aac101")
 			};
 		
@@ -96,10 +97,11 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		this.put("aac101", aac101);
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ac01(aac102,aac103,aac104,aac105,aac106,")
-				.append("				  aac107,aac108,aac109,aac110,aaa201,aac101)")
+				.append("				  aac107,aac108,aac109,aac110,aaa201,")
+				.append("                 aaa402,aac101,aac111)")
 				.append("			values (?,?,?,?,?,")
-				.append("					?,?,?,?,?,?)")
-				;
+				.append("					?,?,?,?,?,")
+				.append("                   ?,?,'δת')");
 		
 		Object args[] = {
 				this.get("aac102"),
@@ -114,6 +116,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 				this.get("aac110"),
 
 				this.get("aaa201"),
+				this.get("aaa402"),
 				aac101
 		};
 		return this.executeUpdate(sql.toString(), args) >0;

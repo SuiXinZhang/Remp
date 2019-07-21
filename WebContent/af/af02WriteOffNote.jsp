@@ -1,94 +1,187 @@
-<%@ page language="java"    pageEncoding="GBK"  %>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<% String path = request.getContextPath(); %>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/base/taglib.jsp"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Write Off Note</title>
+	<jsp:include page="/base/head.jsp" />
 </head>
-<style type="text/css">
-tr 
-{
-	height: 25px;
-}
-</style>
-<body>
-<br>
-<br>
-<form action = "<%=path%>/ac/af02WriteOffNote.html" method = "post">
-${msg}
-<table border="1" align="center" width="45%">
-<caption>
-	Æ±¾ÝºËÏú
-<hr width:"160px">
-</caption>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<jsp:include page="/base/header.jsp" />
+		<jsp:include page="/af/menu.jsp" />
+		<div class="layui-body">
+				<div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend> ºËÏúÆ±¾Ý</legend>
+    <form class="layui-form" lay-filter="myform" action= "<%=path%>/ac/af02WriteOffNote.html" method="post">
+  
+	<div class="layui-form-item" align="center">
+	
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
+			Æ±¾ÝÅú´ÎºÅ
+			</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aaf202" required lay-verify="true" value="${param.aaf202 }"
+					 autocomplete="off" readonly="readonly" class="layui-input">
+				</div>
+		</div>
+	</div>
+	
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
+			ÆðÊ¼±àºÅ
+			</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aaf203" required lay-verify="true" value="${param.aaf203 }"
+					 autocomplete="off" step="1" class="layui-input">
+				</div>
+		</div>
+	
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
+			½ØÖ¹±àºÅ
+			</label>
+				<div class="layui-input-inline">
+					<input type="number" name="aaf204" required lay-verify="true" value="${param.aaf204 }"
+					 autocomplete="off" step="1" class="layui-input">
+				</div>
+		</div>
+	</div>
+	
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
+			ÁìÓÃÈË
+			</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aaf205" required lay-verify="true" value="${param.aaf205 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+	
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
+			ÁìÓÃÈÕÆÚ
+			</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aaf206" id="date" required lay-verify="true" value="${param.aaf206 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+	</div>
+	
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
+			¿ªÆ±½ð¶î
+			</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aaf209" required lay-verify="true" 
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
 
-<tr>
-	<td>Æ±¾ÝÅú´ÎºÅ</td>
-	<td>
-	<e:text name="aaf202" required="true" defval="${param.aaf202 }" readonly="true"/>
-	</td>
-</tr>
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
+			¿ªÆ±ÈË
+			</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aaf210" required lay-verify="true" 
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
 
-<tr>
-	<td>ÆðÊ¼±àºÅ</td>
-	<td>
-	<e:text name="aaf203" required="true" defval="${param.aaf203 }" />
-	</td>
-	<td>½ØÖ¹±àºÅ</td>
-	<td>
-	<e:text name="aaf204" required="true" defval="${param.aaf204 }" />
-	</td>
-</tr>
-<tr>
-	<td>ÁìÓÃÈË</td>
-	<td>
-	<e:text name="aaf205"  required="true" defval="${param.aaf205 }" readonly="true"/>
-	</td>
-	<td>ÁìÓÃÈÕÆÚ</td>
-	<td>
-	<e:text name="aaf206" required="true" defval="${param.aaf206 }" readonly="true"/>
-	</td>
-</tr>
-<tr>
-	<td>¿ªÆ±½ð¶î</td>
-	<td>
-	<e:text name="aaf209"  required="true" />
-	</td>
-	<td>¿ªÆ±ÈË</td>
-	<td>
-	<e:text name="aaf210" required="true" />
-	</td>
-	<td>¿ªÆ±ÈÕÆÚ</td>
-	<td>
-	<e:date name="aaf211" required="true" />
-	</td>
-</tr>
-
-<tr>
-	<td>ºËÏúÈË</td>
-	<td>
-	<e:text name="aaf213"  required="true" />
-	</td>
-	<td>ºËÏúÈÕÆÚ</td>
-	<td>
-	<e:date name="aaf214" required="true" />
-	</td>
-</tr>
-   <tr>
-     <td align="center">
-       <input type="submit" name="next" value="È·¶¨ºËÏú">
-     </td>
-     <td align="center">
-       <input type="submit" name="next" value="·µ»Ø" 
-       formaction="af02Query.html" formnovalidate="formnovalidate">
-     </td>
-   </tr>
-</table>
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
+			¿ªÆ±ÈÕÆÚ
+			</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aaf211" id="date1" required lay-verify="true" 
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+	</div>
+	
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
+			ºËÏúÈË
+			</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aaf213" required lay-verify="true" 
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+	
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
+			ºËÏúÈÕÆÚ
+			</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aaf214" id="date2" required lay-verify="true" 
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+	</div>
+	
+    <div class="layui-form-item" align="center">
+	<div class="layui-inline">
+			<button class="layui-btn " name="next" type="submit" >
+			<i class="layui-icon layui-icon-add-1"></i>È·ÈÏºËÏú
+			</button>
+	</div>
+	<div class="layui-inline">
+			<button class="layui-btn " name="next" type="submit" formnovalidate="formnovalidate"
+			formaction="<%=path%>/af/af02Query.html">
+			<i class="layui-icon layui-icon-return"></i>·µ»Ø
+			</button>
+	</div>
+    </div>
 <e:hidden name="aaf201" value="${param.aaf201 }"/>
-<input type="hidden" name="qaaf207" value="3"/>
+<input type="hidden" name="qaaf207" value="3" />
 </form>
+</fieldset>
+		</div>
+	</div>
+	<script>
+//JavaScript´úÂëÇøÓò
+	layui.use(['layer', 'form','element','laydate'], function(){
+	  var element = layui.element
+	  ,layer = layui.layer
+	  ,form = layui.form
+	  ,laydate = layui.laydate;
+	  
+	  if("${msg }" != "")
+	  {
+		  layer.msg("${msg }");
+	  }
+	
+	  //Ö´ÐÐÒ»¸ölaydateÊµÀý
+	  laydate.render({
+	    elem: '#date'  //Ö¸¶¨ÔªËØ
+	    ,trigger: 'click'
+	  });
+	  laydate.render({
+		    elem: '#date1'  //Ö¸¶¨ÔªËØ
+		    ,trigger: 'click'
+	  });
+	  laydate.render({
+		    elem: '#date2'  //Ö¸¶¨ÔªËØ
+		    ,trigger: 'click'
+	  });
+	});
+</script>
 </body>
 </html>

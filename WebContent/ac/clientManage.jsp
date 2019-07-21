@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/base/taglib.jsp"%>
 <html>
@@ -63,8 +64,7 @@
 							<table id="idData"  lay-filter="demo">
 								<thead>
 									<tr>
-										<td lay-data="{field:'check',width:50}"></td>
-										<td lay-data="{field:'sort1',width:60}">序号</td>
+										<td lay-data="{field:'sort1',width:60,fixed:'left'}">序号</td>
 										<td lay-data="{field:'username'}">客户名</td>
 										<td lay-data="{field:'projectname',width:125}">客户编号</td>
 										<td lay-data="{field:'userphone'}">联系电话</td>
@@ -81,14 +81,12 @@
 										<c:when test="${rows!= null }">
 											<c:forEach items="${rows }" var="ins" varStatus="vs">
 												<tr>
-													<td>
-													<input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aac401 }" ></td>
 													<td>${vs.count } </td>
 													<td>${ins.aac403 }</td>
 													<td>${ins.aac402 }</td>
 													<td>${ins.aac407 }</td>
 													<td>${ins.cnaac404 }</td>
-													<td>${ins.aac406 }</td>
+													<td>${ins.cnaac406 }</td>
 													<td>${ins.aac413 }</td>
 													<td>${ins.aac410 }</td>
 													<td>${ins.aac408 }</td>
@@ -124,6 +122,7 @@
 							</div>
 
 						</div>
+						<input type="hidden" name="aac403" id="vaac403" value=""> 
 					</form>
 			</div>
 
@@ -156,7 +155,7 @@ function onFollow(vaac401,vaac402,vaac403)
 {
 	var aac403 = document.getElementById("vaac403");
 	aac403.value = vaac403;
-	console.log(aac403);
+	console.log(aac403); 
 	var myform = document.getElementById("myform");
 	myform.action = "<%=path%>/ac/addFollow.jsp?aac401=" + vaac401+ "&aac402=" + vaac402 ;
 	myform.submit();
@@ -170,6 +169,10 @@ function onFollow(vaac401,vaac402,vaac403)
 	  ,element = layui.element
 	  ,table = layui.table;
 	  
+	  if("${msg }" != "")
+	  {
+		  layer.msg("${msg }");
+	  }
 		//转换静态表格
 		table.init('demo', {
 			limit : 10,

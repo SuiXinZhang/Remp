@@ -52,7 +52,7 @@ public class Ac04ServicesImpl extends JdbcServicesSupport {
 		StringBuilder sql = new StringBuilder()
 				.append("update ac04 a")
     			.append("   set a.aac403=?,a.aac404=?,a.aac405=?,a.aac406=?,a.aac407=?,")
-    			.append("       a.aac408=?,a.aac409=?,a.aac410=?,a.aac411=?,acaac412=?,")
+    			.append("       a.aac408=?,a.aac409=?,a.aac410=?,a.aac411=?,a.aac412=?,")
     			.append("       a.aac413=?,a.aac414=?,a.aac415=?,a.aac416=?")
     			.append(" where a.aac401=?");
 		Object[] args=
@@ -73,7 +73,7 @@ public class Ac04ServicesImpl extends JdbcServicesSupport {
 					this.get("aac414"),
 					this.get("aac415"),
 					this.get("aac416"),
-					this.get("aac401"),
+					this.get("aac401")
 			};
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
@@ -99,11 +99,11 @@ public class Ac04ServicesImpl extends JdbcServicesSupport {
 		Object aac405 = this.get("qaac405");
 		Object aac407 = this.get("qaac407");
 		StringBuilder sql = new StringBuilder()
-				.append("select aac401,aac402,aac403,b.fvalue as cnaac404,aac406")
+				.append("select aac401,aac402,aac403,b.fvalue as cnaac404,c.fvalue as cnaac406,")
 				.append("       aac407,aac408,aac410,aac413")
 				.append("  from ac04 a,syscode b,syscode c")
 				.append(" where a.aac404 = b.fcode and b.fname = 'aac404' ")
-				.append("   and a.aac");
+				.append("   and a.aac406 = c.fcode and c.fname = 'aac406' ");
 		List<Object> args = new ArrayList<>();
 		
 		if (this.isNotNull(aac403)) {
@@ -122,7 +122,9 @@ public class Ac04ServicesImpl extends JdbcServicesSupport {
 			sql.append(" and aac407 = ?");
 			args.add(aac407);
 		}
-		
+		System.out.println(sql);
+		System.out.println(aac402);
+		System.out.println(aac403);
 		return this.queryForList(sql.toString(), args.toArray());
 	}
 	

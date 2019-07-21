@@ -12,7 +12,7 @@
     	
     <div style="padding: 15px;">
     <form class="layui-form" lay-filter="myform" action="<%=path%>/ac/ac04Add.html" method="post">
-				客户台账
+				客户信息${empty ins.aac401?'添加':'修改' }
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
 			<label class="layui-form-label">客户名称</label>
@@ -163,6 +163,7 @@
 					formaction="<%=path%>/ac/ac04Query.html"
 					formnovalidate="formnovalidate">
 	</div>
+		<input type="hidden" name="aac401" value="${ins.aac401 }"/>
 		<e:hidden name="qaac401" />
 		<e:hidden name="qaac407" />
 		<e:hidden name="qaac405" />
@@ -180,9 +181,12 @@
 //JavaScript代码区域
 	layui.use(['layer', 'form','element'], function(){
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  var element = layui.element();
-	  layer.msg('Hello World');
+	  ,form = layui.form
+	  ,element = layui.element;
+	  if("${msg }" != "")
+	  {
+		  layer.msg("${msg }");
+	  }
 	  form.val('myform',{
 		  "aac404":"${ins.aac404}",
 		  "aac406":"${ins.aac406}",

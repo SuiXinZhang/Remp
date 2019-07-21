@@ -5,6 +5,46 @@
 <head>
 	<jsp:include   page="/base/head.jsp"/>
 </head>
+<script>
+function onload1()
+{
+	var showAac203 = document.getElementsByClassName("showAac203");
+	for(var i =0 ; i< showAac203.length;i++)
+	{
+		switch(showAac203[i].getAttribute("value"))
+		{
+		case "01":showAac203[i].innerHTML = "25%";break;
+		case "02":showAac203[i].innerHTML = "50%";break;
+		case "03":showAac203[i].innerHTML = "75%";break;
+		case "04":showAac203[i].innerHTML = "90%";break;
+		case "05":showAac203[i].innerHTML = "100%";break;
+		}
+	}
+	
+	var showAac206 = document.getElementsByClassName("showAac206");
+	for(var i =0 ; i< showAac206.length;i++)
+	{
+	switch(showAac206[i].getAttribute("value"))
+	{
+	case "01":showAac206[i].innerHTML = "差";break;
+	case "02":showAac206[i].innerHTML = "中等";break;
+	case "03":showAac206[i].innerHTML = "良";break;
+	case "04":showAac206[i].innerHTML = "优";break;
+	}
+	}
+	
+	var showAac207 = document.getElementsByClassName("showAac207");
+	for(var i =0 ; i< showAac207.length;i++)
+	{
+	switch(showAac207[i].getAttribute("value"))
+	{
+	case "01":showAac207[i].innerHTML = "两室一厅";break;
+	case "02":showAac207[i].innerHTML = "两室两厅";break;
+	case "03":showAac207[i].innerHTML = "三室两厅";break;
+	}
+	}
+}
+</script>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
@@ -140,7 +180,7 @@
 										<td lay-data="{field:'date',sort:true}">意向房屋类型</td>
 										<td lay-data="{field:'grade',sort:true}">意向面积</td>
 										<td lay-data="{field:'state'}">意向价格</td>
-										<td lay-data="{field:'opt',fixed:'right'}">操作</td>
+										<td lay-data="{field:'opt',fixed:'right',width:150}">操作</td>
 									</tr>
 								</thead>
 								<tbody>
@@ -162,6 +202,10 @@
 													<td>${ins.aac208 }</td>
 													<td>${ins.aac209 }</td>
 													<td>
+													<a class="layui-btn layui-btn-xs " 
+													href="<%=path%>/ac02FindById.html?aac201=${ins.aac201 }" >
+													<i class="layui-icon layui-icon-edit"></i>编辑
+													</a> 
 													<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
 													onClick="onDel('${ins.aac201}')">
 													<i class="layui-icon layui-icon-delete"></i>删除</a>
@@ -175,7 +219,9 @@
 							</table>
 
 
-
+<script type="text/javascript">
+window.onload = onload1();
+</script>
 							<br>
 							<br>
 							<br>
@@ -216,7 +262,27 @@
 		{
 		  layer.msg("${msg }");
 		}
-	 
+	  var count = 0;
+		form.on('checkbox(check)', function(data){
+	          if(data.elem.checked==true){
+	               	count++;
+	               	if(count!=0){
+	               		document.getElementById("mod").className="layui-btn";
+	               	}else{
+	               		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+	               	}
+	               	document.getElementById("mod").disabled=(count==0)
+	               		
+	          }else{
+	        	  count--;
+	       		  if(count!=0){
+	       				document.getElementById("mod").className="layui-btn";
+	       		  }else{
+	             		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+	             }
+	       		document.getElementById("mod").disabled=(count==0)
+	          }
+	      });
 	});
 	layui.use(['laydate','table'], function(){
 		  var laydate = layui.laydate
@@ -240,13 +306,6 @@
 			});
 		  
 		});
-	var count = 0;
-	function onSelect(vstate)
-	{
-		vstate?count++:count--;
-		var delB = document.getElementById("del");
-		delB.disabled = (count == 0);
-	}
 	function onEdit(vaac201)
 	{
 		var myform = document.getElementById("myform");
@@ -259,44 +318,7 @@
 		myform.action = "<%=path%>/ac02DelById.html?aac201=" + vaac201;
 		myform.submit();
 	}
-	function onload1()
-	{
-		var showAac203 = document.getElementsByClassName("showAac203");
-		for(var i =0 ; i< showAac203.length;i++)
-		{
-			switch(showAac203[i].getAttribute("value"))
-			{
-			case "01":showAac203[i].innerHTML = "25%";break;
-			case "02":showAac203[i].innerHTML = "50%";break;
-			case "03":showAac203[i].innerHTML = "75%";break;
-			case "04":showAac203[i].innerHTML = "90%";break;
-			case "05":showAac203[i].innerHTML = "100%";break;
-			}
-		}
-		
-		var showAac206 = document.getElementsByClassName("showAac206");
-		for(var i =0 ; i< showAac206.length;i++)
-		{
-		switch(showAac206[i].getAttribute("value"))
-		{
-		case "01":showAac206[i].innerHTML = "差";break;
-		case "02":showAac206[i].innerHTML = "中等";break;
-		case "03":showAac206[i].innerHTML = "良";break;
-		case "04":showAac206[i].innerHTML = "优";break;
-		}
-		}
-		
-		var showAac207 = document.getElementsByClassName("showAac207");
-		for(var i =0 ; i< showAac207.length;i++)
-		{
-		switch(showAac207[i].getAttribute("value"))
-		{
-		case "01":showAac207[i].innerHTML = "两室一厅";break;
-		case "02":showAac207[i].innerHTML = "两室两厅";break;
-		case "03":showAac207[i].innerHTML = "三室两厅";break;
-		}
-		}
-	}
+	
 </script>
 </body>
 </html>

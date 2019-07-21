@@ -1,18 +1,109 @@
-<%@ page language="java"    pageEncoding="GBK"  %>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<% String path = request.getContextPath(); %>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/base/taglib.jsp"%>
 <html>
 <head>
-<title>Note Detail</title>
+	<jsp:include page="/base/head.jsp" />
 </head>
-<style type="text/css">
-tr 
-{
-	height: 25px;
-}
-</style>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<jsp:include page="/base/header.jsp" />
+		<jsp:include page="/af/menu.jsp" />
+		<div class="layui-body">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>票据管理</legend>
+    <form id="myform" lay-filter="myform" class="layui-form" action="<%=path%>/af/af02Query.html" method="post">
+		
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
+			<label class="layui-form-label">票据状态</label>
+				<div class="layui-input-inline">
+					<select name="qaaf207">
+						<option value="">不限定</option>
+						<option value="1">未开</option>
+						<option value="2">已领用</option>
+						<option value="3">已核销</option>
+						<option value="4">已废弃</option>
+					</select>
+				</div>
+		</div>
+		<div class="layui-inline" style="padding-left:240px">
+			<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
+					<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+			</button>
+		</div>
+	
+	</div>
+	
+	<div id="tableId" style="display: none">
+			<table id="idData"  lay-filter="demo">
+				<thead>
+					<tr>
+						<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'username'}">票据批次号</td>
+						<td lay-data="{field:'state'}">票据状态</td>
+						<td lay-data="{field:'number',width:90}">起始编号</td>
+						<td lay-data="{field:'userphone',width:90}">截止编号</td>
+						<td lay-data="{field:'style',width:88}">领用人</td>
+						<td lay-data="{field:'date',width:115}">领用日期</td>
+						<td lay-data="{field:'grade',width:100}">开票金额</td>
+						<td lay-data="{field:'makeemp',width:120}">开票人</td>
+						<td lay-data="{field:'notedate',width:120}">开票日期</td>
+						<td lay-data="{field:'opt',fixed:'right',width:280}">操作</td>
+					</tr>
+				</thead>
+				<tbody>
+					<c:choose>
+						<c:when test="${rows!= null }">
+							<c:forEach items="${rows }" var="ins" varStatus="vs">
+								<tr>
+									<td>${vs.count }</td>
+									<td>${ins.aaf202 }</td>
+									<td>${ins.cnaaf207 }</td>
+									<td>${ins.aaf203 }</td>
+									<td>${ins.aaf204 }</td>
+									<td>${ins.aaf205 }</td>
+									<td>${ins.aaf206 }</td>
+									<td>${ins.aaf209 }</td>
+									<td>${ins.aaf210 }</td>
+									<td>${ins.aaf211 }</td>
+									<td>
+									
+									<a class="layui-btn layui-btn-xs" 
+									onclick="onReceive('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')"  >
+									<i class="layui-icon layui-icon-ok"></i>领用票据
+									</a> 
+									
+									<a class="layui-btn layui-btn-xs " 
+									onclick="onWrite('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')"  >
+									<i class="layui-icon layui-icon-ok-circle"></i>核销票据
+									</a>
+									
+									<a class="layui-btn layui-btn-xs layui-btn-danger " 
+									onclick="onDiscard('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')"  >
+									<i class="layui-icon layui-icon-close-fill"></i>废弃票据
+									</a>
+									</td>		
+								</tr>
+							</c:forEach>
+						</c:when>
+
+					</c:choose>
+				</tbody>
+			</table>
+		</div>
+		<e:hidden name="aaf202" id="aaf202" value=""/>
+		<e:hidden name="aaf203" id="aaf203" value=""/>
+		<e:hidden name="aaf204" id="aaf204" value=""/>
+		<e:hidden name="aaf205" id="aaf205" value=""/>
+		<e:hidden name="aaf206" id="aaf206" value=""/>
+	</form>
+	</fieldset>
+    </div>
+  </div>
+
+</div>
 <script>
 function onReceive(vaaf201,vaaf202,vaaf203,vaaf204,vaaf205,vaaf206)
 {
@@ -50,117 +141,34 @@ function onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206)
 	aaf206.value = vaaf206;
 }
 </script>
-<body>
-<form action="<%=path%>/af/af02Query.html" id = "myform" method="post">
-		
-		<table border="1" align="center" width="95%">
-			<caption>
-				票据明细
-				<hr width="180px">
-			</caption>
-			<tr>
-				<td colspan="4">查询条件</td>
-			</tr>
-			<tr>
-				<td>票据状态</td>
-				<td><e:select value="未开:1,已领用:2,已核销:3,已废弃:4" name="qaaf207" header="true" /></td>
-			</tr>
-			
-		</table>
-		<table border="1" align="center" width="95%">
-			<tr>
-				<td></td>
-				<td>票据前缀</td>
-				<td>票据状态</td>
-				<td>起始编号</td>
-				<td>截止编号</td>
-				<td>领用人</td>
-				<td>领用日期</td>
-				<td>开票金额</td>
-				<td>开票人</td>
-				<td>开票日期</td>
-				<td></td>
-			</tr>
-			<!--
-				         注意事项
-				    1.$及大括号的结束标记 }与双引号之间,不允许出现空格
-				    	即    }"   写在一起
-				    2.所有的属性之间至少要有一个空格,否则报错
-				    3.var 属性,相当于在页面定义变量名称,因此  ins不允许再用$ {  }
-				   -->
-			<c:choose>
-				<c:when test="${rows!= null }">
-					<c:forEach items="${rows }" var="ins" varStatus="vs">
-						<tr>
-							<td>${vs.count }</td>
-							<td>${ins.aaf202 }</td>
-							<td>${ins.cnaaf207 }</td>
-							<td>${ins.aaf203 }</td>
-							<td>${ins.aaf204 }</td>
-							<td>${ins.aaf205 }</td>
-							<td>${ins.aaf206 }</td>
-							<td>${ins.aaf209 }</td>
-							<td>${ins.aaf210 }</td>
-							<td>${ins.aaf211 }</td>
-							<td>
-							<!-- disabled="${!(ins.aaf207 == 2) }" -->
-							<input type="button" value="领用票据" name="next" 
-							onclick="onReceive('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')" 
-							formaction="<%=path %>/af/af02receiveNote.html" >
-							<input type="button" value="核销票据" name="next2" 
-		   				    onclick="onWrite('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')" 
-							formaction="<%=path %>/af/af02writeOffNote.html" >
-							<input type="button" value="废弃票据" name="next3" 
-							onclick="onDiscard('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')" 
-							formaction="<%=path %>/af/af02discardNote.html" >  
-							</td>
-						</tr>
-					</c:forEach>
-					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<c:forEach begin="1" end="15" step="1">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
-		<table border="1" align="center" width="95%">
-			<tr>
-				<td align="center"><input type="submit" value="查询" name="next">
-			</tr>
-		</table>
-		<e:hidden name="aaf202" id="aaf202" value=""/>
-		<e:hidden name="aaf203" id="aaf203" value=""/>
-		<e:hidden name="aaf204" id="aaf204" value=""/>
-		<e:hidden name="aaf205" id="aaf205" value=""/>
-		<e:hidden name="aaf206" id="aaf206" value=""/>
-</form>
+<script>
+//JavaScript代码区域
+	layui.use(['layer', 'form','element','table'], function(){
+	  var element = layui.element
+	  ,layer = layui.layer
+	  ,form = layui.form
+	  ,table = layui.table;
+	  
+	  if("${msg }" != "")
+	  {
+		  layer.msg("${msg }");
+	  }
+	  
+	  form.val('myform',{
+		  "qaaf207":"${param.qaaf207}"
+	  });
+	  
+	//转换静态表格
+	table.init('demo', {
+		limit : 10,
+		page : true,
+		toolbar : true,
+		done : function(res, curr, count) {
+			$('#tableId').css('display', 'block');
+		}
+	});
+	  
+	});
+</script>
 </body>
 </html>

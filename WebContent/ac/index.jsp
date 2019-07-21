@@ -31,8 +31,13 @@
 //JavaScript´úÂëÇøÓò
 	layui.use(['layer', 'form','element'], function(){
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  var element = layui.element();
+	  ,form = layui.form
+	  ,element = layui.element;
+	  
+	  if("${param.msg }" != "")
+	  {
+		  layer.msg("${param.msg }");
+	  }
 	});
 </script>
 </body>
