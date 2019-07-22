@@ -64,7 +64,7 @@
 								<label class="layui-form-label">活动描述</label>
 								<div class="layui-input-block">
 									<textarea placeholder="请输入内容" name="aab406"
-										value="${ins.aab406 }" class="layui-textarea"></textarea>
+										 class="layui-textarea">${ins.aab406 }</textarea>
 								</div>
 							</div>
 
@@ -85,7 +85,6 @@
 
 		<div class="layui-footer">
 			<!-- 底部固定区域 -->
-			? layui.com - 底部固定区域
 		</div>
 	</div>
 	<script></script>
@@ -94,7 +93,6 @@
 		layui.use([ 'layer', 'form' ], function() {
 			var layer = layui.layer, form = layui.form;
 
-			layer.msg('Hello World');
 			form.val('myform', {
 				"aab403" : "${ins.aab403}"
 			});

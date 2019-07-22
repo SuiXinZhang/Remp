@@ -16,11 +16,11 @@
 			style="margin-top: 20px;">
 			<legend>效果评估</legend>
 					
-    <form class="layui-form" formaction="<%=path %>/ab/ab03Summary.html">
+    <form class="layui-form" lay-filter="myform" action="<%=path %>/ab/ab03Summary.html" method="post">
 		
 		<div class="layui-form-item layui-form-text" style="padding-right:100px">
 			<div class="layui-input-block">
-				<textarea placeholder="请输入内容" name="aab309" value="${ins.aab309 }" class="layui-textarea"></textarea>
+				<textarea placeholder="请输入内容" name="aab309" class="layui-textarea">${ins.aab309 }</textarea>
 			</div>
 		</div>
 		
@@ -40,7 +40,6 @@
   
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
   </div>
 </div>
 <script ></script>
@@ -50,7 +49,6 @@
 		  var layer = layui.layer
 		  ,form = layui.form;
 		  
-		  layer.msg('Hello World');
 		});
 </script>
 </body>

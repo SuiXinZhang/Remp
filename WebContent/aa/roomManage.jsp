@@ -156,7 +156,7 @@
 			            <th>套内单价</th>
 			            <th>套内总价</th>
 			            <th>备注</th>
-			            <th></th>
+			            <th>操作</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -178,7 +178,12 @@
 									<td>${empty ins.aaa810?'尚未设置':ins.aaa810  }</td>
 									<td>${empty ins.aaa811?'尚未设置':ins.aaa811  }</td>
 									<td>${ins.aaa812 }</td>
-									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa801}')">删除</a></td>
+									<td>
+											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+												onClick="onDel('${ins.aaa801}')">
+												<i class="layui-icon layui-icon-delete"></i>删除
+											</a> 
+									</td>
 								</tr>
 							</c:forEach>
 							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">

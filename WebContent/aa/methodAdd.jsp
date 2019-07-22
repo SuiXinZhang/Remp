@@ -81,97 +81,160 @@
 	    	</div>
 	    </div>
 	    
-	    
-	   	<fieldset id="hidden" class="layui-elem-field" style="width:400px; margin:0 auto;">
-		  <legend style=" font-size:17px;">如需贷款请填写</legend>
-		  <div class="layui-field-box">
-		  
-	    <div  style="display:block" class="layui-form-item" align="center">
-		    <div class="layui-inline" style="width:400px">
-		      	<label class="layui-form-label" style="width:120px">
-	    			<i class="layui-icon layui-icon-component" style="font-size: 20px; color: black;"></i>
-	    			按&thinsp;&thinsp;&thinsp;揭&thinsp;&thinsp;&thinsp;银&thinsp;&thinsp;&thinsp;行
-	    		</label>
-				<div class="layui-input-block">
-		        	<input type="text" name="aaa907"  value="${ins.aaa907 }" autocomplete="off" class="layui-input"  style="width:250px;">
-	      		</div>
-	    	</div>
-	    </div>
-	    
-	    <div  style="display:block" class="layui-form-item" align="center">
-		    <div class="layui-inline" style="width:400px">
-		      	<label class="layui-form-label" style="width:120px">
-	    			<i class="layui-icon layui-icon-more" style="font-size: 20px; color: black;"></i>
-	    			按&thinsp;揭&thinsp;精&thinsp;确&thinsp;度
-	    		</label>
-				<div class="layui-input-block">
-		        	<input type="text" name="aaa908"  value="${ins.aaa908 }" autocomplete="off" class="layui-input"  style="width:250px;">
-	      		</div>
-	    	</div>
-	    </div>
-	    
-	    <div  style="display:block" class="layui-form-item" align="center">
-		    <div class="layui-inline"  style="width:400px">
-		      	<label class="layui-form-label" style="width:120px">
-	    			<i class="layui-icon layui-icon-component" style="font-size: 20px; color: black;"></i>
-	    			公&thinsp;积&thinsp;金&thinsp;银&thinsp;行
-	    		</label>
-				<div class="layui-input-block">
-		        	<input type="text" name="aaa909" value="${ins.aaa909 }" autocomplete="off" class="layui-input"  style="width:250px;">
-	      		</div>
-	    	</div>
-	    </div>
-	    
-	    <div style="visibility: visible" class="layui-form-item" align="center">
-		    <div class="layui-inline" style="width:400px">
-		      	<label class="layui-form-label"  style="width:120px">
-	    			<i class="layui-icon layui-icon-more" style="font-size: 20px; color: black;"></i>
-	    			公积金精确度
-	    		</label>
-				<div class="layui-input-block">
-		        	<input type="text" name="aaa910" value="${ins.aaa910 }" autocomplete="off" class="layui-input"  style="width:250px;">
-	      		</div>
-	    	</div>
-	    </div>  
-
-		</div>
-		</fieldset>
-
-    	<div class="layui-form-item layui-form-text" align="center">
-	    	<div class="layui-inline">
-		      	<label class="layui-form-label" >
-	    			<i class="layui-icon layui-icon-edit" style="font-size: 20px; color: black;"></i>
-	    			备&#8195;&#8195;注
-	    		</label>
-		      	<div class="layui-input-block" >
-		        <textarea cols="30" name="aaa911" class="layui-textarea">${ins.aaa911 }</textarea>
-	      		</div>
-	    	</div>
-    	</div>
-
-    	<div class="layui-form-item" align="left"  style="padding-left:450px">
-				<div class="layui-inline">
-						<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa901?'添加':'修改'}"
-							formaction="<%=path %>/aa/${empty ins.aaa901?'aa09Add.html':'aa09Modify.html' }">
-						<input class="layui-btn layui-btn-warm" type="submit" value="返回"
-							formaction="<%=path %>/aa/aa09Query.html" formnovalidate="formnovalidate">
-				</div>
-				<div class="layui-inline">
-					<c:if test="${!empty msg }">
-			   	    	<label class="layui-form-label"  style="font-size: 18px; color:#009688;width:300px;" >
-			   			<i class="layui-icon layui-icon-set" style="font-size: 24px;"></i>
-			   			${msg }
-			   			</label>
-			   		</c:if>
-				</div>
-		</div>
+	    <c:if test="${ins.aaa906 eq '是'}">
+					<fieldset id="hidden"  class="layui-elem-field" style=" width:400px; margin:0 auto;">
+					  <legend style=" font-size:17px;">如需贷款请填写</legend>
+					  <div class="layui-field-box">
+					  
+				    <div  style="display:block" class="layui-form-item" align="center">
+					    <div class="layui-inline" style="width:400px">
+					      	<label class="layui-form-label" style="width:120px">
+				    			<i class="layui-icon layui-icon-component" style="font-size: 20px; color: black;"></i>
+				    			按&thinsp;&thinsp;&thinsp;揭&thinsp;&thinsp;&thinsp;银&thinsp;&thinsp;&thinsp;行
+				    		</label>
+							<div class="layui-input-block">
+					        	<input type="text" name="aaa907"  value="${ins.aaa907 }" autocomplete="off" class="layui-input"  style="width:250px;">
+				      		</div>
+				    	</div>
+				    </div>
+				    
+				    <div  style="display:block" class="layui-form-item" align="center">
+					    <div class="layui-inline" style="width:400px">
+					      	<label class="layui-form-label" style="width:120px">
+				    			<i class="layui-icon layui-icon-more" style="font-size: 20px; color: black;"></i>
+				    			按&thinsp;揭&thinsp;精&thinsp;确&thinsp;度
+				    		</label>
+							<div class="layui-input-block">
+					        	<input type="text" name="aaa908"  value="${ins.aaa908 }" autocomplete="off" class="layui-input"  style="width:250px;">
+				      		</div>
+				    	</div>
+				    </div>
+				    
+				    <div  style="display:block" class="layui-form-item" align="center">
+					    <div class="layui-inline"  style="width:400px">
+					      	<label class="layui-form-label" style="width:120px">
+				    			<i class="layui-icon layui-icon-component" style="font-size: 20px; color: black;"></i>
+				    			公&thinsp;积&thinsp;金&thinsp;银&thinsp;行
+				    		</label>
+							<div class="layui-input-block">
+					        	<input type="text" name="aaa909" value="${ins.aaa909 }" autocomplete="off" class="layui-input"  style="width:250px;">
+				      		</div>
+				    	</div>
+				    </div>
+				    
+				    <div style="visibility: visible" class="layui-form-item" align="center">
+					    <div class="layui-inline" style="width:400px">
+					      	<label class="layui-form-label"  style="width:120px">
+				    			<i class="layui-icon layui-icon-more" style="font-size: 20px; color: black;"></i>
+				    			公积金精确度
+				    		</label>
+							<div class="layui-input-block">
+					        	<input type="text" name="aaa910" value="${ins.aaa910 }" autocomplete="off" class="layui-input"  style="width:250px;">
+				      		</div>
+				    	</div>
+				    </div>  
 			
+					</div>
+					</fieldset>
+	</c:if>
+	    
+	    
+		<c:if test="${ins.aaa906 ne '是'}">
+					<fieldset id="hidden"  class="layui-elem-field" style="display:none; width:400px; margin:0 auto;">
+					  <legend style=" font-size:17px;">如需贷款请填写</legend>
+					  <div class="layui-field-box">
+					  
+				    <div  style="display:block" class="layui-form-item" align="center">
+					    <div class="layui-inline" style="width:400px">
+					      	<label class="layui-form-label" style="width:120px">
+				    			<i class="layui-icon layui-icon-component" style="font-size: 20px; color: black;"></i>
+				    			按&thinsp;&thinsp;&thinsp;揭&thinsp;&thinsp;&thinsp;银&thinsp;&thinsp;&thinsp;行
+				    		</label>
+							<div class="layui-input-block">
+					        	<input type="text" name="aaa907"  value="${ins.aaa907 }" autocomplete="off" class="layui-input"  style="width:250px;">
+				      		</div>
+				    	</div>
+				    </div>
+				    
+				    <div  style="display:block" class="layui-form-item" align="center">
+					    <div class="layui-inline" style="width:400px">
+					      	<label class="layui-form-label" style="width:120px">
+				    			<i class="layui-icon layui-icon-more" style="font-size: 20px; color: black;"></i>
+				    			按&thinsp;揭&thinsp;精&thinsp;确&thinsp;度
+				    		</label>
+							<div class="layui-input-block">
+					        	<input type="text" name="aaa908"  value="${ins.aaa908 }" autocomplete="off" class="layui-input"  style="width:250px;">
+				      		</div>
+				    	</div>
+				    </div>
+				    
+				    <div  style="display:block" class="layui-form-item" align="center">
+					    <div class="layui-inline"  style="width:400px">
+					      	<label class="layui-form-label" style="width:120px">
+				    			<i class="layui-icon layui-icon-component" style="font-size: 20px; color: black;"></i>
+				    			公&thinsp;积&thinsp;金&thinsp;银&thinsp;行
+				    		</label>
+							<div class="layui-input-block">
+					        	<input type="text" name="aaa909" value="${ins.aaa909 }" autocomplete="off" class="layui-input"  style="width:250px;">
+				      		</div>
+				    	</div>
+				    </div>
+				    
+				    <div style="visibility: visible" class="layui-form-item" align="center">
+					    <div class="layui-inline" style="width:400px">
+					      	<label class="layui-form-label"  style="width:120px">
+				    			<i class="layui-icon layui-icon-more" style="font-size: 20px; color: black;"></i>
+				    			公积金精确度
+				    		</label>
+							<div class="layui-input-block">
+					        	<input type="text" name="aaa910" value="${ins.aaa910 }" autocomplete="off" class="layui-input"  style="width:250px;">
+				      		</div>
+				    	</div>
+				    </div>  
+			
+					</div>
+					</fieldset>
+		
+		</c:if>
+		
+		
+					
+			    	<div class="layui-form-item layui-form-text" align="center">
+				    	<div class="layui-inline">
+					      	<label class="layui-form-label" >
+				    			<i class="layui-icon layui-icon-edit" style="font-size: 20px; color: black;"></i>
+				    			备&#8195;&#8195;注
+				    		</label>
+					      	<div class="layui-input-block" >
+					        <textarea cols="30" name="aaa911" class="layui-textarea">${ins.aaa911 }</textarea>
+				      		</div>
+				    	</div>
+			    	</div>
+			
+			    	<div class="layui-form-item" align="left"  style="padding-left:450px">
+							<div class="layui-inline">
+									<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa901?'添加':'修改'}"
+										formaction="<%=path %>/aa/${empty ins.aaa901?'aa09Add.html':'aa09Modify.html' }">
+									<input class="layui-btn layui-btn-warm" type="submit" value="返回"
+										formaction="<%=path %>/aa/aa09Query.html" formnovalidate="formnovalidate">
+							</div>
+							<div class="layui-inline">
+								<c:if test="${!empty msg }">
+						   	    	<label class="layui-form-label"  style="font-size: 18px; color:#009688;width:300px;" >
+						   			<i class="layui-icon layui-icon-set" style="font-size: 24px;"></i>
+						   			${msg }
+						   			</label>
+						   		</c:if>
+							</div>
+					</div>
+						
+			
+					<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
+					<input type="hidden" name="aaa901" value="${ins.aaa901 }">
+				</form>
+				</div>
+				</fieldset>
 
-		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
-		<input type="hidden" name="aaa901" value="${ins.aaa901 }">
-	</form>
-	</div>
-	</fieldset>
 	</div>
   </div>
   

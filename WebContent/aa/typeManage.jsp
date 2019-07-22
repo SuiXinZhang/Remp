@@ -25,7 +25,7 @@
 			            <th>套内面积</th>
 			            <th>户型平面图</th>
 			            <th>备注</th>
-			            <th></th>
+			            <th>操作</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -45,7 +45,12 @@
 									<td>${ins.aaa506 }</td>
 									<td>${ins.aaa507 }</td>
 									<td>${ins.aaa508 }</td>
-									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa501}')">删除</a></td>
+									<td>							
+											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+												onClick="onDel('${ins.aaa501}')">
+												<i class="layui-icon layui-icon-delete"></i>删除
+											</a> 
+									</td>
 								</tr>
 							</c:forEach>
 							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
