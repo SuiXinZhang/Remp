@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/../base/taglib.jsp" %>
 <html>
@@ -140,23 +141,24 @@
 			      		</div>
 	                </div>	                
 	       		</div>
-		    <table class="layui-table">
+	       	<div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<th></th>
-			            <th>序号</th>
-			            <th>房间号</th>
-			            <th>房间编码</th>
-			            <th>地址</th>
-			            <th>状态</th>
-			            <th>租售类型</th>
-			            <th>户型</th>
-			            <th>建筑单价</th>
-			            <th>建筑总价</th>
-			            <th>套内单价</th>
-			            <th>套内总价</th>
-			            <th>备注</th>
-			            <th></th>
+			        	<td lay-data="{field:'check',width:50}"></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">房间号</td>
+						<td lay-data="{field:'username'}">房间编码</td>
+						<td lay-data="{field:'userphone'}">地址</td>
+						<td lay-data="{field:'empname'}">状态</td>
+						<td lay-data="{field:'style',width:88}">租售类型</td>
+						<td lay-data="{field:'date',sort:true,width:115}">户型</td>
+						<td lay-data="{field:'grade',sort:true,width:100}">建筑单价</td>
+						<td lay-data="{field:'jzzj'}">建筑总价</td>
+						<td lay-data="{field:'tldj'}">套内单价</td>
+						<td lay-data="{field:'tlzj'}">套内总价</td>
+						<td lay-data="{field:'beiz'}">备注</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -178,48 +180,15 @@
 									<td>${empty ins.aaa810?'尚未设置':ins.aaa810  }</td>
 									<td>${empty ins.aaa811?'尚未设置':ins.aaa811  }</td>
 									<td>${ins.aaa812 }</td>
-									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa801}')">删除</a></td>
-								</tr>
-							</c:forEach>
-							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>
+										<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+											onClick="onDel('${ins.aaa801}')">
+											<i class="layui-icon layui-icon-delete"></i>删除
+										</a> 
+									</td>
 								</tr>
 							</c:forEach>
 						</c:when>
-						<c:otherwise>
-							<c:forEach begin="1" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								    <td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
 					</c:choose>
 			    </tbody>
 			</table>
@@ -231,12 +200,12 @@
 					<input type="submit" class="layui-btn"  value="返回" name="next" formaction="<%=path %>/aa/aa07Query.html" formnovalidate="formnovalidate">
 				</div>
 			</div>
-			
 
 		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" name="aaa701" value="${param.aaa701 }"> 
 		<input type="hidden" name="aaa601" value="${param.aaa601 }"> 
 		<input type="hidden" name="aaa602" value="${param.aaa708 }">	
+		</div>
 		</form>
 	</div>
   </div>
@@ -252,7 +221,7 @@ function onSelect(vstate)
 	value?count++:count--;
 	if(count!=0)
 	{
-		${"del"}.class="layui-btn";
+		${"del" }.class="layui-btn";
 	}
 }
 function onEdit(vaaa801)
@@ -269,10 +238,20 @@ function onDel(vaaa801)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
+layui.use(['layer', 'form','element','table'], function(){
 	  var layer = layui.layer;
-	  var element = layui.element;
-	  form = layui.form;
+	  var element = layui.element
+	  ,form = layui.form
+	  ,table = layui.table;
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	  var count=0;
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){

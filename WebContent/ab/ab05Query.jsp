@@ -16,7 +16,7 @@
 					style="padding: 15px; margin: 30px 80px;">
 					<fieldset class="layui-elem-field layui-filed-title"
 						style="margin-top: 20px;">
-						<legend>营销分析</legend>
+						<legend style="color:black;"><h2>营销分析</h2></legend>
 
 					<form class="layui-form" lay-filter="myform" action="<%=path %>/ab/ab05Add.html" method="post">
 

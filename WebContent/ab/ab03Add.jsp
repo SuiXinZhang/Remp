@@ -15,7 +15,7 @@
     <div class="layui-anim layui-anim-scale"
 		style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-				<legend>${empty param.aab301?'新增':'修改' }营销方案</legend>
+				<legend style="color:black;"><h2>${empty param.aab301?'新增':'修改' }营销方案</h2></legend>
     
     	<form class="layui-form" lay-filter="myform" action="<%=path%>/ab/ab03Add.html" method="post">
 		

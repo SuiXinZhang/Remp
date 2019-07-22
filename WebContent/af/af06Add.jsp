@@ -15,7 +15,7 @@
 			<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-				<legend>${empty param.aab601?'新增':'修改' }银行放款单</legend>
+				<legend style="color:black;"><h2>${empty param.aab601?'新增':'修改' }银行放款单</h2></legend>
 		
 				<form class="layui-form" id="myform" layfilter="form"
 				 action="<%=path%>/af/af06Add.html" method="post">
@@ -57,7 +57,12 @@
 						<div class="layui-inline">
 							<label class="layui-form-label">项目名称</label>
 							<div class="layui-input-inline">
-								<input type="text" name="aaf612" required="true" value="${ins.aaf612 }" class="layui-input">
+								<select name="aaf612" required>
+								    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
+								    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
+								    </c:forEach>
+								</select>
+								<%-- <input type="text" name="aaf612" required="true" value="${ins.aaf612 }" class="layui-input"> --%>
 							</div>
 						</div>
 						<div class="layui-inline">
@@ -133,6 +138,9 @@
 	  var element = layui.element;
 	  var layer = layui.layer
 	  ,form = layui.form;
+	  form.val('myform',{
+		  "aaf612":"${ins.aaf612}",
+	  });
 	});
 	
 	//日期模块

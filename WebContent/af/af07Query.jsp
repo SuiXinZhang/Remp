@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/base/taglib.jsp"%>
 <html>
@@ -24,7 +25,7 @@
 		<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-				<legend>欠款列表</legend>
+				<legend style="color:black;"><h2>欠款列表</h2></legend>
 		
 			<form id="myform" class="layui-form" lay-filter="form"
 				action="<%=path%>/af/af07Query.html" method="post">
@@ -80,20 +81,23 @@
 				</div>
 
 				<!-----------------数据迭代区 -------------------->
-				<table class="layui-table">
+				<div id="tableId" style="display: none">
+				<table lay-filter="demo">
+				<thead>
 					<tr>
-						<td></td>
-						<td>序号</td>
-						<td>房间编号</td>
-						<td>客户名称</td>
-						<td>客户邮箱</td>
-						<td>签署日期</td>
-						<td>签署金额</td>
-						<td>欠款金额</td>
-						<td>还款状态</td>
-						<td></td>
+						<td lay-data="{field:'check',width:60}"></td>
+						<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">房间编号</td>
+						<td lay-data="{field:'username'}">客户名</td>
+						<td lay-data="{field:'userphone'}">客户邮箱</td>
+						<td lay-data="{field:'empname'}">签署日期</td>
+						<td lay-data="{field:'style',width:88}">签署金额</td>
+						<td lay-data="{field:'date',sort:true,width:115}">欠款金额</td>
+						<td lay-data="{field:'grade',width:100}">还款状态</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 					</tr>
-
+					</thead>
+					<tbody>
 					<c:choose>
 						<c:when test="${rows!=null }">
 							<!-- 显示查询到的数据 -->
@@ -123,6 +127,7 @@
 							
 						</c:otherwise>
 					</c:choose>
+					</tbody>
 				</table>
 
 				<!-- 功能按钮区 -->
@@ -132,6 +137,7 @@
 						<input type="submit" id="del" name="next" value="邮件催款"
 						formaction="<%=path%>/af/af07Mail.html" disabled="disabled"
 						class="layui-btn">
+				</div>
 				</div>
 			</form>
 			</fieldset>
@@ -166,9 +172,20 @@
 	</script>
 	<script>
 		//JavaScript代码区域
-		layui.use([ 'layer', 'form', 'element' ], function() {
-			var element = layui.element;
-			var layer = layui.layer, form = layui.form;
+		layui.use([ 'layer', 'form', 'element','table'], function() {
+			var element = layui.element
+			,layer = layui.layer
+			,form = layui.form
+			,table = layui.table;
+			//转换静态表格
+			table.init('demo', {
+				limit : 10,
+				page : true,
+				toolbar : true,
+				done : function(res, curr, count) {
+					$('#tableId').css('display', 'block');
+				}
+			});
 		});
 
 		//日期选择框
@@ -187,6 +204,27 @@
 				trigger : 'click'
 			});
 		});
+	</script>
+	<script type="text/javascript">
+		function selectRoom(e)
+		{
+			layer.open({
+				 type: 2
+				,title: '房间选择'
+				,area:['800px', '500px']
+				,maxmin: true
+				,content: '<%=path%>/base/room.html'
+				,btn: ['确定','关闭'],
+				yes: function(index){
+					var res = window["layui-layer-iframe" + index].callbackdata();
+					//打印返回的值，看是否有我们想返回的值
+					console.log(res);
+					$("#room").attr("value",res[0])
+					$("#roomNo").attr("value",res[1])
+					layer.close(index);
+					}
+				});  
+		}
 	</script>
 </body>
 </html>

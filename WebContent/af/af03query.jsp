@@ -26,19 +26,23 @@
 				</div>
 			</div>
 	</div>
-	<table class="layui-table" lay-even lay-skin="nob">
+	<div id="tableId" style="display: none">
+	<table  lay-filter="demo">
+	<thead>
 	  <tr>
-	    <td></td>
-	  	<td>序号</td>
-	  	<td>业务办理日期</td>
-	  	<td>交款人</td>
-	  	<td>房间</td>
-	  	<td>折人民币金额</td>
-	  	<td>币种</td>
-	  	<td>票据类型</td>
-	  	<td>票据编号</td>
-	  	<td></td>
+	  	<td lay-data="{field:'check',width:50}"></td>
+	  	<td lay-data="{field:'sort1',width:60}">序号</td>
+		<td lay-data="{field:'projectname',width:125}">业务办理日期</td>
+		<td lay-data="{field:'username'}">交款人</td>
+		<td lay-data="{field:'userphone'}">房间</td>
+		<td lay-data="{field:'empname'}">折人民币金额</td>
+		<td lay-data="{field:'style',width:88}">币种</td>
+		<td lay-data="{field:'date',sort:true,width:115}">票据类型</td>
+		<td lay-data="{field:'grade',sort:true,width:100}">票据编号</td>
+		<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 	  </tr>
+	  </thead>
+	  <tbody>
 	  <c:choose>
 	     <c:when test="${rows!=null }">
 	         <!-- 显示实际查询到的数据 -->
@@ -88,9 +92,11 @@
 	        </c:forEach>
 	     </c:otherwise>
 	   </c:choose>
+	   </tbody>
 	  </table>
 	  
-	  <table class="layui-table" lay-even lay-skin="nob">
+	  <table lay-filter="demo2">
+	  <thead>
 	  <tr>
 	    <td></td>
 	  	<td>序号</td>
@@ -103,6 +109,8 @@
 	  	<td>票据编号</td>
 	  	<td></td>
 	  </tr>
+	  </thead>
+	  <tbody>
 	  <c:choose>
 	     <c:when test="${rows!=null }">
 	         <!-- 显示实际查询到的数据 -->
@@ -152,9 +160,11 @@
 	        </c:forEach>
 	     </c:otherwise>
 	   </c:choose>
+	   </tbody>
 	  </table>
 	  <div class="layui-form-item" align="center">
 	       <input type="submit" name="next" value="查询">
+	  </div>
 	  </div>
 </form>
     </div>
@@ -168,11 +178,30 @@
 <script ></script>
 <script>
 //JavaScript代码区域
-	layui.use(['layer', 'form','element'], function(){
+	layui.use(['layer', 'form','element','table'], function(){
 	  var element = layui.element;
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  layer.msg('Hello World');
+	  ,form = layui.form
+	  ,table = layui.table;
+	  if("${msg }" != "")
+	  {
+		  layer.msg("${msg }");
+	  }
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true
+		});
+		//转换静态表格
+		table.init('demo2', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	});
 	function onEdit(vaaf301)
 	{

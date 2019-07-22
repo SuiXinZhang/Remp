@@ -8,7 +8,9 @@
 <body class="layui-layout-body">
 	<div class="layui-layout layui-layout-admin">
 		<jsp:include page="/base/header.jsp" />
-		<jsp:include page="/ac/menu.jsp" />
+		<c:import url="/ac/menu.jsp">
+  		 	<c:param name="menu" value="ac08"/>
+  		</c:import>
 		
 		<div class="layui-body">
 			<div class="layui-anim layui-anim-scale"

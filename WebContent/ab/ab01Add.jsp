@@ -26,7 +26,7 @@
 				<div class="layui-anim layui-anim-scale"
 					style="padding: 15px; margin: 30px 80px;">
 					<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-						<legend>${empty param.aab101?'新增':'修改' }销售计划</legend>
+						<legend style="color:black;"><h2>${empty param.aab101?'新增':'修改' }销售计划</h2></legend>
 				
 					<form action="<%=path%>/ab/ab01Add.html" class="layui-form" method="post">
 					
@@ -117,7 +117,8 @@
 		</div>
 		<script>
 			//JavaScript代码区域
-			layui.use(['layer', 'form'], function() {
+			layui.use(['layer','element','form'], function() {
+				var element = layui.element;
 				var layer = layui.layer,
 					form = layui.form;
 
