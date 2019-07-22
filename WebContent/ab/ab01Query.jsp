@@ -56,19 +56,22 @@
 						
 
 						<!-----------------数据迭代区 -------------------->
-						<table class="layui-table" height="50px">
+						<div id="tableId" style="display: none">
+						<table id="idData"  lay-filter="demo" height="50px">
+						<thead>
 							<tr>
-								<td>序号</td>
-								<td>项目名称</td>
-								<td>时间</td>
-								<td>计划销售面积</td>
-								<td>计划销售套数</td>
-								<td>计划销售金额</td>
-								<td>计划销售均价</td>
-								<td>计划回款金额</td>
-								<td></td>
+								<td lay-data="{field:'sort1',width:60}">序号</td>
+								<td lay-data="{field:'projectname',width:125}">项目名称</td>
+								<td lay-data="{field:'username'}">时间</td>
+								<td lay-data="{field:'userphone'}">计划销售面积</td>
+								<td lay-data="{field:'empname'}">计划销售套数</td>
+								<td lay-data="{field:'style'}">计划销售金额</td>
+								<td lay-data="{field:'date',sort:true,width:115}">计划销售均价</td>
+								<td lay-data="{field:'grade',sort:true,width:100}">计划回款金额</td>
+								<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 							</tr>
-
+						</thead>
+						<tbody>
 							<c:choose>
 								<c:when test="${rows!=null }">
 									<!-- 显示查询到的数据 -->
@@ -106,6 +109,7 @@
 								
 								</c:otherwise>
 							</c:choose>
+							</tbody>
 						</table>
 
 						<!-- 功能按钮区 -->
@@ -114,7 +118,7 @@
 								<input type="submit" id="del" name="next" value="删除" formaction="<%=path%>/ab/ab01DelPlan.html" disabled="disabled" class="layui-btn">
 								-->
 						</div>
-
+						</div>
 					</form>
 					</fieldset>
 				</div>
@@ -163,9 +167,20 @@
 		</script>
 		<script>
 			//JavaScript代码区域
-			layui.use([ 'layer', 'form', 'element'], function() {
-				var element = layui.element;
-				var layer = layui.layer, form = layui.form;
+			layui.use([ 'layer', 'form', 'element','table'], function() {
+				var element = layui.element
+				,layer = layui.layer
+				,form = layui.form
+				,table = layui.table;
+				//转换静态表格
+				table.init('demo', {
+					limit : 10,
+					page : true,
+					toolbar : true,
+					done : function(res, curr, count) {
+						$('#tableId').css('display', 'block');
+					}
+				});
 			});
 			
 		</script>

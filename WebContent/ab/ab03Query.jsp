@@ -66,18 +66,20 @@
 						</div>
 
 						<!-----------------数据迭代区 -------------------->
-						<table class="layui-table">
+						<div id="tableId" style="display: none">
+						<table id="idData"  lay-filter="demo">
+						<thead>
 							<tr>
-								<td>序号</td>
-								<td>方案名称</td>
-								<td>制定日期</td>
-								<td>预算费用</td>
-								<td>制定人</td>
-								<td>状态</td>
-								<td></td>
-								<td></td>
+								<td lay-data="{field:'sort1',width:60}">序号</td>
+								<td lay-data="{field:'projectname',width:125}">方案名称</td>
+								<td lay-data="{field:'username'}">制定日期</td>
+								<td lay-data="{field:'userphone'}">预算费用</td>
+								<td lay-data="{field:'empname'}">制定人</td>
+								<td lay-data="{field:'style'}">状态</td>
+								<td lay-data="{field:'opt',fixed:'right',width:220}">操作</td>
 							</tr>
-
+						</thead>
+						<tbody>
 							<c:choose>
 								<c:when test="${rows!=null }">
 									<!-- 显示查询到的数据 -->
@@ -101,8 +103,6 @@
 												class="layui-btn layui-btn-xs">
 												<i class="layui-icon layui-icon-edit"></i>编辑营销活动
 												</a>
-											</td>
-											<td>
 												<a href="#" onclick="onSum('${ins.aab301 }')"
 												class="layui-btn layui-btn-xs">
 												<i class="layui-icon layui-icon-edit"></i>方案总结
@@ -115,10 +115,8 @@
 									</c:forEach>
 
 								</c:when>
-								<c:otherwise>
-									
-								</c:otherwise>
 							</c:choose>
+							</tbody>
 						</table>
 
 						<!-- 功能按钮区 -->
@@ -128,6 +126,7 @@
 							<!--  
 							<input type="submit" id="del" name="next" value="删除" formaction="<%=path%>/ab/ab03BatchDelete.html" disabled="disabled" class="layui-btn">
 							-->
+						</div>
 						</div>
 					</form>
 					</fieldset>
@@ -174,9 +173,19 @@
 			}
 
 			//JavaScript代码区域
-			layui.use(['layer', 'form'], function() {
+			layui.use(['layer', 'form','table'], function() {
 				var layer = layui.layer,
-					form = layui.form;
+					form = layui.form,
+					table = layui.table;
+				//转换静态表格
+				table.init('demo', {
+					limit : 10,
+					page : true,
+					toolbar : true,
+					done : function(res, curr, count) {
+						$('#tableId').css('display', 'block');
+					}
+				});
 
 			});
 
