@@ -15,13 +15,7 @@ public class SetsessionServiceImpl extends JdbcServicesSupport
 	public void setPrjsToSession()throws Exception
 	{
 		String sql = "select aaa202,aaa201 from aa02";
-		List<Map<String, String>> res = this.queryForList(sql);
-		Map<String, String> prjs = new HashMap<>(res.size());
-		for(Map<String, String> prj:res)
-		{
-			prjs.put(prj.get("aaa201"), prj.get("aaa202"));
-		}
-		System.out.println(prjs);
+		List<Map<String, String>> prjs = this.queryForList(sql);
 		this.setSessionAttr("prjs", prjs);
 	}
 }
