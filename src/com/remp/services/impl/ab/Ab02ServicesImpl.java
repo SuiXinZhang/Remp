@@ -10,12 +10,40 @@ public class Ab02ServicesImpl extends JdbcServicesSupport
 {
 
 	/**
+	 * 添加销售计划表对应的明细表并初始化
+	 * @param typeNum
+	 * @throws Exception
+	 */
+	private void addDetail(int typeNum) throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("insert into ab02(aab101,aab202,aab203,aab204,aab205,aab206,aab207)")
+				.append("	values(?,?,?,?,?,?,?)")
+				;
+		Object args[] = {this.get("aab101"),typeNum,0,0,0,0,0};
+		executeUpdate(sql.toString(), args);
+	}
+	
+	
+	/**
 	 * 查询计划明细表
 	 */
 	public List<Map<String, String>> query()throws Exception
 	{
 		//还原页面查询条件
 		Object aab101 = this.get("aab101");
+		
+		//判断相应明细列表是否被创建  有则查询 无则添加
+		String sql2 = "select aab101 from ab02 where aab101=?";
+		System.out.println(this.queryForMap(sql2, aab101));
+		if (this.queryForMap(sql2, this.get("aab101")) == null) 
+		{
+			for(int typeNum = 1; typeNum <= 4; typeNum++)
+			{
+				addDetail(typeNum);				
+			}
+		}
+		
 		
 		//定义SQL
 		StringBuilder sql = new StringBuilder()
@@ -68,7 +96,7 @@ public class Ab02ServicesImpl extends JdbcServicesSupport
 			stateList[2] = aab205List[i];
 			stateList[3] = aab206List[i];
 			stateList[4] = aab207List[i];
-			stateList[5] = aab202List[i];
+			stateList[5] = ""+(i+1);
 			//执行更新
 			tag = this.executeUpdate(sql.toString(), stateList)>0;
 			

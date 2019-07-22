@@ -105,7 +105,7 @@ public class Af06ServicesImpl extends JdbcServicesSupport
 		
 		//±‡–¥÷˜Ã‚SQL
 		StringBuilder sql = new StringBuilder()
-				.append("select aaf601,aaf602,aaf603,aaf604,aaf605,aaf606")
+				.append("select aaf601,aaf602,aaf603,aaf604,aaf605,aaf606,aaf612")
 				.append("  from af06")
 				.append(" where true")
 				;

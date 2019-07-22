@@ -18,6 +18,7 @@
   	<jsp:include   page="/base/header.jsp"/>
 	<jsp:include   page="/ab/menu.jsp"/>
   <div class="layui-body">
+  ${msg }
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
     
@@ -54,13 +55,14 @@
 					</c:forEach>
 					<tr>
 						<td colspan="7" align="center">
-							<input type="submit" name="next" value="批量修改" formaction="<%=path %>/ab/ab02Update.html?aab101=${param.aab101}" class="layui-btn">
-							<input type="submit" name="next" value="返回" formaction="<%=path %>/ab/ab01FindById.html?aab101=${param.aab101}" class="layui-btn">
+							<input type="submit" name="next" value="确定" formaction="<%=path %>/ab/ab02Update.html" class="layui-btn">
+							<input type="submit" name="next" value="返回" formaction="<%=path %>/ab/ab01Query.html" class="layui-btn">
 						</td>
 					</tr>
 				</c:when>			
 			</c:choose>
 		</table>
+		<input type="hidden" name="aab101" value="${param.aab101 }">
 	</form>
     
     </div>

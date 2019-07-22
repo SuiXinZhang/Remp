@@ -18,8 +18,8 @@ public class Af07ServicesImpl extends JdbcServicesSupport
 	public boolean add() throws Exception 
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("insert into af07(aaf702,aaf703,aaf704,aaf705,aaf706,aaf709)")
-				.append("	values(?,?,?,?,?,?)")
+				.append("insert into af07(aaf702,aaf703,aaf704,aaf705,aaf706,aaf709,aaf710)")
+				.append("	values(?,?,?,?,?,?,'01')")
 				;
 		Object args[] = {
 				this.get("aaf702"),
@@ -41,12 +41,14 @@ public class Af07ServicesImpl extends JdbcServicesSupport
 		Object qaaf703 = this.get("qaaf703");
 		Object bdate = this.get("bdate");
 		Object edate = this.get("edate");
+		Object qaaf710 = this.get("qaaf710");
 		
 		
 		StringBuilder sql = new StringBuilder()
-				.append("select aaf702,aaf703,aaf704,aaf705,aaf706,aaf709")
-				.append("  from af07")
+				.append("select a.aaf702,a.aaf703,a.aaf704,a.aaf705,a.aaf706,a.aaf709,b.fvalue cnaaf710")
+				.append("  from af07 a,syscode b")
 				.append(" where true")
+				.append(" and b.fcode=a.aaf710 and b.fname='aaf710'")
 				;
 		
 		List<Object> paramList = new ArrayList<>();
@@ -70,6 +72,11 @@ public class Af07ServicesImpl extends JdbcServicesSupport
 		{
 			sql.append(" and aaf705<?");
 			paramList.add(edate);
+		}
+		if (isNotNull(qaaf710)) 
+		{
+			sql.append(" and aaf710=?");
+			paramList.add(qaaf710);
 		}
 		
 		return queryForList(sql.toString(), paramList.toArray());
@@ -99,5 +106,12 @@ public class Af07ServicesImpl extends JdbcServicesSupport
 		}
 		
 		return true;
+	}
+	
+	public boolean modifyState() throws Exception
+	{
+		String sql = "update af07 set aaf710='02' where aaf702=?";
+		System.out.println(this.get("aaf702"));
+		return this.executeUpdate(sql, this.get("aaf702"))>0;
 	}
 }
