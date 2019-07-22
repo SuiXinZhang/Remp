@@ -1,5 +1,6 @@
 package com.remp.services.impl.aa;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -104,7 +105,9 @@ public class Aa02ServicesImpl extends JdbcServicesSupport {
 				this.get("aaa217")
 			};
 
-
+		String sql2 = "select aaa202,aaa201 from aa02";
+		List<Map<String, String>> prjs = this.queryForList(sql2);
+		this.setSessionAttr("prjs", prjs);
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
 	

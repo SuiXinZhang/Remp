@@ -22,7 +22,8 @@
 	    			名&#8195;&#8195;称
 	    		</label>
 		      	<div class="layui-input-block">
-		        	<input type="text" name="aaa902" required="required" value="${ins.aaa902 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        		<input type="text" name="aaa902" required="required" value="${ins.aaa902 }" autocomplete="off" class="layui-input"  style="width:250px;">
+
 	      		</div>
 	    	</div>
 	    </div>
@@ -92,7 +93,7 @@
 	    			按&thinsp;&thinsp;&thinsp;揭&thinsp;&thinsp;&thinsp;银&thinsp;&thinsp;&thinsp;行
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa907" required="required" value="${ins.aaa907 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="text" name="aaa907"  value="${ins.aaa907 }" autocomplete="off" class="layui-input"  style="width:250px;">
 	      		</div>
 	    	</div>
 	    </div>
@@ -104,7 +105,7 @@
 	    			按&thinsp;揭&thinsp;精&thinsp;确&thinsp;度
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa908" required="required" value="${ins.aaa908 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="text" name="aaa908"  value="${ins.aaa908 }" autocomplete="off" class="layui-input"  style="width:250px;">
 	      		</div>
 	    	</div>
 	    </div>
@@ -116,7 +117,7 @@
 	    			公&thinsp;积&thinsp;金&thinsp;银&thinsp;行
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa909" required="required" value="${ins.aaa909 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="text" name="aaa909" value="${ins.aaa909 }" autocomplete="off" class="layui-input"  style="width:250px;">
 	      		</div>
 	    	</div>
 	    </div>
@@ -128,7 +129,7 @@
 	    			公积金精确度
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa908" required="required" value="${ins.aaa910 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="text" name="aaa910" value="${ins.aaa910 }" autocomplete="off" class="layui-input"  style="width:250px;">
 	      		</div>
 	    	</div>
 	    </div>  
@@ -153,7 +154,7 @@
 						<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa901?'添加':'修改'}"
 							formaction="<%=path %>/aa/${empty ins.aaa901?'aa09Add.html':'aa09Modify.html' }">
 						<input class="layui-btn layui-btn-warm" type="submit" value="返回"
-						formaction="<%=path %>/aa/aa09Query.html" formnovalidate="formnovalidate">
+							formaction="<%=path %>/aa/aa09Query.html" formnovalidate="formnovalidate">
 				</div>
 				<div class="layui-inline">
 					<c:if test="${!empty msg }">
@@ -166,7 +167,7 @@
 		</div>
 			
 
-		<input type="hidden" name="aaa201" value="1"> 
+		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" name="aaa901" value="${ins.aaa901 }">
 	</form>
 	</div>

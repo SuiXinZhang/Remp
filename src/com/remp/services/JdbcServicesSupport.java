@@ -673,7 +673,7 @@ public abstract class JdbcServicesSupport implements BaseServices
 	 * @param key
 	 * @param dto
 	 */
-	protected final void setSessionAttr(String key,Map<String, String> dto)
+	protected final void setSessionAttr(String key,List<Map<String, String>> dto)
 	{
 		this.session.setAttribute(key, dto);
 	}

@@ -20,26 +20,29 @@
 					 autocomplete="off" class="layui-input">
 				</div>
 			</div>
-	<table class="layui-table" lay-even lay-skin="nob">
+	<div id="tableId" style="display: none">
+	<table id="idData"  lay-filter="demo">
+	<thead>
 	  <tr>
-	    <td></td>
-	    <td>序号</td>
-	    <td>来电总数</td>
-	    <td>来访总数</td>
-	    <td>预约排号数</td>
-	    <td>小订套数</td>
-	    <td>认购套数</td>
-	    <td>签约套数</td>
-	    <td>广告分析</td>
-	    <td>业务表现</td>
-	    <td>填写人</td>
+		<td lay-data="{field:'sort1',width:60}">序号</td>
+		<td lay-data="{field:'projectname',width:125}">来电总数</td>
+		<td lay-data="{field:'username'}">来访总数</td>
+		<td lay-data="{field:'userphone'}">预约排号数</td>
+		<td lay-data="{field:'empname'}">小订套数</td>
+		<td lay-data="{field:'style',width:88}">认购套数</td>
+		<td lay-data="{field:'date',sort:true,width:115}">签约套数</td>
+		<td lay-data="{field:'grade',sort:true,width:100}">广告分析</td>
+		<td lay-data="{field:'state',width:120}">业务表现</td>
+		<td lay-data="{field:'peo',width:120}">填写人</td>
+		<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 	  </tr>
+	  </thead>
+	  <tbody>
 	  <c:choose>
 	     <c:when test="${rows!=null }">
 	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				    <td></td>
 				    <td>${vs.count }</td>
 				    <td>${ins.aad802}</td>
 				    <td>${ins.aad803 }</td>
@@ -49,44 +52,13 @@
 				    <td>${ins.aad808 }</td>
 				    <td>${ins.aad812 }</td>
 				    <td>${ins.aad813 }</td>
+				    <td>${ins.aad814 }</td>
 				    <td><a href="#" onclick="onSelect('${ins.aad801}')">修改</a></td>
 				  </tr>
 		      </c:forEach>
-		      <!-- 补充空行 -->
-		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="6">
-			          <tr>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			          </tr>
-		      </c:forEach>
 	     </c:when>
-	     <c:otherwise>
-	        <c:forEach begin="1" step="1" end="3">
-	           <tr>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	           </tr>
-	        </c:forEach>
-	     </c:otherwise>
 	   </c:choose>
+	   </tbody>
 	</table>
 	<div class="layui-form-item" align="center">
 	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
@@ -97,20 +69,30 @@
   
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
   </div>
 </div>
 <script ></script>
 <script>
 //JavaScript代码区域
-	layui.use(['layer', 'form','element'], function(){
+	layui.use(['layer', 'form','element','table'], function(){
 	  var layer = layui.layer
-	     ,form = layui.form
-	  ,element = layui.element;
+	  ,form = layui.form
+	  ,element = layui.element
+	  ,table = layui.table;
 	  if("${msg }" != "")
 		{
 			layer.msg('${msg }');	  
 		}
+	  
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	});
 	function onSelect(vaad801)
     {
