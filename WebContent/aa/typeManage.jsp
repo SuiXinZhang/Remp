@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/../base/taglib.jsp" %>
 <html>
@@ -13,19 +14,20 @@
 	    <form id="myform" class="layui-form" action="<%=path%>/aa/aa05Query.html" method="post">
 	     <h1>项目户型管理</h1>
 	        <hr>
-		    <table class="layui-table">
+	        <div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<th></th>
-			            <th>序号</th>
-			            <th>户型编号</th>
-			            <th>产品类型</th>
-			            <th>房间结构</th>
-			            <th>建筑面积</th>
-			            <th>套内面积</th>
-			            <th>户型平面图</th>
-			            <th>备注</th>
-			            <th></th>
+			        	<td lay-data="{field:'check',width:50}"></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">户型编号</td>
+						<td lay-data="{field:'username'}">产品类型</td>
+						<td lay-data="{field:'userphone'}">房间结构</td>
+						<td lay-data="{field:'empname'}">建筑面积</td>
+						<td lay-data="{field:'style',width:88}">套内面积</td>
+						<td lay-data="{field:'date',sort:true,width:115}">户型平面图数</td>
+						<td lay-data="{field:'grade',sort:true,width:100}">备注</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -45,40 +47,15 @@
 									<td>${ins.aaa506 }</td>
 									<td>${ins.aaa507 }</td>
 									<td>${ins.aaa508 }</td>
-									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa501}')">删除</a></td>
-								</tr>
-							</c:forEach>
-							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>							
+										<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+											onClick="onDel('${ins.aaa501}')">
+											<i class="layui-icon layui-icon-delete"></i>删除
+										</a> 
+									</td>
 								</tr>
 							</c:forEach>
 						</c:when>
-						<c:otherwise>
-							<c:forEach begin="1" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
 					</c:choose>
 			    </tbody>
 			</table>
@@ -94,7 +71,7 @@
 			
 
 		<input type="hidden" name="aaa201" value="${param.aaa201 }">
-			
+		</div>
 		</form>
 	</div>
   </div>
@@ -127,10 +104,20 @@ function onDel(vaaa501)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
-	  var layer = layui.layer;
-	  var element = layui.element;
-	  form = layui.form;
+layui.use(['layer', 'form','element','table'], function(){
+	  var layer = layui.layer
+	  ,element = layui.element
+	  ,form = layui.form
+	  ,table = layui.table;
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	  var count=0;
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){

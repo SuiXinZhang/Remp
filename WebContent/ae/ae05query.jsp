@@ -30,17 +30,18 @@
 	                </div>
 	                <input type="submit" class="layui-btn" data-type="reload" value="查询">
 	        </div>
-		    <table class="layui-table">
+	        <div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<td>序号</td>
-						<td>客户</td>
-						<td>房间</td>
-						<td>房间补差款</td>
-						<td>附属房间补差款</td>
-						<td>参差补差款</td>
-						<td>实际补差款</td>
-						<td></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">客户</td>
+						<td lay-data="{field:'username'}">房间</td>
+						<td lay-data="{field:'userphone'}">房间补差款</td>
+						<td lay-data="{field:'empname'}">附属房间补差款</td>
+						<td lay-data="{field:'style',width:88}">参差补差款</td>
+						<td lay-data="{field:'date',sort:true,width:115}">实际补差款</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -58,6 +59,7 @@
 			    </c:forEach>
 			    </tbody>
 			</table>
+			</div>
 		</form>
 	</div>
   </div>
@@ -74,12 +76,23 @@ function modify(id)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
-	var element = layui.element;
-	var layer = layui.layer
-	,form = layui.form;
-	var count=0;
-	 /* form.on('checkbox(check)', function(data){
+layui.use(['layer', 'form','element','table'], function(){
+	var element = layui.element
+	,layer = layui.layer
+	,form = layui.form
+	,table = layui.table;
+	//转换静态表格
+	table.init('demo', {
+		limit : 10,
+		page : true,
+		toolbar : true,
+		done : function(res, curr, count) {
+			$('#tableId').css('display', 'block');
+		}
+	});
+	
+	/*var count=0;
+	  form.on('checkbox(check)', function(data){
          if(data.elem.checked==true){
               	count++;
               	if(count!=0){

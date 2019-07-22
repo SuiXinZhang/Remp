@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/../base/taglib.jsp" %>
 <html>
@@ -13,15 +14,15 @@
 	    <form id="myform" class="layui-form" action="<%=path%>/aa/aa03Query.html" method="post">
 	     <h1>部门管理</h1>
 	        <hr>
-		    <table class="layui-table">
+	        <div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<th></th>
-			            <th>序号</th>
-			            <th>部门名称</th>
-			            <th>部门描述</th>
-			            <th></th>
-			            <th></th>
+			        	<td lay-data="{field:'check',width:50}"></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">部门名称</td>
+						<td lay-data="{field:'username'}">部门描述</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -36,33 +37,20 @@
 									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa301 }')">${ins.aaa302 }</a>
 									</td>
 									<td>${ins.aaa303 }</td>
-									<td><a href="#" style="color:blue" onClick="onEmp('${ins.aaa301}','${ins.aaa302}')">员工管理</a></td>
-									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa301}')">删除</a></td>
-								</tr>
-							</c:forEach>
-							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>
+											<a class="layui-btn layui-btn-xs" href="#"
+												onClick="onEmp('${ins.aaa301}','${ins.aaa302}')">
+												<i class="layui-icon layui-icon-edit"></i>员工管理
+											</a> 
+									
+											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+												onClick="onDel('${ins.aaa301}')">
+												<i class="layui-icon layui-icon-delete"></i>删除
+											</a> 
+									</td>
 								</tr>
 							</c:forEach>
 						</c:when>
-						<c:otherwise>
-							<c:forEach begin="1" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
 					</c:choose>
 			    </tbody>
 			</table>
@@ -78,7 +66,7 @@
 			
 		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" id="aaa302" name="aaa302" value="">
-			
+		</div>
 		</form>
 	</div>
   </div>
@@ -122,9 +110,19 @@ function onEmp(vaaa301,vaaa302)
 </script>
 <script>
 layui.use(['layer', 'form','element'], function(){
-	  var layer = layui.layer;
-	  var element = layui.element;
-	  form = layui.form;
+	  var layer = layui.layer
+	  ,element = layui.element
+	  ,form = layui.form
+	  ,table = layui.table;
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});	
 	  var count=0;
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){

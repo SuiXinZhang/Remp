@@ -22,7 +22,7 @@
              	<dd class="${param.menu eq 'ac08' ? 'layui-this':''}"><a href="ac04Query.html">&nbsp&nbsp&nbsp&nbsp查询客户</a></dd>
              </dl>
         </li>
-        <li class="layui-nav-item layui-nav-itemed"><a href="ac03Query.html">客户跟进管理</a>
+        <li class="layui-nav-item layui-nav-itemed ${param.menu eq 'ac12' ? 'layui-this':''}"><a href="ac03Query.html">客户跟进管理</a>
         </li>
         
          <li class="layui-nav-item layui-nav-itemed"><a href="javascript:">客户关怀</a>

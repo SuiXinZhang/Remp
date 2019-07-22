@@ -94,8 +94,13 @@
 			所属项目
 			</label>
 				<div class="layui-input-inline">
-					<input type="text" name="aaf102" required lay-verify="true" value="${param.aaf102 }"
-					 autocomplete="off" class="layui-input">
+					<%-- <input type="text" name="aaf102" required lay-verify="true" value="${param.aaf102 }"
+					 autocomplete="off" class="layui-input"> --%>
+					 <select name="aaf102" required>
+					    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
+					    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
+					    </c:forEach>
+					</select>
 				</div>
 		</div>
 	
@@ -177,7 +182,8 @@
 	
 	  form.val('myform',{
 		  "aaf103":"${param.aaf103}",
-		  "aac109":"${ins.aac109}"
+		  "aac109":"${ins.aac109}",
+		  "aaf102":"${param.aaf102}"
 	  });
 	  
 	  //执行一个laydate实例

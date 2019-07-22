@@ -17,8 +17,13 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">ÏîÄ¿Ãû³Æ</label>
 				<div class="layui-input-inline">
-					<input type="text" name="aaf303" required lay-verify="true" value="${ins.aaf303 }"
-					 autocomplete="off" class="layui-input">
+					<%-- <input type="text" name="aaf303" required lay-verify="true" value="${ins.aaf303 }"
+					 autocomplete="off" class="layui-input"> --%>
+					 <select name="aaf303" required>
+					    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
+					    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
+					    </c:forEach>
+					</select>
 				</div>
 			</div>
 			<div class="layui-inline">
@@ -150,7 +155,8 @@
 	  ,form = layui.form;
 	  layer.msg('Hello World');
 	  form.val('myform',{
-		  "aaf308":"${ins.aaf308}"
+		  "aaf308":"${ins.aaf308}",
+		  "aaf303":"${ins.aaf303}"
 	  });
 	});
 	layui.use('laydate', function(){

@@ -28,7 +28,12 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">ÏîÄ¿Ãû³Æ</label>
 						<div class="layui-input-inline">
-							<input type="text" name="qaaf612" class="layui-input">
+							<select name="qaaf612" required>
+							    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
+							    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
+							    </c:forEach>
+							</select>
+							<!-- <input type="text" name="qaaf612" class="layui-input"> -->
 						</div>
 					</div>
 					<div class="layui-inline">
