@@ -47,10 +47,10 @@
 	    		</label>
 		      	<div class="layui-input-block">
 		      		<c:if test="${empty ins.aaa701 }">
-		        		<input type="text" name="aaa708" required="required" value="${ins.aaa602}" autocomplete="off" class="layui-input"  style="width:250px;">
+		        		<input type="text" name="aaa708" required="required" value="${param.aaa708}" autocomplete="off" class="layui-input"  style="width:250px;">
 	      			</c:if>
 	      			<c:if test="${!empty ins.aaa701 }">
-		        		<input type="text" name="aaa708" readonly="readonly" value="${param.aaa708}" autocomplete="off" class="layui-input"  style="width:250px;">
+		        		<input type="text" name="aaa708" readonly="readonly" value="${ins.aaa708}" autocomplete="off" class="layui-input"  style="width:250px;">
 	      			</c:if>
 	      		</div>
 	    	</div>

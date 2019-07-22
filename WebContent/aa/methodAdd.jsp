@@ -92,7 +92,7 @@
 	    			按&thinsp;&thinsp;&thinsp;揭&thinsp;&thinsp;&thinsp;银&thinsp;&thinsp;&thinsp;行
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa907" required="required" value="${ins.aaa907 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="text" name="aaa907"  value="${ins.aaa907 }" autocomplete="off" class="layui-input"  style="width:250px;">
 	      		</div>
 	    	</div>
 	    </div>
@@ -104,7 +104,7 @@
 	    			按&thinsp;揭&thinsp;精&thinsp;确&thinsp;度
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa908" required="required" value="${ins.aaa908 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="text" name="aaa908"  value="${ins.aaa908 }" autocomplete="off" class="layui-input"  style="width:250px;">
 	      		</div>
 	    	</div>
 	    </div>
@@ -116,7 +116,7 @@
 	    			公&thinsp;积&thinsp;金&thinsp;银&thinsp;行
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa909" required="required" value="${ins.aaa909 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="text" name="aaa909" value="${ins.aaa909 }" autocomplete="off" class="layui-input"  style="width:250px;">
 	      		</div>
 	    	</div>
 	    </div>
@@ -128,7 +128,7 @@
 	    			公积金精确度
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa908" required="required" value="${ins.aaa910 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="text" name="aaa910" value="${ins.aaa910 }" autocomplete="off" class="layui-input"  style="width:250px;">
 	      		</div>
 	    	</div>
 	    </div>  
