@@ -17,7 +17,7 @@
 				<div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 					<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-						<legend>销售计划列表</legend>				
+						<legend style="color:black;"><h2>销售计划列表</h2></legend>				
 				
 					<form class="layui-form" id="myform" action="<%=path%>/ab/ab01Query.html" method="post">
 
@@ -40,7 +40,7 @@
 					
 				
 						<div class="layui-form-item" align="left">
-							<div class="layui-inline" style="padding-left:240px">
+							<div class="layui-inline" style="padding-left:248px">
 							<label class="layui-form-label">月份</label>
 							<div class="layui-input-inline">
 								<input type="text" name="month" placeholder="月份" autocomplete="off" class="layui-input">

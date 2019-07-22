@@ -21,7 +21,7 @@
 				<div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 					<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-						<legend>营销方案列表</legend>
+						<legend style="color:black;"><h2>营销方案列表</h2></legend>
 
 					<form id="myform" class="layui-form" action="<%=path%>/ab/ab03Query.html" method="post">
 
@@ -173,10 +173,13 @@
 			}
 
 			//JavaScript代码区域
-			layui.use(['layer', 'form','table'], function() {
+			layui.use(['layer', 'form','element','table'], function() {
 				var layer = layui.layer,
 					form = layui.form,
-					table = layui.table;
+					table = layui.table,
+					element = layui.element;
+					
+					
 				//转换静态表格
 				table.init('demo', {
 					limit : 10,

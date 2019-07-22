@@ -15,7 +15,7 @@
 			<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-				<legend>银行批量放款列表</legend>
+				<legend style="color:black;"><h2>银行批量放款列表</h2></legend>
 			
 			<form class="layui-form" id="myform" layfilter="form" 
 			action="<%=path%>/af/af06Query.html" method="post">
@@ -51,7 +51,7 @@
 				</div>
 				
 				<div class="layui-form-item" align="left">
-					<div class="layui-inline" style="padding-left:78px">
+					<div class="layui-inline" style="padding-left:85px">
 						<label class="layui-form-label">起始日期</label>
 						<div class="layui-input-inline">
 							<input type="text" name="bdate" class="layui-input" id="test29" placeholder="yyyy-MM-dd">

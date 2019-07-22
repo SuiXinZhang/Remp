@@ -24,7 +24,7 @@
 		<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-				<legend>欠款列表</legend>
+				<legend style="color:black;"><h2>欠款列表</h2></legend>
 		
 			<form id="myform" class="layui-form" lay-filter="form"
 				action="<%=path%>/af/af07Query.html" method="post">
@@ -187,6 +187,27 @@
 				trigger : 'click'
 			});
 		});
+	</script>
+	<script type="text/javascript">
+		function selectRoom(e)
+		{
+			layer.open({
+				 type: 2
+				,title: '房间选择'
+				,area:['800px', '500px']
+				,maxmin: true
+				,content: '<%=path%>/base/room.html'
+				,btn: ['确定','关闭'],
+				yes: function(index){
+					var res = window["layui-layer-iframe" + index].callbackdata();
+					//打印返回的值，看是否有我们想返回的值
+					console.log(res);
+					$("#room").attr("value",res[0])
+					$("#roomNo").attr("value",res[1])
+					layer.close(index);
+					}
+				});  
+		}
 	</script>
 </body>
 </html>
