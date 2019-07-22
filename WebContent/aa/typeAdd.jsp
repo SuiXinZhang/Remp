@@ -91,7 +91,7 @@
 	    			±¸&#8195;&#8195;×¢
 	    		</label>
 		      	<div class="layui-input-block" >
-		        <textarea cols="82" name="aaa410" class="layui-textarea">${ins.aaa410 }</textarea>
+		        <textarea cols="82" name="aaa508" class="layui-textarea">${ins.aaa508 }</textarea>
 	      		</div>
 	    	</div>
     	</div>
@@ -113,7 +113,7 @@
 				</div>
 		</div>
 			
-		<input type="hidden" name="aaa201" value="1"> 
+		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" name="aaa501" value="${ins.aaa501 }">
 	</form>
 	</div>

@@ -38,7 +38,7 @@
 									<td>${vs.count }</td>
 									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa701 }')">${ins.aaa702 }¶°</a>
 									</td>
-									<td>${ins.aaa708 }</td>
+									<td>${ins.aaa602 }</td>
 									<td>${ins.aaa703 }</td>
 									<td>${ins.aaa705 }</td>
 									<td>${ins.aaa704 }</td>
@@ -95,7 +95,7 @@
 			
 
 		<input type="hidden" name="aaa601" value="${param.aaa601 }">
-		<input type="hidden" name="aaa201" value="1"> 
+		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" name="aaa708" value="${param.aaa602 }">		
 		</form>
 	</div>

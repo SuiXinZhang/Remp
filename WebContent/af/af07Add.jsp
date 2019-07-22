@@ -9,12 +9,14 @@
 		<jsp:include page="/base/header.jsp" />
 		<jsp:include page="/af/menu.jsp" />
 		<div class="layui-body">
+		${msg }
 		<div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
 	   	<fieldset class="layui-elem-field">
 	 	<legend style="color:black"><h2>${empty param.aaa601?'新增':'修改' }欠款单据</h2></legend>
 	 	<div class="layui-field-box">
 			<form class="layui-form" action="<%=path%>/af/af07Add.html" method="post">
 			
+			<div align="center">
 			   	<div class="layui-form-item">
 			   		<div class="layui-inline">
 						<label class="layui-form-label">客户名称</label>
@@ -60,7 +62,7 @@
 						</div>
 					</div>
 				</div>
-			  
+			  </div>
 			  <div class="layui-form-item" align="center">
 		  			<input type="submit" name="next" value="${empty param.aaf701?'添加':'修改'}"
 						formaction="<%=path %>/af/${empty param.aaf701?'af07Add':'af07Exam' }.html" class="layui-btn">

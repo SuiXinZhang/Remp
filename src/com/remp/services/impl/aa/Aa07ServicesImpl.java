@@ -18,9 +18,9 @@ public class Aa07ServicesImpl extends JdbcServicesSupport{
 	public Map<String,String> findById()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-    			.append("select a.aaa701,a.aaa702,a.aaa703,a.aaa704,a.aaa705,a.aaa706,a.aaa707,a.aaa708")
-    			.append("  from aa07 a")
-    			.append(" where a.aaa701=?")
+    			.append("select a.aaa701,a.aaa702,a.aaa703,a.aaa704,a.aaa705,a.aaa706,a.aaa707,a.aaa708,b.aaa602")
+    			.append("  from aa07 a,aa06 b")
+    			.append(" where a.aaa701=? and a.aaa601=b.aaa601")
     			;
 	    return	this.queryForMap(sql.toString(), this.get("aaa701"));
 	}
@@ -34,9 +34,9 @@ public class Aa07ServicesImpl extends JdbcServicesSupport{
 	{
 		StringBuilder sql=new StringBuilder()
 				.append("select a.aaa701,a.aaa702,a.aaa703,a.aaa704,a.aaa705,")
-				.append("       a.aaa706,a.aaa707,a.aaa708")
-				.append("  from aa07 a")
-				.append("  where a.aaa601=?")//查询楼栋且属于当前区域
+				.append("       a.aaa706,a.aaa707,a.aaa708,b.aaa602")
+				.append("  from aa07 a,aa06 b")
+				.append("  where a.aaa601=? and a.aaa601=b.aaa601")//查询楼栋且属于当前区域
 				;
 
 		return this.queryForList(sql.toString(),this.get("aaa601"));

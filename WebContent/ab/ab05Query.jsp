@@ -10,13 +10,15 @@
 			<jsp:include page="/ab/menu.jsp" />
 			<div class="layui-body">
 				<!-- 内容主体区域 -->
-				<div style="padding: 15px;">
+				<div class="layui-anim layui-anim-scale"
+					style="padding: 15px; margin: 30px 80px;">
+					<fieldset class="layui-elem-field layui-filed-title"
+						style="margin-top: 20px;">
+						<legend>营销分析</legend>
 
 					<form class="layui-form" lay-filter="myform" action="<%=path %>/ab/ab05Add.html" method="post">
 
-						<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-							<legend>营销分析</legend>
-						</fieldset>
+					<div align="center">
 
 						<div class="layui-form-item">
 							<div class="layui-inline">
@@ -37,8 +39,9 @@
 							<input type="submit" name="next" value="来电来访与营销投入分析" formaction="<%=path %>/ab/ab05QueryToC1.html" class="layui-btn"/>
 							<input type="submit" name="next" value="销售签约与营销投入分析" formaction="<%=path %>/ab/ab05QueryToC2.html" class="layui-btn"/>
 						</div>
+						</div>
 					</form>
-
+					</fieldset>
 				</div>
 
 			</div>
