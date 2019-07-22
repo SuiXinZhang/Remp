@@ -15,10 +15,12 @@
 		
 	</head>
 	<body class="layui-layout-body">
-	
 		<div class="layui-layout layui-layout-admin">
 			<jsp:include page="/base/header.jsp" />
-			<jsp:include page="/ab/menu.jsp" />
+			<c:import url="/ab/menu.jsp">
+	    		<c:param name="menu" value="ab01a"/>
+	   	    </c:import>
+		     
 			<div class="layui-body">
 				${msg }
 				<div class="layui-anim layui-anim-scale"
@@ -90,7 +92,7 @@
 						<div class="layui-form-item layui-form-text"  style="padding-left:250px;padding-right:230px;">
 							<label class="layui-form-label" style="width:60px">备注</label>
 							<div class="layui-input-block">
-								<textarea placeholder="请输入内容" name="aab110" value="${ins.aab110 }" class="layui-textarea"></textarea>
+								<textarea placeholder="请输入内容" name="aab110" class="layui-textarea">${ins.aab110 }</textarea>
 							</div>
 						</div>
 					</div>	
@@ -120,7 +122,6 @@
 				var layer = layui.layer,
 					form = layui.form;
 
-				layer.msg('Hello World');
 			});
 			
 			//日期模块

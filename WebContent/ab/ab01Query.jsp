@@ -8,7 +8,9 @@
 	<body class="layui-layout-body">
 		<div class="layui-layout layui-layout-admin">
 			<jsp:include page="/base/header.jsp" />
-			<jsp:include page="/ab/menu.jsp" />
+			<c:import url="/ab/menu.jsp">
+	    		<c:param name="menu" value="ab01q"/>
+	   	    </c:import>
 			<div class="layui-body">
 			${msg }
 				<!-- 内容主体区域 -->
@@ -165,7 +167,6 @@
 			layui.use([ 'layer', 'form', 'element'], function() {
 				var element = layui.element;
 				var layer = layui.layer, form = layui.form;
-				layer.msg('Hello World');
 			});
 			
 		</script>

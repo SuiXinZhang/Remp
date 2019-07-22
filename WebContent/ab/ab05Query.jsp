@@ -7,7 +7,9 @@
 	<body class="layui-layout-body">
 		<div class="layui-layout layui-layout-admin">
 			<jsp:include page="/base/header.jsp" />
-			<jsp:include page="/ab/menu.jsp" />
+			<c:import url="/ab/menu.jsp">
+		    	<c:param name="menu" value="ab05"/>
+		    </c:import>
 			<div class="layui-body">
 				<!-- 内容主体区域 -->
 				<div class="layui-anim layui-anim-scale"
@@ -58,7 +60,6 @@
 				var layer = layui.layer,
 					form = layui.form;
 
-				layer.msg('Hello World');
 			});
 			
 			//日期选择框
