@@ -233,7 +233,7 @@
 			</div>
 			
 
-		<input type="hidden" name="aaa201" value="1"> 
+		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" name="aaa701" value="${param.aaa701 }"> 
 		<input type="hidden" name="aaa601" value="${param.aaa601 }"> 
 		<input type="hidden" name="aaa602" value="${param.aaa708 }">	

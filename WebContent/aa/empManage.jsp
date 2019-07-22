@@ -114,7 +114,7 @@
 									</td>
 									<td>${ins.aaa402 }</td>
 									<td>${ins.aaa404 }</td>
-									<td>${ins.aaa405 }</td>
+									<td>${ins.aaa302 }</td>
 									<td>${ins.aaa407 }</td>
 									<td>${ins.aaa406 }</td>
 									<td>${ins.aaa411 }</td>
@@ -180,7 +180,7 @@
 			
 
 		<input type="hidden" name="aaa301" value="${param.aaa301 }"> 
-		<input type="hidden" name="aaa201" value="1"> 
+		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" name="aaa405" value="${param.aaa302 }">
 			
 		</form>

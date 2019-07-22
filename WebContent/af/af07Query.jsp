@@ -2,20 +2,35 @@
 <%@include file="/base/taglib.jsp"%>
 <html>
 <head>
-	<jsp:include page="/base/head.jsp" />
+<jsp:include page="/base/head.jsp" />
+
+<style>
+		.noBorder
+		{
+			background-color:transparent;
+			border:0;
+		}
+	</style>
+
 </head>
 <body class="layui-layout-body">
 	<div class="layui-layout layui-layout-admin">
 		<jsp:include page="/base/header.jsp" />
 		<jsp:include page="/af/menu.jsp" />
 		<div class="layui-body">
-			<form id="myform" class="layui-form" action="<%=path%>/af/af07Query.html" method="post">
-	
-			<!------------------ 查询条件区---------------------->
-				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-					<legend>欠款列表</legend>
-				</fieldset>
+		${msg }
+		<div class="layui-anim layui-anim-scale"
+			style="padding: 15px; margin: 30px 80px;">
+			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+				<legend>欠款列表</legend>
+		
+			<form id="myform" class="layui-form" lay-filter="form"
+				action="<%=path%>/af/af07Query.html" method="post">
 				
+				<div align="center">
+
+				<!------------------ 查询条件区---------------------->
+
 				<div class="layui-form-item">
 					<div class="layui-inline">
 						<label class="layui-form-label">客户名称</label>
@@ -26,107 +41,99 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">房间编号</label>
 						<div class="layui-input-inline">
-							<input type="text" name="qaaf702" class="layui-input" >
+							<input type="text" name="qaaf702" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">还款状态</label>
+						<div class="layui-input-inline">
+							<select name="qaaf710" lay-verify="">
+								<option value="">请选择还款状态</option>
+								<option value="01" selected="selected">未还款</option>
+								<option value="02">已还款</option>
+							</select>
 						</div>
 					</div>
 				</div>
-				
-				<div class="layui-form-item">
-					<div class="layui-inline">
+
+				<div class="layui-form-item" align="left">
+					<div class="layui-inline" style="padding-left:86">
 						<label class="layui-form-label">起始日期</label>
 						<div class="layui-input-inline">
-							<input type="text" name="bdate" class="layui-input" id="test29" placeholder="yyyy-MM-dd">
+							<input type="text" name="bdate" class="layui-input" id="test29"
+								placeholder="yyyy-MM-dd">
 						</div>
 					</div>
 					<div class="layui-inline">
 						<label class="layui-form-label">截止日期</label>
 						<div class="layui-input-inline">
-							<input type="text" name="edate" class="layui-input" id="test30" placeholder="yyyy-MM-dd">
+							<input type="text" name="edate" class="layui-input" id="test30"
+								placeholder="yyyy-MM-dd">
 						</div>
 					</div>
+					<div class="layui-inline" style="padding-left:110px">
+						<input type="submit" name="next" value="查询" class="layui-btn">
+					</div>
 				</div>
-				
+				</div>
+
 				<!-----------------数据迭代区 -------------------->
 				<table class="layui-table">
 					<tr>
-					  <td></td>
-					  <td>序号</td>
-					  <td>房间编号</td>
-					  <td>客户名称</td>
-					  <td>客户邮箱</td>
-					  <td>签署日期</td>
-					  <td>签署金额</td>
-					  <td>还款金额</td>
-					  <td></td>
+						<td></td>
+						<td>序号</td>
+						<td>房间编号</td>
+						<td>客户名称</td>
+						<td>客户邮箱</td>
+						<td>签署日期</td>
+						<td>签署金额</td>
+						<td>欠款金额</td>
+						<td>还款状态</td>
+						<td></td>
 					</tr>
-			  
-			  <c:choose>
-			  	<c:when test="${rows!=null }">
-			  		<!-- 显示查询到的数据 -->
-			  		<c:forEach items="${rows }" var="ins" varStatus="vs">
-			  			<tr>
-			  				<td>
-			  					<input type="checkbox" name="emailList" value="${ins.aaf704 }"
-			  						onclick="onSelect(this.checked)" >
-			  				</td>
-			  				<td>
-			  					${vs.count }
-			  				</td>
-			  				<td>${ins.aaf702 }</td>
-			  				<td>${ins.aaf703 }</td>
-			  				<td>${ins.aaf704 }</td>
-			  				<td>${ins.aaf705 }</td>
-						    <td>${ins.aaf706 }</td>
-						    <td>${ins.aaf709 }</td>
-						    <td>
-						    	<a href="#" onclick="onEdit('${ins.aaf701}')" class="layui-btn">已缴费</a>
-						    </td>
-			  			</tr>
-			  		</c:forEach>
-			  		
-			  		<!-- 补充空行 -->
-			  		<c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
-					          <tr>
-					            <td></td>
-					            <td></td>
-					            <td></td>
-					            <td></td>
-					            <td></td>
-					            <td></td>
-					            <td></td>
-					            <td></td>
-					            <td></td>
-					          </tr>
-				      </c:forEach>
-			  	</c:when>
-			  	<c:otherwise>
-			        <c:forEach begin="1" step="1" end="15">
-			           <tr>
-			             <td></td>
-			             <td></td>
-			             <td></td>
-			             <td></td>
-			             <td></td>
-			             <td></td>
-			             <td></td>
-			             <td></td>
-			             <td></td>
-			           </tr>
-			        </c:forEach>
-			     </c:otherwise>
-			  </c:choose>
-			  </table>
-			  
-			  	<!-- 功能按钮区 -->
+
+					<c:choose>
+						<c:when test="${rows!=null }">
+							<!-- 显示查询到的数据 -->
+							<c:forEach items="${rows }" var="ins" varStatus="vs">
+								<tr>
+									<td><input type="checkbox" name="emailList"
+										value="${ins.aaf704 }" onclick="onSelect(this.checked)">
+									</td>
+									<td>${vs.count }</td>
+									<td>${ins.aaf702 }</td>
+									<td>${ins.aaf703 }</td>
+									<td>${ins.aaf704 }</td>
+									<td>${ins.aaf705 }</td>
+									<td>${ins.aaf706 }</td>
+									<td>${ins.aaf709 }</td>
+									<td>${ins.cnaaf710 }</td>
+									<td>
+										<a href="<%=path %>/af/af07State.html?aaf702=${ins.aaf702}" class="layui-btn layui-btn-xs">
+										<i class="layui-icon layui-icon-edit"></i>已缴费
+										</a>
+									</td>
+								</tr>
+							</c:forEach>
+
+						</c:when>
+						<c:otherwise>
+							
+						</c:otherwise>
+					</c:choose>
+				</table>
+
+				<!-- 功能按钮区 -->
 				<div class="layui-form-item" align="center">
-				       <input type="submit" name="next" value="查询" class="layui-btn">
-				       <input type="submit" name="next" value="添加" 
-				       formaction="<%=path%>/af/af07Add.jsp" class="layui-btn">
-			
-				       <input type="submit" id="del" name="next" value="邮件催款" 
-				       formaction="<%=path%>/af/af07Mail.html" disabled="disabled" class="layui-btn">
+					<input type="submit" name="next" value="添加"
+						formaction="<%=path%>/af/af07Add.jsp" class="layui-btn"> 
+						<input type="submit" id="del" name="next" value="邮件催款"
+						formaction="<%=path%>/af/af07Mail.html" disabled="disabled"
+						class="layui-btn">
 				</div>
 			</form>
+			</fieldset>
+			</div>
 		</div>
 
 	</div>
@@ -150,35 +157,34 @@
 	function onDel(vaaf701)
     {
   	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/af/af07DelById.html?aaf701="+vaaf701;
-  	 vform.submit();
-    }
-
-</script>
+  	 vform.action="<%=path%>
+		/af/af07DelById.html?aaf701=" + vaaf701;
+			vform.submit();
+		}
+	</script>
 	<script>
-//JavaScript代码区域
-	layui.use(['layer', 'form','element'], function(){
-	  var element = layui.element;
-	  var layer = layui.layer
-	  ,form = layui.form;
-	});
-	
-	//日期选择框
-	  layui.use('laydate', function() {
-	  	var laydate = layui.laydate;
-	  
-	  	laydate.render({
-	  		elem: '#test29',
-	  		theme: 'molv',
-			trigger: 'click'
-	  	});
-		
-		laydate.render({
-			elem: '#test30',
-			theme: 'molv',
-			trigger: 'click'
+		//JavaScript代码区域
+		layui.use([ 'layer', 'form', 'element' ], function() {
+			var element = layui.element;
+			var layer = layui.layer, form = layui.form;
 		});
-	  });
-</script>
+
+		//日期选择框
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+
+			laydate.render({
+				elem : '#test29',
+				theme : 'molv',
+				trigger : 'click'
+			});
+
+			laydate.render({
+				elem : '#test30',
+				theme : 'molv',
+				trigger : 'click'
+			});
+		});
+	</script>
 </body>
 </html>

@@ -9,13 +9,18 @@
 		<jsp:include page="/base/header.jsp" />
 		<jsp:include page="/af/menu.jsp" />
 		<div class="layui-body">
-			<div style="padding: 15px;">
-			<form class="layui-form" id="myform" action="<%=path%>/af/af06Query.html" method="post">
+			${msg }
+			<div class="layui-anim layui-anim-scale"
+			style="padding: 15px; margin: 30px 80px;">
+			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+				<legend>银行批量放款列表</legend>
+			
+			<form class="layui-form" id="myform" layfilter="form" 
+			action="<%=path%>/af/af06Query.html" method="post">
+			
+			<div align="center">
 	
 	<!------------------ 查询条件区---------------------->
-				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-							<legend>银行批量放贷列表</legend>
-				</fieldset>
 				
 				<div class="layui-form-item">
 					<div class="layui-inline">
@@ -30,10 +35,16 @@
 							<input type="text" name="qaaf604" class="layui-input">
 						</div>
 					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">放款单号</label>
+						<div class="layui-input-inline">
+							<input type="text" name="qaaf602" class="layui-input">
+						</div>
+					</div>
 				</div>
 				
-				<div class="layui-form-item">
-					<div class="layui-inline">
+				<div class="layui-form-item" align="left">
+					<div class="layui-inline" style="padding-left:78px">
 						<label class="layui-form-label">起始日期</label>
 						<div class="layui-input-inline">
 							<input type="text" name="bdate" class="layui-input" id="test29" placeholder="yyyy-MM-dd">
@@ -45,20 +56,18 @@
 							<input type="text" name="edate" class="layui-input" id="test30" placeholder="yyyy-MM-dd">
 						</div>
 					</div>
+					<div class="layui-inline" style=" padding-left:110px">
+						<input type="submit" name="next" value="查询" class="layui-btn">
+					</div>
+					
 				</div>
 				
-				<div class="layui-form-item">
-					<label class="layui-form-label">放款单号</label>
-					<div class="layui-input-inline">
-						<input type="text" name="qaaf602" class="layui-input">
-					</div>
-				</div>
+			</div>
 
 		
 		<!-----------------数据迭代区 -------------------->
 		<table class="layui-table" border="1" width="95%" align="center">
 			<tr>
-			  <td></td>
 			  <td>序号</td>
 			  <td>放款单号</td>
 			  <td>放款银行</td>
@@ -74,10 +83,10 @@
 	  		<!-- 显示查询到的数据 -->
 	  		<c:forEach items="${rows }" var="ins" varStatus="vs">
 	  			<tr>
-	  				<td>
+	  				<!-- <td>
 	  					<input type="checkbox" name="idlist" value="${ins.aaf601 }"
 	  						onclick="onSelect(this.checked)" >
-	  				</td>
+	  				</td> -->
 	  				<td>
 	  					${vs.count }
 	  				</td>
@@ -93,42 +102,15 @@
 	  			</tr>
 	  		</c:forEach>
 	  		
-	  		<!-- 补充空行 -->
-	  		<c:forEach begin="${fn:length(rows)+1 }" step="1" end="15">
-			          <tr>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			          </tr>
-		      </c:forEach>
 	  	</c:when>
 	  	<c:otherwise>
-	        <c:forEach begin="1" step="1" end="15">
-	           <tr>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	           </tr>
-	        </c:forEach>
+	       
 	     </c:otherwise>
 	  </c:choose>
 	  </table>
 	  
 	  	<!-- 功能按钮区 -->
 	  	<div class="layui-form-item" align="center">
-		       <input type="submit" name="next" value="查询" class="layui-btn">
 		       <input type="submit" name="next" value="添加" 
 		              formaction="<%=path%>/af/af06Add.jsp" class="layui-btn">
 		       <%-- 
@@ -137,6 +119,8 @@
 		       --%>
 		</div>
 	</form>
+	</fieldset>
+	</div>
 			
 		</div>
 

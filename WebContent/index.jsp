@@ -29,4 +29,16 @@
   	</div>
 </div>
 </body>
+<script>
+$.ajax({
+	 type:'post',
+     url:'<%=path%>/setprjtoSession',
+     async:true,
+     data:{
+     },
+     success:function(data){
+    	 alert("success")
+     }
+})
+</script>
 </html>

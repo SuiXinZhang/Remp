@@ -16,7 +16,7 @@
 	     <h1 align="center">Ãæ»ý²¹²î</h1>
 	        <hr>
 	        <div class="layui-form-item" align="center">
-	        	<<!-- div class="layui-inline">
+	        	<!-- div class="layui-inline">
 	        		<label class="layui-form-label">Ö´ÐÐ×´Ì¬</label>
 	        		 <div class="layui-input-inline" style="width: 200px;">
 	        		 	<select name="qaae704">

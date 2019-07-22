@@ -21,7 +21,12 @@
 	    			Ãû³Æ
 	    		</label>
 		      	<div class="layui-input-block">
-		        	<input type="text" name="aaa602" required="required" value="${ins.aaa602 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		      		<c:if test="${empty ins.aaa601 }">
+		        		<input type="text" name="aaa602" required="required" value="${ins.aaa602 }" autocomplete="off" class="layui-input"  style="width:250px;">
+	      			</c:if>
+	      			<c:if test="${!empty ins.aaa601 }">
+	      				<input type="text" name="aaa602" readonly="readonly" required="required" value="${ins.aaa602 }" autocomplete="off" class="layui-input"  style="width:250px;">
+	      			</c:if>
 	      		</div>
 	    	</div>
 	    </div>
@@ -78,7 +83,7 @@
 				</div>
 			</div>
 			
-		<input type="hidden" name="aaa201" value="1"> 
+		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" name="aaa601" value="${ins.aaa601 }">
 	</form>
 	</div>

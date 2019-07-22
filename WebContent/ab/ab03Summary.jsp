@@ -10,11 +10,15 @@
 	<jsp:include   page="/ab/menu.jsp"/>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
-    <form class="layui-form">
+    <div class="layui-anim layui-anim-scale"
+		style="padding: 15px; margin: 30px 80px;">
+		<fieldset class="layui-elem-field layui-filed-title"
+			style="margin-top: 20px;">
+			<legend>效果评估</legend>
+					
+    <form class="layui-form" formaction="<%=path %>/ab/ab03Summary.html">
 		
-		<div class="layui-form-item layui-form-text">
-			<label class="layui-form-label">效果评估</label>
+		<div class="layui-form-item layui-form-text" style="padding-right:100px">
 			<div class="layui-input-block">
 				<textarea placeholder="请输入内容" name="aab309" value="${ins.aab309 }" class="layui-textarea"></textarea>
 			</div>
@@ -23,12 +27,13 @@
 		<div class="layui-form-item" align="center">	
 			<input type="submit" name="next" value="完成" class="layui-btn">
 			<input type="submit" name="next" value="返回"
-			formaction="ab03Query.html"
+			formaction="<%=path %>/ab/ab03Query.html"
 			formnovalidate="formnovalidate" class="layui-btn">
 		</div>
 		
 		<input type="hidden" name="aab301" value="${param.aab301 }">
 	</form>
+	</fieldset>
     </div>
     
   </div>
