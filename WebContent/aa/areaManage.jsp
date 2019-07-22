@@ -86,7 +86,7 @@
 			</div>
 			
 
-			<input type="hidden" name="aaa201" value="1"> 
+			<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 			<input type="hidden" id="aaa602" name="aaa602" value="">
 				
 		</form>

@@ -136,7 +136,7 @@
 		<e:hidden name="baaa811" />
 		<e:hidden name="eaaa811" />
 
-		<input type="hidden" name="aaa201" value="1"> 
+		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" name="aaa701" value="${param.aaa701 }"> 
 		<input type="hidden" name="aaa801" value="${ins.aaa801 }"> 
 		<input type="hidden" name="aaa601" value="${param.aaa601 }"> 

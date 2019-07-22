@@ -103,7 +103,7 @@
 			</div>
 			
 
-		<input type="hidden" name="aaa201" value="1">
+		<input type="hidden" name="aaa201" value="${param.aaa201 }">
 			
 		</form>
 	</div>

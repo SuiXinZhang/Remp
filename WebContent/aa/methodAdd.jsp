@@ -22,7 +22,8 @@
 	    			名&#8195;&#8195;称
 	    		</label>
 		      	<div class="layui-input-block">
-		        	<input type="text" name="aaa902" required="required" value="${ins.aaa902 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        		<input type="text" name="aaa902" required="required" value="${ins.aaa902 }" autocomplete="off" class="layui-input"  style="width:250px;">
+
 	      		</div>
 	    	</div>
 	    </div>
@@ -153,7 +154,7 @@
 						<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa901?'添加':'修改'}"
 							formaction="<%=path %>/aa/${empty ins.aaa901?'aa09Add.html':'aa09Modify.html' }">
 						<input class="layui-btn layui-btn-warm" type="submit" value="返回"
-						formaction="<%=path %>/aa/aa09Query.html" formnovalidate="formnovalidate">
+							formaction="<%=path %>/aa/aa09Query.html" formnovalidate="formnovalidate">
 				</div>
 				<div class="layui-inline">
 					<c:if test="${!empty msg }">
@@ -166,7 +167,7 @@
 		</div>
 			
 
-		<input type="hidden" name="aaa201" value="1"> 
+		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" name="aaa901" value="${ins.aaa901 }">
 	</form>
 	</div>
