@@ -34,7 +34,7 @@
         </li>
         <li class="layui-nav-item ${param.menu eq 'ad12' ? 'layui-this':''}"><a href="ad06addApply.jsp">业务变更</a></li>
         <li class="layui-nav-item ${param.menu eq 'ad13' ? 'layui-this':''}"><a href="ad06queryApply.html">变更审批</a></li>
-        <li class="layui-nav-item ${param.menu eq 'ad14' ? 'layui-this':''}"><a href="javascript: ">变更日志</a></li>
+        <li class="layui-nav-item ${param.menu eq 'ad14' ? 'layui-this':''}"><a href="ad06ApprovalLog.html ">变更日志</a></li>
         <li class="layui-nav-item"><a href="javascript:">销售日志</a>
         	 <dl class="layui-nav-child">
              	<dd class="${param.menu eq 'ad15' ? 'layui-this':''}"><a href="ad08addsalesLog.jsp">&nbsp&nbsp&nbsp&nbsp添加日志</a></dd>

@@ -17,11 +17,11 @@ public class Ad06ServicesImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ad06(aac401,aad602,aad603,aad604,aad605,")
-				.append("                 aad606,aad607,aad608,aad609,aad610,")
-				.append("                 aad611,aad701,aaa801)")
+				.append("                 aad606,aad607,aad609,aad610,aad611,")
+				.append("                 aad701,aaa801)")
 				.append("          values(?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
-				.append("                 ?,?,?)")
+				.append("                 ?,?)")
 				;
 		Object args[] = {
 				this.get("aac401"),
@@ -31,8 +31,7 @@ public class Ad06ServicesImpl extends JdbcServicesSupport
 				this.get("aad605"),
 				this.get("aad606"),
 				"无",
-				"2019-07-01",
-				"无",
+				this.get("aad609"),
 				this.get("aad610"),
 				this.get("aad611"),
 				this.get("aad701"),
@@ -110,5 +109,17 @@ public class Ad06ServicesImpl extends JdbcServicesSupport
     	this.batchUpdate(sql1, stateList, idlist);
     	this.batchUpdate(sql2, newState, idlist);
     	return this.executeTransaction();
+	}
+	public List<Map<String, String>> queryApproval()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("select a.aad601,b.fvalue baad602,a.aad603,c.fvalue caad604,a.aad605,")
+				.append("       a.aad606,a.aad607,a.aad608,a.aad609,a.aad610,")
+				.append("       a.aad611")
+				.append("  from ad06 a,syscode b,syscode c")
+				.append(" where aad603='已审批' and a.aad602=b.fcode and b.fname='aad602'")
+				.append("   and a.aad604=c.fcode and c.fname='aad604'")
+				;
+		return this.queryForList(sql.toString());
 	}
 }

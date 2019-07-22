@@ -9,6 +9,16 @@ import com.remp.system.tools.Tools;
 
 public class Af03ServicesImpl extends JdbcServicesSupport 
 {
+	public Map<String, String> orderTurnReceipt()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("select aad103,aad111")
+				.append("  from ad01")
+				.append(" where aad101=?")
+				;
+		return this.queryForMap(sql.toString(), this.get("aad101"));
+	}
+	
 	public Map<String, String> turnreceipt()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()

@@ -88,6 +88,17 @@
 				</div>
 			</div>
 	</div>
+	<div class="layui-form-item layui-form-text" align="center">
+			<div class="layui-inline">
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-edit" style="font-size: 20px; color: black;"></i>
+					备&#8195;&#8195;注
+				</label>
+				<div class="layui-input-inline">
+					<textarea cols="66" name="aad609" class="layui-textarea" placeholder="请输入内容">${ins.aad609 }</textarea>
+				</div>
+			</div>
+	   </div>
 	<div class="layui-form-item" align="center">
 		<input type="submit" name="text" value="${empty param.aad601?'添加':'审批' }"
 		 formaction="${empty param.aad601?'ad06addApply':'ad06examineApply' }.html"

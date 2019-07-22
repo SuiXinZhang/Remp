@@ -70,6 +70,19 @@
 				    <td>${ins.aad306 }</td>
 				    <td>${ins.aad307 }</td>
 				    <td>
+				    <c:choose>
+				    <c:when test="${ins.caaa805=='签约'}">
+				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+						<i class="layui-icon layui-icon-close-fill"></i>取消选房
+					</a>
+					<a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+						<i class="layui-icon layui-icon-link"></i>转认购
+					</a>
+					<a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+						<i class="layui-icon layui-icon-link"></i>转签约
+					</a>
+				    </c:when>
+				    <c:otherwise>
 				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onCancel('${ins.aaa801}')">
 				    	<i class="layui-icon layui-icon-close-fill"></i>取消选房
 				    </a>
@@ -79,6 +92,8 @@
 				    <a class="layui-btn layui-btn-xs" href="#" onclick="onSigning('${ins.aad301}')">
 				    	<i class="layui-icon layui-icon-link"></i>转签约
 				    </a>
+				    </c:otherwise>
+				    </c:choose>
 				    </td>
 				  </tr>
 		      </c:forEach>

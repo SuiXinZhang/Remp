@@ -80,6 +80,10 @@
 	   </tbody>
 	  </table>
 	  </div>
+	  <div class="layui-form-item" align="center">
+	  	<input class="layui-btn layui-btn-normal" type="submit" name="next" value="Ìí¼Ó" 
+	  	 formaction="<%=path %>/ad/ad01customerQuery.jsp" >
+	  </div>
 </form>
 	</fieldset>
     </div>
@@ -108,7 +112,6 @@
 			}
 		});
 	});
-	var count=0;
     function onDel(vaad101)
     {
   	 var vform = document.getElementById("myform");
@@ -125,7 +128,7 @@
     function onReceipt(vaad101)
     {
   	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/af/af03turnReceipt.html?aad101="+vaad101;
+  	 vform.action="<%=path%>/af/af03orderTurnReceipt.html?aad101="+vaad101;
   	 vform.submit();
     }
     

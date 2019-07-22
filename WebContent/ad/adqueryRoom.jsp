@@ -157,7 +157,7 @@
 					    	<i class="layui-icon layui-icon-edit"></i>确认选房
 					    </a>
 					    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
-					    	<i class="layui-icon layui-icon-edit"></i>添加预留
+					    	<i class="layui-icon layui-icon-release"></i>添加预留
 					    </a>
 					    </td>
 					    </c:when>

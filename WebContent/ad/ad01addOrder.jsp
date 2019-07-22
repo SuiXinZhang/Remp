@@ -15,7 +15,9 @@
 			layer.msg('${msg }');	  
 		}
 	  form.val('myform',{
-		  "aad112":"${ins.aad112}",
+		  "oaad112":"${ins.aad112}",
+		  "oaad102":"${ins.aad102}"
+		  
 	  });
 	});
 	layui.use('laydate', function(){
@@ -71,8 +73,13 @@
 					ÏîÄ¿Ãû³Æ
 				</label>
 				<div class="layui-input-inline">
-					<input type="text" name="oaad102" required lay-verify="true" value="${ins.aad102 }"
-					 autocomplete="off" class="layui-input">
+					<%-- <input type="text" name="oaad102" required lay-verify="true" value="${ins.aad102 }"
+					 autocomplete="off" class="layui-input"> --%>
+					<select name="oaad102" required>
+						<c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
+							<option value="${ins.aaa202 }">${ins.aaa202 }</option>
+						</c:forEach>
+					</select>
 				</div>
 			</div>
 			<div class="layui-inline">
