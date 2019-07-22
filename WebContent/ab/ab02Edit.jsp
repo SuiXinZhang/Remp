@@ -71,7 +71,6 @@
   
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
   </div>
 </div>
 <script ></script>
@@ -83,8 +82,9 @@
 		  
 		});
 		
-	layui.use('table', function(){
-		var table = layui.table;
+	layui.use(['table','layer'], function(){
+		var table = layui.table
+		,layer = layui.layer;
 
 		//监听单元格编辑
 		table.on('edit(test3)', function(obj){
