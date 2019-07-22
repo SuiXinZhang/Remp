@@ -12,7 +12,9 @@
 <body class="layui-layout-body">
 	<div class="layui-layout layui-layout-admin">
 		<jsp:include page="/base/header.jsp" />
-		<jsp:include page="/ac/menu.jsp" />
+		<c:import url="/ac/menu.jsp">
+  		 <c:param name="menu" value="ac02"/>
+  		</c:import>
 		<div class="layui-body">
 			<div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
@@ -57,8 +59,13 @@
 								<div class="layui-inline">
 									<label class="layui-form-label">ÏîÄ¿Ãû³Æ</label>
 									<div class="layui-input-inline">
-										<input type="text" name="qaac104" value="${param.qaac104 }"
-											autocomplete="off" class="layui-input">
+										<%-- <input type="text" name="qaac104" value="${param.qaac104 }"
+											autocomplete="off" class="layui-input"> --%>
+											<select name="qaac104" required>
+											    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
+											    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
+											    </c:forEach>
+											</select>
 									</div>
 								</div>
 							</div>
@@ -276,6 +283,7 @@ function getCheckBox(str)
 								"qaac111" : "${param.qaac111 }",
 								"qaac103" : "${param.qaac103 }",
 								"qaac109" : "${param.qaac109 }",
+								"qaac104" : "${param.qaac104 }"
 							});
 		})
 </script>

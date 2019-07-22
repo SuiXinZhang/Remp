@@ -55,7 +55,12 @@
 						<div class="layui-inline">
 							<label class="layui-form-label">项目名称</label>
 							<div class="layui-input-inline">
-								<input type="text" name="aaf612" required="true" value="${ins.aaf612 }" class="layui-input">
+								<select name="aaf612" required>
+								    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
+								    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
+								    </c:forEach>
+								</select>
+								<%-- <input type="text" name="aaf612" required="true" value="${ins.aaf612 }" class="layui-input"> --%>
 							</div>
 						</div>
 						<div class="layui-inline">
@@ -131,6 +136,9 @@
 	  var element = layui.element;
 	  var layer = layui.layer
 	  ,form = layui.form;
+	  form.val('myform',{
+		  "aaf612":"${ins.aaf612}",
+	  });
 	});
 	
 	//日期模块

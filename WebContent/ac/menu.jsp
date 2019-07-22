@@ -22,13 +22,13 @@
              	<dd class="${param.menu eq 'ac08' ? 'layui-this':''}"><a href="ac04Query.html">&nbsp&nbsp&nbsp&nbsp查询客户</a></dd>
              </dl>
         </li>
-        <li class="layui-nav-item layui-nav-itemed"><a href="ac03Query.html">客户跟进管理</a>
+        <li class="layui-nav-item layui-nav-itemed ${param.menu eq 'ac12' ? 'layui-this':''}"><a href="ac03Query.html">客户跟进管理</a>
         </li>
         
          <li class="layui-nav-item layui-nav-itemed"><a href="javascript:">客户关怀</a>
          	<dl class="layui-nav-child">
              	<dd class="${param.menu eq 'ac09' ? 'layui-this':''}"><a href="ac04QueryForClient.html">&nbsp&nbsp添加关怀计划</a></dd>
-             	<dd class="${param.menu eq 'ac10' ? 'layui-this':''}"><a href="ac05Query.html">&nbsp&nbsp查询关怀计划户</a></dd>
+             	<dd class="${param.menu eq 'ac10' ? 'layui-this':''}"><a href="ac05Query.html">&nbsp&nbsp查询关怀计划</a></dd>
              </dl>
          </li>
         <li class="layui-nav-item ${param.menu eq 'ac11' ? 'layui-this':''}"><a href="#" onclick="toMsg('该功能还在开发中......')">交互明细查询</a></li>
