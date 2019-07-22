@@ -106,13 +106,7 @@ public class Aa02ServicesImpl extends JdbcServicesSupport {
 			};
 
 		String sql2 = "select aaa202,aaa201 from aa02";
-		List<Map<String, String>> res = this.queryForList(sql2);
-		Map<String, String> prjs = new HashMap<>(res.size());
-		for(Map<String, String> prj:res)
-		{
-			prjs.put(prj.get("aaa201"), prj.get("aaa202"));
-		}
-		System.out.println(prjs);
+		List<Map<String, String>> prjs = this.queryForList(sql2);
 		this.setSessionAttr("prjs", prjs);
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
