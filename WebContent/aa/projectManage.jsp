@@ -20,17 +20,17 @@
 			        <tr>
 			       		<td lay-data="{field:'check',width:50}"></td>
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">项目名称</td>
+						<td lay-data="{field:'projectname',width:100}">项目名称</td>
 						<td lay-data="{field:'username'}">项目地址</td>
 						<td lay-data="{field:'userphone'}">开工日期</td>
 						<td lay-data="{field:'empname'}">开盘日期</td>
-						<td lay-data="{field:'style',width:88}">项目负责人</td>
-						<td lay-data="{field:'date',sort:true,width:115}">项目状态</td>
-						<td lay-data="{field:'zdmj',sort:true}">占地面积</td>
-						<td lay-data="{field:'jzmj',sort:true}">建筑面积</td>
-						<td lay-data="{field:'ksmj',sort:true}">可售面积</td>
-						<td lay-data="{field:'ksts',sort:true}">可售套数</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'style',width:110}">项目负责人</td>
+						<td lay-data="{field:'date',width:100}">项目状态</td>
+						<td lay-data="{field:'zdmj'}">占地面积</td>
+						<td lay-data="{field:'jzmj'}">建筑面积</td>
+						<td lay-data="{field:'ksmj'}">可售面积</td>
+						<td lay-data="{field:'ksts'}">可售套数</td>
+						<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -58,6 +58,17 @@
 											<i class="layui-icon layui-icon-delete"></i>删除
 										</a> 
 									</td>
+								</tr>
+							</c:forEach>
+							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -116,7 +127,7 @@ layui.use(['layer', 'form','element','table'], function(){
 		table.init('demo', {
 			limit : 10,
 			page : true,
-			toolbar : true,
+			
 			done : function(res, curr, count) {
 				$('#tableId').css('display', 'block');
 			}

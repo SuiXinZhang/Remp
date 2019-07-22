@@ -20,13 +20,13 @@
 			        <tr>
 			        	<td lay-data="{field:'check',width:50}"></td>
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">名称</td>
-						<td lay-data="{field:'username'}">所属区域</td>
-						<td lay-data="{field:'userphone'}">建筑性质</td>
-						<td lay-data="{field:'empname'}">单元数</td>
-						<td lay-data="{field:'style',width:88}">楼层数</td>
-						<td lay-data="{field:'date',sort:true,width:115}">每层户数</td>
-						<td lay-data="{field:'grade',sort:true,width:100}">备注</td>
+						<td lay-data="{field:'projectname',width:100}">名称</td>
+						<td lay-data="{field:'username',width:200}">所属区域</td>
+						<td lay-data="{field:'userphone',width:150}">建筑性质</td>
+						<td lay-data="{field:'empname', width:100}">单元数</td>
+						<td lay-data="{field:'style',width:100}">楼层数</td>
+						<td lay-data="{field:'date', width:100}">每层户数</td>
+						<td lay-data="{field:'grade',sort:true}">备注</td>
 						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
@@ -56,6 +56,17 @@
 											<i class="layui-icon layui-icon-delete"></i>删除
 										</a> 
 									</td>
+								</tr>
+							</c:forEach>
+							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -123,7 +134,7 @@ layui.use(['layer', 'form','element','table'], function(){
 		table.init('demo', {
 			limit : 10,
 			page : true,
-			toolbar : true,
+			
 			done : function(res, curr, count) {
 				$('#tableId').css('display', 'block');
 			}

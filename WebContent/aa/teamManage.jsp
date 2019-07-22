@@ -19,10 +19,10 @@
 			    <thead>
 			        <tr>
 			        	<td lay-data="{field:'check',width:50}"></td>
-			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">部门名称</td>
+			        	<td lay-data="{field:'sort1',width:50}">序号</td>
+						<td lay-data="{field:'projectname',width:300}">部门名称</td>
 						<td lay-data="{field:'username'}">部门描述</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'opt',fixed:'right',width:250}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -50,6 +50,17 @@
 									</td>
 								</tr>
 							</c:forEach>
+							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</c:forEach>							
 						</c:when>
 					</c:choose>
 			    </tbody>
@@ -109,7 +120,7 @@ function onEmp(vaaa301,vaaa302)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
+layui.use(['layer', 'form','element','table'], function(){
 	  var layer = layui.layer
 	  ,element = layui.element
 	  ,form = layui.form
@@ -118,7 +129,7 @@ layui.use(['layer', 'form','element'], function(){
 		table.init('demo', {
 			limit : 10,
 			page : true,
-			toolbar : true,
+			
 			done : function(res, curr, count) {
 				$('#tableId').css('display', 'block');
 			}

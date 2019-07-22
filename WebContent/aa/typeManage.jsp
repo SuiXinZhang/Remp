@@ -20,13 +20,13 @@
 			        <tr>
 			        	<td lay-data="{field:'check',width:50}"></td>
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">户型编号</td>
-						<td lay-data="{field:'username'}">产品类型</td>
-						<td lay-data="{field:'userphone'}">房间结构</td>
-						<td lay-data="{field:'empname'}">建筑面积</td>
+						<td lay-data="{field:'projectname',width:100}">户型编号</td>
+						<td lay-data="{field:'username',width:140}">产品类型</td>
+						<td lay-data="{field:'userphone',width:140}">房间结构</td>
+						<td lay-data="{field:'empname',width:88}">建筑面积</td>
 						<td lay-data="{field:'style',width:88}">套内面积</td>
-						<td lay-data="{field:'date',sort:true,width:115}">户型平面图数</td>
-						<td lay-data="{field:'grade',sort:true,width:100}">备注</td>
+						<td lay-data="{field:'date',width:100}">户型平面图</td>
+						<td lay-data="{field:'grade'}">备注</td>
 						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
@@ -55,6 +55,17 @@
 									</td>
 								</tr>
 							</c:forEach>
+							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</c:forEach>							
 						</c:when>
 					</c:choose>
 			    </tbody>
@@ -113,7 +124,7 @@ layui.use(['layer', 'form','element','table'], function(){
 		table.init('demo', {
 			limit : 10,
 			page : true,
-			toolbar : true,
+			
 			done : function(res, curr, count) {
 				$('#tableId').css('display', 'block');
 			}
