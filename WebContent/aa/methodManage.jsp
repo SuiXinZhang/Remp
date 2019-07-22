@@ -28,7 +28,7 @@
 						<th>公积金银行</th>
 						<th>公积金精确度</th>
 			            <th>备注</th>
-			            <th></th>
+			            <th>操作</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -51,7 +51,12 @@
 									<td>${ins.aaa909 }</td>
 									<td>${ins.aaa910 }</td>
 									<td>${ins.aaa911 }</td>
-									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa901}')">删除</a></td>
+									<td>
+											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+												onClick="onDel('${ins.aaa901}')">
+												<i class="layui-icon layui-icon-delete"></i>删除
+											</a> 
+									</td>
 								</tr>
 							</c:forEach>
 							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">

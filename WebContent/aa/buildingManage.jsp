@@ -25,8 +25,7 @@
 			            <th>楼层数</th>
 			            <th>每层户数</th>
 			            <th>备注</th>
-			            <th></th>
-			            <th></th>
+			            <th>操作</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -44,13 +43,24 @@
 									<td>${ins.aaa704 }</td>
 									<td>${ins.aaa706 }</td>
 									<td>${ins.aaa707 }</td>
-									<td><a href="#" style="color:blue" onClick="onRoom('${ins.aaa701}')">房间管理</a></td>
-									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa701}')">删除</a></td>
+									<td>
+											<a class="layui-btn layui-btn-xs " href="#"
+												onClick="onRoom('${ins.aaa701}')">
+												<i class="layui-icon layui-icon-edit"></i>房间管理
+											</a> 
+									
+											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+												onClick="onDel('${ins.aaa701}')">
+												<i class="layui-icon layui-icon-delete"></i>删除
+											</a> 
+									
+									</td>
+									
+									
 								</tr>
 							</c:forEach>
 							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
 								<tr>
-									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>
@@ -67,7 +77,6 @@
 						<c:otherwise>
 							<c:forEach begin="1" end="15" step="1">
 								<tr>
-									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>
