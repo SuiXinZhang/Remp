@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/../base/taglib.jsp" %>
 <html>
@@ -13,22 +14,23 @@
 	    <form id="myform" class="layui-form" action="<%=path%>/aa/aa09Query.html" method="post">
 	     <h1>付款方式管理</h1>
 	        <hr>
-		    <table class="layui-table">
+	        <div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<th></th>
-			            <th>序号</th>
-			            <th>付款方式</th>
-			            <th>折扣</th>
-			            <th>生效日期</th>
-			            <th>失效日期</th>
-			            <th>是否贷款</th>
-			            <th>按揭银行</th>
-			            <th>按揭精确度</th>
-						<th>公积金银行</th>
-						<th>公积金精确度</th>
-			            <th>备注</th>
-			            <th>操作</th>
+			        	<td lay-data="{field:'check',width:50}"></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">付款方式</td>
+						<td lay-data="{field:'username'}">折扣</td>
+						<td lay-data="{field:'userphone'}">生效日期</td>
+						<td lay-data="{field:'empname'}">失效日期</td>
+						<td lay-data="{field:'style',width:88}">是否贷款</td>
+						<td lay-data="{field:'date',sort:true,width:115}">按揭银行</td>
+						<td lay-data="{field:'grade',sort:true,width:100}">按揭精确度</td>
+						<td lay-data="{field:'gjjyx',sort:true}">公积金银行</td>
+						<td lay-data="{field:'gongjijqd',sort:true}">公积金精确度</td>
+						<td lay-data="{field:'beizhu',sort:true}">备注</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -59,43 +61,7 @@
 									</td>
 								</tr>
 							</c:forEach>
-							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</c:forEach>
 						</c:when>
-						<c:otherwise>
-							<c:forEach begin="1" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
 					</c:choose>
 			    </tbody>
 			</table>
@@ -104,12 +70,13 @@
 				<td align="center">	
 					<input type="submit" class="layui-btn" value="添加" name="next" formaction="<%=path %>/aa/methodAdd.jsp"> 
 					<input type="submit" class="layui-btn layui-btn-disabled" value="删除" name="next" disabled="disabled" formaction="<%=path %>/aa/aa09Delete.html" id="del">
+				</td>
 				</div>
 			</div>
 			
 
 		<input type="hidden" name="aaa201" value="${param.aaa201 }">
-			
+		</div>
 		</form>
 	</div>
   </div>
@@ -142,10 +109,20 @@ function onDel(vaaa901)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
+layui.use(['layer', 'form','element','table'], function(){
 	  var layer = layui.layer;
 	  var element = layui.element;
-	  form = layui.form;
+	  form = layui.form
+	  ,table = layui.table;
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	  var count=0;
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){

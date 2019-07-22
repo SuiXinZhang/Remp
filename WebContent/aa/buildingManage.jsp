@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/../base/taglib.jsp" %>
 <html>
@@ -13,19 +14,20 @@
 	    <form id="myform" class="layui-form" action="<%=path%>/aa/aa07Query.html" method="post">
 	     <h1>楼栋管理</h1>
 	        <hr>
-		    <table class="layui-table">
+	        <div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<th></th>
-			            <th>序号</th>
-			            <th>名称</th>
-			            <th>所属区域</th>
-			            <th>建筑性质</th>
-			            <th>单元数</th>
-			            <th>楼层数</th>
-			            <th>每层户数</th>
-			            <th>备注</th>
-			            <th>操作</th>
+			        	<td lay-data="{field:'check',width:50}"></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">名称</td>
+						<td lay-data="{field:'username'}">所属区域</td>
+						<td lay-data="{field:'userphone'}">建筑性质</td>
+						<td lay-data="{field:'empname'}">单元数</td>
+						<td lay-data="{field:'style',width:88}">楼层数</td>
+						<td lay-data="{field:'date',sort:true,width:115}">每层户数</td>
+						<td lay-data="{field:'grade',sort:true,width:100}">备注</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -44,52 +46,19 @@
 									<td>${ins.aaa706 }</td>
 									<td>${ins.aaa707 }</td>
 									<td>
-											<a class="layui-btn layui-btn-xs " href="#"
-												onClick="onRoom('${ins.aaa701}')">
-												<i class="layui-icon layui-icon-edit"></i>房间管理
-											</a> 
-									
-											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
-												onClick="onDel('${ins.aaa701}')">
-												<i class="layui-icon layui-icon-delete"></i>删除
-											</a> 
-									
+										<a class="layui-btn layui-btn-xs " href="#"
+											onClick="onRoom('${ins.aaa701}')">
+											<i class="layui-icon layui-icon-edit"></i>房间管理
+										</a> 
+								
+										<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+											onClick="onDel('${ins.aaa701}')">
+											<i class="layui-icon layui-icon-delete"></i>删除
+										</a> 
 									</td>
-									
-									
-								</tr>
-							</c:forEach>
-							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
 								</tr>
 							</c:forEach>
 						</c:when>
-						<c:otherwise>
-							<c:forEach begin="1" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
 					</c:choose>
 			    </tbody>
 			</table>
@@ -102,10 +71,10 @@
 				</div>
 			</div>
 			
-
 		<input type="hidden" name="aaa601" value="${param.aaa601 }">
 		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
-		<input type="hidden" name="aaa708" value="${param.aaa602 }">		
+		<input type="hidden" name="aaa708" value="${param.aaa602 }">	
+		</div>	
 		</form>
 	</div>
   </div>
@@ -145,10 +114,20 @@ function onRoom(vaaa701)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
+layui.use(['layer', 'form','element','table'], function(){
 	  var layer = layui.layer;
 	  var element = layui.element;
-	  form = layui.form;
+	  form = layui.form
+	  ,table = layui.table;
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	  var count=0;
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){

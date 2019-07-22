@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/../base/taglib.jsp" %>
 <html>
@@ -13,22 +14,23 @@
 	    <form id="myform" class="layui-form" action="<%=path%>/aa/aa02Query.html" method="post">
 	     <h1>项目管理</h1>
 	        <hr>
-		    <table class="layui-table">
+	        <div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<th></th>
-			            <th>序号</th>
-			            <th>项目名称</th>
-			            <th>项目地址</th>
-			            <th>开工日期</th>
-			            <th>开盘日期</th>
-			            <th>项目负责人</th>
-			            <th>项目状态</th>
-			            <th>占地面积</th>
-			            <th>建筑面积</th>
-			            <th>可售面积</th>
-			            <th>可售套数</th>
-			            <th>操作</th>
+			       		<td lay-data="{field:'check',width:50}"></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">项目名称</td>
+						<td lay-data="{field:'username'}">项目地址</td>
+						<td lay-data="{field:'userphone'}">开工日期</td>
+						<td lay-data="{field:'empname'}">开盘日期</td>
+						<td lay-data="{field:'style',width:88}">项目负责人</td>
+						<td lay-data="{field:'date',sort:true,width:115}">项目状态</td>
+						<td lay-data="{field:'zdmj',sort:true}">占地面积</td>
+						<td lay-data="{field:'jzmj',sort:true}">建筑面积</td>
+						<td lay-data="{field:'ksmj',sort:true}">可售面积</td>
+						<td lay-data="{field:'ksts',sort:true}">可售套数</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -51,50 +53,14 @@
 									<td>${ins.aaa213 }</td>
 									<td>${ins.aaa214 }</td>
 									<td>
-											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
-												onClick="onDel('${ins.aaa201}')">
-												<i class="layui-icon layui-icon-delete"></i>删除
-											</a> 
+										<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+											onClick="onDel('${ins.aaa201}')">
+											<i class="layui-icon layui-icon-delete"></i>删除
+										</a> 
 									</td>
 								</tr>
 							</c:forEach>
-							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</c:forEach>
 						</c:when>
-						<c:otherwise>
-							<c:forEach begin="1" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
 					</c:choose>
 			    </tbody>
 			</table>
@@ -108,7 +74,7 @@
 			</div>
 			
 			<input type="hidden" name="aaa101" value="1">
-			
+			</div>
 		</form>
 	</div>
   </div>
@@ -141,10 +107,20 @@ function onDel(vaaa201)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
+layui.use(['layer', 'form','element','table'], function(){
 	  var layer = layui.layer;
 	  var element = layui.element;
-	  form = layui.form;
+	  form = layui.form
+	  ,table = layui.table;
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	  var count=0;
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){
