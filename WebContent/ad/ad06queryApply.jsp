@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/base/taglib.jsp" %>
 <html>
@@ -30,25 +31,30 @@
 				</div>
 			</div>
 	</div>
-	<table class="layui-table" lay-even lay-skin="nob">
+	<div id="tableId" style="display: none">
+	<table id="idData"  lay-filter="demo">
+	<thead>
 	  <tr>
-	    <td></td>
-	    <td>序号</td>
-	    <td>审批状态</td>
-	    <td>客户名称</td>
-	    <td>房间号</td>
-	    <td>申请类型</td>
-	    <td>原因分类</td>
-	    <td>申请人</td>
-	    <td>申请日期</td>
-	    <td></td>
+	  	<td lay-data="{field:'check',width:50}"></td>
+	  	<td lay-data="{field:'sort1',width:60}">序号</td>
+		<td lay-data="{field:'projectname',width:125}">审批状态</td>
+		<td lay-data="{field:'username'}">客户名称</td>
+		<td lay-data="{field:'userphone'}">房间号</td>
+		<td lay-data="{field:'empname'}">申请类型</td>
+		<td lay-data="{field:'style',width:88}">原因分类</td>
+		<td lay-data="{field:'date',sort:true,width:115}">申请人</td>
+		<td lay-data="{field:'grade',sort:true,width:100}">申请日期</td>
+		<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
 	  </tr>
+	 </thead>
+	 <tbody>
 	  <c:choose>
 	     <c:when test="${rows!=null }">
-	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				    <td></td>
+	    	   	  	<td>
+					<input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aac601 }" >
+					</td>
 				    <td>${vs.count }</td>
 				    <td>${ins.aad603}</td>
 				    <td>${ins.aad611 }</td>
@@ -60,42 +66,13 @@
 				    <td><a href="#" onclick="onSelect('${ins.aad601}')">审批</a></td>
 				  </tr>
 		      </c:forEach>
-		      <!-- 补充空行 -->
-		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="6">
-			          <tr>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			          </tr>
-		      </c:forEach>
 	     </c:when>
-	     <c:otherwise>
-	        <c:forEach begin="1" step="1" end="3">
-	           <tr>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	           </tr>
-	        </c:forEach>
-	     </c:otherwise>
 	   </c:choose>
+	   </tbody>
 	</table>
 	<div class="layui-form-item" align="center">
 	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
+	 </div>
 	 </div>
 </form>
     </div>
@@ -103,16 +80,16 @@
   
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
   </div>
 </div>
 <script ></script>
 <script>
 //JavaScript代码区域
-	layui.use(['layer', 'form','element'], function(){
+	layui.use(['layer', 'form','element','table'], function(){
 	  var layer = layui.layer
       ,form = layui.form
-	  ,element = layui.element;
+	  ,element = layui.element
+	  ,table = layui.table;
 	  if("${msg }" != "")
 		{
 			layer.msg('${msg }');	  
@@ -120,6 +97,37 @@
 	  form.val('myform',{
 		  "qaad602":"${param.qaad602}"
 	  });
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
+		
+		var count = 0;
+		form.on('checkbox(check)', function(data){
+	          if(data.elem.checked==true){
+	               	count++;
+	               	if(count!=0){
+	               		document.getElementById("mod").className="layui-btn";
+	               	}else{
+	               		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+	               	}
+	               	document.getElementById("mod").disabled=(count==0)
+	               		
+	          }else{
+	        	  count--;
+	       		  if(count!=0){
+	       				document.getElementById("mod").className="layui-btn";
+	       		  }else{
+	             		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+	             }
+	       		document.getElementById("mod").disabled=(count==0)
+	          }
+	      });
 	});
 	function onSelect(vaad601)
     {

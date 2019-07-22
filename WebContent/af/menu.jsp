@@ -16,9 +16,19 @@
              </dl>
         </li>
         <li class="layui-nav-item ${param.menu eq 'af04' ? 'layui-this':''}"><a href="">楼款管理</a></li>
-        <li class="layui-nav-item ${param.menu eq 'af05' ? 'layui-this':''}"><a href="af06Query.jsp">银行批量放贷</a></li>
+        <li class="layui-nav-item layui-nav-itemed"><a href="javascript:;">银行批量放贷</a>
+        	<dl class="layui-nav-child">
+          		<dd class="${param.menu eq 'af05a' ? 'layui-this':''}"><a href="af06Query.html">&nbsp&nbsp&nbsp&nbsp放款查询</a></dd>
+             	<dd class="${param.menu eq 'af05q' ? 'layui-this':''}"><a href="af06Add.jsp">&nbsp&nbsp&nbsp&nbsp放款添加</a></dd>
+            </dl>
+        </li>
          <li class="layui-nav-item ${param.menu eq 'af06' ? 'layui-this':''}"><a href="">单据查询</a></li>
-        <li class="layui-nav-item ${param.menu eq 'af07' ? 'layui-this':''}"><a href="af07Query.jsp">催交欠款</a></li>
+        <li class="layui-nav-item layui-nav-itemed"><a href="javascript:;">催交欠款</a>
+        	<dl class="layui-nav-child">
+          		<dd class="${param.menu eq 'af07q' ? 'layui-this':''}"><a href="af07Query.html">&nbsp&nbsp&nbsp&nbsp催款查询</a></dd>
+             	<dd class="${param.menu eq 'af07a' ? 'layui-this':''}"><a href="af07Add.jsp">&nbsp&nbsp&nbsp&nbsp催款添加</a></dd>
+            </dl>
+        </li>
       </ul>
     </div>
   </div>
