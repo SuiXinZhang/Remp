@@ -100,7 +100,7 @@ public class Ac03ServicesImpl extends JdbcServicesSupport {
 		List<Object> args = new ArrayList<>();
 		
 		StringBuilder sql = new StringBuilder()
-				.append("select x.aac301,x.aac401,x.aac303,z.fvalue as cnaac304,x.aac305,")
+				.append("select x.aac301,x.aac401,x.aac303,z.fvalue as cnaac304,aac304,x.aac305,")
 				.append("       x.aac306,x.aac307,y.aac402,y.aac403")
 				.append("  from ac03 x,ac04 y,syscode z")
 				.append(" where x.aac401 = y.aac401 and")
@@ -134,7 +134,8 @@ public class Ac03ServicesImpl extends JdbcServicesSupport {
 			sql.append(" and aac305 <= ?");
 			args.add(eaac305);
 		}
-		
+		System.out.println(sql.toString());
+		System.out.println(this.get("aac307"));
 		return this.queryForList(sql.toString(), args.toArray());
 	}
 	

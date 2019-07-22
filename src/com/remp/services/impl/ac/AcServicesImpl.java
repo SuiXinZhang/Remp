@@ -61,10 +61,10 @@ public class AcServicesImpl extends JdbcServicesSupport {
 			}
 			MailTools.setMimeMessage(args1, args2.toArray());
 			//发送邮件
-			//MailTools.send();
+			MailTools.send();
 		}
 		//发送后更改状态
-		//this.stateToSent();
+		this.stateToSent();
 		
 		
 		System.out.println("runrunrunrunrunrunrun..................");

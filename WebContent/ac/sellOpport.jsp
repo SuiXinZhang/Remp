@@ -12,7 +12,7 @@
     	
     <div style="padding: 15px;">
     <form class="layui-form" lay-filter="myform" action="<%=path%>/ac/ac04ChangeOpport.html" method="post">
-	客户意向
+	客户销售机会(客户意向添加)
 	
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
@@ -102,16 +102,16 @@
 		<div class="layui-inline">
 			<label class="layui-form-label">备注</label>
 				<div class="layui-input-inline">
-					<textarea name="aac205" value="${ins.aac205 }" class="layui-textarea"></textarea>
+					<textarea name="aac205" class="layui-textarea">${ins.aac205 }</textarea>
 				</div>
 		</div>
 	</div>
 
     <div class="layui-form-item" align="center">
-       <input type="submit" name="next" value="${empty param.aac201?'添加':'修改'}" class="layui-btn layui-btn-normal"
-        formaction="<%=path %>/ac/${empty param.aac201?'ac02Add.html':'ac02Modify.html'}">
+       <input type="submit" name="next" value="${empty ins.aac201?'添加':'修改'}" class="layui-btn layui-btn-normal"
+        formaction="<%=path %>/ac/${empty ins.aac201?'ac02Add.html':'ac02Modify.html'}">
        <input type="submit" name="next" value="返回" class="layui-btn layui-btn-normal"
-       formaction="<%=path %>/ac/ac01Query.html" formnovalidate="formnovalidate">
+       formaction="<%=path %>/ac/ac02Query.html" formnovalidate="formnovalidate">
 	</div>
 <e:hidden name="aac401" value="${ins.aac401 }"/>
 <e:hidden name="aac201" value="${param.aac201 }"/>
@@ -130,9 +130,12 @@
 //JavaScript代码区域
 	layui.use(['layer', 'form','element'], function(){
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  var element = layui.element();
-	  layer.msg('Hello World');
+	  ,form = layui.form
+	  ,element = layui.element;
+	  if("${msg }" != "")
+	  {
+		  layer.msg("${msg }");
+	  }
 	  form.val('myform',{
 		  "aac207":"${ins.aac207}",
 		  "aac203":"${ins.aac203}",
@@ -145,6 +148,7 @@
 		  //执行一个laydate实例
 		  laydate.render({
 		    elem: '#date'  //指定元素
+		    ,trigger: 'click'
 		  });
 		});
 </script>

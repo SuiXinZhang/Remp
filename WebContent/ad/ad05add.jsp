@@ -23,8 +23,9 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">房间号码</label>
 				<div class="layui-input-inline">
-					<input type="text" name="aad502" required lay-verify="true" value="${ins.aad502 }"
-					autocomplete="off" class="layui-input">
+					<input id="room" type="text" name="aad502" required lay-verify="true" value="${ins.aad502 }"
+					 onclick="selectRoom()" readonly="readonly" class="layui-input">
+					<input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
 				</div>
 			</div>
 	</div>
@@ -91,10 +92,13 @@
 <script>
 //JavaScript代码区域
 	layui.use(['layer', 'form','element'], function(){
-	  var element = layui.element;
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  layer.msg('Hello World');
+      ,form = layui.form
+	  ,element = layui.element;
+	  if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	});
 </script>
 </body>

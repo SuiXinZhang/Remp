@@ -41,7 +41,7 @@ public class Ac02SevicesImpl extends JdbcServicesSupport {
 
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aac201,x.aac202,x.aac203,x.aac204,x.aac205,")
-				.append("		x.aac206,x.aac207,x.aac208,x.aac208,x.aac401,")
+				.append("		x.aac206,x.aac207,x.aac208,x.aac209,x.aac401,")
 				.append("       y.aac402,y.aac401")
 				.append("  from ac02 x,ac04 y")
 				.append(" where x.aac401 = y.aac401 ");
@@ -113,9 +113,6 @@ public class Ac02SevicesImpl extends JdbcServicesSupport {
 					this.get("aac209"),
 					this.get("aac201")
 			};
-		System.out.println(this.get("aac201"));
-		System.out.println(this.get("aac202"));
-		System.out.println(this.get("aac203"));
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
 	

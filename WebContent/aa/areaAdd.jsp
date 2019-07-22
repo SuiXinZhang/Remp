@@ -12,12 +12,6 @@
     <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
    	<fieldset class="layui-elem-field">
  	<legend style="color:black"><h2>区域${empty param.aaa601?'添加':'修改' }</h2></legend>
-		<c:if test="${!empty msg }">
-   	    	<label class="layui-form-label"  style="font-size: 18px; color:#009688; width:300px;" >
-   			<i class="layui-icon layui-icon-set" style="font-size: 24px;"></i>
-   			${msg }
-   			</label>
-   		</c:if>
   		<div class="layui-field-box">
 	    <form action="" lay-filter="form" class="layui-form"  method="post">	
 	    <div class="layui-form-item" align="center">
@@ -67,12 +61,20 @@
 	    	</div>
     	</div>
 
-    	<div class="layui-form-item" align="center">
+    	<div class="layui-form-item" align="left"  style="padding-left:450px">
 				<div class="layui-inline">
 						<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa601?'添加':'修改' }"
 							formaction="<%=path %>/aa/${empty ins.aaa601?'aa06Add.html':'aa06Modify.html' }">
 						<input class="layui-btn layui-btn-warm" type="submit" value="返回"
 						formaction="<%=path %>/aa/aa06Query.html" formnovalidate="formnovalidate">
+				</div>
+				<div class="layui-inline">
+					<c:if test="${!empty msg }">
+			   	    	<label class="layui-form-label"  style="font-size: 18px; color:#009688;width:300px;" >
+			   			<i class="layui-icon layui-icon-set" style="font-size: 24px;"></i>
+			   			${msg }
+			   			</label>
+			   		</c:if>
 				</div>
 			</div>
 			

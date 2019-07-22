@@ -1,32 +1,192 @@
-<%@ page language="java"    pageEncoding="GBK"%>
-<%@ taglib uri="http://org.wangxg/jsp/extl"  prefix="e"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<% String path = request.getContextPath(); %>
+<!DOCTYPE html>
+<%@ page language="java" pageEncoding="GBK"%>
+<%@include file="/base/taglib.jsp"%>
 <html>
 <head>
-<title>Care Manage</title>
+	<jsp:include page="/base/head.jsp" />
 </head>
-<style type="text/css">
-tr 
-{
-	height: 25px;
-}
-</style>
+<body class="layui-layout-body">
+	<div class="layui-layout layui-layout-admin">
+		<jsp:include page="/base/header.jsp" />
+		<jsp:include page="/ac/menu.jsp" />
+		<div class="layui-body">
+			<div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>客户关怀管理</legend>
+					<form action="<%=path%>/ac/ac05Query.html" lay-filter="form"
+						class="layui-form" id="myform" method="post">
+
+
+						<div align="center">
+
+
+							<div class="layui-form-item">
+								<div class="layui-inline">
+									<label class="layui-form-label">客&ensp;户&ensp;名</label>
+									<div class="layui-input-inline">
+										<input type="text" name="qaac403" value="${param.qaac403 }"
+											autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-inline">
+									<label class="layui-form-label">客户编号</label>
+									<div class="layui-input-inline">
+										<input type="text" name="qaac402" value="${param.qaac402 }"
+											autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+
+							<div class="layui-form-item">
+								<div class="layui-inline">
+									<label class="layui-form-label">制定业务员</label>
+									<div class="layui-input-inline">
+										<input type="text" name="qaac507" value="${param.qaac507 }"
+											autocomplete="off" class="layui-input">
+									</div>
+								</div>
+								<div class="layui-inline">
+									<label class="layui-form-label">业务员编号</label>
+									<div class="layui-input-inline">
+										<input type="text" name="qaac503" value="${param.qaac503 }"
+											autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+							
+							<div class="layui-form-item">
+							<div class="layui-inline">
+								<label class="layui-form-label">发送类型</label>
+								<div class="layui-input-inline">
+										<select name="qaac509">
+											<option value="" selected="">不限</option>
+											<option value="1">短信</option>
+											<option value="2">邮箱</option>
+										</select>
+									</div>
+							</div>
+							<div class="layui-inline">
+									<label class="layui-form-label">执行状态</label>
+									<div class="layui-input-inline">
+										<select name="qaac504">
+											<option value="" selected="">不限</option>
+											<option value="01">未执行</option>
+											<option value="02">已执行</option>
+											<option value="03">已废弃</option>
+										</select>
+									</div>
+							</div>
+							</div>
+							
+							<div class="layui-form-item">
+								<div class="layui-inline">
+									<label class="layui-form-label">制定时间</label>
+									<div class="layui-input-inline">
+										<input type="text" name="baac508" id="date"
+											placeholder="开始:yyyy-MM-dd hh:mm:ss" lay-verify="date"
+											autocomplete="off" class="layui-input">
+									</div>
+									<div class="layui-form-mid" id="toCenter">--</div>
+									<div class="layui-input-inline">
+										<input type="text" name="eaac508" id="date1"
+											placeholder="结束:yyyy-MM-dd hh:mm:ss" lay-verify="date"
+											autocomplete="off" class="layui-input">
+									</div>
+								</div>
+							</div>
+
+
+							<div class="layui-form-item">
+								<div class="layui-inline" style="padding-left:240px">
+									<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
+											<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+									</button>
+								</div>
+							</div>
+
+					</div>
+
+
+				
+
+						<div id="tableId" style="display: none">
+							<table id="idData"  lay-filter="demo">
+								<thead>
+									<tr>
+										<td lay-data="{field:'check',width:50}"></td>
+										<td lay-data="{field:'sort1',width:60}">序号</td>
+										<td lay-data="{field:'username'}">客户名</td>
+										<td lay-data="{field:'number',width:125}">客户编号</td>
+										<td lay-data="{field:'userphone'}">消息主题</td>
+										<td lay-data="{field:'style',width:88}">执行状态</td>
+										<td lay-data="{field:'date',width:115}">发送类型</td>
+										<td lay-data="{field:'grade',width:100}">发送时间</td>
+										<td lay-data="{field:'makeemp',width:120}">制定业务员</td>
+										<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<c:choose>
+										<c:when test="${rows!= null }">
+											<c:forEach items="${rows }" var="ins" varStatus="vs">
+												<tr>
+													<td>
+													<input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aac601 }" ></td>
+													<td>${vs.count } </td>
+													<td>${ins.aac403 }</td>
+													<td>${ins.aac402 }</td>
+													<td>${ins.aac502 }</td>
+													<td>${ins.cnaac504 }</td>
+													<td>${ins.cnaac509 }</td>
+													<td>${ins.aac505 }</td>
+													<td>${ins.aac507 }</td>
+													<td>
+													
+													<a class="layui-btn layui-btn-xs " 
+													href="<%=path%>/ac05FindById.html?aac501=${ins.aac501 }" >
+													<i class="layui-icon layui-icon-search"></i>查看
+													</a> 
+													
+													<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+														onClick="onDel('${ins.aac601}')">
+														<i class="layui-icon layui-icon-delete"></i>删除
+													</a> 
+													</td>		
+												</tr>
+											</c:forEach>
+										</c:when>
+
+									</c:choose>
+								</tbody>
+							</table>
+							<br>
+							<br>
+							<br>
+							<div class="layui-form-item" align="center">
+							<div class="layui-inline">
+									<button class="layui-btn " 
+									formaction="<%=path %>/ac/ac04QueryForClient.html" type="submit">
+									<i class="layui-icon layui-icon-add-1"></i>添加
+									</button>
+							</div>
+							<div class="layui-inline">
+									<button class="layui-btn layui-btn-disabled"  id="mod" disabled="disabled"
+									formaction="<%=path %>/ac/ac05Delete.html"  type="submit">
+									<i class="layui-icon layui-icon-delete"></i>删除
+									</button>
+							</div>
+							</div>
+
+						</div>
+					</form>
+			</div>
+
+			</fieldset>
+		</div>
+
+	</div>
 <script type="text/javascript">
-var count = 0;
-function onSelect(vstate)
-{
-	vstate?count++:count--;
-	var delB = document.getElementById("del");
-	delB.disabled = (count == 0);
-}
-function onEdit(vaac501)
-{
-	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/ac05FindById.html?aac501=" + vaac501;
-	myform.submit();
-}
 function onDel(vaac601)
 {
 	var myform = document.getElementById("myform");
@@ -34,142 +194,67 @@ function onDel(vaac601)
 	myform.submit();
 }
 </script>
-<body>
-<br>
-	<br>
-	<form action="<%=path%>/ac/ac05Query.html" id = "myform" method="post">
-		<table border="1" align="center" width="95%">
-			<caption>
-				客户关怀管理
-				<hr width="180px">
-			</caption>
-			<tr>
-				<td colspan="4">查询条件</td>
-			</tr>
-			<tr>
-				<td>客户名</td>
-				<td><e:text name="qaac403" /></td>
-				<td>客户编号</td>
-				<td><e:text name="qaac402" /></td>
-			</tr>
-			<tr>
-				<td>制定业务员</td>
-				<td><e:text name="qaac507" /></td>
-				<td>制定业务员编号</td>
-				<td><e:text name="qaac503" /></td>
-			</tr>
-			<tr>
-				<td>执行状态</td>
-				<td><e:select name="qaac504" value="未执行:01,已执行:02,已废弃:03" header="true" /></td>
-				<td>发送类型</td>
-				<td><e:radio name="qaac509" value="电话:1,邮箱:2" defval="2"   /></td>
-			</tr>
-			
-			<tr>
-				<td>制定时间[B]</td>
-				<td><input name="baac508" type="datetime-local" ></td>
-				<td>制定时间[E]</td>
-				<td><input name="eaac508" type="datetime-local" ></td>
-			</tr>
-		</table>
-		<table border="1" align="center" width="95%">
-			<tr>
-				<td></td>
-				<td>序号</td>
-				<td>客户名</td>
-				<td>客户编号</td>
-				<td>消息主题</td>
-				<td>消息内容</td>
-				<td>执行状态</td>
-				<td>发送类型</td>
-				<td>发送时间</td>
-				<td>制定时间</td>
-				<td>制定业务员</td>
-				<td>制定业务员编号</td>
-				<td></td>
-			</tr>
-			<!--
-				         注意事项
-				    1.$及大括号的结束标记 }与双引号之间,不允许出现空格
-				    	即    }"   写在一起
-				    2.所有的属性之间至少要有一个空格,否则报错
-				    3.var 属性,相当于在页面定义变量名称,因此  ins不允许再用$ {  }
-				   -->
-			<c:choose>
-				<c:when test="${rows!= null }">
-					<c:forEach items="${rows }" var="ins" varStatus="vs">
-						<tr>
-							<td>
-							<input type="checkbox" onclick="onSelect(this.checked)" name="idlist" value="${ins.aac601 }" >
-							</td>
-							<td>${vs.count }</td>
-							<td>
-							<a href="#" onclick = "onEdit('${ins.aac501 }')" >${ins.aac403 }</a>
-							</td>
-							<td>${ins.aac402 }</td>
-							<td>${ins.aac502 }</td>
-							<td>${ins.aac506 }</td>
-							<td>${ins.cnaac504 }</td>
-							<td>${ins.cnaac509 }</td>
-							<td>${ins.aac505 }</td>
-							<td>${ins.aac508 }</td>
-							<td>${ins.aac507 }</td>
-							<td>${ins.aac503 }</td>
-							<td>
-							<a href="#" onClick="onDel('${ins.aac601}')">删除</a>
-							</td>
-						</tr>
-					</c:forEach>
-					<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<c:forEach begin="1" end="15" step="1">
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
-		</table>
+<script>
+//JavaScript代码区域
+	layui.use(['layer', 'form','element','laydate','table'], function(){
+	  var layer = layui.layer
+	  ,form = layui.form
+	  ,element = layui.element
+	  ,laydate = layui.laydate
+	  ,table = layui.table;
+	  
+	  if("${msg }" != "")
+	  {
+		  layer.msg("${msg }");
+	  }
+		//日期
+		laydate.render({
+			elem : '#date'
+			,type: 'datetime'
+			,trigger: 'click'
+		});
+		laydate.render({
+			elem : '#date1'
+			,type: 'datetime'
+			,trigger: 'click'
+		});
+	  
+		form.val('form', {
+			"qaac504" : "${param.qaac504 }",
+			"qaac509" : "${param.qaac509 }",
+		});
 
-		<table border="1" align="center" width="95%">
-			<tr>
-				<td align="center">
-					<input type="submit" value="查询" name="next">
-					<input type="submit" value="添加" name="next" disabled="disabled"
-					formaction="<%=path %>/ac/clientCare.jsp"> 
-					<input type="submit" value="删除" name="next" disabled="disabled"
-					formaction="<%=path %>/ac/ac05Delete.html" id="del" ></td>
-			</tr>
-		</table>
-	</form>
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
+		var count = 0;
+		form.on('checkbox(check)', function(data){
+	          if(data.elem.checked==true){
+	               	count++;
+	               	if(count!=0){
+	               		document.getElementById("mod").className="layui-btn";
+	               	}else{
+	               		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+	               	}
+	               	document.getElementById("mod").disabled=(count==0)
+	               		
+	          }else{
+	        	  count--;
+	       		  if(count!=0){
+	       				document.getElementById("mod").className="layui-btn";
+	       		  }else{
+	             		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+	             }
+	       		document.getElementById("mod").disabled=(count==0)
+	          }
+	      });
+	});
+</script>
 </body>
 </html>

@@ -43,22 +43,29 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 	 */
 	public boolean addOrder()throws Exception
 	{
-		String aad108 = Tools.getOrderNum("aad108");
-		this.put("oaad108", aad108);
 		String aad104 = Tools.getOrderNum("aad104");
 		this.put("oaad104", aad104);
 		String aad107 = Tools.getOrderNum("aad107");
 		this.put("oaad107", aad107);
-		StringBuilder sql = new StringBuilder()
+		
+		String sql1 = "update aa08 set aaa813=aaa813+1 where aaa801=?";
+		this.appendSql(sql1, this.get("aaa801"));
+		String sql2 = "select aaa813 from aa08 where aaa801=?";
+		Map<String, String> map = this.queryForMap(sql2, this.get("aaa801"));
+		Object aad108 = Integer.valueOf(map.get("aaa813"))+1;
+		this.put("oaad108", aad108);
+		
+		StringBuilder sql3 = new StringBuilder()
 				.append("insert into ad01(aad102,aad103,aad104,aad105,aad106,")
 				.append("                 aad107,aad108,aad109,aad110,aad111,")
 				.append("                 aad112,aad113,aad114,aad115,aaa201,")
-				.append("                 aad116,aac401)")
+				.append("                 aad116,aac401,aaa801)")
 				.append("          values(?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
 				.append("                 ?,?,?,?,1,")
-				.append("                 '预约中',?)")
+				.append("                 '已预约',?,?)")
 				;
+		
 		Object args[]={
 				this.get("oaad102"),
 				this.get("oaad103"),
@@ -74,10 +81,23 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 				this.get("oaad113"),
 				this.get("oaad114"),
 				this.get("oaad115"),
-				this.get("oaac401")
+				this.get("oaac401"),
+				this.get("aaa801")
 		};
-		System.out.println(args[0]);
-		return this.executeUpdate(sql.toString(), args)>0;
+		
+		this.appendSql(sql3.toString(), args);
+		
+		String sql4 = "select aaa805 from aa08 where aaa801=?";
+		Object args2[]={
+				this.get("aaa801")
+		};
+		Map<String, String> ins = this.queryForMap(sql4, args2);
+		if(ins.get("aaa805").equals("02")||ins.get("aaa805").equals("04")||ins.get("aaa805").equals("05"))
+		{
+			return false;
+		}
+		
+		return this.executeTransaction();
 	}
 	/**
 	 * 在添加预约记录之前,验证客户是否有记录,若无则添加客户信息

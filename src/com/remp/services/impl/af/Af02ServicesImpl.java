@@ -330,7 +330,8 @@ public class Af02ServicesImpl extends JdbcServicesSupport {
 			sql.append(" and aaf207 = ?");
 			args.add(aaf207);
 		}
-		
+		System.out.println(sql);
+		System.out.println(aaf207);
 		return this.queryForList(sql.toString(), args.toArray());
 	}
 }

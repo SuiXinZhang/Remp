@@ -9,7 +9,7 @@ public class Af01AddServlet extends Af01ControllerSupport
 		this.update("add", "¿ÕÆ±¾ÝÌí¼Ó");
 		System.out.println("++++++++++++++" + dto.get("aaf101"));
 		this.saveAttribute("aaf101", dto.get("aaf101"));
-		//this.savePageInstance();
-		return "af/af01Add";
+		this.savePageDate();
+		return "af/af02Query";
 	}
 }

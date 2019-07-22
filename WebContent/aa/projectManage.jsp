@@ -100,7 +100,7 @@
 					<input class="layui-btn" type="submit" value="²éÑ¯" name="next">
 					<input class="layui-btn" type="submit" value="Ìí¼Ó" name="next" formaction="<%=path %>/aa/projectAdd.jsp"> 
 					<input class="layui-btn layui-btn-disabled" type="submit"  value="É¾³ý" name="next" disabled="disabled" 
-							formaction="<%=path %>/aa/aa02DelById.html" id="del">
+							formaction="<%=path %>/aa/aa02Delete.html" id="del">
 				</div>
 			</div>
 			

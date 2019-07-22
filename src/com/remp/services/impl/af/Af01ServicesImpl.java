@@ -1,6 +1,8 @@
 package com.remp.services.impl.af;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.remp.services.JdbcServicesSupport;
@@ -53,5 +55,23 @@ public class Af01ServicesImpl extends JdbcServicesSupport {
 		return this.executeTransaction();
 	}
 	
-
+	@Override
+	public List<Map<String, String>> query() throws Exception 
+	{
+		Object aaf207 = this.get("qaaf207");
+		StringBuilder sql = new StringBuilder()
+				.append("select aaf201,aaf202,aaf203,aaf204,aaf205,")
+				.append("       aaf206,b.fvalue as cnaaf207,aaf209,aaf210,aaf211")
+				.append("  from af02 a,syscode b")
+				.append(" where a.aaf207 = b.fcode and b.fname = 'aaf207' ");
+		List<Object> args = new ArrayList<>();
+		if(isNotNull(aaf207))
+		{
+			sql.append(" and aaf207 = ?");
+			args.add(aaf207);
+		}
+		System.out.println(sql);
+		System.out.println(aaf207);
+		return this.queryForList(sql.toString(), args.toArray());
+	}
 }

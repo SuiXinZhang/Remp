@@ -77,10 +77,10 @@ public class Aa07ServicesImpl extends JdbcServicesSupport{
 		StringBuilder sql2 = new StringBuilder()
 				.append("insert into aa08(aaa701,aaa802,aaa803,aaa804,aaa805,")
 				.append("				  aaa806,aaa807,aaa808,aaa809,aaa810,")
-				.append("				  aaa811,aaa812)")
+				.append("				  aaa811,aaa812,aaa813)")
 				.append("		value(?,?,?,?,?,")
 				.append("			  ?,?,?,?,?,")
-				.append("			  ?,?)")
+				.append("			  ?,?,?)")
 				;
 		
 		
@@ -128,6 +128,7 @@ public class Aa07ServicesImpl extends JdbcServicesSupport{
 							null,                                       //默认填写户型套内单价
 							null,                                        //默认填写户型套内总价
 							null,                                        //备注
+							0                                            //房间排号  
 						};
 					
 					this.appendSql(sql2.toString(), args2);

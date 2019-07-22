@@ -12,12 +12,6 @@
     <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
    	<fieldset class="layui-elem-field">
  	<legend style="color:black"><h2>部门${empty param.aaa301?'添加':'修改' }</h2></legend>
-		<c:if test="${!empty msg }">
-   	    	<label class="layui-form-label"  style="font-size: 18px; color:#009688;width:300px;" >
-   			<i class="layui-icon layui-icon-set" style="font-size: 24px;"></i>
-   			${msg }
-   			</label>
-   		</c:if>
   		<div class="layui-field-box">
 	    <form action="" lay-filter="form" class="layui-form"  method="post">	
     	<!-- 表单提交区 -->	
@@ -41,24 +35,30 @@
 	    			部门描述
 	    		</label>
 		      	<div class="layui-input-block" >
-		        <textarea cols="37" name="aaa303" class="layui-textarea" placeholder="请输入内容">${ins.aaa707 }</textarea>
+		        <textarea cols="37" name="aaa303" class="layui-textarea" placeholder="请输入内容">${ins.aaa303 }</textarea>
 	      		</div>
 	    	</div>
     	</div>
 
-    	<div class="layui-form-item" align="center">
+    	<div class="layui-form-item" align="left"  style="padding-left:450px">
 				<div class="layui-inline">
-						<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa701?'添加':'修改'}"
-							formaction="<%=path %>/aa/${empty ins.aaa701?'aa07Add.html':'aa07Modify.html' }">
+						<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa301?'添加':'修改'}"
+							formaction="<%=path %>/aa/${empty ins.aaa301?'aa03Add.html':'aa03Modify.html' }">
 						<input class="layui-btn layui-btn-warm" type="submit" value="返回"
-						formaction="<%=path %>/aa/aa07Query.html" formnovalidate="formnovalidate">
+						formaction="<%=path %>/aa/aa03Query.html" formnovalidate="formnovalidate">
 				</div>
-			</div>
+				<div class="layui-inline">
+					<c:if test="${!empty msg }">
+			   	    	<label class="layui-form-label"  style="font-size: 18px; color:#009688;width:300px;" >
+			   			<i class="layui-icon layui-icon-set" style="font-size: 24px;"></i>
+			   			${msg }
+			   			</label>
+			   		</c:if>
+				</div>
+		</div>
 			
 		<input type="hidden" name="aaa201" value="1"> 
-		<input type="hidden" name="aaa601" value="${param.aaa601 }"> 
-		<input type="hidden" name="aaa701" value="${ins.aaa701 }"> 
-		<input type="hidden" name="aaa602" value="${param.aaa708 }">
+		<input type="hidden" name="aaa301" value="${ins.aaa301 }">
 	</form>
 	</div>
 	</fieldset>

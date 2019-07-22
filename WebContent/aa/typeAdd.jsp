@@ -12,12 +12,6 @@
     <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
    	<fieldset class="layui-elem-field">
  	<legend style="color:black"><h2>户型${empty param.aaa501?'添加':'修改' }</h2></legend>
-		<c:if test="${!empty msg }">
-   	    	<label class="layui-form-label"  style="font-size: 18px; color:#009688;width:300px;" >
-   			<i class="layui-icon layui-icon-set" style="font-size: 24px;"></i>
-   			${msg }
-   			</label>
-   		</c:if>
   		<div class="layui-field-box">
 	    <form action="" lay-filter="form" class="layui-form"  method="post">	
     	<!-- 表单提交区 -->	
@@ -85,7 +79,7 @@
 	    			平&ensp;面&ensp;图
 	    		</label>
 		      	<div class="layui-input-block">
-		        	<input type="text" name="aaa502" required="required" value="${ins.aaa502 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="text" name="aaa507"  value="${ins.aaa507 }" autocomplete="off" class="layui-input"  style="width:250px;">
 	      		</div>
 	    	</div>
 	    </div>
@@ -102,19 +96,25 @@
 	    	</div>
     	</div>
 
-    	<div class="layui-form-item" align="center">
+    	<div class="layui-form-item" align="left"  style="padding-left:450px">
 				<div class="layui-inline">
 						<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa501?'添加':'修改'}"
 							formaction="<%=path %>/aa/${empty ins.aaa501?'aa05Add.html':'aa05Modify.html' }">
 						<input class="layui-btn layui-btn-warm" type="submit" value="返回"
 							formaction="<%=path %>/aa/aa05Query.html" formnovalidate="formnovalidate">
 				</div>
-			</div>
+				<div class="layui-inline">
+					<c:if test="${!empty msg }">
+			   	    	<label class="layui-form-label"  style="font-size: 18px; color:#009688;width:300px;" >
+			   			<i class="layui-icon layui-icon-set" style="font-size: 24px;"></i>
+			   			${msg }
+			   			</label>
+			   		</c:if>
+				</div>
+		</div>
 			
 		<input type="hidden" name="aaa201" value="1"> 
-		<input type="hidden" name="aaa301" value="${param.aaa301 }"> 
-		<input type="hidden" name="aaa401" value="${ins.aaa401 }"> 
-		<input type="hidden" name="aaa302" value="${param.aaa405 }">
+		<input type="hidden" name="aaa501" value="${ins.aaa501 }">
 	</form>
 	</div>
 	</fieldset>

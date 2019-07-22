@@ -103,7 +103,6 @@ public abstract class ControllerSupport implements BaseController {
 		this.saveAttribute("msg",msgText + msg);
 	}
 	
-
 	
 	/**
 	 * 带有编号的消息提示的更新行为
