@@ -132,7 +132,8 @@
 											<c:forEach items="${rows }" var="ins" varStatus="vs">
 												<tr>
 													<td>
-													<input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aac601 }" ></td>
+													<input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aac601 }" >
+													</td>
 													<td>${vs.count } </td>
 													<td>${ins.aac403 }</td>
 													<td>${ins.aac402 }</td>

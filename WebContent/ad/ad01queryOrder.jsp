@@ -26,28 +26,30 @@
 				</div>
 			</div>
 	</div>
-	<table class="layui-table" lay-even lay-skin="nob">
+	<div id="tableId" style="display: none">
+	<table id="idData"  lay-filter="demo">
+	<thead>
 	  <tr>
-	    <td></td>
-	  	<td>序号</td>
-	  	<td>项目名称</td>
-	  	<td>客户名称</td>
-	  	<td>实际排号</td>
-	  	<td>预约日期</td>
-	  	<td>权益人</td>
-	  	<td>房间</td>
-	  	<td>应收预约金</td>
-	  	<td>实收预约金</td>
-	  	<td>备注</td>
-	  	<td>预约状态</td>
-	  	<td></td>
+	  	<td lay-data="{field:'sort1',width:60}">序号</td>
+		<td lay-data="{field:'projectname',width:125}">项目名称</td>
+		<td lay-data="{field:'username'}">客户名</td>
+		<td lay-data="{field:'userphone'}">实际排号</td>
+		<td lay-data="{field:'empname'}">预约日期</td>
+		<td lay-data="{field:'style',width:88}">权益人</td>
+		<td lay-data="{field:'date',sort:true}">房间</td>
+		<td lay-data="{field:'grade',sort:true}">应收预约金</td>
+		<td lay-data="{field:'state'}">实收预约金</td>
+		<td lay-data="{field:'remark'}">备注</td>
+		<td lay-data="{field:'prestate'}">预约状态</td>
+		<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 	  </tr>
+	  </thead>
+	  <tbody>
 	  <c:choose>
 	     <c:when test="${rows!=null }">
 	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				    <td></td>
 				    <td>${vs.count }</td>
 				    <td>${ins.aad102 }</td>
 				    <td><a href="#" onclick="onEdit('${ins.aad101}')">${ins.aad103 }</a></td>
@@ -62,33 +64,40 @@
 				    <td><a href="#" onclick="onDel('${ins.aad101}')">作废</a></td>
 				  </tr>
 		      </c:forEach>
-		      <!-- 补充空行 -->
 		     </c:when>
 	   </c:choose>
+	   </tbody>
 	  </table>
 	  <div class="layui-form-item" align="center">
 	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
 	  </div>
+	  </div>
 </form>
     </div>
-  </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
   </div>
 </div>
 <script ></script>
 <script>
 	//JavaScript代码区域
-	layui.use(['layer', 'form','element'], function(){
+	layui.use(['layer', 'form','element','table'], function(){
 	  var layer = layui.layer
 	  ,form = layui.form
-	  ,element = layui.element;
+	  ,element = layui.element
+	  ,table = layui.table;
 	  if("${msg }" != "")
 		{
 			layer.msg('${msg }');	  
 		}
+	  
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	});
 	var count=0;
     function onDel(vaad101)

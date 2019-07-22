@@ -26,28 +26,28 @@
 				</div>
 			</div>
 		</div>
-	<table class="layui-table" lay-even lay-skin="nob">
+	<div id="tableId" style="display: none">
+	<table id="idData"  lay-filter="demo">
+	<thead>
 	  <tr>
-	    <td></td>
-	  	<td>序号</td>
-	  	<td>项目名称</td>
-	  	<td>客户名称</td>
-	  	<td>实际排号</td>
-	  	<td>预约日期</td>
-	  	<td>权益人</td>
-	  	<td>房间</td>
-	  	<td>应收预约金</td>
-	  	<td>实收预约金</td>
-	  	<td>退号日期</td>
-	  	<td>退号原因</td>
-	  	<td></td>
+	  	<td lay-data="{field:'sort1',width:55}">序号</td>
+		<td lay-data="{field:'projectname',width:125}">项目名称</td>
+		<td lay-data="{field:'username'}">客户名</td>
+		<td lay-data="{field:'userphone'}">实际排号</td>
+		<td lay-data="{field:'empname'}">预约日期</td>
+		<td lay-data="{field:'style'}">权益人</td>
+		<td lay-data="{field:'date',sort:true,width:115}">房间</td>
+		<td lay-data="{field:'grade',sort:true,width:100}">应收预约金</td>
+		<td lay-data="{field:'state',width:100}">实收预约金</td>
+		<td lay-data="{field:'date',sort:true,width:100}">退号日期</td>
+		<td lay-data="{field:'season',width:100}">退号原因</td>
 	  </tr>
+	 </thead>
+	 <tbody>
 	  	<c:choose>
 	     <c:when test="${rows!=null }">
-	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				    <td></td>
 				    <td>${vs.count }</td>
 				    <td>${ins.aad102 }</td>
 				    <td>${ins.aad103 }</td>
@@ -59,52 +59,17 @@
 				    <td>${ins.aad113 }</td>
 				    <td>${ins.aad202 }</td>
 				    <td>${ins.aad203 }</td>
-				    <td></td>
 				  </tr>
 		      </c:forEach>
-		      <!-- 补充空行 -->
-		      <c:forEach begin="${fn:length(rows)+1 }" step="1" end="6">
-			          <tr>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			            <td></td>
-			          </tr>
-		      </c:forEach>
 	     </c:when>
-	     <c:otherwise>
-	        <c:forEach begin="1" step="1" end="6">
-	           <tr>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	             <td></td>
-	           </tr>
-	        </c:forEach>
-	     </c:otherwise>
 	   </c:choose>
+	  </tbody>
 	</table>
     <div class="layui-form-item" align="center">
 	       <input type="submit" name="next" class="layui-btn layui-btn-normal" value="查询">
 	</div>
 	<input type="hidden" name="aaa101" value="${param.aad101 }">
+	</div>
 </form>
     </div>
   </div>
@@ -117,14 +82,25 @@
 <script ></script>
 <script>
 //JavaScript代码区域
-	layui.use(['layer', 'form','element'], function(){
+	layui.use(['layer', 'form','element','table'], function(){
 	  var layer = layui.layer
 	  ,form = layui.form
-	  ,element = layui.element;
+	  ,element = layui.element
+	  ,table = layui.table;
 	  if("${msg }" != "")
 		{
 			layer.msg('${msg }');	  
 		}
+	  
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	});
 	layui.use('laydate', function(){
 		  var laydate = layui.laydate;
