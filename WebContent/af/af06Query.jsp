@@ -122,11 +122,7 @@
 	  	<!-- 功能按钮区 -->
 	  	<div class="layui-form-item" align="center">
 		       <input type="submit" name="next" value="添加" 
-		              formaction="<%=path%>/af/af06Add.jsp" class="layui-btn">
-		       <%-- 
-		       <input type="submit" id="del" name="next" value="审核" 
-		              formaction="<%=path%>/af06Modify.html"  disabled="disabled">
-		       --%>
+		       formaction="<%=path%>/af/af06Add.jsp" class="layui-btn">
 		</div>
 	</form>
 	</fieldset>
