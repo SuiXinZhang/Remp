@@ -110,7 +110,7 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 		
 		//定义SQL
 		StringBuilder sql = new StringBuilder()
-				.append("select aab101,aab102,aab103,aab105,aab106,")
+				.append("select aab101,aab102,date_format(aab103,'%Y-%m') as aab103,aab105,aab106,")
 				.append("		aab107,aab108,aab109,aab110")
 				.append("  from ab01")
 				.append(" where true")
@@ -150,34 +150,9 @@ public class Ab01ServicesImpl extends JdbcServicesSupport
 				.append("    where aab101=?")
 				;
 		
-		String sql2 = "select aab101 from ab02 where aab101=?";
-		System.out.println(this.queryForMap(sql2, this.get("aab101")));
-		if (this.queryForMap(sql2, this.get("aab101")) == null) 
-		{
-			for(int typeNum = 1; typeNum <= 4; typeNum++)
-			{
-				addDetail(typeNum);				
-			}
-		}
-		
 		//执行查询
 		return this.queryForMap(sql.toString(), this.get("aab101"));
 	}
 
-
-	/**
-	 * 添加销售计划表对应的明细表并初始化
-	 * @param typeNum
-	 * @throws Exception
-	 */
-	private void addDetail(int typeNum) throws Exception
-	{
-		StringBuilder sql = new StringBuilder()
-				.append("insert into ab02(aab101,aab202,aab203,aab204,aab205,aab206,aab207)")
-				.append("	values(?,?,?,?,?,?,?)")
-				;
-		Object args[] = {this.get("aab101"),typeNum,0,0,0,0,0};
-		executeUpdate(sql.toString(), args);
-	}
 	
 }

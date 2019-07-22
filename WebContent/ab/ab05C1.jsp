@@ -10,11 +10,13 @@
   	<jsp:include   page="/base/header.jsp"/>
 	<jsp:include   page="/ab/menu.jsp"/>
   <div class="layui-body">
-    <div id="main" style="width: 600px;height:400px;"></div>
     <div style="padding: 15px;">
     	<form class="layui-form" action="<%=path %>/ab/ab05Query.jsp" method="post">
+    	<div align="center">
+    	
+		<div id="main" style="width: 600px;height:400px;"></div>
 	
-		<table class="layui-table" border="1" width="95%" align="center">
+		<table class="layui-table">
 				<tr>
 					<td>序号</td>
 					<td>时间</td>
@@ -41,12 +43,11 @@
 				</c:forEach>
 			</c:when>
 		  </c:choose>
-		  <tr>
-			<td colspan="5" align="center">
-				<input type="submit" name="next" value="返回" class="layui-btn">
-			</td>
-		  </tr>
 		  </table>	
+		  <div class="layui-form-item">
+				<input type="submit" name="next" value="返回" class="layui-btn">
+			</div>
+		</div>
 	</form>
     </div>
     
@@ -81,7 +82,7 @@
 
     option = {
     	    title: {
-    	        text: '营销分析'
+    	        text: '来电来访与营销投入'
     	    },
     	    tooltip: {
     	        trigger: 'axis'
