@@ -98,7 +98,7 @@
 			            <th>联系方式</th>
 			            <th>住址</th>
 			            <th>备注</th>
-			            <th></th>
+			            <th>操作</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -121,7 +121,12 @@
 									<td>${ins.aaa408 }</td>
 									<td>${ins.aaa409 }</td>
 									<td>${ins.aaa410 }</td>
-									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa401}')">删除</a></td>
+									<td>
+											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+												onClick="onDel('${ins.aaa401}')">
+												<i class="layui-icon layui-icon-delete"></i>删除
+											</a> 
+									</td>
 								</tr>
 							</c:forEach>
 							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">

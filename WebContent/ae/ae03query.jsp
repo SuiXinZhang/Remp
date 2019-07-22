@@ -30,17 +30,18 @@
 	                </div>
 	                <input type="submit" class="layui-btn" data-type="reload" value="查询">
 	        </div>
-		    <table class="layui-table">
+	        <div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-						<td>序号</td>
-						<td>客户</td>
-						<td>房间</td>
-						<td>联系电话</td>
-						<td>承诺办理</td>
-						<td>承诺完成</td>
-						<td>交房日期</td>
-						<td></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">客户</td>
+						<td lay-data="{field:'username'}">房间</td>
+						<td lay-data="{field:'userphone'}">联系电话</td>
+						<td lay-data="{field:'empname'}">承诺办理</td>
+						<td lay-data="{field:'style',width:88}">承诺完成</td>
+						<td lay-data="{field:'date',sort:true,width:115}">交房日期</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -64,6 +65,7 @@
 							formaction="<%=path %>/ae/ae03addpage.html">
 				</div>
 			</div>
+			</div>
 		</form>
 	</div>
   </div>
@@ -80,10 +82,21 @@ function findById(id)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
-		var element = layui.element;
-	  var layer = layui.layer
-	  ,form = layui.form;
+layui.use(['layer', 'form','element','table'], function(){
+	  var element = layui.element
+	  ,layer = layui.layer
+	  ,form = layui.form
+	  ,table = layui.table;
+	  
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	});
 </script>
 </body>

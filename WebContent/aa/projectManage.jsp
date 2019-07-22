@@ -51,7 +51,10 @@
 									<td>${ins.aaa213 }</td>
 									<td>${ins.aaa214 }</td>
 									<td>
-									<a href="#" style="color:red"  onClick="onDel('${ins.aaa201}')">É¾³ý</a>
+											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+												onClick="onDel('${ins.aaa201}')">
+												<i class="layui-icon layui-icon-delete"></i>É¾³ý
+											</a> 
 									</td>
 								</tr>
 							</c:forEach>

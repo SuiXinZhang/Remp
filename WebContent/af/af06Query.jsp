@@ -7,7 +7,9 @@
 <body class="layui-layout-body">
 	<div class="layui-layout layui-layout-admin">
 		<jsp:include page="/base/header.jsp" />
-		<jsp:include page="/af/menu.jsp" />
+		<c:import url="/af/menu.jsp">
+	    	<c:param name="menu" value="af05a"/>
+	    </c:import>
 		<div class="layui-body">
 			${msg }
 			<div class="layui-anim layui-anim-scale"
@@ -102,7 +104,10 @@
 				    <td>${ins.aaf603 }</td>
 				    <td>${ins.aaf606 }</td>
 				    <td>
-				    	<a href="#" onclick="onEdit('${ins.aaf601}')" class="layui-btn">…Û∫À</a>
+					    <a href="#" onclick="onEdit('${ins.aaf601}')"
+						class="layui-btn layui-btn-xs">
+						<i class="layui-icon layui-icon-edit"></i>…Û∫À
+						</a>
 				    </td>
 	  			</tr>
 	  		</c:forEach>

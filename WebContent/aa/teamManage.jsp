@@ -20,8 +20,7 @@
 			            <th>序号</th>
 			            <th>部门名称</th>
 			            <th>部门描述</th>
-			            <th></th>
-			            <th></th>
+			            <th>操作</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -36,13 +35,21 @@
 									<td><a href="#" style="color:orange" onclick="onEdit('${ins.aaa301 }')">${ins.aaa302 }</a>
 									</td>
 									<td>${ins.aaa303 }</td>
-									<td><a href="#" style="color:blue" onClick="onEmp('${ins.aaa301}','${ins.aaa302}')">员工管理</a></td>
-									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa301}')">删除</a></td>
+									<td>
+											<a class="layui-btn layui-btn-xs" href="#"
+												onClick="onEmp('${ins.aaa301}','${ins.aaa302}')">
+												<i class="layui-icon layui-icon-edit"></i>员工管理
+											</a> 
+									
+											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+												onClick="onDel('${ins.aaa301}')">
+												<i class="layui-icon layui-icon-delete"></i>删除
+											</a> 
+									</td>
 								</tr>
 							</c:forEach>
 							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
 								<tr>
-									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>
@@ -54,7 +61,6 @@
 						<c:otherwise>
 							<c:forEach begin="1" end="15" step="1">
 								<tr>
-									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>

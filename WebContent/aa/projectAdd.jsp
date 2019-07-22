@@ -177,16 +177,20 @@
 	    </div>
 	    
 	     <div class="layui-form-item" align="left" style="padding-left:155px;">
-		    <div class="layui-inline" >
+		    <div class="layui-inline">
 		      	<label class="layui-form-label" >
 	    			<i class="layui-icon layui-icon-tree" style="font-size: 20px; color: black;"></i>
 	    			项目景观
 	    		</label>
-				<div class="layui-input-block" >
-						<button type="button" onclick="$('input[id=fileUpload]').click();" class="layui-btn layui-btn-normal">选择图片</button>
-						<input type="file" id="fileUpload"  name="fileaaa216" style="display:none">
-						
-						<button type="button" onclick="checkPic()" class="layui-btn">查看景观</button>
+				<div class="layui-input-block">
+						<div class="layui-input-inline">
+							<button type="button" onclick="$('input[id=fileUpload]').click();" class="layui-btn layui-btn-normal">选择图片</button>
+							<input type="file" id="fileUpload"  name="fileaaa216" style="display:none">
+						</div>
+
+						<div class="layui-input-inline" style="padding-left:0px">
+							<button type="button"  onclick="checkPic()" class="layui-btn">查看景观</button>
+						</div>
 						
 		        		<!--  <input type="text" name="aaa216" value="${ins.aaa216 }" autocomplete="off" class="layui-input"  style="width:250px;" >-->
 	      		</div>

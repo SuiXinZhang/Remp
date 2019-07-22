@@ -7,7 +7,9 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ab/menu.jsp"/>
+	<c:import url="/ab/menu.jsp">
+  		<c:param name="menu" value="ab03a"/>
+   	</c:import>
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div class="layui-anim layui-anim-scale"
@@ -63,14 +65,15 @@
 					</div>
 				</div>
 			</div>
-			
+
+			 
 			<div class="layui-form-item layui-form-text"  style="padding-left:250px;padding-right:270px;">
 				<label class="layui-form-label">方案描述</label>
 				<div class="layui-input-block">
-					<textarea placeholder="请输入内容" name="aab307" value="${ins.aab307 }" class="layui-textarea"></textarea>
+					<textarea placeholder="请输入内容" name="aab307" class="layui-textarea">${ins.aab307 }</textarea>
 				</div>
 			</div>
-				
+
 			<div class="layui-form-item" align="center">
 				<input type="submit" name="next" value="${empty param.aab301?'添加':'修改' }" 
 				formaction="<%=path%>/${empty param.aab301?'ab/ab03Add':'ab/ab03Modify' }.html" class="layui-btn"/>
@@ -92,7 +95,6 @@
   
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
   </div>
 </div>
 <script ></script>
@@ -113,7 +115,6 @@ window.onload=function()
 		  var layer = layui.layer
 		  ,form = layui.form;
 		  
-		  layer.msg('Hello World');
 		  form.val('myform',{
 			  "aab304":"${ins.aab304}"
 		  });

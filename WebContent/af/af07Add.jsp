@@ -7,7 +7,9 @@
 <body class="layui-layout-body">
 	<div class="layui-layout layui-layout-admin">
 		<jsp:include page="/base/header.jsp" />
-		<jsp:include page="/af/menu.jsp" />
+		<c:import url="/af/menu.jsp">
+	    	<c:param name="menu" value="af07a"/>
+	    </c:import>
 		<div class="layui-body">
 		${msg }
 		<div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">

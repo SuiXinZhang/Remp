@@ -22,8 +22,7 @@
 			            <th>地址</th>
 			            <th>面积</th>
 			            <th>备注</th>
-			            <th></th>
-			            <th></th>
+			            <th>操作</th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -40,13 +39,21 @@
 									<td>${ins.aaa603 }</td>
 									<td>${ins.aaa604 }</td>
 									<td>${ins.aaa605 }</td>
-									<td><a href="#" style="color:blue" onClick="onBuilding('${ins.aaa601}','${ins.aaa602}')">楼栋管理</a></td>
-									<td><a href="#" style="color:red" onClick="onDel('${ins.aaa601}')">删除</a></td>
+									<td>					
+											<a class="layui-btn layui-btn-xs " href="#"
+												onClick="onBuilding('${ins.aaa601}','${ins.aaa602}')">
+												<i class="layui-icon layui-icon-edit"></i>楼栋管理
+											</a> 
+									
+											<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
+												onClick="onDel('${ins.aaa601}')">
+												<i class="layui-icon layui-icon-delete"></i>删除
+											</a> 
+									</td>
 								</tr>
 							</c:forEach>
 							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
 								<tr>
-									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>
@@ -67,7 +74,6 @@
 									<td></td>
 									<td></td>
 									<td></td>
-									<td></td>
 								</tr>
 							</c:forEach>
 						</c:otherwise>
@@ -80,7 +86,7 @@
 					<input type="submit" class="layui-btn" value="查询" name="next">
 					<input type="submit" class="layui-btn" value="添加" name="next" formaction="<%=path %>/aa/areaAdd.jsp"> 
 					<input type="submit" class="layui-btn layui-btn-disabled" value="删除" name="next" disabled="disabled" formaction="<%=path %>/aa/aa06Delete.html" id="del"> 
-					<input type="submit" class="layui-btn" value="返回" name="next" formaction="<%=path %>/aa/aa02Query.html" formnovalidate="formnovalidate"></td>
+					
 
 				</div>
 			</div>
