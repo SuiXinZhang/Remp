@@ -33,7 +33,7 @@
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
 		<td lay-data="{field:'projectname',width:125}">项目名称</td>
 		<td lay-data="{field:'username'}">客户名</td>
-		<td lay-data="{field:'userphone'}">实际排号</td>
+		<td lay-data="{field:'userphone',width:120}">实际排号</td>
 		<td lay-data="{field:'empname'}">预约日期</td>
 		<td lay-data="{field:'style',width:88}">权益人</td>
 		<td lay-data="{field:'date',sort:true}">房间</td>
