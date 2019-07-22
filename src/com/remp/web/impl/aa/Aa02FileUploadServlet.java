@@ -24,7 +24,7 @@ public class Aa02FileUploadServlet extends HttpServlet {
 		Aa02ServicesImpl services = new Aa02ServicesImpl();
 		//织入dto并绑定
 		Map<String, Object> dto= Tools.createDto(request);
-		
+		services.setSession(request.getSession());
 		int aaa201 = 0;
 		try {
 			aaa201 = Tools.getSequence("aaa201");

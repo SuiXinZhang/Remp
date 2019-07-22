@@ -112,27 +112,27 @@
 			</div>
 		</div>
 	<!-- 数据迭代区 -->
-	<table class="layui-table" lay-even lay-skin="nob">
+	<div id="tableId" style="display: none">
+	<table id="idData"  lay-filter="demo">
+	<thead>
 	  <tr>
-	    <td></td>
-	    <td>序号</td>
-	    <td>房间号</td>
-	    <td>地址</td>
-	    <td>状态</td>
-	    <td>户型</td>
-	    <td>房间结构</td>
-	    <td>面积</td>
-	    <td>建筑单价</td>
-	    <td>建筑总价</td>
-	    <td></td>
-	    <td></td>
+	  	<td lay-data="{field:'sort1',width:60}">序号</td>
+		<td lay-data="{field:'projectname',width:125}">房间号</td>
+		<td lay-data="{field:'username'}">地址</td>
+		<td lay-data="{field:'userphone'}">状态</td>
+		<td lay-data="{field:'empname'}">户型</td>
+		<td lay-data="{field:'style',width:88}">房间结构</td>
+		<td lay-data="{field:'date',sort:true,width:115}">面积<</td>
+		<td lay-data="{field:'grade',sort:true,width:100}">建筑单价</td>
+		<td lay-data="{field:'state',width:120}">建筑总价</td>
+		<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 	  </tr>
+	 </thead>
+	 <tbody>
 	  <c:choose>
 	     <c:when test="${rows!=null }">
-	         <!-- 显示实际查询到的数据 -->
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-				    <td></td>
 				    <td>${vs.count }</td>
 				    <td>${ins.aaa803}</td>
 				    <td>${ins.aaa804 }</td>
@@ -144,29 +144,50 @@
 				    <td>${ins.aaa809 }</td>
 				    <c:choose>
 					    <c:when test="${ins.caaa805=='签约'||ins.caaa805=='已选'||ins.caaa805=='预留'}">
-					    <td><a href="#"  onclick="" style="color:grey">确认选房</a></td>
-					    <td><a href="#"  onclick="" style="color:grey">添加预留</a></td>
+					    <td>
+					    <a href="#"  onclick="" style="color:grey">确认选房</a>
+					    <a href="#"  onclick="" style="color:grey">添加预留</a>
+					    </td>
 					    </c:when>
 					    <c:otherwise>
-					    <td><a href="#" onclick="onConfirm('${ins.aaa801}')">确认选房</a></td>
-					    <td><a href="#" onclick="onReserve('${ins.aaa801}')">添加预留</a></td>
+					    <td>
+					    <a href="#" onclick="onConfirm('${ins.aaa801}')">确认选房</a>
+					    <a href="#" onclick="onReserve('${ins.aaa801}')">添加预留</a>
+					    </td>
 					    </c:otherwise>
 				    </c:choose>
 				  </tr>
 		      </c:forEach>
 		      </c:when>
 	   </c:choose>
+	   </tbody>
 	</table>
 	<div class="layui-form-item" align="center">
 	       <input type="submit" name="next" class="layui-btn layui-btn-normal" value="查询">
+	</div>
 	</div>
 	</form>
     </div>
   </div>
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
   </div>
 </div>
+<script type="text/javascript">
+//JavaScript代码区域
+layui.use('table', function(){
+  var table = layui.table;
+  
+	//转换静态表格
+	table.init('demo', {
+		limit : 10,
+		page : true,
+		toolbar : true,
+		done : function(res, curr, count) {
+			$('#tableId').css('display', 'block');
+		}
+	});
+});
+</script>
 </body>
 </html>
