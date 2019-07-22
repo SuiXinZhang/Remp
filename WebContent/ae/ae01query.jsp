@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/../base/taglib.jsp" %>
 <html>
@@ -40,25 +41,28 @@
 	                </div>
 	                <input type="submit" class="layui-btn" data-type="reload" value="查询">
 	        </div>
-		    <table class="layui-table">
+	        <div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<th></th>
-			            <th>序号</th>
-			            <th>客户</th>
-			            <th>房间</th>
-			            <th>联系电话</th>
-			            <th>承诺办理</th>
-			            <th>承诺完成</th>
-			            <th>当前进程</th>
-			            <th>完成时间</th>
-			            <th></th>
+			        	<td lay-data="{field:'check',width:50}"></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">客户</td>
+						<td lay-data="{field:'username'}">房间</td>
+						<td lay-data="{field:'userphone'}">联系电话</td>
+						<td lay-data="{field:'empname'}">承诺办理</td>
+						<td lay-data="{field:'style',width:88}">承诺完成</td>
+						<td lay-data="{field:'date',sort:true,width:115}">当前进程</td>
+						<td lay-data="{field:'grade',sort:true,width:100}">完成时间</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
 			    <c:forEach items="${rows }" var="ins" varStatus="vs">
 			        <tr>
-			        	<td><input type="checkbox" lay-skin="primary" lay-filter="check" name="modList" value="${ins.aae101 }"/></td>
+			        	<td>
+			        	<input type="checkbox" lay-skin="primary" lay-filter="check" name="modList" value="${ins.aae101 }"/>
+			        	</td>
 			            <td>${vs.count}</td>
 			            <td>${ins.aad702 }</td>
 			            <td>${ins.aaa803 }</td>
@@ -80,6 +84,7 @@
 							formaction="<%=path %>/ae/ae01mod.jsp">
 				</div>
 			</div>
+			</div>
 		</form>
 	</div>
   </div>
@@ -96,14 +101,24 @@ function modify(id)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
-		var element = layui.element;
-	  var layer = layui.layer
-	  ,form = layui.form;
+layui.use(['layer', 'form','element','table'], function(){
+	  var element = layui.element
+	  ,layer = layui.layer
+	  ,form = layui.form
+	  ,table = layui.table;
 	  var count=0;
 	  form.val('form',{
 		  'qaae104':"${param.qaae104}",
 	  });
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){
                	count++;
