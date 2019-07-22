@@ -15,7 +15,7 @@
 			<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-				<legend>${empty param.aab601?'新增':'修改' }银行放款单</legend>
+				<legend style="color:black;"><h2>${empty param.aab601?'新增':'修改' }银行放款单</h2></legend>
 		
 				<form class="layui-form" id="myform" layfilter="form"
 				 action="<%=path%>/af/af06Add.html" method="post">

@@ -25,7 +25,7 @@
     <form id="layer" action="<%=path%>/ab/ab02Query.html" method="post" class="layui-form" >
 	
 		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-			<legend>销售计划明细表</legend>
+			<legend style="color:black;"><h2>销售计划明细表</h2></legend>
 		</fieldset>
 	
 		<table class="layui-table" id="test3" lay-filter="test3">
