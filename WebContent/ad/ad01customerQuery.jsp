@@ -21,7 +21,7 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">
 					<i class="layui-icon layui-icon-username" style="font-size: 20px; color: black;"></i>
-					录入姓名
+					客户名称
 				</label>
 				<div class="layui-input-inline">
 					<input type="text" name="caac403" autocomplete="off" class="layui-input">

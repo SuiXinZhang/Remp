@@ -7,10 +7,15 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ad/menu.jsp"/>
+	<c:import url="/ad/menu.jsp">
+        <c:param name="menu" value="ad11"/>
+     </c:import>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 10px 10px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>合同记录</legend>
     <form id="myform" class="layui-form" lay action="<%=path %>/ad/ad07queryAgreement.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
@@ -25,6 +30,9 @@
 					<input type="text" name="qaad702" value="${param.qaad702 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
+			<div class="layui-inline">
+	       		<input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
+			</div>
 	</div>
 	<div id="tableId" style="display: none">
 	<table id="idData"  lay-filter="demo">
@@ -32,14 +40,14 @@
 	  <tr>
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
 		<td lay-data="{field:'projectname',width:125}">房间</td>
-		<td lay-data="{field:'username'}">客户名</td>
-		<td lay-data="{field:'userphone'}">签署日期</td>
-		<td lay-data="{field:'empname'}">合同总价</td>
+		<td lay-data="{field:'username',width:90}">客户名</td>
+		<td lay-data="{field:'userphone',width:120}">签署日期</td>
+		<td lay-data="{field:'empname',width:120}">合同总价</td>
 		<td lay-data="{field:'style',width:88}">合同币种</td>
 		<td lay-data="{field:'date',sort:true,width:115}">业务员</td>
 		<td lay-data="{field:'grade',sort:true,width:100}">合同状态</td>
-		<td lay-data="{field:'state',width:120}">付款方式</td>
-		<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+		<td lay-data="{field:'state',width:100}">付款方式</td>
+		<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 	  </tr>
 	 </thead>
 	 <tbody>
@@ -49,7 +57,7 @@
 	    	   	  <tr>
 				    <td>${vs.count }</td>
 				    <td>${ins.aad703}</td>
-				    <td><a href="#" onclick="onSelect('${ins.aad701}')">${ins.aad702 }</a></td>
+				    <td>${ins.aad702 }</td>
 				    <td>${ins.aad716 }</td>
 				    <td>${ins.aad711 }</td>
 				    <td>${ins.baad712 }</td>
@@ -57,9 +65,18 @@
 				    <td>${ins.daad719 }</td>
 				    <td>${ins.caad704 }</td>
 				    <td>
-				    <a href="#" onclick="onCancel('${ins.aad701}')">作废</a>
-				    <a href="#" onclick="onChange('${ins.aad701}')">申请变更</a>
-				    <a href="#" onclick="onReceipt('${ins.aad401}')">生成付款详情</a>
+				    <a class="layui-btn layui-btn-xs" href="#" onclick="onSelect('${ins.aad701}')">
+				    	<i class="layui-icon layui-icon-edit"></i>查看
+				    </a>
+				    <a class="layui-btn layui-btn-xs" href="#" onclick="onChange('${ins.aad701}')">
+				    	<i class="layui-icon layui-icon-link"></i>申请变更
+				    </a>
+				    <a class="layui-btn layui-btn-xs" href="#" onclick="onReceipt('${ins.aad401}')">
+				    	<i class="layui-icon layui-icon-link"></i>生成付款详情
+				    </a>
+				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onCancel('${ins.aad701}')">
+				    	<i class="layui-icon layui-icon-close-fill"></i>作废
+				    </a>
 				    </td>
 				  </tr>
 		      </c:forEach>
@@ -67,11 +84,9 @@
 	   </c:choose>
 	  </tbody>
 	</table>
-	<div class="layui-form-item" align="center">
-	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
-	</div>
 	</div>
 	</form>
+	</fieldset>
     </div>
   </div>
   

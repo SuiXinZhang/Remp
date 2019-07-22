@@ -8,10 +8,15 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ad/menu.jsp"/>
+	<c:import url="/ad/menu.jsp">
+        <c:param name="menu" value="ad13"/>
+     </c:import>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>变更申请查询</legend>
     <form id="myform" lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad06queryApply.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
@@ -30,6 +35,9 @@
 					<input type="text" name="qaad605" value="${param.qaad605 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
+			<div class="layui-inline">
+	       		<input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
+	 		</div>
 	</div>
 	<div id="tableId" style="display: none">
 	<table id="idData"  lay-filter="demo">
@@ -38,12 +46,12 @@
 	  	<td lay-data="{field:'check',width:50}"></td>
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
 		<td lay-data="{field:'projectname',width:125}">审批状态</td>
-		<td lay-data="{field:'username'}">客户名称</td>
-		<td lay-data="{field:'userphone'}">房间号</td>
-		<td lay-data="{field:'empname'}">申请类型</td>
-		<td lay-data="{field:'style',width:88}">原因分类</td>
+		<td lay-data="{field:'username',width:125}">客户名称</td>
+		<td lay-data="{field:'userphone',width:125}">房间号</td>
+		<td lay-data="{field:'empname',width:125}">申请类型</td>
+		<td lay-data="{field:'style'}">原因分类</td>
 		<td lay-data="{field:'date',sort:true,width:115}">申请人</td>
-		<td lay-data="{field:'grade',sort:true,width:100}">申请日期</td>
+		<td lay-data="{field:'grade',sort:true}">申请日期</td>
 		<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
 	  </tr>
 	 </thead>
@@ -53,7 +61,8 @@
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
 	    	   	  	<td>
-					<input type="checkbox" lay-skin="primary" lay-filter="check" name="idlist" value="${ins.aac601 }" >
+					<input type="checkbox" lay-skin="primary" lay-filter="check" 
+					  name="idlist" value="${ins.aad601 }" >
 					</td>
 				    <td>${vs.count }</td>
 				    <td>${ins.aad603}</td>
@@ -63,18 +72,24 @@
 				    <td>${ins.caad604 }</td>
 				    <td>${ins.aad605 }</td>
 				    <td>${ins.aad606 }</td>
-				    <td><a href="#" onclick="onSelect('${ins.aad601}')">审批</a></td>
+				    <td>
+				    	<a class="layui-btn layui-btn-xs" href="#" onclick="onSelect('${ins.aad601}')">
+				    		<i class="layui-icon layui-icon-ok"></i>审批
+				    	</a>
+				    </td>
 				  </tr>
 		      </c:forEach>
 	     </c:when>
 	   </c:choose>
 	   </tbody>
 	</table>
-	<div class="layui-form-item" align="center">
-	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
 	 </div>
+	 <div class="layui-form-item" align="center">
+	 <input type="submit" class="layui-btn" id="mod" name="next" value="审批" 
+	              formaction="<%=path%>/ad/ad06batchExamine.html">
 	 </div>
 </form>
+</fieldset>
     </div>
   </div>
   
@@ -112,7 +127,7 @@
 	          if(data.elem.checked==true){
 	               	count++;
 	               	if(count!=0){
-	               		document.getElementById("mod").className="layui-btn";
+	               		document.getElementById("mod").className="layui-btn layui-btn-danger";
 	               	}else{
 	               		document.getElementById("mod").className="layui-btn layui-btn-disabled";
 	               	}
@@ -121,7 +136,7 @@
 	          }else{
 	        	  count--;
 	       		  if(count!=0){
-	       				document.getElementById("mod").className="layui-btn";
+	       				document.getElementById("mod").className="layui-btn layui-btn-danger";
 	       		  }else{
 	             		document.getElementById("mod").className="layui-btn layui-btn-disabled";
 	             }

@@ -92,4 +92,23 @@ public class Ad06ServicesImpl extends JdbcServicesSupport
 		this.appendSql(sql2, args2);
 		return this.executeTransaction();
 	}
+	public boolean batchExamine()throws Exception
+	{
+		//定义SQL语句,修改审批状态以及审批人
+    	String sql1 = "update ad06 set aad608=current_date,aad603=?,aad607=? where aad601=?";
+    	//获取stateList[]
+    	Object stateList[] = {
+    			"已审批",
+    			"BOSS"
+    	};
+    	//修改合同状态
+    	String sql2 = "update ad06 a,ad07 b set b.aad719=? where a.aad601=? and b.aad701=a.aad701";
+    	//定义新状态
+    	Object newState = "05";
+    	String idlist[]=this.getIdList("idlist");
+    	//执行
+    	this.batchUpdate(sql1, stateList, idlist);
+    	this.batchUpdate(sql2, newState, idlist);
+    	return this.executeTransaction();
+	}
 }
