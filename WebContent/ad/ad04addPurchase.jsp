@@ -10,7 +10,10 @@
 	<jsp:include   page="/ad/menu.jsp"/>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
+    <fieldset class="layui-elem-field">
+ 	<legend style="color:black"><h2>添加订单</h2></legend>
+  		<div class="layui-field-box">
     <form lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad04addPurchase.html" method="post">
      
      <div class="layui-form-item" align="center">
@@ -248,6 +251,8 @@
     <input type="hidden" name="aad401" value="${param.aad401 }">
     <input type="hidden" name="aad301" value="${ins.aad301 }">
 </form>
+	</div>
+	</fieldset>
     </div>
   </div>
   

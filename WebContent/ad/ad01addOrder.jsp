@@ -59,19 +59,27 @@
 	<jsp:include   page="/ad/menu.jsp"/>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
+    <fieldset class="layui-elem-field">
+ 	<legend style="color:black"><h2>添加预约</h2></legend>
+  		<div class="layui-field-box">
 	<form lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad01addOrder.html" method="post">
-
 	    <div class="layui-form-item" align="center">
 			<div class="layui-inline">
-				<label class="layui-form-label">项目名称</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-face-smile" style="font-size: 20px; color: black;"></i>
+					项目名称
+				</label>
 				<div class="layui-input-inline">
 					<input type="text" name="oaad102" required lay-verify="true" value="${ins.aad102 }"
 					 autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
-				<label class="layui-form-label">客户名称</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-username" style="font-size: 20px; color: black;"></i>
+					客户名称
+				</label>
 				<div class="layui-input-inline">
 					<input type="text" name="oaad103" required lay-verify="true" value="${ins.aad103 }"
 							 autocomplete="off" class="layui-input">
@@ -80,14 +88,20 @@
 		</div>
 		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
-				<label class="layui-form-label">预约日期</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
+					预约日期
+				</label>
 				<div class="layui-input-inline">
 					<input type="text" name="oaad105" required lay-verify="true" value="${ins.aad105 }"
 					    id="date1" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
-				<label class="layui-form-label">失效日期</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
+					失效日期
+				</label>
 				<div class="layui-input-inline">
 					<input type="text" name="oaad106" required lay-verify="true" value="${ins.aad106 }"
 						id="date2" autocomplete="off" class="layui-input">
@@ -96,7 +110,10 @@
 		</div>
 		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
-				<label class="layui-form-label">房间</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-home" style="font-size: 20px; color: black;"></i>
+					房间号码
+				</label>
 				<div class="layui-input-inline">
 					<input id="room" type="text" name="oaad110" required lay-verify="true" value="${ins.aad110 }"
 					   onclick="selectRoom()" readonly="readonly" class="layui-input">
@@ -104,7 +121,10 @@
 				</div>
 			</div>
 			<div class="layui-inline">
-				<label class="layui-form-label">应收预约金</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-rmb" style="font-size: 20px; color: black;"></i>
+					应收金额
+				</label>
 				<div class="layui-input-inline">
 					<input type="number" step="0.01" name="oaad111" required lay-verify="true" 
 					     value="${ins.aad111 }" autocomplete="off" class="layui-input">
@@ -113,7 +133,10 @@
 		</div>
 		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
-				<label class="layui-form-label">币种</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-dollar" style="font-size: 20px; color: black;"></i>
+					币&#8195;&#8195;种
+				</label>
 				<div class="layui-input-inline">
 					<select name="oaad112">
 						<option value="01" selected>人民币</option>
@@ -125,7 +148,10 @@
 				</div>
 			</div>
 			<div class="layui-inline">
-				<label class="layui-form-label">实收预约金</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-rmb" style="font-size: 20px; color: black;"></i>
+					实收金额
+				</label>
 				<div class="layui-input-inline">
 					<input type="number" step="0.01" name="oaad113" required lay-verify="true" 
 					 value="${ins.aad113 }" autocomplete="off" class="layui-input">
@@ -134,14 +160,20 @@
 		</div>
 		<div class="layui-form-item" align="center">
 			<div class="layui-inline">
-				<label class="layui-form-label">权益人</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-username" style="font-size: 20px; color: black;"></i>
+					权&ensp;益&ensp;人
+				</label>
 				<div class="layui-input-inline">
 					<input type="text" name="oaad109" required lay-verify="true" value="${ins.aad109 }"
 							 autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
-				<label class="layui-form-label">业务员</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-username" style="font-size: 20px; color: black;"></i>
+					业&ensp;务&ensp;员
+				</label>
 				<div class="layui-input-inline">
 					<input type="text" name="oaad114" required lay-verify="true" value="${ins.aad114 }"
 					 autocomplete="off" class="layui-input">
@@ -151,14 +183,20 @@
 		<div class="layui-form-item" align="center">
 			<c:if test="${!empty param.aad101 }">
 			<div class="layui-inline">
-				<label class="layui-form-label">实际排号</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-release" style="font-size: 20px; color: black;"></i>
+					实际排号
+				</label>
 					<div class="layui-input-inline">
 						<input type="text" name="oaad104" value="${ins.aad104 }"
 							 autocomplete="off" class="layui-input">
 					</div>
 				</div>
 			<div class="layui-inline">
-				<label class="layui-form-label">房间排号</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-release" style="font-size: 20px; color: black;"></i>
+					房间排号
+				</label>
 					<div class="layui-input-inline">
 						<input type="text" name="oaad108" value="${ins.aad108 }"
 							 autocomplete="off" class="layui-input">
@@ -169,14 +207,20 @@
 		<div class="layui-form-item" align="center">
 			<c:if test="${!empty param.aad101 }">
 				<div class="layui-inline">
-				<label class="layui-form-label">退号原因</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-survey" style="font-size: 20px; color: black;"></i>
+					退号原因
+				</label>
 					<div class="layui-input-inline">
 						<input type="text" name="aad203" value="${ins.aad203 }"
 							 autocomplete="off" class="layui-input">
 					</div>
 				</div>
 				<div class="layui-inline">
-				<label class="layui-form-label">退号日期</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
+					退号日期
+				</label>
 					<div class="layui-input-inline">
 						<input type="text" id="date3" name="aad202" value="${ins.aad202 }"
 							 autocomplete="off" class="layui-input">
@@ -186,9 +230,12 @@
 	   </div>
 	   <div class="layui-form-item layui-form-text" align="center">
 			<div class="layui-inline">
-				<label class="layui-form-label">备注</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-edit" style="font-size: 20px; color: black;"></i>
+					备&#8195;&#8195;注
+				</label>
 				<div class="layui-input-inline">
-					<textarea cols="66" name="oaad115" class="layui-textarea" placeholder="请输入内容">${ins.oaad115 }</textarea>
+					<textarea cols="66" name="oaad115" class="layui-textarea" placeholder="请输入内容">${ins.aad115 }</textarea>
 				</div>
 			</div>
 	   </div>
@@ -208,6 +255,8 @@
 <input type="hidden" name="oaad107" value="${ins.aad107 }">
 							  
 </form>
+</div>
+</fieldset>
     </div>
   </div>
   
