@@ -23,14 +23,18 @@
 
 							<div class="layui-form-item">
 								<div class="layui-inline">
-									<label class="layui-form-label">活动主题</label>
+									<label class="layui-form-label">
+										<i class="layui-icon layui-icon-theme" style="font-size: 20px; color: black;"></i>活动主题
+									</label>
 									<div class="layui-input-inline">
 										<input type="text" name="aab402" required="true"
 											autofocus="true" value="${ins.aab402 }" class="layui-input">
 									</div>
 								</div>
 								<div class="layui-inline">
-									<label class="layui-form-label">活动类型</label>
+									<label class="layui-form-label">
+										<i class="layui-icon layui-icon-tabs" style="font-size: 20px; color: black;"></i>活动类型
+									</label>
 									<div class="layui-input-inline">
 										<select name="aab403" lay-verify="">
 											<option value="">请选择活动类型</option>
@@ -44,7 +48,9 @@
 
 							<div class="layui-form-item">
 								<div class="layui-inline">
-									<label class="layui-form-label">活动时间</label>
+									<label class="layui-form-label">
+										<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>活动时间
+									</label>
 									<div class="layui-input-inline">
 										<input type="text" name="aab404" required="true"
 											value="${ins.aab404 }" class="layui-input" id="test29"
@@ -52,7 +58,9 @@
 									</div>
 								</div>
 								<div class="layui-inline">
-									<label class="layui-form-label">发生费用</label>
+									<label class="layui-form-label">
+										<i class="layui-icon layui-icon-rmb" style="font-size: 20px; color: black;"></i>发生费用
+									</label>
 									<div class="layui-input-inline">
 										<input type="number" step="0.01" name="aab405" required="true"
 											value="${ins.aab405 }" class="layui-input" />
@@ -61,7 +69,9 @@
 							</div>
 
 							<div class="layui-form-item layui-form-text" style="padding-left:250px;padding-right:270px;">
-								<label class="layui-form-label">活动描述</label>
+								<label class="layui-form-label">
+									<i class="layui-icon layui-icon-survey" style="font-size: 20px; color: black;"></i>活动描述
+								</label>
 								<div class="layui-input-block">
 									<textarea placeholder="请输入内容" name="aab406"
 										 class="layui-textarea">${ins.aab406 }</textarea>

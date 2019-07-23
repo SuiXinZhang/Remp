@@ -28,7 +28,12 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">项目名称</label>
 								<div class="layui-input-inline">
-									<input type="text" name="qaab102" placeholder="请输入项目名称" autocomplete="off" class="layui-input">
+									<select name="qaab102">
+										<option value="" selected="selected">请选择项目名称</option>
+									    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
+									    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
+									    </c:forEach>
+									</select>
 								</div>
 							</div>
 							<div class="layui-inline">
@@ -47,8 +52,16 @@
 							</div>
 							</div>
 							<div class="layui-inline" style="padding-left:110px">
-								<input type="submit" name="next" value="查询" class="layui-btn">
+								<button class="layui-btn " type="submit">
+									<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
+								</button>
+								<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+									formaction="<%=path%>/ab/ab01Add.jsp">
+									<i class="layui-icon layui-icon-add-1"></i>添加
+								</button>
+								<!-- <input type="submit" name="next" value="查询" class="layui-btn"> 
 								<input type="submit" name="next" value="添加" formaction="<%=path%>/ab/ab01Add.jsp" class="layui-btn">
+								-->
 							</div>
 						</div>
 						

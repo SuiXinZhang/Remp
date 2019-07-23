@@ -20,7 +20,7 @@
 		
 		<div class="layui-form-item layui-form-text" style="padding-right:100px">
 			<div class="layui-input-block">
-				<textarea placeholder="ÇëÊäÈëÄÚÈİ" name="aab309" class="layui-textarea">${ins.aab309 }</textarea>
+				<textarea placeholder="ÇëÊäÈëÆÀ¹ÀÄÚÈİ" name="aab309" class="layui-textarea">${ins.aab309 }</textarea>
 			</div>
 		</div>
 		

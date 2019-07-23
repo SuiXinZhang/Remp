@@ -28,7 +28,8 @@
 					<div class="layui-inline">
 						<label class="layui-form-label">项目名称</label>
 						<div class="layui-input-inline">
-							<select name="qaaf612" required>
+							<select name="qaaf612">
+								<option value="" selected="selected">请选择项目名称</option>
 							    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
 							    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
 							    </c:forEach>
@@ -64,9 +65,10 @@
 						</div>
 					</div>
 					<div class="layui-inline" style=" padding-left:110px">
-						<input type="submit" name="next" value="查询" class="layui-btn">
+						<button class="layui-btn " type="submit">
+							<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
+						</button>
 					</div>
-					
 				</div>
 				
 			</div>
@@ -93,10 +95,6 @@
 	  		<!-- 显示查询到的数据 -->
 	  		<c:forEach items="${rows }" var="ins" varStatus="vs">
 	  			<tr>
-	  				<!-- <td>
-	  					<input type="checkbox" name="idlist" value="${ins.aaf601 }"
-	  						onclick="onSelect(this.checked)" >
-	  				</td> -->
 	  				<td>
 	  					${vs.count }
 	  				</td>
@@ -125,8 +123,10 @@
 	  
 	  	<!-- 功能按钮区 -->
 	  	<div class="layui-form-item" align="center">
-		       <input type="submit" name="next" value="添加" 
-		       formaction="<%=path%>/af/af06Add.jsp" class="layui-btn">
+	  		<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+				formaction="<%=path%>/af/af06Add.jsp">
+				<i class="layui-icon layui-icon-add-1"></i>添加
+			</button>
 		</div>
 		</div>
 	</form>

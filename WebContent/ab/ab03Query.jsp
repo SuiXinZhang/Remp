@@ -121,11 +121,13 @@
 
 						<!-- 功能按钮区 -->
 						<div class="layui-form-item" align="center">
-							<input type="submit" name="next" value="查询" class="layui-btn">
-							<input type="submit" name="next" value="添加" formaction="<%=path%>/ab/ab03Add.jsp" class="layui-btn">
-							<!--  
-							<input type="submit" id="del" name="next" value="删除" formaction="<%=path%>/ab/ab03BatchDelete.html" disabled="disabled" class="layui-btn">
-							-->
+							<button class="layui-btn " type="submit">
+								<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
+							</button>
+							<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+								formaction="<%=path%>/ab/ab03Add.jsp">
+								<i class="layui-icon layui-icon-add-1"></i>添加
+							</button>
 						</div>
 						</div>
 					</form>
