@@ -13,7 +13,7 @@
    	<fieldset class="layui-elem-field">
  	<legend style="color:black"><h2>公司信息${empty param.aaa101?'添加':'修改' }</h2></legend>
   		<div class="layui-field-box">
-	    <form action="" lay-filter="form" class="layui-form"  method="post"  enctype="multipart/form-data">	
+	    <form action="" lay-filter="form" class="layui-form"  method="post" >	
     	<!-- 表单提交区 -->	
 	    <div class="layui-form-item" align="center">
 	    	<div class="layui-inline">
@@ -83,8 +83,8 @@
 	    			注册资本
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa107" required="required" value="${ins.aaa107 }" autocomplete="off" class="layui-input"  
-		        			style="width:250px;" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+		        	<input type="number" name="aaa107" required="required" value="${ins.aaa107 }" autocomplete="off" class="layui-input"  
+		        			style="width:250px;" step="0.01" min="0">
 	      		</div>
 	    	</div>
 	    </div>
@@ -117,7 +117,7 @@
     	<div class="layui-form-item"  align="left"  style="padding-left:450px">
 				<div class="layui-inline">
 						<input class="layui-btn" name="next" type="submit" value="${empty ins.aaa101?'添加':'修改'}"
-							formaction="<%=path %>/aa/${empty param.aaa101?'aa01Add.html':'aa01Modify.html' }">
+							formaction="<%=path %>/aa/${empty ins.aaa101?'aa01Add.html':'aa01Modify.html' }">
 						<input class="layui-btn layui-btn-warm" type="submit" value="返回"
 						formaction="<%=path %>/aa/aa02Query.html" formnovalidate="formnovalidate">
 				</div>
@@ -131,7 +131,7 @@
 				</div>
 		</div>
 			
-		<input type="hidden" name="aaa101" value="${ins.aaa101 }">
+		<input type="hidden" name="aaa101" value="1">
 	</form>
 	</div>
 	</fieldset>

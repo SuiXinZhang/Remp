@@ -90,17 +90,17 @@
 			        <tr>
 			        	<td lay-data="{field:'check',width:50}"></td>
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">姓名</td>
-						<td lay-data="{field:'username'}">员工编号</td>
-						<td lay-data="{field:'userphone'}">岗位</td>
-						<td lay-data="{field:'empname'}">所属部门</td>
-						<td lay-data="{field:'style',width:88}">性别</td>
-						<td lay-data="{field:'date',sort:true,width:115}">民族</td>
-						<td lay-data="{field:'grade',sort:true,width:100}">生日</td>
-						<td lay-data="{field:'way',sort:true,width:100}">联系方式</td>
-						<td lay-data="{field:'address',sort:true,width:100}">住址</td>
-						<td lay-data="{field:'beizhu',sort:true,width:100}">备注</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'projectname',width:100}">姓名</td>
+						<td lay-data="{field:'username',width:100}">员工编号</td>
+						<td lay-data="{field:'userphone',width:100}">岗位</td>
+						<td lay-data="{field:'empname',width:120}">所属部门</td>
+						<td lay-data="{field:'style',width:60}">性别</td>
+						<td lay-data="{field:'date',width:80}">民族</td>
+						<td lay-data="{field:'grade',width:120}">生日</td>
+						<td lay-data="{field:'way',width:100}">联系方式</td>
+						<td lay-data="{field:'address',width:100}">住址</td>
+						<td lay-data="{field:'beizhu',sort:true}">备注</td>
+						<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -131,6 +131,17 @@
 									</td>
 								</tr>
 							</c:forEach>
+							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</c:forEach>
 						</c:when>
 					</c:choose>
 			    </tbody>
@@ -150,7 +161,7 @@
 			</div>
 		<input type="hidden" name="aaa301" value="${param.aaa301 }"> 
 		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
-		<input type="hidden" name="aaa405" value="${param.aaa302 }">
+		<input type="hidden" name="aaa302" value="${param.aaa302 }">
 		</div>
 		</form>
 	</div>
@@ -194,7 +205,7 @@ layui.use(['layer', 'form','element', 'laydate','table'], function(){
 		table.init('demo', {
 			limit : 10,
 			page : true,
-			toolbar : true,
+			
 			done : function(res, curr, count) {
 				$('#tableId').css('display', 'block');
 			}

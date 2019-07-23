@@ -37,11 +37,16 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ad/menu.jsp"/>
+	<c:import url="/ad/menu.jsp">
+        <c:param name="menu" value="ad"/>
+     </c:import>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
-<form lay-filter="myform" id="myform" class="layui-form" action="<%=path %>/ad/adqueryRoom.html" method="post">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>房源查询</legend>
+	<form lay-filter="myform" id="myform" class="layui-form" action="<%=path %>/ad/adqueryRoom.html" method="post">
     	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">建筑总价[B]</label>
@@ -108,6 +113,11 @@
 					</select>
 				</div>
 			</div>
+			<div class="layui-inline">
+				<div class="layui-input-inline">
+	       			<input type="submit" name="next" class="layui-btn layui-btn-normal" value="查询">
+				</div>
+			</div>
 		</div>
 	<!-- 数据迭代区 -->
 	<div id="tableId" style="display: none">
@@ -117,10 +127,10 @@
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
 		<td lay-data="{field:'projectname',width:125}">房间号</td>
 		<td lay-data="{field:'username'}">地址</td>
-		<td lay-data="{field:'userphone'}">状态</td>
-		<td lay-data="{field:'empname'}">户型</td>
+		<td lay-data="{field:'userphone',width:60}">状态</td>
+		<td lay-data="{field:'empname',width:60}">户型</td>
 		<td lay-data="{field:'style',width:88}">房间结构</td>
-		<td lay-data="{field:'date',sort:true,width:115}">面积<</td>
+		<td lay-data="{field:'date',sort:true,width:115}">面积</td>
 		<td lay-data="{field:'grade',sort:true,width:100}">建筑单价</td>
 		<td lay-data="{field:'state',width:120}">建筑总价</td>
 		<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
@@ -143,14 +153,22 @@
 				    <c:choose>
 					    <c:when test="${ins.caaa805=='签约'||ins.caaa805=='已选'||ins.caaa805=='预留'}">
 					    <td>
-					    <a href="#"  onclick="" style="color:grey">确认选房</a>
-					    <a href="#"  onclick="" style="color:grey">添加预留</a>
+					    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+					    	<i class="layui-icon layui-icon-edit"></i>确认选房
+					    </a>
+					    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+					    	<i class="layui-icon layui-icon-release"></i>添加预留
+					    </a>
 					    </td>
 					    </c:when>
 					    <c:otherwise>
 					    <td>
-					    <a href="#" onclick="onConfirm('${ins.aaa801}')">确认选房</a>
-					    <a href="#" onclick="onReserve('${ins.aaa801}')">添加预留</a>
+					    <a class="layui-btn layui-btn-xs " href="#" onclick="onConfirm('${ins.aaa801}')">
+								<i class="layui-icon layui-icon-edit"></i>确认选房
+						</a>
+					    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onReserve('${ins.aaa801}')">
+								<i class="layui-icon layui-icon-release"></i>添加预留
+						</a>
 					    </td>
 					    </c:otherwise>
 				    </c:choose>
@@ -160,11 +178,9 @@
 	   </c:choose>
 	   </tbody>
 	</table>
-	<div class="layui-form-item" align="center">
-	       <input type="submit" name="next" class="layui-btn layui-btn-normal" value="查询">
-	</div>
 	</div>
 	</form>
+	</fieldset>
     </div>
   </div>
   <div class="layui-footer">

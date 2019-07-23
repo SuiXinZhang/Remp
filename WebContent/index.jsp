@@ -36,8 +36,8 @@ $.ajax({
      async:true,
      data:{
      },
-     success:function(data){
-    	 alert("success")
+     success:function(data)
+     {
      }
 })
 </script>

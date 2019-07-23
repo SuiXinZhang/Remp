@@ -8,9 +8,14 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
+  	<c:if test="${empty ins.aac501 }">
 	<c:import url="/ac/menu.jsp">
   		 <c:param name="menu" value="ac09"/>
   	</c:import>
+  	</c:if>
+  	<c:if test="${!empty ins.aac501 }">
+  	<jsp:include   page="/ac/menu.jsp"/>
+  	</c:if>
   <div class="layui-body">
     	
     <div class="layui-anim layui-anim-scale" style="padding: 15px; margin: 30px 80px;">
@@ -131,10 +136,10 @@
 					</div>
 				</div>
 				
-				<div class="layui-inline" style="padding-left:240px">
+				<div class="layui-inline" >
 				<button class="layui-btn layuiadmin-btn-useradmin"  id="search" formnovalidate="formnovalidate"
 				formaction="<%=path %>/ac/ac04QueryForClient.html">
-						<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+				<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
 				</button>
 				</div>
 			</div>
@@ -177,10 +182,6 @@
 			
 		</fieldset>
 	</div>
-  </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
   </div>
 </div>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>

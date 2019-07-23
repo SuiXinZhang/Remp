@@ -147,18 +147,18 @@
 			        <tr>
 			        	<td lay-data="{field:'check',width:50}"></td>
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">房间号</td>
+						<td lay-data="{field:'projectname',width:80}">房间号</td>
 						<td lay-data="{field:'username'}">房间编码</td>
 						<td lay-data="{field:'userphone'}">地址</td>
-						<td lay-data="{field:'empname'}">状态</td>
-						<td lay-data="{field:'style',width:88}">租售类型</td>
-						<td lay-data="{field:'date',sort:true,width:115}">户型</td>
-						<td lay-data="{field:'grade',sort:true,width:100}">建筑单价</td>
+						<td lay-data="{field:'empname',width:80}">状态</td>
+						<td lay-data="{field:'style',width:80}">租售类型</td>
+						<td lay-data="{field:'date',width:100}">户型</td>
+						<td lay-data="{field:'grade',width:100}">建筑单价</td>
 						<td lay-data="{field:'jzzj'}">建筑总价</td>
 						<td lay-data="{field:'tldj'}">套内单价</td>
 						<td lay-data="{field:'tlzj'}">套内总价</td>
 						<td lay-data="{field:'beiz'}">备注</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -188,6 +188,17 @@
 									</td>
 								</tr>
 							</c:forEach>
+							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</c:forEach>							
 						</c:when>
 					</c:choose>
 			    </tbody>
@@ -233,7 +244,7 @@ function onEdit(vaaa801)
 function onDel(vaaa801)
 {
 	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/aa08DelById.html?aaa801=" + vaaa801;
+	myform.action = "<%=path%>/aa08delById.html?aaa801=" + vaaa801;
 	myform.submit();
 }
 </script>
@@ -247,7 +258,7 @@ layui.use(['layer', 'form','element','table'], function(){
 		table.init('demo', {
 			limit : 10,
 			page : true,
-			toolbar : true,
+			
 			done : function(res, curr, count) {
 				$('#tableId').css('display', 'block');
 			}

@@ -144,7 +144,7 @@ public class Ac03ServicesImpl extends JdbcServicesSupport {
 	{
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aac301,x.aac401,x.aac303,z.fvalue as cnaac304,x.aac305,")
-				.append("       x.aac306,x.aac307,y.aac402,y.aac403")
+				.append("       x.aac306,x.aac307,y.aac402,y.aac403,x.aac304")
 				.append("  from ac03 x,ac04 y,syscode z")
 				.append(" where x.aac401 = y.aac401 and ")
 				.append("       x.aac304 = z.fcode and z.fname = 'aac304' and")

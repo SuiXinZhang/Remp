@@ -15,15 +15,13 @@
 		<div class="layui-body">
 			<div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
-				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;padding-top: 20px">
 					<legend>客户台账管理</legend>
 					<form action="<%=path%>/ac/ac04Query.html" lay-filter="form"
 						class="layui-form" id="myform" method="post">
 
 
-						<div align="center">
-
-
+						<div align="left">
 							<div class="layui-form-item">
 								<div class="layui-inline">
 									<label class="layui-form-label">客&ensp;户&ensp;名</label>
@@ -39,10 +37,6 @@
 											autocomplete="off" class="layui-input">
 									</div>
 								</div>
-							</div>
-
-
-							<div class="layui-form-item">
 								<div class="layui-inline">
 									<label class="layui-form-label">联系电话</label>
 									<div class="layui-input-inline">
@@ -50,7 +44,7 @@
 											autocomplete="off" class="layui-input">
 									</div>
 								</div>
-								<div class="layui-inline" style="padding-left:240px">
+								<div class="layui-inline">
 									<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
 											<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
 									</button>
@@ -67,15 +61,15 @@
 								<thead>
 									<tr>
 										<td lay-data="{field:'sort1',width:60,fixed:'left'}">序号</td>
-										<td lay-data="{field:'username'}">客户名</td>
-										<td lay-data="{field:'projectname',width:125}">客户编号</td>
+										<td lay-data="{field:'username',width:90}">客户名</td>
+										<td lay-data="{field:'projectname'}">客户编号</td>
 										<td lay-data="{field:'userphone'}">联系电话</td>
-										<td lay-data="{field:'empname'}">性别</td>
-										<td lay-data="{field:'style',width:88}">民族</td>
-										<td lay-data="{field:'date',width:115}">职业</td>
+										<td lay-data="{field:'empname',width:58}">性别</td>
+										<td lay-data="{field:'style',width:58}">民族</td>
+										<td lay-data="{field:'date',width:58}">职业</td>
 										<td lay-data="{field:'grade',width:100}">经济状况</td>
-										<td lay-data="{field:'state',width:120}">邮箱</td>
-										<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+										<td lay-data="{field:'state',width:170}">邮箱</td>
+										<td lay-data="{field:'opt',fixed:'right',width:180}">操作</td>
 									</tr>
 								</thead>
 								<tbody>
@@ -111,36 +105,14 @@
 									</c:choose>
 								</tbody>
 							</table>
-							<br>
-							<br>
-							<br>
-							<div class="layui-form-item" align="center">
-							<div class="layui-inline">
-									<button class="layui-btn " 
-									formaction="<%=path %>/ac/addClient.jsp"  type="submit">
-									<i class="layui-icon layui-icon-add-1"></i>添加
-									</button>
-							</div>
-							</div>
-
 						</div>
 						<input type="hidden" name="aac403" id="vaac403" value=""> 
 					</form>
 			</div>
-
 			</fieldset>
 		</div>
-				
 		</div>
-
 <script type="text/javascript">
-var count = 0;
-function onSelect2(vstate)
-{
-	vstate?count++:count--;
-	var delB = document.getElementById("del");
-	delB.disabled = (count == 0);
-}
 function onEdit(vaac401)
 {
 	var myform = document.getElementById("myform");

@@ -11,10 +11,12 @@
         <c:param name="menu" value="ae03"/>
      </c:import>
   <div class="layui-body">
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>入伙服务</legend>
 	    <form id="action" lay-filter="form" class="layui-form" action="<%=path %>/ae/ae03query.html" method="post">
-	     <h1 align="center">入伙服务</h1>
-	        <hr>
+	    <br>
 	        <div class="layui-form-item" align="center">
 	                <div class="layui-inline">
 	                    <label class="layui-form-label">客户姓名</label>
@@ -35,13 +37,13 @@
 			    <thead>
 			        <tr>
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">客户</td>
+						<td lay-data="{field:'projectname'}">客户</td>
 						<td lay-data="{field:'username'}">房间</td>
 						<td lay-data="{field:'userphone'}">联系电话</td>
 						<td lay-data="{field:'empname'}">承诺办理</td>
-						<td lay-data="{field:'style',width:88}">承诺完成</td>
-						<td lay-data="{field:'date',sort:true,width:115}">交房日期</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'style'}">承诺完成</td>
+						<td lay-data="{field:'date',sort:true}">交房日期</td>
+						<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -54,7 +56,7 @@
 						<td>${ins.aae307 }</td>
 						<td>${ins.aae308 }</td>
 						<td>${ins.aae305 }</td>
-						<td><a href="#" onclick='findById(${ins.aae301})'>查看明细</a></td>
+						<td><a class="layui-btn layui-btn-xs " href="#" onclick='findById(${ins.aae301})'>查看明细</a></td>
 		        </tr>
 			    </c:forEach>
 			    </tbody>
@@ -67,6 +69,7 @@
 			</div>
 			</div>
 		</form>
+		</fieldset>
 	</div>
   </div>
   

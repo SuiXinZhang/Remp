@@ -11,10 +11,12 @@
         <c:param name="menu" value="ae07"/>
      </c:import>
   <div class="layui-body">
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>面积补差</legend>
 	    <form id="action" lay-filter="form" class="layui-form" action="<%=path %>/ae/ae05query.html" method="post">
-	     <h1 align="center">面积补差</h1>
-	        <hr>
+	    <br>
 	        <div class="layui-form-item" align="center">
 	                <div class="layui-inline">
 	                    <label class="layui-form-label">客户姓名</label>
@@ -35,13 +37,13 @@
 			    <thead>
 			        <tr>
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">客户</td>
+						<td lay-data="{field:'projectname'}">客户</td>
 						<td lay-data="{field:'username'}">房间</td>
 						<td lay-data="{field:'userphone'}">房间补差款</td>
 						<td lay-data="{field:'empname'}">附属房间补差款</td>
-						<td lay-data="{field:'style',width:88}">参差补差款</td>
-						<td lay-data="{field:'date',sort:true,width:115}">实际补差款</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'style'}">参差补差款</td>
+						<td lay-data="{field:'date',sort:true}">实际补差款</td>
+						<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -54,13 +56,14 @@
 						<td>${ins.aae503 }</td>
 						<td>${ins.aae504 }</td>
 						<td>${ins.aae505 }</td>
-						<td><a href="#" onclick='modify(${ins.aae501})'>查看明细</a></td>
+						<td><a class="layui-btn layui-btn-xs " href="#" onclick='modify(${ins.aae501})'>查看明细</a></td>
 		        </tr>
 			    </c:forEach>
 			    </tbody>
 			</table>
 			</div>
 		</form>
+		</fieldset>
 	</div>
   </div>
   
