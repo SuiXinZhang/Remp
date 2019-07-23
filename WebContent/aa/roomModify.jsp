@@ -93,8 +93,8 @@
 	    			建筑单价
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa808" required="required" value="${ins.aaa808 }" autocomplete="off" class="layui-input"  
-		        			style="width:250px;" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+		        	<input type="number" name="aaa808" required="required" value="${ins.aaa808 }" autocomplete="off" class="layui-input"  
+		        			style="width:250px;" step="0.01" min="0">
 	      		</div>
 	    	</div>
 
@@ -104,7 +104,8 @@
 	    			套内单价
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa810" required="required" value="${ins.aaa810 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="number" name="aaa810" required="required" value="${ins.aaa810 }" 
+		        		autocomplete="off" class="layui-input"  style="width:250px;"  step="0.01" min="0">
 	      		</div>
 	    	</div>
 	    </div>

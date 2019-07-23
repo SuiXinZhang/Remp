@@ -31,8 +31,8 @@ public class Aa04ServicesImpl extends JdbcServicesSupport {
 		Map<String,String> m = this.queryForMap(sql.toString(), this.get("aaa401"));
 		
 	    //获取所有的部门用于用户修改
-		String sql2 = "select aaa301,aaa302 from aa03";
-		List<Map<String,String>> l =this.queryForList(sql2);
+		String sql2 = "select aaa301,aaa302 from aa03 where aaa201=?";
+		List<Map<String,String>> l =this.queryForList(sql2,this.get("aaa201"));
 		StringBuilder aaa302 = new StringBuilder(); 
 		for(Map<String,String> tem:l) {
 			aaa302.append(tem.get("aaa302")+":"+tem.get("aaa301")+",");

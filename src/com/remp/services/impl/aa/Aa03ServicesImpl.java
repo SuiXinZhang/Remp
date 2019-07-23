@@ -99,6 +99,7 @@ public class Aa03ServicesImpl extends JdbcServicesSupport {
 		
 		Object id = this.get("aaa301");
 		
+		
 		return this.executeUpdate(sql, id)>0;
 	}
 	

@@ -244,7 +244,7 @@ function onEdit(vaaa801)
 function onDel(vaaa801)
 {
 	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/aa08DelById.html?aaa801=" + vaaa801;
+	myform.action = "<%=path%>/aa08delById.html?aaa801=" + vaaa801;
 	myform.submit();
 }
 </script>
