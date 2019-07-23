@@ -27,13 +27,15 @@
 	    </div>
 	    <div class="layui-form-item" align="center">
 	    	<div class="layui-inline">
-		      	<label class="layui-form-label">承诺办理</label>
+		      	<label class="layui-form-label">
+		      	<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>承诺办理</label>
 		      	<div class="layui-input-inline">
 		        <input name="aae102" id="date1" class="layui-input" type="text" value="${ins.aae102 }" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
 	      		</div>
 	    	</div>
 		    <div class="layui-inline">
-		      	<label class="layui-form-label">承诺完成</label>
+		      	<label class="layui-form-label">
+		      	<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>承诺完成</label>
 		      	<div class="layui-input-inline">
 		        <input name="aae103" id="date2" class="layui-input" type="text" value="${ins.aae103 }" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
 	      		</div>
@@ -41,7 +43,8 @@
     	</div>
     	<div class="layui-form-item" align="center">
 	      	<div class="layui-inline">
-                    <label class="layui-form-label">办理状态</label>
+                    <label class="layui-form-label">
+                    <i class="layui-icon layui-icon-tips" style="font-size: 20px; color: black;"></i>办理状态</label>
                     <div class="layui-input-inline" >
 				        <select name="aae104">
 				          <option value="">请选择</option>
@@ -51,7 +54,8 @@
                     </div>
             </div>
 		    <div class="layui-inline">
-		      	<label class="layui-form-label">完成时间</label>
+		      	<label class="layui-form-label">
+		      	<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>完成时间</label>
 		      	<div class="layui-input-inline">
 		        <input name="aae105" id="date3" class="layui-input" id="aae105" 
 		        value="${ins.aae105 }" type="text" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
@@ -60,13 +64,15 @@
     	</div>
     	<div class="layui-form-item" align="center">
 	    	<div class="layui-inline">
-		      	<label class="layui-form-label">建筑面积</label>
+		      	<label class="layui-form-label">
+		      	<i class="layui-icon layui-icon-tree" style="font-size: 20px; color: black;"></i>建筑面积</label>
 		      	<div class="layui-input-inline">
 		        <input name="aae106" value="${ins.aae106 }" class="layui-input" type="number" autocomplete="off">
 	      		</div>
 	    	</div>
 		    <div class="layui-inline">
-		      	<label class="layui-form-label">业务员</label>
+		      	<label class="layui-form-label">
+		      	<i class="layui-icon layui-icon-user" style="font-size: 20px; color: black;"></i>业&ensp;务&ensp;员</label>
 		      	<div class="layui-input-inline">
 		        <input name="aae107" value="${ins.aae107 }" class="layui-input" type="text" autocomplete="off">
 	      		</div>
@@ -74,13 +80,15 @@
     	</div>
     	<div class="layui-form-item" align="center">
 	    	<div class="layui-inline">
-		      	<label class="layui-form-label">合同备案号</label>
+		      	<label class="layui-form-label">
+		      	合同备案号</label>
 		      	<div class="layui-input-inline">
 		        <input name="aae108" class="layui-input" type="text" value="${ins.aae108 }" autocomplete="off">
 	      		</div>
 	    	</div>
 		    <div class="layui-inline">
-		      	<label class="layui-form-label">备案时间</label>
+		      	<label class="layui-form-label">
+		      	<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>备案时间</label>
 		      	<div class="layui-input-inline">
 		        <input name="aae109" id="date4" class="layui-input" type="text" value="${ins.aae109 }" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date">
 	      		</div>
@@ -88,7 +96,8 @@
     	</div>
     	<div class="layui-form-item layui-form-text" align="center">
 	    	<div class="layui-inline">
-		      	<label class="layui-form-label">备注</label>
+		      	<label class="layui-form-label">
+		      	<i class="layui-icon layui-icon-list" style="font-size: 20px; color: black;"></i>备注</label>
 		      	<div class="layui-input-inline" >
 		        <textarea cols="66" name="aae110" class="layui-textarea" placeholder="请输入内容">${ins.aae110 }</textarea>
 	      		</div>

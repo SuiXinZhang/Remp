@@ -47,7 +47,7 @@ if (typeof dev === 'undefined') {
 var __DEV__ = dev;
 
 /**
- * zrender: ç”Ÿæˆå”¯ä¸€id
+ * zrender: Éú³ÉÎ¨Ò»id
  *
  * @author errorrik (errorrik@gmail.com)
  */
@@ -59,9 +59,9 @@ var guid = function () {
 };
 
 /**
- * echartsè®¾å¤‡ç¯å¢ƒè¯†åˆ«
+ * echartsÉè±¸»·¾³Ê¶±ğ
  *
- * @desc echartsåŸºäºCanvasï¼Œçº¯Javascriptå›¾è¡¨åº“ï¼Œæä¾›ç›´è§‚ï¼Œç”ŸåŠ¨ï¼Œå¯äº¤äº’ï¼Œå¯ä¸ªæ€§åŒ–å®šåˆ¶çš„æ•°æ®ç»Ÿè®¡å›¾è¡¨ã€‚
+ * @desc echarts»ùÓÚCanvas£¬´¿JavascriptÍ¼±í¿â£¬Ìá¹©Ö±¹Û£¬Éú¶¯£¬¿É½»»¥£¬¿É¸öĞÔ»¯¶¨ÖÆµÄÊı¾İÍ³¼ÆÍ¼±í¡£
  * @author firede[firede@firede.us]
  * @desc thanks zepto.
  */
@@ -197,7 +197,7 @@ function detect(ua) {
         browser: browser,
         os: os,
         node: false,
-        // åŸç”Ÿcanvasæ”¯æŒï¼Œæ”¹æç«¯ç‚¹äº†
+        // Ô­ÉúcanvasÖ§³Ö£¬¸Ä¼«¶ËµãÁË
         // canvasSupported : !(browser.ie && parseFloat(browser.version) < 9)
         canvasSupported: !!document.createElement('canvas').getContext,
         svgSupported: typeof SVGRect !== 'undefined',
@@ -237,7 +237,7 @@ function detect(ua) {
  * @module zrender/core/util
  */
 
-// ç”¨äºå¤„ç†mergeæ—¶æ— æ³•éå†Dateç­‰å¯¹è±¡çš„é—®é¢˜
+// ÓÃÓÚ´¦ÀímergeÊ±ÎŞ·¨±éÀúDateµÈ¶ÔÏóµÄÎÊÌâ
 var BUILTIN_OBJECT = {
     '[object Function]': 1,
     '[object RegExp]': 1,
@@ -370,12 +370,12 @@ function merge(target, source, overwrite) {
                 && !isPrimitive(sourceProp)
                 && !isPrimitive(targetProp)
             ) {
-                // å¦‚æœéœ€è¦é€’å½’è¦†ç›–ï¼Œå°±é€’å½’è°ƒç”¨merge
+                // Èç¹ûĞèÒªµİ¹é¸²¸Ç£¬¾Íµİ¹éµ÷ÓÃmerge
                 merge(targetProp, sourceProp, overwrite);
             }
             else if (overwrite || !(key in target)) {
-                // å¦åˆ™åªå¤„ç†overwriteä¸ºtrueï¼Œæˆ–è€…åœ¨ç›®æ ‡å¯¹è±¡ä¸­æ²¡æœ‰æ­¤å±æ€§çš„æƒ…å†µ
-                // NOTEï¼Œåœ¨ target[key] ä¸å­˜åœ¨çš„æ—¶å€™ä¹Ÿæ˜¯ç›´æ¥è¦†ç›–
+                // ·ñÔòÖ»´¦ÀíoverwriteÎªtrue£¬»òÕßÔÚÄ¿±ê¶ÔÏóÖĞÃ»ÓĞ´ËÊôĞÔµÄÇé¿ö
+                // NOTE£¬ÔÚ target[key] ²»´æÔÚµÄÊ±ºòÒ²ÊÇÖ±½Ó¸²¸Ç
                 target[key] = clone(source[key], true);
             }
         }
@@ -449,7 +449,7 @@ function getContext() {
 }
 
 /**
- * æŸ¥è¯¢æ•°ç»„ä¸­å…ƒç´ çš„index
+ * ²éÑ¯Êı×éÖĞÔªËØµÄindex
  * @memberOf module:zrender/core/util
  */
 function indexOf(array, value) {
@@ -467,11 +467,11 @@ function indexOf(array, value) {
 }
 
 /**
- * æ„é€ ç±»ç»§æ‰¿å…³ç³»
+ * ¹¹ÔìÀà¼Ì³Ğ¹ØÏµ
  *
  * @memberOf module:zrender/core/util
- * @param {Function} clazz æºç±»
- * @param {Function} baseClazz åŸºç±»
+ * @param {Function} clazz Ô´Àà
+ * @param {Function} baseClazz »ùÀà
  */
 function inherits(clazz, baseClazz) {
     var clazzPrototype = clazz.prototype;
@@ -514,7 +514,7 @@ function isArrayLike(data) {
 }
 
 /**
- * æ•°ç»„æˆ–å¯¹è±¡éå†
+ * Êı×é»ò¶ÔÏó±éÀú
  * @memberOf module:zrender/core/util
  * @param {Object|Array} obj
  * @param {Function} cb
@@ -542,7 +542,7 @@ function each$1(obj, cb, context) {
 }
 
 /**
- * æ•°ç»„æ˜ å°„
+ * Êı×éÓ³Éä
  * @memberOf module:zrender/core/util
  * @param {Array} obj
  * @param {Function} cb
@@ -589,7 +589,7 @@ function reduce(obj, cb, memo, context) {
 }
 
 /**
- * æ•°ç»„è¿‡æ»¤
+ * Êı×é¹ıÂË
  * @memberOf module:zrender/core/util
  * @param {Array} obj
  * @param {Function} cb
@@ -615,7 +615,7 @@ function filter(obj, cb, context) {
 }
 
 /**
- * æ•°ç»„é¡¹æŸ¥æ‰¾
+ * Êı×éÏî²éÕÒ
  * @memberOf module:zrender/core/util
  * @param {Array} obj
  * @param {Function} cb
@@ -953,7 +953,7 @@ var ArrayCtor = typeof Float32Array === 'undefined'
     : Float32Array;
 
 /**
- * åˆ›å»ºä¸€ä¸ªå‘é‡
+ * ´´½¨Ò»¸öÏòÁ¿
  * @param {number} [x=0]
  * @param {number} [y=0]
  * @return {Vector2}
@@ -972,7 +972,7 @@ function create(x, y) {
 }
 
 /**
- * å¤åˆ¶å‘é‡æ•°æ®
+ * ¸´ÖÆÏòÁ¿Êı¾İ
  * @param {Vector2} out
  * @param {Vector2} v
  * @return {Vector2}
@@ -984,7 +984,7 @@ function copy(out, v) {
 }
 
 /**
- * å…‹éš†ä¸€ä¸ªå‘é‡
+ * ¿ËÂ¡Ò»¸öÏòÁ¿
  * @param {Vector2} v
  * @return {Vector2}
  */
@@ -996,11 +996,11 @@ function clone$1(v) {
 }
 
 /**
- * è®¾ç½®å‘é‡çš„ä¸¤ä¸ªé¡¹
+ * ÉèÖÃÏòÁ¿µÄÁ½¸öÏî
  * @param {Vector2} out
  * @param {number} a
  * @param {number} b
- * @return {Vector2} ç»“æœ
+ * @return {Vector2} ½á¹û
  */
 function set(out, a, b) {
     out[0] = a;
@@ -1009,7 +1009,7 @@ function set(out, a, b) {
 }
 
 /**
- * å‘é‡ç›¸åŠ 
+ * ÏòÁ¿Ïà¼Ó
  * @param {Vector2} out
  * @param {Vector2} v1
  * @param {Vector2} v2
@@ -1021,7 +1021,7 @@ function add(out, v1, v2) {
 }
 
 /**
- * å‘é‡ç¼©æ”¾åç›¸åŠ 
+ * ÏòÁ¿Ëõ·ÅºóÏà¼Ó
  * @param {Vector2} out
  * @param {Vector2} v1
  * @param {Vector2} v2
@@ -1034,7 +1034,7 @@ function scaleAndAdd(out, v1, v2, a) {
 }
 
 /**
- * å‘é‡ç›¸å‡
+ * ÏòÁ¿Ïà¼õ
  * @param {Vector2} out
  * @param {Vector2} v1
  * @param {Vector2} v2
@@ -1046,7 +1046,7 @@ function sub(out, v1, v2) {
 }
 
 /**
- * å‘é‡é•¿åº¦
+ * ÏòÁ¿³¤¶È
  * @param {Vector2} v
  * @return {number}
  */
@@ -1056,7 +1056,7 @@ function len(v) {
 var length = len; // jshint ignore:line
 
 /**
- * å‘é‡é•¿åº¦å¹³æ–¹
+ * ÏòÁ¿³¤¶ÈÆ½·½
  * @param {Vector2} v
  * @return {number}
  */
@@ -1066,7 +1066,7 @@ function lenSquare(v) {
 var lengthSquare = lenSquare;
 
 /**
- * å‘é‡ä¹˜æ³•
+ * ÏòÁ¿³Ë·¨
  * @param {Vector2} out
  * @param {Vector2} v1
  * @param {Vector2} v2
@@ -1078,7 +1078,7 @@ function mul(out, v1, v2) {
 }
 
 /**
- * å‘é‡é™¤æ³•
+ * ÏòÁ¿³ı·¨
  * @param {Vector2} out
  * @param {Vector2} v1
  * @param {Vector2} v2
@@ -1090,7 +1090,7 @@ function div(out, v1, v2) {
 }
 
 /**
- * å‘é‡ç‚¹ä¹˜
+ * ÏòÁ¿µã³Ë
  * @param {Vector2} v1
  * @param {Vector2} v2
  * @return {number}
@@ -1100,7 +1100,7 @@ function dot(v1, v2) {
 }
 
 /**
- * å‘é‡ç¼©æ”¾
+ * ÏòÁ¿Ëõ·Å
  * @param {Vector2} out
  * @param {Vector2} v
  * @param {number} s
@@ -1112,7 +1112,7 @@ function scale(out, v, s) {
 }
 
 /**
- * å‘é‡å½’ä¸€åŒ–
+ * ÏòÁ¿¹éÒ»»¯
  * @param {Vector2} out
  * @param {Vector2} v
  */
@@ -1130,7 +1130,7 @@ function normalize(out, v) {
 }
 
 /**
- * è®¡ç®—å‘é‡é—´è·ç¦»
+ * ¼ÆËãÏòÁ¿¼ä¾àÀë
  * @param {Vector2} v1
  * @param {Vector2} v2
  * @return {number}
@@ -1144,7 +1144,7 @@ function distance(v1, v2) {
 var dist = distance;
 
 /**
- * å‘é‡è·ç¦»å¹³æ–¹
+ * ÏòÁ¿¾àÀëÆ½·½
  * @param {Vector2} v1
  * @param {Vector2} v2
  * @return {number}
@@ -1156,7 +1156,7 @@ function distanceSquare(v1, v2) {
 var distSquare = distanceSquare;
 
 /**
- * æ±‚è´Ÿå‘é‡
+ * Çó¸ºÏòÁ¿
  * @param {Vector2} out
  * @param {Vector2} v
  */
@@ -1167,7 +1167,7 @@ function negate(out, v) {
 }
 
 /**
- * æ’å€¼ä¸¤ä¸ªç‚¹
+ * ²åÖµÁ½¸öµã
  * @param {Vector2} out
  * @param {Vector2} v1
  * @param {Vector2} v2
@@ -1180,7 +1180,7 @@ function lerp(out, v1, v2, t) {
 }
 
 /**
- * çŸ©é˜µå·¦ä¹˜å‘é‡
+ * ¾ØÕó×ó³ËÏòÁ¿
  * @param {Vector2} out
  * @param {Vector2} v
  * @param {Vector2} m
@@ -1194,7 +1194,7 @@ function applyTransform(out, v, m) {
 }
 
 /**
- * æ±‚ä¸¤ä¸ªå‘é‡æœ€å°å€¼
+ * ÇóÁ½¸öÏòÁ¿×îĞ¡Öµ
  * @param  {Vector2} out
  * @param  {Vector2} v1
  * @param  {Vector2} v2
@@ -1206,7 +1206,7 @@ function min(out, v1, v2) {
 }
 
 /**
- * æ±‚ä¸¤ä¸ªå‘é‡æœ€å¤§å€¼
+ * ÇóÁ½¸öÏòÁ¿×î´óÖµ
  * @param  {Vector2} out
  * @param  {Vector2} v1
  * @param  {Vector2} v2
@@ -1333,7 +1333,7 @@ function param(target, e) {
 /**
  * Event Mixin
  * @module zrender/mixin/Eventful
- * @author Kener (@Kener-æ—å³°, kener.linfeng@gmail.com)
+ * @author Kener (@Kener-ÁÖ·å, kener.linfeng@gmail.com)
  *         pissang (https://www.github.com/pissang)
  */
 
@@ -1616,9 +1616,9 @@ function on(eventful, event, query, handler, context, isOnce) {
 }
 
 /**
- * äº‹ä»¶è¾…åŠ©ç±»
+ * ÊÂ¼ş¸¨ÖúÀà
  * @module zrender/core/event
- * @author Kener (@Kener-æ—å³°, kener.linfeng@gmail.com)
+ * @author Kener (@Kener-ÁÖ·å, kener.linfeng@gmail.com)
  */
 
 var isDomLevel2 = (typeof window !== 'undefined') && !!window.addEventListener;
@@ -1680,7 +1680,7 @@ function defaultGetZrXY(el, e, out) {
 }
 
 /**
- * å¦‚æœå­˜åœ¨ç¬¬ä¸‰æ–¹åµŒå…¥çš„ä¸€äº›domè§¦å‘çš„äº‹ä»¶ï¼Œæˆ–touchäº‹ä»¶ï¼Œéœ€è¦è½¬æ¢ä¸€ä¸‹äº‹ä»¶åæ ‡.
+ * Èç¹û´æÔÚµÚÈı·½Ç¶ÈëµÄÒ»Ğ©dom´¥·¢µÄÊÂ¼ş£¬»òtouchÊÂ¼ş£¬ĞèÒª×ª»»Ò»ÏÂÊÂ¼ş×ø±ê.
  * `calculate` is optional, default false.
  */
 function normalizeEvent(el, e, calculate) {
@@ -1772,7 +1772,7 @@ function removeEventListener(el, name, handler) {
  *
  * @memberOf module:zrender/core/event
  * @method
- * @param {Event} e : eventå¯¹è±¡
+ * @param {Event} e : event¶ÔÏó
  */
 var stop = isDomLevel2
     ? function (e) {
@@ -2117,8 +2117,8 @@ Handler.prototype = {
     },
 
     /**
-     * è®¾ç½®é»˜è®¤çš„cursor style
-     * @param {string} [cursorStyle='default'] ä¾‹å¦‚ crosshair
+     * ÉèÖÃÄ¬ÈÏµÄcursor style
+     * @param {string} [cursorStyle='default'] ÀıÈç crosshair
      */
     setCursorStyle: function (cursorStyle) {
         var proxy = this.proxy;
@@ -2126,12 +2126,12 @@ Handler.prototype = {
     },
 
     /**
-     * äº‹ä»¶åˆ†å‘ä»£ç†
+     * ÊÂ¼ş·Ö·¢´úÀí
      *
      * @private
-     * @param {Object} targetInfo {target, topTarget} ç›®æ ‡å›¾å½¢å…ƒç´ 
-     * @param {string} eventName äº‹ä»¶åç§°
-     * @param {Object} event äº‹ä»¶å¯¹è±¡
+     * @param {Object} targetInfo {target, topTarget} Ä¿±êÍ¼ĞÎÔªËØ
+     * @param {string} eventName ÊÂ¼şÃû³Æ
+     * @param {Object} event ÊÂ¼ş¶ÔÏó
      */
     dispatchToElement: function (targetInfo, eventName, event) {
         targetInfo = targetInfo || {};
@@ -2156,10 +2156,10 @@ Handler.prototype = {
         }
 
         if (!eventPacket.cancelBubble) {
-            // å†’æ³¡åˆ°é¡¶çº§ zrender å¯¹è±¡
+            // Ã°Åİµ½¶¥¼¶ zrender ¶ÔÏó
             this.trigger(eventName, eventPacket);
-            // åˆ†å‘äº‹ä»¶åˆ°ç”¨æˆ·è‡ªå®šä¹‰å±‚
-            // ç”¨æˆ·æœ‰å¯èƒ½åœ¨å…¨å±€ click äº‹ä»¶ä¸­ disposeï¼Œæ‰€ä»¥éœ€è¦åˆ¤æ–­ä¸‹ painter æ˜¯å¦å­˜åœ¨
+            // ·Ö·¢ÊÂ¼şµ½ÓÃ»§×Ô¶¨Òå²ã
+            // ÓÃ»§ÓĞ¿ÉÄÜÔÚÈ«¾Ö click ÊÂ¼şÖĞ dispose£¬ËùÒÔĞèÒªÅĞ¶ÏÏÂ painter ÊÇ·ñ´æÔÚ
             this.painter && this.painter.eachOtherLayer(function (layer) {
                 if (typeof (layer[eventHandler]) === 'function') {
                     layer[eventHandler].call(layer, eventPacket);
@@ -2288,7 +2288,7 @@ mixin(Handler, Eventful);
 mixin(Handler, Draggable);
 
 /**
- * 3x2çŸ©é˜µæ“ä½œç±»
+ * 3x2¾ØÕó²Ù×÷Àà
  * @exports zrender/tool/matrix
  */
 
@@ -2308,7 +2308,7 @@ function create$1() {
 }
 
 /**
- * è®¾ç½®çŸ©é˜µä¸ºå•ä½çŸ©é˜µ
+ * ÉèÖÃ¾ØÕóÎªµ¥Î»¾ØÕó
  * @param {Float32Array|Array.<number>} out
  */
 function identity(out) {
@@ -2322,7 +2322,7 @@ function identity(out) {
 }
 
 /**
- * å¤åˆ¶çŸ©é˜µ
+ * ¸´ÖÆ¾ØÕó
  * @param {Float32Array|Array.<number>} out
  * @param {Float32Array|Array.<number>} m
  */
@@ -2337,7 +2337,7 @@ function copy$1(out, m) {
 }
 
 /**
- * çŸ©é˜µç›¸ä¹˜
+ * ¾ØÕóÏà³Ë
  * @param {Float32Array|Array.<number>} out
  * @param {Float32Array|Array.<number>} m1
  * @param {Float32Array|Array.<number>} m2
@@ -2362,7 +2362,7 @@ function mul$1(out, m1, m2) {
 }
 
 /**
- * å¹³ç§»å˜æ¢
+ * Æ½ÒÆ±ä»»
  * @param {Float32Array|Array.<number>} out
  * @param {Float32Array|Array.<number>} a
  * @param {Float32Array|Array.<number>} v
@@ -2378,7 +2378,7 @@ function translate(out, a, v) {
 }
 
 /**
- * æ—‹è½¬å˜æ¢
+ * Ğı×ª±ä»»
  * @param {Float32Array|Array.<number>} out
  * @param {Float32Array|Array.<number>} a
  * @param {number} rad
@@ -2403,7 +2403,7 @@ function rotate(out, a, rad) {
 }
 
 /**
- * ç¼©æ”¾å˜æ¢
+ * Ëõ·Å±ä»»
  * @param {Float32Array|Array.<number>} out
  * @param {Float32Array|Array.<number>} a
  * @param {Float32Array|Array.<number>} v
@@ -2421,7 +2421,7 @@ function scale$1(out, a, v) {
 }
 
 /**
- * æ±‚é€†çŸ©é˜µ
+ * ÇóÄæ¾ØÕó
  * @param {Float32Array|Array.<number>} out
  * @param {Float32Array|Array.<number>} a
  */
@@ -2472,7 +2472,7 @@ var matrix = (Object.freeze || Object)({
 });
 
 /**
- * æä¾›å˜æ¢æ‰©å±•
+ * Ìá¹©±ä»»À©Õ¹
  * @module zrender/mixin/Transformable
  * @author pissang (https://www.github.com/pissang)
  */
@@ -2494,7 +2494,7 @@ var Transformable = function (opts) {
     // If there are no given position, rotation, scale
     if (!opts.position) {
         /**
-         * å¹³ç§»
+         * Æ½ÒÆ
          * @type {Array.<number>}
          * @default [0, 0]
          */
@@ -2502,7 +2502,7 @@ var Transformable = function (opts) {
     }
     if (opts.rotation == null) {
         /**
-         * æ—‹è½¬
+         * Ğı×ª
          * @type {Array.<number>}
          * @default 0
          */
@@ -2510,14 +2510,14 @@ var Transformable = function (opts) {
     }
     if (!opts.scale) {
         /**
-         * ç¼©æ”¾
+         * Ëõ·Å
          * @type {Array.<number>}
          * @default [1, 1]
          */
         this.scale = [1, 1];
     }
     /**
-     * æ—‹è½¬å’Œç¼©æ”¾çš„åŸç‚¹
+     * Ğı×ªºÍËõ·ÅµÄÔ­µã
      * @type {Array.<number>}
      * @default null
      */
@@ -2528,8 +2528,8 @@ var transformableProto = Transformable.prototype;
 transformableProto.transform = null;
 
 /**
- * åˆ¤æ–­æ˜¯å¦éœ€è¦æœ‰åæ ‡å˜æ¢
- * å¦‚æœæœ‰åæ ‡å˜æ¢, åˆ™ä»position, rotation, scaleä»¥åŠçˆ¶èŠ‚ç‚¹çš„transformè®¡ç®—å‡ºè‡ªèº«çš„transformçŸ©é˜µ
+ * ÅĞ¶ÏÊÇ·ñĞèÒªÓĞ×ø±ê±ä»»
+ * Èç¹ûÓĞ×ø±ê±ä»», Ôò´Óposition, rotation, scaleÒÔ¼°¸¸½ÚµãµÄtransform¼ÆËã³ö×ÔÉíµÄtransform¾ØÕó
  */
 transformableProto.needLocalTransform = function () {
     return isNotAroundZero(this.rotation)
@@ -2560,7 +2560,7 @@ transformableProto.updateTransform = function () {
         mIdentity(m);
     }
 
-    // åº”ç”¨çˆ¶èŠ‚ç‚¹å˜æ¢
+    // Ó¦ÓÃ¸¸½Úµã±ä»»
     if (parentHasTransform) {
         if (needLocalTransform) {
             mul$1(m, parent.transform, m);
@@ -2569,7 +2569,7 @@ transformableProto.updateTransform = function () {
             copy$1(m, parent.transform);
         }
     }
-    // ä¿å­˜è¿™ä¸ªå˜æ¢çŸ©é˜µ
+    // ±£´æÕâ¸ö±ä»»¾ØÕó
     this.transform = m;
 
     var globalScaleRatio = this.globalScaleRatio;
@@ -2595,7 +2595,7 @@ transformableProto.getLocalTransform = function (m) {
 };
 
 /**
- * å°†è‡ªå·±çš„transformåº”ç”¨åˆ°contextä¸Š
+ * ½«×Ô¼ºµÄtransformÓ¦ÓÃµ½contextÉÏ
  * @param {CanvasRenderingContext2D} ctx
  */
 transformableProto.setTransform = function (ctx) {
@@ -2646,7 +2646,7 @@ transformableProto.setLocalTransform = function (m) {
     this.rotation = Math.atan2(-m[1] / sy, m[0] / sx);
 };
 /**
- * åˆ†è§£`transform`çŸ©é˜µåˆ°`position`, `rotation`, `scale`
+ * ·Ö½â`transform`¾ØÕóµ½`position`, `rotation`, `scale`
  */
 transformableProto.decomposeTransform = function () {
     if (!this.transform) {
@@ -2695,7 +2695,7 @@ transformableProto.getGlobalScale = function (out) {
     return out;
 };
 /**
- * å˜æ¢åæ ‡ä½ç½®åˆ° shape çš„å±€éƒ¨åæ ‡ç©ºé—´
+ * ±ä»»×ø±êÎ»ÖÃµ½ shape µÄ¾Ö²¿×ø±ê¿Õ¼ä
  * @method
  * @param {number} x
  * @param {number} y
@@ -2711,7 +2711,7 @@ transformableProto.transformCoordToLocal = function (x, y) {
 };
 
 /**
- * å˜æ¢å±€éƒ¨åæ ‡ä½ç½®åˆ°å…¨å±€åæ ‡ç©ºé—´
+ * ±ä»»¾Ö²¿×ø±êÎ»ÖÃµ½È«¾Ö×ø±ê¿Õ¼ä
  * @method
  * @param {number} x
  * @param {number} y
@@ -2765,7 +2765,7 @@ Transformable.getLocalTransform = function (target, m) {
 };
 
 /**
- * ç¼“åŠ¨ä»£ç æ¥è‡ª https://github.com/sole/tween.js/blob/master/src/Tween.js
+ * »º¶¯´úÂëÀ´×Ô https://github.com/sole/tween.js/blob/master/src/Tween.js
  * @see http://sole.github.io/tween.js/examples/03_graphs.html
  * @exports zrender/animation/easing
  */
@@ -2803,7 +2803,7 @@ var easing = {
         return -0.5 * (--k * (k - 2) - 1);
     },
 
-    // ä¸‰æ¬¡æ–¹çš„ç¼“åŠ¨ï¼ˆt^3ï¼‰
+    // Èı´Î·½µÄ»º¶¯£¨t^3£©
     /**
     * @param {number} k
     * @return {number}
@@ -2829,7 +2829,7 @@ var easing = {
         return 0.5 * ((k -= 2) * k * k + 2);
     },
 
-    // å››æ¬¡æ–¹çš„ç¼“åŠ¨ï¼ˆt^4ï¼‰
+    // ËÄ´Î·½µÄ»º¶¯£¨t^4£©
     /**
     * @param {number} k
     * @return {number}
@@ -2855,7 +2855,7 @@ var easing = {
         return -0.5 * ((k -= 2) * k * k * k - 2);
     },
 
-    // äº”æ¬¡æ–¹çš„ç¼“åŠ¨ï¼ˆt^5ï¼‰
+    // Îå´Î·½µÄ»º¶¯£¨t^5£©
     /**
     * @param {number} k
     * @return {number}
@@ -2881,7 +2881,7 @@ var easing = {
         return 0.5 * ((k -= 2) * k * k * k * k + 2);
     },
 
-    // æ­£å¼¦æ›²çº¿çš„ç¼“åŠ¨ï¼ˆsin(t)ï¼‰
+    // ÕıÏÒÇúÏßµÄ»º¶¯£¨sin(t)£©
     /**
     * @param {number} k
     * @return {number}
@@ -2904,7 +2904,7 @@ var easing = {
         return 0.5 * (1 - Math.cos(Math.PI * k));
     },
 
-    // æŒ‡æ•°æ›²çº¿çš„ç¼“åŠ¨ï¼ˆ2^tï¼‰
+    // Ö¸ÊıÇúÏßµÄ»º¶¯£¨2^t£©
     /**
     * @param {number} k
     * @return {number}
@@ -2936,7 +2936,7 @@ var easing = {
         return 0.5 * (-Math.pow(2, -10 * (k - 1)) + 2);
     },
 
-    // åœ†å½¢æ›²çº¿çš„ç¼“åŠ¨ï¼ˆsqrt(1-t^2)ï¼‰
+    // Ô²ĞÎÇúÏßµÄ»º¶¯£¨sqrt(1-t^2)£©
     /**
     * @param {number} k
     * @return {number}
@@ -2962,7 +2962,7 @@ var easing = {
         return 0.5 * (Math.sqrt(1 - (k -= 2) * k) + 1);
     },
 
-    // åˆ›å»ºç±»ä¼¼äºå¼¹ç°§åœ¨åœæ­¢å‰æ¥å›æŒ¯è¡çš„åŠ¨ç”»
+    // ´´½¨ÀàËÆÓÚµ¯»ÉÔÚÍ£Ö¹Ç°À´»ØÕñµ´µÄ¶¯»­
     /**
     * @param {number} k
     * @return {number}
@@ -3041,7 +3041,7 @@ var easing = {
 
     },
 
-    // åœ¨æŸä¸€åŠ¨ç”»å¼€å§‹æ²¿æŒ‡ç¤ºçš„è·¯å¾„è¿›è¡ŒåŠ¨ç”»å¤„ç†å‰ç¨ç¨æ”¶å›è¯¥åŠ¨ç”»çš„ç§»åŠ¨
+    // ÔÚÄ³Ò»¶¯»­¿ªÊ¼ÑØÖ¸Ê¾µÄÂ·¾¶½øĞĞ¶¯»­´¦ÀíÇ°ÉÔÉÔÊÕ»Ø¸Ã¶¯»­µÄÒÆ¶¯
     /**
     * @param {number} k
     * @return {number}
@@ -3070,7 +3070,7 @@ var easing = {
         return 0.5 * ((k -= 2) * k * ((s + 1) * k + s) + 2);
     },
 
-    // åˆ›å»ºå¼¹è·³æ•ˆæœ
+    // ´´½¨µ¯ÌøĞ§¹û
     /**
     * @param {number} k
     * @return {number}
@@ -3109,12 +3109,12 @@ var easing = {
 };
 
 /**
- * åŠ¨ç”»ä¸»æ§åˆ¶å™¨
- * @config target åŠ¨ç”»å¯¹è±¡ï¼Œå¯ä»¥æ˜¯æ•°ç»„ï¼Œå¦‚æœæ˜¯æ•°ç»„çš„è¯ä¼šæ‰¹é‡åˆ†å‘onframeç­‰äº‹ä»¶
- * @config life(1000) åŠ¨ç”»æ—¶é•¿
- * @config delay(0) åŠ¨ç”»å»¶è¿Ÿæ—¶é—´
+ * ¶¯»­Ö÷¿ØÖÆÆ÷
+ * @config target ¶¯»­¶ÔÏó£¬¿ÉÒÔÊÇÊı×é£¬Èç¹ûÊÇÊı×éµÄ»°»áÅúÁ¿·Ö·¢onframeµÈÊÂ¼ş
+ * @config life(1000) ¶¯»­Ê±³¤
+ * @config delay(0) ¶¯»­ÑÓ³ÙÊ±¼ä
  * @config loop(true)
- * @config gap(0) å¾ªç¯çš„é—´éš”æ—¶é—´
+ * @config gap(0) Ñ­»·µÄ¼ä¸ôÊ±¼ä
  * @config onframe
  * @config easing(optional)
  * @config ondestroy(optional)
@@ -3127,15 +3127,15 @@ function Clip(options) {
 
     this._target = options.target;
 
-    // ç”Ÿå‘½å‘¨æœŸ
+    // ÉúÃüÖÜÆÚ
     this._life = options.life || 1000;
-    // å»¶æ—¶
+    // ÑÓÊ±
     this._delay = options.delay || 0;
-    // å¼€å§‹æ—¶é—´
-    // this._startTime = new Date().getTime() + this._delay;// å•ä½æ¯«ç§’
+    // ¿ªÊ¼Ê±¼ä
+    // this._startTime = new Date().getTime() + this._delay;// µ¥Î»ºÁÃë
     this._initialized = false;
 
-    // æ˜¯å¦å¾ªç¯
+    // ÊÇ·ñÑ­»·
     this.loop = options.loop == null ? false : options.loop;
 
     this.gap = options.gap || 0;
@@ -3169,7 +3169,7 @@ Clip.prototype = {
 
         var percent = (globalTime - this._startTime - this._pausedTime) / this._life;
 
-        // è¿˜æ²¡å¼€å§‹
+        // »¹Ã»¿ªÊ¼
         if (percent < 0) {
             return;
         }
@@ -3184,17 +3184,17 @@ Clip.prototype = {
 
         this.fire('frame', schedule);
 
-        // ç»“æŸ
+        // ½áÊø
         if (percent === 1) {
             if (this.loop) {
                 this.restart(globalTime);
-                // é‡æ–°å¼€å§‹å‘¨æœŸ
-                // æŠ›å‡ºè€Œä¸æ˜¯ç›´æ¥è°ƒç”¨äº‹ä»¶ç›´åˆ° stage.update åå†ç»Ÿä¸€è°ƒç”¨è¿™äº›äº‹ä»¶
+                // ÖØĞÂ¿ªÊ¼ÖÜÆÚ
+                // Å×³ö¶ø²»ÊÇÖ±½Óµ÷ÓÃÊÂ¼şÖ±µ½ stage.update ºóÔÙÍ³Ò»µ÷ÓÃÕâĞ©ÊÂ¼ş
                 return 'restart';
             }
 
-            // åŠ¨ç”»å®Œæˆå°†è¿™ä¸ªæ§åˆ¶å™¨æ ‡è¯†ä¸ºå¾…åˆ é™¤
-            // åœ¨Animation.updateä¸­è¿›è¡Œæ‰¹é‡åˆ é™¤
+            // ¶¯»­Íê³É½«Õâ¸ö¿ØÖÆÆ÷±êÊ¶Îª´ıÉ¾³ı
+            // ÔÚAnimation.updateÖĞ½øĞĞÅúÁ¿É¾³ı
             this._needsRemove = true;
             return 'destroy';
         }
@@ -4430,9 +4430,9 @@ var Animator = function (target, loop, getter, setter) {
 
 Animator.prototype = {
     /**
-     * è®¾ç½®åŠ¨ç”»å…³é”®å¸§
-     * @param  {number} time å…³é”®å¸§æ—¶é—´ï¼Œå•ä½æ˜¯ms
-     * @param  {Object} props å…³é”®å¸§çš„å±æ€§å€¼ï¼Œkey-valueè¡¨ç¤º
+     * ÉèÖÃ¶¯»­¹Ø¼üÖ¡
+     * @param  {number} time ¹Ø¼üÖ¡Ê±¼ä£¬µ¥Î»ÊÇms
+     * @param  {Object} props ¹Ø¼üÖ¡µÄÊôĞÔÖµ£¬key-value±íÊ¾
      * @return {module:zrender/animation/Animator}
      */
     when: function (time /* ms */, props) {
@@ -4469,7 +4469,7 @@ Animator.prototype = {
         return this;
     },
     /**
-     * æ·»åŠ åŠ¨ç”»æ¯ä¸€å¸§çš„å›è°ƒå‡½æ•°
+     * Ìí¼Ó¶¯»­Ã¿Ò»Ö¡µÄ»Øµ÷º¯Êı
      * @param  {Function} callback
      * @return {module:zrender/animation/Animator}
      */
@@ -4509,9 +4509,9 @@ Animator.prototype = {
         }
     },
     /**
-     * å¼€å§‹æ‰§è¡ŒåŠ¨ç”»
+     * ¿ªÊ¼Ö´ĞĞ¶¯»­
      * @param  {string|Function} [easing]
-     *         åŠ¨ç”»ç¼“åŠ¨å‡½æ•°ï¼Œè¯¦è§{@link module:zrender/animation/easing}
+     *         ¶¯»­»º¶¯º¯Êı£¬Ïê¼û{@link module:zrender/animation/easing}
      * @param  {boolean} forceAnimate
      * @return {module:zrender/animation/Animator}
      */
@@ -4570,7 +4570,7 @@ Animator.prototype = {
         return this;
     },
     /**
-     * åœæ­¢åŠ¨ç”»
+     * Í£Ö¹¶¯»­
      * @param {boolean} forwardToLast If move to last frame before stop
      */
     stop: function (forwardToLast) {
@@ -4587,8 +4587,8 @@ Animator.prototype = {
         clipList.length = 0;
     },
     /**
-     * è®¾ç½®åŠ¨ç”»å»¶è¿Ÿå¼€å§‹çš„æ—¶é—´
-     * @param  {number} time å•ä½ms
+     * ÉèÖÃ¶¯»­ÑÓ³Ù¿ªÊ¼µÄÊ±¼ä
+     * @param  {number} time µ¥Î»ms
      * @return {module:zrender/animation/Animator}
      */
     delay: function (time) {
@@ -4596,7 +4596,7 @@ Animator.prototype = {
         return this;
     },
     /**
-     * æ·»åŠ åŠ¨ç”»ç»“æŸçš„å›è°ƒ
+     * Ìí¼Ó¶¯»­½áÊøµÄ»Øµ÷
      * @param  {Function} cb
      * @return {module:zrender/animation/Animator}
      */
@@ -4623,20 +4623,20 @@ if (typeof window !== 'undefined') {
 }
 
 /**
- * configé»˜è®¤é…ç½®é¡¹
+ * configÄ¬ÈÏÅäÖÃÏî
  * @exports zrender/config
- * @author Kener (@Kener-æ—å³°, kener.linfeng@gmail.com)
+ * @author Kener (@Kener-ÁÖ·å, kener.linfeng@gmail.com)
  */
 
 /**
- * debugæ—¥å¿—é€‰é¡¹ï¼šcatchBrushExceptionä¸ºtrueä¸‹æœ‰æ•ˆ
- * 0 : ä¸ç”Ÿæˆdebugæ•°æ®ï¼Œå‘å¸ƒç”¨
- * 1 : å¼‚å¸¸æŠ›å‡ºï¼Œè°ƒè¯•ç”¨
- * 2 : æ§åˆ¶å°è¾“å‡ºï¼Œè°ƒè¯•ç”¨
+ * debugÈÕÖ¾Ñ¡Ïî£ºcatchBrushExceptionÎªtrueÏÂÓĞĞ§
+ * 0 : ²»Éú³ÉdebugÊı¾İ£¬·¢²¼ÓÃ
+ * 1 : Òì³£Å×³ö£¬µ÷ÊÔÓÃ
+ * 2 : ¿ØÖÆÌ¨Êä³ö£¬µ÷ÊÔÓÃ
  */
 var debugMode = 0;
 
-// retina å±å¹•ä¼˜åŒ–
+// retina ÆÁÄ»ÓÅ»¯
 var devicePixelRatio = dpr;
 
 var log = function () {
@@ -4677,7 +4677,7 @@ Animatable.prototype = {
     constructor: Animatable,
 
     /**
-     * åŠ¨ç”»
+     * ¶¯»­
      *
      * @param {string} path The path to fetch value from object, like 'a.b.c'.
      * @param {boolean} [loop] Whether to loop animation.
@@ -4745,7 +4745,7 @@ Animatable.prototype = {
     },
 
     /**
-     * åœæ­¢åŠ¨ç”»
+     * Í£Ö¹¶¯»­
      * @param {boolean} forwardToLast If move to last frame before stop
      */
     stopAnimation: function (forwardToLast) {
@@ -4956,7 +4956,7 @@ var Element = function (opts) { // jshint ignore:line
     Animatable.call(this, opts);
 
     /**
-     * ç”»å¸ƒå…ƒç´ ID
+     * »­²¼ÔªËØID
      * @type {string}
      */
     this.id = opts.id || guid();
@@ -4965,21 +4965,21 @@ var Element = function (opts) { // jshint ignore:line
 Element.prototype = {
 
     /**
-     * å…ƒç´ ç±»å‹
+     * ÔªËØÀàĞÍ
      * Element type
      * @type {string}
      */
     type: 'element',
 
     /**
-     * å…ƒç´ åå­—
+     * ÔªËØÃû×Ö
      * Element name
      * @type {string}
      */
     name: '',
 
     /**
-     * ZRender å®ä¾‹å¯¹è±¡ï¼Œä¼šåœ¨ element æ·»åŠ åˆ° zrender å®ä¾‹ä¸­åè‡ªåŠ¨èµ‹å€¼
+     * ZRender ÊµÀı¶ÔÏó£¬»áÔÚ element Ìí¼Óµ½ zrender ÊµÀıÖĞºó×Ô¶¯¸³Öµ
      * ZRender instance will be assigned when element is associated with zrender
      * @name module:/zrender/Element#__zr
      * @type {module:zrender/ZRender}
@@ -4987,7 +4987,7 @@ Element.prototype = {
     __zr: null,
 
     /**
-     * å›¾å½¢æ˜¯å¦å¿½ç•¥ï¼Œä¸ºtrueæ—¶å¿½ç•¥å›¾å½¢çš„ç»˜åˆ¶ä»¥åŠäº‹ä»¶è§¦å‘
+     * Í¼ĞÎÊÇ·ñºöÂÔ£¬ÎªtrueÊ±ºöÂÔÍ¼ĞÎµÄ»æÖÆÒÔ¼°ÊÂ¼ş´¥·¢
      * If ignore drawing and events of the element object
      * @name module:/zrender/Element#ignore
      * @type {boolean}
@@ -4996,8 +4996,8 @@ Element.prototype = {
     ignore: false,
 
     /**
-     * ç”¨äºè£å‰ªçš„è·¯å¾„(shape)ï¼Œæ‰€æœ‰ Group å†…çš„è·¯å¾„åœ¨ç»˜åˆ¶æ—¶éƒ½ä¼šè¢«è¿™ä¸ªè·¯å¾„è£å‰ª
-     * è¯¥è·¯å¾„ä¼šç»§æ‰¿è¢«è£å‡å¯¹è±¡çš„å˜æ¢
+     * ÓÃÓÚ²Ã¼ôµÄÂ·¾¶(shape)£¬ËùÓĞ Group ÄÚµÄÂ·¾¶ÔÚ»æÖÆÊ±¶¼»á±»Õâ¸öÂ·¾¶²Ã¼ô
+     * ¸ÃÂ·¾¶»á¼Ì³Ğ±»²Ã¼õ¶ÔÏóµÄ±ä»»
      * @type {module:zrender/graphic/Path}
      * @see http://www.w3.org/TR/2dcontext/#clipping-region
      * @readOnly
@@ -5005,7 +5005,7 @@ Element.prototype = {
     clipPath: null,
 
     /**
-     * æ˜¯å¦æ˜¯ Group
+     * ÊÇ·ñÊÇ Group
      * @type {boolean}
      */
     isGroup: false,
@@ -5159,7 +5159,7 @@ Element.prototype = {
      */
     addSelfToZr: function (zr) {
         this.__zr = zr;
-        // æ·»åŠ åŠ¨ç”»
+        // Ìí¼Ó¶¯»­
         var animators = this.animators;
         if (animators) {
             for (var i = 0; i < animators.length; i++) {
@@ -5179,7 +5179,7 @@ Element.prototype = {
      */
     removeSelfFromZr: function (zr) {
         this.__zr = null;
-        // ç§»é™¤åŠ¨ç”»
+        // ÒÆ³ı¶¯»­
         var animators = this.animators;
         if (animators) {
             for (var i = 0; i < animators.length; i++) {
@@ -5307,7 +5307,7 @@ BoundingRect.prototype = {
 
         var m = create$1();
 
-        // çŸ©é˜µå³ä¹˜
+        // ¾ØÕóÓÒ³Ë
         translate(m, m, [-a.x, -a.y]);
         scale$1(m, m, [sx, sy]);
         translate(m, m, [b.x, b.y]);
@@ -5391,7 +5391,7 @@ BoundingRect.create = function (rect) {
 };
 
 /**
- * Groupæ˜¯ä¸€ä¸ªå®¹å™¨ï¼Œå¯ä»¥æ’å…¥å­èŠ‚ç‚¹ï¼ŒGroupçš„å˜æ¢ä¹Ÿä¼šè¢«åº”ç”¨åˆ°å­èŠ‚ç‚¹ä¸Š
+ * GroupÊÇÒ»¸öÈİÆ÷£¬¿ÉÒÔ²åÈë×Ó½Úµã£¬GroupµÄ±ä»»Ò²»á±»Ó¦ÓÃµ½×Ó½ÚµãÉÏ
  * @module zrender/graphic/Group
  * @example
  *     var Group = require('zrender/container/Group');
@@ -5446,7 +5446,7 @@ Group.prototype = {
     type: 'group',
 
     /**
-     * æ‰€æœ‰å­å­™å…ƒç´ æ˜¯å¦å“åº”é¼ æ ‡äº‹ä»¶
+     * ËùÓĞ×ÓËïÔªËØÊÇ·ñÏìÓ¦Êó±êÊÂ¼ş
      * @name module:/zrender/container/Group#silent
      * @type {boolean}
      * @default false
@@ -5461,7 +5461,7 @@ Group.prototype = {
     },
 
     /**
-     * è·å–æŒ‡å®š index çš„å„¿å­èŠ‚ç‚¹
+     * »ñÈ¡Ö¸¶¨ index µÄ¶ù×Ó½Úµã
      * @param  {number} idx
      * @return {module:zrender/Element}
      */
@@ -5470,7 +5470,7 @@ Group.prototype = {
     },
 
     /**
-     * è·å–æŒ‡å®šåå­—çš„å„¿å­èŠ‚ç‚¹
+     * »ñÈ¡Ö¸¶¨Ãû×ÖµÄ¶ù×Ó½Úµã
      * @param  {string} name
      * @return {module:zrender/Element}
      */
@@ -5491,7 +5491,7 @@ Group.prototype = {
     },
 
     /**
-     * æ·»åŠ å­èŠ‚ç‚¹åˆ°æœ€å
+     * Ìí¼Ó×Ó½Úµãµ½×îºó
      * @param {module:zrender/Element} child
      */
     add: function (child) {
@@ -5506,7 +5506,7 @@ Group.prototype = {
     },
 
     /**
-     * æ·»åŠ å­èŠ‚ç‚¹åœ¨ nextSibling ä¹‹å‰
+     * Ìí¼Ó×Ó½ÚµãÔÚ nextSibling Ö®Ç°
      * @param {module:zrender/Element} child
      * @param {module:zrender/Element} nextSibling
      */
@@ -5548,7 +5548,7 @@ Group.prototype = {
     },
 
     /**
-     * ç§»é™¤å­èŠ‚ç‚¹
+     * ÒÆ³ı×Ó½Úµã
      * @param {module:zrender/Element} child
      */
     remove: function (child) {
@@ -5579,7 +5579,7 @@ Group.prototype = {
     },
 
     /**
-     * ç§»é™¤æ‰€æœ‰å­èŠ‚ç‚¹
+     * ÒÆ³ıËùÓĞ×Ó½Úµã
      */
     removeAll: function () {
         var children = this._children;
@@ -5602,7 +5602,7 @@ Group.prototype = {
     },
 
     /**
-     * éå†æ‰€æœ‰å­èŠ‚ç‚¹
+     * ±éÀúËùÓĞ×Ó½Úµã
      * @param  {Function} cb
      * @param  {}   context
      */
@@ -5616,7 +5616,7 @@ Group.prototype = {
     },
 
     /**
-     * æ·±åº¦ä¼˜å…ˆéå†æ‰€æœ‰å­å­™èŠ‚ç‚¹
+     * Éî¶ÈÓÅÏÈ±éÀúËùÓĞ×ÓËï½Úµã
      * @param  {Function} cb
      * @param  {}   context
      */
@@ -6378,7 +6378,7 @@ function shapeCompareFunc(a, b) {
     return a.zlevel - b.zlevel;
 }
 /**
- * å†…å®¹ä»“åº“ (M)
+ * ÄÚÈİ²Ö¿â (M)
  * @alias module:zrender/Storage
  * @constructor
  */
@@ -6405,11 +6405,11 @@ Storage.prototype = {
     },
 
     /**
-     * è¿”å›æ‰€æœ‰å›¾å½¢çš„ç»˜åˆ¶é˜Ÿåˆ—
-     * @param {boolean} [update=false] æ˜¯å¦åœ¨è¿”å›å‰æ›´æ–°è¯¥æ•°ç»„
-     * @param {boolean} [includeIgnore=false] æ˜¯å¦åŒ…å« ignore çš„æ•°ç»„, åœ¨ update ä¸º true çš„æ—¶å€™æœ‰æ•ˆ
+     * ·µ»ØËùÓĞÍ¼ĞÎµÄ»æÖÆ¶ÓÁĞ
+     * @param {boolean} [update=false] ÊÇ·ñÔÚ·µ»ØÇ°¸üĞÂ¸ÃÊı×é
+     * @param {boolean} [includeIgnore=false] ÊÇ·ñ°üº¬ ignore µÄÊı×é, ÔÚ update Îª true µÄÊ±ºòÓĞĞ§
      *
-     * è¯¦è§{@link module:zrender/graphic/Displayable.prototype.updateDisplayList}
+     * Ïê¼û{@link module:zrender/graphic/Displayable.prototype.updateDisplayList}
      * @return {Array.<module:zrender/graphic/Displayable>}
      */
     getDisplayList: function (update, includeIgnore) {
@@ -6421,10 +6421,10 @@ Storage.prototype = {
     },
 
     /**
-     * æ›´æ–°å›¾å½¢çš„ç»˜åˆ¶é˜Ÿåˆ—ã€‚
-     * æ¯æ¬¡ç»˜åˆ¶å‰éƒ½ä¼šè°ƒç”¨ï¼Œè¯¥æ–¹æ³•ä¼šå…ˆæ·±åº¦ä¼˜å…ˆéå†æ•´ä¸ªæ ‘ï¼Œæ›´æ–°æ‰€æœ‰Groupå’ŒShapeçš„å˜æ¢å¹¶ä¸”æŠŠæ‰€æœ‰å¯è§çš„Shapeä¿å­˜åˆ°æ•°ç»„ä¸­ï¼Œ
-     * æœ€åæ ¹æ®ç»˜åˆ¶çš„ä¼˜å…ˆçº§ï¼ˆzlevel > z > æ’å…¥é¡ºåºï¼‰æ’åºå¾—åˆ°ç»˜åˆ¶é˜Ÿåˆ—
-     * @param {boolean} [includeIgnore=false] æ˜¯å¦åŒ…å« ignore çš„æ•°ç»„
+     * ¸üĞÂÍ¼ĞÎµÄ»æÖÆ¶ÓÁĞ¡£
+     * Ã¿´Î»æÖÆÇ°¶¼»áµ÷ÓÃ£¬¸Ã·½·¨»áÏÈÉî¶ÈÓÅÏÈ±éÀúÕû¸öÊ÷£¬¸üĞÂËùÓĞGroupºÍShapeµÄ±ä»»²¢ÇÒ°ÑËùÓĞ¿É¼ûµÄShape±£´æµ½Êı×éÖĞ£¬
+     * ×îºó¸ù¾İ»æÖÆµÄÓÅÏÈ¼¶£¨zlevel > z > ²åÈëË³Ğò£©ÅÅĞòµÃµ½»æÖÆ¶ÓÁĞ
+     * @param {boolean} [includeIgnore=false] ÊÇ·ñ°üº¬ ignore µÄÊı×é
      */
     updateDisplayList: function (includeIgnore) {
         this._displayListLen = 0;
@@ -6459,7 +6459,7 @@ Storage.prototype = {
         var userSetClipPath = el.clipPath;
         if (userSetClipPath) {
 
-            // FIXME æ•ˆç‡å½±å“
+            // FIXME Ğ§ÂÊÓ°Ïì
             if (clipPaths) {
                 clipPaths = clipPaths.slice();
             }
@@ -6471,7 +6471,7 @@ Storage.prototype = {
             var parentClipPath = el;
             // Recursively add clip path
             while (currentClipPath) {
-                // clipPath çš„å˜æ¢æ˜¯åŸºäºä½¿ç”¨è¿™ä¸ª clipPath çš„å…ƒç´ 
+                // clipPath µÄ±ä»»ÊÇ»ùÓÚÊ¹ÓÃÕâ¸ö clipPath µÄÔªËØ
                 currentClipPath.parent = parentClipPath;
                 currentClipPath.updateTransform();
 
@@ -6509,7 +6509,7 @@ Storage.prototype = {
     },
 
     /**
-     * æ·»åŠ å›¾å½¢(Shape)æˆ–è€…ç»„(Group)åˆ°æ ¹èŠ‚ç‚¹
+     * Ìí¼ÓÍ¼ĞÎ(Shape)»òÕß×é(Group)µ½¸ù½Úµã
      * @param {module:zrender/Element} el
      */
     addRoot: function (el) {
@@ -6526,12 +6526,12 @@ Storage.prototype = {
     },
 
     /**
-     * åˆ é™¤æŒ‡å®šçš„å›¾å½¢(Shape)æˆ–è€…ç»„(Group)
-     * @param {string|Array.<string>} [el] å¦‚æœä¸ºç©ºæ¸…ç©ºæ•´ä¸ªStorage
+     * É¾³ıÖ¸¶¨µÄÍ¼ĞÎ(Shape)»òÕß×é(Group)
+     * @param {string|Array.<string>} [el] Èç¹ûÎª¿ÕÇå¿ÕÕû¸öStorage
      */
     delRoot: function (el) {
         if (el == null) {
-            // ä¸æŒ‡å®šelæ¸…ç©º
+            // ²»Ö¸¶¨elÇå¿Õ
             for (var i = 0; i < this._roots.length; i++) {
                 var root = this._roots[i];
                 if (root instanceof Group) {
@@ -6581,7 +6581,7 @@ Storage.prototype = {
     },
 
     /**
-     * æ¸…ç©ºå¹¶ä¸”é‡Šæ”¾Storage
+     * Çå¿Õ²¢ÇÒÊÍ·ÅStorage
      */
     dispose: function () {
         this._renderList =
@@ -7125,10 +7125,10 @@ function returnFalse() {
 }
 
 /**
- * åˆ›å»ºdom
+ * ´´½¨dom
  *
  * @inner
- * @param {string} id dom id å¾…ç”¨
+ * @param {string} id dom id ´ıÓÃ
  * @param {Painter} painter painter instance
  * @param {number} number
  */
@@ -7178,7 +7178,7 @@ var Layer = function (id, painter, dpr) {
 
     var domStyle = dom.style;
     if (domStyle) { // Not in node
-        dom.onselectstart = returnFalse; // é¿å…é¡µé¢é€‰ä¸­çš„å°´å°¬
+        dom.onselectstart = returnFalse; // ±ÜÃâÒ³ÃæÑ¡ÖĞµÄŞÏŞÎ
         domStyle['-webkit-user-select'] = 'none';
         domStyle['user-select'] = 'none';
         domStyle['-webkit-touch-callout'] = 'none';
@@ -7197,19 +7197,19 @@ var Layer = function (id, painter, dpr) {
 
     // Configs
     /**
-     * æ¯æ¬¡æ¸…ç©ºç”»å¸ƒçš„é¢œè‰²
+     * Ã¿´ÎÇå¿Õ»­²¼µÄÑÕÉ«
      * @type {string}
      * @default 0
      */
     this.clearColor = 0;
     /**
-     * æ˜¯å¦å¼€å¯åŠ¨æ€æ¨¡ç³Š
+     * ÊÇ·ñ¿ªÆô¶¯Ì¬Ä£ºı
      * @type {boolean}
      * @default false
      */
     this.motionBlur = false;
     /**
-     * åœ¨å¼€å¯åŠ¨æ€æ¨¡ç³Šçš„æ—¶å€™ä½¿ç”¨ï¼Œä¸ä¸Šä¸€å¸§æ··åˆçš„alphaå€¼ï¼Œå€¼è¶Šå¤§å°¾è¿¹è¶Šæ˜æ˜¾
+     * ÔÚ¿ªÆô¶¯Ì¬Ä£ºıµÄÊ±ºòÊ¹ÓÃ£¬ÓëÉÏÒ»Ö¡»ìºÏµÄalphaÖµ£¬ÖµÔ½´óÎ²¼£Ô½Ã÷ÏÔ
      * @type {number}
      * @default 0.7
      */
@@ -7286,7 +7286,7 @@ Layer.prototype = {
     },
 
     /**
-     * æ¸…ç©ºè¯¥å±‚ç”»å¸ƒ
+     * Çå¿Õ¸Ã²ã»­²¼
      * @param {boolean} [clearAll]=false Clear all with out motion blur
      * @param {Color} [clearColor]
      */
@@ -7726,14 +7726,14 @@ function prepareTruncateOptions(containerWidth, font, ellipsis, options) {
     var minChar = options.minChar = retrieve2(options.minChar, 0);
     // FIXME
     // Other languages?
-    options.cnCharWidth = getWidth('å›½', font);
+    options.cnCharWidth = getWidth('¹ú', font);
     // FIXME
     // Consider proportional font?
     var ascCharWidth = options.ascCharWidth = getWidth('a', font);
     options.placeholder = retrieve2(options.placeholder, '');
 
     // Example 1: minChar: 3, text: 'asdfzxcv', truncate result: 'asdf', but not: 'a...'.
-    // Example 2: minChar: 3, text: 'ç»´åº¦', truncate result: 'ç»´', but not: '...'.
+    // Example 2: minChar: 3, text: 'Î¬¶È', truncate result: 'Î¬', but not: '...'.
     var contentWidth = containerWidth = Math.max(0, containerWidth - 1); // Reserve some gap.
     for (var i = 0; i < minChar && contentWidth >= ascCharWidth; i++) {
         contentWidth -= ascCharWidth;
@@ -7810,7 +7810,7 @@ function estimateLength(text, contentWidth, ascCharWidth, cnCharWidth) {
  */
 function getLineHeight(font) {
     // FIXME A rough approach.
-    return getWidth('å›½', font);
+    return getWidth('¹ú', font);
 }
 
 /**
@@ -8853,7 +8853,7 @@ RectText.prototype = {
 };
 
 /**
- * å¯ç»˜åˆ¶çš„å›¾å½¢åŸºç±»
+ * ¿É»æÖÆµÄÍ¼ĞÎ»ùÀà
  * Base class of all displayable graphic objects
  * @module zrender/graphic/Displayable
  */
@@ -8900,7 +8900,7 @@ Displayable.prototype = {
     type: 'displayable',
 
     /**
-     * Displayable æ˜¯å¦ä¸ºè„ï¼ŒPainter ä¸­ä¼šæ ¹æ®è¯¥æ ‡è®°åˆ¤æ–­æ˜¯å¦éœ€è¦æ˜¯å¦éœ€è¦é‡æ–°ç»˜åˆ¶
+     * Displayable ÊÇ·ñÎªÔà£¬Painter ÖĞ»á¸ù¾İ¸Ã±ê¼ÇÅĞ¶ÏÊÇ·ñĞèÒªÊÇ·ñĞèÒªÖØĞÂ»æÖÆ
      * Dirty flag. From which painter will determine if this displayable object needs brush
      * @name module:zrender/graphic/Displayable#__dirty
      * @type {boolean}
@@ -8908,7 +8908,7 @@ Displayable.prototype = {
     __dirty: true,
 
     /**
-     * å›¾å½¢æ˜¯å¦å¯è§ï¼Œä¸ºtrueæ—¶ä¸ç»˜åˆ¶å›¾å½¢ï¼Œä½†æ˜¯ä»èƒ½è§¦å‘é¼ æ ‡äº‹ä»¶
+     * Í¼ĞÎÊÇ·ñ¿É¼û£¬ÎªtrueÊ±²»»æÖÆÍ¼ĞÎ£¬µ«ÊÇÈÔÄÜ´¥·¢Êó±êÊÂ¼ş
      * If ignore drawing of the displayable object. Mouse event will still be triggered
      * @name module:/zrender/graphic/Displayable#invisible
      * @type {boolean}
@@ -8931,7 +8931,7 @@ Displayable.prototype = {
     z2: 0,
 
     /**
-     * zå±‚levelï¼Œå†³å®šç»˜ç”»åœ¨å“ªå±‚canvasä¸­
+     * z²ãlevel£¬¾ö¶¨»æ»­ÔÚÄÄ²ãcanvasÖĞ
      * @name module:/zrender/graphic/Displayable#zlevel
      * @type {number}
      * @default 0
@@ -8939,7 +8939,7 @@ Displayable.prototype = {
     zlevel: 0,
 
     /**
-     * æ˜¯å¦å¯æ‹–æ‹½
+     * ÊÇ·ñ¿ÉÍÏ×§
      * @name module:/zrender/graphic/Displayable#draggable
      * @type {boolean}
      * @default false
@@ -8947,7 +8947,7 @@ Displayable.prototype = {
     draggable: false,
 
     /**
-     * æ˜¯å¦æ­£åœ¨æ‹–æ‹½
+     * ÊÇ·ñÕıÔÚÍÏ×§
      * @name module:/zrender/graphic/Displayable#draggable
      * @type {boolean}
      * @default false
@@ -8955,7 +8955,7 @@ Displayable.prototype = {
     dragging: false,
 
     /**
-     * æ˜¯å¦ç›¸åº”é¼ æ ‡äº‹ä»¶
+     * ÊÇ·ñÏàÓ¦Êó±êÊÂ¼ş
      * @name module:/zrender/graphic/Displayable#silent
      * @type {boolean}
      * @default false
@@ -9005,21 +9005,21 @@ Displayable.prototype = {
     afterBrush: function (ctx) {},
 
     /**
-     * å›¾å½¢ç»˜åˆ¶æ–¹æ³•
+     * Í¼ĞÎ»æÖÆ·½·¨
      * @param {CanvasRenderingContext2D} ctx
      */
     // Interface
     brush: function (ctx, prevEl) {},
 
     /**
-     * è·å–æœ€å°åŒ…å›´ç›’
+     * »ñÈ¡×îĞ¡°üÎ§ºĞ
      * @return {module:zrender/core/BoundingRect}
      */
     // Interface
     getBoundingRect: function () {},
 
     /**
-     * åˆ¤æ–­åæ ‡ x, y æ˜¯å¦åœ¨å›¾å½¢ä¸Š
+     * ÅĞ¶Ï×ø±ê x, y ÊÇ·ñÔÚÍ¼ĞÎÉÏ
      * If displayable element contain coord x, y
      * @param  {number} x
      * @param  {number} y
@@ -9038,7 +9038,7 @@ Displayable.prototype = {
     },
 
     /**
-     * åˆ¤æ–­åæ ‡ x, y æ˜¯å¦åœ¨å›¾å½¢çš„åŒ…å›´ç›’ä¸Š
+     * ÅĞ¶Ï×ø±ê x, y ÊÇ·ñÔÚÍ¼ĞÎµÄ°üÎ§ºĞÉÏ
      * If bounding rect of element contain coord x, y
      * @param  {number} x
      * @param  {number} y
@@ -9051,7 +9051,7 @@ Displayable.prototype = {
     },
 
     /**
-     * æ ‡è®°å›¾å½¢å…ƒç´ ä¸ºè„ï¼Œå¹¶ä¸”åœ¨ä¸‹ä¸€å¸§é‡ç»˜
+     * ±ê¼ÇÍ¼ĞÎÔªËØÎªÔà£¬²¢ÇÒÔÚÏÂÒ»Ö¡ÖØ»æ
      * Mark displayable element dirty and refresh next frame
      */
     dirty: function () {
@@ -9063,11 +9063,11 @@ Displayable.prototype = {
     },
 
     /**
-     * å›¾å½¢æ˜¯å¦ä¼šè§¦å‘äº‹ä»¶
+     * Í¼ĞÎÊÇ·ñ»á´¥·¢ÊÂ¼ş
      * If displayable object binded any event
      * @return {boolean}
      */
-    // TODO, é€šè¿‡ bind ç»‘å®šçš„äº‹ä»¶
+    // TODO, Í¨¹ı bind °ó¶¨µÄÊÂ¼ş
     // isSilent: function () {
     //     return !(
     //         this.hoverable || this.draggable
@@ -9153,7 +9153,7 @@ ZImage.prototype = {
             return;
         }
 
-        // å›¾ç‰‡å·²ç»åŠ è½½å®Œæˆ
+        // Í¼Æ¬ÒÑ¾­¼ÓÔØÍê³É
         // if (image.nodeName.toUpperCase() == 'IMG') {
         //     if (!image.complete) {
         //         return;
@@ -9178,7 +9178,7 @@ ZImage.prototype = {
             height = image.height;
         }
 
-        // è®¾ç½®transform
+        // ÉèÖÃtransform
         this.setTransform(ctx);
 
         if (style.sWidth && style.sHeight) {
@@ -9297,7 +9297,7 @@ function doClip(clipPaths, ctx) {
 function createRoot(width, height) {
     var domRoot = document.createElement('div');
 
-    // domRoot.onselectstart = returnFalse; // é¿å…é¡µé¢é€‰ä¸­çš„å°´å°¬
+    // domRoot.onselectstart = returnFalse; // ±ÜÃâÒ³ÃæÑ¡ÖĞµÄŞÏŞÎ
     domRoot.style.cssText = [
         'position:relative',
         'overflow:hidden',
@@ -9315,7 +9315,7 @@ function createRoot(width, height) {
 /**
  * @alias module:zrender/Painter
  * @constructor
- * @param {HTMLElement} root ç»˜å›¾å®¹å™¨
+ * @param {HTMLElement} root »æÍ¼ÈİÆ÷
  * @param {module:zrender/Storage} storage
  * @param {Object} opts
  */
@@ -9339,7 +9339,7 @@ var Painter = function (root, storage, opts) {
      */
     this._singleCanvas = singleCanvas;
     /**
-     * ç»˜å›¾å®¹å™¨
+     * »æÍ¼ÈİÆ÷
      * @type {HTMLElement}
      */
     this.root = root;
@@ -9468,8 +9468,8 @@ Painter.prototype = {
     },
 
     /**
-     * åˆ·æ–°
-     * @param {boolean} [paintAll=false] å¼ºåˆ¶ç»˜åˆ¶æ‰€æœ‰displayable
+     * Ë¢ĞÂ
+     * @param {boolean} [paintAll=false] Ç¿ÖÆ»æÖÆËùÓĞdisplayable
      */
     refresh: function (paintAll) {
 
@@ -9754,7 +9754,7 @@ Painter.prototype = {
     },
 
     /**
-     * è·å– zlevel æ‰€åœ¨å±‚ï¼Œå¦‚æœä¸å­˜åœ¨åˆ™ä¼šåˆ›å»ºä¸€ä¸ªæ–°çš„å±‚
+     * »ñÈ¡ zlevel ËùÔÚ²ã£¬Èç¹û²»´æÔÚÔò»á´´½¨Ò»¸öĞÂµÄ²ã
      * @param {number} zlevel
      * @param {boolean} virtual Virtual layer will not be inserted into dom.
      * @return {module:zrender/Layer}
@@ -9891,7 +9891,7 @@ Painter.prototype = {
     },
 
     /**
-     * è·å–æ‰€æœ‰å·²åˆ›å»ºçš„å±‚
+     * »ñÈ¡ËùÓĞÒÑ´´½¨µÄ²ã
      * @param {Array.<module:zrender/Layer>} [prevLayer]
      */
     getLayers: function () {
@@ -9985,7 +9985,7 @@ Painter.prototype = {
     },
 
     /**
-     * æ¸…é™¤hoverå±‚å¤–æ‰€æœ‰å†…å®¹
+     * Çå³ıhover²ãÍâËùÓĞÄÚÈİ
      */
     clear: function () {
         this.eachBuiltinLayer(this._clearLayer);
@@ -10001,14 +10001,14 @@ Painter.prototype = {
     },
 
     /**
-     * ä¿®æ”¹æŒ‡å®šzlevelçš„ç»˜åˆ¶å‚æ•°
+     * ĞŞ¸ÄÖ¸¶¨zlevelµÄ»æÖÆ²ÎÊı
      *
      * @param {string} zlevel
-     * @param {Object} config é…ç½®å¯¹è±¡
-     * @param {string} [config.clearColor=0] æ¯æ¬¡æ¸…ç©ºç”»å¸ƒçš„é¢œè‰²
-     * @param {string} [config.motionBlur=false] æ˜¯å¦å¼€å¯åŠ¨æ€æ¨¡ç³Š
+     * @param {Object} config ÅäÖÃ¶ÔÏó
+     * @param {string} [config.clearColor=0] Ã¿´ÎÇå¿Õ»­²¼µÄÑÕÉ«
+     * @param {string} [config.motionBlur=false] ÊÇ·ñ¿ªÆô¶¯Ì¬Ä£ºı
      * @param {number} [config.lastFrameAlpha=0.7]
-     *                 åœ¨å¼€å¯åŠ¨æ€æ¨¡ç³Šçš„æ—¶å€™ä½¿ç”¨ï¼Œä¸ä¸Šä¸€å¸§æ··åˆçš„alphaå€¼ï¼Œå€¼è¶Šå¤§å°¾è¿¹è¶Šæ˜æ˜¾
+     *                 ÔÚ¿ªÆô¶¯Ì¬Ä£ºıµÄÊ±ºòÊ¹ÓÃ£¬ÓëÉÏÒ»Ö¡»ìºÏµÄalphaÖµ£¬ÖµÔ½´óÎ²¼£Ô½Ã÷ÏÔ
      */
     configLayer: function (zlevel, config) {
         if (config) {
@@ -10031,8 +10031,8 @@ Painter.prototype = {
     },
 
     /**
-     * åˆ é™¤æŒ‡å®šå±‚
-     * @param {number} zlevel å±‚æ‰€åœ¨çš„zlevel
+     * É¾³ıÖ¸¶¨²ã
+     * @param {number} zlevel ²ãËùÔÚµÄzlevel
      */
     delLayer: function (zlevel) {
         var layers = this._layers;
@@ -10048,7 +10048,7 @@ Painter.prototype = {
     },
 
     /**
-     * åŒºåŸŸå¤§å°å˜åŒ–åé‡ç»˜
+     * ÇøÓò´óĞ¡±ä»¯ºóÖØ»æ
      */
     resize: function (width, height) {
         if (!this._domRoot.style) { // Maybe in node or worker
@@ -10075,7 +10075,7 @@ Painter.prototype = {
 
             domRoot.style.display = '';
 
-            // ä¼˜åŒ–æ²¡æœ‰å®é™…æ”¹å˜çš„resize
+            // ÓÅ»¯Ã»ÓĞÊµ¼Ê¸Ä±äµÄresize
             if (this._width !== width || height !== this._height) {
                 domRoot.style.width = width + 'px';
                 domRoot.style.height = height + 'px';
@@ -10100,7 +10100,7 @@ Painter.prototype = {
     },
 
     /**
-     * æ¸…é™¤å•ç‹¬çš„ä¸€ä¸ªå±‚
+     * Çå³ıµ¥¶ÀµÄÒ»¸ö²ã
      * @param {number} zlevel
      */
     clearLayer: function (zlevel) {
@@ -10111,7 +10111,7 @@ Painter.prototype = {
     },
 
     /**
-     * é‡Šæ”¾
+     * ÊÍ·Å
      */
     dispose: function () {
         this.root.innerHTML = '';
@@ -10169,14 +10169,14 @@ Painter.prototype = {
         return imageLayer.dom;
     },
     /**
-     * è·å–ç»˜å›¾åŒºåŸŸå®½åº¦
+     * »ñÈ¡»æÍ¼ÇøÓò¿í¶È
      */
     getWidth: function () {
         return this._width;
     },
 
     /**
-     * è·å–ç»˜å›¾åŒºåŸŸé«˜åº¦
+     * »ñÈ¡»æÍ¼ÇøÓò¸ß¶È
      */
     getHeight: function () {
         return this._height;
@@ -10269,7 +10269,7 @@ Painter.prototype = {
 };
 
 /**
- * åŠ¨ç”»ä¸»ç±», è°ƒåº¦å’Œç®¡ç†æ‰€æœ‰åŠ¨ç”»æ§åˆ¶å™¨
+ * ¶¯»­Ö÷Àà, µ÷¶ÈºÍ¹ÜÀíËùÓĞ¶¯»­¿ØÖÆÆ÷
  *
  * @module zrender/animation/Animation
  * @author pissang(https://github.com/pissang)
@@ -10334,14 +10334,14 @@ Animation.prototype = {
 
     constructor: Animation,
     /**
-     * æ·»åŠ  clip
+     * Ìí¼Ó clip
      * @param {module:zrender/animation/Clip} clip
      */
     addClip: function (clip) {
         this._clips.push(clip);
     },
     /**
-     * æ·»åŠ  animator
+     * Ìí¼Ó animator
      * @param {module:zrender/animation/Animator} animator
      */
     addAnimator: function (animator) {
@@ -10352,7 +10352,7 @@ Animation.prototype = {
         }
     },
     /**
-     * åˆ é™¤åŠ¨ç”»ç‰‡æ®µ
+     * É¾³ı¶¯»­Æ¬¶Î
      * @param {module:zrender/animation/Clip} clip
      */
     removeClip: function (clip) {
@@ -10363,7 +10363,7 @@ Animation.prototype = {
     },
 
     /**
-     * åˆ é™¤åŠ¨ç”»ç‰‡æ®µ
+     * É¾³ı¶¯»­Æ¬¶Î
      * @param {module:zrender/animation/Animator} animator
      */
     removeAnimator: function (animator) {
@@ -10598,7 +10598,7 @@ var domHandlers = {
         var element = event.toElement || event.relatedTarget;
         if (element !== this.dom) {
             while (element && element.nodeType !== 9) {
-                // å¿½ç•¥åŒ…å«åœ¨rootä¸­çš„domå¼•èµ·çš„mouseOut
+                // ºöÂÔ°üº¬ÔÚrootÖĞµÄdomÒıÆğµÄmouseOut
                 if (element === this.dom) {
                     return;
                 }
@@ -10611,7 +10611,7 @@ var domHandlers = {
     },
 
     /**
-     * Touchå¼€å§‹å“åº”å‡½æ•°
+     * Touch¿ªÊ¼ÏìÓ¦º¯Êı
      * @inner
      * @param {Event} event
      */
@@ -10638,7 +10638,7 @@ var domHandlers = {
     },
 
     /**
-     * Touchç§»åŠ¨å“åº”å‡½æ•°
+     * TouchÒÆ¶¯ÏìÓ¦º¯Êı
      * @inner
      * @param {Event} event
      */
@@ -10661,7 +10661,7 @@ var domHandlers = {
     },
 
     /**
-     * Touchç»“æŸå“åº”å‡½æ•°
+     * Touch½áÊøÏìÓ¦º¯Êı
      * @inner
      * @param {Event} event
      */
@@ -10747,10 +10747,10 @@ each$1(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick', 'contextmenu'
 });
 
 /**
- * ä¸ºæ§åˆ¶ç±»å®ä¾‹åˆå§‹åŒ–dom äº‹ä»¶å¤„ç†å‡½æ•°
+ * Îª¿ØÖÆÀàÊµÀı³õÊ¼»¯dom ÊÂ¼ş´¦Àíº¯Êı
  *
  * @inner
- * @param {module:zrender/Handler} instance æ§åˆ¶ç±»å®ä¾‹
+ * @param {module:zrender/Handler} instance ¿ØÖÆÀàÊµÀı
  */
 function initDomHandler(instance) {
     each$1(touchHandlerNames, function (name) {
@@ -10875,7 +10875,7 @@ var painterCtors = {
     canvas: Painter
 };
 
-var instances$1 = {};    // ZRenderå®ä¾‹mapç´¢å¼•
+var instances$1 = {};    // ZRenderÊµÀımapË÷Òı
 
 /**
  * @type {string}
@@ -11001,8 +11001,8 @@ var ZRender = function (id, dom, opts) {
      */
     this._needsRefresh;
 
-    // ä¿®æ”¹ storage.delFromStorage, æ¯æ¬¡åˆ é™¤å…ƒç´ ä¹‹å‰åˆ é™¤åŠ¨ç”»
-    // FIXME æœ‰ç‚¹ugly
+    // ĞŞ¸Ä storage.delFromStorage, Ã¿´ÎÉ¾³ıÔªËØÖ®Ç°É¾³ı¶¯»­
+    // FIXME ÓĞµãugly
     var oldDelFromStorage = storage.delFromStorage;
     var oldAddToStorage = storage.addToStorage;
 
@@ -11023,7 +11023,7 @@ ZRender.prototype = {
 
     constructor: ZRender,
     /**
-     * è·å–å®ä¾‹å”¯ä¸€æ ‡è¯†
+     * »ñÈ¡ÊµÀıÎ¨Ò»±êÊ¶
      * @return {string}
      */
     getId: function () {
@@ -11031,7 +11031,7 @@ ZRender.prototype = {
     },
 
     /**
-     * æ·»åŠ å…ƒç´ 
+     * Ìí¼ÓÔªËØ
      * @param  {module:zrender/Element} el
      */
     add: function (el) {
@@ -11040,7 +11040,7 @@ ZRender.prototype = {
     },
 
     /**
-     * åˆ é™¤å…ƒç´ 
+     * É¾³ıÔªËØ
      * @param  {module:zrender/Element} el
      */
     remove: function (el) {
@@ -11228,7 +11228,7 @@ ZRender.prototype = {
 
     /**
      * Set default cursor
-     * @param {string} [cursorStyle='default'] ä¾‹å¦‚ crosshair
+     * @param {string} [cursorStyle='default'] ÀıÈç crosshair
      */
     setCursorStyle: function (cursorStyle) {
         this.handler.setCursorStyle(cursorStyle);
@@ -12260,7 +12260,7 @@ var areaStyleMixin = {
 };
 
 /**
- * æ›²çº¿è¾…åŠ©æ¨¡å—
+ * ÇúÏß¸¨ÖúÄ£¿é
  * @module zrender/core/curve
  * @author pissang(https://www.github.com/pissang)
  */
@@ -12274,7 +12274,7 @@ var EPSILON_NUMERIC = 1e-4;
 var THREE_SQRT = mathSqrt$2(3);
 var ONE_THIRD = 1 / 3;
 
-// ä¸´æ—¶å˜é‡
+// ÁÙÊ±±äÁ¿
 var _v0 = create();
 var _v1 = create();
 var _v2 = create();
@@ -12286,7 +12286,7 @@ function isNotAroundZero$1(val) {
     return val > EPSILON$1 || val < -EPSILON$1;
 }
 /**
- * è®¡ç®—ä¸‰æ¬¡è´å¡å°”å€¼
+ * ¼ÆËãÈı´Î±´Èû¶ûÖµ
  * @memberOf module:zrender/core/curve
  * @param  {number} p0
  * @param  {number} p1
@@ -12302,7 +12302,7 @@ function cubicAt(p0, p1, p2, p3, t) {
 }
 
 /**
- * è®¡ç®—ä¸‰æ¬¡è´å¡å°”å¯¼æ•°å€¼
+ * ¼ÆËãÈı´Î±´Èû¶ûµ¼ÊıÖµ
  * @memberOf module:zrender/core/curve
  * @param  {number} p0
  * @param  {number} p1
@@ -12320,7 +12320,7 @@ function cubicDerivativeAt(p0, p1, p2, p3, t) {
 }
 
 /**
- * è®¡ç®—ä¸‰æ¬¡è´å¡å°”æ–¹ç¨‹æ ¹ï¼Œä½¿ç”¨ç››é‡‘å…¬å¼
+ * ¼ÆËãÈı´Î±´Èû¶û·½³Ì¸ù£¬Ê¹ÓÃÊ¢½ğ¹«Ê½
  * @memberOf module:zrender/core/curve
  * @param  {number} p0
  * @param  {number} p1
@@ -12328,7 +12328,7 @@ function cubicDerivativeAt(p0, p1, p2, p3, t) {
  * @param  {number} p3
  * @param  {number} val
  * @param  {Array.<number>} roots
- * @return {number} æœ‰æ•ˆæ ¹æ•°ç›®
+ * @return {number} ÓĞĞ§¸ùÊıÄ¿
  */
 function cubicRootAt(p0, p1, p2, p3, val, roots) {
     // Evaluate roots of cubic functions
@@ -12413,14 +12413,14 @@ function cubicRootAt(p0, p1, p2, p3, val, roots) {
 }
 
 /**
- * è®¡ç®—ä¸‰æ¬¡è´å¡å°”æ–¹ç¨‹æé™å€¼çš„ä½ç½®
+ * ¼ÆËãÈı´Î±´Èû¶û·½³Ì¼«ÏŞÖµµÄÎ»ÖÃ
  * @memberOf module:zrender/core/curve
  * @param  {number} p0
  * @param  {number} p1
  * @param  {number} p2
  * @param  {number} p3
  * @param  {Array.<number>} extrema
- * @return {number} æœ‰æ•ˆæ•°ç›®
+ * @return {number} ÓĞĞ§ÊıÄ¿
  */
 function cubicExtrema(p0, p1, p2, p3, extrema) {
     var b = 6 * p2 - 12 * p1 + 6 * p0;
@@ -12457,7 +12457,7 @@ function cubicExtrema(p0, p1, p2, p3, extrema) {
 }
 
 /**
- * ç»†åˆ†ä¸‰æ¬¡è´å¡å°”æ›²çº¿
+ * Ï¸·ÖÈı´Î±´Èû¶ûÇúÏß
  * @memberOf module:zrender/core/curve
  * @param  {number} p0
  * @param  {number} p1
@@ -12488,8 +12488,8 @@ function cubicSubdivide(p0, p1, p2, p3, t, out) {
 }
 
 /**
- * æŠ•å°„ç‚¹åˆ°ä¸‰æ¬¡è´å¡å°”æ›²çº¿ä¸Šï¼Œè¿”å›æŠ•å°„è·ç¦»ã€‚
- * æŠ•å°„ç‚¹æœ‰å¯èƒ½ä¼šæœ‰ä¸€ä¸ªæˆ–è€…å¤šä¸ªï¼Œè¿™é‡Œåªè¿”å›å…¶ä¸­è·ç¦»æœ€çŸ­çš„ä¸€ä¸ªã€‚
+ * Í¶Éäµãµ½Èı´Î±´Èû¶ûÇúÏßÉÏ£¬·µ»ØÍ¶Éä¾àÀë¡£
+ * Í¶ÉäµãÓĞ¿ÉÄÜ»áÓĞÒ»¸ö»òÕß¶à¸ö£¬ÕâÀïÖ»·µ»ØÆäÖĞ¾àÀë×î¶ÌµÄÒ»¸ö¡£
  * @param {number} x0
  * @param {number} y0
  * @param {number} x1
@@ -12500,7 +12500,7 @@ function cubicSubdivide(p0, p1, p2, p3, t, out) {
  * @param {number} y3
  * @param {number} x
  * @param {number} y
- * @param {Array.<number>} [out] æŠ•å°„ç‚¹
+ * @param {Array.<number>} [out] Í¶Éäµã
  * @return {number}
  */
 function cubicProjectPoint(
@@ -12519,7 +12519,7 @@ function cubicProjectPoint(
     _v0[0] = x;
     _v0[1] = y;
 
-    // å…ˆç²—ç•¥ä¼°è®¡ä¸€ä¸‹å¯èƒ½çš„æœ€å°è·ç¦»çš„ t å€¼
+    // ÏÈ´ÖÂÔ¹À¼ÆÒ»ÏÂ¿ÉÄÜµÄ×îĞ¡¾àÀëµÄ t Öµ
     // PENDING
     for (var _t = 0; _t < 1; _t += 0.05) {
         _v1[0] = cubicAt(x0, x1, x2, x3, _t);
@@ -12574,7 +12574,7 @@ function cubicProjectPoint(
 }
 
 /**
- * è®¡ç®—äºŒæ¬¡æ–¹è´å¡å°”å€¼
+ * ¼ÆËã¶ş´Î·½±´Èû¶ûÖµ
  * @param  {number} p0
  * @param  {number} p1
  * @param  {number} p2
@@ -12587,7 +12587,7 @@ function quadraticAt(p0, p1, p2, t) {
 }
 
 /**
- * è®¡ç®—äºŒæ¬¡æ–¹è´å¡å°”å¯¼æ•°å€¼
+ * ¼ÆËã¶ş´Î·½±´Èû¶ûµ¼ÊıÖµ
  * @param  {number} p0
  * @param  {number} p1
  * @param  {number} p2
@@ -12599,13 +12599,13 @@ function quadraticDerivativeAt(p0, p1, p2, t) {
 }
 
 /**
- * è®¡ç®—äºŒæ¬¡æ–¹è´å¡å°”æ–¹ç¨‹æ ¹
+ * ¼ÆËã¶ş´Î·½±´Èû¶û·½³Ì¸ù
  * @param  {number} p0
  * @param  {number} p1
  * @param  {number} p2
  * @param  {number} t
  * @param  {Array.<number>} roots
- * @return {number} æœ‰æ•ˆæ ¹æ•°ç›®
+ * @return {number} ÓĞĞ§¸ùÊıÄ¿
  */
 function quadraticRootAt(p0, p1, p2, val, roots) {
     var a = p0 - 2 * p1 + p2;
@@ -12645,7 +12645,7 @@ function quadraticRootAt(p0, p1, p2, val, roots) {
 }
 
 /**
- * è®¡ç®—äºŒæ¬¡è´å¡å°”æ–¹ç¨‹æé™å€¼
+ * ¼ÆËã¶ş´Î±´Èû¶û·½³Ì¼«ÏŞÖµ
  * @memberOf module:zrender/core/curve
  * @param  {number} p0
  * @param  {number} p1
@@ -12664,7 +12664,7 @@ function quadraticExtremum(p0, p1, p2) {
 }
 
 /**
- * ç»†åˆ†äºŒæ¬¡è´å¡å°”æ›²çº¿
+ * Ï¸·Ö¶ş´Î±´Èû¶ûÇúÏß
  * @memberOf module:zrender/core/curve
  * @param  {number} p0
  * @param  {number} p1
@@ -12689,8 +12689,8 @@ function quadraticSubdivide(p0, p1, p2, t, out) {
 }
 
 /**
- * æŠ•å°„ç‚¹åˆ°äºŒæ¬¡è´å¡å°”æ›²çº¿ä¸Šï¼Œè¿”å›æŠ•å°„è·ç¦»ã€‚
- * æŠ•å°„ç‚¹æœ‰å¯èƒ½ä¼šæœ‰ä¸€ä¸ªæˆ–è€…å¤šä¸ªï¼Œè¿™é‡Œåªè¿”å›å…¶ä¸­è·ç¦»æœ€çŸ­çš„ä¸€ä¸ªã€‚
+ * Í¶Éäµãµ½¶ş´Î±´Èû¶ûÇúÏßÉÏ£¬·µ»ØÍ¶Éä¾àÀë¡£
+ * Í¶ÉäµãÓĞ¿ÉÄÜ»áÓĞÒ»¸ö»òÕß¶à¸ö£¬ÕâÀïÖ»·µ»ØÆäÖĞ¾àÀë×î¶ÌµÄÒ»¸ö¡£
  * @param {number} x0
  * @param {number} y0
  * @param {number} x1
@@ -12699,7 +12699,7 @@ function quadraticSubdivide(p0, p1, p2, t, out) {
  * @param {number} y2
  * @param {number} x
  * @param {number} y
- * @param {Array.<number>} out æŠ•å°„ç‚¹
+ * @param {Array.<number>} out Í¶Éäµã
  * @return {number}
  */
 function quadraticProjectPoint(
@@ -12714,7 +12714,7 @@ function quadraticProjectPoint(
     _v0[0] = x;
     _v0[1] = y;
 
-    // å…ˆç²—ç•¥ä¼°è®¡ä¸€ä¸‹å¯èƒ½çš„æœ€å°è·ç¦»çš„ t å€¼
+    // ÏÈ´ÖÂÔ¹À¼ÆÒ»ÏÂ¿ÉÄÜµÄ×îĞ¡¾àÀëµÄ t Öµ
     // PENDING
     for (var _t = 0; _t < 1; _t += 0.05) {
         _v1[0] = quadraticAt(x0, x1, x2, _t);
@@ -12782,9 +12782,9 @@ var end = create();
 var extremity = create();
 
 /**
- * ä»é¡¶ç‚¹æ•°ç»„ä¸­è®¡ç®—å‡ºæœ€å°åŒ…å›´ç›’ï¼Œå†™å…¥`min`å’Œ`max`ä¸­
+ * ´Ó¶¥µãÊı×éÖĞ¼ÆËã³ö×îĞ¡°üÎ§ºĞ£¬Ğ´Èë`min`ºÍ`max`ÖĞ
  * @module zrender/core/bbox
- * @param {Array<Object>} points é¡¶ç‚¹æ•°ç»„
+ * @param {Array<Object>} points ¶¥µãÊı×é
  * @param {number} min
  * @param {number} max
  */
@@ -12832,7 +12832,7 @@ function fromLine(x0, y0, x1, y1, min$$1, max$$1) {
 var xDim = [];
 var yDim = [];
 /**
- * ä»ä¸‰é˜¶è´å¡å°”æ›²çº¿(p0, p1, p2, p3)ä¸­è®¡ç®—å‡ºæœ€å°åŒ…å›´ç›’ï¼Œå†™å…¥`min`å’Œ`max`ä¸­
+ * ´ÓÈı½×±´Èû¶ûÇúÏß(p0, p1, p2, p3)ÖĞ¼ÆËã³ö×îĞ¡°üÎ§ºĞ£¬Ğ´Èë`min`ºÍ`max`ÖĞ
  * @memberOf module:zrender/core/bbox
  * @param {number} x0
  * @param {number} y0
@@ -12881,7 +12881,7 @@ function fromCubic(
 }
 
 /**
- * ä»äºŒé˜¶è´å¡å°”æ›²çº¿(p0, p1, p2)ä¸­è®¡ç®—å‡ºæœ€å°åŒ…å›´ç›’ï¼Œå†™å…¥`min`å’Œ`max`ä¸­
+ * ´Ó¶ş½×±´Èû¶ûÇúÏß(p0, p1, p2)ÖĞ¼ÆËã³ö×îĞ¡°üÎ§ºĞ£¬Ğ´Èë`min`ºÍ`max`ÖĞ
  * @memberOf module:zrender/core/bbox
  * @param {number} x0
  * @param {number} y0
@@ -12915,7 +12915,7 @@ function fromQuadratic(x0, y0, x1, y1, x2, y2, min$$1, max$$1) {
 }
 
 /**
- * ä»åœ†å¼§ä¸­è®¡ç®—å‡ºæœ€å°åŒ…å›´ç›’ï¼Œå†™å…¥`min`å’Œ`max`ä¸­
+ * ´ÓÔ²»¡ÖĞ¼ÆËã³ö×îĞ¡°üÎ§ºĞ£¬Ğ´Èë`min`ºÍ`max`ÖĞ
  * @method
  * @memberOf module:zrender/core/bbox
  * @param {number} x
@@ -12991,8 +12991,8 @@ function fromArc(
 }
 
 /**
- * Path ä»£ç†ï¼Œå¯ä»¥åœ¨`buildPath`ä¸­ç”¨äºæ›¿ä»£`ctx`, ä¼šä¿å­˜æ¯ä¸ªpathæ“ä½œçš„å‘½ä»¤åˆ°pathCommandså±æ€§ä¸­
- * å¯ä»¥ç”¨äº isInsidePath åˆ¤æ–­ä»¥åŠè·å–boundingRect
+ * Path ´úÀí£¬¿ÉÒÔÔÚ`buildPath`ÖĞÓÃÓÚÌæ´ú`ctx`, »á±£´æÃ¿¸öpath²Ù×÷µÄÃüÁîµ½pathCommandsÊôĞÔÖĞ
+ * ¿ÉÒÔÓÃÓÚ isInsidePath ÅĞ¶ÏÒÔ¼°»ñÈ¡boundingRect
  *
  * @module zrender/core/PathProxy
  * @author Yi Shen (http://www.github.com/pissang)
@@ -13054,7 +13054,7 @@ var PathProxy = function (notSaveData) {
 };
 
 /**
- * å¿«é€Ÿè®¡ç®—PathåŒ…å›´ç›’ï¼ˆå¹¶ä¸æ˜¯æœ€å°åŒ…å›´ç›’ï¼‰
+ * ¿ìËÙ¼ÆËãPath°üÎ§ºĞ£¨²¢²»ÊÇ×îĞ¡°üÎ§ºĞ£©
  * @return {Object}
  */
 PathProxy.prototype = {
@@ -13127,10 +13127,10 @@ PathProxy.prototype = {
         this.addData(CMD.M, x, y);
         this._ctx && this._ctx.moveTo(x, y);
 
-        // x0, y0, xi, yi æ˜¯è®°å½•åœ¨ _dashedXXXXTo æ–¹æ³•ä¸­ä½¿ç”¨
-        // xi, yi è®°å½•å½“å‰ç‚¹, x0, y0 åœ¨ closePath çš„æ—¶å€™å›åˆ°èµ·å§‹ç‚¹ã€‚
-        // æœ‰å¯èƒ½åœ¨ beginPath ä¹‹åç›´æ¥è°ƒç”¨ lineToï¼Œè¿™æ—¶å€™ x0, y0 éœ€è¦
-        // åœ¨ lineTo æ–¹æ³•ä¸­è®°å½•ï¼Œè¿™é‡Œå…ˆä¸è€ƒè™‘è¿™ç§æƒ…å†µï¼Œdashed line ä¹Ÿåªåœ¨ IE10- ä¸­ä¸æ”¯æŒ
+        // x0, y0, xi, yi ÊÇ¼ÇÂ¼ÔÚ _dashedXXXXTo ·½·¨ÖĞÊ¹ÓÃ
+        // xi, yi ¼ÇÂ¼µ±Ç°µã, x0, y0 ÔÚ closePath µÄÊ±ºò»Øµ½ÆğÊ¼µã¡£
+        // ÓĞ¿ÉÄÜÔÚ beginPath Ö®ºóÖ±½Óµ÷ÓÃ lineTo£¬ÕâÊ±ºò x0, y0 ĞèÒª
+        // ÔÚ lineTo ·½·¨ÖĞ¼ÇÂ¼£¬ÕâÀïÏÈ²»¿¼ÂÇÕâÖÖÇé¿ö£¬dashed line Ò²Ö»ÔÚ IE10- ÖĞ²»Ö§³Ö
         this._x0 = x;
         this._y0 = y;
 
@@ -13258,8 +13258,8 @@ PathProxy.prototype = {
     },
 
     /**
-     * Context ä»å¤–éƒ¨ä¼ å…¥ï¼Œå› ä¸ºæœ‰å¯èƒ½æ˜¯ rebuildPath å®Œä¹‹åå† fillã€‚
-     * stroke åŒæ ·
+     * Context ´ÓÍâ²¿´«Èë£¬ÒòÎªÓĞ¿ÉÄÜÊÇ rebuildPath ÍêÖ®ºóÔÙ fill¡£
+     * stroke Í¬Ñù
      * @param {CanvasRenderingContext2D} ctx
      * @return {module:zrender/core/PathProxy}
      */
@@ -13278,7 +13278,7 @@ PathProxy.prototype = {
     },
 
     /**
-     * å¿…é¡»åœ¨å…¶å®ƒç»˜åˆ¶å‘½ä»¤å‰è°ƒç”¨
+     * ±ØĞëÔÚÆäËü»æÖÆÃüÁîÇ°µ÷ÓÃ
      * Must be invoked before all other path drawing methods
      * @return {module:zrender/core/PathProxy}
      */
@@ -13298,7 +13298,7 @@ PathProxy.prototype = {
     },
 
     /**
-     * å¿…é¡»åœ¨å…¶å®ƒç»˜åˆ¶å‘½ä»¤å‰è°ƒç”¨
+     * ±ØĞëÔÚÆäËü»æÖÆÃüÁîÇ°µ÷ÓÃ
      * Must be invoked before all other path drawing methods
      * @return {module:zrender/core/PathProxy}
      */
@@ -13316,7 +13316,7 @@ PathProxy.prototype = {
     },
 
     /**
-     * ç›´æ¥è®¾ç½® Path æ•°æ®
+     * Ö±½ÓÉèÖÃ Path Êı¾İ
      */
     setData: function (data) {
 
@@ -13334,7 +13334,7 @@ PathProxy.prototype = {
     },
 
     /**
-     * æ·»åŠ å­è·¯å¾„
+     * Ìí¼Ó×ÓÂ·¾¶
      * @param {module:zrender/core/PathProxy|Array.<module:zrender/core/PathProxy>} path
      */
     appendPath: function (path) {
@@ -13360,8 +13360,8 @@ PathProxy.prototype = {
     },
 
     /**
-     * å¡«å…… Path æ•°æ®ã€‚
-     * å°½é‡å¤ç”¨è€Œä¸ç”³æ˜æ–°çš„æ•°ç»„ã€‚å¤§éƒ¨åˆ†å›¾å½¢é‡ç»˜çš„æŒ‡ä»¤æ•°æ®é•¿åº¦éƒ½æ˜¯ä¸å˜çš„ã€‚
+     * Ìî³ä Path Êı¾İ¡£
+     * ¾¡Á¿¸´ÓÃ¶ø²»ÉêÃ÷ĞÂµÄÊı×é¡£´ó²¿·ÖÍ¼ĞÎÖØ»æµÄÖ¸ÁîÊı¾İ³¤¶È¶¼ÊÇ²»±äµÄ¡£
      */
     addData: function (cmd) {
         if (!this._saveData) {
@@ -13370,8 +13370,8 @@ PathProxy.prototype = {
 
         var data = this.data;
         if (this._len + arguments.length > data.length) {
-            // å› ä¸ºä¹‹å‰çš„æ•°ç»„å·²ç»è½¬æ¢æˆé™æ€çš„ Float32Array
-            // æ‰€ä»¥ä¸å¤Ÿç”¨æ—¶éœ€è¦æ‰©å±•ä¸€ä¸ªæ–°çš„åŠ¨æ€æ•°ç»„
+            // ÒòÎªÖ®Ç°µÄÊı×éÒÑ¾­×ª»»³É¾²Ì¬µÄ Float32Array
+            // ËùÒÔ²»¹»ÓÃÊ±ĞèÒªÀ©Õ¹Ò»¸öĞÂµÄ¶¯Ì¬Êı×é
             this._expandData();
             data = this.data;
         }
@@ -13531,7 +13531,7 @@ PathProxy.prototype = {
     },
 
     /**
-     * è½¬æˆé™æ€çš„ Float32Array å‡å°‘å †å†…å­˜å ç”¨
+     * ×ª³É¾²Ì¬µÄ Float32Array ¼õÉÙ¶ÑÄÚ´æÕ¼ÓÃ
      * Convert dynamic array to static Float32Array
      */
     toStatic: function () {
@@ -13561,10 +13561,10 @@ PathProxy.prototype = {
             var cmd = data[i++];
 
             if (i === 1) {
-                // å¦‚æœç¬¬ä¸€ä¸ªå‘½ä»¤æ˜¯ L, C, Q
-                // åˆ™ previous point åŒç»˜åˆ¶å‘½ä»¤çš„ç¬¬ä¸€ä¸ª point
+                // Èç¹ûµÚÒ»¸öÃüÁîÊÇ L, C, Q
+                // Ôò previous point Í¬»æÖÆÃüÁîµÄµÚÒ»¸ö point
                 //
-                // ç¬¬ä¸€ä¸ªå‘½ä»¤ä¸º Arc çš„æƒ…å†µä¸‹ä¼šåœ¨åé¢ç‰¹æ®Šå¤„ç†
+                // µÚÒ»¸öÃüÁîÎª Arc µÄÇé¿öÏÂ»áÔÚºóÃæÌØÊâ´¦Àí
                 xi = data[i];
                 yi = data[i + 1];
 
@@ -13574,8 +13574,8 @@ PathProxy.prototype = {
 
             switch (cmd) {
                 case CMD.M:
-                    // moveTo å‘½ä»¤é‡æ–°åˆ›å»ºä¸€ä¸ªæ–°çš„ subpath, å¹¶ä¸”æ›´æ–°æ–°çš„èµ·ç‚¹
-                    // åœ¨ closePath çš„æ—¶å€™ä½¿ç”¨
+                    // moveTo ÃüÁîÖØĞÂ´´½¨Ò»¸öĞÂµÄ subpath, ²¢ÇÒ¸üĞÂĞÂµÄÆğµã
+                    // ÔÚ closePath µÄÊ±ºòÊ¹ÓÃ
                     x0 = data[i++];
                     y0 = data[i++];
                     xi = x0;
@@ -13607,20 +13607,20 @@ PathProxy.prototype = {
                     yi = data[i++];
                     break;
                 case CMD.A:
-                    // TODO Arc åˆ¤æ–­çš„å¼€é”€æ¯”è¾ƒå¤§
+                    // TODO Arc ÅĞ¶ÏµÄ¿ªÏú±È½Ï´ó
                     var cx = data[i++];
                     var cy = data[i++];
                     var rx = data[i++];
                     var ry = data[i++];
                     var startAngle = data[i++];
                     var endAngle = data[i++] + startAngle;
-                    // TODO Arc æ—‹è½¬
+                    // TODO Arc Ğı×ª
                     i += 1;
                     var anticlockwise = 1 - data[i++];
 
                     if (i === 1) {
-                        // ç›´æ¥ä½¿ç”¨ arc å‘½ä»¤
-                        // ç¬¬ä¸€ä¸ªå‘½ä»¤èµ·ç‚¹è¿˜æœªå®šä¹‰
+                        // Ö±½ÓÊ¹ÓÃ arc ÃüÁî
+                        // µÚÒ»¸öÃüÁîÆğµã»¹Î´¶¨Òå
                         x0 = mathCos$1(startAngle) * rx + cx;
                         y0 = mathSin$1(startAngle) * ry + cy;
                     }
@@ -13679,10 +13679,10 @@ PathProxy.prototype = {
             var cmd = d[i++];
 
             if (i === 1) {
-                // å¦‚æœç¬¬ä¸€ä¸ªå‘½ä»¤æ˜¯ L, C, Q
-                // åˆ™ previous point åŒç»˜åˆ¶å‘½ä»¤çš„ç¬¬ä¸€ä¸ª point
+                // Èç¹ûµÚÒ»¸öÃüÁîÊÇ L, C, Q
+                // Ôò previous point Í¬»æÖÆÃüÁîµÄµÚÒ»¸ö point
                 //
-                // ç¬¬ä¸€ä¸ªå‘½ä»¤ä¸º Arc çš„æƒ…å†µä¸‹ä¼šåœ¨åé¢ç‰¹æ®Šå¤„ç†
+                // µÚÒ»¸öÃüÁîÎª Arc µÄÇé¿öÏÂ»áÔÚºóÃæÌØÊâ´¦Àí
                 xi = d[i];
                 yi = d[i + 1];
 
@@ -13745,8 +13745,8 @@ PathProxy.prototype = {
                     }
 
                     if (i === 1) {
-                        // ç›´æ¥ä½¿ç”¨ arc å‘½ä»¤
-                        // ç¬¬ä¸€ä¸ªå‘½ä»¤èµ·ç‚¹è¿˜æœªå®šä¹‰
+                        // Ö±½ÓÊ¹ÓÃ arc ÃüÁî
+                        // µÚÒ»¸öÃüÁîÆğµã»¹Î´¶¨Òå
                         x0 = mathCos$1(theta) * rx + cx;
                         y0 = mathSin$1(theta) * ry + cy;
                     }
@@ -13770,7 +13770,7 @@ PathProxy.prototype = {
 PathProxy.CMD = CMD;
 
 /**
- * çº¿æ®µåŒ…å«åˆ¤æ–­
+ * Ïß¶Î°üº¬ÅĞ¶Ï
  * @param  {number}  x0
  * @param  {number}  y0
  * @param  {number}  x1
@@ -13810,7 +13810,7 @@ function containStroke$1(x0, y0, x1, y1, lineWidth, x, y) {
 }
 
 /**
- * ä¸‰æ¬¡è´å¡å°”æ›²çº¿æè¾¹åŒ…å«åˆ¤æ–­
+ * Èı´Î±´Èû¶ûÇúÏßÃè±ß°üº¬ÅĞ¶Ï
  * @param  {number}  x0
  * @param  {number}  y0
  * @param  {number}  x1
@@ -13846,7 +13846,7 @@ function containStroke$2(x0, y0, x1, y1, x2, y2, x3, y3, lineWidth, x, y) {
 }
 
 /**
- * äºŒæ¬¡è´å¡å°”æ›²çº¿æè¾¹åŒ…å«åˆ¤æ–­
+ * ¶ş´Î±´Èû¶ûÇúÏßÃè±ß°üº¬ÅĞ¶Ï
  * @param  {number}  x0
  * @param  {number}  y0
  * @param  {number}  x1
@@ -13892,7 +13892,7 @@ function normalizeRadian(angle) {
 var PI2$2 = Math.PI * 2;
 
 /**
- * åœ†å¼§æè¾¹åŒ…å«åˆ¤æ–­
+ * Ô²»¡Ãè±ß°üº¬ÅĞ¶Ï
  * @param  {number}  cx
  * @param  {number}  cy
  * @param  {number}  r
@@ -13977,7 +13977,7 @@ function isAroundEqual(a, b) {
     return Math.abs(a - b) < EPSILON$2;
 }
 
-// ä¸´æ—¶æ•°ç»„
+// ÁÙÊ±Êı×é
 var roots = [-1, -1, -1];
 var extrema = [-1, -1];
 
@@ -14025,7 +14025,7 @@ function windingCubic(x0, y0, x1, y1, x2, y2, x3, y3, x, y) {
                 }
             }
             if (nExtrema === 2) {
-                // åˆ†æˆä¸‰æ®µå•è°ƒå‡½æ•°
+                // ·Ö³ÉÈı¶Îµ¥µ÷º¯Êı
                 if (t < extrema[0]) {
                     w += y0_ < y0 ? unit : -unit;
                 }
@@ -14037,7 +14037,7 @@ function windingCubic(x0, y0, x1, y1, x2, y2, x3, y3, x, y) {
                 }
             }
             else {
-                // åˆ†æˆä¸¤æ®µå•è°ƒå‡½æ•°
+                // ·Ö³ÉÁ½¶Îµ¥µ÷º¯Êı
                 if (t < extrema[0]) {
                     w += y0_ < y0 ? unit : -unit;
                 }
@@ -14098,7 +14098,7 @@ function windingQuadratic(x0, y0, x1, y1, x2, y2, x, y) {
 }
 
 // TODO
-// Arc æ—‹è½¬
+// Arc Ğı×ª
 function windingArc(
     cx, cy, r, startAngle, endAngle, anticlockwise, x, y
 ) {
@@ -14178,17 +14178,17 @@ function containPath(data, lineWidth, isStroke, x, y) {
             if (!isStroke) {
                 w += windingLine(xi, yi, x0, y0, x, y);
             }
-            // å¦‚æœè¢«ä»»ä½•ä¸€ä¸ª subpath åŒ…å«
+            // Èç¹û±»ÈÎºÎÒ»¸ö subpath °üº¬
             // if (w !== 0) {
             //     return true;
             // }
         }
 
         if (i === 1) {
-            // å¦‚æœç¬¬ä¸€ä¸ªå‘½ä»¤æ˜¯ L, C, Q
-            // åˆ™ previous point åŒç»˜åˆ¶å‘½ä»¤çš„ç¬¬ä¸€ä¸ª point
+            // Èç¹ûµÚÒ»¸öÃüÁîÊÇ L, C, Q
+            // Ôò previous point Í¬»æÖÆÃüÁîµÄµÚÒ»¸ö point
             //
-            // ç¬¬ä¸€ä¸ªå‘½ä»¤ä¸º Arc çš„æƒ…å†µä¸‹ä¼šåœ¨åé¢ç‰¹æ®Šå¤„ç†
+            // µÚÒ»¸öÃüÁîÎª Arc µÄÇé¿öÏÂ»áÔÚºóÃæÌØÊâ´¦Àí
             xi = data[i];
             yi = data[i + 1];
 
@@ -14198,8 +14198,8 @@ function containPath(data, lineWidth, isStroke, x, y) {
 
         switch (cmd) {
             case CMD$1.M:
-                // moveTo å‘½ä»¤é‡æ–°åˆ›å»ºä¸€ä¸ªæ–°çš„ subpath, å¹¶ä¸”æ›´æ–°æ–°çš„èµ·ç‚¹
-                // åœ¨ closePath çš„æ—¶å€™ä½¿ç”¨
+                // moveTo ÃüÁîÖØĞÂ´´½¨Ò»¸öĞÂµÄ subpath, ²¢ÇÒ¸üĞÂĞÂµÄÆğµã
+                // ÔÚ closePath µÄÊ±ºòÊ¹ÓÃ
                 x0 = data[i++];
                 y0 = data[i++];
                 xi = x0;
@@ -14212,7 +14212,7 @@ function containPath(data, lineWidth, isStroke, x, y) {
                     }
                 }
                 else {
-                    // NOTE åœ¨ç¬¬ä¸€ä¸ªå‘½ä»¤ä¸º L, C, Q çš„æ—¶å€™ä¼šè®¡ç®—å‡º NaN
+                    // NOTE ÔÚµÚÒ»¸öÃüÁîÎª L, C, Q µÄÊ±ºò»á¼ÆËã³ö NaN
                     w += windingLine(xi, yi, data[i], data[i + 1], x, y) || 0;
                 }
                 xi = data[i++];
@@ -14257,28 +14257,28 @@ function containPath(data, lineWidth, isStroke, x, y) {
                 yi = data[i++];
                 break;
             case CMD$1.A:
-                // TODO Arc åˆ¤æ–­çš„å¼€é”€æ¯”è¾ƒå¤§
+                // TODO Arc ÅĞ¶ÏµÄ¿ªÏú±È½Ï´ó
                 var cx = data[i++];
                 var cy = data[i++];
                 var rx = data[i++];
                 var ry = data[i++];
                 var theta = data[i++];
                 var dTheta = data[i++];
-                // TODO Arc æ—‹è½¬
+                // TODO Arc Ğı×ª
                 i += 1;
                 var anticlockwise = 1 - data[i++];
                 var x1 = Math.cos(theta) * rx + cx;
                 var y1 = Math.sin(theta) * ry + cy;
-                // ä¸æ˜¯ç›´æ¥ä½¿ç”¨ arc å‘½ä»¤
+                // ²»ÊÇÖ±½ÓÊ¹ÓÃ arc ÃüÁî
                 if (i > 1) {
                     w += windingLine(xi, yi, x1, y1, x, y);
                 }
                 else {
-                    // ç¬¬ä¸€ä¸ªå‘½ä»¤èµ·ç‚¹è¿˜æœªå®šä¹‰
+                    // µÚÒ»¸öÃüÁîÆğµã»¹Î´¶¨Òå
                     x0 = x1;
                     y0 = y1;
                 }
-                // zr ä½¿ç”¨scaleæ¥æ¨¡æ‹Ÿæ¤­åœ†, è¿™é‡Œä¹Ÿå¯¹xåšä¸€å®šçš„ç¼©æ”¾
+                // zr Ê¹ÓÃscaleÀ´Ä£ÄâÍÖÔ², ÕâÀïÒ²¶Ôx×öÒ»¶¨µÄËõ·Å
                 var _x = (x - cx) * ry / rx + cx;
                 if (isStroke) {
                     if (containStroke$4(
@@ -14330,7 +14330,7 @@ function containPath(data, lineWidth, isStroke, x, y) {
                 else {
                     // Close a subpath
                     w += windingLine(xi, yi, x0, y0, x, y);
-                    // å¦‚æœè¢«ä»»ä½•ä¸€ä¸ª subpath åŒ…å«
+                    // Èç¹û±»ÈÎºÎÒ»¸ö subpath °üº¬
                     // FIXME subpaths may overlap
                     // if (w !== 0) {
                     //     return true;
@@ -14686,7 +14686,7 @@ Path.prototype = {
 };
 
 /**
- * æ‰©å±•ä¸€ä¸ª Path element, æ¯”å¦‚æ˜Ÿå½¢ï¼Œåœ†ç­‰ã€‚
+ * À©Õ¹Ò»¸ö Path element, ±ÈÈçĞÇĞÎ£¬Ô²µÈ¡£
  * Extend a path element
  * @param {Object} props
  * @param {string} props.type Path type
@@ -14724,7 +14724,7 @@ Path.extend = function (defaults$$1) {
 
     inherits(Sub, Path);
 
-    // FIXME ä¸èƒ½ extend position, rotation ç­‰å¼•ç”¨å¯¹è±¡
+    // FIXME ²»ÄÜ extend position, rotation µÈÒıÓÃ¶ÔÏó
     for (var name in defaults$$1) {
         // Extending prototype values and methods
         if (name !== 'style' && name !== 'shape') {
@@ -15353,7 +15353,7 @@ Text.prototype = {
 inherits(Text, Displayable);
 
 /**
- * åœ†å½¢
+ * Ô²ĞÎ
  * @module zrender/shape/Circle
  */
 
@@ -15452,7 +15452,7 @@ var fixClipWithShadow = function (orignalBrush) {
 };
 
 /**
- * æ‰‡å½¢
+ * ÉÈĞÎ
  * @module zrender/graphic/shape/Sector
  */
 
@@ -15512,7 +15512,7 @@ var Sector = Path.extend({
 });
 
 /**
- * åœ†ç¯
+ * Ô²»·
  * @module zrender/graphic/shape/Ring
  */
 
@@ -15539,10 +15539,10 @@ var Ring = Path.extend({
 });
 
 /**
- * Catmull-Rom spline æ’å€¼æŠ˜çº¿
+ * Catmull-Rom spline ²åÖµÕÛÏß
  * @module zrender/shape/util/smoothSpline
  * @author pissang (https://www.github.com/pissang)
- *         Kener (@Kener-æ—å³°, kener.linfeng@gmail.com)
+ *         Kener (@Kener-ÁÖ·å, kener.linfeng@gmail.com)
  *         errorrik (errorrik@gmail.com)
  */
 
@@ -15559,7 +15559,7 @@ function interpolate(p0, p1, p2, p3, t, t2, t3) {
 
 /**
  * @alias module:zrender/shape/util/smoothSpline
- * @param {Array} points çº¿æ®µé¡¶ç‚¹æ•°ç»„
+ * @param {Array} points Ïß¶Î¶¥µãÊı×é
  * @param {boolean} isLoop
  * @return {Array}
  */
@@ -15607,23 +15607,23 @@ var smoothSpline = function (points, isLoop) {
 };
 
 /**
- * è´å¡å°”å¹³æ»‘æ›²çº¿
+ * ±´Èû¶ûÆ½»¬ÇúÏß
  * @module zrender/shape/util/smoothBezier
  * @author pissang (https://www.github.com/pissang)
- *         Kener (@Kener-æ—å³°, kener.linfeng@gmail.com)
+ *         Kener (@Kener-ÁÖ·å, kener.linfeng@gmail.com)
  *         errorrik (errorrik@gmail.com)
  */
 
 /**
- * è´å¡å°”å¹³æ»‘æ›²çº¿
+ * ±´Èû¶ûÆ½»¬ÇúÏß
  * @alias module:zrender/shape/util/smoothBezier
- * @param {Array} points çº¿æ®µé¡¶ç‚¹æ•°ç»„
- * @param {number} smooth å¹³æ»‘ç­‰çº§, 0-1
+ * @param {Array} points Ïß¶Î¶¥µãÊı×é
+ * @param {number} smooth Æ½»¬µÈ¼¶, 0-1
  * @param {boolean} isLoop
- * @param {Array} constraint å°†è®¡ç®—å‡ºæ¥çš„æ§åˆ¶ç‚¹çº¦æŸåœ¨ä¸€ä¸ªåŒ…å›´ç›’å†…
- *                           æ¯”å¦‚ [[0, 0], [100, 100]], è¿™ä¸ªåŒ…å›´ç›’ä¼šä¸
- *                           æ•´ä¸ªæŠ˜çº¿çš„åŒ…å›´ç›’åšä¸€ä¸ªå¹¶é›†ç”¨æ¥çº¦æŸæ§åˆ¶ç‚¹ã€‚
- * @param {Array} è®¡ç®—å‡ºæ¥çš„æ§åˆ¶ç‚¹æ•°ç»„
+ * @param {Array} constraint ½«¼ÆËã³öÀ´µÄ¿ØÖÆµãÔ¼ÊøÔÚÒ»¸ö°üÎ§ºĞÄÚ
+ *                           ±ÈÈç [[0, 0], [100, 100]], Õâ¸ö°üÎ§ºĞ»áÓë
+ *                           Õû¸öÕÛÏßµÄ°üÎ§ºĞ×öÒ»¸ö²¢¼¯ÓÃÀ´Ô¼Êø¿ØÖÆµã¡£
+ * @param {Array} ¼ÆËã³öÀ´µÄ¿ØÖÆµãÊı×é
  */
 var smoothBezier = function (points, smooth, isLoop, constraint) {
     var cps = [];
@@ -15643,7 +15643,7 @@ var smoothBezier = function (points, smooth, isLoop, constraint) {
             min(min$$1, min$$1, points[i]);
             max(max$$1, max$$1, points[i]);
         }
-        // ä¸æŒ‡å®šçš„åŒ…å›´ç›’åšå¹¶é›†
+        // ÓëÖ¸¶¨µÄ°üÎ§ºĞ×ö²¢¼¯
         min(min$$1, min$$1, constraint[0]);
         max(max$$1, max$$1, constraint[1]);
     }
@@ -15736,7 +15736,7 @@ function buildPath$1(ctx, shape, closePath) {
 }
 
 /**
- * å¤šè¾¹å½¢
+ * ¶à±ßĞÎ
  * @module zrender/shape/Polygon
  */
 
@@ -15891,7 +15891,7 @@ function subPixelOptimize$1(position, lineWidth, positiveOrNegative) {
 }
 
 /**
- * çŸ©å½¢
+ * ¾ØĞÎ
  * @module zrender/graphic/shape/Rect
  */
 
@@ -15903,11 +15903,11 @@ var Rect = Path.extend({
     type: 'rect',
 
     shape: {
-        // å·¦ä¸Šã€å³ä¸Šã€å³ä¸‹ã€å·¦ä¸‹è§’çš„åŠå¾„ä¾æ¬¡ä¸ºr1ã€r2ã€r3ã€r4
-        // rç¼©å†™ä¸º1         ç›¸å½“äº [1, 1, 1, 1]
-        // rç¼©å†™ä¸º[1]       ç›¸å½“äº [1, 1, 1, 1]
-        // rç¼©å†™ä¸º[1, 2]    ç›¸å½“äº [1, 2, 1, 2]
-        // rç¼©å†™ä¸º[1, 2, 3] ç›¸å½“äº [1, 2, 3, 2]
+        // ×óÉÏ¡¢ÓÒÉÏ¡¢ÓÒÏÂ¡¢×óÏÂ½ÇµÄ°ë¾¶ÒÀ´ÎÎªr1¡¢r2¡¢r3¡¢r4
+        // rËõĞ´Îª1         Ïàµ±ÓÚ [1, 1, 1, 1]
+        // rËõĞ´Îª[1]       Ïàµ±ÓÚ [1, 1, 1, 1]
+        // rËõĞ´Îª[1, 2]    Ïàµ±ÓÚ [1, 2, 1, 2]
+        // rËõĞ´Îª[1, 2, 3] Ïàµ±ÓÚ [1, 2, 3, 2]
         r: 0,
 
         x: 0,
@@ -15950,7 +15950,7 @@ var Rect = Path.extend({
 });
 
 /**
- * ç›´çº¿
+ * Ö±Ïß
  * @module zrender/graphic/shape/Line
  */
 
@@ -16027,7 +16027,7 @@ var Line = Path.extend({
 });
 
 /**
- * è´å¡å°”æ›²çº¿
+ * ±´Èû¶ûÇúÏß
  * @module zrender/shape/BezierCurve
  */
 
@@ -16152,7 +16152,7 @@ var BezierCurve = Path.extend({
 });
 
 /**
- * åœ†å¼§
+ * Ô²»¡
  * @module zrender/graphic/shape/Arc
  */
 
@@ -17920,13 +17920,13 @@ Model.prototype = {
     constructor: Model,
 
     /**
-     * Model çš„åˆå§‹åŒ–å‡½æ•°
+     * Model µÄ³õÊ¼»¯º¯Êı
      * @param {Object} option
      */
     init: null,
 
     /**
-     * ä»æ–°çš„ Option merge
+     * ´ÓĞÂµÄ Option merge
      */
     mergeOption: function (option) {
         merge(this.option, option, true);
@@ -18632,8 +18632,8 @@ function quantityExponent(val) {
 }
 
 /**
- * find a â€œniceâ€ number approximately equal to x. Round the number if round = true,
- * take ceiling if round = false. The primary observation is that the â€œnicestâ€
+ * find a ¡°nice¡± number approximately equal to x. Round the number if round = true,
+ * take ceiling if round = false. The primary observation is that the ¡°nicest¡±
  * numbers in decimal are 1, 2, and 5, and all power-of-ten multiples of these numbers.
  *
  * See "Nice Numbers for Graph Labels" of Graphic Gems.
@@ -18821,7 +18821,7 @@ var number = (Object.freeze || Object)({
 // import Text from 'zrender/src/graphic/Text';
 
 /**
- * æ¯ä¸‰ä½é»˜è®¤åŠ ,æ ¼å¼åŒ–
+ * Ã¿ÈıÎ»Ä¬ÈÏ¼Ó,¸ñÊ½»¯
  * @param {string|number} x
  * @return {string}
  */
@@ -21538,7 +21538,7 @@ function mergeTheme(option, theme) {
         if (name === 'colorLayer' && notMergeColorLayer) {
             return;
         }
-        // å¦‚æœæœ‰ component model åˆ™æŠŠå…·ä½“çš„ merge é€»è¾‘äº¤ç»™è¯¥ model å¤„ç†
+        // Èç¹ûÓĞ component model Ôò°Ñ¾ßÌåµÄ merge Âß¼­½»¸ø¸Ã model ´¦Àí
         if (!ComponentModel.hasClass(name)) {
             if (typeof themeItem === 'object') {
                 option[name] = !option[name]
@@ -21920,7 +21920,7 @@ OptionManager.prototype = {
         rawOption = clone$3(rawOption, true);
 
         // FIXME
-        // å¦‚æœ timeline options æˆ–è€… media ä¸­è®¾ç½®äº†æŸä¸ªå±æ€§ï¼Œè€ŒbaseOptionä¸­æ²¡æœ‰è®¾ç½®ï¼Œåˆ™è¿›è¡Œè­¦å‘Šã€‚
+        // Èç¹û timeline options »òÕß media ÖĞÉèÖÃÁËÄ³¸öÊôĞÔ£¬¶øbaseOptionÖĞÃ»ÓĞÉèÖÃ£¬Ôò½øĞĞ¾¯¸æ¡£
 
         var oldOptionBackup = this._optionBackup;
         var newParsedOption = parseRawOption.call(
@@ -21959,7 +21959,7 @@ OptionManager.prototype = {
         var optionBackup = this._optionBackup;
 
         // TODO
-        // å¦‚æœæ²¡æœ‰resetåŠŸèƒ½åˆ™ä¸cloneã€‚
+        // Èç¹ûÃ»ÓĞreset¹¦ÄÜÔò²»clone¡£
 
         this._timelineOptions = map$1(optionBackup.timelineOptions, clone$3);
         this._mediaList = map$1(optionBackup.mediaList, clone$3);
@@ -22024,7 +22024,7 @@ OptionManager.prototype = {
         }
 
         // FIXME
-        // æ˜¯å¦mediaDefaultåº”è¯¥å¼ºåˆ¶ç”¨æˆ·è®¾ç½®ï¼Œå¦åˆ™å¯èƒ½ä¿®æ”¹ä¸èƒ½å›å½’ã€‚
+        // ÊÇ·ñmediaDefaultÓ¦¸ÃÇ¿ÖÆÓÃ»§ÉèÖÃ£¬·ñÔò¿ÉÄÜĞŞ¸Ä²»ÄÜ»Ø¹é¡£
         if (!indices.length && mediaDefault) {
             indices = [-1];
         }
@@ -24805,94 +24805,94 @@ var lang = {
     toolbox: {
         brush: {
             title: {
-                rect: 'çŸ©å½¢é€‰æ‹©',
-                polygon: 'åœˆé€‰',
-                lineX: 'æ¨ªå‘é€‰æ‹©',
-                lineY: 'çºµå‘é€‰æ‹©',
-                keep: 'ä¿æŒé€‰æ‹©',
-                clear: 'æ¸…é™¤é€‰æ‹©'
+                rect: '¾ØĞÎÑ¡Ôñ',
+                polygon: 'È¦Ñ¡',
+                lineX: 'ºáÏòÑ¡Ôñ',
+                lineY: '×İÏòÑ¡Ôñ',
+                keep: '±£³ÖÑ¡Ôñ',
+                clear: 'Çå³ıÑ¡Ôñ'
             }
         },
         dataView: {
-            title: 'æ•°æ®è§†å›¾',
-            lang: ['æ•°æ®è§†å›¾', 'å…³é—­', 'åˆ·æ–°']
+            title: 'Êı¾İÊÓÍ¼',
+            lang: ['Êı¾İÊÓÍ¼', '¹Ø±Õ', 'Ë¢ĞÂ']
         },
         dataZoom: {
             title: {
-                zoom: 'åŒºåŸŸç¼©æ”¾',
-                back: 'åŒºåŸŸç¼©æ”¾è¿˜åŸ'
+                zoom: 'ÇøÓòËõ·Å',
+                back: 'ÇøÓòËõ·Å»¹Ô­'
             }
         },
         magicType: {
             title: {
-                line: 'åˆ‡æ¢ä¸ºæŠ˜çº¿å›¾',
-                bar: 'åˆ‡æ¢ä¸ºæŸ±çŠ¶å›¾',
-                stack: 'åˆ‡æ¢ä¸ºå †å ',
-                tiled: 'åˆ‡æ¢ä¸ºå¹³é“º'
+                line: 'ÇĞ»»ÎªÕÛÏßÍ¼',
+                bar: 'ÇĞ»»ÎªÖù×´Í¼',
+                stack: 'ÇĞ»»Îª¶Ñµş',
+                tiled: 'ÇĞ»»ÎªÆ½ÆÌ'
             }
         },
         restore: {
-            title: 'è¿˜åŸ'
+            title: '»¹Ô­'
         },
         saveAsImage: {
-            title: 'ä¿å­˜ä¸ºå›¾ç‰‡',
-            lang: ['å³é”®å¦å­˜ä¸ºå›¾ç‰‡']
+            title: '±£´æÎªÍ¼Æ¬',
+            lang: ['ÓÒ¼üÁí´æÎªÍ¼Æ¬']
         }
     },
     series: {
         typeNames: {
-            pie: 'é¥¼å›¾',
-            bar: 'æŸ±çŠ¶å›¾',
-            line: 'æŠ˜çº¿å›¾',
-            scatter: 'æ•£ç‚¹å›¾',
-            effectScatter: 'æ¶Ÿæ¼ªæ•£ç‚¹å›¾',
-            radar: 'é›·è¾¾å›¾',
-            tree: 'æ ‘å›¾',
-            treemap: 'çŸ©å½¢æ ‘å›¾',
-            boxplot: 'ç®±å‹å›¾',
-            candlestick: 'Kçº¿å›¾',
-            k: 'Kçº¿å›¾',
-            heatmap: 'çƒ­åŠ›å›¾',
-            map: 'åœ°å›¾',
-            parallel: 'å¹³è¡Œåæ ‡å›¾',
-            lines: 'çº¿å›¾',
-            graph: 'å…³ç³»å›¾',
-            sankey: 'æ¡‘åŸºå›¾',
-            funnel: 'æ¼æ–—å›¾',
-            gauge: 'ä»ªè¡¨ç›˜å›¾',
-            pictorialBar: 'è±¡å½¢æŸ±å›¾',
-            themeRiver: 'ä¸»é¢˜æ²³æµå›¾',
-            sunburst: 'æ—­æ—¥å›¾'
+            pie: '±ıÍ¼',
+            bar: 'Öù×´Í¼',
+            line: 'ÕÛÏßÍ¼',
+            scatter: 'É¢µãÍ¼',
+            effectScatter: 'Á°äôÉ¢µãÍ¼',
+            radar: 'À×´ïÍ¼',
+            tree: 'Ê÷Í¼',
+            treemap: '¾ØĞÎÊ÷Í¼',
+            boxplot: 'ÏäĞÍÍ¼',
+            candlestick: 'KÏßÍ¼',
+            k: 'KÏßÍ¼',
+            heatmap: 'ÈÈÁ¦Í¼',
+            map: 'µØÍ¼',
+            parallel: 'Æ½ĞĞ×ø±êÍ¼',
+            lines: 'ÏßÍ¼',
+            graph: '¹ØÏµÍ¼',
+            sankey: 'É£»ùÍ¼',
+            funnel: 'Â©¶·Í¼',
+            gauge: 'ÒÇ±íÅÌÍ¼',
+            pictorialBar: 'ÏóĞÎÖùÍ¼',
+            themeRiver: 'Ö÷ÌâºÓÁ÷Í¼',
+            sunburst: 'ĞñÈÕÍ¼'
         }
     },
     aria: {
         general: {
-            withTitle: 'è¿™æ˜¯ä¸€ä¸ªå…³äºâ€œ{title}â€çš„å›¾è¡¨ã€‚',
-            withoutTitle: 'è¿™æ˜¯ä¸€ä¸ªå›¾è¡¨ï¼Œ'
+            withTitle: 'ÕâÊÇÒ»¸ö¹ØÓÚ¡°{title}¡±µÄÍ¼±í¡£',
+            withoutTitle: 'ÕâÊÇÒ»¸öÍ¼±í£¬'
         },
         series: {
             single: {
                 prefix: '',
-                withName: 'å›¾è¡¨ç±»å‹æ˜¯{seriesType}ï¼Œè¡¨ç¤º{seriesName}ã€‚',
-                withoutName: 'å›¾è¡¨ç±»å‹æ˜¯{seriesType}ã€‚'
+                withName: 'Í¼±íÀàĞÍÊÇ{seriesType}£¬±íÊ¾{seriesName}¡£',
+                withoutName: 'Í¼±íÀàĞÍÊÇ{seriesType}¡£'
             },
             multiple: {
-                prefix: 'å®ƒç”±{seriesCount}ä¸ªå›¾è¡¨ç³»åˆ—ç»„æˆã€‚',
-                withName: 'ç¬¬{seriesId}ä¸ªç³»åˆ—æ˜¯ä¸€ä¸ªè¡¨ç¤º{seriesName}çš„{seriesType}ï¼Œ',
-                withoutName: 'ç¬¬{seriesId}ä¸ªç³»åˆ—æ˜¯ä¸€ä¸ª{seriesType}ï¼Œ',
+                prefix: 'ËüÓÉ{seriesCount}¸öÍ¼±íÏµÁĞ×é³É¡£',
+                withName: 'µÚ{seriesId}¸öÏµÁĞÊÇÒ»¸ö±íÊ¾{seriesName}µÄ{seriesType}£¬',
+                withoutName: 'µÚ{seriesId}¸öÏµÁĞÊÇÒ»¸ö{seriesType}£¬',
                 separator: {
-                    middle: 'ï¼›',
-                    end: 'ã€‚'
+                    middle: '£»',
+                    end: '¡£'
                 }
             }
         },
         data: {
-            allData: 'å…¶æ•°æ®æ˜¯â€”â€”',
-            partialData: 'å…¶ä¸­ï¼Œå‰{displayCnt}é¡¹æ˜¯â€”â€”',
-            withName: '{name}çš„æ•°æ®æ˜¯{value}',
+            allData: 'ÆäÊı¾İÊÇ¡ª¡ª',
+            partialData: 'ÆäÖĞ£¬Ç°{displayCnt}ÏîÊÇ¡ª¡ª',
+            withName: '{name}µÄÊı¾İÊÇ{value}',
             withoutName: '{value}',
             separator: {
-                middle: 'ï¼Œ',
+                middle: '£¬',
                 end: ''
             }
         }
@@ -25060,7 +25060,7 @@ var aria = function (dom, ecModel) {
     }
 
     function getSeriesTypeName(type) {
-        return lang.series.typeNames[type] || 'è‡ªå®šä¹‰å›¾';
+        return lang.series.typeNames[type] || '×Ô¶¨ÒåÍ¼';
     }
 };
 
@@ -25982,7 +25982,7 @@ Component.extend({
 });
 
 /**
- * æ¤­åœ†å½¢çŠ¶
+ * ÍÖÔ²ĞÎ×´
  * @module zrender/graphic/shape/Ellipse
  */
 
@@ -26001,9 +26001,9 @@ var Ellipse = Path.extend({
         var y = shape.cy;
         var a = shape.rx;
         var b = shape.ry;
-        var ox = a * k; // æ°´å¹³æ§åˆ¶ç‚¹åç§»é‡
-        var oy = b * k; // å‚ç›´æ§åˆ¶ç‚¹åç§»é‡
-        // ä»æ¤­åœ†çš„å·¦ç«¯ç‚¹å¼€å§‹é¡ºæ—¶é’ˆç»˜åˆ¶å››æ¡ä¸‰æ¬¡è´å¡å°”æ›²çº¿
+        var ox = a * k; // Ë®Æ½¿ØÖÆµãÆ«ÒÆÁ¿
+        var oy = b * k; // ´¹Ö±¿ØÖÆµãÆ«ÒÆÁ¿
+        // ´ÓÍÖÔ²µÄ×ó¶Ëµã¿ªÊ¼Ë³Ê±Õë»æÖÆËÄÌõÈı´Î±´Èû¶ûÇúÏß
         ctx.moveTo(x - a, y);
         ctx.bezierCurveTo(x - a, y - oy, x - ox, y - b, x, y - b);
         ctx.bezierCurveTo(x + ox, y - b, x + a, y - oy, x + a, y);
@@ -33234,7 +33234,7 @@ var ONE_MINUTE = ONE_SECOND * 60;
 var ONE_HOUR = ONE_MINUTE * 60;
 var ONE_DAY = ONE_HOUR * 24;
 
-// FIXME å…¬ç”¨ï¼Ÿ
+// FIXME ¹«ÓÃ£¿
 var bisect = function (a, x, lo, hi) {
     while (lo < hi) {
         var mid = lo + hi >>> 1;
@@ -34406,7 +34406,7 @@ function symbolPathSetColor(color, innerColor) {
             symbolStyle.fill = innerColor || '#fff';
         }
         else {
-            // FIXME åˆ¤æ–­å›¾å½¢é»˜è®¤æ˜¯å¡«å……è¿˜æ˜¯æè¾¹ï¼Œä½¿ç”¨ onlyStroke ?
+            // FIXME ÅĞ¶ÏÍ¼ĞÎÄ¬ÈÏÊÇÌî³ä»¹ÊÇÃè±ß£¬Ê¹ÓÃ onlyStroke ?
             symbolStyle.fill && (symbolStyle.fill = color);
             symbolStyle.stroke && (symbolStyle.stroke = color);
         }
@@ -38950,8 +38950,8 @@ axisModelCreator('y', AxisModel, getAxisType, extraOption);
 * under the License.
 */
 
-// Grid æ˜¯åœ¨æœ‰ç›´è§’åæ ‡ç³»çš„æ—¶å€™å¿…é¡»è¦å­˜åœ¨çš„
-// æ‰€ä»¥è¿™é‡Œä¹Ÿè¦è¢« Cartesian2D ä¾èµ–
+// Grid ÊÇÔÚÓĞÖ±½Ç×ø±êÏµµÄÊ±ºò±ØĞëÒª´æÔÚµÄ
+// ËùÒÔÕâÀïÒ²Òª±» Cartesian2D ÒÀÀµ
 
 ComponentModel.extend({
 
@@ -41264,8 +41264,8 @@ var BaseBarSeries = SeriesModel.extend({
     },
 
     defaultOption: {
-        zlevel: 0,                  // ä¸€çº§å±‚å 
-        z: 2,                       // äºŒçº§å±‚å 
+        zlevel: 0,                  // Ò»¼¶²ãµş
+        z: 2,                       // ¶ş¼¶²ãµş
         coordinateSystem: 'cartesian2d',
         legendHoverLink: true,
         // stack: null
@@ -41274,9 +41274,9 @@ var BaseBarSeries = SeriesModel.extend({
         // xAxisIndex: 0,
         // yAxisIndex: 0,
 
-        // æœ€å°é«˜åº¦æ”¹ä¸º0
+        // ×îĞ¡¸ß¶È¸ÄÎª0
         barMinHeight: 0,
-        // æœ€å°è§’åº¦ä¸º0ï¼Œä»…å¯¹æåæ ‡ç³»ä¸‹çš„æŸ±çŠ¶å›¾æœ‰æ•ˆ
+        // ×îĞ¡½Ç¶ÈÎª0£¬½ö¶Ô¼«×ø±êÏµÏÂµÄÖù×´Í¼ÓĞĞ§
         barMinAngle: 0,
         // cursor: null,
 
@@ -41286,11 +41286,11 @@ var BaseBarSeries = SeriesModel.extend({
         progressiveChunkMode: 'mod',
 
         // barMaxWidth: null,
-        // é»˜è®¤è‡ªé€‚åº”
+        // Ä¬ÈÏ×ÔÊÊÓ¦
         // barWidth: null,
-        // æŸ±é—´è·ç¦»ï¼Œé»˜è®¤ä¸ºæŸ±å½¢å®½åº¦çš„30%ï¼Œå¯è®¾å›ºå®šå€¼
+        // Öù¼ä¾àÀë£¬Ä¬ÈÏÎªÖùĞÎ¿í¶ÈµÄ30%£¬¿ÉÉè¹Ì¶¨Öµ
         // barGap: '30%',
-        // ç±»ç›®é—´æŸ±å½¢è·ç¦»ï¼Œé»˜è®¤ä¸ºç±»ç›®é—´è·çš„20%ï¼Œå¯è®¾å›ºå®šå€¼
+        // ÀàÄ¿¼äÖùĞÎ¾àÀë£¬Ä¬ÈÏÎªÀàÄ¿¼ä¾àµÄ20%£¬¿ÉÉè¹Ì¶¨Öµ
         // barCategoryGap: '20%',
         // label: {
         //      show: false
@@ -42117,24 +42117,24 @@ var PieSeries = extendSeriesModel({
         legendHoverLink: true,
 
         hoverAnimation: true,
-        // é»˜è®¤å…¨å±€å±…ä¸­
+        // Ä¬ÈÏÈ«¾Ö¾ÓÖĞ
         center: ['50%', '50%'],
         radius: [0, '75%'],
-        // é»˜è®¤é¡ºæ—¶é’ˆ
+        // Ä¬ÈÏË³Ê±Õë
         clockwise: true,
         startAngle: 90,
-        // æœ€å°è§’åº¦æ”¹ä¸º0
+        // ×îĞ¡½Ç¶È¸ÄÎª0
         minAngle: 0,
-        // é€‰ä¸­æ—¶æ‰‡åŒºåç§»é‡
+        // Ñ¡ÖĞÊ±ÉÈÇøÆ«ÒÆÁ¿
         selectedOffset: 10,
-        // é«˜äº®æ‰‡åŒºåç§»é‡
+        // ¸ßÁÁÉÈÇøÆ«ÒÆÁ¿
         hoverOffset: 10,
 
         // If use strategy to avoid label overlapping
         avoidLabelOverlap: true,
-        // é€‰æ‹©æ¨¡å¼ï¼Œé»˜è®¤å…³é—­ï¼Œå¯é€‰singleï¼Œmultiple
+        // Ñ¡ÔñÄ£Ê½£¬Ä¬ÈÏ¹Ø±Õ£¬¿ÉÑ¡single£¬multiple
         // selectedMode: false,
-        // å—ä¸æ ¼å°”ç«ç‘°å›¾æ¨¡å¼ï¼Œ'radius'ï¼ˆåŠå¾„ï¼‰ | 'area'ï¼ˆé¢ç§¯ï¼‰
+        // ÄÏ¶¡¸ñ¶ûÃµ¹åÍ¼Ä£Ê½£¬'radius'£¨°ë¾¶£© | 'area'£¨Ãæ»ı£©
         // roseType: null,
 
         percentPrecision: 2,
@@ -42150,20 +42150,20 @@ var PieSeries = extendSeriesModel({
             show: true,
             // 'outer', 'inside', 'center'
             position: 'outer'
-            // formatter: æ ‡ç­¾æ–‡æœ¬æ ¼å¼å™¨ï¼ŒåŒTooltip.formatterï¼Œä¸æ”¯æŒå¼‚æ­¥å›è°ƒ
-            // é»˜è®¤ä½¿ç”¨å…¨å±€æ–‡æœ¬æ ·å¼ï¼Œè¯¦è§TEXTSTYLE
-            // distance: å½“positionä¸ºinneræ—¶æœ‰æ•ˆï¼Œä¸ºlabelä½ç½®åˆ°åœ†å¿ƒçš„è·ç¦»ä¸åœ†åŠå¾„(ç¯çŠ¶å›¾ä¸ºå†…å¤–åŠå¾„å’Œ)çš„æ¯”ä¾‹ç³»æ•°
+            // formatter: ±êÇ©ÎÄ±¾¸ñÊ½Æ÷£¬Í¬Tooltip.formatter£¬²»Ö§³ÖÒì²½»Øµ÷
+            // Ä¬ÈÏÊ¹ÓÃÈ«¾ÖÎÄ±¾ÑùÊ½£¬Ïê¼ûTEXTSTYLE
+            // distance: µ±positionÎªinnerÊ±ÓĞĞ§£¬ÎªlabelÎ»ÖÃµ½Ô²ĞÄµÄ¾àÀëÓëÔ²°ë¾¶(»·×´Í¼ÎªÄÚÍâ°ë¾¶ºÍ)µÄ±ÈÀıÏµÊı
         },
         // Enabled when label.normal.position is 'outer'
         labelLine: {
             show: true,
-            // å¼•å¯¼çº¿ä¸¤æ®µä¸­çš„ç¬¬ä¸€æ®µé•¿åº¦
+            // Òıµ¼ÏßÁ½¶ÎÖĞµÄµÚÒ»¶Î³¤¶È
             length: 15,
-            // å¼•å¯¼çº¿ä¸¤æ®µä¸­çš„ç¬¬äºŒæ®µé•¿åº¦
+            // Òıµ¼ÏßÁ½¶ÎÖĞµÄµÚ¶ş¶Î³¤¶È
             length2: 15,
             smooth: false,
             lineStyle: {
-                // color: å„å¼‚,
+                // color: ¸÷Òì,
                 width: 1,
                 type: 'solid'
             }
@@ -43067,7 +43067,7 @@ var pieLayout = function (seriesType, ecModel, api, payload) {
                 return;
             }
 
-            // FIXME å…¼å®¹ 2.0 ä½†æ˜¯ roseType æ˜¯ area çš„æ—¶å€™æ‰æ˜¯è¿™æ ·ï¼Ÿ
+            // FIXME ¼æÈİ 2.0 µ«ÊÇ roseType ÊÇ area µÄÊ±ºò²ÅÊÇÕâÑù£¿
             if (roseType !== 'area') {
                 angle = (sum === 0 && stillShowZeroSum)
                     ? unitRadian : (value * unitRadian);
@@ -43284,9 +43284,9 @@ SeriesModel.extend({
         // Geo coordinate system
         // geoIndex: 0,
 
-        // symbol: null,        // å›¾å½¢ç±»å‹
-        symbolSize: 10,          // å›¾å½¢å¤§å°ï¼ŒåŠå®½ï¼ˆåŠå¾„ï¼‰å‚æ•°ï¼Œå½“å›¾å½¢ä¸ºæ–¹å‘æˆ–è±å½¢åˆ™æ€»å®½åº¦ä¸ºsymbolSize * 2
-        // symbolRotate: null,  // å›¾å½¢æ—‹è½¬æ§åˆ¶
+        // symbol: null,        // Í¼ĞÎÀàĞÍ
+        symbolSize: 10,          // Í¼ĞÎ´óĞ¡£¬°ë¿í£¨°ë¾¶£©²ÎÊı£¬µ±Í¼ĞÎÎª·½Ïò»òÁâĞÎÔò×Ü¿í¶ÈÎªsymbolSize * 2
+        // symbolRotate: null,  // Í¼ĞÎĞı×ª¿ØÖÆ
 
         large: false,
         // Available when large is true
@@ -43296,14 +43296,14 @@ SeriesModel.extend({
         // label: {
             // show: false
             // distance: 5,
-            // formatter: æ ‡ç­¾æ–‡æœ¬æ ¼å¼å™¨ï¼ŒåŒTooltip.formatterï¼Œä¸æ”¯æŒå¼‚æ­¥å›è°ƒ
-            // position: é»˜è®¤è‡ªé€‚åº”ï¼Œæ°´å¹³å¸ƒå±€ä¸º'top'ï¼Œå‚ç›´å¸ƒå±€ä¸º'right'ï¼Œå¯é€‰ä¸º
+            // formatter: ±êÇ©ÎÄ±¾¸ñÊ½Æ÷£¬Í¬Tooltip.formatter£¬²»Ö§³ÖÒì²½»Øµ÷
+            // position: Ä¬ÈÏ×ÔÊÊÓ¦£¬Ë®Æ½²¼¾ÖÎª'top'£¬´¹Ö±²¼¾ÖÎª'right'£¬¿ÉÑ¡Îª
             //           'inside'|'left'|'right'|'top'|'bottom'
-            // é»˜è®¤ä½¿ç”¨å…¨å±€æ–‡æœ¬æ ·å¼ï¼Œè¯¦è§TEXTSTYLE
+            // Ä¬ÈÏÊ¹ÓÃÈ«¾ÖÎÄ±¾ÑùÊ½£¬Ïê¼ûTEXTSTYLE
         // },
         itemStyle: {
             opacity: 0.8
-            // color: å„å¼‚
+            // color: ¸÷Òì
         }
 
         // progressive: null
@@ -44838,7 +44838,7 @@ registerPreprocessor(backwardCompat$1);
 * under the License.
 */
 
-// Fix for å—æµ·è¯¸å²›
+// Fix for ÄÏº£Öîµº
 
 var geoCoord = [126, 25];
 
@@ -44872,7 +44872,7 @@ for (var i$1 = 0; i$1 < points$1.length; i$1++) {
 var fixNanhai = function (mapType, regions) {
     if (mapType === 'china') {
         regions.push(new Region(
-            'å—æµ·è¯¸å²›',
+            'ÄÏº£Öîµº',
             map(points$1, function (exterior) {
                 return {
                     type: 'polygon',
@@ -44903,13 +44903,13 @@ var fixNanhai = function (mapType, regions) {
 */
 
 var coordsOffsetMap = {
-    'å—æµ·è¯¸å²›': [32, 80],
-    // å…¨å›½
-    'å¹¿ä¸œ': [0, -10],
-    'é¦™æ¸¯': [10, 5],
-    'æ¾³é—¨': [-10, 10],
-    //'åŒ—äº¬': [-10, 0],
-    'å¤©æ´¥': [5, 5]
+    'ÄÏº£Öîµº': [32, 80],
+    // È«¹ú
+    '¹ã¶«': [0, -10],
+    'Ïã¸Û': [10, 5],
+    '°ÄÃÅ': [-10, 10],
+    //'±±¾©': [-10, 0],
+    'Ìì½ò': [5, 5]
 };
 
 var fixTextCoord = function (mapType, region) {
@@ -44978,7 +44978,7 @@ var fixGeoCoord = function (mapType, region) {
 * under the License.
 */
 
-// Fix for é’“é±¼å²›
+// Fix for µöÓãµº
 
 // var Region = require('../Region');
 // var zrUtil = require('zrender/src/core/util');
@@ -44996,7 +44996,7 @@ var points$2 = [
 ];
 
 var fixDiaoyuIsland = function (mapType, region) {
-    if (mapType === 'china' && region.name === 'å°æ¹¾') {
+    if (mapType === 'china' && region.name === 'Ì¨Íå') {
         region.geometries.push({
             type: 'polygon',
             exterior: points$2[0]
@@ -45510,9 +45510,9 @@ var MapSeries = SeriesModel.extend({
     },
 
     defaultOption: {
-        // ä¸€çº§å±‚å 
+        // Ò»¼¶²ãµş
         zlevel: 0,
-        // äºŒçº§å±‚å 
+        // ¶ş¼¶²ãµş
         z: 2,
 
         coordinateSystem: 'geo',
@@ -45545,19 +45545,19 @@ var MapSeries = SeriesModel.extend({
         // layoutSize: 100
 
 
-        // æ•°å€¼åˆå¹¶æ–¹å¼ï¼Œé»˜è®¤åŠ å’Œï¼Œå¯é€‰ä¸ºï¼š
+        // ÊıÖµºÏ²¢·½Ê½£¬Ä¬ÈÏ¼ÓºÍ£¬¿ÉÑ¡Îª£º
         // 'sum' | 'average' | 'max' | 'min'
         // mapValueCalculation: 'sum',
-        // åœ°å›¾æ•°å€¼è®¡ç®—ç»“æœå°æ•°ç²¾åº¦
+        // µØÍ¼ÊıÖµ¼ÆËã½á¹ûĞ¡Êı¾«¶È
         // mapValuePrecision: 0,
 
 
-        // æ˜¾ç¤ºå›¾ä¾‹é¢œè‰²æ ‡è¯†ï¼ˆç³»åˆ—æ ‡è¯†çš„å°åœ†ç‚¹ï¼‰ï¼Œå›¾ä¾‹å¼€å¯æ—¶æœ‰æ•ˆ
+        // ÏÔÊ¾Í¼ÀıÑÕÉ«±êÊ¶£¨ÏµÁĞ±êÊ¶µÄĞ¡Ô²µã£©£¬Í¼Àı¿ªÆôÊ±ÓĞĞ§
         showLegendSymbol: true,
-        // é€‰æ‹©æ¨¡å¼ï¼Œé»˜è®¤å…³é—­ï¼Œå¯é€‰singleï¼Œmultiple
+        // Ñ¡ÔñÄ£Ê½£¬Ä¬ÈÏ¹Ø±Õ£¬¿ÉÑ¡single£¬multiple
         // selectedMode: false,
         dataRangeHoverLink: true,
-        // æ˜¯å¦å¼€å¯ç¼©æ”¾åŠæ¼«æ¸¸æ¨¡å¼
+        // ÊÇ·ñ¿ªÆôËõ·Å¼°ÂşÓÎÄ£Ê½
         // roam: false,
 
         // Define left-top, right-bottom coords to control view
@@ -47692,7 +47692,7 @@ var mapVisual = function (ecModel) {
 * under the License.
 */
 
-// FIXME å…¬ç”¨ï¼Ÿ
+// FIXME ¹«ÓÃ£¿
 /**
  * @param {Array.<module:echarts/data/List>} datas
  * @param {string} statisticType 'average' 'sum'
@@ -48992,7 +48992,7 @@ function nextLeft(node) {
 }
 
 /**
- * If nodeInLeftâ€™s ancestor is a sibling of node, returns nodeInLeftâ€™s ancestor.
+ * If nodeInLeft¡¯s ancestor is a sibling of node, returns nodeInLeft¡¯s ancestor.
  * Otherwise, returns the specified ancestor.
  *
  * @param  {module:echarts/data/Tree~TreeNode} nodeInLeft
@@ -49916,8 +49916,8 @@ SeriesModel.extend({
         squareRatio: 0.5 * (1 + Math.sqrt(5)), // golden ratio
         leafDepth: null,                    // Nodes on depth from root are regarded as leaves.
                                             // Count from zero (zero represents only view root).
-        drillDownIcon: 'â–¶',                 // Use html character temporarily because it is complicated
-                                            // to align specialized icon. â–·â–¶â’ââ–¼âœš
+        drillDownIcon: '?',                 // Use html character temporarily because it is complicated
+                                            // to align specialized icon. ????¨‹?
 
         zoomToNodeRatio: 0.32 * 0.32,       // Be effective when using zoomToNode. Specify the proportion of the
                                             // target node area in the view area.
@@ -50683,7 +50683,7 @@ extendChartView({
         var containerGroup = this._containerGroup;
         if (!containerGroup) {
             // FIXME
-            // åŠ ä¸€å±‚containerGroupæ˜¯ä¸ºäº†clipï¼Œä½†æ˜¯ç°åœ¨clipåŠŸèƒ½å¹¶æ²¡æœ‰å®ç°ã€‚
+            // ¼ÓÒ»²ãcontainerGroupÊÇÎªÁËclip£¬µ«ÊÇÏÖÔÚclip¹¦ÄÜ²¢Ã»ÓĞÊµÏÖ¡£
             containerGroup = this._containerGroup = new Group$2();
             this._initEvents(containerGroup);
             this.group.add(containerGroup);
@@ -52521,7 +52521,7 @@ var treemapLayout = {
         seriesModel.setLayoutInfo(layoutInfo);
 
         // FIXME
-        // ç°åœ¨æ²¡æœ‰clipåŠŸèƒ½ï¼Œæš‚æ—¶å–ecé«˜å®½ã€‚
+        // ÏÖÔÚÃ»ÓĞclip¹¦ÄÜ£¬ÔİÊ±È¡ec¸ß¿í¡£
         prunning(
             treeRoot,
             // Transform to base element coordinate system.
@@ -53039,7 +53039,7 @@ function generateNodeKey(id) {
  */
 var Graph = function (directed) {
     /**
-     * æ˜¯å¦æ˜¯æœ‰å‘å›¾
+     * ÊÇ·ñÊÇÓĞÏòÍ¼
      * @type {boolean}
      * @private
      */
@@ -53434,7 +53434,7 @@ Node.prototype = {
 };
 
 /**
- * å›¾è¾¹
+ * Í¼±ß
  * @alias module:echarts/data/Graph.Edge
  * @param {module:echarts/data/Graph.Node} n1
  * @param {module:echarts/data/Graph.Node} n2
@@ -53443,13 +53443,13 @@ Node.prototype = {
 function Edge(n1, n2, dataIndex) {
 
     /**
-     * èŠ‚ç‚¹1ï¼Œå¦‚æœæ˜¯æœ‰å‘å›¾åˆ™ä¸ºæºèŠ‚ç‚¹
+     * ½Úµã1£¬Èç¹ûÊÇÓĞÏòÍ¼ÔòÎªÔ´½Úµã
      * @type {module:echarts/data/Graph.Node}
      */
     this.node1 = n1;
 
     /**
-     * èŠ‚ç‚¹2ï¼Œå¦‚æœæ˜¯æœ‰å‘å›¾åˆ™ä¸ºç›®æ ‡èŠ‚ç‚¹
+     * ½Úµã2£¬Èç¹ûÊÇÓĞÏòÍ¼ÔòÎªÄ¿±ê½Úµã
      * @type {module:echarts/data/Graph.Node}
      */
     this.node2 = n2;
@@ -54588,7 +54588,7 @@ function intersectCurveCircle(curvePoints, center, radius) {
         }
     }
 
-    // Assume the segment is monotoneï¼ŒFind root through Bisection method
+    // Assume the segment is monotone£¬Find root through Bisection method
     // At most 32 iteration
     for (var i = 0; i < 32; i++) {
         // var prev = t - interval;
@@ -56053,50 +56053,50 @@ var GaugeSeries = SeriesModel.extend({
     defaultOption: {
         zlevel: 0,
         z: 2,
-        // é»˜è®¤å…¨å±€å±…ä¸­
+        // Ä¬ÈÏÈ«¾Ö¾ÓÖĞ
         center: ['50%', '50%'],
         legendHoverLink: true,
         radius: '75%',
         startAngle: 225,
         endAngle: -45,
         clockwise: true,
-        // æœ€å°å€¼
+        // ×îĞ¡Öµ
         min: 0,
-        // æœ€å¤§å€¼
+        // ×î´óÖµ
         max: 100,
-        // åˆ†å‰²æ®µæ•°ï¼Œé»˜è®¤ä¸º10
+        // ·Ö¸î¶ÎÊı£¬Ä¬ÈÏÎª10
         splitNumber: 10,
-        // åæ ‡è½´çº¿
+        // ×ø±êÖáÏß
         axisLine: {
-            // é»˜è®¤æ˜¾ç¤ºï¼Œå±æ€§showæ§åˆ¶æ˜¾ç¤ºä¸å¦
+            // Ä¬ÈÏÏÔÊ¾£¬ÊôĞÔshow¿ØÖÆÏÔÊ¾Óë·ñ
             show: true,
-            lineStyle: {       // å±æ€§lineStyleæ§åˆ¶çº¿æ¡æ ·å¼
+            lineStyle: {       // ÊôĞÔlineStyle¿ØÖÆÏßÌõÑùÊ½
                 color: [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']],
                 width: 30
             }
         },
-        // åˆ†éš”çº¿
+        // ·Ö¸ôÏß
         splitLine: {
-            // é»˜è®¤æ˜¾ç¤ºï¼Œå±æ€§showæ§åˆ¶æ˜¾ç¤ºä¸å¦
+            // Ä¬ÈÏÏÔÊ¾£¬ÊôĞÔshow¿ØÖÆÏÔÊ¾Óë·ñ
             show: true,
-            // å±æ€§lengthæ§åˆ¶çº¿é•¿
+            // ÊôĞÔlength¿ØÖÆÏß³¤
             length: 30,
-            // å±æ€§lineStyleï¼ˆè¯¦è§lineStyleï¼‰æ§åˆ¶çº¿æ¡æ ·å¼
+            // ÊôĞÔlineStyle£¨Ïê¼ûlineStyle£©¿ØÖÆÏßÌõÑùÊ½
             lineStyle: {
                 color: '#eee',
                 width: 2,
                 type: 'solid'
             }
         },
-        // åæ ‡è½´å°æ ‡è®°
+        // ×ø±êÖáĞ¡±ê¼Ç
         axisTick: {
-            // å±æ€§showæ§åˆ¶æ˜¾ç¤ºä¸å¦ï¼Œé»˜è®¤ä¸æ˜¾ç¤º
+            // ÊôĞÔshow¿ØÖÆÏÔÊ¾Óë·ñ£¬Ä¬ÈÏ²»ÏÔÊ¾
             show: true,
-            // æ¯ä»½splitç»†åˆ†å¤šå°‘æ®µ
+            // Ã¿·İsplitÏ¸·Ö¶àÉÙ¶Î
             splitNumber: 5,
-            // å±æ€§lengthæ§åˆ¶çº¿é•¿
+            // ÊôĞÔlength¿ØÖÆÏß³¤
             length: 8,
-            // å±æ€§lineStyleæ§åˆ¶çº¿æ¡æ ·å¼
+            // ÊôĞÔlineStyle¿ØÖÆÏßÌõÑùÊ½
             lineStyle: {
                 color: '#eee',
                 width: 1,
@@ -56119,9 +56119,9 @@ var GaugeSeries = SeriesModel.extend({
         },
         title: {
             show: true,
-            // x, yï¼Œå•ä½px
+            // x, y£¬µ¥Î»px
             offsetCenter: [0, '-40%'],
-            // å…¶ä½™å±æ€§é»˜è®¤ä½¿ç”¨å…¨å±€æ–‡æœ¬æ ·å¼ï¼Œè¯¦è§TEXTSTYLE
+            // ÆäÓàÊôĞÔÄ¬ÈÏÊ¹ÓÃÈ«¾ÖÎÄ±¾ÑùÊ½£¬Ïê¼ûTEXTSTYLE
             color: '#333',
             fontSize: 15
         },
@@ -56133,10 +56133,10 @@ var GaugeSeries = SeriesModel.extend({
             width: 100,
             height: null, // self-adaption
             padding: [5, 10],
-            // x, yï¼Œå•ä½px
+            // x, y£¬µ¥Î»px
             offsetCenter: [0, '40%'],
             // formatter: null,
-            // å…¶ä½™å±æ€§é»˜è®¤ä½¿ç”¨å…¨å±€æ–‡æœ¬æ ·å¼ï¼Œè¯¦è§TEXTSTYLE
+            // ÆäÓàÊôĞÔÄ¬ÈÏÊ¹ÓÃÈ«¾ÖÎÄ±¾ÑùÊ½£¬Ïê¼ûTEXTSTYLE
             color: 'auto',
             fontSize: 30
         }
@@ -56713,8 +56713,8 @@ var FunnelSeries = extendSeriesModel({
     },
 
     defaultOption: {
-        zlevel: 0,                  // ä¸€çº§å±‚å 
-        z: 2,                       // äºŒçº§å±‚å 
+        zlevel: 0,                  // Ò»¼¶²ãµş
+        z: 2,                       // ¶ş¼¶²ãµş
         legendHoverLink: true,
         left: 80,
         top: 60,
@@ -56723,7 +56723,7 @@ var FunnelSeries = extendSeriesModel({
         // width: {totalWidth} - left - right,
         // height: {totalHeight} - top - bottom,
 
-        // é»˜è®¤å–æ•°æ®æœ€å°æœ€å¤§å€¼
+        // Ä¬ÈÏÈ¡Êı¾İ×îĞ¡×î´óÖµ
         // min: 0,
         // max: 100,
         minSize: '0%',
@@ -56734,19 +56734,19 @@ var FunnelSeries = extendSeriesModel({
         label: {
             show: true,
             position: 'outer'
-            // formatter: æ ‡ç­¾æ–‡æœ¬æ ¼å¼å™¨ï¼ŒåŒTooltip.formatterï¼Œä¸æ”¯æŒå¼‚æ­¥å›è°ƒ
+            // formatter: ±êÇ©ÎÄ±¾¸ñÊ½Æ÷£¬Í¬Tooltip.formatter£¬²»Ö§³ÖÒì²½»Øµ÷
         },
         labelLine: {
             show: true,
             length: 20,
             lineStyle: {
-                // color: å„å¼‚,
+                // color: ¸÷Òì,
                 width: 1,
                 type: 'solid'
             }
         },
         itemStyle: {
-            // color: å„å¼‚,
+            // color: ¸÷Òì,
             borderColor: '#fff',
             borderWidth: 1
         },
@@ -57743,10 +57743,10 @@ Parallel.prototype = {
             translate(transform, transform, position);
 
             // TODO
-            // tickç­‰æ’å¸ƒä¿¡æ¯ã€‚
+            // tickµÈÅÅ²¼ĞÅÏ¢¡£
 
             // TODO
-            // æ ¹æ®axis order æ›´æ–° dimensionsé¡ºåºã€‚
+            // ¸ù¾İaxis order ¸üĞÂ dimensionsË³Ğò¡£
 
             this._axesLayout[dim] = {
                 position: position,
@@ -59809,8 +59809,8 @@ SeriesModel.extend({
     },
 
     defaultOption: {
-        zlevel: 0,                  // ä¸€çº§å±‚å 
-        z: 2,                       // äºŒçº§å±‚å 
+        zlevel: 0,                  // Ò»¼¶²ãµş
+        z: 2,                       // ¶ş¼¶²ãµş
 
         coordinateSystem: 'parallel',
         parallelIndex: 0,
@@ -60127,7 +60127,7 @@ function updateElCommon(el, data, dataIndex, seriesScope) {
 // }
 
 // FIXME
-// å…¬ç”¨æ–¹æ³•?
+// ¹«ÓÃ·½·¨?
 function isEmptyValue(val, axisType) {
     return axisType === 'category'
         ? val == null
@@ -61489,7 +61489,7 @@ var seriesModelMixin = {
         var addOrdinal;
 
         // FIXME
-        // è€ƒè™‘æ—¶é—´è½´
+        // ¿¼ÂÇÊ±¼äÖá
 
         if (xAxisType === 'category') {
             option.layout = 'horizontal';
@@ -61623,8 +61623,8 @@ var BoxplotSeries = SeriesModel.extend({
      * @override
      */
     defaultOption: {
-        zlevel: 0,                  // ä¸€çº§å±‚å 
-        z: 2,                       // äºŒçº§å±‚å 
+        zlevel: 0,                  // Ò»¼¶²ãµş
+        z: 2,                       // ¶ş¼¶²ãµş
         coordinateSystem: 'cartesian2d',
         legendHoverLink: true,
 
@@ -62155,11 +62155,11 @@ var CandlestickSeries = SeriesModel.extend({
         layout: null, // 'horizontal' or 'vertical'
 
         itemStyle: {
-            color: '#c23531', // é˜³çº¿ positive
-            color0: '#314656', // é˜´çº¿ negative     '#c23531', '#314656'
+            color: '#c23531', // ÑôÏß positive
+            color0: '#314656', // ÒõÏß negative     '#c23531', '#314656'
             borderWidth: 1,
             // FIXME
-            // ec2ä¸­ä½¿ç”¨çš„æ˜¯lineStyle.color å’Œ lineStyle.color0
+            // ec2ÖĞÊ¹ÓÃµÄÊÇlineStyle.color ºÍ lineStyle.color0
             borderColor: '#c23531',
             borderColor0: '#314656'
         },
@@ -62923,9 +62923,9 @@ SeriesModel.extend({
         // Geo coordinate system
         // geoIndex: 0,
 
-        // symbol: null,        // å›¾å½¢ç±»å‹
-        symbolSize: 10          // å›¾å½¢å¤§å°ï¼ŒåŠå®½ï¼ˆåŠå¾„ï¼‰å‚æ•°ï¼Œå½“å›¾å½¢ä¸ºæ–¹å‘æˆ–è±å½¢åˆ™æ€»å®½åº¦ä¸ºsymbolSize * 2
-        // symbolRotate: null,  // å›¾å½¢æ—‹è½¬æ§åˆ¶
+        // symbol: null,        // Í¼ĞÎÀàĞÍ
+        symbolSize: 10          // Í¼ĞÎ´óĞ¡£¬°ë¿í£¨°ë¾¶£©²ÎÊı£¬µ±Í¼ĞÎÎª·½Ïò»òÁâĞÎÔò×Ü¿í¶ÈÎªsymbolSize * 2
+        // symbolRotate: null,  // Í¼ĞÎĞı×ª¿ØÖÆ
 
         // large: false,
         // Available when large is true
@@ -63575,7 +63575,7 @@ var LinesSeries = SeriesModel.extend({
             show: false,
             position: 'end'
             // distance: 5,
-            // formatter: æ ‡ç­¾æ–‡æœ¬æ ¼å¼å™¨ï¼ŒåŒTooltip.formatterï¼Œä¸æ”¯æŒå¼‚æ­¥å›è°ƒ
+            // formatter: ±êÇ©ÎÄ±¾¸ñÊ½Æ÷£¬Í¬Tooltip.formatter£¬²»Ö§³ÖÒì²½»Øµ÷
         },
 
         lineStyle: {
@@ -69460,13 +69460,13 @@ SeriesModel.extend({
         zlevel: 0,
         z: 2,
 
-        // é»˜è®¤å…¨å±€å±…ä¸­
+        // Ä¬ÈÏÈ«¾Ö¾ÓÖĞ
         center: ['50%', '50%'],
         radius: [0, '75%'],
-        // é»˜è®¤é¡ºæ—¶é’ˆ
+        // Ä¬ÈÏË³Ê±Õë
         clockwise: true,
         startAngle: 90,
-        // æœ€å°è§’åº¦æ”¹ä¸º0
+        // ×îĞ¡½Ç¶È¸ÄÎª0
         minAngle: 0,
 
         percentPrecision: 2,
@@ -72318,13 +72318,13 @@ var LegendModel = extendComponentModel({
     },
 
     defaultOption: {
-        // ä¸€çº§å±‚å 
+        // Ò»¼¶²ãµş
         zlevel: 0,
-        // äºŒçº§å±‚å 
+        // ¶ş¼¶²ãµş
         z: 4,
         show: true,
 
-        // å¸ƒå±€æ–¹å¼ï¼Œé»˜è®¤ä¸ºæ°´å¹³å¸ƒå±€ï¼Œå¯é€‰ä¸ºï¼š
+        // ²¼¾Ö·½Ê½£¬Ä¬ÈÏÎªË®Æ½²¼¾Ö£¬¿ÉÑ¡Îª£º
         // 'horizontal' | 'vertical'
         orient: 'horizontal',
 
@@ -72334,44 +72334,44 @@ var LegendModel = extendComponentModel({
         top: 0,
         // bottom: null,
 
-        // æ°´å¹³å¯¹é½
+        // Ë®Æ½¶ÔÆë
         // 'auto' | 'left' | 'right'
-        // é»˜è®¤ä¸º 'auto', æ ¹æ® x çš„ä½ç½®åˆ¤æ–­æ˜¯å·¦å¯¹é½è¿˜æ˜¯å³å¯¹é½
+        // Ä¬ÈÏÎª 'auto', ¸ù¾İ x µÄÎ»ÖÃÅĞ¶ÏÊÇ×ó¶ÔÆë»¹ÊÇÓÒ¶ÔÆë
         align: 'auto',
 
         backgroundColor: 'rgba(0,0,0,0)',
-        // å›¾ä¾‹è¾¹æ¡†é¢œè‰²
+        // Í¼Àı±ß¿òÑÕÉ«
         borderColor: '#ccc',
         borderRadius: 0,
-        // å›¾ä¾‹è¾¹æ¡†çº¿å®½ï¼Œå•ä½pxï¼Œé»˜è®¤ä¸º0ï¼ˆæ— è¾¹æ¡†ï¼‰
+        // Í¼Àı±ß¿òÏß¿í£¬µ¥Î»px£¬Ä¬ÈÏÎª0£¨ÎŞ±ß¿ò£©
         borderWidth: 0,
-        // å›¾ä¾‹å†…è¾¹è·ï¼Œå•ä½pxï¼Œé»˜è®¤å„æ–¹å‘å†…è¾¹è·ä¸º5ï¼Œ
-        // æ¥å—æ•°ç»„åˆ†åˆ«è®¾å®šä¸Šå³ä¸‹å·¦è¾¹è·ï¼ŒåŒcss
+        // Í¼ÀıÄÚ±ß¾à£¬µ¥Î»px£¬Ä¬ÈÏ¸÷·½ÏòÄÚ±ß¾àÎª5£¬
+        // ½ÓÊÜÊı×é·Ö±ğÉè¶¨ÉÏÓÒÏÂ×ó±ß¾à£¬Í¬css
         padding: 5,
-        // å„ä¸ªitemä¹‹é—´çš„é—´éš”ï¼Œå•ä½pxï¼Œé»˜è®¤ä¸º10ï¼Œ
-        // æ¨ªå‘å¸ƒå±€æ—¶ä¸ºæ°´å¹³é—´éš”ï¼Œçºµå‘å¸ƒå±€æ—¶ä¸ºçºµå‘é—´éš”
+        // ¸÷¸öitemÖ®¼äµÄ¼ä¸ô£¬µ¥Î»px£¬Ä¬ÈÏÎª10£¬
+        // ºáÏò²¼¾ÖÊ±ÎªË®Æ½¼ä¸ô£¬×İÏò²¼¾ÖÊ±Îª×İÏò¼ä¸ô
         itemGap: 10,
-        // å›¾ä¾‹å›¾å½¢å®½åº¦
+        // Í¼ÀıÍ¼ĞÎ¿í¶È
         itemWidth: 25,
-        // å›¾ä¾‹å›¾å½¢é«˜åº¦
+        // Í¼ÀıÍ¼ĞÎ¸ß¶È
         itemHeight: 14,
 
-        // å›¾ä¾‹å…³é—­æ—¶å€™çš„é¢œè‰²
+        // Í¼Àı¹Ø±ÕÊ±ºòµÄÑÕÉ«
         inactiveColor: '#ccc',
 
         textStyle: {
-            // å›¾ä¾‹æ–‡å­—é¢œè‰²
+            // Í¼ÀıÎÄ×ÖÑÕÉ«
             color: '#333'
         },
         // formatter: '',
-        // é€‰æ‹©æ¨¡å¼ï¼Œé»˜è®¤å¼€å¯å›¾ä¾‹å¼€å…³
+        // Ñ¡ÔñÄ£Ê½£¬Ä¬ÈÏ¿ªÆôÍ¼Àı¿ª¹Ø
         selectedMode: true,
-        // é…ç½®é»˜è®¤é€‰ä¸­çŠ¶æ€ï¼Œå¯é…åˆLEGEND.SELECTEDäº‹ä»¶åšåŠ¨æ€æ•°æ®è½½å…¥
+        // ÅäÖÃÄ¬ÈÏÑ¡ÖĞ×´Ì¬£¬¿ÉÅäºÏLEGEND.SELECTEDÊÂ¼ş×ö¶¯Ì¬Êı¾İÔØÈë
         // selected: null,
-        // å›¾ä¾‹å†…å®¹ï¼ˆè¯¦è§legend.dataï¼Œæ•°ç»„ä¸­æ¯ä¸€é¡¹ä»£è¡¨ä¸€ä¸ªitem
+        // Í¼ÀıÄÚÈİ£¨Ïê¼ûlegend.data£¬Êı×éÖĞÃ¿Ò»Ïî´ú±íÒ»¸öitem
         // data: [],
 
-        // Tooltip ç›¸å…³é…ç½®
+        // Tooltip Ïà¹ØÅäÖÃ
         tooltip: {
             show: false
         }
@@ -73631,7 +73631,7 @@ extendComponentModel({
 
         show: true,
 
-        // tooltipä¸»ä½“å†…å®¹
+        // tooltipÖ÷ÌåÄÚÈİ
         showContent: true,
 
         // 'trigger' only works on coordinate system.
@@ -73650,57 +73650,57 @@ extendComponentModel({
         // 'html': use html for tooltip
         // 'richText': use canvas, svg, and etc. for tooltip
 
-        // ä½ç½® {Array} | {Function}
+        // Î»ÖÃ {Array} | {Function}
         // position: null
         // Consider triggered from axisPointer handle, verticalAlign should be 'middle'
         // align: null,
         // verticalAlign: null,
 
-        // æ˜¯å¦çº¦æŸ content åœ¨ viewRect ä¸­ã€‚é»˜è®¤ false æ˜¯ä¸ºäº†å…¼å®¹ä»¥å‰ç‰ˆæœ¬ã€‚
+        // ÊÇ·ñÔ¼Êø content ÔÚ viewRect ÖĞ¡£Ä¬ÈÏ false ÊÇÎªÁË¼æÈİÒÔÇ°°æ±¾¡£
         confine: false,
 
-        // å†…å®¹æ ¼å¼å™¨ï¼š{string}ï¼ˆTemplateï¼‰ Â¦ {Function}
+        // ÄÚÈİ¸ñÊ½Æ÷£º{string}£¨Template£© | {Function}
         // formatter: null
 
         showDelay: 0,
 
-        // éšè—å»¶è¿Ÿï¼Œå•ä½ms
+        // Òş²ØÑÓ³Ù£¬µ¥Î»ms
         hideDelay: 100,
 
-        // åŠ¨ç”»å˜æ¢æ—¶é—´ï¼Œå•ä½s
+        // ¶¯»­±ä»»Ê±¼ä£¬µ¥Î»s
         transitionDuration: 0.4,
 
         enterable: false,
 
-        // æç¤ºèƒŒæ™¯é¢œè‰²ï¼Œé»˜è®¤ä¸ºé€æ˜åº¦ä¸º0.7çš„é»‘è‰²
+        // ÌáÊ¾±³¾°ÑÕÉ«£¬Ä¬ÈÏÎªÍ¸Ã÷¶ÈÎª0.7µÄºÚÉ«
         backgroundColor: 'rgba(50,50,50,0.7)',
 
-        // æç¤ºè¾¹æ¡†é¢œè‰²
+        // ÌáÊ¾±ß¿òÑÕÉ«
         borderColor: '#333',
 
-        // æç¤ºè¾¹æ¡†åœ†è§’ï¼Œå•ä½pxï¼Œé»˜è®¤ä¸º4
+        // ÌáÊ¾±ß¿òÔ²½Ç£¬µ¥Î»px£¬Ä¬ÈÏÎª4
         borderRadius: 4,
 
-        // æç¤ºè¾¹æ¡†çº¿å®½ï¼Œå•ä½pxï¼Œé»˜è®¤ä¸º0ï¼ˆæ— è¾¹æ¡†ï¼‰
+        // ÌáÊ¾±ß¿òÏß¿í£¬µ¥Î»px£¬Ä¬ÈÏÎª0£¨ÎŞ±ß¿ò£©
         borderWidth: 0,
 
-        // æç¤ºå†…è¾¹è·ï¼Œå•ä½pxï¼Œé»˜è®¤å„æ–¹å‘å†…è¾¹è·ä¸º5ï¼Œ
-        // æ¥å—æ•°ç»„åˆ†åˆ«è®¾å®šä¸Šå³ä¸‹å·¦è¾¹è·ï¼ŒåŒcss
+        // ÌáÊ¾ÄÚ±ß¾à£¬µ¥Î»px£¬Ä¬ÈÏ¸÷·½ÏòÄÚ±ß¾àÎª5£¬
+        // ½ÓÊÜÊı×é·Ö±ğÉè¶¨ÉÏÓÒÏÂ×ó±ß¾à£¬Í¬css
         padding: 5,
 
         // Extra css text
         extraCssText: '',
 
-        // åæ ‡è½´æŒ‡ç¤ºå™¨ï¼Œåæ ‡è½´è§¦å‘æœ‰æ•ˆ
+        // ×ø±êÖáÖ¸Ê¾Æ÷£¬×ø±êÖá´¥·¢ÓĞĞ§
         axisPointer: {
-            // é»˜è®¤ä¸ºç›´çº¿
-            // å¯é€‰ä¸ºï¼š'line' | 'shadow' | 'cross'
+            // Ä¬ÈÏÎªÖ±Ïß
+            // ¿ÉÑ¡Îª£º'line' | 'shadow' | 'cross'
             type: 'line',
 
-            // type ä¸º line çš„æ—¶å€™æœ‰æ•ˆï¼ŒæŒ‡å®š tooltip line æ‰€åœ¨çš„è½´ï¼Œå¯é€‰
-            // å¯é€‰ 'x' | 'y' | 'angle' | 'radius' | 'auto'
-            // é»˜è®¤ 'auto'ï¼Œä¼šé€‰æ‹©ç±»å‹ä¸º category çš„è½´ï¼Œå¯¹äºåŒæ•°å€¼è½´ï¼Œç¬›å¡å°”åæ ‡ç³»ä¼šé»˜è®¤é€‰æ‹© x è½´
-            // æåæ ‡ç³»ä¼šé»˜è®¤é€‰æ‹© angle è½´
+            // type Îª line µÄÊ±ºòÓĞĞ§£¬Ö¸¶¨ tooltip line ËùÔÚµÄÖá£¬¿ÉÑ¡
+            // ¿ÉÑ¡ 'x' | 'y' | 'angle' | 'radius' | 'auto'
+            // Ä¬ÈÏ 'auto'£¬»áÑ¡ÔñÀàĞÍÎª category µÄÖá£¬¶ÔÓÚË«ÊıÖµÖá£¬µÑ¿¨¶û×ø±êÏµ»áÄ¬ÈÏÑ¡Ôñ x Öá
+            // ¼«×ø±êÏµ»áÄ¬ÈÏÑ¡Ôñ angle Öá
             axis: 'auto',
 
             animation: 'auto',
@@ -76848,7 +76848,7 @@ var GeoModel = ComponentModel.extend({
         },
 
         itemStyle: {
-            // color: å„å¼‚,
+            // color: ¸÷Òì,
             borderWidth: 0.5,
             borderColor: '#444',
             color: '#eee'
@@ -78012,13 +78012,13 @@ registerVisual(PRIORITY_BRUSH, function (ecModel, api, payload) {
         /**
          * Logic for each series: (If the logic has to be modified one day, do it carefully!)
          *
-         * ( brushed â”¬ && â”¬hasBrushExist â”¬ && linkOthers  ) => StepA: â”¬record, â”¬ StepB: â”¬visualByRecord.
-         *   !brushedâ”˜    â”œhasBrushExist â”¤                            â””nothing,â”˜        â”œvisualByRecord.
-         *                â””!hasBrushExistâ”˜                                              â””nothing.
-         * ( !brushed  && â”¬hasBrushExist â”¬ && linkOthers  ) => StepA:  nothing,  StepB: â”¬visualByRecord.
-         *                â””!hasBrushExistâ”˜                                              â””nothing.
-         * ( brushed â”¬ &&                     !linkOthers ) => StepA:  nothing,  StepB: â”¬visualByCheck.
-         *   !brushedâ”˜                                                                  â””nothing.
+         * ( brushed ©Ğ && ©ĞhasBrushExist ©Ğ && linkOthers  ) => StepA: ©Ğrecord, ©Ğ StepB: ©ĞvisualByRecord.
+         *   !brushed©¼    ©ÀhasBrushExist ©È                            ©¸nothing,©¼        ©ÀvisualByRecord.
+         *                ©¸!hasBrushExist©¼                                              ©¸nothing.
+         * ( !brushed  && ©ĞhasBrushExist ©Ğ && linkOthers  ) => StepA:  nothing,  StepB: ©ĞvisualByRecord.
+         *                ©¸!hasBrushExist©¼                                              ©¸nothing.
+         * ( brushed ©Ğ &&                     !linkOthers ) => StepA:  nothing,  StepB: ©ĞvisualByCheck.
+         *   !brushed©¼                                                                  ©¸nothing.
          * ( !brushed  &&                     !linkOthers ) => StepA:  nothing,  StepB:  nothing.
          */
 
@@ -78291,7 +78291,7 @@ var BrushModel = extendComponentModel({
         throttleDelay: 0,        // Unit: ms, 0 means every event will be triggered.
 
         // FIXME
-        // è¯•éªŒæ•ˆæœ
+        // ÊÔÑéĞ§¹û
         removeOnClick: true,
 
         z: 10000
@@ -79417,16 +79417,16 @@ var MONTH_TEXT = {
         'Oct', 'Nov', 'Dec'
     ],
     CN: [
-        'ä¸€æœˆ', 'äºŒæœˆ', 'ä¸‰æœˆ',
-        'å››æœˆ', 'äº”æœˆ', 'å…­æœˆ',
-        'ä¸ƒæœˆ', 'å…«æœˆ', 'ä¹æœˆ',
-        'åæœˆ', 'åä¸€æœˆ', 'åäºŒæœˆ'
+        'Ò»ÔÂ', '¶şÔÂ', 'ÈıÔÂ',
+        'ËÄÔÂ', 'ÎåÔÂ', 'ÁùÔÂ',
+        'ÆßÔÂ', '°ËÔÂ', '¾ÅÔÂ',
+        'Ê®ÔÂ', 'Ê®Ò»ÔÂ', 'Ê®¶şÔÂ'
     ]
 };
 
 var WEEK_TEXT = {
     EN: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-    CN: ['æ—¥', 'ä¸€', 'äºŒ', 'ä¸‰', 'å››', 'äº”', 'å…­']
+    CN: ['ÈÕ', 'Ò»', '¶ş', 'Èı', 'ËÄ', 'Îå', 'Áù']
 };
 
 extendComponentView({
@@ -79932,54 +79932,54 @@ extendComponentModel({
     layoutMode: {type: 'box', ignoreSize: true},
 
     defaultOption: {
-        // ä¸€çº§å±‚å 
+        // Ò»¼¶²ãµş
         zlevel: 0,
-        // äºŒçº§å±‚å 
+        // ¶ş¼¶²ãµş
         z: 6,
         show: true,
 
         text: '',
-        // è¶…é“¾æ¥è·³è½¬
+        // ³¬Á´½ÓÌø×ª
         // link: null,
-        // ä»…æ”¯æŒself | blank
+        // ½öÖ§³Öself | blank
         target: 'blank',
         subtext: '',
 
-        // è¶…é“¾æ¥è·³è½¬
+        // ³¬Á´½ÓÌø×ª
         // sublink: null,
-        // ä»…æ”¯æŒself | blank
+        // ½öÖ§³Öself | blank
         subtarget: 'blank',
 
-        // 'center' Â¦ 'left' Â¦ 'right'
-        // Â¦ {number}ï¼ˆxåæ ‡ï¼Œå•ä½pxï¼‰
+        // 'center' | 'left' | 'right'
+        // | {number}£¨x×ø±ê£¬µ¥Î»px£©
         left: 0,
-        // 'top' Â¦ 'bottom' Â¦ 'center'
-        // Â¦ {number}ï¼ˆyåæ ‡ï¼Œå•ä½pxï¼‰
+        // 'top' | 'bottom' | 'center'
+        // | {number}£¨y×ø±ê£¬µ¥Î»px£©
         top: 0,
 
-        // æ°´å¹³å¯¹é½
+        // Ë®Æ½¶ÔÆë
         // 'auto' | 'left' | 'right' | 'center'
-        // é»˜è®¤æ ¹æ® left çš„ä½ç½®åˆ¤æ–­æ˜¯å·¦å¯¹é½è¿˜æ˜¯å³å¯¹é½
+        // Ä¬ÈÏ¸ù¾İ left µÄÎ»ÖÃÅĞ¶ÏÊÇ×ó¶ÔÆë»¹ÊÇÓÒ¶ÔÆë
         // textAlign: null
         //
-        // å‚ç›´å¯¹é½
+        // ´¹Ö±¶ÔÆë
         // 'auto' | 'top' | 'bottom' | 'middle'
-        // é»˜è®¤æ ¹æ® top ä½ç½®åˆ¤æ–­æ˜¯ä¸Šå¯¹é½è¿˜æ˜¯ä¸‹å¯¹é½
+        // Ä¬ÈÏ¸ù¾İ top Î»ÖÃÅĞ¶ÏÊÇÉÏ¶ÔÆë»¹ÊÇÏÂ¶ÔÆë
         // textBaseline: null
 
         backgroundColor: 'rgba(0,0,0,0)',
 
-        // æ ‡é¢˜è¾¹æ¡†é¢œè‰²
+        // ±êÌâ±ß¿òÑÕÉ«
         borderColor: '#ccc',
 
-        // æ ‡é¢˜è¾¹æ¡†çº¿å®½ï¼Œå•ä½pxï¼Œé»˜è®¤ä¸º0ï¼ˆæ— è¾¹æ¡†ï¼‰
+        // ±êÌâ±ß¿òÏß¿í£¬µ¥Î»px£¬Ä¬ÈÏÎª0£¨ÎŞ±ß¿ò£©
         borderWidth: 0,
 
-        // æ ‡é¢˜å†…è¾¹è·ï¼Œå•ä½pxï¼Œé»˜è®¤å„æ–¹å‘å†…è¾¹è·ä¸º5ï¼Œ
-        // æ¥å—æ•°ç»„åˆ†åˆ«è®¾å®šä¸Šå³ä¸‹å·¦è¾¹è·ï¼ŒåŒcss
+        // ±êÌâÄÚ±ß¾à£¬µ¥Î»px£¬Ä¬ÈÏ¸÷·½ÏòÄÚ±ß¾àÎª5£¬
+        // ½ÓÊÜÊı×é·Ö±ğÉè¶¨ÉÏÓÒÏÂ×ó±ß¾à£¬Í¬css
         padding: 5,
 
-        // ä¸»å‰¯æ ‡é¢˜çºµå‘é—´éš”ï¼Œå•ä½pxï¼Œé»˜è®¤ä¸º10ï¼Œ
+        // Ö÷¸±±êÌâ×İÏò¼ä¸ô£¬µ¥Î»px£¬Ä¬ÈÏÎª10£¬
         itemGap: 10,
         textStyle: {
             fontSize: 18,
@@ -81102,8 +81102,8 @@ var DataZoomModel = extendComponentModel({
 
         if (autoAxisIndex) {
             // FIXME
-            // è¿™é‡Œæ˜¯å…¼å®¹ec2çš„å†™æ³•ï¼ˆæ²¡æŒ‡å®šxAxisIndexå’ŒyAxisIndexæ—¶æŠŠscatterå’ŒåŒæ•°å€¼è½´æŠ˜æŸ±çº³å…¥dataZoomæ§åˆ¶ï¼‰ï¼Œ
-            // ä½†æ˜¯å®é™…æ˜¯å¦éœ€è¦Grid.js#getScaleByOptionæ¥åˆ¤æ–­ï¼ˆè€ƒè™‘timeï¼Œlogç­‰axis typeï¼‰ï¼Ÿ
+            // ÕâÀïÊÇ¼æÈİec2µÄĞ´·¨£¨Ã»Ö¸¶¨xAxisIndexºÍyAxisIndexÊ±°ÑscatterºÍË«ÊıÖµÖáÕÛÖùÄÉÈëdataZoom¿ØÖÆ£©£¬
+            // µ«ÊÇÊµ¼ÊÊÇ·ñĞèÒªGrid.js#getScaleByOptionÀ´ÅĞ¶Ï£¨¿¼ÂÇtime£¬logµÈaxis type£©£¿
 
             // If both dataZoom.xAxisIndex and dataZoom.yAxisIndex is not specified,
             // dataZoom component auto adopts series that reference to
@@ -81163,8 +81163,8 @@ var DataZoomModel = extendComponentModel({
      */
     _isSeriesHasAllAxesTypeOf: function (seriesModel, axisType) {
         // FIXME
-        // éœ€è¦seriesçš„xAxisIndexå’ŒyAxisIndexéƒ½é¦–å…ˆè‡ªåŠ¨è®¾ç½®ä¸Šã€‚
-        // ä¾‹å¦‚series.type === scatteræ—¶ã€‚
+        // ĞèÒªseriesµÄxAxisIndexºÍyAxisIndex¶¼Ê×ÏÈ×Ô¶¯ÉèÖÃÉÏ¡£
+        // ÀıÈçseries.type === scatterÊ±¡£
 
         var is = true;
         eachAxisDim(function (dimNames) {
@@ -81885,7 +81885,7 @@ var SliderZoomView = DataZoomView.extend({
             // Should consider axis.min/axis.max when drawing dataShadow.
 
             // FIXME
-            // åº”è¯¥ä½¿ç”¨ç»Ÿä¸€çš„ç©ºåˆ¤æ–­ï¼Ÿè¿˜æ˜¯åœ¨listé‡Œè¿›è¡Œç©ºåˆ¤æ–­ï¼Ÿ
+            // Ó¦¸ÃÊ¹ÓÃÍ³Ò»µÄ¿ÕÅĞ¶Ï£¿»¹ÊÇÔÚlistÀï½øĞĞ¿ÕÅĞ¶Ï£¿
             var isEmpty = value == null || isNaN(value) || value === '';
             // See #4235.
             var otherCoord = isEmpty
@@ -82162,7 +82162,7 @@ var SliderZoomView = DataZoomView.extend({
         var labelTexts = ['', ''];
 
         // FIXME
-        // dateå‹ï¼Œæ”¯æŒformatterï¼Œautoformatterï¼ˆec2 date.getAutoFormatterï¼‰
+        // dateĞÍ£¬Ö§³Öformatter£¬autoformatter£¨ec2 date.getAutoFormatter£©
         if (dataZoomModel.get('showDetail')) {
             var axisProxy = dataZoomModel.findRepresentativeAxisProxy();
 
@@ -82349,7 +82349,7 @@ var SliderZoomView = DataZoomView.extend({
 
 function getOtherDim(thisDim) {
     // FIXME
-    // è¿™ä¸ªé€»è¾‘å’ŒgetOtherAxisé‡Œä¸€è‡´ï¼Œä½†æ˜¯å†™åœ¨è¿™é‡Œæ˜¯å¦ä¸å¥½
+    // Õâ¸öÂß¼­ºÍgetOtherAxisÀïÒ»ÖÂ£¬µ«ÊÇĞ´ÔÚÕâÀïÊÇ·ñ²»ºÃ
     var map$$1 = {x: 'y', y: 'x', radius: 'angle', angle: 'radius'};
     return map$$1[thisDim];
 }
@@ -83408,31 +83408,31 @@ var VisualMapModel = extendComponentModel({
                                 // 'colorLightness', 'colorAlpha',
                                 // 'symbol', 'symbolSize'
 
-        left: 0,                // 'center' Â¦ 'left' Â¦ 'right' Â¦ {number} (px)
+        left: 0,                // 'center' | 'left' | 'right' | {number} (px)
         right: null,            // The same as left.
-        top: null,              // 'top' Â¦ 'bottom' Â¦ 'center' Â¦ {number} (px)
+        top: null,              // 'top' | 'bottom' | 'center' | {number} (px)
         bottom: 0,              // The same as top.
 
         itemWidth: null,
         itemHeight: null,
         inverse: false,
-        orient: 'vertical',        // 'horizontal' Â¦ 'vertical'
+        orient: 'vertical',        // 'horizontal' | 'vertical'
 
         backgroundColor: 'rgba(0,0,0,0)',
-        borderColor: '#ccc',       // å€¼åŸŸè¾¹æ¡†é¢œè‰²
+        borderColor: '#ccc',       // ÖµÓò±ß¿òÑÕÉ«
         contentColor: '#5793f3',
         inactiveColor: '#aaa',
-        borderWidth: 0,            // å€¼åŸŸè¾¹æ¡†çº¿å®½ï¼Œå•ä½pxï¼Œé»˜è®¤ä¸º0ï¼ˆæ— è¾¹æ¡†ï¼‰
-        padding: 5,                // å€¼åŸŸå†…è¾¹è·ï¼Œå•ä½pxï¼Œé»˜è®¤å„æ–¹å‘å†…è¾¹è·ä¸º5ï¼Œ
-                                    // æ¥å—æ•°ç»„åˆ†åˆ«è®¾å®šä¸Šå³ä¸‹å·¦è¾¹è·ï¼ŒåŒcss
+        borderWidth: 0,            // ÖµÓò±ß¿òÏß¿í£¬µ¥Î»px£¬Ä¬ÈÏÎª0£¨ÎŞ±ß¿ò£©
+        padding: 5,                // ÖµÓòÄÚ±ß¾à£¬µ¥Î»px£¬Ä¬ÈÏ¸÷·½ÏòÄÚ±ß¾àÎª5£¬
+                                    // ½ÓÊÜÊı×é·Ö±ğÉè¶¨ÉÏÓÒÏÂ×ó±ß¾à£¬Í¬css
         textGap: 10,               //
-        precision: 0,              // å°æ•°ç²¾åº¦ï¼Œé»˜è®¤ä¸º0ï¼Œæ— å°æ•°ç‚¹
-        color: null,               //é¢œè‰²ï¼ˆdeprecatedï¼Œå…¼å®¹ec2ï¼Œé¡ºåºåŒpiecesï¼Œä¸åŒäºinRange/outOfRangeï¼‰
+        precision: 0,              // Ğ¡Êı¾«¶È£¬Ä¬ÈÏÎª0£¬ÎŞĞ¡Êıµã
+        color: null,               //ÑÕÉ«£¨deprecated£¬¼æÈİec2£¬Ë³ĞòÍ¬pieces£¬²»Í¬ÓÚinRange/outOfRange£©
 
         formatter: null,
-        text: null,                // æ–‡æœ¬ï¼Œå¦‚['é«˜', 'ä½']ï¼Œå…¼å®¹ec2ï¼Œtext[0]å¯¹åº”é«˜å€¼ï¼Œtext[1]å¯¹åº”ä½å€¼
+        text: null,                // ÎÄ±¾£¬Èç['¸ß', 'µÍ']£¬¼æÈİec2£¬text[0]¶ÔÓ¦¸ßÖµ£¬text[1]¶ÔÓ¦µÍÖµ
         textStyle: {
-            color: '#333'          // å€¼åŸŸæ–‡å­—é¢œè‰²
+            color: '#333'          // ÖµÓòÎÄ×ÖÑÕÉ«
         }
     },
 
@@ -84560,7 +84560,7 @@ var ContinuousView = VisualMapView.extend({
             bind(this._dragHandle, this, 'all', true)
         ));
 
-        var textRect = visualMapModel.textStyleModel.getTextRect('å›½');
+        var textRect = visualMapModel.textStyleModel.getTextRect('¹ú');
         var textSize = mathMax$7(textRect.width, textRect.height);
 
         // Handle
@@ -85045,7 +85045,7 @@ var ContinuousView = VisualMapView.extend({
                 this._showIndicator(cursorValue, valueRange[0], '> ', halfHoverLinkSize);
             }
             else {
-                this._showIndicator(cursorValue, cursorValue, 'â‰ˆ ', halfHoverLinkSize);
+                this._showIndicator(cursorValue, cursorValue, '¡Ö ', halfHoverLinkSize);
             }
         }
 
@@ -85707,8 +85707,8 @@ var resetMethods = {
     categories: function () {
         var thisOption = this.option;
         each$1(thisOption.categories, function (cate) {
-            // FIXME categoryæ¨¡å¼ä¹Ÿä½¿ç”¨pieceListï¼Œä½†åœ¨visualMappingä¸­ä¸æ˜¯ä½¿ç”¨pieceListã€‚
-            // æ˜¯å¦æ”¹ä¸€è‡´ã€‚
+            // FIXME categoryÄ£Ê½Ò²Ê¹ÓÃpieceList£¬µ«ÔÚvisualMappingÖĞ²»ÊÇÊ¹ÓÃpieceList¡£
+            // ÊÇ·ñ¸ÄÒ»ÖÂ¡£
             this._pieceList.push({
                 text: this.formatValueText(cate, true),
                 value: cate
@@ -85791,7 +85791,7 @@ var resetMethods = {
 
         each$1(pieceList, function (piece) {
             var close = piece.close;
-            var edgeSymbols = [['<', 'â‰¤'][close[1]], ['>', 'â‰¥'][close[0]]];
+            var edgeSymbols = [['<', '¡Ü'][close[1]], ['>', '¡İ'][close[0]]];
             piece.text = piece.text || this.formatValueText(
                 piece.value != null ? piece.value : piece.interval,
                 false,
@@ -86664,7 +86664,7 @@ MarkerView.extend({
             var itemModel = mpData.getItemModel(idx);
             var symbolSize = itemModel.getShallow('symbolSize');
             if (typeof symbolSize === 'function') {
-                // FIXME è¿™é‡Œä¸å…¼å®¹ ECharts 2.xï¼Œ2.x è²Œä¼¼å‚æ•°æ˜¯æ•´ä¸ªæ•°æ®ï¼Ÿ
+                // FIXME ÕâÀï²»¼æÈİ ECharts 2.x£¬2.x Ã²ËÆ²ÎÊıÊÇÕû¸öÊı¾İ£¿
                 symbolSize = symbolSize(
                     mpModel.getRawValue(idx), mpModel.getDataParams(idx)
                 );
@@ -87852,11 +87852,11 @@ var TimelineModel = ComponentModel.extend({
      */
     defaultOption: {
 
-        zlevel: 0,                  // ä¸€çº§å±‚å 
-        z: 4,                       // äºŒçº§å±‚å 
+        zlevel: 0,                  // Ò»¼¶²ãµş
+        z: 4,                       // ¶ş¼¶²ãµş
         show: true,
 
-        axisType: 'time',  // æ¨¡å¼æ˜¯æ—¶é—´ç±»å‹ï¼Œæ”¯æŒ value, category
+        axisType: 'time',  // Ä£Ê½ÊÇÊ±¼äÀàĞÍ£¬Ö§³Ö value, category
 
         realtime: true,
 
@@ -87870,9 +87870,9 @@ var TimelineModel = ComponentModel.extend({
 
         controlPosition: 'left',           // 'left' 'right' 'top' 'bottom' 'none'
         autoPlay: false,
-        rewind: false,                     // åå‘æ’­æ”¾
+        rewind: false,                     // ·´Ïò²¥·Å
         loop: true,
-        playInterval: 2000,                // æ’­æ”¾æ—¶é—´é—´éš”ï¼Œå•ä½ms
+        playInterval: 2000,                // ²¥·ÅÊ±¼ä¼ä¸ô£¬µ¥Î»ms
 
         currentIndex: 0,
 
@@ -88046,9 +88046,9 @@ var SliderTimelineModel = TimelineModel.extend({
      */
     defaultOption: {
 
-        backgroundColor: 'rgba(0,0,0,0)',   // æ—¶é—´è½´èƒŒæ™¯é¢œè‰²
-        borderColor: '#ccc',               // æ—¶é—´è½´è¾¹æ¡†é¢œè‰²
-        borderWidth: 0,                    // æ—¶é—´è½´è¾¹æ¡†çº¿å®½ï¼Œå•ä½pxï¼Œé»˜è®¤ä¸º0ï¼ˆæ— è¾¹æ¡†ï¼‰
+        backgroundColor: 'rgba(0,0,0,0)',   // Ê±¼äÖá±³¾°ÑÕÉ«
+        borderColor: '#ccc',               // Ê±¼äÖá±ß¿òÑÕÉ«
+        borderWidth: 0,                    // Ê±¼äÖá±ß¿òÏß¿í£¬µ¥Î»px£¬Ä¬ÈÏÎª0£¨ÎŞ±ß¿ò£©
 
         orient: 'horizontal',              // 'vertical'
         inverse: false,
@@ -88065,7 +88065,7 @@ var SliderTimelineModel = TimelineModel.extend({
             width: 2,
             color: '#304654'
         },
-        label: {                            // æ–‡æœ¬æ ‡ç­¾
+        label: {                            // ÎÄ±¾±êÇ©
             position: 'auto',           // auto left right top bottom
                                         // When using number, label position is not
                                         // restricted by viewRect.
@@ -88074,7 +88074,7 @@ var SliderTimelineModel = TimelineModel.extend({
             interval: 'auto',
             rotate: 0,
             // formatter: null,
-            // å…¶ä½™å±æ€§é»˜è®¤ä½¿ç”¨å…¨å±€æ–‡æœ¬æ ·å¼ï¼Œè¯¦è§TEXTSTYLE
+            // ÆäÓàÊôĞÔÄ¬ÈÏÊ¹ÓÃÈ«¾ÖÎÄ±¾ÑùÊ½£¬Ïê¼ûTEXTSTYLE
             color: '#304654'
         },
         itemStyle: {
@@ -88114,7 +88114,7 @@ var SliderTimelineModel = TimelineModel.extend({
         emphasis: {
             label: {
                 show: true,
-                // å…¶ä½™å±æ€§é»˜è®¤ä½¿ç”¨å…¨å±€æ–‡æœ¬æ ·å¼ï¼Œè¯¦è§TEXTSTYLE
+                // ÆäÓàÊôĞÔÄ¬ÈÏÊ¹ÓÃÈ«¾ÖÎÄ±¾ÑùÊ½£¬Ïê¼ûTEXTSTYLE
                 color: '#c23531'
             },
 
@@ -90714,7 +90714,7 @@ if (!env$1.canvasSupported) {
     };
 
     var getZIndex = function (zlevel, z, z2) {
-        // z çš„å–å€¼èŒƒå›´ä¸º [0, 1000]
+        // z µÄÈ¡Öµ·¶Î§Îª [0, 1000]
         return (parseFloat(zlevel) || 0) * ZLEVEL_BASE + (parseFloat(z) || 0) * Z_BASE$1 + z2;
     };
 
@@ -91092,7 +91092,7 @@ if (!env$1.canvasSupported) {
                     var p = points$3[k];
 
                     m && applyTransform(p, p, m);
-                    // ä¸ round ä¼šéå¸¸æ…¢
+                    // ²» round »á·Ç³£Âı
                     str.push(
                         round$4(p[0] * Z - Z2), comma, round$4(p[1] * Z - Z2),
                         k < nPoint - 1 ? comma : ''
@@ -91174,7 +91174,7 @@ if (!env$1.canvasSupported) {
      * IMAGE
      **************************************************/
     var isImage = function (img) {
-        // FIXME img instanceof Image å¦‚æœ img æ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²çš„æ—¶å€™ï¼ŒIE8 ä¸‹ä¼šæŠ¥é”™
+        // FIXME img instanceof Image Èç¹û img ÊÇÒ»¸ö×Ö·û´®µÄÊ±ºò£¬IE8 ÏÂ»á±¨´í
         return (typeof img === 'object') && img.tagName && img.tagName.toUpperCase() === 'IMG';
         // return img instanceof Image;
     };
@@ -91241,7 +91241,7 @@ if (!env$1.canvasSupported) {
 
         var vmlEl = this._vmlEl;
         if (!vmlEl) {
-            // FIXME ä½¿ç”¨ group åœ¨ left, top éƒ½ä¸æ˜¯ 0 çš„æ—¶å€™å°±æ— æ³•æ˜¾ç¤ºäº†ã€‚
+            // FIXME Ê¹ÓÃ group ÔÚ left, top ¶¼²»ÊÇ 0 µÄÊ±ºò¾ÍÎŞ·¨ÏÔÊ¾ÁË¡£
             // vmlEl = vmlCore.createNode('group');
             vmlEl = doc.createElement('div');
             initRootElStyle(vmlEl);
@@ -91288,7 +91288,7 @@ if (!env$1.canvasSupported) {
                         'Dy=', round$4(y * scaleY + m[5]));
 
             vmlElStyle.padding = '0 ' + round$4(maxX) + 'px ' + round$4(maxY) + 'px 0';
-            // FIXME DXImageTransform åœ¨ IE11 çš„å…¼å®¹æ¨¡å¼ä¸‹ä¸èµ·ä½œç”¨
+            // FIXME DXImageTransform ÔÚ IE11 µÄ¼æÈİÄ£Ê½ÏÂ²»Æğ×÷ÓÃ
             vmlElStyle.filter = imageTransformPrefix + '.Matrix('
                 + transformFilter.join('') + ', SizingMethod=clip)';
 
@@ -91626,7 +91626,7 @@ if (!env$1.canvasSupported) {
             this._textVmlEl = textVmlEl;
         }
         else {
-            // è¿™é‡Œæ˜¯åœ¨å‰é¢ appendChild ä¿è¯é¡ºåºçš„å‰æä¸‹
+            // ÕâÀïÊÇÔÚÇ°Ãæ appendChild ±£Ö¤Ë³ĞòµÄÇ°ÌáÏÂ
             skewEl = textVmlEl.firstChild;
             pathEl = skewEl.nextSibling;
             textPathEl = pathEl.nextSibling;
@@ -91805,7 +91805,7 @@ VMLPainter.prototype = {
     },
 
     /**
-     * åˆ·æ–°
+     * Ë¢ĞÂ
      */
     refresh: function () {
 
@@ -91843,7 +91843,7 @@ VMLPainter.prototype = {
             // Detached from document at first time
             // to avoid page refreshing too many times
 
-            // FIXME å¦‚æœæ¯æ¬¡éƒ½å…ˆ removeChild å¯èƒ½ä¼šå¯¼è‡´ä¸€äº›å¡«å……å’Œæè¾¹çš„æ•ˆæœæ”¹å˜
+            // FIXME Èç¹ûÃ¿´Î¶¼ÏÈ removeChild ¿ÉÄÜ»áµ¼ÖÂÒ»Ğ©Ìî³äºÍÃè±ßµÄĞ§¹û¸Ä±ä
             this._vmlViewport.appendChild(vmlRoot);
             this._firstPaint = false;
         }
@@ -92447,7 +92447,7 @@ svgText.drawRectText = svgTextDrawRectText;
 svgText.brush = function (el) {
     var style = el.style;
     if (style.text != null) {
-        // å¼ºåˆ¶è®¾ç½® textPosition
+        // Ç¿ÖÆÉèÖÃ textPosition
         style.textPosition = [0, 0];
         svgTextDrawRectText(el, {
             x: style.x || 0, y: style.y || 0,
@@ -93539,7 +93539,7 @@ function getSvgElement(displayable) {
 /**
  * @alias module:zrender/svg/Painter
  * @constructor
- * @param {HTMLElement} root ç»˜å›¾å®¹å™¨
+ * @param {HTMLElement} root »æÍ¼ÈİÆ÷
  * @param {module:zrender/Storage} storage
  * @param {Object} opts
  */
@@ -93793,14 +93793,14 @@ SVGPainter.prototype = {
     },
 
     /**
-     * è·å–ç»˜å›¾åŒºåŸŸå®½åº¦
+     * »ñÈ¡»æÍ¼ÇøÓò¿í¶È
      */
     getWidth: function () {
         return this._width;
     },
 
     /**
-     * è·å–ç»˜å›¾åŒºåŸŸé«˜åº¦
+     * »ñÈ¡»æÍ¼ÇøÓò¸ß¶È
      */
     getHeight: function () {
         return this._height;
