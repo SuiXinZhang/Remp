@@ -7,10 +7,15 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ad/menu.jsp"/>
+	<c:import url="/ad/menu.jsp">
+        <c:param name="menu" value="ad03"/>
+     </c:import>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>退号查询</legend>
 	<form class="layui-form" action="<%=path %>/ad/ad02queryWithdrawOrder.html" method="post">
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
@@ -25,12 +30,15 @@
 					<input type="text" id="date" name="qaad202" value="${param.qaad202 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
+			<div class="layui-inline">
+	       		<input type="submit" name="next" class="layui-btn layui-btn-normal" value="查询">
+	       	</div>
 		</div>
 	<div id="tableId" style="display: none">
 	<table id="idData"  lay-filter="demo">
 	<thead>
 	  <tr>
-	  	<td lay-data="{field:'sort1',width:55}">序号</td>
+	  	<td lay-data="{field:'sort1',width:60}">序号</td>
 		<td lay-data="{field:'projectname',width:125}">项目名称</td>
 		<td lay-data="{field:'username'}">客户名</td>
 		<td lay-data="{field:'userphone'}">实际排号</td>
@@ -65,12 +73,10 @@
 	   </c:choose>
 	  </tbody>
 	</table>
-    <div class="layui-form-item" align="center">
-	       <input type="submit" name="next" class="layui-btn layui-btn-normal" value="查询">
-	</div>
 	<input type="hidden" name="aaa101" value="${param.aad101 }">
 	</div>
 </form>
+	</fieldset>
     </div>
   </div>
   

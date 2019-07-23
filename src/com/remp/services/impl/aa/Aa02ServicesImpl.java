@@ -20,7 +20,7 @@ public class Aa02ServicesImpl extends JdbcServicesSupport {
 	public Map<String,String> findById()throws Exception
 	{
 		StringBuilder sql=new StringBuilder()
-    			.append("select a.aaa202,a.aaa203,a.aaa204,a.aaa205,a.aaa206,")
+    			.append("select a.aaa201,a.aaa202,a.aaa203,a.aaa204,a.aaa205,a.aaa206,")
     			.append("       a.aaa207,a.aaa208,a.aaa209,a.aaa210,a.aaa211,")
     			.append("       a.aaa212,a.aaa213,a.aaa214,a.aaa215,a.aaa216,")
     			.append("       a.aaa217,a.aaa201")

@@ -25,12 +25,12 @@
 						<td lay-data="{field:'userphone'}">生效日期</td>
 						<td lay-data="{field:'empname'}">失效日期</td>
 						<td lay-data="{field:'style',width:88}">是否贷款</td>
-						<td lay-data="{field:'date',sort:true,width:115}">按揭银行</td>
-						<td lay-data="{field:'grade',sort:true,width:100}">按揭精确度</td>
-						<td lay-data="{field:'gjjyx',sort:true}">公积金银行</td>
-						<td lay-data="{field:'gongjijqd',sort:true}">公积金精确度</td>
-						<td lay-data="{field:'beizhu',sort:true}">备注</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'date',width:115}">按揭银行</td>
+						<td lay-data="{field:'grade',width:100}">按揭精确度</td>
+						<td lay-data="{field:'gjjyx'}">公积金银行</td>
+						<td lay-data="{field:'gongjijqd',width:120}">公积金精确度</td>
+						<td lay-data="{field:'beizhu'}">备注</td>
+						<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -59,6 +59,17 @@
 												<i class="layui-icon layui-icon-delete"></i>删除
 											</a> 
 									</td>
+								</tr>
+							</c:forEach>
+							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -118,7 +129,7 @@ layui.use(['layer', 'form','element','table'], function(){
 		table.init('demo', {
 			limit : 10,
 			page : true,
-			toolbar : true,
+			
 			done : function(res, curr, count) {
 				$('#tableId').css('display', 'block');
 			}

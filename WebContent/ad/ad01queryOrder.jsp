@@ -7,10 +7,15 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ad/menu.jsp"/>
+	<c:import url="/ad/menu.jsp">
+        <c:param name="menu" value="ad02"/>
+     </c:import>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>预约查询</legend>
 	<form id="myform" lay-filter="myform" action="<%=path %>/ad/ad01queryOrder.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
@@ -25,22 +30,23 @@
 					<input type="text" name="qaad116" value="${param.qaad116 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
+			<div class="layui-inline">
+			<input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
+			</div>
 	</div>
 	<div id="tableId" style="display: none">
 	<table id="idData"  lay-filter="demo">
 	<thead>
 	  <tr>
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
-		<td lay-data="{field:'projectname',width:125}">项目名称</td>
-		<td lay-data="{field:'username'}">客户名</td>
-		<td lay-data="{field:'userphone'}">实际排号</td>
-		<td lay-data="{field:'empname'}">预约日期</td>
-		<td lay-data="{field:'style',width:88}">权益人</td>
+		<td lay-data="{field:'projectname',width:100}">项目名称</td>
+		<td lay-data="{field:'username',width:100}">客户名</td>
+		<td lay-data="{field:'userphone',width:100}">实际排号</td>
+		<td lay-data="{field:'empname',width:120}">预约日期</td>
 		<td lay-data="{field:'date',sort:true}">房间</td>
 		<td lay-data="{field:'grade',sort:true}">应收预约金</td>
 		<td lay-data="{field:'state'}">实收预约金</td>
-		<td lay-data="{field:'remark'}">备注</td>
-		<td lay-data="{field:'prestate'}">预约状态</td>
+		<td lay-data="{field:'prestate',width:100}">预约状态</td>
 		<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 	  </tr>
 	  </thead>
@@ -55,24 +61,31 @@
 				    <td><a href="#" onclick="onEdit('${ins.aad101}')">${ins.aad103 }</a></td>
 				    <td>${ins.aad104 }</td>
 				    <td>${ins.aad105 }</td>
-				    <td>${ins.aad109 }</td>
 				    <td>${ins.aad110 }</td>
 				    <td>${ins.aad111 }</td>
 				    <td>${ins.aad113 }</td>
-				    <td>${ins.aad115 }</td>
 				    <td>${ins.aad116 }</td>
-				    <td><a href="#" onclick="onDel('${ins.aad101}')">作废</a></td>
+				    <td>
+				    	<a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onDel('${ins.aad101}')">
+				    		<i class="layui-icon layui-icon-close-fill"></i>作废
+				    	</a>
+				    	<a class="layui-btn layui-btn-xs " href="#" onclick="onReceipt('${ins.aad101}')">
+				    		<i class="layui-icon layui-icon-close-fill"></i>生成付款详情
+				    	</a>
+				    </td>
 				  </tr>
 		      </c:forEach>
 		     </c:when>
 	   </c:choose>
 	   </tbody>
 	  </table>
-	  <div class="layui-form-item" align="center">
-	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
 	  </div>
+	  <div class="layui-form-item" align="center">
+	  	<input class="layui-btn layui-btn-normal" type="submit" name="next" value="添加" 
+	  	 formaction="<%=path %>/ad/ad01customerQuery.jsp" >
 	  </div>
 </form>
+	</fieldset>
     </div>
   </div>
 </div>
@@ -99,7 +112,6 @@
 			}
 		});
 	});
-	var count=0;
     function onDel(vaad101)
     {
   	 var vform = document.getElementById("myform");
@@ -111,6 +123,12 @@
     {
   	 var vform = document.getElementById("myform");
   	 vform.action="<%=path%>/ad/ad01findById.html?aad101="+vaad101;
+  	 vform.submit();
+    }
+    function onReceipt(vaad101)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/af/af03orderTurnReceipt.html?aad101="+vaad101;
   	 vform.submit();
     }
     

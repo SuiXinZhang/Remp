@@ -51,6 +51,17 @@ public class Ad05ServicesImpl extends JdbcServicesSupport
 		String sql2 = "update aa08 set aaa805='05' where aaa801=?";
 		this.appendSql(sql1.toString(), args);
 		this.appendSql(sql2, this.get("aaa801"));
+		
+		String sql3 = "select aaa805 from aa08 where aaa801=?";
+		Object args2[]={
+				this.get("aaa801")
+		};
+		Map<String, String> ins = this.queryForMap(sql3, args2);
+		if(ins.get("aaa805").equals("02")||ins.get("aaa805").equals("04")||ins.get("aaa805").equals("05"))
+		{
+			return false;
+		}
+		
 		return this.executeTransaction();
 	}
 	
@@ -61,11 +72,13 @@ public class Ad05ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("select aad501,aac401,aaa801,aad502,aad503,")
 				.append("       aad504,aad505,aad506,aad507,aad508")
-				.append("  from ad05");
+				.append("  from ad05")
+				.append(" where true")
+				;
 		List<Object> paramList = new ArrayList<>();
 		if (this.isNotNull(qaad508)) 
 		{
-			sql.append(" where aad508 like ?");
+			sql.append(" and aad508 like ?");
 			paramList.add("%"+qaad508+"%");
 		}
 		if (this.isNotNull(qaad502)) 

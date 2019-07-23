@@ -9,7 +9,7 @@
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
 	<c:import url="/ad/menu.jsp">
-        <c:param name="menu" value="ad13"/>
+        <c:param name="menu" value="ad14"/>
      </c:import>
   <div class="layui-body">
     <!-- 内容主体区域 -->
@@ -17,7 +17,7 @@
 				style="padding: 15px; margin: 30px 80px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
 					<legend>变更申请查询</legend>
-    <form id="myform" lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad06queryApply.html" method="post">
+    <form id="myform" lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad06queryApproval.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">申请类型</label>
@@ -46,13 +46,14 @@
 	  	<td lay-data="{field:'check',width:50}"></td>
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
 		<td lay-data="{field:'projectname',width:125}">审批状态</td>
-		<td lay-data="{field:'username',width:125}">客户名称</td>
+		<td lay-data="{field:'username',width:100}">客户名称</td>
 		<td lay-data="{field:'userphone',width:125}">房间号</td>
 		<td lay-data="{field:'empname',width:125}">申请类型</td>
 		<td lay-data="{field:'style'}">原因分类</td>
 		<td lay-data="{field:'date',sort:true,width:115}">申请人</td>
 		<td lay-data="{field:'grade',sort:true}">申请日期</td>
-		<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
+		<td lay-data="{field:'date2',sort:true}">审批日期</td>
+		<td lay-data="{field:'boss',sort:true}">审批人</td>
 	  </tr>
 	 </thead>
 	 <tbody>
@@ -72,21 +73,14 @@
 				    <td>${ins.caad604 }</td>
 				    <td>${ins.aad605 }</td>
 				    <td>${ins.aad606 }</td>
-				    <td>
-				    	<a class="layui-btn layui-btn-xs" href="#" onclick="onSelect('${ins.aad601}')">
-				    		<i class="layui-icon layui-icon-ok"></i>审批
-				    	</a>
-				    </td>
+				    <td>${ins.aad608 }</td>
+				    <td>${ins.aad607 }</td>
 				  </tr>
 		      </c:forEach>
 	     </c:when>
 	   </c:choose>
 	   </tbody>
 	</table>
-	 </div>
-	 <div class="layui-form-item" align="center">
-	 <input type="submit" class="layui-btn" id="mod" name="next" value="审批" 
-	              formaction="<%=path%>/ad/ad06batchExamine.html">
 	 </div>
 </form>
 </fieldset>
@@ -121,35 +115,7 @@
 				$('#tableId').css('display', 'block');
 			}
 		});
-		
-		var count = 0;
-		form.on('checkbox(check)', function(data){
-	          if(data.elem.checked==true){
-	               	count++;
-	               	if(count!=0){
-	               		document.getElementById("mod").className="layui-btn layui-btn-danger";
-	               	}else{
-	               		document.getElementById("mod").className="layui-btn layui-btn-disabled";
-	               	}
-	               	document.getElementById("mod").disabled=(count==0)
-	               		
-	          }else{
-	        	  count--;
-	       		  if(count!=0){
-	       				document.getElementById("mod").className="layui-btn layui-btn-danger";
-	       		  }else{
-	             		document.getElementById("mod").className="layui-btn layui-btn-disabled";
-	             }
-	       		document.getElementById("mod").disabled=(count==0)
-	          }
-	      });
 	});
-	function onSelect(vaad601)
-    {
-  	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/ad/ad06findByIdApply.html?aad601="+vaad601;
-  	 vform.submit();
-    }
 </script>
 </body>
 </html>

@@ -5,12 +5,12 @@
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
           <a href="#">服务概况</a>
-          <!-- <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="javascript:;">列表三</a></dd>
-            <dd><a href="">超链接</a></dd>
-          </dl> -->
+          <dl class="layui-nav-child">
+            <dd class="${param.menu eq 'ae1' ? 'layui-this':''}"><a href="/remp/ae/ae01show.html">合同概况</a></dd>
+            <dd class="${param.menu eq 'ae2' ? 'layui-this':''}"><a href="/remp/ae/ae02show.html">贷款概况</a></dd>
+            <dd class="${param.menu eq 'ae4' ? 'layui-this':''}"><a href="/remp/ae/ae04show.html">产权概况</a></dd>
+            <dd class="${param.menu eq 'ae5' ? 'layui-this':''}"><a href="/remp/ae/ae05show.html">面积补差概况</a></dd>
+          </dl>
         </li>
         <li class="layui-nav-item ${param.menu eq 'ae01' ? 'layui-this':''}"><a href="/remp/ae/ae01query.html?aaa201='1'">合同登记服务</a></li>
         <li class="layui-nav-item ${param.menu eq 'ae02' ? 'layui-this':''}"><a href="/remp/ae/ae02query.html">贷款服务</a></li>

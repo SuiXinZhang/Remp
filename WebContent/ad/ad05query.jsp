@@ -7,10 +7,15 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ad/menu.jsp"/>
+	<c:import url="/ad/menu.jsp">
+        <c:param name="menu" value="ad09"/>
+     </c:import>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 40px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>预留记录</legend>
     <form id="myform" action="<%=path %>/ad/ad05query.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
@@ -25,6 +30,9 @@
 					<input type="text" name="qaad502" value="${param.qaad502 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
+			<div class="layui-inline">
+				<input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
+			</div>
 	</div>
 	<div id="tableId" style="display: none">
 	<table id="idData"  lay-filter="demo">
@@ -33,12 +41,12 @@
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
 		<td lay-data="{field:'projectname',width:125}">客户名称</td>
 		<td lay-data="{field:'username'}">房间</td>
-		<td lay-data="{field:'userphone'}">签署日期</td>
-		<td lay-data="{field:'empname'}">失效日期</td>
-		<td lay-data="{field:'style',width:88}">业务员</td>
+		<td lay-data="{field:'userphone',width:125}">签署日期</td>
+		<td lay-data="{field:'empname',width:125}">失效日期</td>
+		<td lay-data="{field:'style',width:125}">业务员</td>
 		<td lay-data="{field:'date',sort:true,width:115}">预留状态</td>
 		<td lay-data="{field:'grade',sort:true,width:100}">备注</td>
-		<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
+		<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 	  </tr>
 	 </thead>
 	 <tbody>
@@ -48,25 +56,30 @@
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
 				    <td>${vs.count }</td>
-				    <td><a href="#" onclick="onEdit('${ins.aad501}')">${ins.aad508 }</a></td>
+				    <td>${ins.aad508 }</td>
 				    <td>${ins.aad502 }</td>
 				    <td>${ins.aad503 }</td>
 				    <td>${ins.aad504 }</td>
 				    <td>${ins.aad505 }</td>
 				    <td>${ins.aad507 }</td>
 				    <td>${ins.aad506 }</td>
-				    <td><a href="#" onclick="onCancel('${ins.aad501}')">取消预留</a></td>
+				    <td>
+				    <a class="layui-btn layui-btn-xs layui-btn-normal" href="#" onclick="onEdit('${ins.aad501}')">
+				    	<i class="layui-icon layui-icon-edit"></i>查看
+				    </a>
+				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onCancel('${ins.aad501}')">
+				    	<i class="layui-icon layui-icon-close-fill"></i>取消预留
+				    </a>
+				    </td>
 				  </tr>
 		      </c:forEach>
 	     </c:when>
 	   </c:choose>
 	   </tbody>
 	  </table>
-	  <div class="layui-form-item" align="center">
-	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
-	  </div>
 	  </div>
 </form>
+	</fieldset>
     </div>
   </div>
   
@@ -85,7 +98,6 @@
 		{
 			layer.msg('${msg }');	  
 		}
-	  
 		//转换静态表格
 		table.init('demo', {
 			limit : 10,

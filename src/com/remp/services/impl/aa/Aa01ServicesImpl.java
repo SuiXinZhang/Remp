@@ -24,7 +24,7 @@ public class Aa01ServicesImpl extends JdbcServicesSupport {
     			.append("  from aa01 a")
     			.append(" where a.aaa101=?")
     			;
-	    return	this.queryForMap(sql.toString(), this.get("aaa101"));
+	    return	this.queryForMap(sql.toString(), 1);
 	}
 	
 	/**
@@ -37,7 +37,7 @@ public class Aa01ServicesImpl extends JdbcServicesSupport {
 		StringBuilder sql=new StringBuilder()
 				.append("update aa01 set aaa102=?,aaa103=?,aaa104=?,aaa105=?,aaa106=?,")
 				.append("				 aaa107=?,aaa108=?,aaa109=?")
-				.append(" where aaa101=?")
+				.append(" where aaa101=1")
     			;
 		Object tem[]= {
 				this.get("aaa102"),
@@ -48,9 +48,7 @@ public class Aa01ServicesImpl extends JdbcServicesSupport {
 				
 				this.get("aaa107"),
 				this.get("aaa108"),
-				this.get("aaa109"),
-				
-				this.get("aaa101") 
+				this.get("aaa109")
 		};
 		
 		return this.executeUpdate(sql.toString(), tem)>0;

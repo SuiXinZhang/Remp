@@ -11,8 +11,10 @@
         <c:param name="menu" value="ae02"/>
      </c:import>
   <div class="layui-body">
-  <h1 align="center">贷款记录</h1>
-    <div style="padding: 15px;">
+  <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
+    <fieldset class="layui-elem-field">
+ 	<legend style="color:black"><h2>贷款记录</h2></legend>
+  		<div class="layui-field-box">
 	    <form action="<%=path %>/ae02Add.html" lay-filter="form" class="layui-form"  method="post">
 	    <div align="center">
 		    <div class="layui-form-item">
@@ -158,6 +160,8 @@
 			<input type="hidden" name="aae201" value="${param.aae201 }"> 
 		</div>
 	</form>
+	</div>
+	</fieldset>
 	</div>
   </div>
   

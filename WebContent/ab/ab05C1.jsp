@@ -3,7 +3,6 @@
 <html>
 <head>
 	<jsp:include   page="/base/head.jsp"/>
-	<script src="${pageContext.request.contextPath}/resource/echarts.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
