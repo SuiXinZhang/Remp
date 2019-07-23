@@ -5,6 +5,7 @@ public class Ad05cancelReserveServlet extends Ad05ControllerSupport {
 	public String execute() throws Exception 
 	{
 		this.update("cancelReserve", "È¡ÏûÔ¤Áô");
+		this.savePageDate();
 		return "ad/ad05query";
 	}
 }

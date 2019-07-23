@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/../base/taglib.jsp" %>
 <%@ taglib uri="http://org.wangxg/jsp/extl" prefix="e"%>
@@ -83,22 +84,23 @@
 	                    </div>
 	                </div>	
 	        </div>
-		    <table class="layui-table">
+	        <div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<th></th>
-			            <th>序号</th>
-			            <th>姓名</th>
-			            <th>员工编号</th>
-			            <th>岗位</th>
-			            <th>所属部门</th>
-			            <th>性别</th>
-			            <th>民族</th>
-			            <th>生日</th>
-			            <th>联系方式</th>
-			            <th>住址</th>
-			            <th>备注</th>
-			            <th>操作</th>
+			        	<td lay-data="{field:'check',width:50}"></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:100}">姓名</td>
+						<td lay-data="{field:'username',width:100}">员工编号</td>
+						<td lay-data="{field:'userphone',width:100}">岗位</td>
+						<td lay-data="{field:'empname',width:120}">所属部门</td>
+						<td lay-data="{field:'style',width:60}">性别</td>
+						<td lay-data="{field:'date',width:80}">民族</td>
+						<td lay-data="{field:'grade',width:120}">生日</td>
+						<td lay-data="{field:'way',width:100}">联系方式</td>
+						<td lay-data="{field:'address',width:100}">住址</td>
+						<td lay-data="{field:'beizhu',sort:true}">备注</td>
+						<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -129,14 +131,8 @@
 									</td>
 								</tr>
 							</c:forEach>
-							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
+							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
 								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>
@@ -147,25 +143,6 @@
 								</tr>
 							</c:forEach>
 						</c:when>
-						<c:otherwise>
-							<c:forEach begin="1" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
 					</c:choose>
 			    </tbody>
 			</table>
@@ -182,12 +159,10 @@
 
 				</div>
 			</div>
-			
-
 		<input type="hidden" name="aaa301" value="${param.aaa301 }"> 
 		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
-		<input type="hidden" name="aaa405" value="${param.aaa302 }">
-			
+		<input type="hidden" name="aaa302" value="${param.aaa302 }">
+		</div>
 		</form>
 	</div>
   </div>
@@ -220,11 +195,21 @@ function onDel(vaaa401)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element', 'laydate'], function(){
+layui.use(['layer', 'form','element', 'laydate','table'], function(){
 	  var layer = layui.layer;
-	  var element = layui.element;
-	  var laydate = layui.laydate;
-	  form = layui.form;
+	  var element = layui.element
+	  ,laydate = layui.laydate
+	  ,form = layui.form
+	  ,table = layui.table;
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	  
 	  //日期
 	  laydate.render({

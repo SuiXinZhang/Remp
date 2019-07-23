@@ -7,10 +7,15 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
-	<jsp:include   page="/ad/menu.jsp"/>
+	<c:import url="/ad/menu.jsp">
+        <c:param name="menu" value="ad05"/>
+     </c:import>
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>看房记录</legend>
     <form id="myform" class="layui-form" action="<%=path %>/ad/ad03query.html" method="post">
     <div class="layui-form-item" align="center">
 			<div class="layui-inline">
@@ -32,20 +37,23 @@
 					<input type="text" name="qaad302" value="${param.qaad302 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
+			<div class="layui-inline">
+				<input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
+			</div>
 	</div>
 	<div id="tableId" style="display: none">
 	<table id="idData"  lay-filter="demo">
 	<thead>
 	  <tr>
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
-		<td lay-data="{field:'projectname',width:125}">房间号</td>
-		<td lay-data="{field:'username'}">房间状态</td>
-		<td lay-data="{field:'userphone'}">选房单号</td>
-		<td lay-data="{field:'emphao'}">项目排号</td>
-		<td lay-data="{field:'empname'}">客户名</td>
+		<td lay-data="{field:'projectname',width:200}">房间号</td>
+		<td lay-data="{field:'username',width:90}">房间状态</td>
+		<td lay-data="{field:'userphone',width:90}">选房单号</td>
+		<td lay-data="{field:'emphao',width:90}">项目排号</td>
+		<td lay-data="{field:'empname',width:120}">客户名</td>
 		<td lay-data="{field:'style',width:88}">经办人</td>
 		<td lay-data="{field:'date',sort:true,width:115}">选房时间</td>
-		<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+		<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 	  </tr>
 	 </thead>
 	 <tbody>
@@ -62,9 +70,30 @@
 				    <td>${ins.aad306 }</td>
 				    <td>${ins.aad307 }</td>
 				    <td>
-				    <a href="#" onclick="onCancel('${ins.aaa801}')">取消选房</a>
-				    <a href="#" onclick="onSubscribe('${ins.aad301}')">转认购</a>
-				    <a href="#" onclick="onSigning('${ins.aad301}')">转签约</a>
+				    <c:choose>
+				    <c:when test="${ins.caaa805=='签约'}">
+				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+						<i class="layui-icon layui-icon-close-fill"></i>取消选房
+					</a>
+					<a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+						<i class="layui-icon layui-icon-link"></i>转认购
+					</a>
+					<a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+						<i class="layui-icon layui-icon-link"></i>转签约
+					</a>
+				    </c:when>
+				    <c:otherwise>
+				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onCancel('${ins.aaa801}')">
+				    	<i class="layui-icon layui-icon-close-fill"></i>取消选房
+				    </a>
+				    <a class="layui-btn layui-btn-xs" href="#" onclick="onSubscribe('${ins.aad301}')">
+				    	<i class="layui-icon layui-icon-link"></i>转认购
+				    </a>
+				    <a class="layui-btn layui-btn-xs" href="#" onclick="onSigning('${ins.aad301}')">
+				    	<i class="layui-icon layui-icon-link"></i>转签约
+				    </a>
+				    </c:otherwise>
+				    </c:choose>
 				    </td>
 				  </tr>
 		      </c:forEach>
@@ -72,11 +101,9 @@
 	   </c:choose>
 	   </tbody>
 	  </table>
-	 <div class="layui-form-item" align="center">
-	       <input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
-	 </div>
 	 </div>
 </form>
+	</fieldset>
     </div>
   </div>
   

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page language="java" pageEncoding="GBK"%>
 <%@include file="/../base/taglib.jsp" %>
 <html>
@@ -13,16 +14,17 @@
 	    <form id="myform" class="layui-form" action="<%=path%>/aa/aa06Query.html" method="post">
 	     <h1>区域管理</h1>
 	        <hr>
-		    <table class="layui-table">
+	        <div id="tableId" style="display: none">
+		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<th></th>
-			            <th>序号</th>
-			            <th>名称</th>
-			            <th>地址</th>
-			            <th>面积</th>
-			            <th>备注</th>
-			            <th>操作</th>
+			        	<td lay-data="{field:'check',width:50}"></td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
+						<td lay-data="{field:'projectname',width:125}">名称</td>
+						<td lay-data="{field:'username'}">地址</td>
+						<td lay-data="{field:'userphone'}">面积</td>
+						<td lay-data="{field:'empname'}">备注</td>
+						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -52,7 +54,7 @@
 									</td>
 								</tr>
 							</c:forEach>
-							<c:forEach begin="${fn:length(rows)+1 }" end="15" step="1">
+							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
 								<tr>
 									<td></td>
 									<td></td>
@@ -64,19 +66,6 @@
 								</tr>
 							</c:forEach>
 						</c:when>
-						<c:otherwise>
-							<c:forEach begin="1" end="15" step="1">
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
 					</c:choose>
 			    </tbody>
 			</table>
@@ -91,10 +80,9 @@
 				</div>
 			</div>
 			
-
 			<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 			<input type="hidden" id="aaa602" name="aaa602" value="">
-				
+			</div>	
 		</form>
 	</div>
   </div>
@@ -136,10 +124,21 @@ function onBuilding(vaaa601,vaaa602)
 }
 </script>
 <script>
-layui.use(['layer', 'form','element'], function(){
+layui.use(['layer', 'form','element','table'], function(){
 	  var layer = layui.layer;
 	  var element = layui.element;
-	  form = layui.form;
+	  form = layui.form
+	  table = layui.table;
+	  
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	  var count=0;
 	  form.on('checkbox(check)', function(data){
           if(data.elem.checked==true){

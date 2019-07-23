@@ -54,7 +54,7 @@
 						}
 						else{
 					%>
-						<input type="text" name="aaa405" required="required" value="${param.aaa405 }" readonly="readonly" autocomplete="off" class="layui-input"  style="width:250px;">
+						<input type="text" name="aaa302" required="required" value="${param.aaa302 }" readonly="readonly" autocomplete="off" class="layui-input"  style="width:250px;">
 					<%
 						}
 					%>
@@ -153,7 +153,7 @@
 		<input type="hidden" name="aaa201" value="${param.aaa201 }"> 
 		<input type="hidden" name="aaa301" value="${param.aaa301 }"> 
 		<input type="hidden" name="aaa401" value="${ins.aaa401 }"> 
-		<input type="hidden" name="aaa302" value="${param.aaa405 }">
+		<input type="hidden" name="aaa302" value="${empty param.aaa302?ins.aaa405:param.aaa302 }">
 	</form>
 	</div>
 	</fieldset>

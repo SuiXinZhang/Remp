@@ -15,7 +15,7 @@
 			<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-				<legend>银行批量放款列表</legend>
+				<legend style="color:black;"><h2>银行批量放款列表</h2></legend>
 			
 			<form class="layui-form" id="myform" layfilter="form" 
 			action="<%=path%>/af/af06Query.html" method="post">
@@ -51,7 +51,7 @@
 				</div>
 				
 				<div class="layui-form-item" align="left">
-					<div class="layui-inline" style="padding-left:78px">
+					<div class="layui-inline" style="padding-left:85px">
 						<label class="layui-form-label">起始日期</label>
 						<div class="layui-input-inline">
 							<input type="text" name="bdate" class="layui-input" id="test29" placeholder="yyyy-MM-dd">
@@ -73,18 +73,21 @@
 
 		
 		<!-----------------数据迭代区 -------------------->
-		<table class="layui-table" border="1" width="95%" align="center">
+		<div id="tableId" style="display: none">
+		<table lay-filter="demo" border="1" width="95%" align="center">
+		<thead>
 			<tr>
-			  <td>序号</td>
-			  <td>放款单号</td>
-			  <td>放款银行</td>
-			  <td>项目名称</td>
-			  <td>放款日期</td>
-			  <td>登记人</td>
-			  <td>审核人</td>
-			  <td></td>
+			<td lay-data="{field:'sort1',width:60}">序号</td>
+			<td lay-data="{field:'projectname',width:125}">放款单号</td>
+			<td lay-data="{field:'username'}">放款银行</td>
+			<td lay-data="{field:'userphone'}">项目名称</td>
+			<td lay-data="{field:'empname'}">放款日期</td>
+			<td lay-data="{field:'style',width:88}">登记人</td>
+			<td lay-data="{field:'date',sort:true,width:115}">审核人</td>
+			<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			</tr>
-	  
+	  </thead>
+	  <tbody>
 	  <c:choose>
 	  	<c:when test="${rows!=null }">
 	  		<!-- 显示查询到的数据 -->
@@ -117,16 +120,14 @@
 	       
 	     </c:otherwise>
 	  </c:choose>
+	  </tbody>
 	  </table>
 	  
 	  	<!-- 功能按钮区 -->
 	  	<div class="layui-form-item" align="center">
 		       <input type="submit" name="next" value="添加" 
-		              formaction="<%=path%>/af/af06Add.jsp" class="layui-btn">
-		       <%-- 
-		       <input type="submit" id="del" name="next" value="审核" 
-		              formaction="<%=path%>/af06Modify.html"  disabled="disabled">
-		       --%>
+		       formaction="<%=path%>/af/af06Add.jsp" class="layui-btn">
+		</div>
 		</div>
 	</form>
 	</fieldset>
@@ -163,10 +164,20 @@
 </script>
 	<script>
 //JavaScript代码区域
-	layui.use(['layer', 'form','element'], function(){
+	layui.use(['layer', 'form','element','table'], function(){
 	  var element = layui.element;
 	  var layer = layui.layer
-	  ,form = layui.form;
+	  ,form = layui.form
+	  ,table = layui.table;
+		//转换静态表格
+		table.init('demo', {
+			limit : 10,
+			page : true,
+			toolbar : true,
+			done : function(res, curr, count) {
+				$('#tableId').css('display', 'block');
+			}
+		});
 	});
 	
 	//日期选择框

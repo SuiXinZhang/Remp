@@ -36,7 +36,7 @@
 	    		</label>
 		      	<div class="layui-input-block">
 		        	<input type="number" name="aaa903" step="0.01" required="required" value="${ins.aaa903 }" autocomplete="off" 
-		        			class="layui-input"  style="width:250px;" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+		        			class="layui-input"  style="width:250px;"  step="0.01" min="0" max="1">
 	      		</div>
 	    	</div>
 	    </div>
@@ -74,9 +74,9 @@
 	    			是否贷款
 	    		</label>
 		      	<div id="aaa906" class="layui-input-block"  style="width: 250px;">
-		      		<input type="radio" name="aaa906" lay-filter="aaa906"  lay-verify="required"  value="是"  title="是"  checked="">
-      				<input type="radio" name="aaa906" lay-filter="aaa906"  lay-verify="required"  value="否" title="否">
-      				<input type="radio" name="aaa906" lay-filter="aaa906"  lay-verify="required"  value="不确定" title="不确定">
+		      		<input type="radio" name="aaa906" lay-filter="aaa906"  lay-verify="required"  value="是"  title="是"  >
+      				<input type="radio" name="aaa906" lay-filter="aaa906"  lay-verify="required"  value="否" title="否" checked="">
+      				<input type="radio" name="aaa906" lay-filter="aaa906"  lay-verify="required"  value="不确定" title="不确定" >
 	      		</div>
 	    	</div>
 	    </div>
@@ -105,7 +105,8 @@
 				    			按&thinsp;揭&thinsp;精&thinsp;确&thinsp;度
 				    		</label>
 							<div class="layui-input-block">
-					        	<input type="text" name="aaa908"  value="${ins.aaa908 }" autocomplete="off" class="layui-input"  style="width:250px;">
+					        	<input type="number" name="aaa908"  value="${ins.aaa908 }"  step="0.01" min="0" max="1"
+					        		autocomplete="off" class="layui-input"  style="width:250px;">
 				      		</div>
 				    	</div>
 				    </div>
@@ -129,7 +130,8 @@
 				    			公积金精确度
 				    		</label>
 							<div class="layui-input-block">
-					        	<input type="text" name="aaa910" value="${ins.aaa910 }" autocomplete="off" class="layui-input"  style="width:250px;">
+					        	<input type="number" name="aaa910" value="${ins.aaa910 }"  step="0.01" min="0" max="1"
+					        		autocomplete="off" class="layui-input"  style="width:250px;">
 				      		</div>
 				    	</div>
 				    </div>  
@@ -138,6 +140,7 @@
 					</fieldset>
 	</c:if>
 	    
+
 	    
 		<c:if test="${ins.aaa906 ne '是'}">
 					<fieldset id="hidden"  class="layui-elem-field" style="display:none; width:400px; margin:0 auto;">
@@ -163,7 +166,8 @@
 				    			按&thinsp;揭&thinsp;精&thinsp;确&thinsp;度
 				    		</label>
 							<div class="layui-input-block">
-					        	<input type="text" name="aaa908"  value="${ins.aaa908 }" autocomplete="off" class="layui-input"  style="width:250px;">
+					        	<input type="number" name="aaa908"  value="${ins.aaa908 }"  step="0.01" min="0" max="1"
+					        		autocomplete="off" class="layui-input"  style="width:250px;">
 				      		</div>
 				    	</div>
 				    </div>
@@ -175,7 +179,8 @@
 				    			公&thinsp;积&thinsp;金&thinsp;银&thinsp;行
 				    		</label>
 							<div class="layui-input-block">
-					        	<input type="text" name="aaa909" value="${ins.aaa909 }" autocomplete="off" class="layui-input"  style="width:250px;">
+					        	<input type="text" name="aaa909" value="${ins.aaa909 }"
+					        		autocomplete="off" class="layui-input"  style="width:250px;">
 				      		</div>
 				    	</div>
 				    </div>
@@ -187,7 +192,8 @@
 				    			公积金精确度
 				    		</label>
 							<div class="layui-input-block">
-					        	<input type="text" name="aaa910" value="${ins.aaa910 }" autocomplete="off" class="layui-input"  style="width:250px;">
+					        	<input type="number" name="aaa910" value="${ins.aaa910 }"  step="0.01" min="0" max="1"
+					        		autocomplete="off" class="layui-input"  style="width:250px;">
 				      		</div>
 				    	</div>
 				    </div>  

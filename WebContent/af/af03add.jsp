@@ -108,17 +108,21 @@
 				</div>
 			</div>
 	</div>
-<table class="layui-table" lay-even lay-skin="nob">
+<div id="tableId" style="">
+<table id="idData" class="layui-table"  lay-filter="demo">
+	<thead>
 	<tr>
-	<td>款项类型</td>
-	<td>款项名称</td>
-	<td>金额</td>
-	<td>币种</td>
-	<td>汇率</td>
-	<td>折人民币金额</td>
-	<td>支付方式</td>
-	<td>备注</td>
+	<td lay-data="{field:'projectname',width:125}">款项类型</td>
+	<td lay-data="{field:'username'}">款项名称</td>
+	<td lay-data="{field:'userphone'}">金额</td>
+	<td lay-data="{field:'empname'}">币种</td>
+	<td lay-data="{field:'style'}">汇率</td>
+	<td lay-data="{field:'date'}">折人民币金额</td>
+	<td lay-data="{field:'grade'}">支付方式</td>
+	<td lay-data="{field:'state'}">备注</td>
 	</tr>
+	</thead>
+	<tbody>
 	<tr>
 	<td><e:select name="aaf403" value="非贷款类房款:非贷款类房款,贷款类房款:贷款类房款,全款:全款,其它:其它,"/></td>
 	<td><e:select name="aaf409" value="定金:定金,预约金:预约金,房款:房款"/></td>
@@ -129,6 +133,7 @@
 	<td><e:select value="现金:现金,银行卡:银行卡,第三方支付:第三方支付" name="aaf407"/></td>
 	<td><e:text name="aaf408"/></td>
 	</tr>
+	</tbody>
 </table>
 	<div class="layui-form-item" align="center">
 		<input type="submit" name="text" value="${empty param.aaf301?'添加':'修改' }"
@@ -137,23 +142,28 @@
 		 formnovalidate="formnovalidate" formaction="<%=path%>/af03query.html">
 	</div>
 <input type="hidden" name="aaf301" value="${param.aaf301 }">
+</div>
 </form>
     </div>
   </div>
   
   <div class="layui-footer">
     <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
   </div>
 </div>
 <script ></script>
 <script>
 //JavaScript代码区域
-	layui.use(['layer', 'form','element'], function(){
+	layui.use(['layer', 'form','element','table'], function(){
 	  var element = layui.element;
 	  var layer = layui.layer
-	  ,form = layui.form;
-	  layer.msg('Hello World');
+	  ,form = layui.form
+	  ,table = layui.table;
+	  if("${msg }" != "")
+	  {
+		  layer.msg("${msg }");
+	  }
+		
 	  form.val('myform',{
 		  "aaf308":"${ins.aaf308}",
 		  "aaf303":"${ins.aaf303}"

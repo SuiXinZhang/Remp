@@ -46,8 +46,8 @@
 	    			建筑面积
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa505" required="required" value="${ins.aaa505 }" autocomplete="off" class="layui-input"  
-		        			style="width:250px;" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+		        	<input type="number" name="aaa505" required="required" value="${ins.aaa505 }" autocomplete="off" class="layui-input"  
+		        			style="width:250px;" step="0.01" min="0">
 	      		</div>
 	    	</div>
 
@@ -57,12 +57,13 @@
 	    			套内面积
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa506" required="required" value="${ins.aaa506 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="number" name="aaa506" required="required" value="${ins.aaa506 }" autocomplete="off" class="layui-input"  
+		        		style="width:250px;"  step="0.01" min="0">
 	      		</div>
 	    	</div>
 	    </div>
 	    
-		<div class="layui-form-item" align="center">
+		<div class="layui-form-item" align="left" style="padding-left:163px">
 			<div class="layui-inline">
 		      	<label class="layui-form-label" >
 	    			<i class="layui-icon layui-icon-component" style="font-size: 20px; color: black;"></i>
@@ -73,15 +74,7 @@
 		        				autocomplete="off" class="layui-input"  style="width:250px;">
 	      		</div>
 	    	</div>
-	    	<div class="layui-inline">
-	    		<label class="layui-form-label" >
-	    			<i class="layui-icon layui-icon-picture" style="font-size: 20px; color: black;"></i>
-	    			平&ensp;面&ensp;图
-	    		</label>
-		      	<div class="layui-input-block">
-		        	<input type="text" name="aaa507"  value="${ins.aaa507 }" autocomplete="off" class="layui-input"  style="width:250px;">
-	      		</div>
-	    	</div>
+
 	    </div>
 
     	<div class="layui-form-item layui-form-text" align="center">

@@ -48,7 +48,7 @@
 	    			Ãæ»ý
 	    		</label>
 		      	<div class="layui-input-block">
-		        	<input type="number" name="aaa604" required="required" step="0.1" value="${ins.aaa604 }" 
+		        	<input type="number" name="aaa604" required="required" step="0.01" min="0" value="${ins.aaa604 }" 
 		        			autocomplete="off" class="layui-input" style="width:250px;">
 	      		</div>
 	    	</div>

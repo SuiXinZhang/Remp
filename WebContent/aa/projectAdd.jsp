@@ -126,7 +126,7 @@
 	    		</label>
 				<div class="layui-input-block">
 		        	<input type="text" name="aaa211" required="required" value="${ins.aaa211 }" autocomplete="off" class="layui-input"  
-		        			style="width:250px;" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+		        			style="width:250px;" step="0.01" min="0">
 	      		</div>
 	    	</div>
 	    </div>
@@ -138,8 +138,8 @@
 	    			建筑面积
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa212" required="required" value="${ins.aaa212 }" autocomplete="off" class="layui-input"  
-		        			style="width:250px;" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+		        	<input type="number" name="aaa212" required="required" value="${ins.aaa212 }" autocomplete="off" class="layui-input"  
+		        			style="width:250px;"  step="0.01" min="0">
 	      		</div>
 	    	</div>
 
@@ -149,7 +149,8 @@
 	    			可售面积
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa213" required="required" value="${ins.aaa213 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="number" name="aaa213" required="required" value="${ins.aaa213 }" autocomplete="off" class="layui-input"  
+		        		style="width:250px;"  step="0.01" min="0">
 	      		</div>
 	    	</div>
 	    </div>
@@ -161,7 +162,8 @@
 	    			可售套数
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa214" required="required" value="${ins.aaa214 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="number" name="aaa214" required="required" value="${ins.aaa214 }" autocomplete="off" class="layui-input"  
+		        		style="width:250px;" step="1" min="0">
 	      		</div>
 	    	</div>
 
@@ -171,7 +173,8 @@
 	    			可售单价
 	    		</label>
 				<div class="layui-input-block">
-		        	<input type="text" name="aaa215" required="required" value="${ins.aaa215 }" autocomplete="off" class="layui-input"  style="width:250px;">
+		        	<input type="number" step="0.01" min="0" name="aaa215" required="required" value="${ins.aaa215 }" autocomplete="off" class="layui-input"  style="width:250px;"
+		        		>
 	      		</div>
 	    	</div>
 	    </div>
@@ -227,7 +230,8 @@
 				</div>
 			</div>
 			
-		<input type="hidden" name="aaa201" value="${ins.aaa201 }"> 
+		<input type="hidden" name="aaa201" value="${ins.aaa201 }">
+		<input type="hidden" name="aaa101" value="1">  
 	</form>
 	</div>
 	</fieldset>
