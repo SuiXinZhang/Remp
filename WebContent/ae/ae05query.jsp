@@ -11,10 +11,12 @@
         <c:param name="menu" value="ae07"/>
      </c:import>
   <div class="layui-body">
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>面积补差</legend>
 	    <form id="action" lay-filter="form" class="layui-form" action="<%=path %>/ae/ae05query.html" method="post">
-	     <h1 align="center">面积补差</h1>
-	        <hr>
+	    <br>
 	        <div class="layui-form-item" align="center">
 	                <div class="layui-inline">
 	                    <label class="layui-form-label">客户姓名</label>
@@ -61,6 +63,7 @@
 			</table>
 			</div>
 		</form>
+		</fieldset>
 	</div>
   </div>
   

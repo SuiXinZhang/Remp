@@ -12,10 +12,12 @@
         <c:param name="menu" value="ae04"/>
      </c:import>
   <div class="layui-body">
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+					<legend>产权服务</legend>
 	    <form id="action" lay-filter="form" class="layui-form" action="<%=path %>/ae/ae04query.html" method="post">
-	     <h1 align="center">产权服务</h1>
-	        <hr>
+	    <br>
 	        <div class="layui-form-item" align="center">
 	                <div class="layui-inline">
 	                    <label class="layui-form-label">客户姓名</label>
@@ -72,6 +74,7 @@
 			</div>
 			</div>
 		</form>
+		</fieldset>
 	</div>
   </div>
   

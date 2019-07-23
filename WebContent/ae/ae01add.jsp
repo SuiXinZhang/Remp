@@ -12,8 +12,10 @@
      </c:import>
 	<%-- <jsp:include   page="/ae/menu.jsp"/> --%>
   <div class="layui-body">
-  <h1 align="center">合同备案</h1>
-    <div style="padding: 15px;">
+    <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
+    <fieldset class="layui-elem-field">
+ 	<legend style="color:black"><h2>合同备案</h2></legend>
+  		<div class="layui-field-box">
 	    <form action="" lay-filter="form" class="layui-form"  method="post">
 	    <div class="layui-form-item" align="center">
 		    <div class="layui-inline" >
@@ -113,6 +115,8 @@
 				</div>
 			</div>
 	</form>
+	</div>
+	</fieldset>
 	</div>
   </div>
   

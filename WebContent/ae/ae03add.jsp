@@ -11,8 +11,10 @@
         <c:param name="menu" value="ae03"/>
      </c:import>
   <div class="layui-body">
-  <h1 align="center">入伙记录</h1>
-    <div style="padding: 15px;">
+  <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
+    <fieldset class="layui-elem-field">
+ 	<legend style="color:black"><h2>入伙记录</h2></legend>
+  		<div class="layui-field-box">
 	    <form action="<%=path %>/ae03Add.html" lay-filter="form" class="layui-form"  method="post">
 	    <div align="center">
 		    <div class="layui-form-item">
@@ -96,6 +98,8 @@
 			<input type="hidden" name="aae301" value="${param.aae301 }"> 
 		</div>
 	</form>
+	</div>
+	</fieldset>
 	</div>
   </div>
   
