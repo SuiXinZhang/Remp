@@ -8,13 +8,13 @@
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
 	<c:import url="/ad/menu.jsp">
-        <c:param name="menu" value="af02"/>
+        <c:param name="menu" value="af04"/>
      </c:import>
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
     <fieldset class="layui-elem-field">
- 	<legend style="color:black"><h2>预收款详情</h2></legend>
+ 	<legend style="color:black"><h2>楼款详情</h2></legend>
   		<div class="layui-field-box">
     <form class="layui-form" lay-filter="myform" action="<%=path %>/af/af03add.html" method="post">
     <div class="layui-form-item" align="center">
@@ -39,7 +39,7 @@
 					房间号码
 				</label>
 				<div class="layui-input-inline">
-					<input id="room" type="text" name="aaf302" required lay-verify="true" value="${ins.aaf302 }"
+					<input id="room" type="text" name="aaf302" required lay-verify="true" value="${ins.aad703 }"
 					   onclick="selectRoom()" readonly="readonly" class="layui-input">
 					<input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
 				</div>

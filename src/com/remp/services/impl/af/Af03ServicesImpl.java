@@ -9,6 +9,11 @@ import com.remp.system.tools.Tools;
 
 public class Af03ServicesImpl extends JdbcServicesSupport 
 {
+	/**
+	 * 预约金生成付款详情
+	 * @return
+	 * @throws Exception
+	 */
 	public Map<String, String> orderTurnReceipt()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
@@ -18,7 +23,25 @@ public class Af03ServicesImpl extends JdbcServicesSupport
 				;
 		return this.queryForMap(sql.toString(), this.get("aad101"));
 	}
-	
+	/**
+	 * 合同楼款生成付款详情
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<String, String> AgreeTurnReceipt()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("select aad702,aad703,aad711")
+				.append("  from ad07")
+				.append(" where aad701=?")
+				;
+		return this.queryForMap(sql.toString(), this.get("aad701"));
+	}
+	/**
+	 * 订单订金生成付款详情
+	 * @return
+	 * @throws Exception
+	 */
 	public Map<String, String> turnreceipt()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
@@ -27,6 +50,11 @@ public class Af03ServicesImpl extends JdbcServicesSupport
 				.append(" where aad401=?");
 		return this.queryForMap(sql.toString(),this.get("aad401"));
 	}
+	/**
+	 * 添加预付款,楼款详情
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean add()throws Exception
 	{
 		StringBuilder sql1 = new StringBuilder()
@@ -74,6 +102,9 @@ public class Af03ServicesImpl extends JdbcServicesSupport
 		return this.executeTransaction();
 	}
 
+	/**
+	 * 查询付款详情以及款项明细
+	 */
 	public List<Map<String, String>> query()throws Exception
 	{
 		Object qaaf305 = this.get("qaaf305");
@@ -100,6 +131,9 @@ public class Af03ServicesImpl extends JdbcServicesSupport
 		}
 		return this.queryForList(sql.toString(), paramList.toArray());
 	}
+	/**
+	 * 查看明细
+	 */
 	public Map<String, String> findById()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
@@ -111,6 +145,11 @@ public class Af03ServicesImpl extends JdbcServicesSupport
 				;
 		return this.queryForMap(sql.toString(), this.get("aaf301"));
 	}
+	/**
+	 * 添加款项
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean modify()throws Exception
 	{
 		StringBuilder sql1 = new StringBuilder()

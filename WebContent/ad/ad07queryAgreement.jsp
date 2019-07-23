@@ -71,7 +71,7 @@
 				    <a class="layui-btn layui-btn-xs" href="#" onclick="onChange('${ins.aad701}')">
 				    	<i class="layui-icon layui-icon-link"></i>申请变更
 				    </a>
-				    <a class="layui-btn layui-btn-xs" href="#" onclick="onReceipt('${ins.aad401}')">
+				    <a class="layui-btn layui-btn-xs" href="#" onclick="onReceipt('${ins.aad701}')">
 				    	<i class="layui-icon layui-icon-link"></i>生成付款详情
 				    </a>
 				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onCancel('${ins.aad701}')">
@@ -85,6 +85,10 @@
 	  </tbody>
 	</table>
 	</div>
+	<div class="layui-form-item" align="center">
+  		<input class="layui-btn layui-btn-normal" type="submit" name="next" value="生成售后服务"
+  	 		formaction="<%=path%>/ae/ae01query.html">
+  	</div>
 	</form>
 	</fieldset>
     </div>
@@ -138,7 +142,7 @@
     function onReceipt(vaad701)
     {
   	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/af/af03otherTurnReceipt.html?aad701="+vaad701;
+  	 vform.action="<%=path%>/af/af03AgreeTurnReceipt.html?aad701="+vaad701;
   	 vform.submit();
     }
 </script>
