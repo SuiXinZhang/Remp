@@ -7,27 +7,35 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
+  	<c:if test="${empty ins.aac301 }">
 	<c:import url="/ac/menu.jsp">
   		 <c:param name="menu" value="ac12"/>
   	</c:import>
+  	</c:if>
+  	<c:if test="${!empty ins.aac301 }">
+  	<jsp:include   page="/ac/menu.jsp"/>
+  	</c:if>
   <div class="layui-body">
-    	
-    <div style="padding: 15px;">
+     <div class="layui-anim layui-anim-scale"
+				style="padding: 15px; margin: 30px 80px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;padding-top: 20px">
+					<legend>客户跟进${empty ins.aac301?'添加':'修改' }</legend>
     <form class="layui-form" lay-filter="myform" action="<%=path%>/ac/ac03Add.html" id="form" method="post">
-				客户跟进${empty ins.aac301?'添加':'修改' }
 
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
-			<label class="layui-form-label">客户名称</label>
+			<label class="layui-form-label" style="width:95px">
+			<i class="layui-icon layui-icon-face-smile" style="font-size: 20px; color: black;"></i>
+			&thinsp;客&thinsp;户&thinsp;名&thinsp;称&thinsp;</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aac403" required lay-verify="true" value="${empty param.aac401?ins.aac403:param.aac403 }"
 					 readonly="readonly" autocomplete="off" class="layui-input">
 				</div>
 		</div>
-	</div>
-	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
-			<label class="layui-form-label">客户编号</label>
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-auz" style="font-size: 20px; color: black;"></i>
+			客户编号</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aac402" required lay-verify="true" value="${empty param.aac401?ins.aac402:param.aac402 }"
 					 readonly="readonly" autocomplete="off" class="layui-input">
@@ -36,52 +44,57 @@
 	</div>
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
-			<label class="layui-form-label">跟进状态</label>
+			<label class="layui-form-label" style="width:95px">
+			<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
+			&thinsp;跟&thinsp;进&thinsp;时&thinsp;间&thinsp;</label>
+				<div class="layui-input-inline">
+					<input type="text" name="aac305" id="date" required lay-verify="true" value="${ins.aac305 }"
+					 autocomplete="off" class="layui-input">
+				</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-template-1" style="font-size: 20px; color: black;"></i>
+			跟进状态</label>
 				<div class="layui-input-inline">
 					<select name="aac304">
-						<option value="01" selected="selected">未跟进</option>
+						<option value="01">未跟进</option>
 						<option value="02">已跟进</option>
 						<option value="03">待再次跟进</option>
 					</select>
 				</div>
 		</div>
 	</div>
-	<div class="layui-form-item" align="center">
+<div class="layui-form-item" align="center">
 		<div class="layui-inline">
-			<label class="layui-form-label">跟进内容</label>
-				<div class="layui-input-inline">
-					<textarea name="aac303" required lay-verify="true"
-					 class="layui-textarea">${ins.aac303 }</textarea>
-				</div>
-		</div>
-	</div>
-
-	<div class="layui-form-item" align="center">
-		<div class="layui-inline">
-			<label class="layui-form-label">跟进时间</label>
-				<div class="layui-input-inline">
-					<input type="text" name="aac305" id="date" required lay-verify="true" value="${ins.aac305 }"
-					 autocomplete="off" class="layui-input">
-				</div>
-		</div>
-	</div>
-	<div class="layui-form-item" align="center">
-		<div class="layui-inline">
-			<label class="layui-form-label">跟进业务员</label>
+			<label class="layui-form-label" style="width:95px">
+			<i class="layui-icon layui-icon-survey" style="font-size: 20px; color: black;"></i>
+			跟进业务员</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aac306" required lay-verify="true" value="${ins.aac306 }"
 					 autocomplete="off" class="layui-input">
 				</div>
 		</div>
-	</div>
-	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
-			<label class="layui-form-label">员工编号</label>
+			<label class="layui-form-label">
+			<i class="layui-icon layui-icon-username" style="font-size: 20px; color: black;"></i>
+			员工编号</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aac307" required lay-verify="true" value="${ins.aac307 }"
 					 autocomplete="off" class="layui-input">
 				</div>
 		</div>
+	</div>
+	<div class="layui-form-item" align="center" >
+		<div class="layui-inline">
+		    <label class="layui-form-label" >
+		    <i class="layui-icon layui-icon-edit" style="font-size: 20px; color: black;"></i>
+		   	跟进内容</label>
+		    <div class="layui-input-block">
+		      <textarea cols="68" placeholder="请输入内容" required 
+		      name="aac303" class="layui-textarea" >${ins.aac303 }</textarea>
+		    </div>
+ 		</div>
 	</div>
 			
 	<div class="layui-form-item" align="center">
@@ -120,11 +133,8 @@
 		<e:hidden name="qaac303" />
 		<e:hidden name="qaac302" />
 	</form>
+	</fieldset>
     </div>
-  </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
   </div>
 </div>
 <script>
