@@ -25,7 +25,6 @@
 						<td lay-data="{field:'userphone',width:140}">房间结构</td>
 						<td lay-data="{field:'empname',width:88}">建筑面积</td>
 						<td lay-data="{field:'style',width:88}">套内面积</td>
-						<td lay-data="{field:'date',width:100}">户型平面图</td>
 						<td lay-data="{field:'grade'}">备注</td>
 						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
@@ -45,7 +44,6 @@
 									<td>${ins.aaa504 }</td>
 									<td>${ins.aaa505 }</td>
 									<td>${ins.aaa506 }</td>
-									<td>${ins.aaa507 }</td>
 									<td>${ins.aaa508 }</td>
 									<td>							
 										<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
@@ -57,7 +55,6 @@
 							</c:forEach>
 							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
 								<tr>
-									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>

@@ -35,13 +35,13 @@
 			    <thead>
 			        <tr>
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">客户</td>
+						<td lay-data="{field:'projectname'}">客户</td>
 						<td lay-data="{field:'username'}">房间</td>
 						<td lay-data="{field:'userphone'}">联系电话</td>
 						<td lay-data="{field:'empname'}">承诺办理</td>
-						<td lay-data="{field:'style',width:88}">承诺完成</td>
-						<td lay-data="{field:'date',sort:true,width:115}">交房日期</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'style'}">承诺完成</td>
+						<td lay-data="{field:'date',sort:true}">交房日期</td>
+						<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -54,7 +54,7 @@
 						<td>${ins.aae307 }</td>
 						<td>${ins.aae308 }</td>
 						<td>${ins.aae305 }</td>
-						<td><a href="#" onclick='findById(${ins.aae301})'>查看明细</a></td>
+						<td><a class="layui-btn layui-btn-xs " href="#" onclick='findById(${ins.aae301})'>查看明细</a></td>
 		        </tr>
 			    </c:forEach>
 			    </tbody>

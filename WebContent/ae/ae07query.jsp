@@ -45,14 +45,14 @@
 		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			        	<td lay-data="{field:'check',width:50}"></td>
+			        	<td lay-data="{field:'check',width:60}"></td>
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">客户</td>
+						<td lay-data="{field:'projectname'}">客户</td>
 						<td lay-data="{field:'username'}">房间</td>
 						<td lay-data="{field:'userphone'}">合同面积</td>
 						<td lay-data="{field:'empname'}">实际面积</td>
-						<td lay-data="{field:'style',width:88}">办理状态</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'style'}">办理状态</td>
+						<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -66,7 +66,7 @@
 						<td>${ins.aae702 }</td>
 						<td>${ins.aae703 }</td>
 						<td>${ins.snaae704 }</td>
-						<td><a href="#" onclick='execute(${ins.aae701})'>执行补差</a></td>
+						<td><a class="layui-btn layui-btn-xs " href="#" onclick='execute(${ins.aae701})'>执行补差</a></td>
 		        	</tr>
 			    </c:forEach>
 			    </tbody>

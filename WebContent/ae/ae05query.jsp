@@ -35,13 +35,13 @@
 			    <thead>
 			        <tr>
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'projectname',width:125}">客户</td>
+						<td lay-data="{field:'projectname'}">客户</td>
 						<td lay-data="{field:'username'}">房间</td>
 						<td lay-data="{field:'userphone'}">房间补差款</td>
 						<td lay-data="{field:'empname'}">附属房间补差款</td>
-						<td lay-data="{field:'style',width:88}">参差补差款</td>
-						<td lay-data="{field:'date',sort:true,width:115}">实际补差款</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'style'}">参差补差款</td>
+						<td lay-data="{field:'date',sort:true}">实际补差款</td>
+						<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -54,7 +54,7 @@
 						<td>${ins.aae503 }</td>
 						<td>${ins.aae504 }</td>
 						<td>${ins.aae505 }</td>
-						<td><a href="#" onclick='modify(${ins.aae501})'>查看明细</a></td>
+						<td><a class="layui-btn layui-btn-xs " href="#" onclick='modify(${ins.aae501})'>查看明细</a></td>
 		        </tr>
 			    </c:forEach>
 			    </tbody>
