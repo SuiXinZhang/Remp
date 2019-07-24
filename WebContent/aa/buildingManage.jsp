@@ -26,7 +26,7 @@
 						<td lay-data="{field:'empname', width:100}">单元数</td>
 						<td lay-data="{field:'style',width:100}">楼层数</td>
 						<td lay-data="{field:'date', width:100}">每层户数</td>
-						<td lay-data="{field:'grade',sort:true}">备注</td>
+						<td lay-data="{field:'grade'}">备注</td>
 						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 			        </tr>
 			    </thead>

@@ -70,18 +70,18 @@
 	    		</label>
 		      	<div class="layui-input-block" style="padding-left:10px">
 		      		<div class="layui-input-inline" style="width: 70px;">
-		        		<input type="text" name="aaa705" required="required" value="${ins.aaa705 }"  placeholder="单元数"
-		        			autocomplete="off" class="layui-input" id="aaa705" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+		        		<input type="number" name="aaa705" required="required" value="${ins.aaa705 }"  placeholder="单元数"
+		        			autocomplete="off" class="layui-input" id="aaa705" step="1" min="0">
 		        	</div>
 		        	<div class="layui-form-mid">-</div>
 		        	<div class="layui-input-inline" style="width: 70px;">
-		        		<input type="text" name="aaa704" required="required" value="${ins.aaa704 }"  placeholder="楼层数"
-		        			autocomplete="off" class="layui-input" id="aaa704" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+		        		<input type="number" name="aaa704" required="required" value="${ins.aaa704 }"  placeholder="楼层数"
+		        			autocomplete="off" class="layui-input" id="aaa704"  step="1" min="0">
 		        	</div>
 		        	<div class="layui-form-mid">-</div>
 		        	<div class="layui-input-inline" style="width: 60px;">
-		        		<input type="text" name="aaa706" required="required" value="${ins.aaa706 }"  placeholder="户数"
-		        			autocomplete="off" class="layui-input" id="aaa706" onkeyup="this.value=this.value.replace(/\D|^0/g,'')" onafterpaste="this.value=this.value.replace(/\D|^0/g,'')">
+		        		<input type="number" name="aaa706" required="required" value="${ins.aaa706 }"  placeholder="户数"
+		        			autocomplete="off" class="layui-input" id="aaa706"  step="1" min="0">
 		        	</div>
 	      		</div>
 	    	</div>

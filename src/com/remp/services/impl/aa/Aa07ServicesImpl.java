@@ -36,7 +36,7 @@ public class Aa07ServicesImpl extends JdbcServicesSupport{
 				.append("select a.aaa701,a.aaa702,a.aaa703,a.aaa704,a.aaa705,")
 				.append("       a.aaa706,a.aaa707,a.aaa708,b.aaa602")
 				.append("  from aa07 a,aa06 b")
-				.append("  where a.aaa601=? and a.aaa601=b.aaa601")//查询楼栋且属于当前区域
+				.append("  where a.aaa601=? and a.aaa601=b.aaa601 order by aaa702")//查询楼栋且属于当前区域
 				;
 
 		return this.queryForList(sql.toString(),this.get("aaa601"));
