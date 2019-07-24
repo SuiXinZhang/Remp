@@ -118,11 +118,14 @@
 					</div>	
 
 						<div class="layui-form-item" align="center">
-							<input type="submit" name="next" value="${empty param.aab101?'添加':'修改' }" 
-							formaction="<%=path%>/${empty param.aab101?'ab/ab01Add':'ab/ab01Modify' }.html"
-							 class="layui-btn" />
-							<input type="submit" name="next" value="返回" formaction="<%=path %>/ab/ab01Query.html" 
-								formnovalidate="formnovalidate" class="layui-btn">
+							<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+								formaction="<%=path%>/${empty param.aab101?'ab/ab01Add':'ab/ab01Modify' }.html">
+								<i class="layui-icon layui-icon-add-1"></i>${empty param.aab101?'添加':'修改' }
+							</button>
+							<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+								formaction="<%=path %>/ab/ab01Query.html" formnovalidate="formnovalidate">
+								<i class="layui-icon layui-icon-prev"></i>返回
+							</button>
 						</div>
 						<input type="hidden" name="aab101" value="${param.aab101 }">
 					</form>

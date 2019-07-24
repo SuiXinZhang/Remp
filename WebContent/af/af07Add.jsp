@@ -3,6 +3,16 @@
 <html>
 <head>
 	<jsp:include page="/base/head.jsp" />
+	
+	<style>
+		.layui-form-label{
+			width: 110px;
+		}
+		.layui-input-inline{
+			margin-left: 20px;
+		}
+	</style>
+
 </head>
 <body class="layui-layout-body">
 	<div class="layui-layout layui-layout-admin">
@@ -39,8 +49,8 @@
 				</div>	
 
 			
-				<div class="layui-form-item"  align="left">
-					<div class="layui-inline" style="padding-left:213px">
+				<div class="layui-form-item" align="left">
+					<div class="layui-inline" style="padding-left:162px">
 						<label class="layui-form-label">
 							<i class="layui-icon layui-icon-home" style="font-size: 20px; color: black;"></i>房间编号
 						</label>
@@ -51,7 +61,7 @@
 					</div>
 					<div class="layui-inline">
 						<label class="layui-form-label">
-							<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>签署日期
+							<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>还款截止日期
 						</label>
 						<div class="layui-input-inline">
 							<input type="text" name="aaf705" required="true" value="${ins.aaf705 }" id="test29" class="layui-input">
@@ -79,13 +89,16 @@
 				</div>
 			  </div>
 			  <div class="layui-form-item" align="center">
-		  			<input type="submit" name="next" value="${empty param.aaf701?'添加':'修改'}"
-						formaction="<%=path %>/af/${empty param.aaf701?'af07Add':'af07Exam' }.html" class="layui-btn">
-					<input type="submit" name="next" value="返回"
-						formaction="<%=path %>/af/af07Query.html"
-		 				formnovalidate="formnovalidate" class="layui-btn">
+					<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+						formaction="<%=path %>/af/${empty param.aaf701?'af07Add':'af07Exam' }.html">
+						<i class="layui-icon layui-icon-add-1"></i>${empty param.aaf701?'添加':'修改'}
+					</button>
+					<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+						formaction="<%=path %>/af/af07Query.html" formnovalidate="formnovalidate">
+						<i class="layui-icon layui-icon-prev"></i>返回
+					</button>
 			  </div>
-			  <input type="hidden" name="aaf701" value="${param.aaf701 }">
+			  	<input type="hidden" name="aaf701" value="${param.aaf701 }">
 			</form>	
 			</div>
 			</fieldset>

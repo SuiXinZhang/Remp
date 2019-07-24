@@ -6,6 +6,7 @@ public class Ab03SummaryServlet extends Ab03ControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("updateSummary", "");
+		this.saveInfo("findSum");
 		return "ab/ab03Summary";
 	}
 

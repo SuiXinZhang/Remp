@@ -55,8 +55,14 @@
 					</c:forEach>
 					<tr>
 						<td colspan="7" align="center">
-							<input type="submit" name="next" value="确定" formaction="<%=path %>/ab/ab02Update.html" class="layui-btn">
-							<input type="submit" name="next" value="返回" formaction="<%=path %>/ab/ab01Query.html" class="layui-btn">
+							<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+								formaction="<%=path %>/ab/ab02Update.html">
+								<i class="layui-icon layui-icon-ok"></i>确定
+							</button>
+							<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+								formaction="<%=path %>/ab/ab01Query.html" formnovalidate="formnovalidate">
+								<i class="layui-icon layui-icon-prev"></i>返回
+							</button>
 						</td>
 					</tr>
 				</c:when>			

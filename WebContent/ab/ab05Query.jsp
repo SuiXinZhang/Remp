@@ -26,20 +26,28 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">起始时间</label>
 								<div class="layui-input-inline">
-									<input type="text" name="bdate" required="true" class="layui-input test-item" id="test29" placeholder="yyyy-MM-dd">
+									<input type="text" name="bdate" required="true" 
+									class="layui-input test-item" id="test29" placeholder="yyyy-MM-dd">
 								</div>
 							</div>
 							<div class="layui-inline">
 								<label class="layui-form-label">截止时间</label>
 								<div class="layui-input-inline">
-									<input type="text" name="edate" required="true" class="layui-input test-item" id="test30" placeholder="yyyy-MM-dd">
+									<input type="text" name="edate" required="true" 
+									class="layui-input test-item" id="test30" placeholder="yyyy-MM-dd">
 								</div>
 							</div>
 						</div>
 
-						<div class="layui-form-item" align="center">
-							<input type="submit" name="next" value="来电来访与营销投入分析" formaction="<%=path %>/ab/ab05QueryToC1.html" class="layui-btn"/>
-							<input type="submit" name="next" value="销售签约与营销投入分析" formaction="<%=path %>/ab/ab05QueryToC2.html" class="layui-btn"/>
+						<div class="layui-form-item" align="left">
+							<div class="layui-inline" style="padding-left:358px">
+								<input type="submit" name="next" value="来电来访与营销投入分析" 
+								formaction="<%=path %>/ab/ab05QueryToC1.html" class="layui-btn"/>
+							</div>
+							<div class="layui-inline" style="padding-left:122px">
+								<input type="submit" name="next" value="销售签约与营销投入分析" 
+								formaction="<%=path %>/ab/ab05QueryToC2.html" class="layui-btn"/>
+							</div>
 						</div>
 						</div>
 					</form>

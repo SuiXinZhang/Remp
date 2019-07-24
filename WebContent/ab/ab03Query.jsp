@@ -17,7 +17,7 @@
 		    	<c:param name="menu" value="ab03q"/>
 		    </c:import>
 			<div class="layui-body">
-				<!-- 内容主体区域 -->
+				${msg }
 				<div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 					<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
@@ -98,7 +98,31 @@
 											<td>${ins.aab303 }</td>
 											<td>${ins.aab306 }</td>
 											<td>${ins.cnaab304 }</td>
-											<td>
+											<c:choose>
+											    <c:when test="${ins.cnaab304=='计划中'}">
+											    <td>
+												    <a class="layui-btn layui-btn-xs" href="#"  onclick="onAct('${ins.aab301}')">
+												    	<i class="layui-icon layui-icon-edit"></i>编辑营销活动
+												    </a>
+												    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+												    	<i class="layui-icon layui-icon-release"></i>方案总结
+												    </a>
+											    </td>
+											    </c:when>
+											    <c:otherwise>
+											    <td>
+													<a href="#" onclick="onAct('${ins.aab301}')"
+													class="layui-btn layui-btn-xs">
+													<i class="layui-icon layui-icon-edit"></i>编辑营销活动
+													</a>
+													<a href="#" onclick="onSum('${ins.aab301 }')"
+													class="layui-btn layui-btn-xs">
+													<i class="layui-icon layui-icon-edit"></i>方案总结
+													</a> 
+												</td>
+											    </c:otherwise>
+										    </c:choose>
+											 <!--<td>
 												<a href="#" onclick="onAct('${ins.aab301}')"
 												class="layui-btn layui-btn-xs">
 												<i class="layui-icon layui-icon-edit"></i>编辑营销活动
@@ -106,8 +130,8 @@
 												<a href="#" onclick="onSum('${ins.aab301 }')"
 												class="layui-btn layui-btn-xs">
 												<i class="layui-icon layui-icon-edit"></i>方案总结
-												</a>
-											</td>
+												</a> 
+											</td>-->
 											<!-- <td>
 												<a href="#" onclick="onDel('${ins.aab301}')" class="layui-btn">删除</a>
 											</td> -->
