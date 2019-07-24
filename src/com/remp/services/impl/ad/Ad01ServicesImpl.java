@@ -122,11 +122,19 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 		StringBuilder sql= new StringBuilder()
 				.append("select aad102,aad103,aad104,aad105,aad106,")
 				.append("       aad107,aad108,aad109,aad110,aad111,")
-				.append("       aad112,aad113,aad114,aad115")
+				.append("       aad112,aad113,aad114,aad115,aad116")
 				.append("  from ad01")
 				.append(" where aad101=?")
 				;
-		return this.queryForMap(sql.toString(), this.get("aad101"));
+		Map<String, String> ins = this.queryForMap(sql.toString(), this.get("aad101"));
+		String sql2 = "select b.aad201,b.aad101, b.aad202,b.aad203 from ad01 a,ad02 b where a.aad101=b.aad101";
+		Map<String, String> map = this.queryForMap(sql2);
+		if(ins.get("aad116").equals("已退号"))
+		{
+			ins.put("aad202", map.get("aad202"));
+			ins.put("aad203", map.get("aad203"));
+		}
+		return ins;
 	}
 	/**
 	 * 删除预约记录
@@ -135,7 +143,7 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 	 */
 	public boolean deleteById()throws Exception
 	{
-		String sql = "delete from ad01 where aad101=?";
+		String sql = "update ad01 set aad116='已失效' where aad101=?";
 		return this.executeUpdate(sql, this.get("aad101"))>0;
 	}
 	/**

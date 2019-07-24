@@ -71,7 +71,7 @@
 				    <td>${ins.aad307 }</td>
 				    <td>
 				    <c:choose>
-				    <c:when test="${ins.caaa805=='签约'}">
+				    <c:when test="${ins.caaa805=='签约'||ins.caaa805=='等待'}">
 				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
 						<i class="layui-icon layui-icon-close-fill"></i>取消选房
 					</a>
@@ -105,10 +105,6 @@
 </form>
 	</fieldset>
     </div>
-  </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
   </div>
 </div>
 <script ></script>

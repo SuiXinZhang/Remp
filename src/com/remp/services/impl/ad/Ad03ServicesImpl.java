@@ -35,10 +35,12 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 				"04",
 				this.get("aaa801")
 		};
-		
+		String sql3 = "select aad301 from ad03 where aaa801=?";
+		this.queryForMap(sql3, this.get("aaa801"));
+		String sql4 = "update ad01 a,ad03 b set a.aad116='已失效' where b.aad301=? and b.aad304=a.aad104";
 		this.appendSql(sql1.toString(), args1);
 		this.appendSql(sql2, args2);
-		
+		this.appendSql(sql4, this.get("aad301"));
 		return this.executeTransaction();
 	}
 	/**
@@ -46,8 +48,14 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 	 */
 	public Map<String, String> findById()throws Exception
 	{
-		String sql = "select aaa803 from aa08 where aaa801=?";
-		return this.queryForMap(sql, this.get("aaa801"));
+		StringBuilder sql =new StringBuilder()
+				.append("select a.aad103,a.aaa801,a.aad104,a.aad108,a.aad110,")
+				.append("       a.aac401")
+				.append("  from ad01 a,aa08 b ")
+				.append(" where b.aaa801=? and a.aaa801=b.aaa801")
+				.append("   and a.aad116='已预约'")
+				;
+		return this.queryForMap(sql.toString(), this.get("aaa801"));
 	}
 	/**
 	 * 验证预约记录房间号,客户名称与项目排号是否与输入内容相符
@@ -57,9 +65,9 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 	public Map<String, String> findByName()throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
-				.append("select aac401,aad116 ")
+				.append("select aac401,aad116,aaa801 ")
 				.append("  from ad01")
-				.append(" where aad103=? and aad107=? and aad108=? and aad110=?")
+				.append(" where aad103=? and aad104=? and aad108=? and aad110=?")
 				.append("   and aad116=? ") 
 				;
 		Object args[]={
@@ -117,6 +125,9 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 				"01",
 				this.get("aaa801")
 		};
-		return this.executeUpdate(sql, args)>0;
+		String sql2 = "update ad01 a,ad03 b set a.aad116='已失效' where b.aad301=? and b.aad304=a.aad104";
+		this.appendSql(sql, args);
+		this.appendSql(sql2, this.get("aad301"));
+		return this.executeTransaction();
 	}
 }
