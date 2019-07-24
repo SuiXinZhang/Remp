@@ -23,13 +23,17 @@
 			
 			<div class="layui-form-item">
 				<div class="layui-inline">
-					<label class="layui-form-label">方案名称</label>
+					<label class="layui-form-label">
+						<i class="layui-icon layui-icon-form" style="font-size: 20px; color: black;"></i>方案名称
+					</label>
 					<div class="layui-input-inline">
 						<input type="text" name="aab302" value="${ins.aab302 }" required="true" autofocus="true" class="layui-input">
 					</div>
 				</div>
 				<div class="layui-inline">
-					<label class="layui-form-label">预算费用</label>
+					<label class="layui-form-label">
+						<i class="layui-icon layui-icon-rmb" style="font-size: 20px; color: black;"></i>预算费用
+					</label>
 					<div class="layui-input-inline">
 						<input type="number" step="0.01" name="aab303" value="${ins.aab303 }" required="true" class="layui-input">
 					</div>
@@ -39,7 +43,9 @@
 			
 			<div class="layui-form-item">
 				<div class="layui-inline">
-					<label class="layui-form-label">状态</label>
+					<label class="layui-form-label">
+						<i class="layui-icon layui-icon-face-smile" style="font-size: 20px; color: black;"></i>状态
+					</label>
 					<div class="layui-input-inline">
 						<select name="aab304" lay-verify="">
 							<option value="">请选择方案状态</option>
@@ -50,7 +56,9 @@
 					</div>
 				</div>
 				<div class="layui-inline">
-					<label class="layui-form-label">制定日期</label>
+					<label class="layui-form-label">
+						<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>制定日期
+					</label>
 					<div class="layui-input-inline">
 						<input type="text" name="aab305" required="true" value="${ins.aab305 }" class="layui-input" id="test29" placeholder="yyyy-MM-dd">
 					</div>
@@ -59,7 +67,9 @@
 			
 			<div class="layui-form-item" align="left">
 				<div class="layui-inline" style="padding-left:250px">
-					<label class="layui-form-label">制定人</label>
+					<label class="layui-form-label">
+						<i class="layui-icon layui-icon-username" style="font-size: 20px; color: black;"></i>制定人
+					</label>
 					<div class="layui-input-inline">
 						<input name="aab306" required="true" value="${ins.aab306 }" class="layui-input">
 					</div>
@@ -68,7 +78,9 @@
 
 			 
 			<div class="layui-form-item layui-form-text"  style="padding-left:250px;padding-right:270px;">
-				<label class="layui-form-label">方案描述</label>
+				<label class="layui-form-label">
+					<i class="layui-icon layui-icon-survey" style="font-size: 20px; color: black;"></i>方案描述
+				</label>
 				<div class="layui-input-block">
 					<textarea placeholder="请输入内容" name="aab307" class="layui-textarea">${ins.aab307 }</textarea>
 				</div>

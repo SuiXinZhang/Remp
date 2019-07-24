@@ -21,13 +21,17 @@
 			<div align="center">
 			   	<div class="layui-form-item">
 			   		<div class="layui-inline">
-						<label class="layui-form-label">客户名称</label>
+						<label class="layui-form-label">
+							<i class="layui-icon layui-icon-username" style="font-size: 20px; color: black;"></i>客户名称
+						</label>
 						<div class="layui-input-inline">
 							<input type="text" name="aaf703" required="true" autofocus="true" value="${ins.aaf703 }" class="layui-input">
 						</div>
 					</div>
 					<div class="layui-inline">
-						<label class="layui-form-label">客户邮箱</label>
+						<label class="layui-form-label">
+							<i class="layui-icon layui-icon-file" style="font-size: 20px; color: black;"></i>客户邮箱
+						</label>
 						<div class="layui-input-inline">
 							<input type="text" name="aaf704" required="true" value="${ins.aaf704 }" class="layui-input">
 						</div>
@@ -37,14 +41,18 @@
 			
 				<div class="layui-form-item"  align="left">
 					<div class="layui-inline" style="padding-left:213px">
-						<label class="layui-form-label">房间编号</label>
+						<label class="layui-form-label">
+							<i class="layui-icon layui-icon-home" style="font-size: 20px; color: black;"></i>房间编号
+						</label>
 						<div class="layui-input-inline">
 							<input type="text" id="room" name="aaf702" value="${ins.aaf702 }" required lay-verify="true" 
 							onclick="selectRoom()" readonly="readonly" class="layui-input">
 						</div>
 					</div>
 					<div class="layui-inline">
-						<label class="layui-form-label">签署日期</label>
+						<label class="layui-form-label">
+							<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>签署日期
+						</label>
 						<div class="layui-input-inline">
 							<input type="text" name="aaf705" required="true" value="${ins.aaf705 }" id="test29" class="layui-input">
 						</div>
@@ -53,13 +61,17 @@
 			
 				<div class="layui-form-item">
 					<div class="layui-inline">
-						<label class="layui-form-label">合同金额</label>
+						<label class="layui-form-label">
+							<i class="layui-icon layui-icon-rmb" style="font-size: 20px; color: black;"></i>合同金额
+						</label>
 						<div class="layui-input-inline">
 							<input type="number" step="0.01" name="aaf706" required="true" value="${ins.aaf706 }" class="layui-input">
 						</div>
 					</div>
 					<div class="layui-inline">
-						<label class="layui-form-label">欠款金额</label>
+						<label class="layui-form-label">
+							<i class="layui-icon layui-icon-rmb" style="font-size: 20px; color: black;"></i>欠款金额
+						</label>
 						<div class="layui-input-inline">
 							<input type="number" step="0.01" name="aaf709" required="true" value="${ins.aaf709 }" class="layui-input">
 						</div>
