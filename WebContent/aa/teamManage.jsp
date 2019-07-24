@@ -19,7 +19,7 @@
 			    <thead>
 			        <tr>
 			        	<td lay-data="{field:'check',width:50}"></td>
-			        	<td lay-data="{field:'sort1',width:50}">序号</td>
+			        	<td lay-data="{field:'sort1',width:60}">序号</td>
 						<td lay-data="{field:'projectname',width:300}">部门名称</td>
 						<td lay-data="{field:'username'}">部门描述</td>
 						<td lay-data="{field:'opt',fixed:'right',width:250}">操作</td>
