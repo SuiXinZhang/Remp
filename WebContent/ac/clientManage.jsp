@@ -47,6 +47,7 @@
 								<div class="layui-inline">
 									<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
 											<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+											查询
 									</button>
 								</div>
 							</div>
@@ -69,7 +70,7 @@
 										<td lay-data="{field:'date',width:58}">职业</td>
 										<td lay-data="{field:'grade',width:100}">经济状况</td>
 										<td lay-data="{field:'state',width:170}">邮箱</td>
-										<td lay-data="{field:'opt',fixed:'right',width:180}">操作</td>
+										<td lay-data="{field:'opt',fixed:'right',width:260}">操作</td>
 									</tr>
 								</thead>
 								<tbody>
@@ -87,12 +88,14 @@
 													<td>${ins.aac410 }</td>
 													<td>${ins.aac408 }</td>
 													<td>
-													
 													<a class="layui-btn layui-btn-xs " 
 													href="<%=path%>/ac04FindById.html?aac401=${ins.aac401 }" >
 													<i class="layui-icon layui-icon-edit"></i>编辑
 													</a> 
-													
+													<a class="layui-btn layui-btn-xs " href="#"
+														onClick="onSell('${ins.aac401}','${ins.aac402 }','${ins.aac403 }')">
+														<i class="layui-icon layui-icon-form"></i>添加机会
+													</a> 
 													<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
 														onClick="onFollow('${ins.aac401}','${ins.aac402 }','${ins.aac403 }')">
 														<i class="layui-icon layui-icon-release"></i>添加跟进
@@ -113,6 +116,15 @@
 		</div>
 		</div>
 <script type="text/javascript">
+function onSell(vaac401,vaac402,vaac403)
+{
+	var aac403 = document.getElementById("vaac403");
+	aac403.value = vaac403;
+	console.log(aac403); 
+	var myform = document.getElementById("myform");
+	myform.action = "<%=path%>/ac/sellOpport.jsp?aac401=" + vaac401+ "&aac402=" + vaac402 ;
+	myform.submit();
+}
 function onEdit(vaac401)
 {
 	var myform = document.getElementById("myform");
