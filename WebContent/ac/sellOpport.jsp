@@ -31,7 +31,7 @@
 								</label>
 								<div class="layui-input-inline">
 									<input type="text" name="aac202" required lay-verify="true"
-										value="${ins.aac403 }" autofocus="autofocus"
+										value="${empty param.aac401?ins.aac403:param.aac403 }" autofocus="autofocus"
 										autocomplete="off" class="layui-input">
 								</div>
 							</div>
@@ -43,7 +43,7 @@
 								</label>
 								<div class="layui-input-inline">
 									<input type="text" name="aac402" required lay-verify="true"
-										value="${ins.aac402 }" autocomplete="off"
+										value="${empty param.aac401?ins.aac402:param.aac402 }" autocomplete="off"
 										class="layui-input">
 								</div>
 							</div>
@@ -167,7 +167,7 @@
 							</div>
 							</c:if>
 						</div>
-						<e:hidden name="aac401" value="${ins.aac401 }" />
+						<e:hidden name="aac401" value="${empty param.aac401?ins.aac401:param.aac401 }" />
 						<e:hidden name="aac201" value="${param.aac201 }" />
 						<input type="hidden" name="aac101" value="${param.aac101 }">
 
