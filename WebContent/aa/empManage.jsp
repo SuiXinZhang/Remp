@@ -97,9 +97,9 @@
 						<td lay-data="{field:'style',width:60}">性别</td>
 						<td lay-data="{field:'date',width:80}">民族</td>
 						<td lay-data="{field:'grade',width:120}">生日</td>
-						<td lay-data="{field:'way',width:100}">联系方式</td>
+						<td lay-data="{field:'way',width:120}">联系方式</td>
 						<td lay-data="{field:'address',width:100}">住址</td>
-						<td lay-data="{field:'beizhu',sort:true}">备注</td>
+						<td lay-data="{field:'beizhu'}">备注</td>
 						<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
 			        </tr>
 			    </thead>

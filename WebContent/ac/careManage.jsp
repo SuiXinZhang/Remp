@@ -218,7 +218,7 @@ function onDel(vaac601)
 	          if(data.elem.checked==true){
 	               	count++;
 	               	if(count!=0){
-	               		document.getElementById("mod").className="layui-btn";
+	               		document.getElementById("mod").className="layui-btn layui-btn-danger";
 	               	}else{
 	               		document.getElementById("mod").className="layui-btn layui-btn-disabled";
 	               	}
@@ -227,7 +227,7 @@ function onDel(vaac601)
 	          }else{
 	        	  count--;
 	       		  if(count!=0){
-	       				document.getElementById("mod").className="layui-btn";
+	       				document.getElementById("mod").className="layui-btn layui-btn-danger";
 	       		  }else{
 	             		document.getElementById("mod").className="layui-btn layui-btn-disabled";
 	             }

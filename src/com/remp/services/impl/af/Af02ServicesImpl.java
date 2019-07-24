@@ -9,7 +9,11 @@ import org.apache.poi.hpsf.Array;
 import com.remp.services.JdbcServicesSupport;
 
 public class Af02ServicesImpl extends JdbcServicesSupport {
-	
+	/**
+	 * ∆±æ›¡Ï”√
+	 * @return
+	 * @throws Exception
+	 */
 	private boolean receiveNote() throws Exception
 	{
 		Object aaf201 = this.get("aaf201");
@@ -321,7 +325,7 @@ public class Af02ServicesImpl extends JdbcServicesSupport {
 		Object aaf207 = this.get("qaaf207");
 		StringBuilder sql = new StringBuilder()
 				.append("select aaf201,aaf202,aaf203,aaf204,aaf205,")
-				.append("       aaf206,b.fvalue as cnaaf207,aaf209,aaf210,aaf211")
+				.append("       aaf206,b.fvalue as cnaaf207,aaf207,aaf209,aaf210,aaf211")
 				.append("  from af02 a,syscode b")
 				.append(" where a.aaf207 = b.fcode and b.fname = 'aaf207' ");
 		List<Object> args = new ArrayList<>();

@@ -6,6 +6,7 @@ public class Ab03ModifyServlet extends Ab03ControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("modifyAb03", "ÐÞ¸Ä");
+		this.savePageInstance();
 		return "ab/ab03Add";
 	}
 

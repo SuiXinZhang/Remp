@@ -166,7 +166,7 @@
 	Ô±¹¤±àºÅ</label>
 		<div class="layui-input-inline">
 			<input type="text" required lay-verify="true" name="aac416" value="${ins.aac416 }"
-			 readonly="readonly" autocomplete="off" class="layui-input">
+			  autocomplete="off" class="layui-input">
 		</div>
 	</div>
 	<c:if test="${!empty param.aac401 }">
@@ -179,7 +179,6 @@
 					 readonly="readonly" autocomplete="off" class="layui-input">
 				</div>
 		</div>
-
 	</c:if>
 	</div>
 	<div class="layui-form-item" align="center">	

@@ -11,15 +11,14 @@
 		<div class="layui-body">
 				<div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
-				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;padding-top: 20px">
 					<legend> 领用票据</legend>
     <form class="layui-form" lay-filter="myform" action="<%=path%>/ac/af02ReceiveNote.html" method="post">
   
-	<div class="layui-form-item" align="center">
-	
-		<div class="layui-inline">
-			<label class="layui-form-label">
-			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
+	<div class="layui-form-item" align="left">
+		<div class="layui-inline" style="padding-left:237px">
+			<label class="layui-form-label" style="width:100px">
+			<i class="layui-icon layui-icon-auz" style="font-size: 20px; color: black;"></i>
 			票据批次号
 			</label>
 				<div class="layui-input-inline">
@@ -30,10 +29,10 @@
 	</div>
 	
 	<div class="layui-form-item" align="center">
-		<div class="layui-inline">
-			<label class="layui-form-label">
+		<div class="layui-inline" >
+			<label class="layui-form-label" style="width:100px">
 			<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
-			起始编号
+			&thinsp;起&thinsp;始&thinsp;编&thinsp;号&thinsp;
 			</label>
 				<div class="layui-input-inline">
 					<input type="number" name="aaf203" required lay-verify="true" value="${param.aaf203 }"
@@ -59,9 +58,9 @@
 	
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
-			<label class="layui-form-label">
+			<label class="layui-form-label" style="width:100px">
 			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
-			领用人
+			领&emsp;用&emsp;人
 			</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aaf205" required lay-verify="true" value="${param.aaf205 }"

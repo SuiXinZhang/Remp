@@ -11,13 +11,14 @@
   		<c:param name="menu" value="ab03a"/>
    	</c:import>
   <div class="layui-body">
+  	${msg }
     <!-- 内容主体区域 -->
     <div class="layui-anim layui-anim-scale"
 		style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
 				<legend style="color:black;"><h2>${empty param.aab301?'新增':'修改' }营销方案</h2></legend>
     
-    	<form class="layui-form" lay-filter="myform" action="<%=path%>/ab/ab03Add.html" method="post">
+    	<form class="layui-form" id="myform" lay-filter="form" action="<%=path%>/ab/ab03Add.html" method="post">
 		
 			<div align="center">
 			
@@ -47,11 +48,8 @@
 						<i class="layui-icon layui-icon-face-smile" style="font-size: 20px; color: black;"></i>状态
 					</label>
 					<div class="layui-input-inline">
-						<select name="aab304" lay-verify="">
-							<option value="">请选择方案状态</option>
+						<select name="aab304" required="true">
 							<option value="01" selected="selected">计划中</option>
-							<option value="02">执行中</option>
-							<option value="03">已完成</option>
 						</select>
 					</div>
 				</div>
@@ -87,14 +85,14 @@
 			</div>
 
 			<div class="layui-form-item" align="center">
-				<input type="submit" name="next" value="${empty param.aab301?'添加':'修改' }" 
-				formaction="<%=path%>/${empty param.aab301?'ab/ab03Add':'ab/ab03Modify' }.html" class="layui-btn"/>
-				<input type="submit" name="next" value="返回"
-				formaction="<%=path %>/ab/ab03Query.html"
-				formnovalidate="formnovalidate" class="layui-btn">
-			
-				<!-- <input id="layer" type="submit" name="next" value="编辑营销活动"
-					formaction="<%=path %>/ab/ab04FindById.html"> -->	
+				<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+					formaction="<%=path%>/${empty param.aab301?'ab/ab03Add':'ab/ab03Modify' }.html">
+					<i class="layui-icon layui-icon-add-1"></i>${empty param.aab301?'添加':'修改' }
+				</button>
+				<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+					formaction="<%=path %>/ab/ab03Query.html" formnovalidate="formnovalidate">
+					<i class="layui-icon layui-icon-prev"></i>返回
+				</button>
 			</div>	 
 		 	
 			<input type="hidden" name="aab301" value="${param.aab301 }">

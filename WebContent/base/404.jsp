@@ -21,8 +21,8 @@
 		</svg>
 		<div class="message-box">
 			<img  src="<%=path%>/static/layui/images/logo1.jpg" style="width:140px;padding-left:60px;">
-		  	<h1 style="color:#8cc63f">404</h1>
-		  	<p style="color:#00aaf0">页面找不到辣QAQ</p>
+		  	<h1 style="color:#8cc63f">网络故障QAQ</h1>
+		  	<h2 style="color:#00aaf0">快检查下网线插紧没~</h2>
 		  	<div class="buttons-con">
 		    <div class="action-link-wrap">
 		    	

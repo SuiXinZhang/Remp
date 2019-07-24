@@ -9,6 +9,7 @@
   	<jsp:include   page="/base/header.jsp"/>
 	<jsp:include   page="/ab/menu.jsp"/>
   <div class="layui-body">
+ 	 ${msg }
     <!-- 内容主体区域 -->
     <div class="layui-anim layui-anim-scale"
 		style="padding: 15px; margin: 30px 80px;">
@@ -20,15 +21,19 @@
 		
 		<div class="layui-form-item layui-form-text" style="padding-right:100px">
 			<div class="layui-input-block">
-				<textarea placeholder="请输入评估内容" name="aab309" class="layui-textarea">${ins.aab309 }</textarea>
+				<textarea placeholder="请输入评估内容" name="aab309" required="true"
+				 class="layui-textarea">${ins.aab309 }</textarea>
 			</div>
 		</div>
 		
-		<div class="layui-form-item" align="center">	
-			<input type="submit" name="next" value="完成" class="layui-btn">
-			<input type="submit" name="next" value="返回"
-			formaction="<%=path %>/ab/ab03Query.html"
-			formnovalidate="formnovalidate" class="layui-btn">
+		<div class="layui-form-item" align="center">
+			<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
+				<i class="layui-icon layui-icon-ok"></i>完成
+			</button>
+			<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+				formaction="<%=path %>/ab/ab03Query.html" formnovalidate="formnovalidate">
+				<i class="layui-icon layui-icon-prev"></i>返回
+			</button>
 		</div>
 		
 		<input type="hidden" name="aab301" value="${param.aab301 }">
