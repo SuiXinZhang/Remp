@@ -19,7 +19,7 @@ public class Ae07ServiceImpl extends JdbcServicesSupport
 				.append("          values(?,?,?,?,")
 				.append("                 ?,?,?,?,?)")
 				;
-		double diff = (Double.valueOf((String) this.get("aae703"))-Double.valueOf((String)this.get("aae702")))/Double.valueOf((String)this.get("aae702"))*100;
+		double diff = (Double.valueOf((String) this.get("aae703"))-Double.valueOf((String)this.get("aae702")))/Double.valueOf((String)this.get("aae702"));
 		Object args[] = new Object[]{
 				this.get("aae702"),
 				this.get("aae703"),

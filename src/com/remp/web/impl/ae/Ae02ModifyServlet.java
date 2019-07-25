@@ -6,7 +6,8 @@ public class Ae02ModifyServlet extends Ae02BaseSupport
 	public String execute() throws Exception 
 	{
 		this.update("modify", "ÐÞ¸Ä");
-		return "ae/ae02query";
+		this.savePageInstance();
+		return "ae/ae02add";
 	}
 
 }
