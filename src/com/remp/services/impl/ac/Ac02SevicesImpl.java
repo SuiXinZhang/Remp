@@ -74,22 +74,23 @@ public class Ac02SevicesImpl extends JdbcServicesSupport {
 			sql.append(" and aac204 <= ?");
 			args.add(eaac204);
 		}
-		if (this.isNotNull(baac204)) {
+		if (this.isNotNull(baac208)) {
 			sql.append(" and aac208 >= ?");
-			args.add(baac204);
+			args.add(baac208);
 		}
-		if (this.isNotNull(eaac204)) {
+		if (this.isNotNull(eaac208)) {
 			sql.append(" and aac208 <= ?");
-			args.add(eaac204);
+			args.add(eaac208);
 		}
-		if (this.isNotNull(baac204)) {
+		if (this.isNotNull(baac209)) {
 			sql.append(" and aac209 >= ?");
-			args.add(baac204);
+			args.add(baac209);
 		}
-		if (this.isNotNull(eaac204)) {
+		if (this.isNotNull(eaac209)) {
 			sql.append(" and aac209 <= ?");
-			args.add(eaac204);
+			args.add(eaac209);
 		}
+		System.out.println(sql);
 		List<Map<String, String>> rr = this.queryForList(sql.toString(), args.toArray());
 		return rr;
 	}
@@ -118,9 +119,18 @@ public class Ac02SevicesImpl extends JdbcServicesSupport {
 	
 	private boolean addIntention() throws Exception
 	{
+		Object aac401 = this.get("aac401");
+		if(aac401 == null)
+		{
+			String sql1 = "select aac401 from ac04 where aac402 = ?";
+			aac401 = this.queryForMap(sql1, this.get("aac402")).get("aac401");
+			System.out.println(aac401);
+		}
+		
+		
 		Object aac201 = Tools.getSequence("aac201");
 		this.put("aac201", aac201);
-		StringBuilder sql = new StringBuilder()
+		StringBuilder sql2 = new StringBuilder()
 				.append("insert into ac02(aac201,aac202,aac203,aac204,aac205,")
 				.append("				  aac206,aac207,aac208,aac209,aac401)")
 				.append("			values (?,?,?,?,?,")
@@ -137,9 +147,9 @@ public class Ac02SevicesImpl extends JdbcServicesSupport {
 				this.get("aac207"),
 				this.get("aac208"),
 				this.get("aac209"),
-				this.get("aac401")
+				aac401
 		};
-		return this.executeUpdate(sql.toString(), args) >0;
+		return this.executeUpdate(sql2.toString(), args) >0;
 	}
 	
 	

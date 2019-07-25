@@ -11,26 +11,29 @@
 	    	<c:param name="menu" value="af05q"/>
 	    </c:import>
 		<div class="layui-body">
-		${msg }
 			<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
 				<legend style="color:black;"><h2>${empty param.aab601?'新增':'修改' }银行放款单</h2></legend>
 		
-				<form class="layui-form" id="myform" layfilter="form"
+				<form class="layui-form" id="myform" lay-filter="form"
 				 action="<%=path%>/af/af06Add.html" method="post">
 				
 				<div align="center">
 				
 					<div class="layui-form-item">
 						<div class="layui-inline">
-							<label class="layui-form-label">贷款银行</label>
+							<label class="layui-form-label">
+								<i class="layui-icon layui-icon-template-1" style="font-size: 20px; color: black;"></i>贷款银行
+							</label>
 							<div class="layui-input-inline">
 								<input type="text" name="aaf604" required="true" autofocus="true" value="${ins.aaf604 }" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-inline">
-							<label class="layui-form-label">登记人</label>
+							<label class="layui-form-label">
+								<i class="layui-icon layui-icon-username" style="font-size: 20px; color: black;"></i>登记人
+							</label>
 							<div class="layui-input-inline">
 								<input type="text" name="aaf603" required="true" value="${ins.aaf603 }" class="layui-input" >
 							</div>
@@ -39,13 +42,17 @@
 
 					<div class="layui-form-item">
 						<div class="layui-inline">
-							<label class="layui-form-label">放款单号</label>
+							<label class="layui-form-label">
+								<i class="layui-icon layui-icon-form" style="font-size: 20px; color: black;"></i>放款单号
+							</label>
 							<div class="layui-input-inline">
 								<input type="text" name="aaf602" readonly="true" value="${ins.aaf602 }" class="layui-input">
 							</div>
 						</div>
 						<div class="layui-inline">
-							<label class="layui-form-label">放款日期</label>
+							<label class="layui-form-label">
+								<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>放款日期
+							</label>
 					   		<div class="layui-input-inline">
 					   			<input type="text" name="aaf605" required="true" value="${ins.aaf605 }" 
 					   			class="layui-input" id="test29" placeholder="yyyy-MM-dd">
@@ -55,7 +62,9 @@
 					
 					<div class="layui-form-item">
 						<div class="layui-inline">
-							<label class="layui-form-label">项目名称</label>
+							<label class="layui-form-label">
+								<i class="layui-icon layui-icon-home" style="font-size: 20px; color: black;"></i>项目名称
+							</label>
 							<div class="layui-input-inline">
 								<select name="aaf612" required>
 								    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
@@ -66,35 +75,23 @@
 							</div>
 						</div>
 						<div class="layui-inline">
-							<label class="layui-form-label">入账银行</label>
+							<label class="layui-form-label">
+								<i class="layui-icon layui-icon-template-1" style="font-size: 20px; color: black;"></i>入账银行
+							</label>
 							<div class="layui-input-inline">
 								<input type="text" name="aaf610" required="true" value="${ins.aaf610 }" class="layui-input">
 							</div>
 						</div>
 					</div>
 					
-					
-					<div class="layui-form-item">
-						<div class="layui-inline">
-							<label class="layui-form-label">结算方式</label>
-							<div class="layui-input-inline">
-								<input type="text" name="aaf608" required="true" value="${ins.aaf608 }" class="layui-input">
-							</div>
-						</div>
-						<div class="layui-inline">
-							<label class="layui-form-label">结算单号</label>
-							<div class="layui-input-inline">
-								<input type="text" name="aaf609" readonly="true" value="${ins.aaf609 }" class="layui-input">
-							</div>
-						</div>
-					</div>
-					
 					<br>
 					<br>
 					
 					<div class="layui-form-item">
 						<div class="layui-inline">
-							<label class="layui-form-label">审核人</label>
+							<label class="layui-form-label">
+								<i class="layui-icon layui-icon-username" style="font-size: 20px; color: black;"></i>审核人
+							</label>
 							<div class="layui-input-inline">
 								<input type="text" id="shenpi" name="aaf606" value="${ins.aaf606 }" class="layui-input">
 							</div>
@@ -103,13 +100,15 @@
 				</div>
 				
 					<div class="layui-form-item" align="center">
-			   			<input type="submit" name="next" value="${empty param.aaf601?'添加':'审核'}"
-			 				formaction="<%=path %>/af/${empty param.aaf601?'af06Add':'af06Exam' }.html" class="layui-btn">
-			 			<input type="submit" name="next" value="返回"
-			 				formaction="<%=path %>/af/af06Query.html"
-			 				formnovalidate="formnovalidate" class="layui-btn">
+						<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+							formaction="<%=path %>/af/${empty param.aaf601?'af06Add':'af06Exam' }.html">
+							<i class="layui-icon layui-icon-add-1"></i>${empty param.aaf601?'添加':'审核'}
+						</button>
+						<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+							formaction="<%=path %>/af/af06Query.html" formnovalidate="formnovalidate">
+							<i class="layui-icon layui-icon-prev"></i>返回
+						</button>
 				 	</div>
-				</table>
 				<input type="hidden" name="aaf601" value="${param.aaf601 }">
 			</form>
 			</fieldset>
@@ -141,6 +140,12 @@
 	  form.val('myform',{
 		  "aaf612":"${ins.aaf612}",
 	  });
+	  
+
+		if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	});
 	
 	//日期模块

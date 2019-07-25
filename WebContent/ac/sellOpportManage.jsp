@@ -4,6 +4,8 @@
 <html>
 <head>
 	<jsp:include   page="/base/head.jsp"/>
+	<link rel="stylesheet" type="text/css"
+	href="/remp/static/css/ac/clueManageCss.css">
 </head>
 <script>
 function onload1()
@@ -54,13 +56,10 @@ function onload1()
   <div class="layui-body">
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
-				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;padding-top: 20px">
 					<legend>销售机会管理</legend>
-    
-    
     <form class="layui-form" lay-filter="myform" action="<%=path%>/ac/ac02Query.html" id="myform" method="post">
 		
-				
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
 			<label class="layui-form-label">客户名称</label>
@@ -70,27 +69,78 @@ function onload1()
 				</div>
 		</div>
 		<div class="layui-inline">
+			<label class="layui-form-label" style="width:120px">可能购买时间</label>
+			<div class="layui-input-inline">
+				<input type="text" name="baac204" id="date1"
+					placeholder="B" lay-verify="date" value="${param.baac204 }"
+					autocomplete="off" class="layui-input">
+			</div>
+			<div class="layui-form-mid" id="toCenter3">----</div>
+			<div class="layui-input-inline">
+				<input type="text" name="eaac204" id="date2"
+					placeholder="E" lay-verify="date" value="${param.eaac204 }"
+					autocomplete="off" class="layui-input">
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="layui-form-item" align="center">
+		<div class="layui-inline">
 			<label class="layui-form-label">客户编号</label>
 				<div class="layui-input-inline">
 					<input type="text" name="qaac402" value="${param.qaac402 }"
 					 autocomplete="off" class="layui-input">
 				</div>
 		</div>
-	</div>
-	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
-			<label class="layui-form-label">意向房屋类型</label>
+			<label class="layui-form-label" style="width:120px">意&ensp;向&ensp;价&ensp;格</label>
+			<div class="layui-input-inline">
+				<input type="number" name="baac209" 
+					placeholder="L"  value="${param.baac209 }"
+					autocomplete="off" class="layui-input">
+			</div>
+			<div class="layui-form-mid" id="toCenter3">----</div>
+			<div class="layui-input-inline">
+				<input type="number" name="eaac209" 
+					placeholder="H"  value="${param.eaac209 }"
+					autocomplete="off" class="layui-input">
+			</div>
+		</div>
+	</div>
+	
+	<div class="layui-form-item" align="center">
+	<div class="layui-inline">
+			<label class="layui-form-label">潜在价值</label>
 				<div class="layui-input-inline">
-					<select name="qaac207">
+					<select name="qaac206">
 						<option value="" selected>不限定</option>
-						<option value="01">两室一厅</option>
-						<option value="02">两室两厅</option>
-						<option value="03">三室两厅</option>
+						<option value="01">差</option>
+						<option value="02">中等</option>
+						<option value="03">良</option>
+						<option value="04">优</option>
 					</select>
 				</div>
 		</div>
 		<div class="layui-inline">
-			<label class="layui-form-label">购买可能性</label>
+			<label class="layui-form-label" style="width:120px">意&ensp;向&ensp;面&ensp;积</label>
+			<div class="layui-input-inline">
+				<input type="number" name="baac208" 
+					placeholder="L"  value="${param.baac208 }"
+					autocomplete="off" class="layui-input">
+			</div>
+			<div class="layui-form-mid" id="toCenter3">----</div>
+			<div class="layui-input-inline">
+				<input type="number" name="eaac208" 
+					placeholder="H"  value="${param.eaac208 }"
+					autocomplete="off" class="layui-input">
+			</div>
+		</div>
+	</div>
+	
+	<div class="layui-form-item" align="left">
+	<div class="layui-inline">
+			<label class="layui-form-label" style="padding-left:130px">购买可能性</label>
 				<div class="layui-input-inline">
 					<select name="qaac203">
 						<option value="" selected>不限定</option>
@@ -102,69 +152,20 @@ function onload1()
 					</select>
 				</div>
 		</div>
-	</div>
-	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
-			<label class="layui-form-label">客户潜在跟进价值评估</label>
+			<label class="layui-form-label" style="width:120px">意向房屋类型</label>
 				<div class="layui-input-inline">
-					<select name="qaac206">
+					<select name="qaac207">
 						<option value="" selected>不限定</option>
-						<option value="01">差</option>
-						<option value="02">中等</option>
-						<option value="03">良</option>
-						<option value="04">优</option>
+						<option value="01">两室一厅</option>
+						<option value="02">两室两厅</option>
+						<option value="03">三室两厅</option>
 					</select>
 				</div>
 		</div>
 	</div>
-	<div class="layui-form-item" align="center">
-		<div class="layui-inline">
-			<label class="layui-form-label">可能购买时间[B]</label>
-				<div class="layui-input-inline">
-					<input type="text" id="date1" name="baac204" value="${param.baac204 }"
-					 autocomplete="off" class="layui-input">
-				</div>
-		</div>
-		<div class="layui-inline">
-			<label class="layui-form-label">可能购买时间[E]</label>
-				<div class="layui-input-inline">
-					<input type="text" id="date2" name="eaac204" value="${param.eaac204 }"
-					 autocomplete="off" class="layui-input">
-				</div>
-		</div>
-	</div>
-	<div class="layui-form-item" align="center">
-		<div class="layui-inline">
-			<label class="layui-form-label">意向价格[B]</label>
-				<div class="layui-input-inline">
-					<input type="number" name="baac209" value="${param.baac209 }"
-					 autocomplete="off" class="layui-input">
-				</div>
-		</div>
-		<div class="layui-inline">
-			<label class="layui-form-label">意向价格[E]</label>
-				<div class="layui-input-inline">
-					<input type="number" name="eaac209" value="${param.eaac209 }"
-					 autocomplete="off" class="layui-input">
-				</div>
-		</div>
-	</div>
-	<div class="layui-form-item" align="center">
-		<div class="layui-inline">
-			<label class="layui-form-label">意向面积[B]</label>
-				<div class="layui-input-inline">
-					<input type="number" name="baac208" value="${param.baac208 }"
-					 autocomplete="off" class="layui-input">
-				</div>
-		</div>
-		<div class="layui-inline">
-			<label class="layui-form-label">意向面积[E]</label>
-				<div class="layui-input-inline">
-					<input type="number" name="eaac208" value="${param.eaac208 }"
-					 autocomplete="off" class="layui-input">
-				</div>
-		</div>
-	</div>
+	
+	
 	
 	
 
@@ -221,13 +222,12 @@ function onload1()
 							</table>
 
 
-<script type="text/javascript">
-window.onload = onload1();
-</script>
+							<script type="text/javascript">
+							window.onload = onload1();
+							</script>
 							<br>
 							<br>
 							<br>
-
 							<div class="layui-form-item" align="center">
 							<div class="layui-inline">
 								<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
@@ -240,18 +240,11 @@ window.onload = onload1();
 								<i class="layui-icon layui-icon-delete"></i>删除
 								</button>
 							</div>
-								
 							</div>
-
 						</div>
-
 	</form>
 	</fieldset>
     </div>
-  </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
   </div>
 </div>
 <script>
@@ -264,12 +257,17 @@ window.onload = onload1();
 		{
 		  layer.msg("${msg }");
 		}
+	  	form.val('myform', {
+			"qaac203" : "${param.qaac203 }",
+			"qaac206" : "${param.qaac206 }",
+			"qaac207" : "${param.qaac207 }"
+		});
 	  var count = 0;
 		form.on('checkbox(check)', function(data){
 	          if(data.elem.checked==true){
 	               	count++;
 	               	if(count!=0){
-	               		document.getElementById("mod").className="layui-btn";
+	               		document.getElementById("mod").className="layui-btn layui-btn-danger";
 	               	}else{
 	               		document.getElementById("mod").className="layui-btn layui-btn-disabled";
 	               	}
@@ -278,7 +276,7 @@ window.onload = onload1();
 	          }else{
 	        	  count--;
 	       		  if(count!=0){
-	       				document.getElementById("mod").className="layui-btn";
+	       				document.getElementById("mod").className="layui-btn layui-btn-danger";
 	       		  }else{
 	             		document.getElementById("mod").className="layui-btn layui-btn-disabled";
 	             }

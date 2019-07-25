@@ -149,7 +149,7 @@
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
 						<td lay-data="{field:'projectname',width:80}">房间号</td>
 						<td lay-data="{field:'username'}">房间编码</td>
-						<td lay-data="{field:'userphone'}">地址</td>
+						<td lay-data="{field:'userphone',width:120}">地址</td>
 						<td lay-data="{field:'empname',width:80}">状态</td>
 						<td lay-data="{field:'style',width:80}">租售类型</td>
 						<td lay-data="{field:'date',width:100}">户型</td>

@@ -21,7 +21,6 @@
 	    	<c:param name="menu" value="af07q"/>
 	    </c:import>
 		<div class="layui-body">
-		${msg }
 		<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
@@ -60,7 +59,7 @@
 				</div>
 
 				<div class="layui-form-item" align="left">
-					<div class="layui-inline" style="padding-left:86">
+					<div class="layui-inline" style="padding-left:86px">
 						<label class="layui-form-label">起始日期</label>
 						<div class="layui-input-inline">
 							<input type="text" name="bdate" class="layui-input" id="test29"
@@ -75,7 +74,9 @@
 						</div>
 					</div>
 					<div class="layui-inline" style="padding-left:110px">
-						<input type="submit" name="next" value="查询" class="layui-btn">
+						<button class="layui-btn " type="submit">
+							<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
+						</button>
 					</div>
 				</div>
 				</div>
@@ -90,11 +91,11 @@
 						<td lay-data="{field:'projectname',width:125}">房间编号</td>
 						<td lay-data="{field:'username'}">客户名</td>
 						<td lay-data="{field:'userphone'}">客户邮箱</td>
-						<td lay-data="{field:'empname'}">签署日期</td>
-						<td lay-data="{field:'style',width:88}">签署金额</td>
+						<td lay-data="{field:'empname',sort:true}">还款截止日期</td>
+						<td lay-data="{field:'style'}">签署金额</td>
 						<td lay-data="{field:'date',sort:true,width:115}">欠款金额</td>
 						<td lay-data="{field:'grade',width:100}">还款状态</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 					</tr>
 					</thead>
 					<tbody>
@@ -103,7 +104,7 @@
 							<!-- 显示查询到的数据 -->
 							<c:forEach items="${rows }" var="ins" varStatus="vs">
 								<tr>
-									<td><input type="checkbox" name="emailList"
+									<td><input type="checkbox" lay-skin="primary" lay-filter="check" name="emailList"
 										value="${ins.aaf704 }" onclick="onSelect(this.checked)">
 									</td>
 									<td>${vs.count }</td>
@@ -114,11 +115,24 @@
 									<td>${ins.aaf706 }</td>
 									<td>${ins.aaf709 }</td>
 									<td>${ins.cnaaf710 }</td>
-									<td>
-										<a href="<%=path %>/af/af07State.html?aaf702=${ins.aaf702}" class="layui-btn layui-btn-xs">
-										<i class="layui-icon layui-icon-edit"></i>已缴费
-										</a>
-									</td>
+									<c:choose>
+										<c:when test="${ins.cnaaf710=='未还款' }">
+											<td>
+												<a href="<%=path %>/af/af07State.html?aaf701=${ins.aaf701}" 
+												class="layui-btn layui-btn-xs">
+												<i class="layui-icon layui-icon-edit"></i>已缴费
+												</a>
+											</td>
+										</c:when>
+										<c:otherwise>
+											<td>
+												<a href="<%=path %>/af/af07State.html?aaf701=${ins.aaf701}" 
+												class="layui-btn layui-btn-xs layui-btn-disabled">
+												<i class="layui-icon layui-icon-edit"></i>已缴费
+												</a>
+											</td>
+										</c:otherwise>
+									</c:choose>
 								</tr>
 							</c:forEach>
 
@@ -132,11 +146,14 @@
 
 				<!-- 功能按钮区 -->
 				<div class="layui-form-item" align="center">
-					<input type="submit" name="next" value="添加"
-						formaction="<%=path%>/af/af07Add.jsp" class="layui-btn"> 
-						<input type="submit" id="del" name="next" value="邮件催款"
-						formaction="<%=path%>/af/af07Mail.html" disabled="disabled"
-						class="layui-btn">
+					<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+						formaction="<%=path%>/af/af07Add.jsp">
+						<i class="layui-icon layui-icon-add-1"></i>添加
+					</button>
+					<button class="layui-btn layui-btn-disabled" disabled="disabled"
+						formaction="<%=path%>/af/af07Mail.html" id="mod" type="submit">
+						<i class="layui-icon layui-icon-file"></i>邮件催款
+					</button>
 				</div>
 				</div>
 			</form>
@@ -146,14 +163,6 @@
 
 	</div>
 	<script type="text/javascript">
-
-	var count=0;
-	function onSelect(vstate)
-	{
-		vstate?count++:count--;
-		var vdel=document.getElementById("del");
-		vdel.disabled=(count==0);
-	}
 	
 	function onEdit(vaaf701)
 	{
@@ -165,8 +174,7 @@
 	function onDel(vaaf701)
     {
   	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>
-		/af/af07DelById.html?aaf701=" + vaaf701;
+  	 vform.action="<%=path%>/af/af07DelById.html?aaf701=" + vaaf701;
 			vform.submit();
 		}
 	</script>
@@ -186,6 +194,35 @@
 					$('#tableId').css('display', 'block');
 				}
 			});
+			
+			
+			var count = 0;
+			form.on('checkbox(check)', function(data){
+		          if(data.elem.checked==true){
+		               	count++;
+		               	if(count!=0){
+		               		document.getElementById("mod").className="layui-btn";
+		               	}else{
+		               		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+		               	}
+		               	document.getElementById("mod").disabled=(count==0)
+		               		
+		          }else{
+		        	  count--;
+		       		  if(count!=0){
+		       				document.getElementById("mod").className="layui-btn";
+		       		  }else{
+		             		document.getElementById("mod").className="layui-btn layui-btn-disabled";
+		             }
+		       		document.getElementById("mod").disabled=(count==0)
+		          }
+		      });
+			
+
+			if("${msg }" != "")
+			{
+				layer.msg('${msg }');	  
+			}
 		});
 
 		//日期选择框

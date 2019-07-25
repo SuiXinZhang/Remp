@@ -11,7 +11,7 @@
 		<div class="layui-body">
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
-				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px; padding-top: 20px">
 					<legend>票据管理</legend>
     <form id="myform" lay-filter="myform" class="layui-form" action="<%=path%>/af/af02Query.html" method="post">
 		
@@ -28,9 +28,10 @@
 					</select>
 				</div>
 		</div>
-		<div class="layui-inline" style="padding-left:240px">
+		<div class="layui-inline" >
 			<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
 					<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+					查询
 			</button>
 		</div>
 	
@@ -50,7 +51,7 @@
 						<td lay-data="{field:'grade',width:100}">开票金额</td>
 						<td lay-data="{field:'makeemp',width:120}">开票人</td>
 						<td lay-data="{field:'notedate',width:120}">开票日期</td>
-						<td lay-data="{field:'opt',fixed:'right',width:280}">操作</td>
+						<td lay-data="{field:'opt',fixed:'right',width:285}">操作</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -71,17 +72,17 @@
 									<td>
 									
 									<a class="layui-btn layui-btn-xs" 
-									onclick="onReceive('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')"  >
+									onclick="onReceive('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}','${ins.aaf207 }')"  >
 									<i class="layui-icon layui-icon-ok"></i>领用票据
 									</a> 
 									
 									<a class="layui-btn layui-btn-xs " 
-									onclick="onWrite('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')"  >
+									onclick="onWrite('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}','${ins.aaf207 }')"  >
 									<i class="layui-icon layui-icon-ok-circle"></i>核销票据
 									</a>
 									
 									<a class="layui-btn layui-btn-xs layui-btn-danger " 
-									onclick="onDiscard('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}')"  >
+									onclick="onDiscard('${ins.aaf201}','${ins.aaf202}','${ins.aaf203}','${ins.aaf204}','${ins.aaf205}','${ins.aaf206}','${ins.aaf207 }')"  >
 									<i class="layui-icon layui-icon-close-fill"></i>废弃票据
 									</a>
 									</td>		
@@ -105,28 +106,67 @@
 
 </div>
 <script>
-function onReceive(vaaf201,vaaf202,vaaf203,vaaf204,vaaf205,vaaf206)
+function onReceive(vaaf201,vaaf202,vaaf203,vaaf204,vaaf205,vaaf206,vaac207)
 {
-	onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206);
-	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/af/af02ReceiveNote.jsp?aaf201=" + vaaf201 ;
-	myform.submit();
+	if(vaac207 == "1")
+	{
+		onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206);
+		var myform = document.getElementById("myform");
+		myform.action = "<%=path%>/af/af02ReceiveNote.jsp?aaf201=" + vaaf201 ;
+		myform.submit();
+	}else
+	{
+		layui.use('layer',function(){
+			var layer = layui.layer;
+			layer.open({
+				title:'提示',
+				content:'只有未开票据才可以领用!',
+				skin: 'layui-layer-molv'
+			});
+		})
+	}
+
 }
-function onWrite(vaaf201,vaaf202,vaaf203,vaaf204,vaaf205,vaaf206)
+function onWrite(vaaf201,vaaf202,vaaf203,vaaf204,vaaf205,vaaf206,vaac207)
 {
+	if(vaac207 == "2")
+	{
 	onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206);
 	var myform = document.getElementById("myform");
 	myform.action = "<%=path%>/af/af02WriteOffNote.jsp?aaf201=" + vaaf201 ;
 	myform.submit();
+	}else
+	{
+	layui.use('layer',function(){
+		var layer = layui.layer;
+		layer.open({
+			title:'提示',
+			content:'只有领用票据才可以核销!',
+			skin: 'layui-layer-molv'
+		});
+	})
+	}
 }
-function onDiscard(vaaf201,vaaf202,vaaf203,vaaf204,vaaf205,vaaf206)
+function onDiscard(vaaf201,vaaf202,vaaf203,vaaf204,vaaf205,vaaf206,vaaf207)
 {
-	onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206);
-	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/af/af02DiscardNote.jsp?aaf201=" + vaaf201 ;
-	myform.submit();
+	if(vaaf207 == "2")
+	{
+		onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206);
+		var myform = document.getElementById("myform");
+		myform.action = "<%=path%>/af/af02DiscardNote.jsp?aaf201=" + vaaf201 ;
+		myform.submit();
+	}else
+	{
+	layui.use('layer',function(){
+		var layer = layui.layer;
+		layer.open({
+			title:'提示',
+			content:'只有领用票据才可以作废!',
+			skin: 'layui-layer-molv'
+		});
+	})
+	}
 }
-
 function onSetValue(vaaf202,vaaf203,vaaf204,vaaf205,vaaf206)
 {
 	var aaf202 = document.getElementById("aaf202");

@@ -137,7 +137,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 			
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aac101,x.aac102,x.aac103,x.aac104,x.aac105,")
-				.append("		x.aac106,x.aac107,x.aac109,x.aac111")
+				.append("		x.aac106,x.aac107,x.aac108,x.aac109,x.aac111")
 				.append("  from ac01 x")
 				.append(" where true ");
 				
@@ -180,13 +180,19 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 		List<Map<String, String>> rr =this.queryForList(sql.toString(),args.toArray());
 		return rr;
 	}
-	
+	/**
+	 * 批量从Excel文件流导入数据库
+	 * @param is
+	 * @param suffix
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean insertBatch(InputStream is,String suffix) throws Exception
 	{
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ac01(aac101,aaa201,aac102,aac103,aac104,")
 				.append("				  aac105,aac106,aac107,aac108,aac109,")
-				.append("				  aac110,aac111,aaa402)")
+				.append("				  aaa402,aac111,aac110)")
 				.append("	 values (?,?,?,?,?,")
 				.append("			?,?,?,?,?,")
 				.append("			?,?,?)");

@@ -18,7 +18,6 @@
   	<jsp:include   page="/base/header.jsp"/>
 	<jsp:include   page="/ab/menu.jsp"/>
   <div class="layui-body">
-  ${msg }
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
     
@@ -55,8 +54,14 @@
 					</c:forEach>
 					<tr>
 						<td colspan="7" align="center">
-							<input type="submit" name="next" value="确定" formaction="<%=path %>/ab/ab02Update.html" class="layui-btn">
-							<input type="submit" name="next" value="返回" formaction="<%=path %>/ab/ab01Query.html" class="layui-btn">
+							<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+								formaction="<%=path %>/ab/ab02Update.html">
+								<i class="layui-icon layui-icon-ok"></i>确定
+							</button>
+							<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+								formaction="<%=path %>/ab/ab01Query.html" formnovalidate="formnovalidate">
+								<i class="layui-icon layui-icon-prev"></i>返回
+							</button>
 						</td>
 					</tr>
 				</c:when>			
@@ -79,6 +84,12 @@
 	layui.use(['layer', 'form'], function(){
 		  var layer = layui.layer
 		  ,form = layui.form;
+		  
+
+			if("${msg }" != "")
+			{
+				layer.msg('${msg }');	  
+			}
 		  
 		});
 		

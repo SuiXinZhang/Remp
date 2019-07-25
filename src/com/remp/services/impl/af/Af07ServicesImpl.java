@@ -45,7 +45,7 @@ public class Af07ServicesImpl extends JdbcServicesSupport
 		
 		
 		StringBuilder sql = new StringBuilder()
-				.append("select a.aaf702,a.aaf703,a.aaf704,a.aaf705,a.aaf706,a.aaf709,b.fvalue cnaaf710")
+				.append("select a.aaf701,a.aaf702,a.aaf703,a.aaf704,a.aaf705,a.aaf706,a.aaf709,b.fvalue cnaaf710")
 				.append("  from af07 a,syscode b")
 				.append(" where true")
 				.append(" and b.fcode=a.aaf710 and b.fname='aaf710'")
@@ -110,8 +110,8 @@ public class Af07ServicesImpl extends JdbcServicesSupport
 	
 	public boolean modifyState() throws Exception
 	{
-		String sql = "update af07 set aaf710='02' where aaf702=?";
-		System.out.println(this.get("aaf702"));
-		return this.executeUpdate(sql, this.get("aaf702"))>0;
+		String sql = "update af07 set aaf710='02' where aaf701=?";
+		System.out.println(this.get("aaf701"));
+		return this.executeUpdate(sql, this.get("aaf701"))>0;
 	}
 }

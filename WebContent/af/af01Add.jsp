@@ -18,7 +18,7 @@
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
 			<label class="layui-form-label">
-			<i class="layui-icon layui-icon-senior" style="font-size: 20px; color: black;"></i>
+			<i class="layui-icon layui-icon-rate-half" style="font-size: 20px; color: black;"></i>
 			票据类型
 			</label>
 				<div class="layui-input-inline">
@@ -28,9 +28,9 @@
 		</div>
 
 		<div class="layui-inline">
-			<label class="layui-form-label">
-			<i class="layui-icon layui-icon-cellphone" style="font-size: 20px; color: black;"></i>
-			票据前缀
+			<label class="layui-form-label" style="width:95px">
+			<i class="layui-icon layui-icon-flag" style="font-size: 20px; color: black;"></i>
+			票&thinsp;据&thinsp;前&thinsp;缀
 			</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aaf104" required lay-verify="true" value="${param.aaf104 }"
@@ -42,7 +42,7 @@
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
 			<label class="layui-form-label">
-			<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
+			<i class="layui-icon layui-icon-prev" style="font-size: 20px; color: black;"></i>
 			起始编号
 			</label>
 				<div class="layui-input-inline">
@@ -52,9 +52,9 @@
 		</div>
 	
 		<div class="layui-inline">
-			<label class="layui-form-label">
-			<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
-			截止编号
+			<label class="layui-form-label" style="width:95px">
+			<i class="layui-icon layui-icon-next" style="font-size: 20px; color: black;"></i>
+			截&thinsp;止&thinsp;编&thinsp;号
 			</label>
 				<div class="layui-input-inline">
 					<input type="number" name="aaf107" required lay-verify="true" value="${param.aaf107 }"
@@ -66,7 +66,7 @@
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
 			<label class="layui-form-label">
-			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
+			<i class="layui-icon layui-icon-template-1" style="font-size: 20px; color: black;"></i>
 			票据位数
 			</label>
 				<div class="layui-input-inline">
@@ -76,8 +76,8 @@
 		</div>
 	
 		<div class="layui-inline">
-			<label class="layui-form-label">
-			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
+			<label class="layui-form-label" style="width:95px">
+			<i class="layui-icon layui-icon-form" style="font-size: 20px; color: black;"></i>
 			票据批次号
 			</label>
 				<div class="layui-input-inline">
@@ -90,13 +90,12 @@
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
 			<label class="layui-form-label">
-			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
+			<i class="layui-icon layui-icon-table" style="font-size: 20px; color: black;"></i>
 			所属项目
 			</label>
 				<div class="layui-input-inline">
-					<%-- <input type="text" name="aaf102" required lay-verify="true" value="${param.aaf102 }"
-					 autocomplete="off" class="layui-input"> --%>
 					 <select name="aaf102" required>
+					 <option value="" selected="selected">不限</option>
 					    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
 					    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
 					    </c:forEach>
@@ -105,9 +104,9 @@
 		</div>
 	
 		<div class="layui-inline">
-			<label class="layui-form-label">
-			<i class="layui-icon layui-icon-face-cry" style="font-size: 20px; color: black;"></i>
-			印制单位
+			<label class="layui-form-label" style="width:95px">
+			<i class="layui-icon layui-icon-release" style="font-size: 20px; color: black;"></i>
+			印&thinsp;制&thinsp;单&thinsp;位
 			</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aaf110" required lay-verify="true" value="${param.aaf110 }"
@@ -129,9 +128,9 @@
 		</div>
 	
 		<div class="layui-inline">
-			<label class="layui-form-label">
+			<label class="layui-form-label" style="width:95px">
 			<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>
-			登记日期
+			登&thinsp;记&thinsp;日&thinsp;期
 			</label>
 				<div class="layui-input-inline">
 					<input type="text" name="aaf109" id="date" required lay-verify="true" value="${param.aaf109 }"

@@ -12,7 +12,6 @@
 	    		<c:param name="menu" value="ab01q"/>
 	   	    </c:import>
 			<div class="layui-body">
-			${msg }
 				<!-- 内容主体区域 -->
 				<div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
@@ -28,7 +27,12 @@
 							<div class="layui-inline">
 								<label class="layui-form-label">项目名称</label>
 								<div class="layui-input-inline">
-									<input type="text" name="qaab102" placeholder="请输入项目名称" autocomplete="off" class="layui-input">
+									<select name="qaab102">
+										<option value="" selected="selected">请选择项目名称</option>
+									    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
+									    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
+									    </c:forEach>
+									</select>
 								</div>
 							</div>
 							<div class="layui-inline">
@@ -47,8 +51,16 @@
 							</div>
 							</div>
 							<div class="layui-inline" style="padding-left:110px">
-								<input type="submit" name="next" value="查询" class="layui-btn">
+								<button class="layui-btn " type="submit">
+									<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
+								</button>
+								<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+									formaction="<%=path%>/ab/ab01Add.jsp">
+									<i class="layui-icon layui-icon-add-1"></i>添加
+								</button>
+								<!-- <input type="submit" name="next" value="查询" class="layui-btn"> 
 								<input type="submit" name="next" value="添加" formaction="<%=path%>/ab/ab01Add.jsp" class="layui-btn">
+								-->
 							</div>
 						</div>
 						
@@ -62,13 +74,13 @@
 							<tr>
 								<td lay-data="{field:'sort1',width:60}">序号</td>
 								<td lay-data="{field:'projectname',width:125}">项目名称</td>
-								<td lay-data="{field:'username'}">时间</td>
+								<td lay-data="{field:'username',sort:true}">时间</td>
 								<td lay-data="{field:'userphone'}">计划销售面积</td>
 								<td lay-data="{field:'empname'}">计划销售套数</td>
 								<td lay-data="{field:'style'}">计划销售金额</td>
-								<td lay-data="{field:'date',sort:true,width:115}">计划销售均价</td>
-								<td lay-data="{field:'grade',sort:true,width:100}">计划回款金额</td>
-								<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+								<td lay-data="{field:'date',sort:true}">计划销售均价</td>
+								<td lay-data="{field:'grade',sort:true}">计划回款金额</td>
+								<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -181,6 +193,12 @@
 						$('#tableId').css('display', 'block');
 					}
 				});
+				
+
+				if("${msg }" != "")
+				{
+					layer.msg('${msg }');	  
+				}
 			});
 			
 		</script>

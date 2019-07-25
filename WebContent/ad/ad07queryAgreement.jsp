@@ -65,6 +65,22 @@
 				    <td>${ins.daad719 }</td>
 				    <td>${ins.caad704 }</td>
 				    <td>
+				    <c:choose>
+				    <c:when test="${ins.daad719=='作废'}">
+				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#" onclick="">
+				    	<i class="layui-icon layui-icon-edit"></i>查看
+				    </a>
+				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#" onclick="">
+				    	<i class="layui-icon layui-icon-link"></i>申请变更
+				    </a>
+				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#" onclick="">
+				    	<i class="layui-icon layui-icon-link"></i>生成付款详情
+				    </a>
+				    <a class="layui-btn layui-btn-xs layui-btn-danger layui-btn-disabled" href="#" onclick="">
+				    	<i class="layui-icon layui-icon-close-fill"></i>作废
+				    </a>
+				    </c:when>
+				    <c:otherwise>
 				    <a class="layui-btn layui-btn-xs" href="#" onclick="onSelect('${ins.aad701}')">
 				    	<i class="layui-icon layui-icon-edit"></i>查看
 				    </a>
@@ -77,6 +93,8 @@
 				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onCancel('${ins.aad701}')">
 				    	<i class="layui-icon layui-icon-close-fill"></i>作废
 				    </a>
+				    </c:otherwise>
+				    </c:choose>
 				    </td>
 				  </tr>
 		      </c:forEach>

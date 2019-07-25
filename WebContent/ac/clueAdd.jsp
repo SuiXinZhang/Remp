@@ -7,14 +7,19 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
+  	<c:if test="${empty ins.aac101 }">
 	<c:import url="/ac/menu.jsp">
   		 <c:param name="menu" value="ac01"/>
   	</c:import>
+  	</c:if>
+  	<c:if test="${!empty ins.aac101 }">
+  	<jsp:include   page="/ac/menu.jsp"/>
+  	</c:if>
   <div class="layui-body">
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
-				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-					<legend> 客户线索添加</legend>
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;padding-top: 20px">
+					<legend> 客户线索${empty ins.aac101?'添加':'修改' }</legend>
     <form class="layui-form" lay-filter="myform" action="<%=path%>/ac/ac01Add.html" method="post">
 
   
@@ -76,6 +81,7 @@
 			</label>
 				<div class="layui-input-inline">
 					<select name="aac104" required>
+					<option value="" selected="selected">不限</option>
 					    <c:forEach items='<%=session.getAttribute("prjs")%>' var="ins">
 					    	<option value="${ins.aaa202 }">${ins.aaa202 }</option>
 					    </c:forEach>
@@ -170,10 +176,6 @@
 </form>
 </fieldset>
 </div>
-  </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
   </div>
 </div>
 <script>

@@ -4,6 +4,8 @@
 <html>
 <head>
 	<jsp:include   page="/base/head.jsp"/>
+	<link rel="stylesheet" type="text/css"
+	href="/remp/static/css/ac/clueManageCss.css">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -14,14 +16,14 @@
   <div class="layui-body">
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
-				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
+				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;padding-top: 20px">
 					<legend>客户跟进管理</legend>
     <form id="myform" lay-filter="myform" class="layui-form" action="<%=path%>/ac/ac03Query.html" method="post">
 		
 
-	<div class="layui-form-item" align="center">
+	<div class="layui-form-item" align="left">
 		<div class="layui-inline">
-			<label class="layui-form-label">客户名称</label>
+			<label class="layui-form-label" style="width:126px">客&emsp;户&emsp;名&emsp;称</label>
 				<div class="layui-input-inline">
 					<input type="text" name="qaac403" value="${param.qaac403 }"
 					 autocomplete="off" class="layui-input">
@@ -34,8 +36,6 @@
 					 autocomplete="off" class="layui-input">
 				</div>
 		</div>
-	</div>
-	<div class="layui-form-item" align="center">
 		<div class="layui-inline">
 			<label class="layui-form-label">跟进业务员</label>
 				<div class="layui-input-inline">
@@ -43,33 +43,10 @@
 					 autocomplete="off" class="layui-input">
 				</div>
 		</div>
-		<div class="layui-inline">
-			<label class="layui-form-label">跟进业务员编号</label>
-				<div class="layui-input-inline">
-					<input type="text" name="qaac307" value="${param.qaac307 }"
-					 autocomplete="off" class="layui-input">
-				</div>
-		</div>
 	</div>
-	<div class="layui-form-item" align="center">
+	<div class="layui-form-item" align="left">
 		<div class="layui-inline">
-			<label class="layui-form-label">批量添加跟进业务员</label>
-				<div class="layui-input-inline">
-					<input type="text" name="maac306" id="maac306" value="${param.maac306 }"
-					 autocomplete="off" class="layui-input">
-				</div>
-		</div>
-		<div class="layui-inline">
-			<label class="layui-form-label">跟进业务员编号</label>
-				<div class="layui-input-inline">
-					<input type="text" name="maac307" id="maac307" value="${param.maac307 }"
-					 autocomplete="off" class="layui-input">
-				</div>
-		</div>
-	</div>
-	<div class="layui-form-item" align="center">
-		<div class="layui-inline">
-			<label class="layui-form-label">跟进状态</label>
+			<label class="layui-form-label" style="width:126px">跟&emsp;进&emsp;状&emsp;态</label>
 				<div class="layui-input-inline">
 					<select name="qaac304">
 						<option value="">不限定</option>
@@ -80,7 +57,28 @@
 				</div>
 		</div>
 		<div class="layui-inline">
-			<label class="layui-form-label">修改后的跟进状态</label>
+			<label class="layui-form-label" >跟进时间</label>
+			<div class="layui-input-inline">
+				<input type="date" name="baac305" id="date1"
+					placeholder="B" lay-verify="date" value="${param.baac305 }"
+					autocomplete="off" class="layui-input">
+			</div>
+			<div class="layui-form-mid" id="toCenter2">----</div>
+			<div class="layui-input-inline">
+				<input type="date" name="eaac305" id="date2"
+					placeholder="E" lay-verify="date" value="${param.baac305 }"
+					autocomplete="off" class="layui-input">
+			</div>
+			<div class="layui-inline" style="padding-left:14px">
+				<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
+				<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="layui-form-item" align="left">
+	<div class="layui-inline">
+			<label class="layui-form-label" style="width:126px">批量修改跟进状态</label>
 				<div class="layui-input-inline">
 					<select id="maac304" name="maac304">
 						<option value="">不限定</option>
@@ -90,23 +88,42 @@
 					</select>
 				</div>
 		</div>
+		<div class="layui-inline" style="padding-left:110px">
+			<button class="layui-btn layui-btn-disabled"  id="mod2" onclick="onBatchUpdate()" 
+			 disabled="disabled" type="button">
+			<i class="layui-icon layui-icon-edit"></i>批量修改
+			</button>
+		</div>
+		<div class="layui-inline" style="padding-left:194px">
+				<button class="layui-btn layui-btn-disabled"  id="mod3" disabled="disabled"
+				formaction="<%=path %>/ac/ac03Delete.html"  type="submit">
+				<i class="layui-icon layui-icon-delete"></i>批量删除
+				</button>
+		</div>
 	</div>
-	<div class="layui-form-item" align="center">
+	<div class="layui-form-item" align="left">
 		<div class="layui-inline">
-			<label class="layui-form-label">跟进时间[B]</label>
+			<label class="layui-form-label" style="width:126px">批&thinsp;量&thinsp;添&thinsp;加&thinsp;业&thinsp;务&thinsp;员</label>
 				<div class="layui-input-inline">
-					<input type="text" id="date1" name="baac305" value="${param.baac305 }"
+					<input type="text" name="maac306" id="maac306" value="${param.maac306 }"
 					 autocomplete="off" class="layui-input">
 				</div>
 		</div>
 		<div class="layui-inline">
-			<label class="layui-form-label">跟进时间[E]</label>
+			<label class="layui-form-label">业务员编号</label>
 				<div class="layui-input-inline">
-					<input type="text" id="date2" name="eaac305" value="${param.eaac305 }"
+					<input type="text" name="maac307" id="maac307" value="${param.maac307 }"
 					 autocomplete="off" class="layui-input">
 				</div>
 		</div>
+		<div class="layui-inline" style="padding-left:108px">
+				<button class="layui-btn layui-btn-disabled"  id="mod" onclick="onBatchUpdate2()"
+				 disabled="disabled" type="button">
+				<i class="layui-icon layui-icon-add-1"></i>批量添加
+				</button>
+		</div>
 	</div>
+	
 	
 	<div id="tableId" style="display: none">
 			<table id="idData"  lay-filter="demo">
@@ -121,7 +138,7 @@
 						<td lay-data="{field:'date',width:115}">跟进时间</td>
 						<td lay-data="{field:'grade',width:100}">跟进业务员</td>
 						<td lay-data="{field:'makeemp',width:120}">业务员编号</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'opt',fixed:'right',width:150}">操作</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -143,7 +160,7 @@
 									
 									<a class="layui-btn layui-btn-xs " 
 									href="<%=path%>/ac03FindById.html?aac301=${ins.aac301 }" >
-									<i class="layui-icon layui-icon-search"></i>查看
+									<i class="layui-icon layui-icon-edit"></i>编辑
 									</a> 
 									
 									<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
@@ -158,44 +175,10 @@
 					</c:choose>
 				</tbody>
 			</table>
-							<br>
-							<br>
-							<br>
-							<div class="layui-form-item" align="center">
-							<div class="layui-inline">
-								<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
-								<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
-								</button>
-							</div>
-							<div class="layui-inline">
-									<button class="layui-btn layui-btn-disabled"  id="mod" onclick="onBatchUpdate2()"
-									 disabled="disabled" type="button">
-									<i class="layui-icon layui-icon-delete"></i>批量添加跟进业务员
-									</button>
-							</div>
-							<div class="layui-inline">
-									<button class="layui-btn layui-btn-disabled"  id="mod2" onclick="onBatchUpdate()" 
-									 disabled="disabled" type="button">
-									<i class="layui-icon layui-icon-delete"></i>批量更改状态
-									</button>
-							</div>
-							<div class="layui-inline">
-									<button class="layui-btn layui-btn-disabled"  id="mod3" disabled="disabled"
-									formaction="<%=path %>/ac/ac03Delete.html"  type="submit">
-									<i class="layui-icon layui-icon-delete"></i>删除
-									</button>
-							</div>
-							</div>
-
-						</div>
-	
+	</div>
 	</form>
 	</fieldset>
     </div>
-  </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
   </div>
 </div>
 <script>
@@ -232,8 +215,8 @@
 	               	count++;
 	               	if(count!=0){
 	               		mod.className="layui-btn";
-	               		mod2.className="layui-btn";
-	               		mod3.className="layui-btn";
+	               		mod2.className="layui-btn ";
+	               		mod3.className="layui-btn ";
 	               	}else{
 	               		mod.className="layui-btn layui-btn-disabled";
 	               		mod2.className="layui-btn layui-btn-disabled";
@@ -247,8 +230,8 @@
 	        	  count--;
 	       		  if(count!=0){
 	       				mod.className="layui-btn";
-	       				mod2.className="layui-btn";
-	       				mod3.className="layui-btn";
+	       				mod2.className="layui-btn ";
+	       				mod3.className="layui-btn ";
 	       		  }else{
 	             		mod.className="layui-btn layui-btn-disabled";
 	             		mod2.className="layui-btn layui-btn-disabled";

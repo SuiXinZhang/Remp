@@ -41,11 +41,11 @@
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
 		<td lay-data="{field:'projectname',width:100}">项目名称</td>
 		<td lay-data="{field:'username',width:100}">客户名</td>
-		<td lay-data="{field:'userphone',width:100}">实际排号</td>
+		<td lay-data="{field:'userphone',width:90}">实际排号</td>
 		<td lay-data="{field:'empname',width:120}">预约日期</td>
-		<td lay-data="{field:'date',sort:true}">房间</td>
-		<td lay-data="{field:'grade',sort:true}">应收预约金</td>
-		<td lay-data="{field:'state'}">实收预约金</td>
+		<td lay-data="{field:'date',sort:true,width:125}">房间</td>
+		<td lay-data="{field:'grade',sort:true,width:110}">应收预约金</td>
+		<td lay-data="{field:'state',width:110}">实收预约金</td>
 		<td lay-data="{field:'prestate',width:100}">预约状态</td>
 		<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 	  </tr>
@@ -58,7 +58,7 @@
 	    	   	  <tr>
 				    <td>${vs.count }</td>
 				    <td>${ins.aad102 }</td>
-				    <td><a href="#" onclick="onEdit('${ins.aad101}')">${ins.aad103 }</a></td>
+				    <td>${ins.aad103 }</td>
 				    <td>${ins.aad104 }</td>
 				    <td>${ins.aad105 }</td>
 				    <td>${ins.aad110 }</td>
@@ -66,12 +66,30 @@
 				    <td>${ins.aad113 }</td>
 				    <td>${ins.aad116 }</td>
 				    <td>
+				    <c:choose>
+				    <c:when test="${ins.aad116=='已失效' }">
+				    	<a class="layui-btn layui-btn-xs layui-btn-disabled"  href="#" onclick="">
+				    		<i class="layui-icon layui-icon-edit"></i>查看
+				    	</a>
+				    	<a class="layui-btn layui-btn-xs layui-btn-danger layui-btn-disabled" href="#" onclick="">
+				    		<i class="layui-icon layui-icon-close-fill"></i>作废
+				    	</a>
+				    	<a class="layui-btn layui-btn-xs layui-btn-disabled" href="#" onclick="">
+				    		<i class="layui-icon layui-icon-close-fill"></i>生成付款详情
+				    	</a>
+				    </c:when>
+				    <c:otherwise>
+				    	<a class="layui-btn layui-btn-xs" href="#" onclick="onEdit('${ins.aad101}')">
+				    		<i class="layui-icon layui-icon-edit"></i>查看
+				    	</a>
 				    	<a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onDel('${ins.aad101}')">
 				    		<i class="layui-icon layui-icon-close-fill"></i>作废
 				    	</a>
 				    	<a class="layui-btn layui-btn-xs " href="#" onclick="onReceipt('${ins.aad101}')">
 				    		<i class="layui-icon layui-icon-close-fill"></i>生成付款详情
 				    	</a>
+				    </c:otherwise>
+				    </c:choose>
 				    </td>
 				  </tr>
 		      </c:forEach>

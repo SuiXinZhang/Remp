@@ -65,7 +65,7 @@
     <!-- 内容主体区域 -->
     <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
     <fieldset class="layui-elem-field">
- 	<legend style="color:black"><h2>添加预约</h2></legend>
+ 	<legend style="color:black"><h2>${empty param.aad101?'添加':'修改' }预约</h2></legend>
   		<div class="layui-field-box">
 	<form lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad01addOrder.html" method="post">
 	    <div class="layui-form-item" align="center">
@@ -147,8 +147,8 @@
 					币&#8195;&#8195;种
 				</label>
 				<div class="layui-input-inline">
-					<select name="oaad112">
-						<option value="01" selected>人民币</option>
+					<select name="oaad112" required="required">
+						<option value="01">人民币</option>
 						<option value="02">美元</option>
 						<option value="03">英镑</option>
 						<option value="04">日元</option>
@@ -249,15 +249,29 @@
 			</div>
 	   </div>
        <div class="layui-form-item" align="center">
+       <c:choose>
+       <c:when test="${ins.aad116=='已退号'}">
+       <input type="submit" name="next" value="${empty param.aad101?'添加':'修改'}" class="layui-btn layui-btn-normal layui-btn-disabled"
+              disabled="disabled" formaction="${empty param.aad101?'ad01addOrder':'ad01modifyOrder'}.html">
+       </c:when>
+       <c:otherwise>
        <input type="submit" name="next" value="${empty param.aad101?'添加':'修改'}" class="layui-btn layui-btn-normal"
               formaction="${empty param.aad101?'ad01addOrder':'ad01modifyOrder'}.html">
+       </c:otherwise>
+       </c:choose>
+       <c:choose>
+       <c:when test="${empty param.aad101}">
+       <input type="hidden" name="text" value="退号"  class="layui-btn layui-btn-normal"
+              formaction="<%=path%>/ad/ad02addWithdrawOrder.html">
+       </c:when>
+       <c:otherwise>
+       <input type="submit" name="text" value="退号"  class="layui-btn layui-btn-normal"
+              formaction="<%=path%>/ad/ad02addWithdrawOrder.html">
+       </c:otherwise>
+       </c:choose>
        <input type="submit" name="next" value="${empty param.aad101?'查看':'返回' }" 
               formaction="<%=path%>/ad/ad01queryOrder.html" class="layui-btn layui-btn-normal"
               formnovalidate="formnovalidate">
-       <input type="submit" name="text" value="退号"  class="layui-btn layui-btn-normal"
-              formaction="<%=path%>/ad/ad02addWithdrawOrder.html">
-       <input type="submit" name="text" value="生成付款详情" class="layui-btn layui-btn-normal"
-         	  formaction="<%=path%>/af/af03otherTurnReceipt.html?add101=${param.aad101 }" formnovalidate="formnovalidate">
        </div>
 <input type="hidden" name="aad101" value="${param.aad101 }">
 <input type="hidden" name="oaac401" value="${ins.aac401 }">
@@ -268,11 +282,7 @@
 </fieldset>
     </div>
   </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
-  </div>
+
 </div>
 </body>
 </html>

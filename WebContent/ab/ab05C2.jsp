@@ -43,13 +43,13 @@
 								</c:forEach>
 							</c:when>
 						</c:choose>
+						</table>
+						
+						<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
+							<i class="layui-icon layui-icon-prev"></i>·µ»Ø
+						</button>
 
-						<tr>
-							<td colspan="5" align="center">
-								<input type="submit" name="next" value="·µ»Ø" class="layui-btn">
-							</td>
-						</tr>
-					</table>
+					
 					</div>
 				</form>
 				</fieldset>

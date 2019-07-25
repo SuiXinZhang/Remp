@@ -44,7 +44,9 @@
 		  </c:choose>
 		  </table>	
 		  <div class="layui-form-item">
-				<input type="submit" name="next" value="·µ»Ø" class="layui-btn">
+		  		<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
+					<i class="layui-icon layui-icon-prev"></i>·µ»Ø
+				</button>
 			</div>
 		</div>
 	</form>

@@ -20,7 +20,7 @@ public class AdServicesImpl extends JdbcServicesSupport{
 		Object eaaa505 = this.get("eaaa505");   //建筑面积[E]
 		Object aaa504 = this.get("qaaa504");    //房间结构
 		Object aaa502 = this.get("qaaa502");    //户型
-		
+		Object aaa803 = this.get("qaaa803");    //房间号码
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aaa801,x.aaa803,x.aaa804,c.fvalue caaa805,s.aaa502,")
 				.append("       s.aaa504,s.aaa505,x.aaa808,x.aaa809")
@@ -66,8 +66,13 @@ public class AdServicesImpl extends JdbcServicesSupport{
   			sql.append(" and s.aaa502=?");
   			paramList.add(aaa502);
   		}
+  		if(this.isNotNull(aaa803))
+  		{
+  			sql.append(" and x.aaa803=?");
+  			paramList.add(aaa803);
+  		}
   		
-  		sql.append(" order by x.aaa802");
+  		sql.append(" order by x.aaa803");
 		return this.queryForList(sql.toString(), paramList.toArray());
 	}
 	
