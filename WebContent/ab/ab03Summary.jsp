@@ -9,7 +9,6 @@
   	<jsp:include   page="/base/header.jsp"/>
 	<jsp:include   page="/ab/menu.jsp"/>
   <div class="layui-body">
- 	 ${msg }
     <!-- 内容主体区域 -->
     <div class="layui-anim layui-anim-scale"
 		style="padding: 15px; margin: 30px 80px;">
@@ -54,6 +53,11 @@
 		  var layer = layui.layer
 		  ,form = layui.form;
 		  
+
+			if("${msg }" != "")
+			{
+				layer.msg('${msg }');	  
+			}
 		});
 </script>
 </body>

@@ -21,7 +21,6 @@
 	    	<c:param name="menu" value="af07a"/>
 	    </c:import>
 		<div class="layui-body">
-		${msg }
 		<div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
 	   	<fieldset class="layui-elem-field">
 	 	<legend style="color:black"><h2>${empty param.aaa601?'新增':'修改' }欠款单据</h2></legend>
@@ -128,6 +127,12 @@
 	  var element = layui.element;
 	  var layer = layui.layer
 	  ,form = layui.form;
+	  
+
+		if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	});
 	
 	//日期模块

@@ -11,7 +11,6 @@
 	    	<c:param name="menu" value="af05q"/>
 	    </c:import>
 		<div class="layui-body">
-		${msg }
 			<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
@@ -141,6 +140,12 @@
 	  form.val('myform',{
 		  "aaf612":"${ins.aaf612}",
 	  });
+	  
+
+		if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	});
 	
 	//ÈÕÆÚÄ£¿é

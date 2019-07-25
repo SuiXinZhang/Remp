@@ -11,7 +11,6 @@
 	    	<c:param name="menu" value="af05a"/>
 	    </c:import>
 		<div class="layui-body">
-			${msg }
 			<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
@@ -88,12 +87,12 @@
 			<td lay-data="{field:'projectname',width:125}">放款单号</td>
 			<td lay-data="{field:'username'}">放款银行</td>
 			<td lay-data="{field:'userphone'}">项目名称</td>
-			<td lay-data="{field:'empname'}">放款日期</td>
+			<td lay-data="{field:'empname',sort:true}">放款日期</td>
 			<td lay-data="{field:'style',width:88}">登记人</td>
 			<td lay-data="{field:'state',width:88}">审核状态</td>
 			<td lay-data="{field:'date',sort:true,width:115}">审核人</td>
 			<td lay-data="{field:'date2',sort:true,width:115}">审核日期</td>
-			<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+			<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 			</tr>
 	  </thead>
 	  <tbody>
@@ -203,6 +202,12 @@
 				$('#tableId').css('display', 'block');
 			}
 		});
+		
+
+		if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	});
 	
 	//日期选择框

@@ -18,7 +18,6 @@
   	<jsp:include   page="/base/header.jsp"/>
 	<jsp:include   page="/ab/menu.jsp"/>
   <div class="layui-body">
-  ${msg }
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
     
@@ -85,6 +84,12 @@
 	layui.use(['layer', 'form'], function(){
 		  var layer = layui.layer
 		  ,form = layui.form;
+		  
+
+			if("${msg }" != "")
+			{
+				layer.msg('${msg }');	  
+			}
 		  
 		});
 		

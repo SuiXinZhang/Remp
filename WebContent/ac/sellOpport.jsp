@@ -31,7 +31,7 @@
 								</label>
 								<div class="layui-input-inline">
 									<input type="text" name="aac202" required lay-verify="true"
-										value="${empty param.aac401?ins.aac403:param.aac403 }" autofocus="autofocus"
+										value="${empty param.aac403?ins.aac403:param.aac403 }" autofocus="autofocus"
 										autocomplete="off" class="layui-input">
 								</div>
 							</div>

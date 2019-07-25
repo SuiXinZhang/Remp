@@ -11,7 +11,6 @@
   		<c:param name="menu" value="ab03a"/>
    	</c:import>
   <div class="layui-body">
-  	${msg }
     <!-- 内容主体区域 -->
     <div class="layui-anim layui-anim-scale"
 		style="padding: 15px; margin: 30px 80px;">
@@ -45,26 +44,13 @@
 			<div class="layui-form-item">
 				<div class="layui-inline">
 					<label class="layui-form-label">
-						<i class="layui-icon layui-icon-face-smile" style="font-size: 20px; color: black;"></i>状态
-					</label>
-					<div class="layui-input-inline">
-						<select name="aab304" required="true">
-							<option value="01" selected="selected">计划中</option>
-						</select>
-					</div>
-				</div>
-				<div class="layui-inline">
-					<label class="layui-form-label">
 						<i class="layui-icon layui-icon-date" style="font-size: 20px; color: black;"></i>制定日期
 					</label>
 					<div class="layui-input-inline">
 						<input type="text" name="aab305" required="true" value="${ins.aab305 }" class="layui-input" id="test29" placeholder="yyyy-MM-dd">
 					</div>
 				</div>
-			</div>
-			
-			<div class="layui-form-item" align="left">
-				<div class="layui-inline" style="padding-left:250px">
+				<div class="layui-inline">
 					<label class="layui-form-label">
 						<i class="layui-icon layui-icon-username" style="font-size: 20px; color: black;"></i>制定人
 					</label>
@@ -128,6 +114,12 @@ window.onload=function()
 		  form.val('myform',{
 			  "aab304":"${ins.aab304}"
 		  });
+		  
+
+			if("${msg }" != "")
+			{
+				layer.msg('${msg }');	  
+			}
 		});
 	
 	//状态下拉框默认值设置	
