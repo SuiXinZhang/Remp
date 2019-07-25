@@ -92,7 +92,7 @@ public class Ad01ServicesImpl extends JdbcServicesSupport
 				this.get("aaa801")
 		};
 		Map<String, String> ins = this.queryForMap(sql4, args2);
-		if(ins.get("aaa805").equals("02")||ins.get("aaa805").equals("04")||ins.get("aaa805").equals("05"))
+		if(ins.get("aaa805").equals("02")||ins.get("aaa805").equals("04")||ins.get("aaa805").equals("05")||ins.get("aaa805").equals("03"))
 		{
 			return false;
 		}

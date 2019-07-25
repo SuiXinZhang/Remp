@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.remp.services.JdbcServicesSupport;
+import com.remp.system.tools.Tools;
 
 public class Ad03ServicesImpl extends JdbcServicesSupport 
 {
@@ -30,17 +31,16 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 				this.get("aad307"),
 				this.get("aac401")
 		};
+		this.appendSql(sql1.toString(), args1);
 		String sql2 = "update aa08 set aaa805=? where aaa801=?";
 		Object args2[]={
 				"04",
 				this.get("aaa801")
 		};
-		String sql3 = "select aad301 from ad03 where aaa801=?";
-		this.queryForMap(sql3, this.get("aaa801"));
-		String sql4 = "update ad01 a,ad03 b set a.aad116='已失效' where b.aad301=? and b.aad304=a.aad104";
-		this.appendSql(sql1.toString(), args1);
 		this.appendSql(sql2, args2);
-		this.appendSql(sql4, this.get("aad301"));
+		int aad301 = Tools.getSequence("aad301");
+		String sql4 = "update ad01 a,ad03 b set a.aad116='已失效' where b.aad301=? and b.aad304=a.aad104";
+		this.appendSql(sql4, aad301);
 		return this.executeTransaction();
 	}
 	/**

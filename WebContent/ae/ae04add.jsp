@@ -100,6 +100,10 @@
 							formaction="<%=path%>/ae/${empty param.aae401?'ae04Add.html':'ae04Modify.html'}">
 						<input class="layui-btn" type="submit" value="返回"
 						formaction="<%=path%>/ae/ae04query.html" formnovalidate="formnovalidate" >
+						<c:if test="${!empty param.aae401 }">
+							<input class="layui-btn" type="submit" value="查看通知书"
+						formaction="<%=path%>/ae/ae04createpdf.jsp" formnovalidate="formnovalidate" >
+						</c:if>
 				</div>
 			</div>
 		<input type="hidden" name="aae401" value="${param.aae401 }">

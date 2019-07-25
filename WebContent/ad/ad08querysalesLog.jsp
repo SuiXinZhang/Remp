@@ -15,7 +15,8 @@
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-					<legend>销售记录</legend>
+					<legend><h2>销售日志</h2></legend>
+					<br>
     <form id="myform" class="layui-form" action="<%=path %>/ad/ad08querysalesLog.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">

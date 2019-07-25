@@ -16,7 +16,8 @@
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-					<legend>变更申请查询</legend>
+					<legend><h2>变更审批</h2></legend>
+					<br>
     <form id="myform" lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad06queryApply.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
@@ -26,6 +27,16 @@
 						<option value="" selected>不限定</option>
 						<option value="01">换房</option>
 						<option value="02">退房</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">申请状态</label>
+				<div class="layui-input-inline">
+					<select name="qaad603">
+						<option value="" selected>不限定</option>
+						<option value="已审批">已审批</option>
+						<option value="未审批">未审批</option>
 					</select>
 				</div>
 			</div>
@@ -73,9 +84,18 @@
 				    <td>${ins.aad605 }</td>
 				    <td>${ins.aad606 }</td>
 				    <td>
+				    <c:choose>
+				    <c:when test="${ins.aad603=='已审批' }">
+				    	<a class="layui-btn layui-btn-xs layui-btn-disabled" href="#" onclick="">
+				    		<i class="layui-icon layui-icon-ok"></i>审批
+				    	</a>
+				    </c:when>
+				    <c:otherwise>
 				    	<a class="layui-btn layui-btn-xs" href="#" onclick="onSelect('${ins.aad601}')">
 				    		<i class="layui-icon layui-icon-ok"></i>审批
 				    	</a>
+				    </c:otherwise>
+				    </c:choose>
 				    </td>
 				  </tr>
 		      </c:forEach>
@@ -85,7 +105,7 @@
 	</table>
 	 </div>
 	 <div class="layui-form-item" align="center">
-	 <input type="submit" class="layui-btn" id="mod" name="next" value="审批" 
+	 <input type="submit" class="layui-btn layui-btn-disabled" id="mod" name="next" value="审批" disabled="disabled"
 	              formaction="<%=path%>/ad/ad06batchExamine.html">
 	 </div>
 </form>
@@ -110,7 +130,8 @@
 			layer.msg('${msg }');	  
 		}
 	  form.val('myform',{
-		  "qaad602":"${param.qaad602}"
+		  "qaad602":"${param.qaad602}",
+		  "qaad603":"${param.qaad603}"
 	  });
 		//转换静态表格
 		table.init('demo', {

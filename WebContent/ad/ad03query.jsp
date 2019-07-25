@@ -15,7 +15,8 @@
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-					<legend>看房记录</legend>
+					<legend><h2>看房记录</h2></legend>
+					<br>
     <form id="myform" class="layui-form" action="<%=path %>/ad/ad03query.html" method="post">
     <div class="layui-form-item" align="center">
 			<div class="layui-inline">
@@ -46,10 +47,10 @@
 	<thead>
 	  <tr>
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
-		<td lay-data="{field:'projectname',width:200}">房间号</td>
+		<td lay-data="{field:'projectname',width:200}">房间号码</td>
 		<td lay-data="{field:'username',width:90}">房间状态</td>
 		<td lay-data="{field:'userphone',width:90}">选房单号</td>
-		<td lay-data="{field:'emphao',width:90}">项目排号</td>
+		<td lay-data="{field:'emphao',width:90}">实际排号</td>
 		<td lay-data="{field:'empname',width:120}">客户名</td>
 		<td lay-data="{field:'style',width:88}">经办人</td>
 		<td lay-data="{field:'date',sort:true,width:115}">选房时间</td>

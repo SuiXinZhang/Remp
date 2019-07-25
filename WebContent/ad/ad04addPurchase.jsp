@@ -14,7 +14,7 @@
     <!-- 内容主体区域 -->
     <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
     <fieldset class="layui-elem-field">
- 	<legend style="color:black"><h2>添加订单</h2></legend>
+ 	<legend style="color:black"><h2>${empty param.aad401?'添加':'修改' }订单</h2></legend>
   		<div class="layui-field-box">
     <form lay-filter="myform" class="layui-form" action="<%=path %>/ad/ad04addPurchase.html" method="post">
      
@@ -136,7 +136,7 @@
 				付款方式
 			</label>
 			<div class="layui-input-inline">
-				<select name="aad404">
+				<select name="aad404" required="required">
 					<option value="">请选择</option>
 					<option value="01">商业贷款</option>
 					<option value="02">全款</option>
@@ -149,7 +149,7 @@
 				折&#8195;&#8195;扣
 			</label>
 			<div class="layui-input-inline">
-				<input type="number" name="aad405" 
+				<input type="number" name="aad405" value="${ins.aad405 }"
 				    step="0.1" autocomplete="off" class="layui-input">
 			</div>
 		</div>
@@ -215,7 +215,7 @@
 				协议币种
 			</label>
 			<div class="layui-input-inline">
-				<select name="aad411">
+				<select name="aad411" required="required" >
 					<option value="01" selected>人民币</option>
 					<option value="02">美元</option>
 					<option value="03">英镑</option>
@@ -316,10 +316,21 @@
 			</div>
 		</div>
 	</div>
-    
-	<div class="layui-form-item" align="center">    
+    <div class="layui-form-item" align="center">
+    	<input type="hidden" name="aad422" value="订单状态"
+				 autocomplete="off" class="layui-input">
+    </div>
+	<div class="layui-form-item" align="center">
+	<c:choose>
+	<c:when test="${ins.aad422=='已激活' }">
+		   <input type="submit" name="next" value="${empty param.aad401?'添加':'修改'}" class="layui-btn layui-btn-normal layui-btn-disabled"
+	              disabled="true" formaction="${empty param.aad401?'ad04addPurchase':'ad04modifyPurchase'}.html">
+	</c:when>
+	<c:otherwise>    
 	       <input type="submit" name="next" value="${empty param.aad401?'添加':'修改'}" class="layui-btn layui-btn-normal"
 	              formaction="${empty param.aad401?'ad04addPurchase':'ad04modifyPurchase'}.html">
+	</c:otherwise>
+	</c:choose>
 	       <input type="submit" name="next" value="查看" class="layui-btn layui-btn-normal"
 	          formnovalidate="formnovalidate" formaction="ad04queryPurchase.html">
 	       <input type="submit" name="next" value="返回" formaction="${empty param.aad401?'ad03query':'ad04queryPurchase'}.html"

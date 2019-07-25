@@ -15,7 +15,8 @@
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 10px 10px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-					<legend>合同记录</legend>
+					<legend><h2>合同记录</h2></legend>
+					<br>
     <form id="myform" class="layui-form" lay action="<%=path %>/ad/ad07queryAgreement.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">

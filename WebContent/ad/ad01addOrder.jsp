@@ -250,23 +250,19 @@
 	   </div>
        <div class="layui-form-item" align="center">
        <c:choose>
-       <c:when test="${ins.aad116=='已退号'}">
+       <c:when test="${ins.aad116=='已退号'||ins.aad116=='已失效'}">
        <input type="submit" name="next" value="${empty param.aad101?'添加':'修改'}" class="layui-btn layui-btn-normal layui-btn-disabled"
               disabled="disabled" formaction="${empty param.aad101?'ad01addOrder':'ad01modifyOrder'}.html">
+       <input type="submit" name="text" value="退号"  class="layui-btn layui-btn-normal layui-btn-disabled"
+              disabled="disabled" formaction="<%=path%>/ad/ad02addWithdrawOrder.html">
        </c:when>
        <c:otherwise>
        <input type="submit" name="next" value="${empty param.aad101?'添加':'修改'}" class="layui-btn layui-btn-normal"
               formaction="${empty param.aad101?'ad01addOrder':'ad01modifyOrder'}.html">
-       </c:otherwise>
-       </c:choose>
-       <c:choose>
-       <c:when test="${empty param.aad101}">
-       <input type="hidden" name="text" value="退号"  class="layui-btn layui-btn-normal"
-              formaction="<%=path%>/ad/ad02addWithdrawOrder.html">
-       </c:when>
-       <c:otherwise>
+       <c:if test="${!empty param.aad101 }">
        <input type="submit" name="text" value="退号"  class="layui-btn layui-btn-normal"
               formaction="<%=path%>/ad/ad02addWithdrawOrder.html">
+       </c:if>
        </c:otherwise>
        </c:choose>
        <input type="submit" name="next" value="${empty param.aad101?'查看':'返回' }" 
