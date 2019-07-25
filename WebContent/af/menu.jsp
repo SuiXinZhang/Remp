@@ -22,7 +22,7 @@
              	<dd class="${param.menu eq 'af05q' ? 'layui-this':''}"><a href="af06Add.jsp">&nbsp&nbsp&nbsp&nbsp放款添加</a></dd>
             </dl>
         </li>
-         <li class="layui-nav-item ${param.menu eq 'af06' ? 'layui-this':''}"><a href="">单据查询</a></li>
+        <%--  <li class="layui-nav-item ${param.menu eq 'af06' ? 'layui-this':''}"><a href="">单据查询</a></li> --%>
         <li class="layui-nav-item layui-nav-itemed"><a href="javascript:;">催交欠款</a>
         	<dl class="layui-nav-child">
           		<dd class="${param.menu eq 'af07q' ? 'layui-this':''}"><a href="af07Query.html">&nbsp&nbsp&nbsp&nbsp催款查询</a></dd>
