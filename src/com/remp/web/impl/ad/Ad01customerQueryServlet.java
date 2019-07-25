@@ -15,7 +15,7 @@ public class Ad01customerQueryServlet extends Ad01ControllerSupport
 		}
 		else 
 		{
-			return "ac/ac04add";
+			return "ac/addClient";
 		}
 	}
 

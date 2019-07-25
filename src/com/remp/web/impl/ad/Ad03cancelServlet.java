@@ -6,6 +6,7 @@ public class Ad03cancelServlet extends Ad03ControllerSupport {
 	public String execute() throws Exception 
 	{
 		this.update("cancelRoom", "取消选房");
+		this.savePageDate();
 		return "ad/ad03query";
 	}
 

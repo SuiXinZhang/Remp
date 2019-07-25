@@ -24,7 +24,7 @@
 					选房单号
 				</label>
 				<div class="layui-input-inline">
-					<input type="text" required="required" name="aad303" value="${param.aad303 }" autocomplete="off" class="layui-input">
+					<input type="text" required="required" name="aad303" value="${ins.aad108 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
@@ -33,7 +33,7 @@
 					房间号码
 				</label>
 			<div class="layui-input-inline">
-				<input type="text" id="room" name="aad302" required lay-verify="true" value="${param.aad302 }"
+				<input type="text" id="room" name="aad302" required lay-verify="true" value="${ins.aad110 }"
 				onclick="selectRoom()" readonly="readonly" class="layui-input">
 				<input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
 			</div>
@@ -43,10 +43,10 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">
 					<i class="layui-icon layui-icon-release" style="font-size: 20px; color: black;"></i>
-					项目排号
+					实际排号
 				</label>
 				<div class="layui-input-inline">
-					<input type="text" required="required" name="aad304" value="${param.aad304 }" autocomplete="off" class="layui-input">
+					<input type="text" required="required" name="aad304" value="${ins.aad104 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
@@ -55,7 +55,7 @@
 					客户名称
 				</label>
 				<div class="layui-input-inline">
-					<input type="text" required="required" name="aad305" value="${param.aad305 }" autocomplete="off" class="layui-input">
+					<input type="text" required="required" name="aad305" value="${ins.aad103 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 		</div>
@@ -89,16 +89,13 @@
 	          formnovalidate="formnovalidate">
 	    </div>
 	<input type="hidden" name="aac401" value="${ins.aac401 }">
+	<input type="hidden" name="aad301" value="${ins.aad301 }">
 </form>
 	</div>
 	</fieldset>
     </div>
   </div>
-  
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-    ? layui.com - 底部固定区域
-  </div>
+
 </div>
 <script >
 	//JavaScript代码区域

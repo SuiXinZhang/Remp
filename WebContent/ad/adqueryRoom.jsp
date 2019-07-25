@@ -114,9 +114,10 @@
 				</div>
 			</div>
 			<div class="layui-inline">
-				<div class="layui-input-inline">
-	       			<input type="submit" name="next" class="layui-btn layui-btn-normal" value="查询">
-				</div>
+	       		<label class="layui-form-label">房间号码</label>
+					<div class="layui-input-inline">
+						<input type="text" name="qaaa803" autocomplete="off" class="layui-input">
+					</div>
 			</div>
 		</div>
 	<!-- 数据迭代区 -->
@@ -151,17 +152,7 @@
 				    <td>${ins.aaa808 }</td>
 				    <td>${ins.aaa809 }</td>
 				    <c:choose>
-					    <c:when test="${ins.caaa805=='签约'||ins.caaa805=='已选'||ins.caaa805=='预留'}">
-					    <td>
-					    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
-					    	<i class="layui-icon layui-icon-edit"></i>确认选房
-					    </a>
-					    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
-					    	<i class="layui-icon layui-icon-release"></i>添加预留
-					    </a>
-					    </td>
-					    </c:when>
-					    <c:otherwise>
+					    <c:when test="${ins.caaa805=='等待'}">
 					    <td>
 					    <a class="layui-btn layui-btn-xs " href="#" onclick="onConfirm('${ins.aaa801}')">
 								<i class="layui-icon layui-icon-edit"></i>确认选房
@@ -169,6 +160,16 @@
 					    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onReserve('${ins.aaa801}')">
 								<i class="layui-icon layui-icon-release"></i>添加预留
 						</a>
+					    </td>
+					    </c:when>
+					    <c:otherwise>
+					    <td>
+					    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+					    	<i class="layui-icon layui-icon-edit"></i>确认选房
+					    </a>
+					    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+					    	<i class="layui-icon layui-icon-release"></i>添加预留
+					    </a>
 					    </td>
 					    </c:otherwise>
 				    </c:choose>
@@ -178,6 +179,9 @@
 	   </c:choose>
 	   </tbody>
 	</table>
+	<div class="layui-form-item" align="center">
+		<input type="submit" class="layui-btn layui-btn-normal" name="next" value="查询">
+	</div>
 	</div>
 	</form>
 	</fieldset>
