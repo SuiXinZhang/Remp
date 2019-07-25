@@ -68,15 +68,30 @@
 				    <a class="layui-btn layui-btn-xs layui-btn-normal" href="#" onclick="onSelect('${ins.aad401}')">
 				    	<i class="layui-icon layui-icon-edit"></i>查看
 				    </a>
-				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onDel('${ins.aad401}')">
+				    <c:choose>
+				    <c:when test="${ins.aad422=='已激活' }">
+				    <a class="layui-btn layui-btn-xs layui-btn-danger layui-btn-disabled" href="#" onclick="">
 				    	<i class="layui-icon layui-icon-delete"></i>删除
 				    </a>
-				    <a class="layui-btn layui-btn-xs" href="#" onclick="onReceipt('${ins.aad401}')">
+				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#" onclick="">
+				    	<i class="layui-icon layui-icon-link"></i>转签约
+				    </a>
+				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#" onclick="">
 				    	<i class="layui-icon layui-icon-rmb"></i>生成付款详情
+				    </a>
+				    </c:when>
+				    <c:otherwise>
+				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onDel('${ins.aad401}')">
+				    	<i class="layui-icon layui-icon-delete"></i>删除
 				    </a>
 				    <a class="layui-btn layui-btn-xs" href="#" onclick="onAgree('${ins.aad401}')">
 				    	<i class="layui-icon layui-icon-link"></i>转签约
 				    </a>
+				    <a class="layui-btn layui-btn-xs" href="#" onclick="onReceipt('${ins.aad401}')">
+				    	<i class="layui-icon layui-icon-rmb"></i>生成付款详情
+				    </a>
+				    </c:otherwise>
+				    </c:choose>
 				    </td>
 				  </tr>
 		      </c:forEach>

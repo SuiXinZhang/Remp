@@ -80,8 +80,6 @@
 			</div>
 		</div>
 		<div class="layui-form-item" align="center">
-	       <input type="submit" name="next" value="验证" class="layui-btn layui-btn-normal"
-	          formaction="<%=path%>/ad/ad03customerCon.html">
 	       <input type="submit" name="next" value="确认" class="layui-btn layui-btn-normal"
 	       	  formaction="<%=path%>/ad/ad03addconfirm.html">
 	       <input type="submit" name="next" value="返回" class="layui-btn layui-btn-normal"

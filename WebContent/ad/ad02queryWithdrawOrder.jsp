@@ -15,7 +15,8 @@
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-					<legend>ÕÀ∫≈≤È—Ø</legend>
+					<legend><h2>ÕÀ∫≈≤È—Ø</h2></legend>
+					<br>
 	<form class="layui-form" action="<%=path %>/ad/ad02queryWithdrawOrder.html" method="post">
 	<div class="layui-form-item" align="center">
 		<div class="layui-inline">

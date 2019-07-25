@@ -316,7 +316,10 @@
 			</div>
 		</div>
 	</div>
-    
+    <div class="layui-form-item" align="center">
+    	<input type="hidden" name="aad422" value="¶©µ¥×´Ì¬"
+				 autocomplete="off" class="layui-input">
+    </div>
 	<div class="layui-form-item" align="center">    
 	       <input type="submit" name="next" value="${empty param.aad401?'Ìí¼Ó':'ÐÞ¸Ä'}" class="layui-btn layui-btn-normal"
 	              formaction="${empty param.aad401?'ad04addPurchase':'ad04modifyPurchase'}.html">

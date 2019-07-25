@@ -15,7 +15,9 @@
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-					<legend>预约查询</legend>
+					<legend><h2>预约查询</h2></legend>
+					<br>
+					<div class="layui-field-box">
 	<form id="myform" lay-filter="myform" action="<%=path %>/ad/ad01queryOrder.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
@@ -66,11 +68,11 @@
 				    <td>${ins.aad113 }</td>
 				    <td>${ins.aad116 }</td>
 				    <td>
-				    <c:choose>
-				    <c:when test="${ins.aad116=='已失效' }">
-				    	<a class="layui-btn layui-btn-xs layui-btn-disabled"  href="#" onclick="">
+				    	<a class="layui-btn layui-btn-xs" href="#" onclick="onEdit('${ins.aad101}')">
 				    		<i class="layui-icon layui-icon-edit"></i>查看
 				    	</a>
+				    <c:choose>
+				    <c:when test="${ins.aad116=='已失效' }">
 				    	<a class="layui-btn layui-btn-xs layui-btn-danger layui-btn-disabled" href="#" onclick="">
 				    		<i class="layui-icon layui-icon-close-fill"></i>作废
 				    	</a>
@@ -79,9 +81,6 @@
 				    	</a>
 				    </c:when>
 				    <c:otherwise>
-				    	<a class="layui-btn layui-btn-xs" href="#" onclick="onEdit('${ins.aad101}')">
-				    		<i class="layui-icon layui-icon-edit"></i>查看
-				    	</a>
 				    	<a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onDel('${ins.aad101}')">
 				    		<i class="layui-icon layui-icon-close-fill"></i>作废
 				    	</a>
@@ -103,6 +102,7 @@
 	  	 formaction="<%=path %>/ad/ad01customerQuery.jsp" >
 	  </div>
 </form>
+	</div>
 	</fieldset>
     </div>
   </div>
