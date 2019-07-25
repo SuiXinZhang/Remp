@@ -14,6 +14,7 @@
   <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
     <fieldset class="layui-elem-field">
  	<legend style="color:black"><h2>入住通知书</h2></legend>
+ 	 <form action="" class="layui-form"  method="post">
   		<div class="layui-field-box">
 	    	 <!--startprint1-->
 	        <div align="center">
@@ -41,13 +42,18 @@
 				</div>
 			</div>
 	    <!--endprint1-->
-	    <br><br>
+	    <br><br><br><br><br><br>
 		    <div class="layui-form-item" align="center">
 				<div class="layui-inline">
 						<input class="layui-btn layui-btn-normal" type="button" value="打印" onclick="preview(1)">
 				</div>
+				<div class="layui-inline">
+						<input class="layui-btn layui-btn-normal" type="submit" value="返回" 
+						formaction="<%=path%>/ae/ae03query.html" formnovalidate="formnovalidate" >
+				</div>
 			</div>
 		</div>
+		</form>
 	</fieldset>
 	</div>
   </div>

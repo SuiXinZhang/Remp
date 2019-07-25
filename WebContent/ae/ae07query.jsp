@@ -68,7 +68,9 @@
 						<td>${ins.aae702 }</td>
 						<td>${ins.aae703 }</td>
 						<td>${ins.snaae704 }</td>
-						<td><a class="layui-btn layui-btn-xs " href="#" onclick='execute(${ins.aae701})'>执行补差</a></td>
+						<td>
+						<a class="layui-btn layui-btn-xs " href="#" onclick='findById(${ins.aae701})'>查看详情</a>
+						<a class="layui-btn layui-btn-xs " href="#" onclick='execute(${ins.aae701})'>执行补差</a></td>
 		        	</tr>
 			    </c:forEach>
 			    </tbody>
@@ -97,6 +99,12 @@
 	{
 		var vform = document.getElementById("action");
 		vform.action = "<%=path %>/ae/ae07execute.html?aae701="+id;
+		vform.submit();
+	}
+	function findById(id)
+	{
+		var vform = document.getElementById("action");
+		vform.action = "<%=path %>/ae/ae07findById.html?aae701="+id;
 		vform.submit();
 	}
 </script>

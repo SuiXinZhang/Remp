@@ -11,6 +11,7 @@
         <c:param name="menu" value="ae03"/>
      </c:import>
   <div class="layui-body">
+   <form action="" class="layui-form"  method="post">
   <div class="layui-anim layui-anim-scale" style="padding: 15px; margin:50px 100px;">
 	    	 <!--startprint1-->
 	        <div align="center">
@@ -48,9 +49,16 @@
 	    <!--endprint1-->
 	    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	    <div align="center">
-			<input class="layui-btn layui-btn-normal" type="button" value="´òÓ¡" onclick="preview(1)">
+	    	<div class="layui-inline">
+				<input class="layui-btn layui-btn-normal" type="button" value="´òÓ¡" onclick="preview(1)">
+			</div>
+			<div class="layui-inline">
+				<input class="layui-btn layui-btn-normal" type="submit" value="·µ»Ø" 
+				formaction="<%=path%>/ae/ae04query.html" formnovalidate="formnovalidate" >
+			</div>
 		</div>
 	</div>
+	</form>
   </div>
   
   <div class="layui-footer">

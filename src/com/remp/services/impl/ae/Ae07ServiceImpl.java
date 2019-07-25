@@ -34,6 +34,34 @@ public class Ae07ServiceImpl extends JdbcServicesSupport
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
 	
+	public boolean modify()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("update ae07 set aae702=?,aae703=?,aae704=?,aae706=?,")
+				.append("                 aae707=?,aae708=?,aaa801=?,aae709=?")
+				.append("         where aae701=?")
+				;
+		Object args[] = new Object[]{
+				this.get("aae702"),
+				this.get("aae703"),
+				"01",
+				this.get("aae706"),
+				this.get("aae707"),
+				this.get("aae708"),
+				this.get("aaa801"),
+				this.get("aae709"),
+				this.get("aae701")
+		};
+		return this.executeUpdate(sql.toString(), args)>0;
+	}
+	
+	@Override
+	public Map<String, String> findById() throws Exception {
+		String sql = "select aae701,aae702,aae703,aae704,aae705,aae706"
+				+ ",aae707,aae708,aae709,aaa801 from ae07 where aae701=?";
+		return this.queryForMap(sql, this.get("aae701"));
+	}
+	
 	public List<Map<String, String>> query()throws Exception
 	{
 		Object qaae704 = this.get("qaae704");
