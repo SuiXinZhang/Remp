@@ -139,13 +139,13 @@ function submitExcel()
 									<label class="layui-form-label" style="padding-left: 32px">来访日期</label>
 									<div class="layui-input-inline">
 										<input type="text" name="baac102" id="date"
-											placeholder="B" lay-verify="date"
+											placeholder="B" lay-verify="date" value="${param.baac102 }"
 											autocomplete="off" class="layui-input">
 									</div>
 									<div class="layui-form-mid" id="toCenter">----</div>
 									<div class="layui-input-inline">
 										<input type="text" name="eaac102" id="date1"
-											placeholder="E" lay-verify="date"
+											placeholder="E" lay-verify="date" value="${param.eaac102 }"
 											autocomplete="off" class="layui-input">
 									</div>
 								</div>
@@ -171,7 +171,7 @@ function submitExcel()
 										<td lay-data="{field:'projectname',width:125}">项目名称</td>
 										<td lay-data="{field:'username'}">客户名</td>
 										<td lay-data="{field:'userphone'}">联系电话</td>
-										<td lay-data="{field:'empname'}">业务员</td>
+										<td lay-data="{field:'empname'}">记录人</td>
 										<td lay-data="{field:'style',width:88}">来访方式</td>
 										<td lay-data="{field:'date',sort:true,width:115}">来访日期</td>
 										<td lay-data="{field:'grade',sort:true,width:100}">跟进级别</td>
@@ -188,7 +188,7 @@ function submitExcel()
 													<td>${ins.aac104 }</td>
 													<td>${ins.aac105 }</td>
 													<td>${ins.aac106 }</td>
-													<td>${ins.aac107 }</td>
+													<td>${ins.aac108 }</td>
 													<td>${ins.aac103 }</td>
 													<td>${ins.aac102 }</td>
 													<td>${ins.aac109 }</td>
@@ -197,7 +197,7 @@ function submitExcel()
 														href="<%=path%>/ac01FindById.html?aac101=${ins.aac101 }">
 															<i class="layui-icon layui-icon-edit"></i>编辑
 													</a> <a class="layui-btn layui-btn-xs layui-btn-danger"
-														href="#" onClick="onOpportunities('${ins.aac101}')"> <i
+														href="#" onClick="onOpportunities('${ins.aac101}','${ins.aac111}')"> <i
 															class="layui-icon layui-icon-release"></i>转销售机会
 													</a></td>
 												</tr>
@@ -226,11 +226,25 @@ function onDel(vaac101)
 	myform.action = "<%=path%>/ac01DelById.html?aac101=" + vaac101;
 	myform.submit();
 }
-function onOpportunities(vaac101)
+function onOpportunities(vaac101,vaac111)
 {
-	var myform = document.getElementById("myform");
-	myform.action = "<%=path%>/ac04ChangeOpport.html?tag=1&aac101="+ vaac101;
-	myform.submit();
+	if(vaac111 == '未转')
+	{
+		var myform = document.getElementById("myform");
+		myform.action = "<%=path%>/ac04ChangeOpport.html?tag=1&aac101="+ vaac101;
+		myform.submit();
+	}else
+	{
+		layui.use('layer',function(){
+			var layer = layui.layer;
+			layer.open({
+				title:'提示',
+				content:'只有未转线索才可以转销售机会!',
+				skin: 'layui-layer-molv'
+			});
+		})
+	}
+	
 }
 function getCheckBox(str)
 {

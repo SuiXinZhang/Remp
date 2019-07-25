@@ -79,9 +79,13 @@
 			<label class="layui-form-label">
 			<i class="layui-icon layui-icon-component" style="font-size: 20px; color: black;"></i>
 			政治背景</label>
-				<div class="layui-input-inline">
-					<input type="text" required lay-verify="true" name="aac409" value="${ins.aac409 }"
-					 autocomplete="off" class="layui-input">
+				<div class="layui-input-inline" >
+					<select name="aac409">
+						<option value="群众">群众</option>
+						<option value="团员">团员</option>
+						<option value="党员">党员</option>
+						<option value="其他">其他</option>
+					</select>
 				</div>
 		</div>
 		<div class="layui-inline">
@@ -89,11 +93,15 @@
 			<i class="layui-icon layui-icon-user" style="font-size: 20px; color: black;"></i>
 			民&emsp;族</label>
 				<div class="layui-input-inline" >
-					<select name="aac406">
+					<select name="aac406" lay-verify="required">
+						<option value="">请选择</option>
 						<option value="1">汉族</option>
 						<option value="2">蒙古族</option>
 						<option value="3">回族</option>
 						<option value="4">藏族</option>
+						<option value="5">维吾尔族</option>
+						<option value="6">苗族</option>
+						<option value="7">彝族</option>
 					</select>
 				</div>
 		</div>
@@ -103,9 +111,17 @@
 			<label class="layui-form-label">
 			<i class="layui-icon layui-icon-diamond" style="font-size: 20px; color: black;"></i>
 			经济状况</label>
-				<div class="layui-input-inline">
-					<input type="text" required lay-verify="true" name="aac410" value="${ins.aac410 }"
-					 autocomplete="off" class="layui-input">
+				<div class="layui-input-inline" >
+					<select name="aac410" lay-verify="required">
+						<option value="">请选择</option>
+						<option value="极其富有">极其富有</option>
+						<option value="富有">富有</option>
+						<option value="小康">小康</option>
+						<option value="温饱">温饱</option>
+						<option value="贫穷">贫穷</option>
+						<option value="极其贫穷">极其贫穷</option>
+						<option value="未知">未知</option>
+					</select>
 				</div>
 		</div>
 		<div class="layui-inline">
@@ -113,8 +129,16 @@
 			<i class="layui-icon layui-icon-templeate-1" style="font-size: 20px; color: black;"></i>
 			职&emsp;业</label>
 				<div class="layui-input-inline" >
-					<input type="text" name="aac413" value="${ins.aac413 }"
-					 autocomplete="off" class="layui-input">
+					<select name="aac413">
+						<option value="商人">商人</option>
+						<option value="教师">教师</option>
+						<option value="学生">学生</option>
+						<option value="演员">演员</option>
+						<option value="医生">医生</option>
+						<option value="工人">工人</option>
+						<option value="记者">记者</option>
+						<option value="其他">其他</option>
+					</select>
 				</div>
 		</div>
 	</div>
@@ -226,6 +250,9 @@
 	  form.val('myform',{
 		  "aac404":"${ins.aac404}",
 		  "aac406":"${ins.aac406}",
+		  "aac409":"${ins.aac409}",
+		  "aac410":"${ins.aac410}",
+		  "aac413":"${ins.aac413}",
 		  "aac414":"${ins.aac414}"
 	  });
 	});

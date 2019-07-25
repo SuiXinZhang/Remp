@@ -137,7 +137,7 @@ public class Ac01ServicesImpl extends JdbcServicesSupport
 			
 		StringBuilder sql = new StringBuilder()
 				.append("select x.aac101,x.aac102,x.aac103,x.aac104,x.aac105,")
-				.append("		x.aac106,x.aac107,x.aac109,x.aac111")
+				.append("		x.aac106,x.aac107,x.aac108,x.aac109,x.aac111")
 				.append("  from ac01 x")
 				.append(" where true ");
 				

@@ -222,13 +222,12 @@ function onload1()
 							</table>
 
 
-<script type="text/javascript">
-window.onload = onload1();
-</script>
+							<script type="text/javascript">
+							window.onload = onload1();
+							</script>
 							<br>
 							<br>
 							<br>
-
 							<div class="layui-form-item" align="center">
 							<div class="layui-inline">
 								<button class="layui-btn layuiadmin-btn-useradmin" type="submit">
@@ -241,11 +240,8 @@ window.onload = onload1();
 								<i class="layui-icon layui-icon-delete"></i>É¾³ý
 								</button>
 							</div>
-								
 							</div>
-
 						</div>
-
 	</form>
 	</fieldset>
     </div>
@@ -261,6 +257,11 @@ window.onload = onload1();
 		{
 		  layer.msg("${msg }");
 		}
+	  	form.val('myform', {
+			"qaac203" : "${param.qaac203 }",
+			"qaac206" : "${param.qaac206 }",
+			"qaac207" : "${param.qaac207 }"
+		});
 	  var count = 0;
 		form.on('checkbox(check)', function(data){
 	          if(data.elem.checked==true){

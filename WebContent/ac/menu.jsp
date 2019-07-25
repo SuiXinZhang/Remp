@@ -31,7 +31,7 @@
              	<dd class="${param.menu eq 'ac10' ? 'layui-this':''}"><a href="<%=path %>/ac/ac05Query.html">&nbsp&nbsp查询关怀计划</a></dd>
              </dl>
          </li>
-        <li class="layui-nav-item  ${param.menu eq 'ac11' ? 'layui-this':''}"><a href="#" onclick="toMsg('该功能还在开发中......')">交互明细查询</a></li>
+        <%-- <li class="layui-nav-item  ${param.menu eq 'ac11' ? 'layui-this':''}"><a href="#" onclick="toMsg('该功能还在开发中......')">交互明细查询</a></li> --%>
       </ul>
     </div>
     <form action="<%=path %>/ac/index.jsp" id="form" method="post">
