@@ -17,7 +17,6 @@
 		    	<c:param name="menu" value="ab03q"/>
 		    </c:import>
 			<div class="layui-body">
-				${msg }
 				<div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 					<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
@@ -71,11 +70,11 @@
 						<thead>
 							<tr>
 								<td lay-data="{field:'sort1',width:60}">序号</td>
-								<td lay-data="{field:'projectname',width:125}">方案名称</td>
-								<td lay-data="{field:'username'}">制定日期</td>
+								<td lay-data="{field:'projectname'}">方案名称</td>
+								<td lay-data="{field:'username',sort:true}">制定日期</td>
 								<td lay-data="{field:'userphone'}">预算费用</td>
 								<td lay-data="{field:'empname'}">制定人</td>
-								<td lay-data="{field:'style'}">状态</td>
+								<td lay-data="{field:'style',width:100}">状态</td>
 								<td lay-data="{field:'opt',fixed:'right',width:220}">操作</td>
 							</tr>
 						</thead>
@@ -215,6 +214,12 @@
 						$('#tableId').css('display', 'block');
 					}
 				});
+				
+
+				if("${msg }" != "")
+				{
+					layer.msg('${msg }');	  
+				}
 
 			});
 

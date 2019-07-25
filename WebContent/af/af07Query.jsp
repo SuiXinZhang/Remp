@@ -21,7 +21,6 @@
 	    	<c:param name="menu" value="af07q"/>
 	    </c:import>
 		<div class="layui-body">
-		${msg }
 		<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
@@ -92,11 +91,11 @@
 						<td lay-data="{field:'projectname',width:125}">房间编号</td>
 						<td lay-data="{field:'username'}">客户名</td>
 						<td lay-data="{field:'userphone'}">客户邮箱</td>
-						<td lay-data="{field:'empname'}">还款截止日期</td>
-						<td lay-data="{field:'style',width:88}">签署金额</td>
+						<td lay-data="{field:'empname',sort:true}">还款截止日期</td>
+						<td lay-data="{field:'style'}">签署金额</td>
 						<td lay-data="{field:'date',sort:true,width:115}">欠款金额</td>
 						<td lay-data="{field:'grade',width:100}">还款状态</td>
-						<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+						<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 					</tr>
 					</thead>
 					<tbody>
@@ -218,6 +217,12 @@
 		       		document.getElementById("mod").disabled=(count==0)
 		          }
 		      });
+			
+
+			if("${msg }" != "")
+			{
+				layer.msg('${msg }');	  
+			}
 		});
 
 		//日期选择框

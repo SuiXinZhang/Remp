@@ -22,7 +22,6 @@
 	   	    </c:import>
 		     
 			<div class="layui-body">
-				${msg }
 				<div class="layui-anim layui-anim-scale"
 					style="padding: 15px; margin: 30px 80px;">
 					<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
@@ -33,7 +32,7 @@
 					<div align="center">
 	
 						<div class="layui-form-item" align="left">
-							<div class="layui-inline" style="padding-left:198px">
+							<div class="layui-inline" style="padding-left:17.5%">
 								<label class="layui-form-label">
 									<i class="layui-icon layui-icon-form" style="font-size: 20px; color: black;"></i>项目名称
 								</label>
@@ -97,7 +96,7 @@
 						</div>
 
 						<div class="layui-form-item" align="left">
-							<div class="layui-inline" style="padding-left:198px">
+							<div class="layui-inline" style="padding-left:17.5%">
 								<label class="layui-form-label">
 									<i class="layui-icon layui-icon-rmb" style="font-size: 20px; color: black;"></i>计划回款金额
 								</label>
@@ -144,6 +143,11 @@
 				var element = layui.element;
 				var layer = layui.layer,
 					form = layui.form;
+				
+				if("${msg }" != "")
+				{
+					layer.msg('${msg }');	  
+				}
 
 			});
 			
