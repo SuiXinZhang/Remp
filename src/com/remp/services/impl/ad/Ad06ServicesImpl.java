@@ -10,7 +10,7 @@ public class Ad06ServicesImpl extends JdbcServicesSupport
 {
 	public Map<String, String> turnApply()throws Exception
 	{
-		String sql = "select aac401,aad701,aad702,aad703 from ad07 where aad701=?";
+		String sql = "select aac401,aad701,aad702,aad703,aaa801 from ad07 where aad701=?";
 		return this.queryForMap(sql, this.get("aad701"));
 	}
 	public boolean addApply()throws Exception
@@ -43,6 +43,7 @@ public class Ad06ServicesImpl extends JdbcServicesSupport
 	{
 		Object qaad602 = this.get("qaad602");
 		Object qaad605 = this.get("qaad605");
+		Object qaad603 = this.get("qaad603");
 		StringBuilder sql= new StringBuilder()
 				.append("select a.aad601,b.fvalue baad602,a.aad603,c.fvalue caad604,a.aad605,")
 				.append("       a.aad606,a.aad607,a.aad608,a.aad609,a.aad610,")
@@ -61,6 +62,11 @@ public class Ad06ServicesImpl extends JdbcServicesSupport
 		{
 			sql.append(" and a.aad602=?");
 			paramList.add(qaad602);
+		}
+		if(this.isNotNull(qaad603))
+		{
+			sql.append(" and a.aad603=?");
+			paramList.add(qaad603);
 		}
 		return this.queryForList(sql.toString(), paramList.toArray());
 	}

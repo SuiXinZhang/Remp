@@ -24,7 +24,7 @@
 					选房单号
 				</label>
 				<div class="layui-input-inline">
-					<input type="text" required="required" name="aad303" value="${ins.aad108 }" autocomplete="off" class="layui-input">
+					<input type="text" readonly="readonly" required="required" name="aad303" value="${ins.aad108 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
@@ -33,7 +33,7 @@
 					房间号码
 				</label>
 			<div class="layui-input-inline">
-				<input type="text" id="room" name="aad302" required lay-verify="true" value="${ins.aad110 }"
+				<input type="text" id="room" readonly="readonly" name="aad302" required lay-verify="true" value="${ins.aad110 }"
 				onclick="selectRoom()" readonly="readonly" class="layui-input">
 				<input id="roomNo" type="hidden" name="aaa801" value="${ins.aaa801 }">
 			</div>
@@ -46,7 +46,7 @@
 					实际排号
 				</label>
 				<div class="layui-input-inline">
-					<input type="text" required="required" name="aad304" value="${ins.aad104 }" autocomplete="off" class="layui-input">
+					<input type="text" readonly="readonly" required="required" name="aad304" value="${ins.aad104 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
@@ -55,7 +55,7 @@
 					客户名称
 				</label>
 				<div class="layui-input-inline">
-					<input type="text" required="required" name="aad305" value="${ins.aad103 }" autocomplete="off" class="layui-input">
+					<input type="text" readonly="readonly" required="required" name="aad305" value="${ins.aad103 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 		</div>
@@ -82,6 +82,8 @@
 		<div class="layui-form-item" align="center">
 	       <input type="submit" name="next" value="确认" class="layui-btn layui-btn-normal"
 	       	  formaction="<%=path%>/ad/ad03addconfirm.html">
+	       	  <input type="submit" name="next" value="查看" class="layui-btn layui-btn-normal"
+	       	  formaction="<%=path%>/ad/ad03query.html" formnovalidate="formnovalidate">
 	       <input type="submit" name="next" value="返回" class="layui-btn layui-btn-normal"
 	       formaction="<%=path%>/ad/adqueryRoom.html"
 	          formnovalidate="formnovalidate">

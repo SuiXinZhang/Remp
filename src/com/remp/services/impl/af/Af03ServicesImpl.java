@@ -81,9 +81,11 @@ public class Af03ServicesImpl extends JdbcServicesSupport
 		
 		StringBuilder sql2 = new StringBuilder()
 				.append("insert into af04(aaf301,aaf402,aaf403,aaf404,aaf405,")
-				.append("                 aaf406,aaf407,aaf408,aaf409,aaf410)")
+				.append("                 aaf406,aaf407,aaf408,aaf409,aaf410,")
+				.append("                 aaa801)")
 				.append("          values(?,?,?,?,?,")
-				.append("                 ?,?,?,?,?)")
+				.append("                 ?,?,?,?,?,")
+				.append("                 ?)")
 				;
 		Object args2[] = {
 				Tools.getSequence("aaf301"),
@@ -95,7 +97,8 @@ public class Af03ServicesImpl extends JdbcServicesSupport
 				this.get("aaf407"),
 				this.get("aaf408"),
 				this.get("aaf409"),
-				this.get("aaf410")
+				this.get("aaf410"),
+				this.get("aaa801")
 		};
 		this.appendSql(sql1.toString(), args1);
 		this.appendSql(sql2.toString(), args2);
