@@ -43,7 +43,6 @@
 	<table id="idData"  lay-filter="demo">
 	<thead>
 	  <tr>
-	  	<td lay-data="{field:'check',width:50}"></td>
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
 		<td lay-data="{field:'projectname',width:125}">审批状态</td>
 		<td lay-data="{field:'username',width:100}">客户名称</td>
@@ -61,10 +60,6 @@
 	     <c:when test="${rows!=null }">
 		     <c:forEach items="${rows }" var="ins" varStatus="vs">
 	    	   	  <tr>
-	    	   	  	<td>
-					<input type="checkbox" lay-skin="primary" lay-filter="check" 
-					  name="idlist" value="${ins.aad601 }" >
-					</td>
 				    <td>${vs.count }</td>
 				    <td>${ins.aad603}</td>
 				    <td>${ins.aad611 }</td>

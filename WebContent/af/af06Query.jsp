@@ -11,7 +11,6 @@
 	    	<c:param name="menu" value="af05a"/>
 	    </c:import>
 		<div class="layui-body">
-			${msg }
 			<div class="layui-anim layui-anim-scale"
 			style="padding: 15px; margin: 30px 80px;">
 			<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
@@ -53,21 +52,26 @@
 				
 				<div class="layui-form-item" align="left">
 					<div class="layui-inline" style="padding-left:85px">
-						<label class="layui-form-label">起始日期</label>
+						<label class="layui-form-label">放款日期[B]</label>
 						<div class="layui-input-inline">
 							<input type="text" name="bdate" class="layui-input" id="test29" placeholder="yyyy-MM-dd">
 						</div>
 					</div>
 					<div class="layui-inline">
-						<label class="layui-form-label">截止日期</label>
+						<label class="layui-form-label">放款日期[E]</label>
 						<div class="layui-input-inline">
 							<input type="text" name="edate" class="layui-input" id="test30" placeholder="yyyy-MM-dd">
 						</div>
 					</div>
-					<div class="layui-inline" style=" padding-left:110px">
-						<button class="layui-btn " type="submit">
-							<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
-						</button>
+					<div class="layui-inline">
+						<label class="layui-form-label">审核状态</label>
+						<div class="layui-input-inline">
+							<select name="qaaf609" lay-verify="">
+								<option value="" selected="selected">请选择审核状态</option>
+								<option value="01">未审核</option>
+								<option value="02">已审核</option>
+							</select>
+						</div>
 					</div>
 				</div>
 				
@@ -83,10 +87,12 @@
 			<td lay-data="{field:'projectname',width:125}">放款单号</td>
 			<td lay-data="{field:'username'}">放款银行</td>
 			<td lay-data="{field:'userphone'}">项目名称</td>
-			<td lay-data="{field:'empname'}">放款日期</td>
+			<td lay-data="{field:'empname',sort:true}">放款日期</td>
 			<td lay-data="{field:'style',width:88}">登记人</td>
+			<td lay-data="{field:'state',width:88}">审核状态</td>
 			<td lay-data="{field:'date',sort:true,width:115}">审核人</td>
-			<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+			<td lay-data="{field:'date2',sort:true,width:115}">审核日期</td>
+			<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 			</tr>
 	  </thead>
 	  <tbody>
@@ -103,13 +109,28 @@
 	  				<td>${ins.aaf612 }</td>
 				    <td>${ins.aaf605 }</td>
 				    <td>${ins.aaf603 }</td>
+				    <td>${ins.cnaaf609 }</td>
 				    <td>${ins.aaf606 }</td>
-				    <td>
-					    <a href="#" onclick="onEdit('${ins.aaf601}')"
-						class="layui-btn layui-btn-xs">
-						<i class="layui-icon layui-icon-edit"></i>审核
-						</a>
-				    </td>
+				    <td>${ins.aaf607 }</td>
+				    <c:choose>
+					    <c:when test="${ins.cnaaf609=='未审核' }">
+					    <td>
+					    	<a href="#" onclick="onEdit('${ins.aaf601}')"
+							class="layui-btn layui-btn-xs">
+							<i class="layui-icon layui-icon-edit"></i>审核
+							</a>
+							</td>
+					    </c:when>
+					    <c:otherwise>
+					    <td>
+					    	<a href="#" onclick=""
+							class="layui-btn layui-btn-xs layui-btn-disabled">
+							<i class="layui-icon layui-icon-edit"></i>审核
+							</a>
+							</td>
+					    </c:otherwise>
+				    </c:choose>
+				  
 	  			</tr>
 	  		</c:forEach>
 	  		
@@ -123,6 +144,9 @@
 	  
 	  	<!-- 功能按钮区 -->
 	  	<div class="layui-form-item" align="center">
+	  		<button class="layui-btn " type="submit">
+				<i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>查询
+			</button>
 	  		<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
 				formaction="<%=path%>/af/af06Add.jsp">
 				<i class="layui-icon layui-icon-add-1"></i>添加
@@ -178,6 +202,12 @@
 				$('#tableId').css('display', 'block');
 			}
 		});
+		
+
+		if("${msg }" != "")
+		{
+			layer.msg('${msg }');	  
+		}
 	});
 	
 	//日期选择框

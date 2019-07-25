@@ -18,7 +18,7 @@
 		    <table id="idData"  lay-filter="demo">
 			    <thead>
 			        <tr>
-			       		<td lay-data="{field:'check',width:50}"></td>
+			       		<!-- <td lay-data="{field:'check',width:50}"></td> -->
 			        	<td lay-data="{field:'sort1',width:60}">序号</td>
 						<td lay-data="{field:'projectname',width:100}">项目名称</td>
 						<td lay-data="{field:'username'}">项目地址</td>
@@ -30,7 +30,7 @@
 						<td lay-data="{field:'jzmj'}">建筑面积</td>
 						<td lay-data="{field:'ksmj'}">可售面积</td>
 						<td lay-data="{field:'ksts'}">可售套数</td>
-						<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>
+						<!--<td lay-data="{field:'opt',fixed:'right',width:100}">操作</td>-->
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -38,11 +38,9 @@
 						<c:when test="${rows!= null }">
 							<c:forEach items="${rows }" var="ins" varStatus="vs">
 								<tr>
-									<td>
-									<input type="checkbox"  lay-filter="check" lay-skin="primary"  name="idlist" value="${ins.aaa201 }"></td>
+									<!--<td> <input type="checkbox"  lay-filter="check" lay-skin="primary"  name="idlist" value="${ins.aaa201 }"></td> -->
 									<td>${vs.count }</td>
-									<td><a href="#"  style="color:orange" onclick="onEdit('${ins.aaa201 }')">${ins.aaa202 }</a>
-									</td>
+									<td><a href="#"  style="color:orange" onclick="onEdit('${ins.aaa201 }')">${ins.aaa202 }</a></td>
 									<td>${ins.aaa203 }</td>
 									<td>${ins.aaa204 }</td>
 									<td>${ins.aaa206 }</td>
@@ -52,12 +50,12 @@
 									<td>${ins.aaa212 }</td>
 									<td>${ins.aaa213 }</td>
 									<td>${ins.aaa214 }</td>
-									<td>
+									<!-- <td>
 										<a class="layui-btn layui-btn-xs layui-btn-danger" href="#"
 											onClick="onDel('${ins.aaa201}')">
 											<i class="layui-icon layui-icon-delete"></i>删除
-										</a> 
-									</td>
+										</a>  
+									</td>-->
 								</tr>
 							</c:forEach>
 							<c:forEach begin="${fn:length(rows)+1 }" end="10" step="1">
@@ -69,6 +67,8 @@
 									<td></td>
 									<td></td>
 									<td></td>
+									<td></td>
+									
 								</tr>
 							</c:forEach>
 						</c:when>
@@ -79,8 +79,8 @@
 				<div class="layui-inline">
 					<input class="layui-btn" type="submit" value="查询" name="next">
 					<input class="layui-btn" type="submit" value="添加" name="next" formaction="<%=path %>/aa/projectAdd.jsp"> 
-					<input class="layui-btn layui-btn-disabled" type="submit"  value="删除" name="next" disabled="disabled" 
-							formaction="<%=path %>/aa/aa02Delete.html" id="del">
+					<!-- <input class="layui-btn layui-btn-disabled" type="submit"  value="删除" name="next" disabled="disabled" 
+							formaction="<%=path %>/aa/aa02Delete.html" id="del"> -->
 				</div>
 			</div>
 			

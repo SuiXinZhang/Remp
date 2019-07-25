@@ -207,7 +207,7 @@ public abstract class ControllerSupport implements BaseController {
 		}
 		else
 		{
-			this.saveAttribute("msg", "提示:该数据已删除或禁止访问");
+			this.saveAttribute("msg", "没有该客户信息!");
 		}
 		return ins;
 	}

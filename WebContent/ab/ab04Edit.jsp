@@ -79,11 +79,14 @@
 							</div>
 
 							<div class="layui-form-item" align="center">
-								<input type="submit" name="next" value="完成"
-									formaction="<%=path%>/ab/ab04Edit.html" class="layui-btn">
-								<input type="submit" name="next" value="返回"
-									formaction="<%=path%>/ab/ab03Query.html"
-									formnovalidate="formnovalidate" class="layui-btn">
+								<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+									formaction="<%=path%>/ab/ab04Edit.html">
+									<i class="layui-icon layui-icon-ok"></i>完成
+								</button>
+								<button class="layui-btn layuiadmin-btn-useradmin" type="submit" 
+									formaction="<%=path%>/ab/ab03Query.html" formnovalidate="formnovalidate">
+									<i class="layui-icon layui-icon-prev"></i>返回
+								</button>
 							</div>
 						</div>
 						<input type="hidden" name="aab301" value="${param.aab301 }">
@@ -106,6 +109,12 @@
 			form.val('myform', {
 				"aab403" : "${ins.aab403}"
 			});
+			
+
+			if("${msg }" != "")
+			{
+				layer.msg('${msg }');	  
+			}
 		});
 
 		//日期选择框

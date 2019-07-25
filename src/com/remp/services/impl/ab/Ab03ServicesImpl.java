@@ -38,13 +38,12 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql = new StringBuilder()
 				.append("update ab03")
-				.append("   set aab302=?,aab303=?,aab304=?,aab305=?,aab306=?,aab307=?")
+				.append("   set aab302=?,aab303=?,aab305=?,aab306=?,aab307=?")
 				.append(" where aab301=?")
 				;
 		Object args[]={
 				this.get("aab302"),
 				this.get("aab303"),
-				this.get("aab304"),
 				this.get("aab305"),
 				this.get("aab306"),
 				this.get("aab307"),
@@ -85,6 +84,8 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 	 */
 	public boolean add() throws Exception
 	{
+		String aab304 = "01";
+		
 		StringBuilder sql = new StringBuilder()
 				.append("insert into ab03(aab302,aab303,aab304,aab305,aab306,aab307)")
 				.append(" values(?,?,?,?,?,?)")
@@ -92,7 +93,7 @@ public class Ab03ServicesImpl extends JdbcServicesSupport
 		Object args[] = {
 				this.get("aab302"),
 				this.get("aab303"),
-				this.get("aab304"),
+				aab304,
 				this.get("aab305"),
 				this.get("aab306"),
 				this.get("aab307")

@@ -17,7 +17,6 @@
 		    	<c:param name="menu" value="ab03q"/>
 		    </c:import>
 			<div class="layui-body">
-				<!-- 内容主体区域 -->
 				<div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 					<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
@@ -71,11 +70,11 @@
 						<thead>
 							<tr>
 								<td lay-data="{field:'sort1',width:60}">序号</td>
-								<td lay-data="{field:'projectname',width:125}">方案名称</td>
-								<td lay-data="{field:'username'}">制定日期</td>
+								<td lay-data="{field:'projectname'}">方案名称</td>
+								<td lay-data="{field:'username',sort:true}">制定日期</td>
 								<td lay-data="{field:'userphone'}">预算费用</td>
 								<td lay-data="{field:'empname'}">制定人</td>
-								<td lay-data="{field:'style'}">状态</td>
+								<td lay-data="{field:'style',width:100}">状态</td>
 								<td lay-data="{field:'opt',fixed:'right',width:220}">操作</td>
 							</tr>
 						</thead>
@@ -98,7 +97,31 @@
 											<td>${ins.aab303 }</td>
 											<td>${ins.aab306 }</td>
 											<td>${ins.cnaab304 }</td>
-											<td>
+											<c:choose>
+											    <c:when test="${ins.cnaab304=='计划中'}">
+											    <td>
+												    <a class="layui-btn layui-btn-xs" href="#"  onclick="onAct('${ins.aab301}')">
+												    	<i class="layui-icon layui-icon-edit"></i>编辑营销活动
+												    </a>
+												    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
+												    	<i class="layui-icon layui-icon-release"></i>方案总结
+												    </a>
+											    </td>
+											    </c:when>
+											    <c:otherwise>
+											    <td>
+													<a href="#" onclick="onAct('${ins.aab301}')"
+													class="layui-btn layui-btn-xs">
+													<i class="layui-icon layui-icon-edit"></i>编辑营销活动
+													</a>
+													<a href="#" onclick="onSum('${ins.aab301 }')"
+													class="layui-btn layui-btn-xs">
+													<i class="layui-icon layui-icon-edit"></i>方案总结
+													</a> 
+												</td>
+											    </c:otherwise>
+										    </c:choose>
+											 <!--<td>
 												<a href="#" onclick="onAct('${ins.aab301}')"
 												class="layui-btn layui-btn-xs">
 												<i class="layui-icon layui-icon-edit"></i>编辑营销活动
@@ -106,8 +129,8 @@
 												<a href="#" onclick="onSum('${ins.aab301 }')"
 												class="layui-btn layui-btn-xs">
 												<i class="layui-icon layui-icon-edit"></i>方案总结
-												</a>
-											</td>
+												</a> 
+											</td>-->
 											<!-- <td>
 												<a href="#" onclick="onDel('${ins.aab301}')" class="layui-btn">删除</a>
 											</td> -->
@@ -191,6 +214,12 @@
 						$('#tableId').css('display', 'block');
 					}
 				});
+				
+
+				if("${msg }" != "")
+				{
+					layer.msg('${msg }');	  
+				}
 
 			});
 

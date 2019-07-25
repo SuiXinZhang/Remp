@@ -12,7 +12,6 @@
 	    		<c:param name="menu" value="ab01q"/>
 	   	    </c:import>
 			<div class="layui-body">
-			${msg }
 				<!-- 内容主体区域 -->
 				<div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
@@ -75,13 +74,13 @@
 							<tr>
 								<td lay-data="{field:'sort1',width:60}">序号</td>
 								<td lay-data="{field:'projectname',width:125}">项目名称</td>
-								<td lay-data="{field:'username'}">时间</td>
+								<td lay-data="{field:'username',sort:true}">时间</td>
 								<td lay-data="{field:'userphone'}">计划销售面积</td>
 								<td lay-data="{field:'empname'}">计划销售套数</td>
 								<td lay-data="{field:'style'}">计划销售金额</td>
-								<td lay-data="{field:'date',sort:true,width:115}">计划销售均价</td>
-								<td lay-data="{field:'grade',sort:true,width:100}">计划回款金额</td>
-								<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
+								<td lay-data="{field:'date',sort:true}">计划销售均价</td>
+								<td lay-data="{field:'grade',sort:true}">计划回款金额</td>
+								<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -194,6 +193,12 @@
 						$('#tableId').css('display', 'block');
 					}
 				});
+				
+
+				if("${msg }" != "")
+				{
+					layer.msg('${msg }');	  
+				}
 			});
 			
 		</script>
