@@ -118,7 +118,7 @@
 									<c:choose>
 										<c:when test="${ins.cnaaf710=='未还款' }">
 											<td>
-												<a href="<%=path %>/af/af07State.html?aaf702=${ins.aaf702}" 
+												<a href="<%=path %>/af/af07State.html?aaf701=${ins.aaf701}" 
 												class="layui-btn layui-btn-xs">
 												<i class="layui-icon layui-icon-edit"></i>已缴费
 												</a>
@@ -126,7 +126,7 @@
 										</c:when>
 										<c:otherwise>
 											<td>
-												<a href="<%=path %>/af/af07State.html?aaf702=${ins.aaf702}" 
+												<a href="<%=path %>/af/af07State.html?aaf701=${ins.aaf701}" 
 												class="layui-btn layui-btn-xs layui-btn-disabled">
 												<i class="layui-icon layui-icon-edit"></i>已缴费
 												</a>

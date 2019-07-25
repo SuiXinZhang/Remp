@@ -80,8 +80,10 @@
 			</table>
 			 <div class="layui-form-item" align="center">
 				<div class="layui-inline">
-						<input class="layui-btn" name="next" type="submit" value="添加"
-							formaction="<%=path %>/ae/ae01add.jsp">
+						<%-- <input class="layui-btn" name="next" type="submit" value="添加"
+							formaction="<%=path %>/ae/AeSelectcontractServlet"> --%>
+							<input class="layui-btn" name="next" type="submit" value="添加"
+							formaction="<%=path %>/ae/aeSelectcontract.html">
 						<input class="layui-btn layui-btn-disabled"  id="mod" type="submit"  value="批量修改" disabled="disabled"
 							formaction="<%=path %>/ae/ae01mod.jsp">
 				</div>
