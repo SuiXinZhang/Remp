@@ -110,8 +110,8 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 		}
 		if (this.isNotNull(qaad302)) 
 		{
-			sql.append(" and a.aad302=?");
-			paramList.add(qaad302);
+			sql.append(" and a.aad302 like ?");
+			paramList.add("%"+qaad302+"%");
 		}
 		return this.queryForList(sql.toString(),paramList.toArray());
 	}
@@ -122,16 +122,81 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 	 */
 	public boolean cancelRoom()throws Exception
 	{
-		String sql="update aa08 set aaa805=? where aaa801=?";
+		String sql3 = "update ad03 set aad308='无效' where aad301=?";
+		this.appendSql(sql3, this.get("aad301"));
+		String sql="update aa08 a,ad03 b set a.aaa805=? where b.aad301=? and a.aaa801=b.aaa801 ";
 		Object args[]={
 				"01",
+				this.get("aad301")
+		};
+		this.appendSql(sql, args);
+		String sql2 = "update ad01 a,ad03 b set a.aad116='已失效' where b.aad301=? and b.aad304=a.aad104";
+		this.appendSql(sql2, this.get("aad301"));
+		
+		return this.executeTransaction();
+	}
+	public Map<String, String> confirmReserve()throws Exception
+	{
+		StringBuilder sql = new StringBuilder()
+				.append("select aac401,aaa801,aad502,aad508")
+				.append("  from ad05")
+				.append(" where aaa801=?")
+				;
+		return this.queryForMap(sql.toString(), this.get("aaa801"));
+	}
+	public boolean addReserve()throws Exception
+	{
+		StringBuilder sql1 = new StringBuilder()
+				.append("insert into ad03(aaa801,aad302,aad303,aad304,aad305,")
+				.append("                 aad306,aad307,aac401,aad308)")
+				.append("          values(?,?,?,?,?,")
+				.append("                 ?,?,?,?)")
+				;
+		Object args1[]={
+				this.get("aaa801"),
+				this.get("aad302"),
+				this.get("aad303"),
+				this.get("aad304"),
+				this.get("aad305"),
+				this.get("aad306"),
+				this.get("aad307"),
+				this.get("aac401"),
+				"有效"
+		};
+		this.appendSql(sql1.toString(), args1);
+		String sql2 = "update aa08 set aaa805=? where aaa801=?";
+		Object args2[]={
+				"04",
 				this.get("aaa801")
 		};
-		String sql2 = "update ad01 a,ad03 b set a.aad116='已失效' where b.aad301=? and b.aad304=a.aad104";
+		this.appendSql(sql2, args2);
+		int aad301 = Tools.getSequence("aad301");
+		System.out.println(aad301);
+		StringBuilder sql3 =new StringBuilder()
+				.append("update ad05 a,ad03 b set a.aad507 = '失效' where b.aad301=? ")
+				.append("   and a.aad508 = b.aad305 and a.aad502=b.aad302 ")
+				.append("   and a.aad507='有效'")
+				;
+		this.appendSql(sql3.toString(), aad301);
+		return this.executeTransaction();
+	}
+	/**
+	 * 预留的取消选房
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean cancelReserve()throws Exception
+	{
 		String sql3 = "update ad03 set aad308='无效' where aad301=?";
-		this.appendSql(sql, args);
-		this.appendSql(sql2, this.get("aad301"));
 		this.appendSql(sql3, this.get("aad301"));
+		System.out.println(this.get("aad301"));
+		String sql="update aa08 a,ad03 b set a.aaa805=? where b.aad301=? and a.aaa801=b.aaa801";
+		Object args[]={
+				"01",
+				this.get("aad301")
+		};
+		this.appendSql(sql, args);
+		
 		return this.executeTransaction();
 	}
 }

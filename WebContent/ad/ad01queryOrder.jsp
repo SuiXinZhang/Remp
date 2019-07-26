@@ -43,9 +43,9 @@
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
 		<td lay-data="{field:'projectname',width:100}">项目名称</td>
 		<td lay-data="{field:'username',width:100}">客户名</td>
-		<td lay-data="{field:'userphone',width:90}">实际排号</td>
+		<td lay-data="{field:'userphone',sort:true,width:90}">实际排号</td>
 		<td lay-data="{field:'empname',width:120}">预约日期</td>
-		<td lay-data="{field:'date',sort:true,width:125}">房间</td>
+		<td lay-data="{field:'date',width:125}">房间</td>
 		<td lay-data="{field:'grade',sort:true,width:110}">应收预约金</td>
 		<td lay-data="{field:'state',width:110}">实收预约金</td>
 		<td lay-data="{field:'prestate',width:100}">预约状态</td>

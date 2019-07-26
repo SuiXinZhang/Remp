@@ -51,7 +51,7 @@
 		<td lay-data="{field:'state',width:90}">看房状态</td>
 		<td lay-data="{field:'username',width:90}">房间状态</td>
 		<td lay-data="{field:'userphone',width:90}">选房单号</td>
-		<td lay-data="{field:'emphao',width:90}">实际排号</td>
+		<td lay-data="{field:'emphao',sort:true,width:90}">实际排号</td>
 		<td lay-data="{field:'empname',width:90}">客户名</td>
 		<td lay-data="{field:'style',width:88}">经办人</td>
 		<td lay-data="{field:'date',sort:true,width:115}">选房时间</td>
@@ -86,7 +86,8 @@
 					</a>
 				    </c:when>
 				    <c:otherwise>
-				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onCancel('${ins.aaa801}')">
+				    <c:if test="${ins.aad304=='0000' }">
+				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onCancelReserve('${ins.aad301}')">
 				    	<i class="layui-icon layui-icon-close-fill"></i>取消选房
 				    </a>
 				    <a class="layui-btn layui-btn-xs" href="#" onclick="onSubscribe('${ins.aad301}')">
@@ -95,6 +96,18 @@
 				    <a class="layui-btn layui-btn-xs" href="#" onclick="onSigning('${ins.aad301}')">
 				    	<i class="layui-icon layui-icon-link"></i>转签约
 				    </a>
+				    </c:if>
+				    <c:if test="${ins.aad304!='0000' }">
+				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onCancel('${ins.aad301}')">
+				    	<i class="layui-icon layui-icon-close-fill"></i>取消选房
+				    </a>
+				    <a class="layui-btn layui-btn-xs" href="#" onclick="onSubscribe('${ins.aad301}')">
+				    	<i class="layui-icon layui-icon-link"></i>转认购
+				    </a>
+				    <a class="layui-btn layui-btn-xs" href="#" onclick="onSigning('${ins.aad301}')">
+				    	<i class="layui-icon layui-icon-link"></i>转签约
+				    </a>
+				    </c:if>
 				    </c:otherwise>
 				    </c:choose>
 				    </td>
@@ -141,10 +154,10 @@
 		    elem: '#date'  //指定元素
 		  });
 	});
-	function onCancel(vaaa801)
+	function onCancel(vaad301)
     {
   	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/ad/ad03cancel.html?aaa801="+vaaa801;
+  	 vform.action="<%=path%>/ad/ad03cancel.html?aad301="+vaad301;
   	 vform.submit();
     }
 	function onSubscribe(vaad301)
@@ -159,6 +172,12 @@
 	  	vform.action="<%=path%>/ad/ad07roomTurn.html?aad301="+vaad301;
 	  	vform.submit();
 	}
+	function onCancelReserve(vaad301)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action="<%=path%>/ad/ad03cancelReserve.html?aad301="+vaad301;
+  	 vform.submit();
+    }
 </script>
 </body>
 </html>

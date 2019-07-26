@@ -31,6 +31,13 @@
   	 vform.action='<%=path%>/ad/ad05turnReserve.html?aaa801='+vaaa801;
   	 //alert(vform.action);
   	 vform.submit();
+    }
+    function confirmReserve(vaaa801)
+    {
+  	 var vform = document.getElementById("myform");
+  	 vform.action='<%=path%>/ad/ad03confirmReserve.html?aaa801='+vaaa801;
+  	 //alert(vform.action);
+  	 vform.submit();
     } 
 	</script>
 </head>
@@ -134,7 +141,7 @@
 		<td lay-data="{field:'style',width:88}">房间结构</td>
 		<td lay-data="{field:'date',sort:true,width:115}">面积</td>
 		<td lay-data="{field:'grade',sort:true,width:100}">建筑单价</td>
-		<td lay-data="{field:'state',width:120}">建筑总价</td>
+		<td lay-data="{field:'state',sort:true,width:120}">建筑总价</td>
 		<td lay-data="{field:'opt',fixed:'right',width:200}">操作</td>
 	  </tr>
 	 </thead>
@@ -152,28 +159,39 @@
 				    <td>${ins.aaa505 }</td>
 				    <td>${ins.aaa808 }</td>
 				    <td>${ins.aaa809 }</td>
+				    <td>
 				    <c:choose>
-					    <c:when test="${ins.caaa805=='等待'}">
-					    <td>
+					    <c:when test="${ins.caaa805=='等待' }">
 					    <a class="layui-btn layui-btn-xs " href="#" onclick="onConfirm('${ins.aaa801}')">
 								<i class="layui-icon layui-icon-edit"></i>确认选房
 						</a>
-					    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onReserve('${ins.aaa801}')">
+						<a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onReserve('${ins.aaa801}')">
 								<i class="layui-icon layui-icon-release"></i>添加预留
 						</a>
-					    </td>
 					    </c:when>
 					    <c:otherwise>
-					    <td>
+					    <c:if test="${ins.caaa805=='预留' }">
+					    <a class="layui-btn layui-btn-xs " href="#" onclick="confirmReserve('${ins.aaa801}')">
+								<i class="layui-icon layui-icon-edit"></i>确认选房
+						</a>
+					    </c:if>
 					    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
 					    	<i class="layui-icon layui-icon-edit"></i>确认选房
 					    </a>
-					    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
-					    	<i class="layui-icon layui-icon-release"></i>添加预留
-					    </a>
-					    </td>
+					    <a class="layui-btn layui-btn-xs layui-btn-danger layui-btn-disabled" href="#" onclick="">
+								<i class="layui-icon layui-icon-release"></i>添加预留
+						</a>
 					    </c:otherwise>
 				    </c:choose>
+				    <c:choose>
+				    	<c:when test="${ins.caaa805=='等待'}">
+				   		
+						</c:when>
+						<c:otherwise>
+						
+						</c:otherwise>
+					</c:choose>
+					</td>
 				  </tr>
 		      </c:forEach>
 		      </c:when>

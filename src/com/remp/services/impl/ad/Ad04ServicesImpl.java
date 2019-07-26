@@ -99,8 +99,8 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 		}
 		if (this.isNotNull(qaad403)) 
 		{
-			sql.append(" and a.aad403 = ?");
-			paramList.add(qaad403);
+			sql.append(" and a.aad403 like ?");
+			paramList.add("%"+qaad403+"%");
 		}
 		
 		return this.queryForList(sql.toString(), paramList.toArray());
@@ -167,6 +167,11 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 		};
 		return this.executeUpdate(sql.toString(), args)>0;
 	}
+	/**
+	 * 作废订单,并修改房间状态为可选
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean deleteById()throws Exception
 	{
 		String sql1 = "delete from ad04 where aad401=? ";

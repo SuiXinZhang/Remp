@@ -122,8 +122,8 @@ public class Ad07ServicesImpl extends JdbcServicesSupport
 		}
 		if (this.isNotNull(qaad703)) 
 		{
-			sql.append(" and a.aad703 = ?");
-			paramList.add(qaad703);
+			sql.append(" and a.aad703 like ?");
+			paramList.add("%"+qaad703+"%");
 		}
 		
 		return this.queryForList(sql.toString(), paramList.toArray());

@@ -26,7 +26,7 @@ public class Ad06ServicesImpl extends JdbcServicesSupport
 		Object args[] = {
 				this.get("aac401"),
 				this.get("aad602"),
-				"Œﬁ",
+				"Œ¥…Û≈˙",
 				this.get("aad604"),
 				this.get("aad605"),
 				this.get("aad606"),

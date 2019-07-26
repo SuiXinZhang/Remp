@@ -43,10 +43,10 @@
 		<td lay-data="{field:'projectname',width:125}">房间</td>
 		<td lay-data="{field:'username',width:90}">客户名</td>
 		<td lay-data="{field:'userphone',width:120}">签署日期</td>
-		<td lay-data="{field:'empname',width:120}">合同总价</td>
+		<td lay-data="{field:'empname',sort:true,width:120}">合同总价</td>
 		<td lay-data="{field:'style',width:88}">合同币种</td>
-		<td lay-data="{field:'date',sort:true,width:115}">业务员</td>
-		<td lay-data="{field:'grade',sort:true,width:100}">合同状态</td>
+		<td lay-data="{field:'date',width:115}">业务员</td>
+		<td lay-data="{field:'grade',width:100}">合同状态</td>
 		<td lay-data="{field:'state',width:100}">付款方式</td>
 		<td lay-data="{field:'opt',fixed:'right'}">操作</td>
 	  </tr>

@@ -162,7 +162,7 @@
 					สตสีฝ๐ถ๎
 				</label>
 				<div class="layui-input-inline">
-					<input type="number" step="0.01" name="oaad113" required lay-verify="true" 
+					<input type="number" step="0.01" name="oaad113"  
 					 value="${ins.aad113 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
