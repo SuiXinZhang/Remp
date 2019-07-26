@@ -116,7 +116,7 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 				.append("       x.aad416,x.aad417,x.aad418,x.aad419,x.aad420,")
 				.append("       d.aad301,d.aad302,d.aad305,a.aaa504,s.fvalue saaa805,")
 				.append("       a.aaa505,a.aaa506,b.aaa808,b.aaa810,d.aac401,")
-				.append("       c.aac407,d.aad301")
+				.append("       c.aac407,d.aad301,x.aad422")
 				.append("  from ad04 x,aa05 a,aa08 b,ac04 c,ad03 d,syscode s")
 				.append(" where x.aad401=? and x.aac401=d.aac401")
 				.append("   and d.aaa801=b.aaa801 and b.aaa807=a.aaa502")

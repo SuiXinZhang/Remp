@@ -15,7 +15,8 @@
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 40px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-					<legend>Ô¤Áô¼ÇÂ¼</legend>
+					<legend><h2>Ô¤Áô¼ÇÂ¼</h2></legend>
+					<br>
     <form id="myform" action="<%=path %>/ad/ad05query.html" method="post">
 	<div class="layui-form-item" align="center">
 			<div class="layui-inline">

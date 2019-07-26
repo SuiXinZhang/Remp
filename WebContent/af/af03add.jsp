@@ -7,7 +7,7 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
   	<jsp:include   page="/base/header.jsp"/>
-	<c:import url="/ad/menu.jsp">
+	<c:import url="/af/menu.jsp">
         <c:param name="menu" value="af02"/>
      </c:import>
   <div class="layui-body">

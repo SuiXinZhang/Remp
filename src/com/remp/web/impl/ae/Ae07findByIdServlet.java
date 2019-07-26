@@ -1,12 +1,12 @@
 package com.remp.web.impl.ae;
 
-public class Ae03ModifyServlet extends Ae03BaseSupport 
+public class Ae07findByIdServlet extends Ae07BaseSupport 
 {
 	@Override
 	public String execute() throws Exception
 	{
-		this.update("modify", "ÐÞ¸Ä");
 		this.savePageInstance();
-		return "ae/ae03add";
+		return "ae/ae07add";
 	}
+
 }

@@ -17,7 +17,7 @@ public class TaskListener implements ServletContextListener {
     { 
     	timer = new java.util.Timer(true);
     	arg0.getServletContext().log("initializing system core task...");
-		timer.schedule(new InstanceTimerTask(arg0.getServletContext()), new Date(), 30*60*1000);
+		timer.schedule(new InstanceTimerTask(arg0.getServletContext()), new Date(), 2*60*1000);
 
     }
 

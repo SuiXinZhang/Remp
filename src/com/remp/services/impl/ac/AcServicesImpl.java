@@ -78,7 +78,7 @@ public class AcServicesImpl extends JdbcServicesSupport {
 				.append(" update ac05")
 				.append("	 set aac504 = '02'")
 				.append("  where aac505 < CURRENT_TIMESTAMP ")
-				 .append("   and aac505 > DATE_SUB(NOW(),INTERVAL 30 MINUTE)")
+				 .append("   and aac505 > DATE_SUB(NOW(),INTERVAL 2 MINUTE)")
 				 .append("	 and aac504 = '01'");
 		
 		return this.executeUpdate(sql.toString())>0;

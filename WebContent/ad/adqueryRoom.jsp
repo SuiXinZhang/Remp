@@ -45,19 +45,20 @@
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 80px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-					<legend>房源查询</legend>
+					<legend><h2>房源查询</h2></legend>
+					<br>
 	<form lay-filter="myform" id="myform" class="layui-form" action="<%=path %>/ad/adqueryRoom.html" method="post">
     	<div class="layui-form-item" align="center">
 			<div class="layui-inline">
 				<label class="layui-form-label">建筑总价[B]</label>
 				<div class="layui-input-inline">
-					<input type="text" name="baaa809" autocomplete="off" class="layui-input">
+					<input type="text" name="baaa809" value="${param.baaa809 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label">建筑总价[E]</label>
 				<div class="layui-input-inline">
-					<input type="text" name="eaaa809" autocomplete="off" class="layui-input">
+					<input type="text" name="eaaa809" value="${param.eaaa809 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 		</div>
@@ -65,13 +66,13 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">建筑面积[B]</label>
 				<div class="layui-input-inline">
-					<input type="text" name="baaa505" autocomplete="off" class="layui-input">
+					<input type="text" name="baaa505" value="${param.baaa505 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label">建筑面积[E]</label>
 				<div class="layui-input-inline">
-					<input type="text" name="eaaa505" autocomplete="off" class="layui-input">
+					<input type="text" name="eaaa505" value="${param.eaaa505 }" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 		</div>
@@ -79,7 +80,7 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">户型</label>
 				<div class="layui-input-inline">
-					<select name="qaaa502">
+					<select name="qaaa502" >
 						<option value="">不限定</option>
 						<option value="A">A</option>
  						<option value="B">B</option>
@@ -92,8 +93,8 @@
 				<div class="layui-input-inline">
 					<select name="qaaa504">
 						<option value="">不限定</option>
+						<option value="两房两厅两卫">两房两厅两卫</option>
 						<option value="两房两厅一卫">两房两厅一卫</option>
- 						<option value="两房两厅两卫">两房两厅两卫</option>
  						<option value="三室一厅一卫">三室一厅一卫</option>
 					</select>
 				</div>
@@ -116,7 +117,7 @@
 			<div class="layui-inline">
 	       		<label class="layui-form-label">房间号码</label>
 					<div class="layui-input-inline">
-						<input type="text" name="qaaa803" autocomplete="off" class="layui-input">
+						<input type="text" name="qaaa803" value="${param.qaaa803 }" autocomplete="off" class="layui-input">
 					</div>
 			</div>
 		</div>
@@ -193,9 +194,14 @@
 </div>
 <script type="text/javascript">
 //JavaScript代码区域
-layui.use('table', function(){
-  var table = layui.table;
-  
+layui.use(['table','form'], function(){
+  var table = layui.table
+  	  ,form = layui.form;
+  form.val('myform',{
+	  "qaaa502":"${param.qaaa502}",
+	  "qaaa504":"${param.qaaa504}",
+	  "qaaa805":"${param.qaaa805}"
+  });
 	//转换静态表格
 	table.init('demo', {
 		limit : 10,

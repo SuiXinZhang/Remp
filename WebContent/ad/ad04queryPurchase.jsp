@@ -15,7 +15,8 @@
     <div class="layui-anim layui-anim-scale"
 				style="padding: 15px; margin: 30px 40px;">
 				<fieldset class="layui-elem-field layui-filed-title" style="margin-top: 20px;">
-					<legend>订单记录</legend>
+					<legend><h2>订单记录</h2></legend>
+					<br>
     <form id="myform" class="layui-form" action="<%=path %>/ad/ad04queryPurchase.html" method="post">
     <div class="layui-form-item" align="center">
 			<div class="layui-inline">
@@ -68,15 +69,30 @@
 				    <a class="layui-btn layui-btn-xs layui-btn-normal" href="#" onclick="onSelect('${ins.aad401}')">
 				    	<i class="layui-icon layui-icon-edit"></i>查看
 				    </a>
-				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onDel('${ins.aad401}')">
+				    <c:choose>
+				    <c:when test="${ins.aad422=='已激活' }">
+				    <a class="layui-btn layui-btn-xs layui-btn-danger layui-btn-disabled" href="#" onclick="">
 				    	<i class="layui-icon layui-icon-delete"></i>删除
 				    </a>
-				    <a class="layui-btn layui-btn-xs" href="#" onclick="onReceipt('${ins.aad401}')">
+				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#" onclick="">
+				    	<i class="layui-icon layui-icon-link"></i>转签约
+				    </a>
+				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#" onclick="">
 				    	<i class="layui-icon layui-icon-rmb"></i>生成付款详情
+				    </a>
+				    </c:when>
+				    <c:otherwise>
+				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onDel('${ins.aad401}')">
+				    	<i class="layui-icon layui-icon-delete"></i>删除
 				    </a>
 				    <a class="layui-btn layui-btn-xs" href="#" onclick="onAgree('${ins.aad401}')">
 				    	<i class="layui-icon layui-icon-link"></i>转签约
 				    </a>
+				    <a class="layui-btn layui-btn-xs" href="#" onclick="onReceipt('${ins.aad401}')">
+				    	<i class="layui-icon layui-icon-rmb"></i>生成付款详情
+				    </a>
+				    </c:otherwise>
+				    </c:choose>
 				    </td>
 				  </tr>
 		      </c:forEach>

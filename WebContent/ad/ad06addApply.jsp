@@ -69,9 +69,10 @@
 					申请类型
 				</label>
 				<div class="layui-input-inline">
-					<select name="aad602">
-						<option value="01" selected>换房</option>
+					<select name="aad602" required="required" >
+						<option value="01">换房</option>
 						<option value="02">退房</option>
+						<option value="03">其他</option>
 					</select>
 				</div>
 			</div>
@@ -80,10 +81,13 @@
 					<i class="layui-icon layui-icon-tips" style="font-size: 20px; color: black;"></i>
 					原因分类
 				</label>
-				<div class="layui-input-inline">
+				<div class="layui-input-inline" required="required">
 					<select name="aad604">
-						<option value="01" selected>不符合预期</option>
+						<option value="01">不符合预期</option>
 						<option value="02">不喜欢</option>
+						<option value="03">房间太小</option>
+						<option value="04">房间太大</option>
+						<option value="05">其他</option>
 					</select>
 				</div>
 			</div>
