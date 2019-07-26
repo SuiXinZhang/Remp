@@ -67,7 +67,7 @@
 			¿¥∑√ ±º‰
 			</label>
 				<div class="layui-input-inline">
-					<input type="text" name="aac102" id="date" required lay-verify="true" value="${ins.aac102 }"
+					<input type="text" name="aac102" id="date" lay-verify="true" value="${ins.aac102 }"
 					 autocomplete="off" class="layui-input">
 				</div>
 		</div>

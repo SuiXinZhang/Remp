@@ -60,14 +60,14 @@
 
 				<div class="layui-form-item" align="left">
 					<div class="layui-inline" style="padding-left:86px">
-						<label class="layui-form-label">起始日期</label>
+						<label class="layui-form-label">截止日期[B]</label>
 						<div class="layui-input-inline">
 							<input type="text" name="bdate" class="layui-input" id="test29"
 								placeholder="yyyy-MM-dd">
 						</div>
 					</div>
 					<div class="layui-inline">
-						<label class="layui-form-label">截止日期</label>
+						<label class="layui-form-label">截止日期[E]</label>
 						<div class="layui-input-inline">
 							<input type="text" name="edate" class="layui-input" id="test30"
 								placeholder="yyyy-MM-dd">

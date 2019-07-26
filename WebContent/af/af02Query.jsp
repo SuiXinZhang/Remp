@@ -42,14 +42,14 @@
 				<thead>
 					<tr>
 						<td lay-data="{field:'sort1',width:60}">序号</td>
-						<td lay-data="{field:'username'}">票据批次号</td>
-						<td lay-data="{field:'state'}">票据状态</td>
+						<td lay-data="{field:'username',width:90}">票据批次号</td>
+						<td lay-data="{field:'state',width:90}">票据状态</td>
 						<td lay-data="{field:'number',width:90}">起始编号</td>
 						<td lay-data="{field:'userphone',width:90}">截止编号</td>
-						<td lay-data="{field:'style',width:88}">领用人</td>
+						<td lay-data="{field:'style'}">领用人</td>
 						<td lay-data="{field:'date',width:115}">领用日期</td>
-						<td lay-data="{field:'grade',width:100}">开票金额</td>
-						<td lay-data="{field:'makeemp',width:120}">开票人</td>
+						<td lay-data="{field:'grade',width:90}">开票金额</td>
+						<td lay-data="{field:'makeemp'}">开票人</td>
 						<td lay-data="{field:'notedate',width:120}">开票日期</td>
 						<td lay-data="{field:'opt',fixed:'right',width:285}">操作</td>
 					</tr>
