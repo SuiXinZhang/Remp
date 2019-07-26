@@ -47,11 +47,12 @@
 	<thead>
 	  <tr>
 	  	<td lay-data="{field:'sort1',width:60}">序号</td>
-		<td lay-data="{field:'projectname',width:200}">房间号码</td>
+		<td lay-data="{field:'projectname',width:150}">房间号码</td>
+		<td lay-data="{field:'state',width:90}">看房状态</td>
 		<td lay-data="{field:'username',width:90}">房间状态</td>
 		<td lay-data="{field:'userphone',width:90}">选房单号</td>
 		<td lay-data="{field:'emphao',width:90}">实际排号</td>
-		<td lay-data="{field:'empname',width:120}">客户名</td>
+		<td lay-data="{field:'empname',width:90}">客户名</td>
 		<td lay-data="{field:'style',width:88}">经办人</td>
 		<td lay-data="{field:'date',sort:true,width:115}">选房时间</td>
 		<td lay-data="{field:'opt',fixed:'right'}">操作</td>
@@ -64,6 +65,7 @@
 	    	   	  <tr>
 				    <td>${vs.count }</td>
 				    <td>${ins.aad302 }</td>
+				    <td>${ins.aad308 }</td>
 				    <td>${ins.caaa805 }</td>
 				    <td>${ins.aad303 }</td>
 				    <td>${ins.aad304 }</td>
@@ -72,7 +74,7 @@
 				    <td>${ins.aad307 }</td>
 				    <td>
 				    <c:choose>
-				    <c:when test="${ins.caaa805=='签约'||ins.caaa805=='等待'}">
+				    <c:when test="${ins.aad308=='无效'}">
 				    <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#"  onclick="">
 						<i class="layui-icon layui-icon-close-fill"></i>取消选房
 					</a>

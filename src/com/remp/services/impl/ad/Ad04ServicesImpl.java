@@ -36,12 +36,12 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 				.append("                 aad406,aad407,aad408,aad409,aad410,")
 				.append("                 aad411,aad412,aad413,aad414,aad415,")
 				.append("                 aad416,aad417,aad418,aad419,aad420,")
-				.append("                 aad421,aad422,aaa801)")
+				.append("                 aad421,aad422,aaa801,aad301)")
 				.append("          values(?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
 				.append("                 ?,?,?,?,?,")
-				.append("                 ?,?,?)")
+				.append("                 ?,?,?,?)")
 				;
 		Object args[] = {
 				this.get("aac401"),
@@ -66,10 +66,13 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 				this.get("aad420"),
 				this.get("aad421"),
 				"未激活",
-				this.get("aaa801")
+				this.get("aaa801"),
+				this.get("aad301")
 		};
-		System.out.println(this.get("aaa801"));
-		return this.executeUpdate(sql.toString(), args)>0;
+		this.appendSql(sql.toString(), args);
+		String sql2 = "update ad03 set aad308='无效' where aad301=?";
+		this.appendSql(sql2, this.get("aad301"));
+		return this.executeTransaction();
 	}
 	/**
 	 * 查询订单
@@ -86,7 +89,7 @@ public class Ad04ServicesImpl extends JdbcServicesSupport
 				.append(" where a.aad411=b.fcode and b.fname='aad411'")
 				.append("   and a.aad404=c.fcode and c.fname='aad404'")
 				.append("   and a.aad418=d.fcode and d.fname='aad418'")
-				.append("   and a.aac401=s.aac401")
+				.append("   and a.aad301=s.aad301")
 				;
 		List<Object> paramList=new ArrayList<>();
 		if(this.isNotNull(qaad402))

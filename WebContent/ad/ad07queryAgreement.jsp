@@ -106,7 +106,7 @@
 	</div>
 	<div class="layui-form-item" align="center">
   		<input class="layui-btn layui-btn-normal" type="submit" name="next" value="生成售后服务"
-  	 		formaction="<%=path%>/ae/ae01query.html">
+  	 		formaction="<%=path%>/ae/aeSelectcontract.html">
   	</div>
 	</form>
 	</fieldset>

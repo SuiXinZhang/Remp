@@ -6,6 +6,6 @@ public class Ad06examineApplyServlet extends Ad06ControllerSupport
 	public String execute() throws Exception 
 	{
 		this.update("examineApply", "…Û≈˙≥…π¶");
-		return "ad/ad06addApply";
+		return "ad/ad06queryApply";
 	}
 }
