@@ -72,7 +72,10 @@ public class Ae01ServiceImpl extends JdbcServicesSupport
 			this.get("aae109"),
 			this.get("aae110")
 		};
-		return this.executeUpdate(sql.toString(), args)>0;
+		String sql1 = "update ad07 set aad723='1' where aad701 = ?";
+		this.appendSql(sql.toString(), args);
+		this.appendSql(sql1, this.get("aad701"));
+		return this.executeTransaction();
 	}
 	
 	public boolean modifyAe01()throws Exception
