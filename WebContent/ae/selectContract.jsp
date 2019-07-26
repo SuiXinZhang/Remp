@@ -73,9 +73,19 @@
 				    <td>${ins.aad716 }</td>
 				    <td>${ins.aad720 }</td>
 				    <td>
-				    <a class="layui-btn layui-btn-xs" href="#" onclick="onSelect('${ins.aad701}')">
-				    	<i class="layui-icon layui-icon-edit"></i>选择
-				    </a>
+				    <c:choose>
+						<c:when test="${ins.aad723==0 }">
+							 <a class="layui-btn layui-btn-xs" href="#" onclick="onSelect('${ins.aad701}')">
+						    	<i class="layui-icon layui-icon-edit"></i>选择
+						     </a>
+						</c:when>
+						<c:otherwise>
+							 <a class="layui-btn layui-btn-xs layui-btn-disabled" href="#">
+						    	<i class="layui-icon layui-icon-edit"></i>已备案
+						    </a>
+						</c:otherwise>
+					</c:choose>
+				   
 				    </td>
 				  </tr>
 		      </c:forEach>

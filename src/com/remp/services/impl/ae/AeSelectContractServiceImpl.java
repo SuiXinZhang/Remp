@@ -21,7 +21,7 @@ public class AeSelectContractServiceImpl extends JdbcServicesSupport
 		StringBuilder sql = new StringBuilder()
 				.append("select a.aad701,a.aac401,a.aad702,a.aad703,c.fvalue caad704,")
 				.append("       a.aad705,a.aad711,b.fvalue baad712,a.aad716,d.fvalue daad719,")
-				.append("       a.aad720,a.aac401")
+				.append("       a.aad720,a.aac401,a.aad723")
 				.append("  from ad07 a,syscode b,syscode c,syscode d")
 				.append(" where a.aad712=b.fcode and b.fname='aad712'")
 				.append("   and a.aad704=c.fcode and c.fname='aad704'")
