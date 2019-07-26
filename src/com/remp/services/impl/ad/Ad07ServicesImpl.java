@@ -57,12 +57,12 @@ public class Ad07ServicesImpl extends JdbcServicesSupport
 				.append("                 aad707,aad708,aad709,aad710,aad711,")
 				.append("                 aad712,aad713,aad714,aad715,aad716,")
 				.append("                 aad717,aad718,aad719,aad720,aad721,")
-				.append("                 aad722,aac401,aaa801,aad401)")
+				.append("                 aad722,aac401,aaa801,aad401,aad723)")
 				.append("           values(?,?,?,?,?,")
 				.append("                  ?,?,?,?,?,")
 				.append("                  ?,?,?,?,?,")
 				.append("                  ?,?,?,?,?,")
-				.append("                  ?,?,?,?)")
+				.append("                  ?,?,?,?,?)")
 				;
 		Object args[] = {
 				this.get("aad702"),
@@ -88,7 +88,8 @@ public class Ad07ServicesImpl extends JdbcServicesSupport
 				this.get("aad722"),
 				this.get("aac401"),
 				this.get("aaa801"),
-				this.get("aad401")
+				this.get("aad401"),
+				0
 		};
 		String sql2 = "update aa08 set aaa805 = '02' where aaa801=?";
 		String sql3 = "update ad04 set aad422 = 'ÒÑ¼¤»î' where aad401=?";

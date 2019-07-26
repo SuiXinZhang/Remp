@@ -68,9 +68,18 @@
 				    <a class="layui-btn layui-btn-xs layui-btn-normal" href="#" onclick="onEdit('${ins.aad501}')">
 				    	<i class="layui-icon layui-icon-edit"></i>查看
 				    </a>
+				    <c:choose>
+				    <c:when test="${ins.aad507=='失效' }">
+				    <a class="layui-btn layui-btn-xs layui-btn-danger layui-btn-disabled" href="#" onclick="">
+				    	<i class="layui-icon layui-icon-close-fill"></i>取消预留
+				    </a>
+				    </c:when>
+				    <c:otherwise>
 				    <a class="layui-btn layui-btn-xs layui-btn-danger" href="#" onclick="onCancel('${ins.aad501}')">
 				    	<i class="layui-icon layui-icon-close-fill"></i>取消预留
 				    </a>
+				    </c:otherwise>
+				    </c:choose>
 				    </td>
 				  </tr>
 		      </c:forEach>

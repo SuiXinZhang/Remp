@@ -173,7 +173,9 @@
 		<input type="submit" name="text" value="${empty param.aaf301?'添加':'修改' }"
 		 class="layui-btn layui-btn-normal" formaction="${empty param.aaf301?'af03add':'af03modify' }.html">
 		<input type="submit" name="text" value="查看" class="layui-btn layui-btn-normal"
-		 formnovalidate="formnovalidate" formaction="<%=path%>/af03query.html">
+		 formnovalidate="formnovalidate" formaction="<%=path%>/af/af03query.html">
+		 <input type="submit" name="text" value="返回" class="layui-btn layui-btn-normal"
+		 formnovalidate="formnovalidate" formaction="<%=path%>/ad/ad07queryAgreement.html">
 	</div>
 <input type="hidden" name="aaf301" value="${param.aaf301 }">
 </div>

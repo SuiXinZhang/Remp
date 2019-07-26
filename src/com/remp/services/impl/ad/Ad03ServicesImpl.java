@@ -17,9 +17,9 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 	{
 		StringBuilder sql1 = new StringBuilder()
 				.append("insert into ad03(aaa801,aad302,aad303,aad304,aad305,")
-				.append("                 aad306,aad307,aac401)")
+				.append("                 aad306,aad307,aac401,aad308)")
 				.append("          values(?,?,?,?,?,")
-				.append("                 ?,?,?)")
+				.append("                 ?,?,?,?)")
 				;
 		Object args1[]={
 				this.get("aaa801"),
@@ -29,7 +29,8 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 				this.get("aad305"),
 				this.get("aad306"),
 				this.get("aad307"),
-				this.get("aac401")
+				this.get("aac401"),
+				"有效"
 		};
 		this.appendSql(sql1.toString(), args1);
 		String sql2 = "update aa08 set aaa805=? where aaa801=?";
@@ -89,7 +90,8 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 		Object qaad302 = this.get("qaad302");
 		StringBuilder sql=new StringBuilder()
 				.append("select a.aad301,a.aad302,a.aad303,a.aad304,a.aad305,")
-				.append("       a.aad306,a.aad307,b.aaa801,c.fvalue caaa805,a.aac401")
+				.append("       a.aad306,a.aad307,b.aaa801,c.fvalue caaa805,a.aac401,")
+				.append("       a.aad308")
 				.append("  from ad03 a,aa08 b,syscode c")
 				.append(" where a.aaa801 = b.aaa801")
 				.append("   and b.aaa805 = c.fcode")
@@ -126,8 +128,10 @@ public class Ad03ServicesImpl extends JdbcServicesSupport
 				this.get("aaa801")
 		};
 		String sql2 = "update ad01 a,ad03 b set a.aad116='已失效' where b.aad301=? and b.aad304=a.aad104";
+		String sql3 = "update ad03 set aad308='无效' where aad301=?";
 		this.appendSql(sql, args);
 		this.appendSql(sql2, this.get("aad301"));
+		this.appendSql(sql3, this.get("aad301"));
 		return this.executeTransaction();
 	}
 }

@@ -319,7 +319,7 @@
 	       <input type="submit" name="next" value="²é¿´" class="layui-btn layui-btn-normal"
 	          formnovalidate="formnovalidate" formaction="ad/ad07queryAgreement.html">
 	       <input type="submit" name="next" value="·µ»Ø" class="layui-btn layui-btn-normal"
-	       formaction="ad07queryAgreement.html" formnovalidate="formnovalidate">
+	       formaction="ad04queryPurchase.html" formnovalidate="formnovalidate">
 	</div>
     <input type="hidden" name="aac401" value="${ins.aac401 }">
     <input type="hidden" name="aad701" value="${param.aad701 }">

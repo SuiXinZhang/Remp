@@ -55,8 +55,8 @@ public class Af07ServicesImpl extends JdbcServicesSupport
 		
 		if (isNotNull(qaaf702)) 
 		{
-			sql.append(" and aaf702=?");
-			paramList.add(qaaf702);
+			sql.append(" and aaf702 like ?");
+			paramList.add("%"+qaaf702+"%");
 		}
 		if (isNotNull(qaaf703))
 		{

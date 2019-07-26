@@ -168,7 +168,7 @@
 	function onSelect(vaad601)
     {
   	 var vform = document.getElementById("myform");
-  	 vform.action="<%=path%>/ad/ad06findByIdApply.html?aad601="+vaad601;
+  	 vform.action="<%=path%>/ad/ad06examineApply.html?aad601="+vaad601;
   	 vform.submit();
     }
 </script>
