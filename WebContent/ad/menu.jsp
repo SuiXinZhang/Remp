@@ -12,25 +12,15 @@
              	<dd class="${param.menu eq 'ad03' ? 'layui-this':''}"><a href="ad02queryWithdrawOrder.html">&nbsp&nbsp&nbsp&nbsp查询退号</a></dd>
              </dl>
         </li>
-        <li class="layui-nav-item layui-nav-itemed"><a href="javascript:">选房管理</a>
-        	 <dl class="layui-nav-child">
-             	<dd class="${param.menu eq 'ad04' ? 'layui-this':''}"><a href="ad03confirm.jsp">&nbsp&nbsp&nbsp&nbsp选房确认</a></dd>
-             	<dd class="${param.menu eq 'ad05' ? 'layui-this':''}"><a href="ad03query.html">&nbsp&nbsp&nbsp&nbsp看房记录</a></dd>
-             </dl>
-        </li>
+        <li class="layui-nav-item ${param.menu eq 'ad05' ? 'layui-this':''}"><a href="ad03query.html">选房管理</a></li>
         <li class="layui-nav-item layui-nav-itemed"><a href="javascript:">订单管理</a>
         	 <dl class="layui-nav-child">
-             	<dd class="${param.menu eq 'ad06' ? 'layui-this':''}"><a href="ad04addPurchase.jsp">&nbsp&nbsp&nbsp&nbsp添加订单</a></dd>
              	<dd class="${param.menu eq 'ad07' ? 'layui-this':''}"><a href="ad04queryPurchase.html">&nbsp&nbsp&nbsp&nbsp订单记录</a></dd>
              	<dd class="${param.menu eq 'ad08' ? 'layui-this':''}"><a href="ad05customerQuery.jsp">&nbsp&nbsp&nbsp&nbsp添加预留</a></dd>
              	<dd class="${param.menu eq 'ad09' ? 'layui-this':''}"><a href="ad05query.html">&nbsp&nbsp&nbsp&nbsp预留信息</a></dd>
              </dl>
         </li>
-        <li class="layui-nav-item layui-nav-itemed"><a href="javascript:">合同管理</a>
-        	 <dl class="layui-nav-child">
-             	<dd class="${param.menu eq 'ad10' ? 'layui-this':''}"><a href="ad07addAgreement.jsp">&nbsp&nbsp&nbsp&nbsp添加合同</a></dd>
-             	<dd class="${param.menu eq 'ad11' ? 'layui-this':''}"><a href="ad07queryAgreement.html">&nbsp&nbsp&nbsp&nbsp合同记录</a></dd>
-             </dl>
+        <li class="layui-nav-item ${param.menu eq 'ad11' ? 'layui-this':''}"><a href="ad07queryAgreement.html">合同管理</a>
         </li>
         <li class="layui-nav-item ${param.menu eq 'ad12' ? 'layui-this':''}"><a href="ad06addApply.jsp">业务变更</a></li>
         <li class="layui-nav-item ${param.menu eq 'ad13' ? 'layui-this':''}"><a href="ad06queryApply.html">变更审批</a></li>
